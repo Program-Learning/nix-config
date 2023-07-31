@@ -21,3 +21,16 @@ swaybg --output '*' --mode fill --image ~/.config/wallpapers/default_wallpaper &
 
 # Start mpd
 exec mpd &
+
+# Start wayvnc
+exec wayvnc &
+
+# Start clash-verge
+exec clash-verge &
+
+# Start lxpolkit
+exec lxpolkit &
+
+# Start swayidle
+# exec swayidle -w timeout 1800 'systemctl suspend' resume 'hyprctl dispatch dpms on' timeout 120 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on' before-sleep 'swaylock'
+exec swayidle -w timeout 120 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on' before-sleep 'swaylock'

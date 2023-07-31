@@ -7,6 +7,7 @@
     ./ssh.nix
     ./wallpaper.nix
     ./xdg.nix
+    ./custom-addon.nix
   ];
 
   home.packages = with pkgs; [
