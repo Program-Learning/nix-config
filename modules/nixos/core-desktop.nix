@@ -62,6 +62,7 @@
       main = {
         # overloads the capslock key to function as both escape (when tapped) and control (when held)
         capslock = "overload(control, esc)";
+        esc = "capslock";
       };
     };
   };
@@ -173,6 +174,7 @@
       source-han-sans # 思源黑体
       source-han-serif # 思源宋体
 
+      sarasa-gothic      
       # nerdfonts
       (nerdfonts.override {
         fonts = [

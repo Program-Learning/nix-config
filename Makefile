@@ -11,16 +11,16 @@
 ############################################################################
 
 i3: 
-	nixos-rebuild switch --flake .#ai_i3 --use-remote-sudo
+	nixos-rebuild switch --flake .#y9000k2021h_i3 --use-remote-sudo
 
 hypr:
-	nixos-rebuild switch --flake .#ai_hyprland --use-remote-sudo
+	nixos-rebuild switch --flake .#y9000k2021h_hyprland --use-remote-sudo
 
 i3-debug:
-	nixos-rebuild switch --flake .#ai_i3 --use-remote-sudo --show-trace --verbose
+	nixos-rebuild switch --flake .#y9000k2021h_i3 --use-remote-sudo --show-trace --verbose
 
 hypr-debug:
-	nixos-rebuild switch --flake .#ai_hyprland --use-remote-sudo --show-trace --verbose
+	nixos-rebuild switch --flake .#y9000k2021h_hyprland --use-remote-sudo --show-trace --verbose
 
 up:
 	nix flake update

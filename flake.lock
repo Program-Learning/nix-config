@@ -441,18 +441,18 @@
     "mysecrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1692380165,
-        "narHash": "sha256-+vas7ICp7rl9mN2wPIRFkMsTyoDcMM62CV/+BT1rVY0=",
+        "lastModified": 1692196956,
+        "narHash": "sha256-QWnps45O1iDaTh8dpkmXftOfsygsMrNWnYCvbc3Re2I=",
         "ref": "refs/heads/main",
-        "rev": "3ef4106d1b2432a68704e90449a04615c5e7ebaa",
+        "rev": "e5caca7318f8b9cfac6f12879b6884f8896b91d6",
         "shallow": true,
         "type": "git",
-        "url": "ssh://git@github.com/ryan4yin/nix-secrets.git"
+        "url": "ssh://git@github.com/DataEraserC/nix-secrets.git"
       },
       "original": {
         "shallow": true,
         "type": "git",
-        "url": "ssh://git@github.com/ryan4yin/nix-secrets.git"
+        "url": "ssh://git@github.com/DataEraserC/nix-secrets.git"
       }
     },
     "nix-darwin": {
@@ -618,11 +618,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1692264070,
-        "narHash": "sha256-WepAkIL2UcHOj7JJiaFS/vxrA9lklQHv8p+xGL+7oQ0=",
+        "lastModified": 1692356644,
+        "narHash": "sha256-AYkPFT+CbCVSBmh0WwIzPpwhEJ4Yy3A7JZvUkGJIg5o=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "42c25608aa2ad4e5d3716d8d63c606063513ba33",
+        "rev": "8ecc900b2f695d74dea35a92f8a9f9b32c8ea33d",
         "type": "github"
       },
       "original": {
@@ -782,6 +782,21 @@
         "type": "github"
       }
     },
+    "nur": {
+      "locked": {
+        "lastModified": 1692455181,
+        "narHash": "sha256-XL4dXONV2sxtmYiIy9nGkAsI8L57SPbzrzSZp4yk+m4=",
+        "owner": "nix-community",
+        "repo": "NUR",
+        "rev": "37f30106cbd37398a53973fdc78a9fed152fc28b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "NUR",
+        "type": "github"
+      }
+    },
     "nur-ryan4yin": {
       "inputs": {
         "nixpkgs": "nixpkgs_8"
@@ -842,6 +857,7 @@
         "nixpkgs-darwin": "nixpkgs-darwin",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nixpkgs-wayland": "nixpkgs-wayland",
+        "nur": "nur",
         "nur-ryan4yin": "nur-ryan4yin",
         "nushell-scripts": "nushell-scripts",
         "wallpapers": "wallpapers"
@@ -904,15 +920,15 @@
     "wallpapers": {
       "flake": false,
       "locked": {
-        "lastModified": 1690773162,
-        "narHash": "sha256-cZOvcRB+PwDA8vvcqHeB7oAK0Eabz9LSMUXwS39Ivco=",
-        "owner": "ryan4yin",
+        "lastModified": 1691774731,
+        "narHash": "sha256-fqRdn4204bJ8xF7APpAD3/J2Vr04/w4myFiHmugbym8=",
+        "owner": "Program-Learning",
         "repo": "wallpapers",
-        "rev": "515e4546b34adbfe7d62d2dbb3b51b8b8ff45716",
+        "rev": "7028f2fc3dd83a4ac486ad5aa0cdb0fc4eaddc58",
         "type": "github"
       },
       "original": {
-        "owner": "ryan4yin",
+        "owner": "Program-Learning",
         "repo": "wallpapers",
         "type": "github"
       }

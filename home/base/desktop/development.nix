@@ -44,6 +44,7 @@
     bfg-repo-cleaner  # remove large files from git history
     k6 # load testing tool
     mitmproxy # http/https proxy tool
+    tcpdump
     protobuf # protocol buffer compiler
   ];
 

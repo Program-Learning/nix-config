@@ -15,6 +15,7 @@
   # The `@` syntax here is used to alias the attribute set of the inputs's parameter, making it convenient to use inside the function.
   outputs = inputs @ {
     self,
+    nur,
     nixpkgs,
     nixpkgs-unstable,
     nix-darwin,
@@ -24,9 +25,9 @@
     nixos-rk3588,
     ...
   }: let
-    username = "ryan";
-    userfullname = "Ryan Yin";
-    useremail = "xiaoyin_c@qq.com";
+    username = "nixos";
+    userfullname = "DataEraserC";
+    useremail = "102341238+DataEraserC@users.noreply.github.com";
 
     x64_system = "x86_64-linux";
     x64_darwin = "x86_64-darwin";
@@ -37,6 +38,24 @@
     nixosSystem = import ./lib/nixosSystem.nix;
     macosSystem = import ./lib/macosSystem.nix;
     colemnaSystem = import ./lib/colmenaSystem.nix;
+
+      # y9000k2021h
+    idol_y9000k2021h_modules_i3 = {
+      nixos-modules = [
+        ./hosts/idols/y9000k2021h
+        ./modules/nixos/i3.nix
+        inputs.nur.nixosModules.nur
+      ];
+      home-module = import ./home/linux/desktop-i3.nix;
+    };
+    idol_y9000k2021h_modules_hyprland = {
+      nixos-modules = [
+        ./hosts/idols/y9000k2021h
+        ./modules/nixos/hyprland.nix
+        inputs.nur.nixosModules.nur
+      ];
+      home-module = import ./home/linux/desktop-hyprland.nix;
+    };
 
     # 星野 アイ, Hoshino Ai
     idol_ai_modules_i3 = {
@@ -127,7 +146,14 @@
         system = x64_system;
         specialArgs = x64_specialArgs;
       };
+      stable_args = base_args // {inherit nixpkgs nur;};
+      unstable_args = base_args // {nixpkgs = nixpkgs-unstable;inherit nur;};
     in {
+      # y9000k2021h with i3 window manager
+      y9000k2021h_i3 = nixosSystem (idol_y9000k2021h_modules_i3 // stable_args);
+      # y9000k2021h with hyprland compositor
+      y9000k2021h_hyprland = nixosSystem (idol_y9000k2021h_modules_hyprland // stable_args);
+
       # ai with i3 window manager
       ai_i3 = nixosSystem (idol_ai_modules_i3 // base_args);
       # ai with hyprland compositor
@@ -218,6 +244,8 @@
     packages."${x64_system}" =
       # genAttrs returns an attribute set with the given keys and values(host => image).
       nixpkgs.lib.genAttrs [
+        "y9000k2021h_i3"
+        "y9000k2021h_hyprland"
         "ai_i3"
         "ai_hyprland"
       ] (
@@ -280,6 +308,9 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    # NUR package source
+    nur.url = "github:nix-community/NUR";
+
     # for macos
     nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-23.05-darwin";
     nix-darwin = {
@@ -334,13 +365,14 @@
     # my private secrets, it's a private repository, you need to replace it with your own.
     # use ssh protocol to authenticate via ssh-agent/ssh-key, and shallow clone to save time
     mysecrets = {
-      url = "git+ssh://git@github.com/ryan4yin/nix-secrets.git?shallow=1";
+      url = "git+ssh://git@github.com/DataEraserC/nix-secrets.git?shallow=1";
       flake = false;
     };
 
     # my wallpapers
     wallpapers = {
-      url = "github:ryan4yin/wallpapers";
+      url = "github:Program-Learning/wallpapers";
+      # url = "git+file:////home/nixos/Documents/code/wallpapers?shallow=1";
       flake = false;
     };
 

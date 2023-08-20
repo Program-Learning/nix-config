@@ -18,6 +18,7 @@
     wlr.enable = true;
     extraPortals = with pkgs; [
       xdg-desktop-portal-wlr
+      # xdg-desktop-portal-hyprland
     ];
   };
 
@@ -35,10 +36,16 @@
       displayManager = {
         defaultSession = "hyprland";
         lightdm.enable = false;
-        gdm = {
-          enable = true;
-          wayland = true;
-        };
+        # gdm = {
+        #   enable = true;
+        #   wayland = true;
+        #   debug = true;
+        #   settings = {
+        #     debug = {
+        #       enable = true;
+        #     };
+        #   };
+        # };
       };
     };
   };
