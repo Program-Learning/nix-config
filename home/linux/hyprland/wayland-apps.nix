@@ -8,9 +8,11 @@
       commandLineArgs = [
         # make it use GTK_IM_MODULE if it runs with Gtk4, so fcitx5 can work with it.
         # (only supported by chromium/chrome at this time, not electron)
-        "--gtk-version=4"
+        "--gtk-version=5"
+        "--enable-features=UseOzonePlatform"
+        "--ozone-platform=wayland"
         # make it use text-input-v1, which works for kwin 5.27 and weston
-        # "--enable-wayland-ime"
+        "--enable-wayland-ime"
 
         # enable hardware acceleration - vulkan api
         # "--enable-features=Vulkan"
@@ -21,6 +23,24 @@
       enable = true;
       enableGnomeExtensions = false;
       package = pkgs.firefox-wayland; # firefox with wayland support
+    };
+
+    vscode = {
+      enable = true;
+      # use the stable version
+      package = pkgs.vscode.override {
+        commandLineArgs = [
+          # make it use text-input-v1, which works for kwin 5.27 and weston
+          # "--enable-features=UseOzonePlatform"
+          # "--ozone-platform=wayland"
+          # "--enable-wayland-ime"
+          # "--enable-features=UseOzonePlatform"
+          # "--ozone-platform=x11"
+        ];
+      };
+
+      # let vscode sync and update its configuration & extensions across devices, using github account.
+      # userSettings = {};
     };
   };
 }

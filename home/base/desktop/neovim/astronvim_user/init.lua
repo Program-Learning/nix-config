@@ -26,6 +26,7 @@ return {
     { import = "astrocommunity.scrolling.nvim-scrollbar" },
     { import = "astrocommunity.editing-support.auto-save-nvim" },
     { import = "astrocommunity.editing-support.todo-comments-nvim" },
+    { import = "astrocommunity.editing-support.suda-vim" },
     -- Language Support
     ---- Frontend & NodeJS
     { import = "astrocommunity.pack.typescript-all-in-one" },
@@ -71,6 +72,14 @@ return {
           markdown = true,
         }
       end,
+    },
+
+    {
+      "skyfireitdiy/codegeex-vim"
+    },
+
+    {
+      "neoclide/coc.nvim"
     },
 
     -- markdown preview

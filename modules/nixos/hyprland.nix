@@ -18,6 +18,7 @@
     wlr.enable = true;
     extraPortals = with pkgs; [
       xdg-desktop-portal-wlr
+      # xdg-desktop-portal-hyprland
     ];
   };
 
@@ -35,10 +36,18 @@
       displayManager = {
         defaultSession = "hyprland";
         lightdm.enable = false;
-        gdm = {
-          enable = true;
-          wayland = true;
-        };
+        # # use bash to launch Hyprland since gdm can not work properly in my computer due to unknown reason (or switch to other tty to avoid problem)
+        # # use bash instead of nu since https://github.com/ryan4yin/nix-config/issues/8 (https://github.com/nix-community/home-manager/issues/3100#issuecomment-1193140322) (maybe)
+        # gdm = {
+        #   enable = true;
+        #   wayland = true;
+        #   debug = true;
+        #   settings = {
+        #     debug = {
+        #       enable = true;
+        #     };
+        #   };
+        # };
       };
     };
   };

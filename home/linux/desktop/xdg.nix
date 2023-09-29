@@ -25,8 +25,20 @@
     #  ls /etc/profiles/per-user/ryan/share/applications/
     mimeApps = {
       enable = true;
+      associations.added = let
+        browser = ["firefox.desktop"];
+        office = ["writer.desktop"];
+        code = ["code.desktop"];
+        editor = ["Helix.desktop" "code.desktop"];
+      in {
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = office;
+        "application/x-php"= code;
+      };
       defaultApplications = let
         browser = ["firefox.desktop"];
+        office = ["writer.desktop"];
+        code = ["code.desktop" "nvim.desktop"];
+        editor = ["nvim.desktop" "Helix.desktop" "code.desktop"];
       in {
         "application/json" = browser;
         "application/pdf" = browser; # TODO: pdf viewer

@@ -26,6 +26,13 @@
     # python
     (python311.withPackages (ps:
       with ps; [
+        ipykernel jupyterlab 
+        matplotlib numpy seaborn
+        networkx
+        beautifulsoup4
+        selenium
+        urllib3
+
         ipython
         pandas
         requests
@@ -47,6 +54,7 @@
     bfg-repo-cleaner  # remove large files from git history
     k6 # load testing tool
     mitmproxy # http/https proxy tool
+    tcpdump
     protobuf # protocol buffer compiler
   ];
 

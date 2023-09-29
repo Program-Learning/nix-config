@@ -1,4 +1,5 @@
 {
+  nur,
   nixpkgs,
   home-manager,
   nixos-generators,
@@ -39,6 +40,7 @@ in
 
           home-manager.extraSpecialArgs = specialArgs;
           home-manager.users."${username}" = home-module;
+          nixpkgs.overlays = [ nur.overlay ];
         }
       ];
   }

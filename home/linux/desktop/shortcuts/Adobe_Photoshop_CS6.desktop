@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Adobe Photoshop CS6
+Exec=sh -c 'xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 1 && adobe_photoshop_cs6 && xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2'
+Type=Application
+Terminal=false
+StartupNotify=false
+Comment=GameLinux CS6
+Icon=Adobe_Photoshop_CS6
+Categories=Graphics;2DGraphics;

@@ -441,18 +441,18 @@
     "mysecrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1692380165,
-        "narHash": "sha256-+vas7ICp7rl9mN2wPIRFkMsTyoDcMM62CV/+BT1rVY0=",
+        "lastModified": 1692639374,
+        "narHash": "sha256-GloBGH2EB3IehgV8z5lPaecivpza3x7qOikUYA+gpBI=",
         "ref": "refs/heads/main",
-        "rev": "3ef4106d1b2432a68704e90449a04615c5e7ebaa",
+        "rev": "29d5b801fcd11a51f583f4b8af19aaf9ed25d14b",
         "shallow": true,
         "type": "git",
-        "url": "ssh://git@github.com/ryan4yin/nix-secrets.git"
+        "url": "ssh://git@github.com/DataEraserC/nix-secrets.git"
       },
       "original": {
         "shallow": true,
         "type": "git",
-        "url": "ssh://git@github.com/ryan4yin/nix-secrets.git"
+        "url": "ssh://git@github.com/DataEraserC/nix-secrets.git"
       }
     },
     "nix-darwin": {
@@ -618,11 +618,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1692264070,
-        "narHash": "sha256-WepAkIL2UcHOj7JJiaFS/vxrA9lklQHv8p+xGL+7oQ0=",
+        "lastModified": 1695360818,
+        "narHash": "sha256-JlkN3R/SSoMTa+CasbxS1gq+GpGxXQlNZRUh9+LIy/0=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "42c25608aa2ad4e5d3716d8d63c606063513ba33",
+        "rev": "e35dcc04a3853da485a396bdd332217d0ac9054f",
         "type": "github"
       },
       "original": {
@@ -752,6 +752,22 @@
     },
     "nixpkgs_8": {
       "locked": {
+        "lastModified": 1694948089,
+        "narHash": "sha256-d2B282GmQ9o8klc22/Rbbbj6r99EnELQpOQjWMyv0rU=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "5148520bfab61f99fd25fb9ff7bfbb50dad3c9db",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_9": {
+      "locked": {
         "lastModified": 1692221125,
         "narHash": "sha256-nKUDlbLL8/WW3Fpx9Y0sY+LliTqU3/GexvHU9BdA8Qk=",
         "owner": "NixOS",
@@ -782,9 +798,42 @@
         "type": "github"
       }
     },
-    "nur-ryan4yin": {
+    "nur": {
+      "locked": {
+        "lastModified": 1695646749,
+        "narHash": "sha256-lSTdts8k69FpuD8lLmISYeDzccDwhmriiepP/e36zvE=",
+        "owner": "nix-community",
+        "repo": "NUR",
+        "rev": "ca02e7e28baf299a590373b49d5469ed8eda6979",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "NUR",
+        "type": "github"
+      }
+    },
+    "nur-program-learning": {
       "inputs": {
         "nixpkgs": "nixpkgs_8"
+      },
+      "locked": {
+        "lastModified": 1695986667,
+        "narHash": "sha256-epzBWJO8d9ICyVWzNUEnQjHB+KK0GwXdwRkd1vydOJE=",
+        "owner": "Program-Learning",
+        "repo": "nur-packages",
+        "rev": "11bd5b8a58e118296018dc7c4ad90cee2e5bf857",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Program-Learning",
+        "repo": "nur-packages",
+        "type": "github"
+      }
+    },
+    "nur-ryan4yin": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_9"
       },
       "locked": {
         "lastModified": 1694182944,
@@ -842,6 +891,8 @@
         "nixpkgs-darwin": "nixpkgs-darwin",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nixpkgs-wayland": "nixpkgs-wayland",
+        "nur": "nur",
+        "nur-program-learning": "nur-program-learning",
         "nur-ryan4yin": "nur-ryan4yin",
         "nushell-scripts": "nushell-scripts",
         "wallpapers": "wallpapers"
@@ -904,15 +955,15 @@
     "wallpapers": {
       "flake": false,
       "locked": {
-        "lastModified": 1690773162,
-        "narHash": "sha256-cZOvcRB+PwDA8vvcqHeB7oAK0Eabz9LSMUXwS39Ivco=",
-        "owner": "ryan4yin",
+        "lastModified": 1695806688,
+        "narHash": "sha256-p9x2dlThlI1BlBb/TJ6ytiZMXvcU+/zhBCXaoQN1xQM=",
+        "owner": "Program-Learning",
         "repo": "wallpapers",
-        "rev": "515e4546b34adbfe7d62d2dbb3b51b8b8ff45716",
+        "rev": "2a6b757b5aa2395342fed9cbcb22aace003625bc",
         "type": "github"
       },
       "original": {
-        "owner": "ryan4yin",
+        "owner": "Program-Learning",
         "repo": "wallpapers",
         "type": "github"
       }

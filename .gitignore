@@ -1,3 +1,7 @@
 result
 result/
+secrets/
+!secrets/README.md
+!secrets/darwin.nix
+!secrets/nixos.nix
 .DS_Store
