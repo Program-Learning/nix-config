@@ -64,6 +64,7 @@
       main = {
         # overloads the capslock key to function as both escape (when tapped) and control (when held)
         capslock = "overload(control, esc)";
+        esc = "capslock";
       };
     };
   };
@@ -145,7 +146,7 @@
     xdgOpenUsePortal = false;
     extraPortals = with pkgs; [
       xdg-desktop-portal-gtk # for gtk
-      # xdg-desktop-portal-kde  # for kde
+      xdg-desktop-portal-kde  # for kde
     ];
   };
 
@@ -174,6 +175,7 @@
       source-han-sans # 思源黑体
       source-han-serif # 思源宋体
 
+      sarasa-gothic      
       # nerdfonts
       (nerdfonts.override {
         fonts = [

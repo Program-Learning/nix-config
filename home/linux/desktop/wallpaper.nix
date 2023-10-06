@@ -7,4 +7,8 @@
     source = "${wallpapers}/wallpaper_random.py";
     executable = true;
   };
+  home.file.".local/bin/default_wall" = {
+    source = "${wallpapers}/default_wall.py";
+    executable = true;
+  };
 }

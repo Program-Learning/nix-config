@@ -18,6 +18,7 @@
     wlr.enable = true;
     extraPortals = with pkgs; [
       xdg-desktop-portal-wlr
+      xdg-desktop-portal-hyprland
     ];
   };
 
@@ -35,10 +36,19 @@
       displayManager = {
         defaultSession = "hyprland";
         lightdm.enable = false;
-        gdm = {
-          enable = true;
-          wayland = true;
-        };
+        sddm.enable = false;
+        # # use bash to launch Hyprland since gdm can not work properly in my computer due to unknown reason (or switch to other tty to avoid problem)
+        # # use bash instead of nu since https://github.com/ryan4yin/nix-config/issues/8 (https://github.com/nix-community/home-manager/issues/3100#issuecomment-1193140322) (maybe)
+        # gdm = {
+        #   enable = true;
+        #   wayland = true;
+        #   debug = true;
+        #   settings = {
+        #     debug = {
+        #       enable = true;
+        #     };
+        #   };
+        # };
       };
     };
   };
@@ -49,7 +59,7 @@
     
       xwayland = {
         enable = true;
-        hidpi = true;
+        hidpi = false;
       };
     
       nvidiaPatches = true;
@@ -62,6 +72,7 @@
     thunar.plugins = with pkgs.xfce; [
       thunar-archive-plugin
       thunar-volman
+      thunar-media-tags-plugin
     ];
   };
 
@@ -93,6 +104,9 @@
     networkmanagerapplet # provide GUI app: nm-connection-editor
 
     xfce.thunar # xfce4's file manager
+    # Terminal fix:
+    # In Thunar Edit>Configure custom actions... then edit "Open Terminal Here"
+    # wezterm start --cwd %f
   ];
 
   # fix https://github.com/ryan4yin/nix-config/issues/10

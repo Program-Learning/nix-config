@@ -14,10 +14,12 @@
     "mpd",
     "pulseaudio",
     "backlight",
+    "battery",
     "memory",
     "cpu",
     "network",
     "clock",
+    "idle_inhibitor",
     "custom/powermenu",
     "tray"
   ],
@@ -25,18 +27,7 @@
     "format": "{icon}",
     "on-click": "activate",
     "format-icons": {
-      "1": "",
-      "2": "",
-      "3": "",
-      "4": "",
-      "5": "",
-      "6": "",
-      "7": "",
-      "8": "",
-      "9": "",
-      "10": "〇",
-      "focused": "",
-      "default": ""
+      "focused": ""
     }
   },
 
@@ -46,11 +37,15 @@
     "rotate": 0,
     "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>",
     "format": " {:%H:%M}",
-    "format-alt": " {:%a %b %d, %G}"
+    "format-alt": " {:%a %b %d, %G}",
+    "on-double-click": "wezterm start calcurse",
+    "on-click-right": "gnome-clocks"
   },
   "cpu": {
     "format": "\udb80\udf5b {usage}%",
-    "interval": 1
+    "interval": 1,
+    "on-click-middle": "wezterm start btop",
+    "on-click-right": "wezterm start btop"
   },
   "custom/launcher": {
     "format": "\uf313 ",
@@ -77,7 +72,9 @@
     "interval": 1,
     "states": {
       "warning": 85
-    }
+    },
+    "on-click-middle": "wezterm start btop",
+    "on-click-right": "wezterm start btop"
   },
   "mpd": {
       "interval": 2,
@@ -122,9 +119,11 @@
       "format-linked": " {ifname} (No IP)",
       "format-disconnected": "睊 Disconnected",
       "format-disabled": "睊 Disabled",
-      "format-alt": " {bandwidthUpBits} |  {bandwidthDownBits}",
+      "format-alt": " {bandwidthUpBytes} |  {bandwidthDownBytes}",
       "tooltip-format": " {ifname} via {gwaddr}",
-  },
+      "on-click-middle": "nm-connection-editor",
+      "on-click-right": "wezterm start nmtui"
+    },
   "pulseaudio": {
       //"format": "{volume}% {icon} {format_source}",
       "format": "{icon} {volume}%",
@@ -150,7 +149,7 @@
       // Commands to execute on events
       "on-click": "amixer set Master toggle",
       "on-click-right": "pavucontrol",
-      "smooth-scrolling-threshold": 1,
+      "smooth-scrolling-threshold": 1
   },
   "temperature": {
     "format": "\uf2c9 {temperatureC}\u00b0C",
@@ -159,5 +158,58 @@
   "tray": {
     "icon-size": 15,
     "spacing": 5
+  },
+  "backlight": {
+    "format": "{icon} {percent}%",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  "battery": {
+    "bat": "BAT0",
+    "adapter": "ADP0",
+    "interval": 60,
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "max-length": 20,
+    "format": "{icon} {capacity}%",
+    "format-warning": "{icon} {capacity}%",
+    "format-critical": "{icon} {capacity}%",
+    "format-charging": "<span font-family='Font Awesome 6 Free'></span> {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-alt": "{icon} {time}",
+    "format-full": " {capacity}%",
+    "format-icons": [
+      " ",
+      " ",
+      " ",
+      " ",
+      " "
+    ]
   }
+  // "custom/cpugovernor": {
+  //   "format": "{icon}",
+  //   "interval": "1",
+  //   "return-type": "json",
+  //   "exec": "$HOME/.config/hypr/scripts/cpugovernor",
+  //   "min-length": 2,
+  //   "format-icons": {
+  //     "performance": "󰓅",
+  //     "powersave": "",
+  //     "userspace": "",
+  //     "ondemand": "",
+  //     "conservative": "",
+  //     "schedutil": "󰻠"
+  //   }
+  // }
 }
