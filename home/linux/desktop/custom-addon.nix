@@ -3,9 +3,11 @@
   home.packages = (with pkgs;
   # nixpkgs here
     [
+      nftables
       cachix
       weston
       libsForQt5.qtstyleplugin-kvantum
+      gnome.adwaita-icon-theme
       go-musicfox
       mpvpaper
       # --nvidia cuda
@@ -18,10 +20,13 @@
       powerdevil
 
       # --android
+      gnome.gnome-boxes
       gnirehtet
       libmtp
       adb-sync
+      abootimg
       android-studio
+      genymotion
       # --payload-dumper
       payload-dumper-go
 
@@ -197,7 +202,7 @@
       ninja
     ])
   # nixpkgs-unstable
-    ++ (with pkgs-unstable; [ fastfetch hmcl rustdesk ])
+    ++ (with pkgs-unstable; [ fastfetch hmcl rustdesk OVMFFull.fd ])
     # nur packages here
     ++ (with pkgs.nur.repos; [
       # YisuiMilena.hmcl-bin
@@ -211,6 +216,7 @@
       nur-xddxdd.packages.${pkgs.system}.grasscutter
       nur-AtaraxiaSjel.packages.${pkgs.system}.waydroid-script
       nur-arti5an.packages.${pkgs.system}.mount-zip
+      nur-program-learning.packages.${pkgs.system}.qtscrcpy
       # aleksana.go-musicfox
       # aleksana.fastfetch
       # alexnortung.pkgs.papermc-1_18_x

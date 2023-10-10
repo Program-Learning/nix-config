@@ -1,6 +1,7 @@
 {
   lib,
   pkgs,
+  pkgs-unstable,
   ...
 }: {
   ###################################################################################
@@ -18,7 +19,7 @@
         runAsRoot = true;
         swtpm.enable = true;
         ovmf.enable = true;
-        ovmf.packages = [ pkgs.OVMFFull.fd ];
+        ovmf.packages = [ pkgs-unstable.OVMFFull.fd ];
       };
     };
     spiceUSBRedirection.enable = true;
@@ -40,13 +41,10 @@
 
     win-virtio
 
-    gnome.adwaita-icon-theme
-
     iproute
 
     edk2
-
-    OVMFFull
+    edk2-uefi-shell
 
     x11docker
 
@@ -78,8 +76,9 @@
   virtualisation = {
     virtualbox.host.enable = true;
     virtualbox.host.enableExtensionPack = true;
-    virtualbox.guest.enable = true;
-    virtualbox.guest.x11 = true;
+    # virtualbox.host.enableWebService = true;
+    # virtualbox.guest.enable = true;
+    # virtualbox.guest.x11 = true;
     waydroid.enable = true;
     lxd.enable = true;
   };

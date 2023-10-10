@@ -57,17 +57,17 @@
 
     networkmanager.enable = true;
 
-    enableIPv6 = false; # disable ipv6
+    # enableIPv6 = false; # disable ipv6
     interfaces.wlp0s20f3 = {
-      useDHCP = false;
-      ipv4.addresses = [
-        {
-          address = "192.168.0.120";
-          prefixLength = 24;
-        }
-      ];
+      useDHCP = true;
+    #   ipv4.addresses = [
+    #     {
+    #       address = "192.168.0.120";
+    #       prefixLength = 24;
+    #     }
+    #   ];
     };
-    defaultGateway = "192.168.0.1";
+    # defaultGateway = "192.168.0.1";
     nameservers = [
       "119.29.29.29" # DNSPod
       "223.5.5.5" # AliDNS

@@ -32,6 +32,7 @@
         beautifulsoup4
         selenium
         urllib3
+        pyclip
 
         ipython
         pandas

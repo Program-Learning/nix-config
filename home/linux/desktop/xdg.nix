@@ -55,6 +55,8 @@
         "application/x-extension-shtml" = browser;
         "application/x-extension-xht" = browser;
         "application/x-extension-xhtml" = browser;
+        "application/x-shellscript" = editor;
+        "application/x-php" = code;
 
         "x-scheme-handler/about" = browser;
         "x-scheme-handler/ftp" = browser;
