@@ -3,6 +3,7 @@
   home.packages = (with pkgs;
   # nixpkgs here
     [
+      bluetooth_battery
       nftables
       cachix
       weston
