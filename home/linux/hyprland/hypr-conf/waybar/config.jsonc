@@ -12,6 +12,7 @@
   ],
   "modules-right": [
     "mpd",
+    "custom/bluetooth_battery",
     "pulseaudio",
     "backlight",
     "battery",
@@ -97,6 +98,12 @@
       "on-scroll-up": "mpc seek +00:00:01",
       "on-scroll-down": "mpc seek -00:00:01",
       "smooth-scrolling-threshold": 1
+  },
+   "custom/bluetooth_battery": {
+    "format":"{icon}  <span>{}</span>",
+    "format-icon":"",
+    "return-type": "json",
+    "exec": "echo {\"text\":`$HOME/.config/hypr/scripts/bluetooth_battery`}"
   },
   "custom/playerctl": {
      "format": "{icon}  <span>{}</span>",

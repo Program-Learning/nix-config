@@ -76,6 +76,7 @@ tooltip label {
 #temperature,
 #backlight,
 #pulseaudio,
+#custom-bluetooth_battery
 #network,
 #battery,
 #custom-cpugovernor,
@@ -130,7 +131,7 @@ tooltip label {
 #backlight {
   color: rgb(248, 189, 150);
 }
-#pulseaudio {
+#pulseaudio,#custom-bluetooth_battery {
   color: rgb(245, 224, 220);
 }
 #network {

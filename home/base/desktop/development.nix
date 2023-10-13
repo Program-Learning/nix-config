@@ -33,6 +33,7 @@
         selenium
         urllib3
         pyclip
+        pybluez
 
         ipython
         pandas

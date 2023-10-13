@@ -138,6 +138,7 @@
       hyprpicker
       swappy
       bluez
+      bluetooth_battery
       sysfsutils
       jq
       # wlroots
