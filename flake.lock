@@ -1094,16 +1094,15 @@
       "locked": {
         "lastModified": 1697296405,
         "narHash": "sha256-SHVPPWW2++0MzaP7qvitlgOy52N7Fp2lBafMLKBzOVA=",
-        "ref": "refs/heads/master",
+        "owner": "Program-Learning",
+        "repo": "nur-packages",
         "rev": "acd9051f30af37696a66e605a95ff5cd4592ef49",
-        "shallow": true,
-        "type": "git",
-        "url": "file:////home/nixos/Documents/code/program-learning-nur-packages"
+        "type": "github"
       },
       "original": {
-        "shallow": true,
-        "type": "git",
-        "url": "file:////home/nixos/Documents/code/program-learning-nur-packages"
+        "owner": "Program-Learning",
+        "repo": "nur-packages",
+        "type": "github"
       }
     },
     "nur-ryan4yin": {

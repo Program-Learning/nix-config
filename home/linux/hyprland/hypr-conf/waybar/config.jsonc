@@ -4,6 +4,7 @@
 
   "modules-left": [
     "custom/launcher",
+    "custom/recorder",
     "temperature",
     "wlr/workspaces"
   ],
@@ -12,7 +13,7 @@
   ],
   "modules-right": [
     "mpd",
-    "custom/bluetooth_battery",
+    "bluetooth",
     "pulseaudio",
     "backlight",
     "battery",
@@ -202,6 +203,27 @@
       " ",
       " "
     ]
+  },
+  "custom/recorder": {
+    "format": "{}",
+    "interval": "once",
+    "exec": "echo ''",
+    "tooltip": "false",
+    "exec-if": "pgrep 'wf-recorder'",
+    "on-click": "exec $HOME/.config/hypr/scripts/recorder",
+    "signal": 4
+  },
+  "bluetooth": {
+    "format-on": "",
+    "format-off": "",
+    "format-disabled": "",
+    "format-connected": "<b> {num_connections}</b>",
+    "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+    // "on-click": "rofi-bluetooth -config ~/.config/rofi/menu.d/network.rasi -i"
   }
   // "custom/cpugovernor": {
   //   "format": "{icon}",
