@@ -707,11 +707,11 @@
     },
     "nixos-stable": {
       "locked": {
-        "lastModified": 1696374741,
-        "narHash": "sha256-gt8B3G0ryizT9HSB4cCO8QoxdbsHnrQH+/BdKxOwqF0=",
+        "lastModified": 1696983906,
+        "narHash": "sha256-L7GyeErguS7Pg4h8nK0wGlcUTbfUMDu+HMf1UcyP72k=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "8a4c17493e5c39769f79117937c79e1c88de6729",
+        "rev": "bd1cde45c77891214131cbbea5b1203e485a9d51",
         "type": "github"
       },
       "original": {
@@ -808,11 +808,11 @@
     },
     "nixpkgs_10": {
       "locked": {
-        "lastModified": 1696193975,
-        "narHash": "sha256-mnQjUcYgp9Guu3RNVAB2Srr1TqKcPpRXmJf4LJk6KRY=",
+        "lastModified": 1697059129,
+        "narHash": "sha256-9NJcFF9CEYPvHJ5ckE8kvINvI84SZZ87PvqMbH6pro0=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "fdd898f8f79e8d2f99ed2ab6b3751811ef683242",
+        "rev": "5e4c2ada4fcd54b99d56d7bd62f384511a7e2593",
         "type": "github"
       },
       "original": {
@@ -856,11 +856,11 @@
     },
     "nixpkgs_13": {
       "locked": {
-        "lastModified": 1696419054,
-        "narHash": "sha256-EdR+dIKCfqL3voZUDYwcvgRDOektQB9KbhBVcE0/3Mo=",
+        "lastModified": 1697009197,
+        "narHash": "sha256-viVRhBTFT8fPJTb1N3brQIpFZnttmwo3JVKNuWRVc3s=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "7131f3c223a2d799568e4b278380cd9dac2b8579",
+        "rev": "01441e14af5e29c9d27ace398e6dd0b293e25a54",
         "type": "github"
       },
       "original": {
@@ -968,11 +968,11 @@
     },
     "nixpkgs_8": {
       "locked": {
-        "lastModified": 1693377291,
-        "narHash": "sha256-vYGY9bnqEeIncNarDZYhm6KdLKgXMS+HA2mTRaWEc80=",
+        "lastModified": 1694767346,
+        "narHash": "sha256-5uH27SiVFUwsTsqC5rs3kS7pBoNhtoy9QfTP9BmknGk=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "e7f38be3775bab9659575f192ece011c033655f0",
+        "rev": "ace5093e36ab1e95cb9463863491bee90d5a4183",
         "type": "github"
       },
       "original": {
@@ -1031,11 +1031,11 @@
         "nixpkgs": "nixpkgs_8"
       },
       "locked": {
-        "lastModified": 1696583825,
-        "narHash": "sha256-d22tGecKPksJfOXCbV0tqU6EAV1buCNoISFvXXGa5Tc=",
+        "lastModified": 1697275639,
+        "narHash": "sha256-qKpqK/TCD1aBUEJzxeCq9DkxkcaO6DLJnVx6Z5lIIsg=",
         "owner": "AtaraxiaSjel",
         "repo": "nur",
-        "rev": "e149d2c04d9c446ff8fa99ed16fe6a7f01cb3171",
+        "rev": "d60d93233f563bb5787511808fc6cd8dd77d0c88",
         "type": "github"
       },
       "original": {
@@ -1074,11 +1074,11 @@
         "treefmt-nix": "treefmt-nix_2"
       },
       "locked": {
-        "lastModified": 1696573436,
-        "narHash": "sha256-kfIjdhfqQsdtqLln4Vk4VYI35Xdc/YPMNglvPipXHoY=",
+        "lastModified": 1697287221,
+        "narHash": "sha256-7fC80qawCDVh/V9K/kv4EvYb32QC0QbMqmdjYWfmDMk=",
         "owner": "linyinfeng",
         "repo": "nur-packages",
-        "rev": "71ef95b7bdc4aedabec372a8b7af8a61b7dd37be",
+        "rev": "8fffa179584734a63b1a2fa86b449366d531ab6d",
         "type": "github"
       },
       "original": {
@@ -1092,17 +1092,18 @@
         "nixpkgs": "nixpkgs_11"
       },
       "locked": {
-        "lastModified": 1697274067,
-        "narHash": "sha256-oGfhbrwFu38sORl8+irskogk15DMuACwuRpw4PgpZas=",
-        "owner": "Program-Learning",
-        "repo": "nur-packages",
-        "rev": "59fed4975d1bcb9cf9df6aad8db80584611b6730",
-        "type": "github"
+        "lastModified": 1697296405,
+        "narHash": "sha256-SHVPPWW2++0MzaP7qvitlgOy52N7Fp2lBafMLKBzOVA=",
+        "ref": "refs/heads/master",
+        "rev": "acd9051f30af37696a66e605a95ff5cd4592ef49",
+        "shallow": true,
+        "type": "git",
+        "url": "file:////home/nixos/Documents/code/program-learning-nur-packages"
       },
       "original": {
-        "owner": "Program-Learning",
-        "repo": "nur-packages",
-        "type": "github"
+        "shallow": true,
+        "type": "git",
+        "url": "file:////home/nixos/Documents/code/program-learning-nur-packages"
       }
     },
     "nur-ryan4yin": {
@@ -1131,11 +1132,11 @@
         "nvfetcher": "nvfetcher_2"
       },
       "locked": {
-        "lastModified": 1696615085,
-        "narHash": "sha256-NgrrfUZc8+pt3y3EMV+Uh1M/DTZnJvHN1+CKbREFXmY=",
+        "lastModified": 1697265365,
+        "narHash": "sha256-39UlqQ/HdyPc3dhq2czr32aB2GwhW25YntY1/6DxzTM=",
         "owner": "xddxdd",
         "repo": "nur-packages",
-        "rev": "df9d797408a3a1e1e89869566d4008489fe2cb23",
+        "rev": "d076a9b43cc1aba3eca1cf759c0ef0bb98091e7d",
         "type": "github"
       },
       "original": {
@@ -1344,11 +1345,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1695822946,
-        "narHash": "sha256-IQU3fYo0H+oGlqX5YrgZU3VRhbt2Oqe6KmslQKUO4II=",
+        "lastModified": 1697018566,
+        "narHash": "sha256-tOhoeq621JQOULO9X2U+Io03PK/TQrYFYB4sJFaDCuQ=",
         "owner": "numtide",
         "repo": "treefmt-nix",
-        "rev": "720bd006d855b08e60664e4683ccddb7a9ff614a",
+        "rev": "0b2ffeb3ae1a7449a48a952f3e731cfa41eaf780",
         "type": "github"
       },
       "original": {

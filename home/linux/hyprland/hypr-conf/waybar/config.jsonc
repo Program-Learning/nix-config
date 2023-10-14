@@ -100,7 +100,7 @@
       "smooth-scrolling-threshold": 1
   },
    "custom/bluetooth_battery": {
-    "format":"  <span>{}</span>",
+    "format":"  <span>{}</span>",
     "return-type": "json",
     "exec": "waybar-bluetooth_battery_parse"
   },

@@ -42,6 +42,31 @@ gc:
 
 ############################################################################
 #
+#  My often-used command
+#
+############################################################################
+
+nur_all := nur-program-learning nur-linyinfeng nur-xddxdd nur-AtaraxiaSjel nur-arti5an
+
+# Update nur inputs 
+# (can use with ''
+# proxychains4 make update_nur
+# '' 
+# or ''
+# http_proxy='http://localhost:7890' https_proxy='http://localhost:7890' make update_nur 
+# '')
+update_nur:
+	$(foreach repo,$(nur_all)\
+		,nix flake lock --update-input $(repo) &&) true
+
+upgrade_switch_system:
+	NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 http_proxy='http://localhost:7890' https_proxy='http://localhost:7890' nixos-rebuild switch --flake /home/nixos/Documents/code/nix-config/#y9000k2021h_hyprland --upgrade --impure --show-trace
+
+upgrade_system:
+	NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 http_proxy='http://localhost:7890' https_proxy='http://localhost:7890' nixos-rebuild boot --flake /home/nixos/Documents/code/nix-config/#y9000k2021h_hyprland --upgrade --impure --show-trace
+
+############################################################################
+#
 #  Darwin related commands, harmonica is my macbook pro's hostname
 #
 ############################################################################

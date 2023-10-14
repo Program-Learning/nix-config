@@ -43,7 +43,6 @@
       nixos-modules = [
         ./hosts/idols/y9000k2021h
         ./modules/nixos/i3.nix
-        inputs.nur.nixosModules.nur
       ];
       home-module = import ./home/linux/desktop-i3.nix;
     };
@@ -51,7 +50,6 @@
       nixos-modules = [
         ./hosts/idols/y9000k2021h
         ./modules/nixos/hyprland.nix
-        inputs.nur.nixosModules.nur
       ];
       home-module = import ./home/linux/desktop-hyprland.nix;
     };
@@ -380,8 +378,8 @@
     };
 
     nur-program-learning = {
-      url = "github:Program-Learning/nur-packages";
-      # url = "git+file:////home/nixos/Documents/code/program-learning-nur-packages?shallow=1";
+      # url = "github:Program-Learning/nur-packages";
+      url = "git+file:////home/nixos/Documents/code/program-learning-nur-packages?shallow=1";
       # inputs.nixpkgs.follows = "nixpkgs";
     };
 
