@@ -220,7 +220,7 @@
       nur-AtaraxiaSjel.packages.${pkgs.system}.waydroid-script
       nur-arti5an.packages.${pkgs.system}.mount-zip
       nur-program-learning.packages.${pkgs.system}.qtscrcpy
-      nur-program-learning.packages.${pkgs.system}.waybar-bluetooth_battery_parse
+      # nur-program-learning.packages.${pkgs.system}.waybar-bluetooth_battery_parse
       # aleksana.go-musicfox
       # aleksana.fastfetch
       # alexnortung.pkgs.papermc-1_18_x
