@@ -100,10 +100,9 @@
       "smooth-scrolling-threshold": 1
   },
    "custom/bluetooth_battery": {
-    "format":"{icon}  <span>{}</span>",
-    "format-icon":"",
+    "format":"  <span>{}</span>",
     "return-type": "json",
-    "exec": "echo {\"text\":`$HOME/.config/hypr/scripts/bluetooth_battery`}"
+    "exec": "waybar-bluetooth_battery_parse"
   },
   "custom/playerctl": {
      "format": "{icon}  <span>{}</span>",

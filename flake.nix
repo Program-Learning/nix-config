@@ -363,6 +363,7 @@
     # use ssh protocol to authenticate via ssh-agent/ssh-key, and shallow clone to save time
     mysecrets = {
       url = "git+ssh://git@github.com/DataEraserC/nix-secrets.git?shallow=1";
+      # url = "git+file:////home/nixos/Documents/code/nix-config/secrets?shallow=1";
       flake = false;
     };
 
@@ -380,6 +381,7 @@
 
     nur-program-learning = {
       url = "github:Program-Learning/nur-packages";
+      # url = "git+file:////home/nixos/Documents/code/program-learning-nur-packages?shallow=1";
       # inputs.nixpkgs.follows = "nixpkgs";
     };
 

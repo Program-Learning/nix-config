@@ -94,6 +94,8 @@
   nixpkgs.config.permittedInsecurePackages =
     [ "openssl-1.1.1v" "electron-19.0.7" ];
 
+  environment.extraOutputsToInstall = [ "dev" ];
+
   nixpkgs.config.allowUnfreePredicate = [ "wechat_dev_tools" ];
 
 }

@@ -131,8 +131,11 @@ tooltip label {
 #backlight {
   color: rgb(248, 189, 150);
 }
-#pulseaudio,#custom-bluetooth_battery {
+#pulseaudio {
   color: rgb(245, 224, 220);
+}
+#custom-bluetooth_battery {
+  color: #5276B1;
 }
 #network {
   color: #abe9b3;
