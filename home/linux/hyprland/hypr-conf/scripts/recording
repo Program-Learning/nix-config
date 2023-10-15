@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+# $HOME/.config/hypr/scripts/recording
+
+ScreenRecordDir="$HOME/Videos/ScreenRecordings"
+PidInfoFile="$ScreenRecordDir/process.pid"
+WF_RECORDER_OPTS=""
+VIDEOEXT="mkv"
+
+if [ "$1" == "status" ];
+then
+	if [ -f "$PidInfoFile" ];
+	then
+		awk 'BEGIN{printf "{\"text\":\"\", \"tooltip\":\"Recording\\n"}
+		NR==1{printf "PID: %s\\n", $0}
+		NR==2{printf "Save to: %s\\n", $0}
+		NR==3{printf "Log to: %s\"}", $0}' "$PidInfoFile"
+	else
+		echo '{"text":"", "tooltip":"Left: FullScreen\nRight: Selection"}'
+	fi
+	exit
+elif [ "$1" == "toggle" ];
+then
+	if [ -f "$PidInfoFile" ];
+	then
+		pid=$(cat $PidInfoFile | head -n 1)
+		kill -s SIGINT "$pid"
+		rm "$PidInfoFile"
+	else
+		mkdir -p "$ScreenRecordDir"
+		bf="$ScreenRecordDir/$(date +'%Y%m%dT%H%M%S')"
+		VideoFileName="$bf.$VIDEOEXT"
+		logf="$bf.log"
+		if [ "$2" == "fullscreen" ]; then
+			wf-recorder $WF_RECORDER_OPTS -f "$VideoFileName" 1>"$logf" 2>&1 &
+		elif [ "$2" == "region" ]; then
+			sleep 1
+			wf-recorder $WF_RECORDER_OPTS -g "$(slurp -b 1B1F2800 -c E06B74ff -s C778DD0D -w 2 -d)" -f "$VideoFileName" 1>"$logf" 2>&1 &
+		else
+			printf "Argument %s not valid" "$2"
+			exit
+		fi
+		pid=$(jobs -p | tail -n 1)
+		printf "%d\n%s\n%s" "$pid" "$VideoFileName" "$logf" > "$PidInfoFile"
+		disown "$pid"
+	fi
+	exit
+else
+	printf "Argument %s not valid" "$1"
+fi
+
+# https://gist.github.com/raffaem/bb9c35c6aab663efd7a0400c33d248a1
