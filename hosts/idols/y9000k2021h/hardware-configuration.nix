@@ -29,7 +29,7 @@
     # Virtual Microphone, built-in
     "snd-aloop"
   ];
-  features.wf-recorder.enable = false;
+  features.wf-recorder.enable = true;
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/7bd1f58c-482d-4c70-bba8-a3aa216eaef6";
