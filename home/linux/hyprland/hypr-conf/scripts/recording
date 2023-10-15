@@ -2,45 +2,45 @@
 # $HOME/.config/hypr/scripts/recording
 
 ScreenRecordDir="$HOME/Videos/ScreenRecordings"
-PidInfoFile="$ScreenRecordDir/process.pid"
+ProcessInfo="$ScreenRecordDir/process.pid"
 WF_RECORDER_OPTS=""
 VIDEOEXT="mkv"
 
 if [ "$1" == "status" ];
 then
-	if [ -f "$PidInfoFile" ];
+	if [ -f "$ProcessInfo" ];
 	then
 		awk 'BEGIN{printf "{\"text\":\"\", \"tooltip\":\"Recording\\n"}
 		NR==1{printf "PID: %s\\n", $0}
 		NR==2{printf "Save to: %s\\n", $0}
-		NR==3{printf "Log to: %s\"}", $0}' "$PidInfoFile"
+		NR==3{printf "Log to: %s\"}", $0}' "$ProcessInfo"
 	else
 		echo '{"text":"", "tooltip":"Left: FullScreen\nRight: Selection"}'
 	fi
 	exit
 elif [ "$1" == "toggle" ];
 then
-	if [ -f "$PidInfoFile" ];
+	if [ -f "$ProcessInfo" ];
 	then
-		pid=$(cat $PidInfoFile | head -n 1)
+		pid=$(cat $ProcessInfo | head -n 1)
 		kill -s SIGINT "$pid"
-		rm "$PidInfoFile"
+		rm "$ProcessInfo"
 	else
 		mkdir -p "$ScreenRecordDir"
-		bf="$ScreenRecordDir/$(date +'%Y%m%dT%H%M%S')"
-		VideoFileName="$bf.$VIDEOEXT"
-		logf="$bf.log"
+		PrefixOfFiles="$ScreenRecordDir/$(date +'%Y%m%dT%H%M%S')"
+		VideoFileName="$PrefixOfFiles.$VIDEOEXT"
+		LogFileName="$PrefixOfFiles.log"
 		if [ "$2" == "fullscreen" ]; then
-			wf-recorder $WF_RECORDER_OPTS -f "$VideoFileName" 1>"$logf" 2>&1 &
+			wf-recorder $WF_RECORDER_OPTS -f "$VideoFileName" 1>"$LogFileName" 2>&1 &
 		elif [ "$2" == "region" ]; then
 			sleep 1
-			wf-recorder $WF_RECORDER_OPTS -g "$(slurp -b 1B1F2800 -c E06B74ff -s C778DD0D -w 2 -d)" -f "$VideoFileName" 1>"$logf" 2>&1 &
+			wf-recorder $WF_RECORDER_OPTS -g "$(slurp -b 1B1F2800 -c E06B74ff -s C778DD0D -w 2 -d)" -f "$VideoFileName" 1>"$LogFileName" 2>&1 &
 		else
 			printf "Argument %s not valid" "$2"
 			exit
 		fi
 		pid=$(jobs -p | tail -n 1)
-		printf "%d\n%s\n%s" "$pid" "$VideoFileName" "$logf" > "$PidInfoFile"
+		printf "%d\n%s\n%s" "$pid" "$VideoFileName" "$LogFileName" > "$ProcessInfo"
 		disown "$pid"
 	fi
 	exit
