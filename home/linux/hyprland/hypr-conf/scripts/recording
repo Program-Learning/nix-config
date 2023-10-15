@@ -33,7 +33,6 @@ then
 		if [ "$2" == "fullscreen" ]; then
 			wf-recorder $WF_RECORDER_OPTS -f "$VideoFileName" 1>"$LogFileName" 2>&1 &
 		elif [ "$2" == "region" ]; then
-			sleep 1
 			wf-recorder $WF_RECORDER_OPTS -g "$(slurp -b 1B1F2800 -c E06B74ff -s C778DD0D -w 2 -d)" -f "$VideoFileName" 1>"$LogFileName" 2>&1 &
 		else
 			printf "Argument %s not valid" "$2"
