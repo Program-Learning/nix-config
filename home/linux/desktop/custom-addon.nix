@@ -3,7 +3,8 @@
   home.packages = (with pkgs;
   # nixpkgs here
     [
-      bluetooth_battery
+      # use this to pop a input window
+      gnome.zenity
       nftables
       cachix
       weston
@@ -138,7 +139,6 @@
       hyprpicker
       swappy
       bluez
-      bluetooth_battery
       sysfsutils
       jq
       # wlroots

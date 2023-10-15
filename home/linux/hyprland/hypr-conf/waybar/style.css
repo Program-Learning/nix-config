@@ -1,3 +1,39 @@
+/* -----------------------------------------------------------------------------
+ * Styles
+ * -------------------------------------------------------------------------- */
+
+/* COLORS */
+
+/* Nord */
+@define-color bg #2E3440;
+/*@define-color bg #353C4A;*/
+@define-color light #D8DEE9;
+/*@define-color dark @nord_dark_font;*/
+@define-color warning #ebcb8b; /* yellow */
+@define-color critical #BF616A; /* red */
+@define-color success #a3be8c; /* green */
+@define-color mode #434C5E;
+/*@define-color workspaces @bg;*/
+/*@define-color workspaces @nord_dark_font;*/
+/*@define-color workspacesfocused #434C5E;*/
+@define-color workspacesfocused #4C566A;
+@define-color tray @workspacesfocused;
+@define-color sound #EBCB8B;
+@define-color network #5D7096;
+@define-color memory #546484;
+@define-color cpu #596A8D;
+@define-color temp #4D5C78;
+@define-color layout #5e81ac;
+@define-color battery #4D5C78;
+@define-color date #434C5E;
+@define-color time #434C5E;
+@define-color backlight #434C5E;
+@define-color nord_bg #434C5E;
+@define-color nord_bg_blue #546484;
+@define-color nord_light #D8DEE9;
+@define-color nord_light_font #D8DEE9;
+@define-color nord_dark_font #434C5E;
+
 * {
   font-family: "JetBrainsMono Nerd Font";
   font-size: 12pt;
@@ -76,11 +112,12 @@ tooltip label {
 #temperature,
 #backlight,
 #pulseaudio,
-#custom-bluetooth_battery
+#custom-bluetooth_battery,
 #network,
 #battery,
 #custom-cpugovernor,
-#custom-powermenu {
+#custom-powermenu,
+#custom-recorder {
   padding-left: 10px;
   padding-right: 10px;
 }
@@ -134,7 +171,8 @@ tooltip label {
 #pulseaudio {
   color: rgb(245, 224, 220);
 }
-#custom-bluetooth_battery {
+#custom-bluetooth_battery,
+#bluetooth{
   color: #5276B1;
 }
 #network {
@@ -147,6 +185,7 @@ tooltip label {
   color: rgb(242, 143, 173);
   padding-right: 8px;
 }
+
 #tray {
   padding-right: 8px;
   padding-left: 10px;
@@ -160,4 +199,27 @@ tooltip label {
 }
 #mpd {
   color: #c0caf5;
+}
+
+#custom-recorder.on {
+    animation-name: blink-critical;
+    animation-duration: 2s;
+}
+#custom-recorder {
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#custom-recorder {
+    font-weight: bold;
+    padding: 0 0.6em;
+}
+#custom-recorder.on {
+    color: #abe9b3;
+    font-weight: bold;
+    padding: 0 0.6em;
+}
+#custom-recorder.off {
+  color: #414868;
 }
