@@ -3,7 +3,7 @@
 ## Autostart Programs
 
 # Kill already running process
-_ps=(waybar mako mpd wayvnc lxpolkit swaybg clash-verge swayidle clash)
+_ps=(waybar mako mpd wayvnc lxpolkit swaybg clash-verge swayidle clash xdg-desktop-portal-hyprland)
 for _prs in "${_ps[@]}"; do
 	if [[ $(pidof ${_prs}) ]]; then
 		killall -9 ${_prs}

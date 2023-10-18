@@ -9,19 +9,19 @@ connected_devices=$(bluetoothctl devices Connected | grep -oP 'Device \K.*')
 while IFS= read -r device; do
     # 提取设备的MAC地址
     mac=$(echo "$device" | awk '{print $1}')
-    
+ 
     # 提取设备的名称
     name=$(echo "$device" | awk '{$1=""; print substr($0,2)}')
-    
+ 
     # 获取设备的电池信息
     battery=-1
     if [[ $(bluetoothctl info "$mac" | grep -c "Battery Percentage:") -eq 1 ]]; then
         battery=$(bluetoothctl info "$mac" | grep -oP 'Battery Percentage: \K.*' | tr -d '(' | tr -d ')' | awk '{print $2}')
     fi
-    
+ 
     # 构建设备字典
     device_info='{"mac":"'${mac}'","name":"'${name}'","battery":'${battery}'}'
-    
+ 
     # 将设备字典添加到设备列表中
     devices+=("$device_info")
 done <<< "$connected_devices"
