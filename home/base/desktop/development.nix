@@ -34,6 +34,7 @@
         urllib3
         pyclip
         pybluez
+        pymysql
 
         ipython
         pandas
