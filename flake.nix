@@ -378,8 +378,8 @@
     };
 
     nur-program-learning = {
-      url = "github:Program-Learning/nur-packages";
-      # url = "git+file:////home/nixos/Documents/code/program-learning-nur-packages?shallow=1";
+      # url = "github:Program-Learning/nur-packages";
+      url = "git+file:////home/nixos/Documents/code/program-learning-nur-packages?shallow=1";
       # inputs.nixpkgs.follows = "nixpkgs";
     };
 

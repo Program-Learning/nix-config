@@ -101,6 +101,7 @@
 
       # --remote control
       wayvnc
+      waypipe
       # turbovnc
       xrdp
       libvncserver
@@ -205,7 +206,7 @@
       ninja
     ])
   # nixpkgs-unstable
-    ++ (with pkgs-unstable; [ fastfetch hmcl rustdesk OVMFFull.fd ])
+    ++ (with pkgs-unstable; [ fastfetch hmcl rustdesk OVMFFull.fd mission-center ])
     # nur packages here
     ++ (with pkgs.nur.repos; [
       # YisuiMilena.hmcl-bin

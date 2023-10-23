@@ -35,6 +35,8 @@
         pyclip
         pybluez
         pymysql
+        jieba
+        wordcloud
 
         ipython
         pandas

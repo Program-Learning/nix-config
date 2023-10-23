@@ -25,6 +25,7 @@
       "adbusers"
       "libvirtd"
       "vboxusers"
+      "input"
     ];
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBO0+WOKwK9EcRj2Bcdt/VpiB9MvZYqk4JKxlcQElskx nixos@nixos"

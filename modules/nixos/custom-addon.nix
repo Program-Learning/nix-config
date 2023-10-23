@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }: {
   programs = {
-
+    wshowkeys.enable = true;
     steam = {
       enable = true;
       remotePlay.openFirewall =
