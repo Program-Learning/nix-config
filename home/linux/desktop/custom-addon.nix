@@ -3,6 +3,7 @@
   home.packages = (with pkgs;
   # nixpkgs here
     [
+      trickle
       # use this to pop a input window
       gnome.zenity
       nftables
@@ -141,7 +142,7 @@
       swappy
       bluez
       sysfsutils
-      jq
+      # jq
       # wlroots
       # catppuccin-kvantum
       # htop
@@ -221,6 +222,8 @@
       nur-AtaraxiaSjel.packages.${pkgs.system}.waydroid-script
       nur-arti5an.packages.${pkgs.system}.mount-zip
       nur-program-learning.packages.${pkgs.system}.qtscrcpy
+      nur-program-learning.packages.${pkgs.system}.watt-toolkit_2
+      # nur-program-learning.packages.${pkgs.system}.CrossOver
       # nur-program-learning.packages.${pkgs.system}.waybar-bluetooth_battery_parse
       # aleksana.go-musicfox
       # aleksana.fastfetch

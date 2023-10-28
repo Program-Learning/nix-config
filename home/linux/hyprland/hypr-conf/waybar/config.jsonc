@@ -129,7 +129,7 @@
       "format-alt": " {bandwidthUpBytes} |  {bandwidthDownBytes}",
       "tooltip-format": " {ifname} via {gwaddr}",
       "on-click-middle": "nm-connection-editor",
-      "on-click-right": "wezterm start nmtui"
+      "on-click-right": "kitty nmtui"
     },
   "pulseaudio": {
       //"format": "{volume}% {icon} {format_source}",

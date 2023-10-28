@@ -254,11 +254,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1695973661,
-        "narHash": "sha256-BP2H4c42GThPIhERtTpV1yCtwQHYHEKdRu7pjrmQAwo=",
+        "lastModified": 1698410321,
+        "narHash": "sha256-MphuSlgpmKwtJncGMohryHiK55J1n6WzVQ/OAfmfoMc=",
         "owner": "numtide",
         "repo": "devshell",
-        "rev": "cd4e2fda3150dd2f689caeac07b7f47df5197c31",
+        "rev": "1aed986e3c81a4f6698e85a7452cbfcc4b31a36e",
         "type": "github"
       },
       "original": {
@@ -707,11 +707,11 @@
     },
     "nixos-stable": {
       "locked": {
-        "lastModified": 1697851979,
-        "narHash": "sha256-lJ8k4qkkwdvi+t/Xc6Fn74kUuobpu9ynPGxNZR6OwoA=",
+        "lastModified": 1698288402,
+        "narHash": "sha256-jIIjApPdm+4yt8PglX8pUOexAdEiAax/DXW3S/Mb21E=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "5550a85a087c04ddcace7f892b0bdc9d8bb080c8",
+        "rev": "60b9db998f71ea49e1a9c41824d09aa274be1344",
         "type": "github"
       },
       "original": {
@@ -808,11 +808,11 @@
     },
     "nixpkgs_10": {
       "locked": {
-        "lastModified": 1697723726,
-        "narHash": "sha256-SaTWPkI8a5xSHX/rrKzUe+/uVNy6zCGMXgoeMb7T9rg=",
+        "lastModified": 1698134075,
+        "narHash": "sha256-foCD+nuKzfh49bIoiCBur4+Fx1nozo+4C/6k8BYk4sg=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "7c9cc5a6e5d38010801741ac830a3f8fd667a7a0",
+        "rev": "8efd5d1e283604f75a808a20e6cde0ef313d07d4",
         "type": "github"
       },
       "original": {
@@ -856,11 +856,11 @@
     },
     "nixpkgs_13": {
       "locked": {
-        "lastModified": 1697915759,
-        "narHash": "sha256-WyMj5jGcecD+KC8gEs+wFth1J1wjisZf8kVZH13f1Zo=",
+        "lastModified": 1698336494,
+        "narHash": "sha256-sO72WDBKyijYD1GcKPlGsycKbMBiTJMBCnmOxLAs880=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "51d906d2341c9e866e48c2efcaac0f2d70bfd43e",
+        "rev": "808c0d8c53c7ae50f82aca8e7df263225cf235bf",
         "type": "github"
       },
       "original": {
@@ -1031,11 +1031,11 @@
         "nixpkgs": "nixpkgs_8"
       },
       "locked": {
-        "lastModified": 1698047777,
-        "narHash": "sha256-mUpdMIrEgRVwtuPih7gfDIZfGYqhJ8T09UL/PStinbo=",
+        "lastModified": 1698393285,
+        "narHash": "sha256-NEZBykGztXGhWQb3wLzCi+axm6xrqcUn8kYj2yM3Org=",
         "owner": "AtaraxiaSjel",
         "repo": "nur",
-        "rev": "8af2b55a33a77893b4552a2abeae7c906be8b321",
+        "rev": "75abd3136596667e9f22ebcbb6f25ea4c7d18e82",
         "type": "github"
       },
       "original": {
@@ -1074,11 +1074,11 @@
         "treefmt-nix": "treefmt-nix_2"
       },
       "locked": {
-        "lastModified": 1698064418,
-        "narHash": "sha256-V9VAA/ByZty4H2OJnGAgHTsCnvvBT7Hz3ASR2hd37F0=",
+        "lastModified": 1698431083,
+        "narHash": "sha256-LH5eGkkPIft+5Fqna1ntLocdN2jEMg8yT/640AxERt8=",
         "owner": "linyinfeng",
         "repo": "nur-packages",
-        "rev": "0fd5aef2eb2ca611e7d9e36a53ee55ef08c5e76f",
+        "rev": "b9bbc2ed21cf256ddb16d898ea7a86f5beeea7dd",
         "type": "github"
       },
       "original": {
@@ -1092,11 +1092,11 @@
         "nixpkgs": "nixpkgs_11"
       },
       "locked": {
-        "lastModified": 1698077992,
-        "narHash": "sha256-odch7ljw507o26cP5HygJLcatkZd1biow130J0dDhBA=",
+        "lastModified": 1698472880,
+        "narHash": "sha256-nlrj+BybDxJhqVztJd7Yw0OZbvUAaXK0HeESsVYlrZk=",
         "owner": "Program-Learning",
         "repo": "nur-packages",
-        "rev": "d2a8fb6c71215ed154ab2e84cd393a376a883eb7",
+        "rev": "3276eb35eb212fcfa18a3d317ef8a8caca7ce143",
         "type": "github"
       },
       "original": {
@@ -1131,11 +1131,11 @@
         "nvfetcher": "nvfetcher_2"
       },
       "locked": {
-        "lastModified": 1697957161,
-        "narHash": "sha256-pBlAnHctzlPZJfOUQjo6EaSIaIcFg0NlCCfNOmJdCxQ=",
+        "lastModified": 1698473277,
+        "narHash": "sha256-XU2yn/Ohg83VGETGDMsiDt76kFPu6aBUGvPZ8V8uvDs=",
         "owner": "xddxdd",
         "repo": "nur-packages",
-        "rev": "8e760cfd2a36be40faa6ce9e3560a186bf6db582",
+        "rev": "d83f0d15a8405af3a3ec60d2ca87f00b7c16da57",
         "type": "github"
       },
       "original": {
