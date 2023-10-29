@@ -1092,11 +1092,11 @@
         "nixpkgs": "nixpkgs_11"
       },
       "locked": {
-        "lastModified": 1698472880,
-        "narHash": "sha256-nlrj+BybDxJhqVztJd7Yw0OZbvUAaXK0HeESsVYlrZk=",
+        "lastModified": 1698511020,
+        "narHash": "sha256-ES96mUWdBqsrxBxMArrd7CfpY8KE5q1wwVY0xXVbS9U=",
         "owner": "Program-Learning",
         "repo": "nur-packages",
-        "rev": "3276eb35eb212fcfa18a3d317ef8a8caca7ce143",
+        "rev": "1b1f532cac5de0c841d0ac94aba518cb1e284d75",
         "type": "github"
       },
       "original": {

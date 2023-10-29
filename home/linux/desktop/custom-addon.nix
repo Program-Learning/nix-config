@@ -223,6 +223,7 @@
       nur-arti5an.packages.${pkgs.system}.mount-zip
       nur-program-learning.packages.${pkgs.system}.qtscrcpy
       nur-program-learning.packages.${pkgs.system}.watt-toolkit_2
+      nur-program-learning.packages.${pkgs.system}.AppimageLauncher
       # nur-program-learning.packages.${pkgs.system}.CrossOver
       # nur-program-learning.packages.${pkgs.system}.waybar-bluetooth_battery_parse
       # aleksana.go-musicfox

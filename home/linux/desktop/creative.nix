@@ -24,6 +24,7 @@
 
     # this app consumes a lot of storage, so do not install it currently
     kicad-unstable     # 3d printing, eletrical engineering
+    ngspice
     digital # A digital logic designer and circuit simulator.
     logisim-evolution # Digital logic designer and simulator
 
