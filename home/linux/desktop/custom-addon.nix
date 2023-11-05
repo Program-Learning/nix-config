@@ -264,10 +264,12 @@ in {
     #   ./shortcuts/wechat-devtools.png;
     # ".local/share/applications/io.github.msojocs.wechat_devtools.desktop".source =
     #   ./shortcuts/io.github.msojocs.wechat_devtools.desktop;
+
     # ".local/share/icons/Adobe_Photoshop_CS6.png".source =
     #   ./shortcuts/Adobe_Photoshop_CS6.png;
     # ".local/share/applications/Adobe_Photoshop_CS6.desktop".source =
     #   ./shortcuts/Adobe_Photoshop_CS6.desktop;
+
     # ".local/share/icons/Adobe_Illustrator_CS6.png".source =
     #   ./shortcuts/Adobe_Illustrator_CS6.png;
     # ".local/share/applications/Adobe_Illustrator_CS6.desktop".source =
@@ -275,7 +277,8 @@ in {
 
   };
   # home.file.".local/share/applications/vim.desktop".source = ./shortcuts/vim.desktop;
-  # home.file.".local/share/applications/code_ime.desktop".source = ./shortcuts/code_ime.desktop;
+  home.file.".local/share/applications/code_ime.desktop".source = ./shortcuts/code_ime.desktop;
+  home.file.".local/share/applications/code_no_gpu.desktop".source = ./shortcuts/code_no_gpu.desktop;
 
   services = {
     kdeconnect.enable = true;
