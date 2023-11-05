@@ -1,11 +1,22 @@
 { config, pkgs, pkgs-unstable, nur-ryan4yin, nur-program-learning
-, nur-linyinfeng, nur-xddxdd, nur-AtaraxiaSjel, nur-arti5an, ... }: {
-  home.packages = (with pkgs;
+, nur-linyinfeng, nur-xddxdd, nur-AtaraxiaSjel, nur-arti5an, nix-gaming, aagl
+, ... }:
+let
+  aagl-gtk-on-nix = import (builtins.fetchTarball
+    "https://github.com/ezKEa/aagl-gtk-on-nix/archive/main.tar.gz");
+in {
+  home.packages = [
+    # aagl-gtk-on-nix.anime-game-launcher
+    # aagl-gtk-on-nix.anime-borb-launcher
+    # aagl-gtk-on-nix.honkers-railway-launcher
+    # aagl-gtk-on-nix.honkers-launcher
+  ] ++ (with pkgs;
   # nixpkgs here
     [
       trickle
       # use this to pop a input window
       gnome.zenity
+      jansson
       nftables
       cachix
       weston
@@ -95,7 +106,7 @@
       winetricks
       onscripter-en
       playonlinux
-      # bottles
+      bottles
       # bottles-unwrapped
       lutris
       # lutris-unwrapped
@@ -207,7 +218,13 @@
       ninja
     ])
   # nixpkgs-unstable
-    ++ (with pkgs-unstable; [ fastfetch hmcl rustdesk OVMFFull.fd mission-center ])
+    ++ (with pkgs-unstable; [
+      fastfetch
+      hmcl
+      rustdesk
+      OVMFFull.fd
+      mission-center
+    ])
     # nur packages here
     ++ (with pkgs.nur.repos; [
       # YisuiMilena.hmcl-bin
@@ -226,6 +243,7 @@
       nur-program-learning.packages.${pkgs.system}.AppimageLauncher
       # nur-program-learning.packages.${pkgs.system}.CrossOver
       # nur-program-learning.packages.${pkgs.system}.waybar-bluetooth_battery_parse
+      nix-gaming.packages.${pkgs.system}.osu-stable
       # aleksana.go-musicfox
       # aleksana.fastfetch
       # alexnortung.pkgs.papermc-1_18_x

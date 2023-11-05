@@ -102,6 +102,7 @@
     mpd # for playing system sounds
     mpc-cli # command-line mpd client
     ncmpcpp # a mpd client with a UI
+    vimpc # A curses mpd client with vi-like key bindings.
     networkmanagerapplet # provide GUI app: nm-connection-editor
 
     xfce.thunar # xfce4's file manager
