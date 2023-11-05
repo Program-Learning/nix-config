@@ -40,14 +40,14 @@
     "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>",
     "format": " {:%H:%M}",
     "format-alt": " {:%a %b %d, %G}",
-    "on-double-click": "wezterm start calcurse",
+    "on-double-click": "kitty calcurse",
     "on-click-right": "gnome-clocks"
   },
   "cpu": {
     "format": "\udb80\udf5b {usage}%",
     "interval": 1,
-    "on-click-middle": "wezterm start btop",
-    "on-click-right": "wezterm start btop"
+    "on-click-middle": "kitty btop",
+    "on-click-right": "kitty btop"
   },
   "custom/launcher": {
     "format": "\uf313 ",
@@ -75,8 +75,8 @@
     "states": {
       "warning": 85
     },
-    "on-click-middle": "wezterm start btop",
-    "on-click-right": "wezterm start btop"
+    "on-click-middle": "kitty btop",
+    "on-click-right": "kitty btop"
   },
   "mpd": {
       "interval": 2,

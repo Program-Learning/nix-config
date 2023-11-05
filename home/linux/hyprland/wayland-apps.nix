@@ -30,6 +30,8 @@
       # use the stable version
       package = pkgs.vscode.override {
         commandLineArgs = [
+          # it seems that my gpu is not supported
+          "--disable-gpu"
           # make it use text-input-v1, which works for kwin 5.27 and weston
           # "--enable-features=UseOzonePlatform"
           # "--ozone-platform=wayland"
