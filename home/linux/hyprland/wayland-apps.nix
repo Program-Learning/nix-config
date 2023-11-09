@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, pkgs-unstable,...}: {
   # TODO vscode & chrome both have wayland support, but they don't work with fcitx5, need to fix it.
   programs = {
     # source code: https://github.com/nix-community/home-manager/blob/master/modules/programs/chromium.nix
@@ -28,10 +28,10 @@
     vscode = {
       enable = true;
       # use the stable version
-      package = pkgs.vscode.override {
+      package = pkgs-unstable.vscode.override {
         commandLineArgs = [
           # it seems that my gpu is not supported
-          "--disable-gpu"
+          # "--disable-gpu"
           # make it use text-input-v1, which works for kwin 5.27 and weston
           # "--enable-features=UseOzonePlatform"
           # "--ozone-platform=wayland"

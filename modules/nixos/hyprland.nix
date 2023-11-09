@@ -1,4 +1,4 @@
-{pkgs, hyprland, ...}: {
+{pkgs, username, hyprland, ...}: {
   ##########################################################################################################
   #
   #  NixOS's Configuration for Hyprland Window Manager
@@ -26,6 +26,21 @@
   services = {
     gvfs.enable = true; # Mount, trash, and other functionalities
     tumbler.enable = true; # Thumbnail support for images
+    greetd = {
+      enable = true;
+      restart = false;
+      settings = {
+        default_session = {
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland";
+          user = username;
+        };
+        initial_session = {
+          command = "Hyprland";
+          user = username;
+        };
+      };
+    };
+
     xserver = {
       enable = true;
 
