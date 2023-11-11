@@ -59,6 +59,12 @@
         ForwardAgent yes
         IdentityFile ~/.ssh/romantic
         IdentitiesOnly yes
+      
+      Host mondrian1
+        HostName 192.168.0.121
+        ForwardAgent yes
+        IdentityFile ~/.ssh/id_ed25519
+        IdentitiesOnly yes
     '';
   };
 }

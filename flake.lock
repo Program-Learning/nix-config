@@ -1214,11 +1214,11 @@
         "nixpkgs": "nixpkgs_13"
       },
       "locked": {
-        "lastModified": 1698670886,
-        "narHash": "sha256-Qpy4TFcXWHn5bBZE0Akev+5QOpVruXmmOTTmYdwbaaA=",
+        "lastModified": 1699688224,
+        "narHash": "sha256-1CJcu/NLey0cUrXup1FvGANg7plgZy6QLWRvmE0wceY=",
         "owner": "Program-Learning",
         "repo": "nur-packages",
-        "rev": "b43b6acc6233f4c10faae87ecccaf494ad9c727b",
+        "rev": "ff8765727d1dca04ef9e5a60a5d99594472173dd",
         "type": "github"
       },
       "original": {

@@ -1,6 +1,7 @@
 {
   pkgs,
   pkgs-unstable,
+  nur-program-learning,
   ...
 }: {
   #############################################################
@@ -22,6 +23,8 @@
     gradle
     maven
     spring-boot-cli
+
+    nur-program-learning.packages.${pkgs.system}.clang_dev_env
 
     # scheme related
     guile

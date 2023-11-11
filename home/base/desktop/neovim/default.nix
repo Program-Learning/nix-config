@@ -50,10 +50,10 @@
         cmake-language-server
         gnumake
         checkmake
-        # gcc-unwrapped # c/c++ compiler, required by nvim-treesitter!
-        clang-tools
-        ccls
-        llvmPackages.clang # c/c++ tools with clang-tools such as clangd
+        gcc # c/c++ compiler, required by nvim-treesitter!
+        # clang-tools
+        # ccls
+        llvmPackages.clang-unwrapped # c/c++ tools with clang-tools such as clangd
         gdb
         lldb
 
