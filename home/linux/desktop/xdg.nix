@@ -27,19 +27,19 @@
       enable = true;
       associations.added = let
         browser = ["firefox.desktop"];
-        office = ["writer.desktop"];
+        office = ["onlyoffice-desktopeditors.desktop" "writer.desktop"];
         code = ["code.desktop" "nvim.desktop"];
         editor = ["nvim.desktop" "Helix.desktop" "code.desktop"];
       in {
         "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = office;
-        "application/x-php"= code;
+        "application/x-php" = code;
         "text/plain" = editor;
         "text/x-makefile" = editor;
         "application/x-wine-extension-ini" = editor;
       };
       defaultApplications = let
         browser = ["firefox.desktop"];
-        office = ["writer.desktop"];
+        office = ["onlyoffice-desktopeditors.desktop" "writer.desktop"];
         code = ["code.desktop" "nvim.desktop"];
         editor = ["nvim.desktop" "Helix.desktop" "code.desktop"];
       in {
@@ -79,12 +79,12 @@
         "image/png" = ["imv.desktop"];
         "image/webp" = ["imv.desktop"];
         "application/x-wine-extension-ini" = editor;
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = office;
       };
 
-      associations.removed =
-        {
-          # ......
-        };
+      associations.removed = {
+        # ......
+      };
     };
 
     userDirs = {

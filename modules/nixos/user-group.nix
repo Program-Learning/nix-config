@@ -28,6 +28,7 @@
       "input"
     ];
     openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPj89CeLdjkz7bj5j0u+wlHHu5e0hKQIQl36rthhpW+K nix-on-droid@localhost"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBO0+WOKwK9EcRj2Bcdt/VpiB9MvZYqk4JKxlcQElskx nixos@nixos"
       "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDD9oj03QzeGTx7l3XEcIt/rDD6UwarjxeV38iVa8FKQftwuhFVqeJpI+kAeWwUynTOhKLCG/WbcLNCFGI9I9E3NjkSPMXv018yy7X30VFcEn7Arl7Ab48ZVEgRguru5XpuZZWI+IID4T5erbsng1ekQGLBgz0hEokGOKhyqoTgUb/Fpm5S6Ubl66//OF5OIkcdmKQ8mRtQxrjxqYB3ZWX4xbxevKHQbGFtbjZVWO70GfGnMfl6urpPMVmJXe+tHarDsQAiU9BySO+7kmkRfQfUtwiOJ7o2M0evIcKuxyzQ5yRSO9ZeHMzjDLaGAK/5UMvoEP7yZfrom0qBfQpEeHnvEUct80tugH0xCvmqMq1SKxaG64LsRXJIFsv71vPHvLU/U1PTYEEuSVOg+coGG/hMl/iuq9bdfuiiyDjNZtn6FpY5fDj6lBF49wqQuc7JMQ4pWH88aRqCFLlRXDk/jTe+BuaEfghOgbCpq1Xyrb3cnc9iR88udXzas18SqcAT9ec= 102341238+DataEraserC@users.noreply.github.com"
     ];

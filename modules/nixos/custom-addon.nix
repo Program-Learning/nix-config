@@ -98,4 +98,6 @@
 
   nixpkgs.config.allowUnfreePredicate = [ "wechat_dev_tools" ];
 
+  documentation.dev.enable = true;
+
 }

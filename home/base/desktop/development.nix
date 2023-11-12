@@ -16,10 +16,12 @@
 
   home.packages = with pkgs; [
     pkgs-unstable.devbox
+    man-pages
+    man-pages-posix
 
     # DO NOT install build tools for C/C++ and others, set it per project by devShell instead
     gnumake # used by this repo, to simplify the deployment
-    jdk17   # used to run some java based tools(.jar)
+    jdk17 # used to run some java based tools(.jar)
     gradle
     maven
     spring-boot-cli
@@ -32,8 +34,11 @@
     # python
     (python311.withPackages (ps:
       with ps; [
-        ipykernel jupyterlab 
-        matplotlib numpy seaborn
+        ipykernel
+        jupyterlab
+        matplotlib
+        numpy
+        seaborn
         networkx
         beautifulsoup4
         selenium
@@ -64,11 +69,14 @@
     minicom
 
     # other tools
-    bfg-repo-cleaner  # remove large files from git history
+    bfg-repo-cleaner # remove large files from git history
     k6 # load testing tool
     mitmproxy # http/https proxy tool
     tcpdump
     protobuf # protocol buffer compiler
+
+    nur-program-learning.packages.${pkgs.system}.wechat_dev_tools_appimage
+    nur-program-learning.packages.${pkgs.system}.wechat_dev_tools_deb
   ];
 
   programs = {

@@ -7,15 +7,16 @@
 }: {
   home.packages = with pkgs; [
     # creative
-    blender   # 3d modeling
+    blender # 3d modeling
     # gimp      # image editing, I prefer using figma in browser instead of this one
-    (gimp-with-plugins.override { 
-        plugins = with gimpPlugins; [ 
-          fourier
-          # resynthesizer # broken since 2023-03-20
-          gmic
-        ]; 
+    (gimp-with-plugins.override {
+      plugins = with gimpPlugins; [
+        fourier
+        # resynthesizer # broken since 2023-03-20
+        gmic
+      ];
     })
+    shotcut
     inkscape # vector graphics
     krita # digital painting
     musescore # music notation
@@ -23,7 +24,7 @@
     pkgs-unstable.sonic-pi # music programming
 
     # this app consumes a lot of storage, so do not install it currently
-    kicad-unstable     # 3d printing, eletrical engineering
+    kicad-unstable # 3d printing, eletrical engineering
     ngspice
     digital # A digital logic designer and circuit simulator.
     logisim-evolution # Digital logic designer and simulator
@@ -35,9 +36,7 @@
     pkgs-unstable.yosys # fpga synthesis
     pkgs-unstable.nextpnr # fpga place and route
     pkgs-unstable.openfpgaloader # fpga programming
-    nur-ryan4yin.packages.${pkgs.system}.gowin-eda-edu-ide  # app: `gowin-env` => `gw_ide` / `gw_pack` / ...
-    nur-program-learning.packages.${pkgs.system}.wechat_dev_tools_appimage
-    nur-program-learning.packages.${pkgs.system}.wechat_dev_tools_deb
+    nur-ryan4yin.packages.${pkgs.system}.gowin-eda-edu-ide # app: `gowin-env` => `gw_ide` / `gw_pack` / ...
     nur-program-learning.packages.${pkgs.system}.Adobe_Photoshop_CS6_appimage
     nur-program-learning.packages.${pkgs.system}.Adobe_Illustrator_CS6_appimage
   ];
