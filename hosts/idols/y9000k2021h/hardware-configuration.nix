@@ -11,6 +11,7 @@
     [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
   boot.extraModulePackages = [
     config.boot.kernelPackages.v4l2loopback.out
+    # config.boot.kernelPackages.acpi_call.out
     # config.boot.kernelPackages.v4l2loopback
   ];
   # Set initial kernel module settings
@@ -28,6 +29,7 @@
     "v4l2loopback"
     # Virtual Microphone, built-in
     "snd-aloop"
+    #"acpi_call"
   ];
   features.wf-recorder.enable = true;
 

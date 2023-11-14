@@ -15,6 +15,9 @@
   #############################################################
 
   home.packages = with pkgs; [
+    # Expose localhost to the world
+    #nodePackages_latest.localtunnel
+
     pkgs-unstable.devbox
     man-pages
     man-pages-posix
@@ -26,7 +29,7 @@
     maven
     spring-boot-cli
 
-    nur-program-learning.packages.${pkgs.system}.clang_dev_env
+    nur-program-learning.packages.${pkgs.system}.clang_dev_env_fhs
 
     # scheme related
     guile
