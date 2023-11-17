@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+if [ "$1" == "status" ];
+then
+    if [[ $(pidof wshowkeys) ]];
+  then
+    echo "{\"text\":\"√\", \"tooltip\":\"isStarted\"}" 
+  else
+    echo "{\"text\":\"x\", \"tooltip\":\"isStoped\"}" 
+  fi
+elif [ "$1" == "toggle" ];
+then
+  if [[ $(pidof wshowkeys) ]];
+  then
+    killall -9 wshowkeys &
+  else
+    wshowkeys -t 100000000 -a right -a top &
+  fi
+else
+  echo "usage:
+  - showkey status
+  - showkey toggle"
+fi

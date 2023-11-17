@@ -5,6 +5,7 @@
   "modules-left": [
     "custom/launcher",
     "custom/recording",
+    "custom/showkey",
     "temperature",
     "wlr/workspaces"
   ],
@@ -223,6 +224,14 @@
 	  "format": "{}",
 	  "on-click": "$HOME/.config/hypr/scripts/recording toggle fullscreen",
 	  "on-click-right": "$HOME/.config/hypr/scripts/recording toggle region",
+	  "restart-interval": 1,
+	  "return-type": "json",
+	  "tooltip": true
+  },
+  "custom/showkey": {
+	  "exec": "$HOME/.config/hypr/scripts/showkey status",
+	  "format": "{}",
+	  "on-click": "$HOME/.config/hypr/scripts/showkey toggle",
 	  "restart-interval": 1,
 	  "return-type": "json",
 	  "tooltip": true

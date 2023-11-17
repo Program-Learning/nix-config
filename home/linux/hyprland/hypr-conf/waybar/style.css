@@ -118,6 +118,7 @@ tooltip label {
 #custom-cpugovernor,
 #custom-powermenu,
 #custom-recording,
+#custom-showkey,
 #bluetooth,
 #custom-recorder {
   padding-left: 10px;
@@ -227,5 +228,9 @@ tooltip label {
 }
 
 #custom-recording {
+  color: #414868;
+}
+
+#custom-showkey {
   color: #414868;
 }
