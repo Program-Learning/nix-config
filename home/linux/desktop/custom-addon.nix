@@ -16,6 +16,7 @@
     import (builtins.fetchTarball
       "https://github.com/ezKEa/aagl-gtk-on-nix/archive/main.tar.gz");
 in {
+  nix.settings.substituters = ["https://mirror.sjtu.edu.cn/nix-channels/store" "https://mirrors.ustc.edu.cn/nix-channels/store"];
   home.packages =
     [
       # aagl-gtk-on-nix.anime-game-launcher
@@ -103,6 +104,7 @@ in {
           xarchiver
           mate.engrampa
           gnome.nautilus
+          nautilus-open-any-terminal
           gnome.file-roller
           ark
           dolphin
