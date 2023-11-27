@@ -1,4 +1,9 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  nur-program-learning,
+  pkgs-unstable,
+  ...
+}: {
   imports = [
     ./creative.nix
     ./gtk.nix
@@ -23,7 +28,7 @@
     telegram-desktop
     discord
     qq # https://github.com/NixOS/nixpkgs/tree/master/pkgs/applications/networking/instant-messengers/qq
-
+    # nur-program-learning.packages.${pkgs.system}.llqqnt
     # remote desktop(rdp connect)
     remmina
     freerdp # required by remmina

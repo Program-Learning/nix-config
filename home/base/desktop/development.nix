@@ -38,7 +38,7 @@
     (python311.withPackages (ps:
       with ps; [
         ipykernel
-        jupyterlab
+        #jupyterlab
         matplotlib
         numpy
         seaborn

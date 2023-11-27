@@ -38,7 +38,7 @@
     macosSystem = import ./lib/macosSystem.nix;
     colmenaSystem = import ./lib/colmenaSystem.nix;
 
-      # y9000k2021h
+    # y9000k2021h
     idol_y9000k2021h_modules_i3 = {
       nixos-modules = [
         ./hosts/idols/y9000k2021h
@@ -404,7 +404,7 @@
     };
 
     nix-gaming.url = "github:fufexan/nix-gaming";
-    
+
     aagl.url = "github:ezKEa/aagl-gtk-on-nix";
 
     # riscv64 SBCs
@@ -469,11 +469,12 @@
       "https://program-learning.cachix.org"
       # replace official cache with a mirror located in China
       "https://mirrors.ustc.edu.cn/nix-channels/store"
+      "https://mirror.sjtu.edu.cn/nix-channels/store"
       "https://cache.nixos.org"
       "https://anyrun.cachix.org"
       "https://hyprland.cachix.org"
       "https://nix-gaming.cachix.org"
-      "https://ezkea.cachix.org" 
+      "https://ezkea.cachix.org"
     ];
 
     # nix community's cache server

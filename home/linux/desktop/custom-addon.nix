@@ -91,6 +91,7 @@ in {
           # --Office
           onlyoffice-bin
           libreoffice
+          mdp
 
           # --math software
           # geogebra6

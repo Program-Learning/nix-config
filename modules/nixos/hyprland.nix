@@ -32,12 +32,13 @@
       settings = {
         default_session = {
           command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland";
-          user = username;
+          user = "greeter";
         };
-        initial_session = {
-          command = "Hyprland";
-          user = username;
-        };
+        # autologin
+        #initial_session = {
+        #  command = "Hyprland";
+        #  user = username;
+        #};
       };
     };
 
