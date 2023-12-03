@@ -92,6 +92,7 @@ in {
           onlyoffice-bin
           libreoffice
           mdp
+          slides
 
           # --math software
           # geogebra6
