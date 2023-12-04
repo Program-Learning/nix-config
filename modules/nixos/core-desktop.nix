@@ -29,6 +29,8 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    parted
+    ventoy
     # python, some times I may need to use python with root permission.
     (python310.withPackages (ps:
       with ps; [
@@ -60,11 +62,15 @@
   # https://github.com/rvaiya/keyd
   services.keyd = {
     enable = true;
-    settings = {
-      main = {
-        # overloads the capslock key to function as both escape (when tapped) and control (when held)
-        capslock = "overload(control, esc)";
-        esc = "capslock";
+    keyboards = {
+      default = {
+        settings = {
+          main = {
+            # overloads the capslock key to function as both escape (when tapped) and control (when held)
+            capslock = "overload(control, esc)";
+            esc = "capslock";
+          };
+        };
       };
     };
   };
@@ -76,7 +82,7 @@
   #     https://nixos.wiki/wiki/PipeWire
   services.pipewire = {
     enable = true;
-    package = pkgs.pipewire;
+    # package = pkgs-unstable.pipewire;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
@@ -142,13 +148,27 @@
 
   xdg.portal = {
     enable = true;
+
+    config = {
+      common = {
+        # Use xdg-desktop-portal-gtk for every portal interface...
+        default = [
+          "*"
+        ];
+        # except for the secret portal, which is handled by gnome-keyring
+        "org.freedesktop.impl.portal.Secret" = [
+          "gnome-keyring"
+        ];
+      };
+    };
+
     # Sets environment variable NIXOS_XDG_OPEN_USE_PORTAL to 1
     # This will make xdg-open use the portal to open programs,
     # which resolves bugs involving programs opening inside FHS envs or with unexpected env vars set from wrappers.
     # xdg-open is used by almost all programs to open a unknown file/uri
     # alacritty as an example, it use xdg-open as default, but you can also custom this behavior
     # and vscode has open like `External Uri Openers`
-    xdgOpenUsePortal = false;
+    xdgOpenUsePortal = true;
     extraPortals = with pkgs; [
       xdg-desktop-portal-gtk # for gtk
       # xdg-desktop-portal-kde  # for kde
@@ -158,10 +178,10 @@
   # all fonts are linked to /nix/var/nix/profiles/system/sw/share/X11/fonts
   fonts = {
     # use fonts specified by user rather than default ones
-    enableDefaultFonts = false;
+    enableDefaultPackages = false;
     fontDir.enable = true;
 
-    fonts = with pkgs; [
+    packages = with pkgs; [
       # icon fonts
       material-design-icons
       font-awesome
@@ -197,8 +217,8 @@
     # the reason there's Noto Color Emoji everywhere is to override DejaVu's
     # B&W emojis that would sometimes show instead of some Color emojis
     fontconfig.defaultFonts = {
-      serif = ["Noto Serif" "Noto Color Emoji"];
-      sansSerif = ["Noto Sans" "Noto Color Emoji"];
+      serif = ["Noto Serif CJK SC" "Noto Serif CJK TC" "Noto Serif CJK JP" "Noto Color Emoji"];
+      sansSerif = ["Noto Sans CJK SC" "Noto Sans CJK TC" "Noto Sans CJK JP" "Noto Color Emoji"];
       monospace = ["JetBrainsMono Nerd Font" "Noto Color Emoji"];
       emoji = ["Noto Color Emoji"];
     };

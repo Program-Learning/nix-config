@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-
   userfullname,
   useremail,
   ...
@@ -16,9 +15,6 @@
   '';
 
   home.packages = with pkgs; [
-    # Automatically trims your branches whose tracking remote refs are merged or gone
-    # It's really useful when you work on a project for a long time.
-    git-trim
   ];
 
   programs.git = {
@@ -43,15 +39,18 @@
 
       # replace https with ssh
       url = {
-        "ssh://git@github.com/" = {
-          insteadOf = "https://github.com/";
+        "ssh://git@github.com/ryan4yin" = {
+          insteadOf = "https://github.com/ryan4yin";
         };
-        "ssh://git@gitlab.com/" = {
-          insteadOf = "https://gitlab.com/";
+        "ssh://git@github.com/DataEraserC" = {
+          insteadOf = "https://github.com/DataEraserC";
         };
-        "ssh://git@bitbucket.com/" = {
-          insteadOf = "https://bitbucket.com/";
-        };
+        # "ssh://git@gitlab.com/" = {
+        #   insteadOf = "https://gitlab.com/";
+        # };
+        # "ssh://git@bitbucket.com/" = {
+        #   insteadOf = "https://bitbucket.com/";
+        # };
       };
     };
 
@@ -79,15 +78,15 @@
       st = "status";
       ls = "log --pretty=format:\"%C(yellow)%h%Cred%d\\\\ %Creset%s%Cblue\\\\ [%cn]\" --decorate";
       ll = "log --pretty=format:\"%C(yellow)%h%Cred%d\\\\ %Creset%s%Cblue\\\\ [%cn]\" --decorate --numstat";
-      cm = "commit -m";  # commit via `git cm <message>`
-      ca = "commit -am";  # commit all changes via `git ca <message>`
+      cm = "commit -m"; # commit via `git cm <message>`
+      ca = "commit -am"; # commit all changes via `git ca <message>`
       dc = "diff --cached";
 
-      amend = "commit --amend -m";  # amend commit message via `git amend <message>`
-      unstage = "reset HEAD --";  # unstage file via `git unstage <file>`
-      merged = "branch --merged";  # list merged(into HEAD) branches via `git merged`
-      unmerged = "branch --no-merged";  # list unmerged(into HEAD) branches via `git unmerged`
-      nonexist = "remote prune origin --dry-run";  # list non-exist(remote) branches via `git nonexist`
+      amend = "commit --amend -m"; # amend commit message via `git amend <message>`
+      unstage = "reset HEAD --"; # unstage file via `git unstage <file>`
+      merged = "branch --merged"; # list merged(into HEAD) branches via `git merged`
+      unmerged = "branch --no-merged"; # list unmerged(into HEAD) branches via `git unmerged`
+      nonexist = "remote prune origin --dry-run"; # list non-exist(remote) branches via `git nonexist`
 
       # delete merged branches except master & dev & staging
       #  `!` indicates it's a shell script, not a git subcommand

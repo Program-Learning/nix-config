@@ -10,6 +10,7 @@
   nur-arti5an,
   nix-gaming,
   aagl,
+  nixpkgs-23_05,
   ...
 }: let
   aagl-gtk-on-nix =
@@ -129,6 +130,7 @@ in {
           # lutris-unwrapped
 
           # --remote control
+          # rustdesk
           wayvnc
           waypipe
           # turbovnc
@@ -154,7 +156,7 @@ in {
           # glfw-wayland
           wev
           # libsForQt5.qt5.qtwayland
-          # xdg-desktop-portal-hyprland
+          xdg-desktop-portal-hyprland
           libsForQt5.qt5ct
           linuxKernel.packages.linux_6_1.v4l2loopback
           libsForQt5.polkit-kde-agent
@@ -175,7 +177,7 @@ in {
           # catppuccin-kvantum
           # htop
           vim # file editor
-          postman
+          # postman
           artha
           iw
           file
@@ -218,10 +220,9 @@ in {
           microsoft-edge
           # sql
           mysql80
-          sqliteman
 
           # pkg required by nix-shell
-          pkgconfig
+          pkg-config
           ncurses6
           # ncurses5
           pkgsCross.aarch64-multiplatform.stdenv.cc
@@ -238,7 +239,6 @@ in {
     ++ (with pkgs-unstable; [
       fastfetch
       hmcl
-      rustdesk
       OVMFFull.fd
       mission-center
     ])
@@ -265,6 +265,7 @@ in {
       # aleksana.fastfetch
       # alexnortung.pkgs.papermc-1_18_x
     ])
+    # ++ (with nixpkgs-23_05; [sqliteman])
     ++ (let
       nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
         export __NV_PRIME_RENDER_OFFLOAD=1

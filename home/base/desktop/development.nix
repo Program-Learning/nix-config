@@ -50,7 +50,7 @@
         pybluez
         pymysql
         jieba
-        wordcloud
+        # wordcloud
         pandas-datareader
         pyperclip
         pip # use in venv "python -m venv .venv" "source .venv/bin/activate"

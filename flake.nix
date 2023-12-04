@@ -300,14 +300,16 @@
     # which represents the GitHub repository URL + branch/commit-id/tag.
 
     # Official NixOS package source, using nixos's stable branch by default
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-23_05.url = "github:nixos/nixpkgs/nixos-23.05";
 
     # NUR package source
     nur.url = "github:nix-community/NUR";
 
     # for macos
-    nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-23.05-darwin";
+    nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-23.11-darwin";
     nix-darwin = {
       url = "github:lnl7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs-darwin";
@@ -315,15 +317,24 @@
 
     # home-manager, used for managing user configuration
     home-manager = {
-      url = "github:nix-community/home-manager/release-23.05";
+      url = "github:nix-community/home-manager/release-23.11";
+      # url = "github:nix-community/home-manager/master";
+
       # The `follows` keyword in inputs is used for inheritance.
       # Here, `inputs.nixpkgs` of home-manager is kept consistent with the `inputs.nixpkgs` of the current flake,
       # to avoid problems caused by different versions of nixpkgs dependencies.
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.3.0";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    impermanence.url = "github:nix-community/impermanence";
+
     # modern window compositor
-    hyprland.url = "github:hyprwm/Hyprland/v0.28.0";
+    hyprland.url = "github:hyprwm/Hyprland/v0.32.3";
     # community wayland nixpkgs
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     # anyrun - a wayland launcher
@@ -345,13 +356,13 @@
 
     # AstroNvim is an aesthetic and feature-rich neovim config.
     astronvim = {
-      url = "github:AstroNvim/AstroNvim/v3.36.0";
+      url = "github:AstroNvim/AstroNvim/v3.37.12";
       flake = false;
     };
 
     # useful nushell scripts, such as auto_completion
     nushell-scripts = {
-      url = "github:nushell/nu_scripts/459b8c9d4fcb6b6200165593707e454411c23750";
+      url = "github:nushell/nu_scripts/main";
       flake = false;
     };
 
@@ -433,10 +444,6 @@
       url = "github:catppuccin/alacritty";
       flake = false;
     };
-    catppuccin-wezterm = {
-      url = "github:catppuccin/wezterm";
-      flake = false;
-    };
     catppuccin-helix = {
       url = "github:catppuccin/helix";
       flake = false;
@@ -461,15 +468,17 @@
 
   # the nixConfig here only affects the flake itself, not the system configuration!
   nixConfig = {
-    experimental-features = ["nix-command" "flakes"];
-
     substituters = [
+      # cache mirror located in China
+      # status: https://mirror.sjtu.edu.cn/
+      "https://mirror.sjtu.edu.cn/nix-channels/store"
+      # status: https://mirrors.ustc.edu.cn/status/
+      "https://mirrors.ustc.edu.cn/nix-channels/store"
+
       # my own cache server
       "https://ryan4yin.cachix.org"
       "https://program-learning.cachix.org"
       # replace official cache with a mirror located in China
-      "https://mirrors.ustc.edu.cn/nix-channels/store"
-      "https://mirror.sjtu.edu.cn/nix-channels/store"
       "https://cache.nixos.org"
       "https://anyrun.cachix.org"
       "https://hyprland.cachix.org"

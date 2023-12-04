@@ -151,13 +151,23 @@
 
   # Fonts
   fonts = {
-    # use fonts specified by user rather than default ones
+    # will be removed after this PR is merged:
+    #   https://github.com/LnL7/nix-darwin/pull/754
     fontDir.enable = true;
 
+    # will change to `fonts.packages` after this PR is merged:
+    #   https://github.com/LnL7/nix-darwin/pull/754
     fonts = with pkgs; [
+    # packages = with pkgs; [
       # icon fonts
       material-design-icons
       font-awesome
+
+      # 思源系列字体是 Adobe 主导的。其中汉字部分被称为「思源黑体」和「思源宋体」，是由 Adobe + Google 共同开发的
+      source-sans # 无衬线字体，不含汉字。字族名叫 Source Sans 3 和 Source Sans Pro，以及带字重的变体，加上 Source Sans 3 VF
+      source-serif # 衬线字体，不含汉字。字族名叫 Source Code Pro，以及带字重的变体
+      source-han-sans # 思源黑体
+      source-han-serif # 思源宋体
 
       # nerdfonts
       (nerdfonts.override {

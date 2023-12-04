@@ -1,7 +1,7 @@
-{config, ...} @ args:
+{lanzaboote, ...} @ args:
 #############################################################
 #
-#  y9000k2021h - my main computer, with NixOS + i7-11800H + RTX 3060 Mobile / Max-Q GPU, for gaming & daily use.
+#  Ai - my main computer, with NixOS + I5-13600KF + RTX 4090 GPU, for gaming & daily use.
 #
 #############################################################
 {
@@ -10,42 +10,19 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
 
-    ../../../modules/nixos/fhs-fonts.nix
+    # ./impermanence.nix
+    # ./secureboot.nix
+
+    # ../../../modules/nixos/fhs-fonts.nix
     ../../../modules/nixos/libvirt.nix
     ../../../modules/nixos/core-desktop.nix
     ../../../modules/nixos/remote-building.nix
     ../../../modules/nixos/user-group.nix
 
     ../../../secrets/nixos.nix
-
-    ../../../modules/nixos/custom-addon.nix
   ];
 
   nixpkgs.overlays = import ../../../overlays args;
-
-  # Enable binfmt emulation of aarch64-linux, this is required for cross compilation.
-  boot.binfmt.emulatedSystems = ["aarch64-linux" "riscv64-linux"];
-  # supported fil systems, so we can mount any removable disks with these filesystems
-  boot.supportedFilesystems = [
-    "ext4"
-    "btrfs"
-    "xfs"
-    #"zfs"
-    "ntfs"
-    "fat"
-    "vfat"
-    "exfat"
-    "cifs" # mount windows share
-  ];
-
-  # Bootloader.
-  boot.loader = {
-    efi = {
-      canTouchEfiVariables = true;
-      efiSysMountPoint = "/boot/efi"; # ← use the same mount point here.
-    };
-    systemd-boot.enable = true;
-  };
 
   networking = {
     hostName = "y9000k2021h";
@@ -60,12 +37,12 @@
     # enableIPv6 = false; # disable ipv6
     interfaces.wlp0s20f3 = {
       useDHCP = true;
-    #   ipv4.addresses = [
-    #     {
-    #       address = "192.168.0.120";
-    #       prefixLength = 24;
-    #     }
-    #   ];
+      # ipv4.addresses = [
+      #   {
+      #     address = "192.168.0.120";
+      #     prefixLength = 24;
+      #   }
+      # ];
     };
     # defaultGateway = "192.168.0.1";
     nameservers = [
@@ -80,7 +57,7 @@
   services.xserver.videoDrivers = ["nvidia"]; # will install nvidia-vaapi-driver by default
   hardware.nvidia = {
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    # package = config.boot.kernelPackages.nvidiaPackages.stable;
 
     # Modesetting is needed for most Wayland compositors
     modesetting.enable = true;
@@ -107,5 +84,5 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "22.11"; # Did you read the comment?
+  system.stateVersion = "23.11"; # Did you read the comment?
 }

@@ -18,7 +18,7 @@
     wlr.enable = true;
     extraPortals = with pkgs; [
       xdg-desktop-portal-wlr
-      xdg-desktop-portal-hyprland
+      # xdg-desktop-portal-hyprland
     ];
   };
 
@@ -51,10 +51,10 @@
           user = "greeter";
         };
         # autologin
-        #initial_session = {
-        #  command = "Hyprland";
-        #  user = username;
-        #};
+        initial_session = {
+          command = "Hyprland";
+          user = username;
+        };
       };
     };
 
@@ -92,10 +92,9 @@
     
       xwayland = {
         enable = true;
-        hidpi = false;
       };
     
-      nvidiaPatches = true;
+      enableNvidiaPatches = true;
     };
 
     # monitor backlight control

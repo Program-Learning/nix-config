@@ -55,7 +55,7 @@
         # ccls
         llvmPackages.clang-unwrapped # c/c++ tools with clang-tools such as clangd
         gdb
-        lldb
+        # lldb  # TODO - fix python3.11's package conflict - six.py
 
         #-- python
         nodePackages.pyright # python language server
@@ -105,7 +105,7 @@
 
         #-- CloudNative
         nodePackages.dockerfile-language-server-nodejs
-        terraform
+        # terraform  # install via brew on macOS
         terraform-ls
         jsonnet
         jsonnet-language-server
@@ -124,6 +124,7 @@
         nodePackages.prettier # common code formatter
         marksman # language server for markdown
         glow # markdown previewer
+        fzf
 
         #-- Optional Requirements:
         gdu # disk usage analyzer, required by AstroNvim

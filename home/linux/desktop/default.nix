@@ -35,6 +35,7 @@
 
     # misc
     flameshot
+    mitmproxy # http/https proxy tool
   ];
 
   # GitHub CLI tool
