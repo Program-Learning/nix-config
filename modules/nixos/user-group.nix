@@ -37,8 +37,10 @@
       "wireshark"
       "adbusers"
       "libvirtd"
+
       "vboxusers"
       "input"
+      "plugdev"
     ];
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPj89CeLdjkz7bj5j0u+wlHHu5e0hKQIQl36rthhpW+K nix-on-droid@localhost"

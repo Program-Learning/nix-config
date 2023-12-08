@@ -130,7 +130,10 @@ in {
           # lutris-unwrapped
 
           # --remote control
-          # rustdesk
+          rustdesk
+          # sunshine
+          moonlight-qt
+          # moonlight-embedded
           wayvnc
           waypipe
           # turbovnc
@@ -223,14 +226,15 @@ in {
 
           # pkg required by nix-shell
           pkg-config
-          ncurses6
+          ncurses
+          # ncurses6
           # ncurses5
           pkgsCross.aarch64-multiplatform.stdenv.cc
           pkgsCross.arm-embedded.stdenv.cc
           #clang15Stdenv
           #pkgsLLVM.crossLibcStdenv
           # clang-tools
-          glibc
+          # glibc
           libcxx
           zlib
           ninja
@@ -256,6 +260,7 @@ in {
       nur-AtaraxiaSjel.packages.${pkgs.system}.waydroid-script
       nur-arti5an.packages.${pkgs.system}.mount-zip
       nur-program-learning.packages.${pkgs.system}.qtscrcpy
+      nur-program-learning.packages.${pkgs.system}.escrcpy_appimage
       nur-program-learning.packages.${pkgs.system}.watt-toolkit_2
       nur-program-learning.packages.${pkgs.system}.AppimageLauncher
       # nur-program-learning.packages.${pkgs.system}.CrossOver

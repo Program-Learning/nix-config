@@ -1,4 +1,8 @@
 { config, pkgs, lib, ... }: {
+  imports = [
+    ./features/sunshine.nix
+    ./features/wf-recorder.nix
+  ];
   programs = {
     wshowkeys.enable = true;
     steam = {
@@ -99,5 +103,9 @@
   nixpkgs.config.allowUnfreePredicate = [ "wechat_dev_tools" ];
 
   documentation.dev.enable = true;
+
+  features.sunshine.enable = true;
+
+  features.wf-recorder.enable = true;
 
 }

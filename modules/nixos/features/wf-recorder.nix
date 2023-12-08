@@ -1,5 +1,5 @@
 # https://github.com/colescott/dotfiles/blob/1d85d3e3e4bb8e49b095d19da9ce318d21826794/features/vt420.nix
-# useage features.wf-recorder.enable = true;
+# usage features.wf-recorder.enable = true;
 # remember to import me!
 { pkgs, config, lib, ... }:
 
@@ -18,7 +18,7 @@ let
           notify-send -t 2000 'Screen sharing' 'Select an area to start the recording...'
           geometry="$(${pkgs.slurp}/bin/slurp)"
           #{ sleep 1 && pkill -RTMIN+3 -x waybar; } &
-          ${pkgs.wf-recorder}/bin/wf-recorder --muxer=v4l2 --codec=rawvideo --pixel-format=yuv420p --file=/dev/video9 --geometry="$geometry"
+          ${pkgs.wf-recorder}/bin/wf-recorder --audio --muxer=v4l2 --codec=rawvideo --pixel-format=yuv420p --file=/dev/video9 --geometry="$geometry"
           #pkill -RTMIN+3 -x waybar
           #notify-send 'Screen sharing' 'Recording is complete'
       }

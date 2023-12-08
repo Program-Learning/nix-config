@@ -65,6 +65,12 @@
         ForwardAgent yes
         IdentityFile ~/.ssh/id_ed25519
         IdentitiesOnly yes
+
+      Host pstar_1
+        HostName 192.168.0.123
+        ForwardAgent yes
+        IdentityFile ~/.ssh/id_ed25519
+        IdentitiesOnly yes
     '';
   };
 }
