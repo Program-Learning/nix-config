@@ -17,9 +17,6 @@
 
   home.packages = with pkgs; [
     # GUI apps
-    insomnia # REST client
-    wireshark # network analyzer
-
     # e-book viewer(.epub/.mobi/...)
     # do not support .pdf
     foliate
@@ -35,7 +32,7 @@
 
     # misc
     flameshot
-    mitmproxy # http/https proxy tool
+    ventoy    # multi-boot usb creator
   ];
 
   # GitHub CLI tool

@@ -356,7 +356,7 @@
 
     # AstroNvim is an aesthetic and feature-rich neovim config.
     astronvim = {
-      url = "github:AstroNvim/AstroNvim/v3.37.12";
+      url = "github:AstroNvim/AstroNvim/v3.39.0";
       flake = false;
     };
 
@@ -475,7 +475,10 @@
       # status: https://mirrors.ustc.edu.cn/status/
       "https://mirrors.ustc.edu.cn/nix-channels/store"
 
-      # my own cache server
+      # fallback to official cache server if the above mirrors are not available
+      "https://cache.nixos.org"
+
+      # fallback to other non-official cache server
       "https://ryan4yin.cachix.org"
       "https://program-learning.cachix.org"
       # replace official cache with a mirror located in China

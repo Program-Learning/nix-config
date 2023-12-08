@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, config, ...}: {
   ##########################################################################
   #
   #  Install all apps and packages here.
@@ -23,7 +23,12 @@
     gnugrep  # replacee macos's grep
     gnutar # replacee macos's tar
   ];
-  environment.variables.EDITOR = "nvim";
+  environment.variables = {
+    # Fix https://github.com/LnL7/nix-darwin/wiki/Terminfo-issues
+    TERMINFO_DIRS = map (path: path + "/share/terminfo") config.environment.profiles ++ [ "/usr/share/terminfo" ];
+
+    EDITOR = "nvim";
+  };
 
   # Create /etc/zshrc that loads the nix-darwin environment.
   # this is required if you want to use darwin's default shell - zsh
@@ -34,6 +39,7 @@
   ];
 
   # Homebrew Mirror
+  # NOTE: is only useful when you run `brew install` manually! (not via nix-darwin)
   environment.variables = {
     HOMEBREW_API_DOMAIN = "https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles/api";
     HOMEBREW_BOTTLE_DOMAIN = "https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles";
@@ -44,7 +50,7 @@
 
   # homebrew need to be installed manually, see https://brew.sh
   homebrew = {
-    enable = true;
+    enable = false;
 
     onActivation = {
       autoUpdate = false;
@@ -136,7 +142,6 @@
       # Development
       "insomnia" # REST client
       "wireshark" # network analyzer
-      "temurin17"  # JDK 17
       "jdk-mission-control" # Java Mission Control
       "google-cloud-sdk" # Google Cloud SDK
     ];

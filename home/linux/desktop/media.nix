@@ -1,7 +1,7 @@
 {
   pkgs,
   catppuccin-cava,
-  nur-ryan4yin,
+  pkgs-unstable,
   ...
 }:
 # media - control and enjoy audio/video
@@ -21,8 +21,6 @@
     vdpauinfo
     vulkan-tools
     glxinfo
-
-    nur-ryan4yin.packages.${pkgs.system}.yazi  # terminal file manager
   ];
 
   # https://github.com/catppuccin/cava
@@ -35,6 +33,15 @@
       enable = true;
       defaultProfiles = ["gpu-hq"];
       scripts = [pkgs.mpvScripts.mpris];
+    };
+
+    # terminal file manager
+    yazi = {
+      enable = true;
+      package = pkgs-unstable.yazi;
+      enableBashIntegration = true;
+      # TODO: nushellIntegration is broken on release-23.11, wait for master's fix to be released
+      enableNushellIntegration = false;
     };
   };
 

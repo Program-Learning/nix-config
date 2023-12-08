@@ -26,27 +26,29 @@ Nix allows for easy-to-manage, collaborative, reproducible deployments. This mea
 
 ## Components
 
-|                             | NixOS(Wayland)                                                                                 | NixOS(Xorg)                                             |
-| --------------------------- | :--------------------------------------------------------------------------------------------- | :------------------------------------------------------ |
-| **Window Manager**          | [Hyprland][Hyprland]                                                                           | [i3][i3]                                                |
-| **Terminal Emulator**       | [Kitty][Kitty]                                                                                 | [Kitty][Kitty]                                          |
-| **Bar**                     | [Waybar][Waybar]                                                                               | [i3block][i3block]                                      |
-| **Application Launcher**    | [anyrun][anyrun]                                                                                   | [rofi][rofi]                                            |
-| **Notification Daemon**     | [Mako][Mako]                                                                                   | [Dunst][Dunst]                                          |
-| **Display Manager**         | [GDM][GDM]                                                                                     | [GDM][GDM]                                              |
-| **Color Scheme**            | [Catppuccin][Catppuccin]                                                                       | [Catppuccin][Catppuccin]                                |
-| **network management tool** | [NetworkManager][NetworkManager]                                                               | [NetworkManager][NetworkManager]                        |
-| **Input method framework**  | [Fcitx5][Fcitx5]                                                                               | [Fcitx5][Fcitx5]                                        |
-| **System resource monitor** | [Btop][Btop]                                                                                   | [Btop][Btop]                                            |
-| **File Manager**            | [ranger][ranger] + [thunar][thunar]                                                            | [ranger][ranger] + [thunar][thunar]                     |
-| **Shell**                   | [Nushell][Nushell] + [Starship][Starship]                                                      | [Nushell][Nushell] + [Starship][Starship]               |
-| **Music Player**            | [mpd][mpd], [ncmpcpp][ncmpcpp], [mpc][mpc], [Netease-cloud-music-gtk][netease-cloud-music-gtk] | [Netease-cloud-music-gtk][netease-cloud-music-gtk]      |
-| **Media Player**            | [mpv][mpv]                                                                                     | [mpv][mpv]                                              |
-| **Text Editor**             | [Neovim][Neovim]                                                                               | [Neovim][Neovim]                                        |
-| **Fonts**                   | [Nerd fonts][Nerd fonts]                                                                       | [Nerd fonts][Nerd fonts]                                |
-| **Image Viewer**            | [imv][imv]                                                                                     | [imv][imv]                                              |
-| **Screenshot Software**     | [grim][grim]                                                                                   | [flameshot](https://github.com/flameshot-org/flameshot) |
-| **Screen Recording**        | [OBS][OBS]                                                                                     | [OBS][OBS]                                              |
+|                             | NixOS(Wayland)                                                                                                    | NixOS(Xorg)                                                                                                       |
+| --------------------------- | :---------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------- |
+| **Window Manager**          | [Hyprland][Hyprland]                                                                                              | [i3][i3]                                                                                                          |
+| **Terminal Emulator**       | [Kitty][Kitty]                                                                                                    | [Kitty][Kitty]                                                                                                    |
+| **Bar**                     | [Waybar][Waybar]                                                                                                  | [i3block][i3block]                                                                                                |
+| **Application Launcher**    | [anyrun][anyrun]                                                                                                  | [rofi][rofi]                                                                                                      |
+| **Notification Daemon**     | [Mako][Mako]                                                                                                      | [Dunst][Dunst]                                                                                                    |
+| **Display Manager**         | [GDM][GDM]                                                                                                        | [GDM][GDM]                                                                                                        |
+| **Color Scheme**            | [Catppuccin][Catppuccin]                                                                                          | [Catppuccin][Catppuccin]                                                                                          |
+| **network management tool** | [NetworkManager][NetworkManager]                                                                                  | [NetworkManager][NetworkManager]                                                                                  |
+| **Input method framework**  | [Fcitx5][Fcitx5]                                                                                                  | [Fcitx5][Fcitx5]                                                                                                  |
+| **System resource monitor** | [Btop][Btop]                                                                                                      | [Btop][Btop]                                                                                                      |
+| **File Manager**            | [ranger][ranger] + [thunar][thunar]                                                                               | [ranger][ranger] + [thunar][thunar]                                                                               |
+| **Shell**                   | [Nushell][Nushell] + [Starship][Starship]                                                                         | [Nushell][Nushell] + [Starship][Starship]                                                                         |
+| **Music Player**            | [mpd][mpd], [ncmpcpp][ncmpcpp], [mpc][mpc], [Netease-cloud-music-gtk][netease-cloud-music-gtk]                    | [Netease-cloud-music-gtk][netease-cloud-music-gtk]                                                                |
+| **Media Player**            | [mpv][mpv]                                                                                                        | [mpv][mpv]                                                                                                        |
+| **Text Editor**             | [Neovim][Neovim]                                                                                                  | [Neovim][Neovim]                                                                                                  |
+| **Fonts**                   | [Nerd fonts][Nerd fonts]                                                                                          | [Nerd fonts][Nerd fonts]                                                                                          |
+| **Image Viewer**            | [imv][imv]                                                                                                        | [imv][imv]                                                                                                        |
+| **Screenshot Software**     | [grim][grim]                                                                                                      | [flameshot](https://github.com/flameshot-org/flameshot)                                                           |
+| **Screen Recording**        | [OBS][OBS]                                                                                                        | [OBS][OBS]                                                                                                        |
+| **Filesystem & Encryption** | tmpfs on `/`, [Btrfs][Btrfs] subvolumes on a [LUKS][LUKS] crypted partition for persistent, unlock via passphrase | tmpfs on `/`, [Btrfs][Btrfs] subvolumes on a [LUKS][LUKS] crypted partition for persistent, unlock via passphrase |
+| **Secure Boot**             | [lanzaboote][lanzaboote]                                                                                          | [lanzaboote][lanzaboote]                                                                                          |
 
 Wallpapers: https://github.com/ryan4yin/wallpapers
 
@@ -68,7 +70,6 @@ See [./home/base/desktop/neovim](./home/base/desktop/neovim) for details.
 ## Hosts
 
 See [./hosts](./hosts) for details.
-
 
 ## Secrets Management
 
@@ -107,25 +108,6 @@ make i3-debug
 ```
 
 To deploy this flake from NixOS's official ISO image(purest installation method), please refer to [ryan4yin/nix-config/nixos-install](https://github.com/ryan4yin/nix-config/tree/nixos-install)
-
-## Install Apps from Flatpak
-
-We can install apps from flathub, which has a lot of apps that are not supported well in nixpkgs.
-
-```bash
-# Add the Flathub repository
-flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-
-# install apps from flathub
-flatpak install netease-cloud-music-gtk
-
-# install 3d printer slicer - cura
-flatpak install flathub com.ultimaker.cura
-
-# or you can search apps from flathub
-flatpak search <keyword>
-# search on website is also supported: https://flathub.org/
-```
 
 ## How to create & managage VM from this flake?
 
@@ -213,3 +195,6 @@ Other dotfiles that inspired me:
 [thunar]: https://gitlab.xfce.org/xfce/thunar
 [ranger]: https://github.com/ranger/ranger
 [Catppuccin]: https://github.com/catppuccin/catppuccin
+[Btrfs]: https://btrfs.readthedocs.io
+[LUKS]: https://wiki.archlinux.org/title/Dm-crypt/Encrypting_an_entire_system
+[lanzaboote]: https://github.com/nix-community/lanzaboote

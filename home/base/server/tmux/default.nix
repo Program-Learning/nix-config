@@ -1,10 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: let
-  plugins = pkgs.tmuxPlugins // pkgs.callPackage ./custom-plugins.nix {};
-in {
+{pkgs, ...}: {
   programs.tmux = {
     enable = true;
     shell = "${pkgs.nushell}/bin/nu";
@@ -17,26 +11,33 @@ in {
     # tmux-sensible overwrites default tmux shortcuts, makes them more sane.
     sensibleOnTop = true;
 
-    # extraConfig =  builtins.readFile ./tmux.conf;
+    # https://github.com/sxyazi/yazi/wiki/Image-preview-within-tmux
+    extraConfig = ''
+      set -g allow-passthrough on
+
+      set -ga update-environment TERM
+      set -ga update-environment TERM_PROGRAM
+    '';
     # keyMode = "vi";  # default is emacs
 
     baseIndex = 1; # start index from 1
     escapeTime = 0; # do not wait for escape key
-    terminal = "xterm-256color";
 
-    plugins = with plugins; [
-      draculaTheme # theme
+    plugins = with pkgs.tmuxPlugins; [
       {
-        # https://github.com/tmux-plugins/tmux-continuum
-        # Continuous saving of tmux environment. Automatic restore when tmux is started.
-        plugin = continuum;
+        # theme
+        # https://github.com/catppuccin/tmux
+        plugin = catppuccin;
         extraConfig = ''
-          set -g @continuum-save-interval '15'
-
-          # Option to display current status of tmux continuum in tmux status line.
-          set -g status-right 'Continuum status: #{continuum_status}'
+          set -g @catppuccin_flavour 'mocha' # or frappe, macchiato, mocha
+          set -g @catppuccin_window_status_enable "yes"
         '';
       }
+
+      # https://github.com/tmux-plugins/tmux-yank
+      # Enables copying to system clipboard.
+      yank
+
       {
         # https://github.com/tmux-plugins/tmux-resurrect
         # Manually persists tmux environment across system restarts.
@@ -47,11 +48,7 @@ in {
         # Restore Neovim sessions
         extraConfig = "set -g @resurrect-strategy-nvim 'session'";
       }
-      {
-        # https://github.com/tmux-plugins/tmux-yank
-        # Enables copying to system clipboard.
-        plugin = yank;
-      }
+
       # set -g @plugin 'tmux-plugins/tmux-cpu'
       {
         plugin = cpu;
