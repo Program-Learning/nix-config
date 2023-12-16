@@ -7,7 +7,7 @@
 }: {
   home.packages = with pkgs; [
     # creative
-    blender  # 3d modeling
+    blender   # 3d modeling
     # gimp      # image editing, I prefer using figma in browser instead of this one
     (gimp-with-plugins.override {
       plugins = with gimpPlugins; [

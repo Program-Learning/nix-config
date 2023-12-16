@@ -18,6 +18,10 @@
   boot.loader.efi.efiSysMountPoint = "/boot";
   boot.loader.systemd-boot.enable = true;
 
+
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
+
   boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod"];
   boot.initrd.kernelModules = [];
   boot.kernelModules = ["kvm-intel"];
@@ -70,6 +74,7 @@
     device = "/dev/disk/by-uuid/1167076c-dee1-486c-83c1-4b1af37555cd";
     fsType = "btrfs";
     options = ["subvol=@persistent" "compress-force=zstd:1"];
+    # impermanence's data is required for booting.
     neededForBoot = true;
   };
 

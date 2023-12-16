@@ -53,6 +53,8 @@
     ];
   };
 
+  # conflict with feature: containerd-snapshotter
+  # and my device can not enable this since it is ext4
   # virtualisation.docker.storageDriver = "btrfs";
 
   # for Nvidia GPU

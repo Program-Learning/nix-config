@@ -334,9 +334,9 @@
     impermanence.url = "github:nix-community/impermanence";
 
     # modern window compositor
-    hyprland.url = "github:hyprwm/Hyprland/v0.32.3";
+    hyprland.url = "github:hyprwm/Hyprland/v0.33.1";
     # community wayland nixpkgs
-    nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
+    # nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     # anyrun - a wayland launcher
     anyrun = {
       url = "github:Kirottu/anyrun";
@@ -356,7 +356,7 @@
 
     # AstroNvim is an aesthetic and feature-rich neovim config.
     astronvim = {
-      url = "github:AstroNvim/AstroNvim/v3.39.0";
+      url = "github:AstroNvim/AstroNvim/v3.40.3";
       flake = false;
     };
 
@@ -468,45 +468,28 @@
 
   # the nixConfig here only affects the flake itself, not the system configuration!
   nixConfig = {
-    substituters = [
-      # cache mirror located in China
-      # status: https://mirror.sjtu.edu.cn/
-      "https://mirror.sjtu.edu.cn/nix-channels/store"
-      # status: https://mirrors.ustc.edu.cn/status/
-      "https://mirrors.ustc.edu.cn/nix-channels/store"
-
-      # fallback to official cache server if the above mirrors are not available
-      "https://cache.nixos.org"
-
-      # fallback to other non-official cache server
-      "https://ryan4yin.cachix.org"
-      "https://anyrun.cachix.org"
-      "https://hyprland.cachix.org"
-      "https://program-learning.cachix.org"
-
-      # replace official cache with a mirror located in China
-      "https://cache.nixos.org"
-      "https://nix-gaming.cachix.org"
-      "https://ezkea.cachix.org"
-    ];
-
-    # nix community's cache server
+    # substituers will be appended to the default substituters when fetching packages
     extra-substituters = [
       "https://nix-community.cachix.org"
-      "https://nixpkgs-wayland.cachix.org"
+      # my own cache server
+      "https://ryan4yin.cachix.org"
+      "https://program-learning.cachix.org"
+      "https://anyrun.cachix.org"
+      "https://hyprland.cachix.org"
       "https://nix-gaming.cachix.org"
+      "https://ezkea.cachix.org"
+      # "https://nixpkgs-wayland.cachix.org"
     ];
     # trusted-public-keys = [];
     extra-trusted-public-keys = [
-      "ryan4yin.cachix.org-1:Gbk27ZU5AYpGS9i3ssoLlwdvMIh0NxG0w8it/cv9kbU="
-      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-      "program-learning.cachix.org-1:Pfl2r+J5L9wJqpDnop6iQbrR3/Ts4AUyotu89INRlSU="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
+      "ryan4yin.cachix.org-1:Gbk27ZU5AYpGS9i3ssoLlwdvMIh0NxG0w8it/cv9kbU="
+      "program-learning.cachix.org-1:Pfl2r+J5L9wJqpDnop6iQbrR3/Ts4AUyotu89INRlSU="
       "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
       "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI="
+      # "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
     ];
   };
 }

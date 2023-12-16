@@ -33,12 +33,18 @@ upp:
 history:
 	nix profile history --profile /nix/var/nix/profiles/system
 
+repl:
+	nix repl -f flake:nixpkgs
+
+eye:
+	systemctl --user start gammastep.service
+
 gc:
 	# remove all generations older than 7 days
 	sudo nix profile wipe-history --profile /nix/var/nix/profiles/system  --older-than 7d
 
 	# garbage collect all unused nix store entries
-	sudo nix store gc --debug
+	# sudo nix store gc --debug
 
 ############################################################################
 #
@@ -72,19 +78,19 @@ upgrade_system:
 ############################################################################
 
 darwin-set-proxy:
-	echo "skip setting proxy, use global proxy instead"
-	# sudo python3 scripts/darwin_set_proxy.py
+	sudo python3 scripts/darwin_set_proxy.py
+	sleep 1
 
 ha: darwin-set-proxy
 	nix build .#darwinConfigurations.harmonica.system
 	./result/sw/bin/darwin-rebuild switch --flake .
-	sleep 3
+	sleep 1
 	sudo chmod 644 /etc/agenix/alias-for-work.*
 
 ha-debug: darwin-set-proxy
 	nix build .#darwinConfigurations.harmonica.system --show-trace --verbose
 	./result/sw/bin/darwin-rebuild switch --flake .#harmonica --show-trace --verbose
-	sleep 3
+	sleep 1
 	sudo chmod 644 /etc/agenix/alias-for-work.*
 
 ############################################################################

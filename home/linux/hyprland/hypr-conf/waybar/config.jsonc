@@ -7,6 +7,7 @@
     "custom/recording",
     "custom/showkey",
     "temperature",
+    "backlight",
     "wlr/workspaces"
   ],
   "modules-center": [
@@ -16,7 +17,6 @@
     "mpd",
     "bluetooth",
     "pulseaudio",
-    "backlight",
     "battery",
     "memory",
     "cpu",
@@ -163,10 +163,6 @@
     "format": "\uf2c9 {temperatureC}\u00b0C",
     "tooltip": false
   },
-  "tray": {
-    "icon-size": 15,
-    "spacing": 5
-  },
   "backlight": {
     "format": "{icon} {percent}%",
     "format-icons": [
@@ -180,6 +176,10 @@
       "",
       ""
     ]
+  },
+  "tray": {
+    "icon-size": 15,
+    "spacing": 5
   },
   "battery": {
     "bat": "BAT0",

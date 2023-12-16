@@ -12,6 +12,8 @@
     ./ssh.nix
     ./wallpaper.nix
     ./xdg.nix
+    ./eye-protection.nix
+
     ./custom-addon.nix
   ];
 

@@ -9,27 +9,16 @@
   #
   ###################################################################################
 
+  imports = [
+    ../common.nix
+  ];
+
   # for nix server, we do not need to keep too much generations
   boot.loader.systemd-boot.configurationLimit = lib.mkDefault 10;
-  # boot.loader.grub.configurationLimit = 10;
-  # do garbage collection weekly to keep disk usage low
-  nix.gc = {
-    automatic = lib.mkDefault true;
-    dates = lib.mkDefault "weekly";
-    options = lib.mkDefault "--delete-older-than 7d";
-  };
 
-  nix.settings = {
-    # Manual optimise storage: nix-store --optimise
-    # https://nixos.org/manual/nix/stable/command-ref/conf-file.html#conf-auto-optimise-store
-    auto-optimise-store = true;
-    builders-use-substitutes = true;
-    # enable flakes globally
-    experimental-features = ["nix-command" "flakes"];
-  };
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = lib.mkDefault false;
+  # Manual optimise storage: nix-store --optimise
+  # https://nixos.org/manual/nix/stable/command-ref/conf-file.html#conf-auto-optimise-store
+  nix.settings.auto-optimise-store = true;
 
   # Set your time zone.
   time.timeZone = "Asia/Shanghai";
@@ -103,6 +92,12 @@
 
   virtualisation.docker = {
     enable = true;
+    daemon.settings = {
+      # enables pulling using containerd, which supports restarting from a partial pull
+      # https://docs.docker.com/storage/containerd/
+      "features" =  {"containerd-snapshotter" =  true; };
+    };
+
     # start dockerd on boot.
     # This is required for containers which are created with the `--restart=always` flag to work.
     enableOnBoot = true;
