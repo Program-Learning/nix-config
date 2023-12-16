@@ -247,7 +247,9 @@ in {
       mission-center
     ])
     # nur packages here
-    ++ (with pkgs.nur.repos; [
+    ++ (
+      # with pkgs.nur.repos; 
+      [
       # YisuiMilena.hmcl-bin
       nur-linyinfeng.packages.${pkgs.system}.wemeet
       nur-linyinfeng.packages.${pkgs.system}.icalingua-plus-plus
