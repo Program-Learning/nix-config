@@ -24,6 +24,7 @@
 
     # DO NOT install build tools for C/C++ and others, set it per project by devShell instead
     gnumake # used by this repo, to simplify the deployment
+    ccache
     gradle
     maven
     spring-boot-cli
@@ -75,7 +76,7 @@
     minicom
 
     # misc
-    pkgs-unstable.
+    pkgs-unstable.devbox
     glow # markdown previewer
     fzf
     gdu # disk usage analyzer, required by AstroNvim
@@ -99,7 +100,7 @@
     insomnia # REST client
     wireshark # network analyzer
   ] else [])
-  ++ [    
+  ++ [
     nur-program-learning.packages.${pkgs.system}.wechat_dev_tools_appimage
     nur-program-learning.packages.${pkgs.system}.wechat_dev_tools_deb
     ];

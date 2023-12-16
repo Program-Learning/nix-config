@@ -299,8 +299,8 @@ in {
     #   ./shortcuts/Adobe_Illustrator_CS6.desktop;
   };
   # home.file.".local/share/applications/vim.desktop".source = ./shortcuts/vim.desktop;
-  home.file.".local/share/applications/code_ime.desktop".source = ./shortcuts/code_ime.desktop;
-  home.file.".local/share/applications/code_no_gpu.desktop".source = ./shortcuts/code_no_gpu.desktop;
+  # home.file.".local/share/applications/code_ime.desktop".source = ./shortcuts/code_ime.desktop;
+  # home.file.".local/share/applications/code_no_gpu.desktop".source = ./shortcuts/code_no_gpu.desktop;
 
   services = {
     kdeconnect.enable = true;

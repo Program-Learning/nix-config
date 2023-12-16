@@ -4,6 +4,7 @@
 
     ./anyrun.nix
     ./wayland-apps.nix
+    ./hyprland-utils
   ];
 
   # wayland.windowManager.hyprland.enable = true;

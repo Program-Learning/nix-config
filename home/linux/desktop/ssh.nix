@@ -59,7 +59,7 @@
         ForwardAgent yes
         IdentityFile ~/.ssh/romantic
         IdentitiesOnly yes
-      
+
       Host mondrian_1
         HostName 192.168.0.121
         ForwardAgent yes

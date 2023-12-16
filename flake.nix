@@ -480,11 +480,12 @@
 
       # fallback to other non-official cache server
       "https://ryan4yin.cachix.org"
-      "https://program-learning.cachix.org"
-      # replace official cache with a mirror located in China
-      "https://cache.nixos.org"
       "https://anyrun.cachix.org"
       "https://hyprland.cachix.org"
+      "https://program-learning.cachix.org"
+
+      # replace official cache with a mirror located in China
+      "https://cache.nixos.org"
       "https://nix-gaming.cachix.org"
       "https://ezkea.cachix.org"
     ];
@@ -492,6 +493,7 @@
     # nix community's cache server
     extra-substituters = [
       "https://nix-community.cachix.org"
+      "https://nixpkgs-wayland.cachix.org"
       "https://nix-gaming.cachix.org"
     ];
     # trusted-public-keys = [];

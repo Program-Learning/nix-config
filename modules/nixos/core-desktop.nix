@@ -192,7 +192,7 @@
       source-han-sans # 思源黑体
       source-han-serif # 思源宋体
 
-      sarasa-gothic      
+      sarasa-gothic
       # nerdfonts
       (nerdfonts.override {
         fonts = [

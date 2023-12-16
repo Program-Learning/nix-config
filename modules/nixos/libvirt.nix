@@ -80,7 +80,10 @@
     # virtualbox.guest.enable = true;
     # virtualbox.guest.x11 = true;
     waydroid.enable = true;
-    lxd.enable = true;
+    lxd = {
+      enable = true;
+      ui.enable = true;
+    };
   };
   nixpkgs.config.allowUnfree = true;
 }

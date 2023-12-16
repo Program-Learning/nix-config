@@ -82,9 +82,10 @@
         "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = office;
       };
 
-      associations.removed = {
-        # ......
-      };
+      associations.removed =
+        {
+          # ......
+        };
     };
 
     userDirs = {
