@@ -130,6 +130,7 @@
 
     # audio
     alsa-utils # provides amixer/alsamixer/...
+    kew # terminal music player
     mpd # for playing system sounds
     mpc-cli # command-line mpd client
     ncmpcpp # a mpd client with a UI
