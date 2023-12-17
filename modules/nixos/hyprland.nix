@@ -1,17 +1,11 @@
 {pkgs, username, hyprland, ...}: {
   ##########################################################################################################
   #
-  #  NixOS's Configuration for Hyprland Window Manager
+  #  NixOS's Configuration for Wayland based Window Manager
   #
-  #    i3wm: old and stable, only support X11
-  #    sway: compatible with i3wm, support Wayland. do not support Nvidia GPU officially.
   #    hyprland: project starts from 2022, support Wayland, envolving fast, good looking, support Nvidia GPU.
   #
   ##########################################################################################################
-
-  imports = [
-     # hyprland.nixosModules.default
-  ];
 
   xdg.portal = {
     enable = true;
@@ -89,24 +83,26 @@
   programs = {
     hyprland = {
       enable = true;
-    
-      xwayland = {
-        enable = true;
+      package = hyprland.packages.${pkgs.system}.hyprland.override {
+        enableXWayland = true; # whether to enable XWayland
+        legacyRenderer = false; # whether to use the legacy renderer (for old GPUs)
+        withSystemd = true; # whether to build with systemd support
       };
-    
-      enableNvidiaPatches = true;
     };
 
-    # monitor backlight control
-    light.enable = true;
-
     # thunar file manager(part of xfce) related options
-    thunar.plugins = with pkgs.xfce; [
-      thunar-archive-plugin
-      thunar-volman
-      thunar-media-tags-plugin
-    ];
+    thunar = {
+      enable = true;
+      plugins = with pkgs.xfce; [
+        thunar-archive-plugin
+        thunar-volman
+        thunar-media-tags-plugin
+      ];
+    };
   };
+    # Terminal fix:
+    # In Thunar Edit>Configure custom actions... then edit "Open Terminal Here"
+    # wezterm start --cwd %f
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -117,7 +113,7 @@
     swaylock # locking the screen
     wlogout # logout menu
     wl-clipboard # copying and pasting
-    hyprpicker  # color picker
+    hyprpicker # color picker
 
     wf-recorder # creen recording
     grim # taking screenshots
@@ -136,11 +132,6 @@
     ncmpcpp # a mpd client with a UI
     vimpc # A curses mpd client with vi-like key bindings.
     networkmanagerapplet # provide GUI app: nm-connection-editor
-
-    xfce.thunar # xfce4's file manager
-    # Terminal fix:
-    # In Thunar Edit>Configure custom actions... then edit "Open Terminal Here"
-    # wezterm start --cwd %f
   ];
 
   # fix https://github.com/ryan4yin/nix-config/issues/10
