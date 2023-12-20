@@ -771,10 +771,10 @@
     "mysecrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1698912074,
-        "narHash": "sha256-PwC60kIDV9krkNnpiMmNbRAiBlMlsXT3h4W9FTmywJI=",
+        "lastModified": 1702994239,
+        "narHash": "sha256-IlyDZ/ukkM2YiwFl+cbz91dC1U329VBRktKMD1zJ+4Y=",
         "ref": "refs/heads/main",
-        "rev": "ac88f5ff268fe23bec586c884a4f156543a24686",
+        "rev": "5fb2dc36fe4c85de6b63e6661157a9d7edc607b0",
         "shallow": true,
         "type": "git",
         "url": "ssh://git@github.com/DataEraserC/nix-secrets.git"

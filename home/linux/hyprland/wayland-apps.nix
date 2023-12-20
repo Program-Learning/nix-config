@@ -38,6 +38,7 @@
           # "--enable-wayland-ime"
           # "--enable-features=UseOzonePlatform"
           # "--ozone-platform=x11"
+          # "--force-device-scale-factor=1"
         ];
       };
 

@@ -35,7 +35,7 @@
       ps:
         with ps; [
           ipykernel
-          #jupyterlab
+          jupyterlab
           matplotlib
           numpy
           seaborn
