@@ -1,6 +1,4 @@
-{ username, ... }: 
-
-{
+{username, config, ...}: {
   # Don't allow mutation of users outside the config.
   users.mutableUsers = false;
 
@@ -9,7 +7,7 @@
     docker = {};
     wireshark = {};
     # for android platform tools's udev rules
-    adbusers ={};
+    adbusers = {};
     dialout = {};
     # for openocd (embedded system development)
     plugdev = {};
@@ -45,11 +43,11 @@
       "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDD9oj03QzeGTx7l3XEcIt/rDD6UwarjxeV38iVa8FKQftwuhFVqeJpI+kAeWwUynTOhKLCG/WbcLNCFGI9I9E3NjkSPMXv018yy7X30VFcEn7Arl7Ab48ZVEgRguru5XpuZZWI+IID4T5erbsng1ekQGLBgz0hEokGOKhyqoTgUb/Fpm5S6Ubl66//OF5OIkcdmKQ8mRtQxrjxqYB3ZWX4xbxevKHQbGFtbjZVWO70GfGnMfl6urpPMVmJXe+tHarDsQAiU9BySO+7kmkRfQfUtwiOJ7o2M0evIcKuxyzQ5yRSO9ZeHMzjDLaGAK/5UMvoEP7yZfrom0qBfQpEeHnvEUct80tugH0xCvmqMq1SKxaG64LsRXJIFsv71vPHvLU/U1PTYEEuSVOg+coGG/hMl/iuq9bdfuiiyDjNZtn6FpY5fDj6lBF49wqQuc7JMQ4pWH88aRqCFLlRXDk/jTe+BuaEfghOgbCpq1Xyrb3cnc9iR88udXzas18SqcAT9ec= 102341238+DataEraserC@users.noreply.github.com"
     ];
   };
-  users.users.root.initialHashedPassword = "$7$CU..../....lO1U0fsl954fC3porcCY41$OXiwbYrYuY4Z3KSFQ6IM04D9yFBExkENIewhjyTqN7C";
-  users.users.root.hashedPassword = "$7$CU..../....lO1U0fsl954fC3porcCY41$OXiwbYrYuY4Z3KSFQ6IM04D9yFBExkENIewhjyTqN7C";
-
-  # fix for `sudo xxx` in kitty/wezterm and other modern terminal emulators
-  security.sudo.keepTerminfo = true;
+  users.users.root = {
+    hashedPassword = "$7$CU..../....lO1U0fsl954fC3porcCY41$OXiwbYrYuY4Z3KSFQ6IM04D9yFBExkENIewhjyTqN7C";
+    initialHashedPassword = "$7$CU..../....lO1U0fsl954fC3porcCY41$OXiwbYrYuY4Z3KSFQ6IM04D9yFBExkENIewhjyTqN7C";
+    openssh.authorizedKeys.keys = config.users.users."${username}".openssh.authorizedKeys.keys;
+  };
 
   # DO NOT promote the specified user to input password for `nix-store` and `nix-copy-closure`
   security.sudo.extraRules = [

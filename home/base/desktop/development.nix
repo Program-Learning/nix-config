@@ -1,9 +1,4 @@
-{
-  pkgs,
-  pkgs-unstable,
-  nur-program-learning,
-  ...
-}: {
+{ pkgs, pkgs-unstable, nur-program-learning, ... }: {
   #############################################################
   #
   #  Basic settings for development environment
@@ -15,24 +10,24 @@
   #
   #############################################################
 
-  home.packages = with pkgs; [
-    # Expose localhost to the world
-    #nodePackages_latest.localtunnel
+  home.packages = with pkgs;
+    [
+      # Expose localhost to the world
+      #nodePackages_latest.localtunnel
 
-    man-pages
-    man-pages-posix
+      man-pages
+      man-pages-posix
 
-    # DO NOT install build tools for C/C++ and others, set it per project by devShell instead
-    gnumake # used by this repo, to simplify the deployment
-    ccache
-    gradle
-    maven
-    spring-boot-cli
+      # DO NOT install build tools for C/C++ and others, set it per project by devShell instead
+      gnumake # used by this repo, to simplify the deployment
+      ccache
+      gradle
+      maven
+      spring-boot-cli
 
-    nur-program-learning.packages.${pkgs.system}.clang_dev_env_fhs
+      nur-program-learning.packages.${pkgs.system}.clang_dev_env_fhs
 
-    (python3.withPackages (
-      ps:
+      (python3.withPackages (ps:
         with ps; [
           ipykernel
           jupyterlab
@@ -57,56 +52,54 @@
           requests
           pyquery
           pyyaml
-        ]
-    ))
+        ]))
 
-    cargo # rust package manager
-    go
-    jdk17
-    guile # scheme language
+      cargo # rust package manager
+      go
+      jdk17
+      guile # scheme language
 
-    # db related
-    dbeaver
-    mycli
-    pgcli
-    mongosh
-    sqlite
+      # db related
+      dbeaver
+      mycli
+      pgcli
+      mongosh
+      sqlite
 
-    # embedded development
-    minicom
+      # embedded development
+      minicom
 
-    # ai related
-    python311Packages.huggingface-hub # huggingface-cli
+      # ai related
+      python311Packages.huggingface-hub # huggingface-cli
 
-    # misc
-    pkgs-unstable.devbox
-    glow # markdown previewer
-    fzf
-    gdu # disk usage analyzer, required by AstroNvim
-    ripgrep # fast search tool, required by AstroNvim's '<leader>fw'(<leader> is space key)
-    bfg-repo-cleaner # remove large files from git history
-    k6 # load testing tool
-    mitmproxy # http/https proxy tool
-    tcpdump
-    protobuf # protocol buffer compiler
-  ] ++ (if pkgs.stdenv.isLinux then [
-    # Automatically trims your branches whose tracking remote refs are merged or gone
-    # It's really useful when you work on a project for a long time.
-    git-trim
+      # misc
+      pkgs-unstable.devbox
+      glow # markdown previewer
+      fzf
+      gdu # disk usage analyzer, required by AstroNvim
+      ripgrep # fast search tool, required by AstroNvim's '<leader>fw'(<leader> is space key)
+      bfg-repo-cleaner # remove large files from git history
+      k6 # load testing tool
+      protobuf # protocol buffer compiler
+      tcpdump
+    ] ++ (if pkgs.stdenv.isLinux then [
+      # Automatically trims your branches whose tracking remote refs are merged or gone
+      # It's really useful when you work on a project for a long time.
+      git-trim
 
-    # need to run `conda-install` before using it
-    # need to run `conda-shell` before using command `conda`
-    # conda is not available for MacOS
-    conda
+      # need to run `conda-install` before using it
+      # need to run `conda-shell` before using command `conda`
+      # conda is not available for MacOS
+      conda
 
-    mitmproxy # http/https proxy tool
-    insomnia # REST client
-    wireshark # network analyzer
-  ] else [])
-  ++ [
-    nur-program-learning.packages.${pkgs.system}.wechat_dev_tools_appimage
-    nur-program-learning.packages.${pkgs.system}.wechat_dev_tools_deb
-    ];
+      mitmproxy # http/https proxy tool
+      insomnia # REST client
+      wireshark # network analyzer
+    ] else
+      [ ]) ++ [
+        nur-program-learning.packages.${pkgs.system}.wechat_dev_tools_appimage
+        nur-program-learning.packages.${pkgs.system}.wechat_dev_tools_deb
+      ];
 
   programs = {
     direnv = {

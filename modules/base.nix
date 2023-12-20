@@ -1,9 +1,12 @@
 {
-  pkgs,
+  config,
   lib,
   username,
   ...
 }: {
+  nix.extraOptions = ''
+    !include ${config.age.secrets.nix-access-tokens.path}
+  '';
   nix.settings = {
     # enable flakes globally
     experimental-features = ["nix-command" "flakes"];
@@ -13,6 +16,7 @@
     #    2. command line args `--options substituers http://xxx`
     trusted-users = [username];
 
+    # substituers that will be considered before the official ones(https://cache.nixos.org)
     substituters = [
       # cache mirror located in China
       # status: https://mirror.sjtu.edu.cn/
@@ -20,33 +24,19 @@
       # status: https://mirrors.ustc.edu.cn/status/
       "https://mirrors.ustc.edu.cn/nix-channels/store"
 
-      "https://cache.nixos.org"
+      "https://nix-community.cachix.org"
+      # my own cache server
+      "https://ryan4yin.cachix.org"
+      "https://program-learning.cachix.org"
     ];
 
     trusted-public-keys = [
-      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "ryan4yin.cachix.org-1:Gbk27ZU5AYpGS9i3ssoLlwdvMIh0NxG0w8it/cv9kbU="
+      "program-learning.cachix.org-1:Pfl2r+J5L9wJqpDnop6iQbrR3/Ts4AUyotu89INRlSU="
     ];
     builders-use-substitutes = true;
   };
-
-  # do garbage collection weekly to keep disk usage low
-  nix.gc =
-    {
-      automatic = lib.mkDefault true;
-      options = lib.mkDefault "--delete-older-than 7d";
-    }
-    // (
-      if pkgs.stdenv.isLinux
-      then {
-        dates = lib.mkDefault "weekly";
-      }
-      else {
-        # nix-darwin
-        interval = {
-          Hour = 24;
-        };
-      }
-    );
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = lib.mkDefault false;

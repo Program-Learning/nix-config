@@ -1,4 +1,4 @@
-{ username, ... } @ args:
+{username, ...} @ args:
 #############################################################
 #
 #  Harmonica - my MacBook Pro 2020 13-inch, mainly for business.
@@ -7,14 +7,6 @@
 let
   hostname = "harmonica";
 in {
-  imports = [
-    ../../modules/darwin
-
-    ../../secrets/darwin.nix
-  ];
-
-  nixpkgs.overlays = import ../../overlays args;
-
   networking.hostName = hostname;
   networking.computerName = hostname;
   system.defaults.smb.NetBIOSName = hostname;

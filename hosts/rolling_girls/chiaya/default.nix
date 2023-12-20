@@ -1,9 +1,7 @@
 {
-  config,
-  username,
   # nixos-jh7110,
   ...
-} @ args:
+}:
 #############################################################
 #
 #  Chiaya - NixOS Configuration for Milk-V Mars
@@ -13,20 +11,7 @@
 #############################################################
 {
   imports = [
-    {
-      # cross-compilation this flake.
-      nixpkgs.crossSystem = {
-        system = "riscv64-linux";
-      };
-    }
-
-    # TODO
-
-    ../../../modules/nixos/core-riscv64.nix
-    ../../../modules/nixos/user-group.nix
   ];
-
-  users.users.root.openssh.authorizedKeys.keys = config.users.users."${username}".openssh.authorizedKeys.keys;
 
   # Set static IP address / gateway / DNS servers.
   networking = {
@@ -65,5 +50,5 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "23.11"; # Did you read the comment?
+  system.stateVersion = "23.05"; # Did you read the comment?
 }

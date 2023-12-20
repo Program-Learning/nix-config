@@ -3,7 +3,6 @@
   pkgs,
   agenix,
   mysecrets,
-
   username,
   ...
 }: {
@@ -23,14 +22,25 @@
   age.secrets = {
     "wg-business.conf" = {
       file = "${mysecrets}/wg-business.conf.age";
+      owner = username;
     };
 
     # alias-for-work
     "alias-for-work.nushell" = {
       file = "${mysecrets}/alias-for-work.nushell.age";
+      mode = "0600";
+      owner = username;
     };
     "alias-for-work.bash" = {
       file = "${mysecrets}/alias-for-work.bash.age";
+      mode = "0600";
+      owner = username;
+    };
+
+    "nix-access-tokens" = {
+      file = "${mysecrets}/nix-access-tokens.age";
+      mode = "0600";
+      owner = username;
     };
   };
 
@@ -53,12 +63,10 @@
     };
   };
 
-  # activationScripts are executed every time you run `nixos-rebuild` / `darwin-rebuild`.
-  # but not when you reboot the system, so currently you need to run those commands manually after reboot...
+  # both the original file and the symlink should be readable and executable by the user
   #
-  # /etc/agenix/* will be created after the first time you run `nixos-rebuild` / `darwin-rebuild` successfully.
-  # so you may need to comment out the following lines if it's the first time you run `nixos-rebuild` / `darwin-rebuild` on a new system.
-  system.activationScripts.postUserActivation.text = ''
-    sudo chmod 644 /etc/agenix/*
+  # activationScripts are executed every time you run `nixos-rebuild` / `darwin-rebuild` or boot your system
+  system.activationScripts.postActivation.text = ''
+    sudo chown ${username} /etc/agenix/*
   '';
 }

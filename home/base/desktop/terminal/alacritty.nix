@@ -1,4 +1,8 @@
-{pkgs, catppuccin-alacritty, ...}:
+{
+  pkgs,
+  nur-ryan4yin,
+  ...
+}:
 ###########################################################
 #
 # Alacritty Configuration
@@ -20,7 +24,7 @@
 #
 ###########################################################
 {
-  xdg.configFile."alacritty/theme_catppuccin.yml".source = "${catppuccin-alacritty}/catppuccin-mocha.yml";
+  xdg.configFile."alacritty/theme_catppuccin.yml".source = "${nur-ryan4yin.packages.${pkgs.system}.catppuccin-alacritty}/catppuccin-mocha.yml";
   programs.alacritty = {
     enable = true;
   };
@@ -97,8 +101,8 @@
     + (
       if pkgs.stdenv.isDarwin
       then ''
-          # Point size
-          size: 14
+        # Point size
+        size: 14
       ''
       else ''
         # holder identation

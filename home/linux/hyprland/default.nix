@@ -1,5 +1,8 @@
 {
-  catppuccin-hyprland,
+  lib,
+  pkgs,
+  hyprland,
+  nur-ryan4yin,
   ...
 }: {
   imports = [
@@ -8,14 +11,37 @@
     ./hyprland-utils
   ];
 
-  # hyprland configs, based on https://github.com/notwidow/hyprland
-  xdg.configFile."hypr" = {
-    source = ./hypr-conf;
-    recursive = true;
+  # NOTE:
+  #   (Required) NixOS Module: enables critical components needed to run Hyprland properly
+  #   (Optional) Home-manager module: lets you declaratively configure Hyprland
+  wayland.windowManager.hyprland = {
+    enable = true;
+    package = hyprland.packages.${pkgs.system}.hyprland;
+    settings = lib.mkForce {};
+    extraConfig = builtins.readFile ./hypr-conf/hyprland.conf;
+    # programs.grammastep need this to be enabled.
+    systemd.enable = true;
   };
 
+  # hyprland configs, based on https://github.com/notwidow/hyprland
+  xdg.configFile."hypr/mako" = {
+    source = ./hypr-conf/mako;
+    recursive = true;
+  };
+  xdg.configFile."hypr/scripts" = {
+    source = ./hypr-conf/scripts;
+    recursive = true;
+  };
+  xdg.configFile."hypr/waybar" = {
+    source = ./hypr-conf/waybar;
+    recursive = true;
+  };
+  xdg.configFile."hypr/wlogout" = {
+    source = ./hypr-conf/wlogout;
+    recursive = true;
+  };
   xdg.configFile."hypr/themes" = {
-    source = "${catppuccin-hyprland}/themes";
+    source = "${nur-ryan4yin.packages.${pkgs.system}.catppuccin-hyprland}/themes";
     recursive = true;
   };
 

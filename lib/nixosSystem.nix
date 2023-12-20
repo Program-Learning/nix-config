@@ -7,7 +7,7 @@
   nixos-modules,
   home-module,
 }: let
-  username = specialArgs.username;
+  inherit (specialArgs) username;
 in
   nixpkgs.lib.nixosSystem {
     inherit system specialArgs;
@@ -17,7 +17,9 @@ in
         {
           # make `nix run nixpkgs#nixpkgs` use the same nixpkgs as the one used by this flake.
           nix.registry.nixpkgs.flake = nixpkgs;
-          nix.channel.enable = false;  # disable nix-channel, we use flakes instead.
+          nix.channel.enable = false; # disable nix-channel, we use flakes instead.
+
+          nixpkgs.overlays = import ../overlays specialArgs;
         }
 
         nixos-generators.nixosModules.all-formats

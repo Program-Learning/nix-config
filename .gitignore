@@ -4,4 +4,6 @@ secrets/
 !secrets/README.md
 !secrets/darwin.nix
 !secrets/nixos.nix
+.direnv/
 .DS_Store
+.pre-commit-config.yaml

@@ -12,16 +12,6 @@
 
     # ./impermanence.nix
     # ./secureboot.nix
-
-    # ../../../modules/nixos/fhs-fonts.nix
-    ../../../modules/nixos/libvirt.nix
-    ../../../modules/nixos/core-desktop.nix
-    ../../../modules/nixos/remote-building.nix
-    ../../../modules/nixos/user-group.nix
-
-    ../../../secrets/nixos.nix
-
-    ../../../modules/nixos/custom-addon.nix
   ];
 
   nixpkgs.overlays = import ../../../overlays args;
@@ -63,12 +53,8 @@
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
     # package = config.boot.kernelPackages.nvidiaPackages.stable;
 
-    # Modesetting is needed for most Wayland compositors
+    # required by most wayland compositors!
     modesetting.enable = true;
-    # Use the open source version of the kernel module
-    # Only available on driver 515.43.04+
-    open = false;
-
     powerManagement.enable = true;
   };
   virtualisation.docker.enableNvidia = true; # for nvidia-docker
@@ -81,7 +67,6 @@
     driSupport32Bit = true;
   };
 
-  systemd.enableUnifiedCgroupHierarchy = false;
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave

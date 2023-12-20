@@ -4,7 +4,7 @@
   fetchgit,
 }:
 stdenvNoCC.mkDerivation rec {
-  pname = "icomoon-feather-font";
+  pname = "icomoon-feather-icon-font";
   version = "2023-05-06";
 
   # 参考 https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=ttf-icomoon-feather
@@ -30,7 +30,7 @@ stdenvNoCC.mkDerivation rec {
   meta = with lib; {
     homepage = "https://github.com/feathericons/feather";
     description = "Icomoon feather font";
-    version = version;
+    inherit version;
     longDescription = ''
       Feather is a collection of simply beautiful open source icons.
       Each icon is designed on a 24x24 grid with an emphasis on simplicity, consistency, and flexibility.

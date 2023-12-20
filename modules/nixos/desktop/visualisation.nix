@@ -6,9 +6,14 @@
 }: {
   ###################################################################################
   #
-  #  Enable Libvirt(QEMU/KVM), install qemu-system-riscv64/qemu-system-loongarch64/...)
+  #  Visualisation - Libvirt(QEMU/KVM) / Docker / LXD / WayDroid
   #
   ###################################################################################
+
+  boot.kernelModules = ["kvm-amd" "kvm-intel" "vfio-pci"];
+  # Enable nested virsualization, required by security containers and nested vm.
+  boot.extraModprobeConfig = "options kvm_intel nested=1"; # for intel cpu
+  # boot.extraModprobeConfig = "options kvm_amd nested=1";  # for amd cpu
 
   virtualisation = {
     libvirtd = {
@@ -23,6 +28,13 @@
       };
     };
     spiceUSBRedirection.enable = true;
+    waydroid.enable = true;
+    lxd = {
+      enable = true;
+      ui.enable = true;
+    };
+    virtualbox.host.enable = true;
+    virtualbox.host.enableExtensionPack = true;
   };
 
   services.spice-vdagentd.enable = true;
@@ -67,23 +79,4 @@
     #   ......
     qemu_full
   ];
-
-  boot.kernelModules = ["kvm-amd" "kvm-intel" "vfio-pci"];
-  # Enable nested virsualization, required by security containers and nested vm.
-  boot.extraModprobeConfig = "options kvm_intel nested=1"; # for intel cpu
-  # boot.extraModprobeConfig = "options kvm_amd nested=1";  # for amd cpu
-
-  virtualisation = {
-    virtualbox.host.enable = true;
-    virtualbox.host.enableExtensionPack = true;
-    # virtualbox.host.enableWebService = true;
-    # virtualbox.guest.enable = true;
-    # virtualbox.guest.x11 = true;
-    waydroid.enable = true;
-    lxd = {
-      enable = true;
-      ui.enable = true;
-    };
-  };
-  nixpkgs.config.allowUnfree = true;
 }

@@ -52,7 +52,7 @@ gc:
 #
 ############################################################################
 
-nur_all := nur-program-learning nur-linyinfeng nur-xddxdd nur-AtaraxiaSjel nur-arti5an
+nur_all := nur-program-learning nur-ryan4yin nur-linyinfeng nur-xddxdd nur-AtaraxiaSjel nur-arti5an
 
 # Update nur inputs 
 # (can use with ''
@@ -83,15 +83,16 @@ darwin-set-proxy:
 
 ha: darwin-set-proxy
 	nix build .#darwinConfigurations.harmonica.system
-	./result/sw/bin/darwin-rebuild switch --flake .
+	./result/sw/bin/darwin-rebuild switch --flake .#harmonica
 	sleep 1
-	sudo chmod 644 /etc/agenix/alias-for-work.*
+
+ha-rollback:
+	./result/sw/bin/darwin-rebuild rollback
 
 ha-debug: darwin-set-proxy
-	nix build .#darwinConfigurations.harmonica.system --show-trace --verbose
+	nom build .#darwinConfigurations.harmonica.system --show-trace --verbose
 	./result/sw/bin/darwin-rebuild switch --flake .#harmonica --show-trace --verbose
 	sleep 1
-	sudo chmod 644 /etc/agenix/alias-for-work.*
 
 ############################################################################
 #

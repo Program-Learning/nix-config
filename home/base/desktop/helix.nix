@@ -1,8 +1,10 @@
-{ pkgs, catppuccin-helix, ... }:
-
 {
+  pkgs,
+  nur-ryan4yin,
+  ...
+}: {
   # https://github.com/catppuccin/helix
-  xdg.configFile."helix/themes".source = "${catppuccin-helix}/themes/default";
+  xdg.configFile."helix/themes".source = "${nur-ryan4yin.packages.${pkgs.system}.catppuccin-helix}/themes/default";
 
   programs.helix = {
     enable = true;
@@ -25,7 +27,7 @@
         space.space = "file_picker";
         space.w = ":w";
         space.q = ":q";
-        esc = [ "collapse_selection" "keep_primary_selection" ];
+        esc = ["collapse_selection" "keep_primary_selection"];
       };
     };
   };

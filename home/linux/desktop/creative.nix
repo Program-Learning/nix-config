@@ -7,7 +7,7 @@
 }: {
   home.packages = with pkgs; [
     # creative
-    blender   # 3d modeling
+    blender # 3d modeling
     # gimp      # image editing, I prefer using figma in browser instead of this one
     (gimp-with-plugins.override {
       plugins = with gimpPlugins; [
@@ -36,7 +36,7 @@
     pkgs-unstable.yosys # fpga synthesis
     pkgs-unstable.nextpnr # fpga place and route
     pkgs-unstable.openfpgaloader # fpga programming
-    nur-ryan4yin.packages.${pkgs.system}.gowin-eda-edu-ide  # app: `gowin-env` => `gw_ide` / `gw_pack` / ...
+    nur-ryan4yin.packages.${pkgs.system}.gowin-eda-edu-ide # app: `gowin-env` => `gw_ide` / `gw_pack` / ...
     nur-program-learning.packages.${pkgs.system}.Adobe_Photoshop_CS6_appimage
     nur-program-learning.packages.${pkgs.system}.Adobe_Illustrator_CS6_appimage
   ];

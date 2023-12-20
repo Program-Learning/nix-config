@@ -1,4 +1,3 @@
-{lanzaboote, ...} @ args:
 #############################################################
 #
 #  Ai - my main computer, with NixOS + I5-13600KF + RTX 4090 GPU, for gaming & daily use.
@@ -12,17 +11,7 @@
 
     ./impermanence.nix
     ./secureboot.nix
-
-    # ../../../modules/nixos/fhs-fonts.nix
-    ../../../modules/nixos/libvirt.nix
-    ../../../modules/nixos/core-desktop.nix
-    ../../../modules/nixos/remote-building.nix
-    ../../../modules/nixos/user-group.nix
-
-    ../../../secrets/nixos.nix
   ];
-
-  nixpkgs.overlays = import ../../../overlays args;
 
   networking = {
     hostName = "ai";
@@ -60,8 +49,8 @@
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
     # package = config.boot.kernelPackages.nvidiaPackages.stable;
 
-    modesetting.enable = false;
-
+    # required by most wayland compositors!
+    modesetting.enable = true;
     powerManagement.enable = true;
   };
   virtualisation.docker.enableNvidia = true; # for nvidia-docker

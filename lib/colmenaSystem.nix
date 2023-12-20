@@ -8,12 +8,12 @@
   host_tags,
   targetUser ? specialArgs.username,
 }: let
-  username = specialArgs.username;
+  inherit (specialArgs) username;
 in
-  { name, nodes, ... }: {
+  {name, ...}: {
     deployment = {
-      targetHost = name;  # hostName or IP address
-      targetUser = targetUser;
+      inherit targetUser;
+      targetHost = name; # hostName or IP address
       tags = host_tags;
     };
 
@@ -23,16 +23,23 @@ in
         {
           # make `nix run nixpkgs#nixpkgs` use the same nixpkgs as the one used by this flake.
           nix.registry.nixpkgs.flake = nixpkgs;
-          nix.channel.enable = false;  # disable nix-channel, we use flakes instead.
-        }
-      ] ++ (if (home-module != null) then [
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
+          nix.channel.enable = false; # disable nix-channel, we use flakes instead.
 
-          home-manager.extraSpecialArgs = specialArgs;
-          home-manager.users."${username}" = home-module;
+          nixpkgs.overlays = import ../overlays specialArgs;
         }
-      ] else []);
+      ]
+      ++ (
+        if (home-module != null)
+        then [
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+
+            home-manager.extraSpecialArgs = specialArgs;
+            home-manager.users."${username}" = home-module;
+          }
+        ]
+        else []
+      );
   }
