@@ -55,6 +55,8 @@ in {
           adb-sync
           abootimg
           android-studio
+          android-tools
+          edl
           genymotion
           # --payload-dumper
           payload-dumper-go
@@ -248,30 +250,31 @@ in {
     ])
     # nur packages here
     ++ (
-      # with pkgs.nur.repos; 
+      # with pkgs.nur.repos;
       [
-      # YisuiMilena.hmcl-bin
-      nur-linyinfeng.packages.${pkgs.system}.wemeet
-      nur-linyinfeng.packages.${pkgs.system}.icalingua-plus-plus
-      nur-linyinfeng.packages.${pkgs.system}.matrix-wechat
-      nur-xddxdd.packages.${pkgs.system}.wechat-uos
-      nur-xddxdd.packages.${pkgs.system}.dingtalk
-      # nur-xddxdd.packages.${pkgs.system}.bilibili
-      nur-xddxdd.packages.${pkgs.system}.onepush
-      nur-xddxdd.packages.${pkgs.system}.grasscutter
-      nur-AtaraxiaSjel.packages.${pkgs.system}.waydroid-script
-      nur-arti5an.packages.${pkgs.system}.mount-zip
-      nur-program-learning.packages.${pkgs.system}.qtscrcpy
-      nur-program-learning.packages.${pkgs.system}.escrcpy_appimage
-      nur-program-learning.packages.${pkgs.system}.watt-toolkit_2
-      nur-program-learning.packages.${pkgs.system}.AppimageLauncher
-      # nur-program-learning.packages.${pkgs.system}.CrossOver
-      # nur-program-learning.packages.${pkgs.system}.waybar-bluetooth_battery_parse
-      nix-gaming.packages.${pkgs.system}.osu-stable
-      # aleksana.go-musicfox
-      # aleksana.fastfetch
-      # alexnortung.pkgs.papermc-1_18_x
-    ])
+        # YisuiMilena.hmcl-bin
+        nur-linyinfeng.packages.${pkgs.system}.wemeet
+        nur-linyinfeng.packages.${pkgs.system}.icalingua-plus-plus
+        nur-linyinfeng.packages.${pkgs.system}.matrix-wechat
+        nur-xddxdd.packages.${pkgs.system}.wechat-uos
+        nur-xddxdd.packages.${pkgs.system}.dingtalk
+        # nur-xddxdd.packages.${pkgs.system}.bilibili
+        nur-xddxdd.packages.${pkgs.system}.onepush
+        nur-xddxdd.packages.${pkgs.system}.grasscutter
+        nur-AtaraxiaSjel.packages.${pkgs.system}.waydroid-script
+        nur-arti5an.packages.${pkgs.system}.mount-zip
+        nur-program-learning.packages.${pkgs.system}.qtscrcpy
+        nur-program-learning.packages.${pkgs.system}.escrcpy_appimage
+        nur-program-learning.packages.${pkgs.system}.watt-toolkit_2
+        nur-program-learning.packages.${pkgs.system}.AppimageLauncher
+        # nur-program-learning.packages.${pkgs.system}.CrossOver
+        # nur-program-learning.packages.${pkgs.system}.waybar-bluetooth_battery_parse
+        nix-gaming.packages.${pkgs.system}.osu-stable
+        # aleksana.go-musicfox
+        # aleksana.fastfetch
+        # alexnortung.pkgs.papermc-1_18_x
+      ]
+    )
     # ++ (with nixpkgs-23_05; [sqliteman])
     ++ (let
       nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
