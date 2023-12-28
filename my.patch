@@ -1,0 +1,4500 @@
+diff --git a/.github/workflows/mirror_to_gitee.yml b/.github/workflows/mirror_to_gitee.yml
+index 4fc1e8a..5dd7aff 100644
+--- a/.github/workflows/mirror_to_gitee.yml
++++ b/.github/workflows/mirror_to_gitee.yml
+@@ -15,7 +15,7 @@ jobs:
+         shell: bash
+         env:
+           INPUT_SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY_GITEE_MIRROR }}
+-          INPUT_TARGET_REPO_URL: git@gitee.com:ryan_yin/nix-config.git
++          INPUT_TARGET_REPO_URL: git@gitee.com:MayuriNFC/nix-config.git
+         run: |
+           set -eu
+ 
+diff --git a/.gitignore b/.gitignore
+index e598a00..eed94be 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -1,5 +1,9 @@
+ result
+ result/
++secrets/
++!secrets/README.md
++!secrets/darwin.nix
++!secrets/nixos.nix
+ .direnv/
+ .DS_Store
+ .pre-commit-config.yaml
+diff --git a/Makefile b/Makefile
+index 03886c5..cc3bb99 100644
+--- a/Makefile
++++ b/Makefile
+@@ -11,16 +11,16 @@
+ ############################################################################
+ 
+ i3: 
+-	nixos-rebuild switch --flake .#ai_i3 --use-remote-sudo
++	nixos-rebuild switch --flake .#y9000k2021h_i3 --use-remote-sudo
+ 
+ hypr:
+-	nixos-rebuild switch --flake .#ai_hyprland --use-remote-sudo
++	nixos-rebuild switch --flake .#y9000k2021h_hyprland --use-remote-sudo
+ 
+ i3-debug:
+-	nixos-rebuild switch --flake .#ai_i3 --use-remote-sudo --show-trace --verbose
++	nixos-rebuild switch --flake .#y9000k2021h_i3 --use-remote-sudo --show-trace --verbose
+ 
+ hypr-debug:
+-	nixos-rebuild switch --flake .#ai_hyprland --use-remote-sudo --show-trace --verbose
++	nixos-rebuild switch --flake .#y9000k2021h_hyprland --use-remote-sudo --show-trace --verbose
+ 
+ up:
+ 	nix flake update
+@@ -46,6 +46,31 @@ gc:
+ 	# garbage collect all unused nix store entries
+ 	# sudo nix store gc --debug
+ 
++############################################################################
++#
++#  My often-used command
++#
++############################################################################
++
++nur_all := nur-program-learning nur-ryan4yin nur-linyinfeng nur-xddxdd nur-AtaraxiaSjel nur-arti5an
++
++# Update nur inputs 
++# (can use with ''
++# proxychains4 make update_nur
++# '' 
++# or ''
++# http_proxy='http://localhost:7890' https_proxy='http://localhost:7890' make update_nur 
++# '')
++update_nur:
++	$(foreach repo,$(nur_all)\
++		,nix flake lock --update-input $(repo) &&) true
++
++upgrade_switch_system:
++	sudo NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 http_proxy='http://localhost:7890' https_proxy='http://localhost:7890' nixos-rebuild switch --flake /home/nixos/Documents/code/nix-config/#y9000k2021h_hyprland --upgrade --impure --show-trace
++
++upgrade_system:
++	sudo NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 http_proxy='http://localhost:7890' https_proxy='http://localhost:7890' nixos-rebuild boot --flake /home/nixos/Documents/code/nix-config/#y9000k2021h_hyprland --upgrade --impure --show-trace
++
+ ############################################################################
+ #
+ #  Darwin related commands, harmonica is my macbook pro's hostname
+diff --git a/constants.nix b/constants.nix
+index b50514f..f3f31c2 100644
+--- a/constants.nix
++++ b/constants.nix
+@@ -1,8 +1,8 @@
+ rec {
+   # user information
+-  username = "ryan";
+-  userfullname = "Ryan Yin";
+-  useremail = "xiaoyin_c@qq.com";
++    username = "nixos";
++    userfullname = "DataEraserC";
++    useremail = "102341238+DataEraserC@users.noreply.github.com";
+ 
+   # linux systems
+   x64_system = "x86_64-linux";
+diff --git a/flake.lock b/flake.lock
+index f724fae..5c815dc 100644
+--- a/flake.lock
++++ b/flake.lock
+@@ -1,12 +1,29 @@
+ {
+   "nodes": {
++    "aagl": {
++      "inputs": {
++        "flake-compat": "flake-compat",
++        "nixpkgs": "nixpkgs"
++      },
++      "locked": {
++        "lastModified": 1701295343,
++        "narHash": "sha256-SgIudU8ju74krGDa3hZlUfPGim16KHnAKi91TMXwTac=",
++        "owner": "ezKEa",
++        "repo": "aagl-gtk-on-nix",
++        "rev": "21a0f2059afbae7267f913ac3727bb1205db2a2b",
++        "type": "github"
++      },
++      "original": {
++        "owner": "ezKEa",
++        "repo": "aagl-gtk-on-nix",
++        "type": "github"
++      }
++    },
+     "agenix": {
+       "inputs": {
+         "darwin": "darwin",
+         "home-manager": "home-manager",
+-        "nixpkgs": [
+-          "nixpkgs"
+-        ]
++        "nixpkgs": ["nixpkgs"]
+       },
+       "locked": {
+         "lastModified": 1694733633,
+@@ -26,9 +43,7 @@
+     "anyrun": {
+       "inputs": {
+         "flake-parts": "flake-parts",
+-        "nixpkgs": [
+-          "nixpkgs"
+-        ]
++        "nixpkgs": ["nixpkgs"]
+       },
+       "locked": {
+         "lastModified": 1701453400,
+@@ -63,22 +78,10 @@
+     },
+     "crane": {
+       "inputs": {
+-        "flake-compat": [
+-          "lanzaboote",
+-          "flake-compat"
+-        ],
+-        "flake-utils": [
+-          "lanzaboote",
+-          "flake-utils"
+-        ],
+-        "nixpkgs": [
+-          "lanzaboote",
+-          "nixpkgs"
+-        ],
+-        "rust-overlay": [
+-          "lanzaboote",
+-          "rust-overlay"
+-        ]
++        "flake-compat": ["lanzaboote", "flake-compat"],
++        "flake-utils": ["lanzaboote", "flake-utils"],
++        "nixpkgs": ["lanzaboote", "nixpkgs"],
++        "rust-overlay": ["lanzaboote", "rust-overlay"]
+       },
+       "locked": {
+         "lastModified": 1681177078,
+@@ -96,17 +99,14 @@
+     },
+     "darwin": {
+       "inputs": {
+-        "nixpkgs": [
+-          "agenix",
+-          "nixpkgs"
+-        ]
++        "nixpkgs": ["agenix", "nixpkgs"]
+       },
+       "locked": {
+-        "lastModified": 1700795494,
+-        "narHash": "sha256-gzGLZSiOhf155FW7262kdHo2YDeugp3VuIFb4/GGng0=",
++        "lastModified": 1673295039,
++        "narHash": "sha256-AsdYgE8/GPwcelGgrntlijMg4t3hLFJFCRF3tL5WVjA=",
+         "owner": "lnl7",
+         "repo": "nix-darwin",
+-        "rev": "4b9b83d5a92e8c1fbfd8eb27eda375908c11ec4d",
++        "rev": "87b9d090ad39b25b2400029c64825fc2a8868943",
+         "type": "github"
+       },
+       "original": {
+@@ -116,7 +116,42 @@
+         "type": "github"
+       }
+     },
++    "devshell": {
++      "inputs": {
++        "nixpkgs": ["nur-linyinfeng", "nixpkgs"],
++        "systems": ["nur-linyinfeng", "flake-utils", "systems"]
++      },
++      "locked": {
++        "lastModified": 1701787589,
++        "narHash": "sha256-ce+oQR4Zq9VOsLoh9bZT8Ip9PaMLcjjBUHVPzW5d7Cw=",
++        "owner": "numtide",
++        "repo": "devshell",
++        "rev": "44ddedcbcfc2d52a76b64fb6122f209881bd3e1e",
++        "type": "github"
++      },
++      "original": {
++        "owner": "numtide",
++        "repo": "devshell",
++        "type": "github"
++      }
++    },
+     "flake-compat": {
++      "flake": false,
++      "locked": {
++        "lastModified": 1696426674,
++        "narHash": "sha256-kvjfFW7WAETZlt09AgDn1MrtKzP7t90Vf7vypd3OL1U=",
++        "owner": "edolstra",
++        "repo": "flake-compat",
++        "rev": "0f9255e01c2351cc7d116c072cb317785dd33b33",
++        "type": "github"
++      },
++      "original": {
++        "owner": "edolstra",
++        "repo": "flake-compat",
++        "type": "github"
++      }
++    },
++    "flake-compat_2": {
+       "flake": false,
+       "locked": {
+         "lastModified": 1673956053,
+@@ -132,7 +167,54 @@
+         "type": "github"
+       }
+     },
+-    "flake-compat_2": {
++    "flake-compat_3": {
++      "locked": {
++        "lastModified": 1688025799,
++        "narHash": "sha256-ktpB4dRtnksm9F5WawoIkEneh1nrEvuxb5lJFt1iOyw=",
++        "owner": "nix-community",
++        "repo": "flake-compat",
++        "rev": "8bf105319d44f6b9f0d764efa4fdef9f1cc9ba1c",
++        "type": "github"
++      },
++      "original": {
++        "owner": "nix-community",
++        "repo": "flake-compat",
++        "type": "github"
++      }
++    },
++    "flake-compat_4": {
++      "flake": false,
++      "locked": {
++        "lastModified": 1696426674,
++        "narHash": "sha256-kvjfFW7WAETZlt09AgDn1MrtKzP7t90Vf7vypd3OL1U=",
++        "owner": "edolstra",
++        "repo": "flake-compat",
++        "rev": "0f9255e01c2351cc7d116c072cb317785dd33b33",
++        "type": "github"
++      },
++      "original": {
++        "owner": "edolstra",
++        "repo": "flake-compat",
++        "type": "github"
++      }
++    },
++    "flake-compat_5": {
++      "flake": false,
++      "locked": {
++        "lastModified": 1673956053,
++        "narHash": "sha256-4gtG9iQuiKITOjNQQeQIpoIB6b16fm+504Ch3sNKLd8=",
++        "owner": "edolstra",
++        "repo": "flake-compat",
++        "rev": "35bb57c0c8d8b62bbfd284272c928ceb64ddbde9",
++        "type": "github"
++      },
++      "original": {
++        "owner": "edolstra",
++        "repo": "flake-compat",
++        "type": "github"
++      }
++    },
++    "flake-compat_6": {
+       "flake": false,
+       "locked": {
+         "lastModified": 1673956053,
+@@ -150,10 +232,7 @@
+     },
+     "flake-parts": {
+       "inputs": {
+-        "nixpkgs-lib": [
+-          "anyrun",
+-          "nixpkgs"
+-        ]
++        "nixpkgs-lib": ["anyrun", "nixpkgs"]
+       },
+       "locked": {
+         "lastModified": 1696343447,
+@@ -171,10 +250,7 @@
+     },
+     "flake-parts_2": {
+       "inputs": {
+-        "nixpkgs-lib": [
+-          "lanzaboote",
+-          "nixpkgs"
+-        ]
++        "nixpkgs-lib": ["lanzaboote", "nixpkgs"]
+       },
+       "locked": {
+         "lastModified": 1680392223,
+@@ -190,6 +266,60 @@
+         "type": "github"
+       }
+     },
++    "flake-parts_3": {
++      "inputs": {
++        "nixpkgs-lib": "nixpkgs-lib"
++      },
++      "locked": {
++        "lastModified": 1701473968,
++        "narHash": "sha256-YcVE5emp1qQ8ieHUnxt1wCZCC3ZfAS+SRRWZ2TMda7E=",
++        "owner": "hercules-ci",
++        "repo": "flake-parts",
++        "rev": "34fed993f1674c8d06d58b37ce1e0fe5eebcb9f5",
++        "type": "github"
++      },
++      "original": {
++        "owner": "hercules-ci",
++        "repo": "flake-parts",
++        "type": "github"
++      }
++    },
++    "flake-parts_4": {
++      "inputs": {
++        "nixpkgs-lib": ["nixpkgs-wayland", "nix-eval-jobs", "nixpkgs"]
++      },
++      "locked": {
++        "lastModified": 1701473968,
++        "narHash": "sha256-YcVE5emp1qQ8ieHUnxt1wCZCC3ZfAS+SRRWZ2TMda7E=",
++        "owner": "hercules-ci",
++        "repo": "flake-parts",
++        "rev": "34fed993f1674c8d06d58b37ce1e0fe5eebcb9f5",
++        "type": "github"
++      },
++      "original": {
++        "owner": "hercules-ci",
++        "repo": "flake-parts",
++        "type": "github"
++      }
++    },
++    "flake-parts_5": {
++      "inputs": {
++        "nixpkgs-lib": ["nur-linyinfeng", "nixpkgs"]
++      },
++      "locked": {
++        "lastModified": 1701473968,
++        "narHash": "sha256-YcVE5emp1qQ8ieHUnxt1wCZCC3ZfAS+SRRWZ2TMda7E=",
++        "owner": "hercules-ci",
++        "repo": "flake-parts",
++        "rev": "34fed993f1674c8d06d58b37ce1e0fe5eebcb9f5",
++        "type": "github"
++      },
++      "original": {
++        "owner": "hercules-ci",
++        "repo": "flake-parts",
++        "type": "github"
++      }
++    },
+     "flake-utils": {
+       "inputs": {
+         "systems": "systems_2"
+@@ -208,6 +338,24 @@
+         "type": "github"
+       }
+     },
++    "flake-utils-plus": {
++      "inputs": {
++        "flake-utils": ["nur-xddxdd", "flake-utils"]
++      },
++      "locked": {
++        "lastModified": 1696331477,
++        "narHash": "sha256-YkbRa/1wQWdWkVJ01JvV+75KIdM37UErqKgTf0L54Fk=",
++        "owner": "gytis-ivaskevicius",
++        "repo": "flake-utils-plus",
++        "rev": "bfc53579db89de750b25b0c5e7af299e0c06d7d3",
++        "type": "github"
++      },
++      "original": {
++        "owner": "gytis-ivaskevicius",
++        "repo": "flake-utils-plus",
++        "type": "github"
++      }
++    },
+     "flake-utils_2": {
+       "inputs": {
+         "systems": "systems_3"
+@@ -231,11 +379,11 @@
+         "systems": "systems_4"
+       },
+       "locked": {
+-        "lastModified": 1685518550,
+-        "narHash": "sha256-o2d0KcvaXzTrPRIo0kOLV0/QXHhDQ5DTi+OxcjO8xqY=",
++        "lastModified": 1701680307,
++        "narHash": "sha256-kAuep2h5ajznlPMD9rnQyffWG8EM/C73lejGofXvdM8=",
+         "owner": "numtide",
+         "repo": "flake-utils",
+-        "rev": "a1720a10a6cfe8234c0e93907ffe81be440f4cef",
++        "rev": "4022d587cbbfd70fe950c1e2083a02621806a725",
+         "type": "github"
+       },
+       "original": {
+@@ -244,35 +392,45 @@
+         "type": "github"
+       }
+     },
+-    "gitignore": {
++    "flake-utils_4": {
+       "inputs": {
+-        "nixpkgs": [
+-          "lanzaboote",
+-          "pre-commit-hooks-nix",
+-          "nixpkgs"
+-        ]
++        "systems": "systems_5"
+       },
+       "locked": {
+-        "lastModified": 1660459072,
+-        "narHash": "sha256-8DFJjXG8zqoONA1vXtgeKXy68KdJL5UaXR8NtVMUbx8=",
+-        "owner": "hercules-ci",
+-        "repo": "gitignore.nix",
+-        "rev": "a20de23b925fd8264fd7fad6454652e142fd7f73",
++        "lastModified": 1701680307,
++        "narHash": "sha256-kAuep2h5ajznlPMD9rnQyffWG8EM/C73lejGofXvdM8=",
++        "owner": "numtide",
++        "repo": "flake-utils",
++        "rev": "4022d587cbbfd70fe950c1e2083a02621806a725",
+         "type": "github"
+       },
+       "original": {
+-        "owner": "hercules-ci",
+-        "repo": "gitignore.nix",
++        "owner": "numtide",
++        "repo": "flake-utils",
+         "type": "github"
+       }
+     },
+-    "gitignore_2": {
++    "flake-utils_5": {
++      "inputs": {
++        "systems": "systems_6"
++      },
++      "locked": {
++        "lastModified": 1685518550,
++        "narHash": "sha256-o2d0KcvaXzTrPRIo0kOLV0/QXHhDQ5DTi+OxcjO8xqY=",
++        "owner": "numtide",
++        "repo": "flake-utils",
++        "rev": "a1720a10a6cfe8234c0e93907ffe81be440f4cef",
++        "type": "github"
++      },
++      "original": {
++        "owner": "numtide",
++        "repo": "flake-utils",
++        "type": "github"
++      }
++    },
++    "gitignore": {
+       "inputs": {
+-        "nixpkgs": [
+-          "nixos-rk3588",
+-          "pre-commit-hooks",
+-          "nixpkgs"
+-        ]
++        "nixpkgs": ["lanzaboote", "pre-commit-hooks-nix", "nixpkgs"]
+       },
+       "locked": {
+         "lastModified": 1660459072,
+@@ -288,12 +446,9 @@
+         "type": "github"
+       }
+     },
+-    "gitignore_3": {
++    "gitignore_2": {
+       "inputs": {
+-        "nixpkgs": [
+-          "pre-commit-hooks",
+-          "nixpkgs"
+-        ]
++        "nixpkgs": ["pre-commit-hooks", "nixpkgs"]
+       },
+       "locked": {
+         "lastModified": 1660459072,
+@@ -311,17 +466,14 @@
+     },
+     "home-manager": {
+       "inputs": {
+-        "nixpkgs": [
+-          "agenix",
+-          "nixpkgs"
+-        ]
++        "nixpkgs": ["agenix", "nixpkgs"]
+       },
+       "locked": {
+-        "lastModified": 1703026685,
+-        "narHash": "sha256-AkualfMbc40HkDR2AZc6u71pcap50wDQOXFCY1ULDUA=",
++        "lastModified": 1682203081,
++        "narHash": "sha256-kRL4ejWDhi0zph/FpebFYhzqlOBrk0Pl3dzGEKSAlEw=",
+         "owner": "nix-community",
+         "repo": "home-manager",
+-        "rev": "efc177c15f2a8bb063aeb250fe3c7c21e1de265e",
++        "rev": "32d3e39c491e2f91152c84f8ad8b003420eab0a1",
+         "type": "github"
+       },
+       "original": {
+@@ -332,16 +484,14 @@
+     },
+     "home-manager_2": {
+       "inputs": {
+-        "nixpkgs": [
+-          "nixpkgs"
+-        ]
++        "nixpkgs": ["nixpkgs"]
+       },
+       "locked": {
+-        "lastModified": 1702814678,
+-        "narHash": "sha256-zDtO0jV2QLoddUJinLlTQrQqCUW3dPiIWOSYgg98T7E=",
++        "lastModified": 1700814205,
++        "narHash": "sha256-lWqDPKHRbQfi+zNIivf031BUeyciVOtwCwTjyrhDB5g=",
+         "owner": "nix-community",
+         "repo": "home-manager",
+-        "rev": "1488651d02c1a7a15e284210f0d380a62d8d8cef",
++        "rev": "aeb2232d7a32530d3448318790534d196bf9427a",
+         "type": "github"
+       },
+       "original": {
+@@ -354,9 +504,7 @@
+     "hyprland": {
+       "inputs": {
+         "hyprland-protocols": "hyprland-protocols",
+-        "nixpkgs": [
+-          "nixpkgs"
+-        ],
++        "nixpkgs": ["nixpkgs"],
+         "systems": "systems",
+         "wlroots": "wlroots",
+         "xdph": "xdph"
+@@ -378,14 +526,8 @@
+     },
+     "hyprland-protocols": {
+       "inputs": {
+-        "nixpkgs": [
+-          "hyprland",
+-          "nixpkgs"
+-        ],
+-        "systems": [
+-          "hyprland",
+-          "systems"
+-        ]
++        "nixpkgs": ["hyprland", "nixpkgs"],
++        "systems": ["hyprland", "systems"]
+       },
+       "locked": {
+         "lastModified": 1691753796,
+@@ -403,11 +545,11 @@
+     },
+     "impermanence": {
+       "locked": {
+-        "lastModified": 1702984171,
+-        "narHash": "sha256-reIUBrUXibohXmvXRsgpvtlCE0QQSvWSA+qQCKohgR0=",
++        "lastModified": 1697303681,
++        "narHash": "sha256-caJ0rXeagaih+xTgRduYtYKL1rZ9ylh06CIrt1w5B4g=",
+         "owner": "nix-community",
+         "repo": "impermanence",
+-        "rev": "123e94200f63952639492796b8878e588a4a2851",
++        "rev": "0f317c2e9e56550ce12323eb39302d251618f5b5",
+         "type": "github"
+       },
+       "original": {
+@@ -419,12 +561,10 @@
+     "lanzaboote": {
+       "inputs": {
+         "crane": "crane",
+-        "flake-compat": "flake-compat",
++        "flake-compat": "flake-compat_2",
+         "flake-parts": "flake-parts_2",
+         "flake-utils": "flake-utils",
+-        "nixpkgs": [
+-          "nixpkgs"
+-        ],
++        "nixpkgs": ["nixpkgs"],
+         "pre-commit-hooks-nix": "pre-commit-hooks-nix",
+         "rust-overlay": "rust-overlay"
+       },
+@@ -443,6 +583,25 @@
+         "type": "github"
+       }
+     },
++    "lib-aggregate": {
++      "inputs": {
++        "flake-utils": "flake-utils_2",
++        "nixpkgs-lib": "nixpkgs-lib_2"
++      },
++      "locked": {
++        "lastModified": 1701901779,
++        "narHash": "sha256-niromWK2vW1p/pzbsMjpBq2wi/yR1UgYXplvIG2EoI4=",
++        "owner": "nix-community",
++        "repo": "lib-aggregate",
++        "rev": "967acb55282cb9fa9c3c91d4ca91c92b7befc7bb",
++        "type": "github"
++      },
++      "original": {
++        "owner": "nix-community",
++        "repo": "lib-aggregate",
++        "type": "github"
++      }
++    },
+     "mesa-panfork": {
+       "flake": false,
+       "locked": {
+@@ -463,25 +622,23 @@
+     "mysecrets": {
+       "flake": false,
+       "locked": {
+-        "lastModified": 1703047359,
+-        "narHash": "sha256-Wx4rpa+oTPMRgUcUkhUq4oKBvvPZR+4U1YMnRB6rAQU=",
++        "lastModified": 1703132182,
++        "narHash": "sha256-yZCHfS9IjH6L+v4iCDJ7fhrg8iyFGcsg0czDDQorlKU=",
+         "ref": "refs/heads/main",
+-        "rev": "4126e1894fbc8a2ce260def885dcc6ad558a52ca",
++        "rev": "5a927c7a4cde225dfeeb8a6ef76518d55aad8526",
+         "shallow": true,
+         "type": "git",
+-        "url": "ssh://git@github.com/ryan4yin/nix-secrets.git"
++        "url": "ssh://git@github.com/DataEraserC/nix-secrets.git"
+       },
+       "original": {
+         "shallow": true,
+         "type": "git",
+-        "url": "ssh://git@github.com/ryan4yin/nix-secrets.git"
++        "url": "ssh://git@github.com/DataEraserC/nix-secrets.git"
+       }
+     },
+     "nix-darwin": {
+       "inputs": {
+-        "nixpkgs": [
+-          "nixpkgs-darwin"
+-        ]
++        "nixpkgs": ["nixpkgs-darwin"]
+       },
+       "locked": {
+         "lastModified": 1700795494,
+@@ -497,6 +654,64 @@
+         "type": "github"
+       }
+     },
++    "nix-eval-jobs": {
++      "inputs": {
++        "flake-parts": "flake-parts_4",
++        "nix-github-actions": "nix-github-actions",
++        "nixpkgs": "nixpkgs_6",
++        "treefmt-nix": "treefmt-nix"
++      },
++      "locked": {
++        "lastModified": 1701852992,
++        "narHash": "sha256-9k+nGxwpxuyocsvitsx1Y2SGI/FScVzXjLyGsVjE/wo=",
++        "owner": "nix-community",
++        "repo": "nix-eval-jobs",
++        "rev": "0f8e80f29287a7c01144603fb0030fdd7216dd98",
++        "type": "github"
++      },
++      "original": {
++        "owner": "nix-community",
++        "repo": "nix-eval-jobs",
++        "type": "github"
++      }
++    },
++    "nix-gaming": {
++      "inputs": {
++        "flake-parts": "flake-parts_3",
++        "nixpkgs": "nixpkgs_2"
++      },
++      "locked": {
++        "lastModified": 1701998151,
++        "narHash": "sha256-94sd9p51MhJKZ2YXzVv88/sRds0BfRBMQ/P+1eM3/bw=",
++        "owner": "fufexan",
++        "repo": "nix-gaming",
++        "rev": "30f8881c52262dbbd81b7c00e144ebf91470f43f",
++        "type": "github"
++      },
++      "original": {
++        "owner": "fufexan",
++        "repo": "nix-gaming",
++        "type": "github"
++      }
++    },
++    "nix-github-actions": {
++      "inputs": {
++        "nixpkgs": ["nixpkgs-wayland", "nix-eval-jobs", "nixpkgs"]
++      },
++      "locked": {
++        "lastModified": 1701208414,
++        "narHash": "sha256-xrQ0FyhwTZK6BwKhahIkUVZhMNk21IEI1nUcWSONtpo=",
++        "owner": "nix-community",
++        "repo": "nix-github-actions",
++        "rev": "93e39cc1a087d65bcf7a132e75a650c44dd2b734",
++        "type": "github"
++      },
++      "original": {
++        "owner": "nix-community",
++        "repo": "nix-github-actions",
++        "type": "github"
++      }
++    },
+     "nixlib": {
+       "locked": {
+         "lastModified": 1693701915,
+@@ -515,9 +730,7 @@
+     "nixos-generators": {
+       "inputs": {
+         "nixlib": "nixlib",
+-        "nixpkgs": [
+-          "nixpkgs"
+-        ]
++        "nixpkgs": ["nixpkgs"]
+       },
+       "locked": {
+         "lastModified": 1701689616,
+@@ -535,7 +748,7 @@
+     },
+     "nixos-licheepi4a": {
+       "inputs": {
+-        "nixpkgs": "nixpkgs",
++        "nixpkgs": "nixpkgs_3",
+         "thead-kernel": "thead-kernel"
+       },
+       "locked": {
+@@ -554,17 +767,15 @@
+     },
+     "nixos-rk3588": {
+       "inputs": {
+-        "flake-utils": "flake-utils_2",
+         "mesa-panfork": "mesa-panfork",
+-        "nixpkgs": "nixpkgs_2",
+-        "pre-commit-hooks": "pre-commit-hooks"
++        "nixpkgs": "nixpkgs_4"
+       },
+       "locked": {
+-        "lastModified": 1703010942,
+-        "narHash": "sha256-YYNCF1cnVyQk6OPVnwyvpeg3brwS/ICRGAvFwe2RCZc=",
++        "lastModified": 1694350741,
++        "narHash": "sha256-vXGHGjmNC7FHjIHdWGQLRg6tixdS7X8AIjq8K5c75aA=",
+         "owner": "ryan4yin",
+         "repo": "nixos-rk3588",
+-        "rev": "fce637ae61bc0fce3c68c39c117d08bcc8e2bedf",
++        "rev": "50eda9b82b25cb457625b3a5b06a8f8c08644c5f",
+         "type": "github"
+       },
+       "original": {
+@@ -573,119 +784,205 @@
+         "type": "github"
+       }
+     },
+-    "nixpkgs": {
++    "nixos-stable": {
+       "locked": {
+-        "lastModified": 1691280485,
+-        "narHash": "sha256-/8Ct9092OC1TTNzHgbcE9ejQdS2QxZYGqrWXEwUxdtQ=",
++        "lastModified": 1702759837,
++        "narHash": "sha256-u3XeJVRe/Q975nwFE+6ALEwypMKJEELMJKDAhSKyq3M=",
+         "owner": "nixos",
+         "repo": "nixpkgs",
+-        "rev": "240472b7e47a641e9e7675f58b64d3626ca7824d",
++        "rev": "b2566f4f897ac6224e094b167d9488d03e157f28",
+         "type": "github"
+       },
+       "original": {
+         "owner": "nixos",
+-        "ref": "nixos-23.05-small",
++        "ref": "nixos-23.05",
+         "repo": "nixpkgs",
+         "type": "github"
+       }
+     },
+-    "nixpkgs-darwin": {
++    "nixpkgs": {
+       "locked": {
+-        "lastModified": 1702982572,
+-        "narHash": "sha256-IlpMK/1fNRgGzcMr5KUfyBDqoviyIAqTPA2dsWL/jT4=",
++        "lastModified": 1700794826,
++        "narHash": "sha256-RyJTnTNKhO0yqRpDISk03I/4A67/dp96YRxc86YOPgU=",
+         "owner": "nixos",
+         "repo": "nixpkgs",
+-        "rev": "ca145534ebd23811ba134772592fedc2f9a17a95",
++        "rev": "5a09cb4b393d58f9ed0d9ca1555016a8543c2ac8",
+         "type": "github"
+       },
+       "original": {
+         "owner": "nixos",
+-        "ref": "nixpkgs-23.11-darwin",
++        "ref": "nixos-unstable",
+         "repo": "nixpkgs",
+         "type": "github"
+       }
+     },
+-    "nixpkgs-stable": {
++    "nixpkgs-23_05": {
+       "locked": {
+-        "lastModified": 1678872516,
+-        "narHash": "sha256-/E1YwtMtFAu2KUQKV/1+KFuReYPANM2Rzehk84VxVoc=",
+-        "owner": "NixOS",
++        "lastModified": 1701615100,
++        "narHash": "sha256-7VI84NGBvlCTduw2aHLVB62NvCiZUlALLqBe5v684Aw=",
++        "owner": "nixos",
+         "repo": "nixpkgs",
+-        "rev": "9b8e5abb18324c7fe9f07cb100c3cd4a29cda8b8",
++        "rev": "e9f06adb793d1cca5384907b3b8a4071d5d7cb19",
+         "type": "github"
+       },
+       "original": {
+-        "owner": "NixOS",
+-        "ref": "nixos-22.11",
++        "owner": "nixos",
++        "ref": "nixos-23.05",
+         "repo": "nixpkgs",
+         "type": "github"
+       }
+     },
+-    "nixpkgs-stable_2": {
++    "nixpkgs-darwin": {
+       "locked": {
+-        "lastModified": 1685801374,
+-        "narHash": "sha256-otaSUoFEMM+LjBI1XL/xGB5ao6IwnZOXc47qhIgJe8U=",
+-        "owner": "NixOS",
++        "lastModified": 1702026110,
++        "narHash": "sha256-QrIXyA231NGImsGuwb2AYpYRkt+U8s7NZ8Las09bCUg=",
++        "owner": "nixos",
+         "repo": "nixpkgs",
+-        "rev": "c37ca420157f4abc31e26f436c1145f8951ff373",
++        "rev": "6187db40c83ed278fea784c47a62dab36077b96e",
+         "type": "github"
+       },
+       "original": {
+-        "owner": "NixOS",
+-        "ref": "nixos-23.05",
++        "owner": "nixos",
++        "ref": "nixpkgs-23.11-darwin",
+         "repo": "nixpkgs",
+         "type": "github"
+       }
+     },
+-    "nixpkgs-unstable": {
++    "nixpkgs-lib": {
+       "locked": {
+-        "lastModified": 1702830618,
+-        "narHash": "sha256-lvhwIvRwhOLgzbRuYkqHy4M5cQHYs4ktL6/hyuBS6II=",
+-        "owner": "nixos",
++        "dir": "lib",
++        "lastModified": 1701253981,
++        "narHash": "sha256-ztaDIyZ7HrTAfEEUt9AtTDNoCYxUdSd6NrRHaYOIxtk=",
++        "owner": "NixOS",
+         "repo": "nixpkgs",
+-        "rev": "91a00709aebb3602f172a0bf47ba1ef013e34835",
++        "rev": "e92039b55bcd58469325ded85d4f58dd5a4eaf58",
+         "type": "github"
+       },
+       "original": {
+-        "owner": "nixos",
++        "dir": "lib",
++        "owner": "NixOS",
+         "ref": "nixos-unstable",
+         "repo": "nixpkgs",
+         "type": "github"
+       }
+     },
+-    "nixpkgs_2": {
++    "nixpkgs-lib_2": {
+       "locked": {
+-        "lastModified": 1691486536,
+-        "narHash": "sha256-W2jYTn6rNiJEpjXkOiZxNltgxxwgeZE5cQ967NgsrHU=",
+-        "owner": "NixOS",
+-        "repo": "nixpkgs",
+-        "rev": "8fa39adf946a4470610b38fd7aff0a73ad4356c3",
++        "lastModified": 1701564385,
++        "narHash": "sha256-um5ce7hnsQ8Do+oKf90zGKVmEqufr4Q6T8zfY9Hon38=",
++        "owner": "nix-community",
++        "repo": "nixpkgs.lib",
++        "rev": "152c00fc19bc45af5dd65bd41d1d020c2ba0b4ca",
++        "type": "github"
++      },
++      "original": {
++        "owner": "nix-community",
++        "repo": "nixpkgs.lib",
++        "type": "github"
++      }
++    },
++    "nixpkgs-stable": {
++      "locked": {
++        "lastModified": 1678872516,
++        "narHash": "sha256-/E1YwtMtFAu2KUQKV/1+KFuReYPANM2Rzehk84VxVoc=",
++        "owner": "NixOS",
++        "repo": "nixpkgs",
++        "rev": "9b8e5abb18324c7fe9f07cb100c3cd4a29cda8b8",
+         "type": "github"
+       },
+       "original": {
+         "owner": "NixOS",
+-        "ref": "nixos-23.05-small",
++        "ref": "nixos-22.11",
+         "repo": "nixpkgs",
+         "type": "github"
+       }
+     },
+-    "nixpkgs_3": {
++    "nixpkgs-stable_2": {
+       "locked": {
+-        "lastModified": 1702921762,
+-        "narHash": "sha256-O/rP7gulApQAB47u6szEd8Pn8Biw0d84j5iuP2tcxzY=",
++        "lastModified": 1685801374,
++        "narHash": "sha256-otaSUoFEMM+LjBI1XL/xGB5ao6IwnZOXc47qhIgJe8U=",
++        "owner": "NixOS",
++        "repo": "nixpkgs",
++        "rev": "c37ca420157f4abc31e26f436c1145f8951ff373",
++        "type": "github"
++      },
++      "original": {
++        "owner": "NixOS",
++        "ref": "nixos-23.05",
++        "repo": "nixpkgs",
++        "type": "github"
++      }
++    },
++    "nixpkgs-unstable": {
++      "locked": {
++        "lastModified": 1701718080,
++        "narHash": "sha256-6ovz0pG76dE0P170pmmZex1wWcQoeiomUZGggfH9XPs=",
+         "owner": "nixos",
+         "repo": "nixpkgs",
+-        "rev": "d02ffbbe834b5599fc5f134e644e49397eb07188",
++        "rev": "2c7f3c0fb7c08a0814627611d9d7d45ab6d75335",
+         "type": "github"
+       },
+       "original": {
+         "owner": "nixos",
+-        "ref": "nixos-23.11",
++        "ref": "nixos-unstable",
+         "repo": "nixpkgs",
+         "type": "github"
+       }
+     },
+-    "nixpkgs_4": {
++    "nixpkgs-wayland": {
++      "inputs": {
++        "flake-compat": "flake-compat_3",
++        "lib-aggregate": "lib-aggregate",
++        "nix-eval-jobs": "nix-eval-jobs",
++        "nixpkgs": "nixpkgs_7"
++      },
++      "locked": {
++        "lastModified": 1701902161,
++        "narHash": "sha256-xi5JKgNaNl5XG/tstZ+bA3KpgB+qSGasJinSJP37PBg=",
++        "owner": "nix-community",
++        "repo": "nixpkgs-wayland",
++        "rev": "916f946eb68f5ee3528c628752bd2e85366d8886",
++        "type": "github"
++      },
++      "original": {
++        "owner": "nix-community",
++        "repo": "nixpkgs-wayland",
++        "type": "github"
++      }
++    },
++    "nixpkgs_10": {
++      "locked": {
++        "lastModified": 1702830618,
++        "narHash": "sha256-lvhwIvRwhOLgzbRuYkqHy4M5cQHYs4ktL6/hyuBS6II=",
++        "owner": "nixos",
++        "repo": "nixpkgs",
++        "rev": "91a00709aebb3602f172a0bf47ba1ef013e34835",
++        "type": "github"
++      },
++      "original": {
++        "owner": "nixos",
++        "ref": "nixos-unstable",
++        "repo": "nixpkgs",
++        "type": "github"
++      }
++    },
++    "nixpkgs_11": {
++      "locked": {
++        "lastModified": 1694948089,
++        "narHash": "sha256-d2B282GmQ9o8klc22/Rbbbj6r99EnELQpOQjWMyv0rU=",
++        "owner": "NixOS",
++        "repo": "nixpkgs",
++        "rev": "5148520bfab61f99fd25fb9ff7bfbb50dad3c9db",
++        "type": "github"
++      },
++      "original": {
++        "owner": "NixOS",
++        "ref": "nixpkgs-unstable",
++        "repo": "nixpkgs",
++        "type": "github"
++      }
++    },
++    "nixpkgs_12": {
+       "locked": {
+         "lastModified": 1702921762,
+         "narHash": "sha256-O/rP7gulApQAB47u6szEd8Pn8Biw0d84j5iuP2tcxzY=",
+@@ -701,9 +998,244 @@
+         "type": "github"
+       }
+     },
++    "nixpkgs_13": {
++      "locked": {
++        "lastModified": 1702938738,
++        "narHash": "sha256-O7Vb0xC9s4Dmgxj8APEpuuMj7HsLgPbpy1UKvNVJp7o=",
++        "owner": "NixOS",
++        "repo": "nixpkgs",
++        "rev": "dd8e82f3b4017b8faa52c2b1897a38d53c3c26cb",
++        "type": "github"
++      },
++      "original": {
++        "owner": "NixOS",
++        "ref": "nixpkgs-unstable",
++        "repo": "nixpkgs",
++        "type": "github"
++      }
++    },
++    "nixpkgs_2": {
++      "locked": {
++        "lastModified": 1701336116,
++        "narHash": "sha256-kEmpezCR/FpITc6yMbAh4WrOCiT2zg5pSjnKrq51h5Y=",
++        "owner": "NixOS",
++        "repo": "nixpkgs",
++        "rev": "f5c27c6136db4d76c30e533c20517df6864c46ee",
++        "type": "github"
++      },
++      "original": {
++        "owner": "NixOS",
++        "ref": "nixpkgs-unstable",
++        "repo": "nixpkgs",
++        "type": "github"
++      }
++    },
++    "nixpkgs_3": {
++      "locked": {
++        "lastModified": 1691280485,
++        "narHash": "sha256-/8Ct9092OC1TTNzHgbcE9ejQdS2QxZYGqrWXEwUxdtQ=",
++        "owner": "nixos",
++        "repo": "nixpkgs",
++        "rev": "240472b7e47a641e9e7675f58b64d3626ca7824d",
++        "type": "github"
++      },
++      "original": {
++        "owner": "nixos",
++        "ref": "nixos-23.05-small",
++        "repo": "nixpkgs",
++        "type": "github"
++      }
++    },
++    "nixpkgs_4": {
++      "locked": {
++        "lastModified": 1691486536,
++        "narHash": "sha256-W2jYTn6rNiJEpjXkOiZxNltgxxwgeZE5cQ967NgsrHU=",
++        "owner": "NixOS",
++        "repo": "nixpkgs",
++        "rev": "8fa39adf946a4470610b38fd7aff0a73ad4356c3",
++        "type": "github"
++      },
++      "original": {
++        "owner": "NixOS",
++        "ref": "nixos-23.05-small",
++        "repo": "nixpkgs",
++        "type": "github"
++      }
++    },
++    "nixpkgs_5": {
++      "locked": {
++        "lastModified": 1701952659,
++        "narHash": "sha256-TJv2srXt6fYPUjxgLAL0cy4nuf1OZD4KuA1TrCiQqg0=",
++        "owner": "nixos",
++        "repo": "nixpkgs",
++        "rev": "b4372c4924d9182034066c823df76d6eaf1f4ec4",
++        "type": "github"
++      },
++      "original": {
++        "owner": "nixos",
++        "ref": "nixos-23.11",
++        "repo": "nixpkgs",
++        "type": "github"
++      }
++    },
++    "nixpkgs_6": {
++      "locked": {
++        "lastModified": 1701847270,
++        "narHash": "sha256-ttPWHy1NZwJzSzY7OmofFNyrm9kWc+RFFHpJGeQ4kWw=",
++        "owner": "NixOS",
++        "repo": "nixpkgs",
++        "rev": "9ed8ade77aef706a03d8cc3a5ad4f60848ac59a7",
++        "type": "github"
++      },
++      "original": {
++        "owner": "NixOS",
++        "ref": "master",
++        "repo": "nixpkgs",
++        "type": "github"
++      }
++    },
++    "nixpkgs_7": {
++      "locked": {
++        "lastModified": 1701718080,
++        "narHash": "sha256-6ovz0pG76dE0P170pmmZex1wWcQoeiomUZGggfH9XPs=",
++        "owner": "nixos",
++        "repo": "nixpkgs",
++        "rev": "2c7f3c0fb7c08a0814627611d9d7d45ab6d75335",
++        "type": "github"
++      },
++      "original": {
++        "owner": "nixos",
++        "ref": "nixos-unstable",
++        "repo": "nixpkgs",
++        "type": "github"
++      }
++    },
++    "nixpkgs_8": {
++      "locked": {
++        "lastModified": 1694767346,
++        "narHash": "sha256-5uH27SiVFUwsTsqC5rs3kS7pBoNhtoy9QfTP9BmknGk=",
++        "owner": "nixos",
++        "repo": "nixpkgs",
++        "rev": "ace5093e36ab1e95cb9463863491bee90d5a4183",
++        "type": "github"
++      },
++      "original": {
++        "owner": "NixOS",
++        "ref": "nixpkgs-unstable",
++        "repo": "nixpkgs",
++        "type": "github"
++      }
++    },
++    "nixpkgs_9": {
++      "locked": {
++        "lastModified": 1684844536,
++        "narHash": "sha256-M7HhXYVqAuNb25r/d3FOO0z4GxPqDIZp5UjHFbBgw0Q=",
++        "path": "/nix/store/bzjkbaqvbdv09p7bmwinjkbjjk8nbb3x-source",
++        "rev": "d30264c2691128adc261d7c9388033645f0e742b",
++        "type": "path"
++      },
++      "original": {
++        "id": "nixpkgs",
++        "type": "indirect"
++      }
++    },
++    "nur": {
++      "locked": {
++        "lastModified": 1702043062,
++        "narHash": "sha256-Q4iifG2pgHJ09zrxHIeVbSPnhpGsP0ssRbA0x9rVM6s=",
++        "owner": "nix-community",
++        "repo": "NUR",
++        "rev": "4ca441c58bbfaa1728c4a5b4115f79569f6ff186",
++        "type": "github"
++      },
++      "original": {
++        "owner": "nix-community",
++        "repo": "NUR",
++        "type": "github"
++      }
++    },
++    "nur-AtaraxiaSjel": {
++      "inputs": {
++        "nixpkgs": "nixpkgs_8"
++      },
++      "locked": {
++        "lastModified": 1703061682,
++        "narHash": "sha256-qI2yxdrRe3+X+akR5McBcC9QvjyVjJuztLo3alMLzhc=",
++        "owner": "AtaraxiaSjel",
++        "repo": "nur",
++        "rev": "5be77202ae6e9168c17e1dba7ff72976d2c74099",
++        "type": "github"
++      },
++      "original": {
++        "owner": "AtaraxiaSjel",
++        "repo": "nur",
++        "type": "github"
++      }
++    },
++    "nur-arti5an": {
++      "inputs": {
++        "nixpkgs": "nixpkgs_9"
++      },
++      "locked": {
++        "lastModified": 1701816736,
++        "narHash": "sha256-8alUFOLXFieZvN9qg77WkIxGF/CiPtS+JUvUhp2uI50=",
++        "owner": "arti5an",
++        "repo": "nur-packages",
++        "rev": "c7136394df614cb3a1fe8a7a0d5542362b5f808f",
++        "type": "github"
++      },
++      "original": {
++        "owner": "arti5an",
++        "repo": "nur-packages",
++        "type": "github"
++      }
++    },
++    "nur-linyinfeng": {
++      "inputs": {
++        "devshell": "devshell",
++        "flake-compat": "flake-compat_4",
++        "flake-parts": "flake-parts_5",
++        "flake-utils": "flake-utils_3",
++        "nixos-stable": "nixos-stable",
++        "nixpkgs": "nixpkgs_10",
++        "nvfetcher": "nvfetcher",
++        "treefmt-nix": "treefmt-nix_2"
++      },
++      "locked": {
++        "lastModified": 1703075358,
++        "narHash": "sha256-d2V+LUALNr3o/vODbpJw03BYIbFr32ZNj7BMzGEn4OQ=",
++        "owner": "linyinfeng",
++        "repo": "nur-packages",
++        "rev": "5868d84e3a9a7822e12ba1591dad56ae0e850f40",
++        "type": "github"
++      },
++      "original": {
++        "owner": "linyinfeng",
++        "repo": "nur-packages",
++        "type": "github"
++      }
++    },
++    "nur-program-learning": {
++      "inputs": {
++        "nixpkgs": "nixpkgs_11"
++      },
++      "locked": {
++        "lastModified": 1701710914,
++        "narHash": "sha256-Qc0S2qyhFq+zDy1fpxLptAHeY/lgiHuwfh8Q9FCSAoA=",
++        "owner": "Program-Learning",
++        "repo": "nur-packages",
++        "rev": "726f90c0d011cb9509f5e1a85a68dbefbbbb7709",
++        "type": "github"
++      },
++      "original": {
++        "owner": "Program-Learning",
++        "repo": "nur-packages",
++        "type": "github"
++      }
++    },
+     "nur-ryan4yin": {
+       "inputs": {
+-        "nixpkgs": "nixpkgs_4"
++        "nixpkgs": "nixpkgs_12"
+       },
+       "locked": {
+         "lastModified": 1703077061,
+@@ -719,14 +1251,35 @@
+         "type": "github"
+       }
+     },
++    "nur-xddxdd": {
++      "inputs": {
++        "flake-utils": "flake-utils_4",
++        "flake-utils-plus": "flake-utils-plus",
++        "nixpkgs": "nixpkgs_13",
++        "nvfetcher": "nvfetcher_2"
++      },
++      "locked": {
++        "lastModified": 1703052475,
++        "narHash": "sha256-H5nVOGA3N3tPZVhBifXZEK0n7cvDGBDxn51aSTCAWC8=",
++        "owner": "xddxdd",
++        "repo": "nur-packages",
++        "rev": "aa5ccd70dd541d3710ef937d498ec60d08b3767c",
++        "type": "github"
++      },
++      "original": {
++        "owner": "xddxdd",
++        "repo": "nur-packages",
++        "type": "github"
++      }
++    },
+     "nushell-scripts": {
+       "flake": false,
+       "locked": {
+-        "lastModified": 1702558950,
+-        "narHash": "sha256-pai3qeD2hmpx2r/lDfGpUY3mkl0gRN6j72gplz9DQD4=",
++        "lastModified": 1701968996,
++        "narHash": "sha256-jbqiIZpz8ExckJ7ff+UZ35BWGPbT/ORAfMrV5VcpuOg=",
+         "owner": "nushell",
+         "repo": "nu_scripts",
+-        "rev": "6f1c0dfef203fa07449718b76d31580e8458c8b7",
++        "rev": "060903128d1658e2176ecdbfc8676b3f216d0ff5",
+         "type": "github"
+       },
+       "original": {
+@@ -736,24 +1289,53 @@
+         "type": "github"
+       }
+     },
++    "nvfetcher": {
++      "inputs": {
++        "flake-compat": ["nur-linyinfeng", "flake-compat"],
++        "flake-utils": ["nur-linyinfeng", "flake-utils"],
++        "nixpkgs": ["nur-linyinfeng", "nixpkgs"]
++      },
++      "locked": {
++        "lastModified": 1693539235,
++        "narHash": "sha256-ACmCq1+RnVq+EB7yeN6fThUR3cCJZb6lKEfv937WG84=",
++        "owner": "berberman",
++        "repo": "nvfetcher",
++        "rev": "2bcf73dea96497ac9c36ed320b457caa705f9485",
++        "type": "github"
++      },
++      "original": {
++        "owner": "berberman",
++        "repo": "nvfetcher",
++        "type": "github"
++      }
++    },
++    "nvfetcher_2": {
++      "inputs": {
++        "flake-compat": "flake-compat_5",
++        "flake-utils": ["nur-xddxdd", "flake-utils"],
++        "nixpkgs": ["nur-xddxdd", "nixpkgs"]
++      },
++      "locked": {
++        "lastModified": 1693539235,
++        "narHash": "sha256-ACmCq1+RnVq+EB7yeN6fThUR3cCJZb6lKEfv937WG84=",
++        "owner": "berberman",
++        "repo": "nvfetcher",
++        "rev": "2bcf73dea96497ac9c36ed320b457caa705f9485",
++        "type": "github"
++      },
++      "original": {
++        "owner": "berberman",
++        "repo": "nvfetcher",
++        "type": "github"
++      }
++    },
+     "pre-commit-hooks": {
+       "inputs": {
+-        "flake-compat": [
+-          "nixos-rk3588"
+-        ],
+-        "flake-utils": [
+-          "nixos-rk3588",
+-          "flake-utils"
+-        ],
++        "flake-compat": "flake-compat_6",
++        "flake-utils": "flake-utils_5",
+         "gitignore": "gitignore_2",
+-        "nixpkgs": [
+-          "nixos-rk3588",
+-          "nixpkgs"
+-        ],
+-        "nixpkgs-stable": [
+-          "nixos-rk3588",
+-          "nixpkgs"
+-        ]
++        "nixpkgs": ["nixpkgs"],
++        "nixpkgs-stable": "nixpkgs-stable_2"
+       },
+       "locked": {
+         "lastModified": 1702456155,
+@@ -771,19 +1353,10 @@
+     },
+     "pre-commit-hooks-nix": {
+       "inputs": {
+-        "flake-compat": [
+-          "lanzaboote",
+-          "flake-compat"
+-        ],
+-        "flake-utils": [
+-          "lanzaboote",
+-          "flake-utils"
+-        ],
++        "flake-compat": ["lanzaboote", "flake-compat"],
++        "flake-utils": ["lanzaboote", "flake-utils"],
+         "gitignore": "gitignore",
+-        "nixpkgs": [
+-          "lanzaboote",
+-          "nixpkgs"
+-        ],
++        "nixpkgs": ["lanzaboote", "nixpkgs"],
+         "nixpkgs-stable": "nixpkgs-stable"
+       },
+       "locked": {
+@@ -800,32 +1373,9 @@
+         "type": "github"
+       }
+     },
+-    "pre-commit-hooks_2": {
+-      "inputs": {
+-        "flake-compat": "flake-compat_2",
+-        "flake-utils": "flake-utils_3",
+-        "gitignore": "gitignore_3",
+-        "nixpkgs": [
+-          "nixpkgs"
+-        ],
+-        "nixpkgs-stable": "nixpkgs-stable_2"
+-      },
+-      "locked": {
+-        "lastModified": 1702456155,
+-        "narHash": "sha256-I2XhXGAecdGlqi6hPWYT83AQtMgL+aa3ulA85RAEgOk=",
+-        "owner": "cachix",
+-        "repo": "pre-commit-hooks.nix",
+-        "rev": "007a45d064c1c32d04e1b8a0de5ef00984c419bc",
+-        "type": "github"
+-      },
+-      "original": {
+-        "owner": "cachix",
+-        "repo": "pre-commit-hooks.nix",
+-        "type": "github"
+-      }
+-    },
+     "root": {
+       "inputs": {
++        "aagl": "aagl",
+         "agenix": "agenix",
+         "anyrun": "anyrun",
+         "astronvim": "astronvim",
+@@ -835,28 +1385,31 @@
+         "lanzaboote": "lanzaboote",
+         "mysecrets": "mysecrets",
+         "nix-darwin": "nix-darwin",
++        "nix-gaming": "nix-gaming",
+         "nixos-generators": "nixos-generators",
+         "nixos-licheepi4a": "nixos-licheepi4a",
+         "nixos-rk3588": "nixos-rk3588",
+-        "nixpkgs": "nixpkgs_3",
++        "nixpkgs": "nixpkgs_5",
++        "nixpkgs-23_05": "nixpkgs-23_05",
+         "nixpkgs-darwin": "nixpkgs-darwin",
+         "nixpkgs-unstable": "nixpkgs-unstable",
++        "nixpkgs-wayland": "nixpkgs-wayland",
++        "nur": "nur",
++        "nur-AtaraxiaSjel": "nur-AtaraxiaSjel",
++        "nur-arti5an": "nur-arti5an",
++        "nur-linyinfeng": "nur-linyinfeng",
++        "nur-program-learning": "nur-program-learning",
+         "nur-ryan4yin": "nur-ryan4yin",
++        "nur-xddxdd": "nur-xddxdd",
+         "nushell-scripts": "nushell-scripts",
+-        "pre-commit-hooks": "pre-commit-hooks_2",
++        "pre-commit-hooks": "pre-commit-hooks",
+         "wallpapers": "wallpapers"
+       }
+     },
+     "rust-overlay": {
+       "inputs": {
+-        "flake-utils": [
+-          "lanzaboote",
+-          "flake-utils"
+-        ],
+-        "nixpkgs": [
+-          "lanzaboote",
+-          "nixpkgs"
+-        ]
++        "flake-utils": ["lanzaboote", "flake-utils"],
++        "nixpkgs": ["lanzaboote", "nixpkgs"]
+       },
+       "locked": {
+         "lastModified": 1682129965,
+@@ -932,6 +1485,36 @@
+         "type": "github"
+       }
+     },
++    "systems_5": {
++      "locked": {
++        "lastModified": 1681028828,
++        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
++        "owner": "nix-systems",
++        "repo": "default",
++        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
++        "type": "github"
++      },
++      "original": {
++        "owner": "nix-systems",
++        "repo": "default",
++        "type": "github"
++      }
++    },
++    "systems_6": {
++      "locked": {
++        "lastModified": 1681028828,
++        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
++        "owner": "nix-systems",
++        "repo": "default",
++        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
++        "type": "github"
++      },
++      "original": {
++        "owner": "nix-systems",
++        "repo": "default",
++        "type": "github"
++      }
++    },
+     "thead-kernel": {
+       "flake": false,
+       "locked": {
+@@ -949,18 +1532,54 @@
+         "type": "github"
+       }
+     },
++    "treefmt-nix": {
++      "inputs": {
++        "nixpkgs": ["nixpkgs-wayland", "nix-eval-jobs", "nixpkgs"]
++      },
++      "locked": {
++        "lastModified": 1701682826,
++        "narHash": "sha256-2lxeTUGs8Jzz/wjLgWYmZoXn60BYNRMzwHFtxNFUDLU=",
++        "owner": "numtide",
++        "repo": "treefmt-nix",
++        "rev": "affe7fc3f5790e1d0b5ba51bcff0f7ebe465e92d",
++        "type": "github"
++      },
++      "original": {
++        "owner": "numtide",
++        "repo": "treefmt-nix",
++        "type": "github"
++      }
++    },
++    "treefmt-nix_2": {
++      "inputs": {
++        "nixpkgs": ["nur-linyinfeng", "nixpkgs"]
++      },
++      "locked": {
++        "lastModified": 1702979157,
++        "narHash": "sha256-RnFBbLbpqtn4AoJGXKevQMCGhra4h6G2MPcuTSZZQ+g=",
++        "owner": "numtide",
++        "repo": "treefmt-nix",
++        "rev": "2961375283668d867e64129c22af532de8e77734",
++        "type": "github"
++      },
++      "original": {
++        "owner": "numtide",
++        "repo": "treefmt-nix",
++        "type": "github"
++      }
++    },
+     "wallpapers": {
+       "flake": false,
+       "locked": {
+-        "lastModified": 1694759298,
+-        "narHash": "sha256-eSDBX6aA7zxodUq3MmV99JS0vr+aUwbEuLPoKnU5kHg=",
+-        "owner": "ryan4yin",
++        "lastModified": 1695806688,
++        "narHash": "sha256-p9x2dlThlI1BlBb/TJ6ytiZMXvcU+/zhBCXaoQN1xQM=",
++        "owner": "Program-Learning",
+         "repo": "wallpapers",
+-        "rev": "f59f49a44042d2c669e18da07e652e00c431e9e9",
++        "rev": "2a6b757b5aa2395342fed9cbcb22aace003625bc",
+         "type": "github"
+       },
+       "original": {
+-        "owner": "ryan4yin",
++        "owner": "Program-Learning",
+         "repo": "wallpapers",
+         "type": "github"
+       }
+@@ -986,25 +1605,16 @@
+     },
+     "xdph": {
+       "inputs": {
+-        "hyprland-protocols": [
+-          "hyprland",
+-          "hyprland-protocols"
+-        ],
+-        "nixpkgs": [
+-          "hyprland",
+-          "nixpkgs"
+-        ],
+-        "systems": [
+-          "hyprland",
+-          "systems"
+-        ]
+-      },
+-      "locked": {
+-        "lastModified": 1700508250,
+-        "narHash": "sha256-X4o/mifI7Nhu0UKYlxx53wIC+gYDo3pVM9L2u3PE2bE=",
++        "hyprland-protocols": ["hyprland", "hyprland-protocols"],
++        "nixpkgs": ["hyprland", "nixpkgs"],
++        "systems": ["hyprland", "systems"]
++      },
++      "locked": {
++        "lastModified": 1697981233,
++        "narHash": "sha256-y8q4XUwx+gVK7i2eLjfR32lVo7TYvEslyzrmzYEaPZU=",
+         "owner": "hyprwm",
+         "repo": "xdg-desktop-portal-hyprland",
+-        "rev": "eb120ff25265ecacd0fc13d7dab12131b60d0f47",
++        "rev": "22e7a65ff9633e1dedfa5317fdffc49f68de2ff2",
+         "type": "github"
+       },
+       "original": {
+diff --git a/flake.nix b/flake.nix
+index 96b195f..ecc9ce2 100644
+--- a/flake.nix
++++ b/flake.nix
+@@ -71,12 +71,20 @@
+     extra-substituters = [
+       "https://anyrun.cachix.org"
+       "https://hyprland.cachix.org"
+-      # "https://nixpkgs-wayland.cachix.org"
++      "https://nixpkgs-wayland.cachix.org"
++
++
++      "https://nix-gaming.cachix.org"
++      "https://ezkea.cachix.org"
+     ];
+     extra-trusted-public-keys = [
+       "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
+       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+-      # "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
++      "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
++
++
++      "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
++      "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI="
+     ];
+   };
+ 
+@@ -90,6 +98,10 @@
+     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+     # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
++    nixpkgs-23_05.url = "github:nixos/nixpkgs/nixos-23.05";
++
++    # NUR package source
++    nur.url = "github:nix-community/NUR";
+ 
+     # add git hooks to format nix code before commit
+     pre-commit-hooks = {
+@@ -128,7 +140,7 @@
+     };
+ 
+     # community wayland nixpkgs
+-    # nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
++    nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
+     # anyrun - a wayland launcher
+     anyrun = {
+       url = "github:Kirottu/anyrun";
+@@ -168,13 +180,15 @@
+     # my private secrets, it's a private repository, you need to replace it with your own.
+     # use ssh protocol to authenticate via ssh-agent/ssh-key, and shallow clone to save time
+     mysecrets = {
+-      url = "git+ssh://git@github.com/ryan4yin/nix-secrets.git?shallow=1";
++      url = "git+ssh://git@github.com/DataEraserC/nix-secrets.git?shallow=1";
++      # url = "git+file:////home/nixos/Documents/code/nix-config/secrets?shallow=1";
+       flake = false;
+     };
+ 
+     # my wallpapers
+     wallpapers = {
+-      url = "github:ryan4yin/wallpapers";
++      url = "github:Program-Learning/wallpapers";
++      # url = "git+file:////home/nixos/Documents/code/wallpapers?shallow=1";
+       flake = false;
+     };
+ 
+@@ -183,6 +197,36 @@
+       # inputs.nixpkgs.follows = "nixpkgs";
+     };
+ 
++    nur-program-learning = {
++      url = "github:Program-Learning/nur-packages";
++      # url = "git+file:////home/nixos/Documents/code/program-learning-nur-packages?shallow=1";
++      # inputs.nixpkgs.follows = "nixpkgs";
++    };
++
++    nur-linyinfeng = {
++      url = "github:linyinfeng/nur-packages";
++      # inputs.nixpkgs.follows = "nixpkgs";
++    };
++
++    nur-xddxdd = {
++      url = "github:xddxdd/nur-packages";
++      # inputs.nixpkgs.follows = "nixpkgs";
++    };
++
++    nur-AtaraxiaSjel = {
++      url = "github:AtaraxiaSjel/nur";
++      # inputs.nixpkgs.follows = "nixpkgs";
++    };
++
++    nur-arti5an = {
++      url = "github:arti5an/nur-packages";
++      # inputs.nixpkgs.follows = "nixpkgs";
++    };
++
++    nix-gaming.url = "github:fufexan/nix-gaming";
++
++    aagl.url = "github:ezKEa/aagl-gtk-on-nix";
++
+     # riscv64 SBCs
+     nixos-licheepi4a.url = "github:ryan4yin/nixos-licheepi4a";
+     # nixos-jh7110.url = "github:ryan4yin/nixos-jh7110";
+diff --git a/home/base/desktop/development.nix b/home/base/desktop/development.nix
+index d3bfffb..3def225 100644
+--- a/home/base/desktop/development.nix
++++ b/home/base/desktop/development.nix
+@@ -1,8 +1,4 @@
+-{
+-  pkgs,
+-  pkgs-unstable,
+-  ...
+-}: {
++{ pkgs, pkgs-unstable, nur-program-learning, ... }: {
+   #############################################################
+   #
+   #  Basic settings for development environment
+@@ -16,16 +12,47 @@
+ 
+   home.packages = with pkgs;
+     [
+-      (python3.withPackages (
+-        ps:
+-          with ps; [
+-            ipython
+-            pandas
+-            requests
+-            pyquery
+-            pyyaml
+-          ]
+-      ))
++      # Expose localhost to the world
++      #nodePackages_latest.localtunnel
++
++      man-pages
++      man-pages-posix
++
++      # DO NOT install build tools for C/C++ and others, set it per project by devShell instead
++      gnumake # used by this repo, to simplify the deployment
++      ccache
++      gradle
++      maven
++      spring-boot-cli
++
++      nur-program-learning.packages.${pkgs.system}.clang_dev_env_fhs
++
++      (python3.withPackages (ps:
++        with ps; [
++          ipykernel
++          jupyterlab
++          matplotlib
++          numpy
++          seaborn
++          networkx
++          beautifulsoup4
++          selenium
++          urllib3
++          pyclip
++          pybluez
++          pymysql
++          jieba
++          # wordcloud
++          pandas-datareader
++          pyperclip
++          pip # use in venv "python -m venv .venv" "source .venv/bin/activate"
++
++          ipython
++          pandas
++          requests
++          pyquery
++          pyyaml
++        ]))
+ 
+       cargo # rust package manager
+       go
+@@ -54,25 +81,25 @@
+       bfg-repo-cleaner # remove large files from git history
+       k6 # load testing tool
+       protobuf # protocol buffer compiler
+-    ]
+-    ++ (
+-      if pkgs.stdenv.isLinux
+-      then [
+-        # Automatically trims your branches whose tracking remote refs are merged or gone
+-        # It's really useful when you work on a project for a long time.
+-        git-trim
++      tcpdump
++    ] ++ (if pkgs.stdenv.isLinux then [
++      # Automatically trims your branches whose tracking remote refs are merged or gone
++      # It's really useful when you work on a project for a long time.
++      git-trim
+ 
+-        # need to run `conda-install` before using it
+-        # need to run `conda-shell` before using command `conda`
+-        # conda is not available for MacOS
+-        conda
++      # need to run `conda-install` before using it
++      # need to run `conda-shell` before using command `conda`
++      # conda is not available for MacOS
++      conda
+ 
+-        mitmproxy # http/https proxy tool
+-        insomnia # REST client
+-        wireshark # network analyzer
+-      ]
+-      else []
+-    );
++      mitmproxy # http/https proxy tool
++      insomnia # REST client
++      wireshark # network analyzer
++    ] else
++      [ ]) ++ [
++        nur-program-learning.packages.${pkgs.system}.wechat_dev_tools_appimage
++        nur-program-learning.packages.${pkgs.system}.wechat_dev_tools_deb
++      ];
+ 
+   programs = {
+     direnv = {
+diff --git a/home/base/desktop/media.nix b/home/base/desktop/media.nix
+index aa8b235..dfaa5bf 100644
+--- a/home/base/desktop/media.nix
++++ b/home/base/desktop/media.nix
+@@ -1,16 +1,20 @@
+ {
+   pkgs,
+   config,
++  pkgs-unstable,
+   ...
+ }:
+ # processing audio/video
+ {
+-  home.packages = with pkgs; [
+-    ffmpeg-full
++  home.packages = (with pkgs; [
++    (ffmpeg-full.override { withV4l2 = true; withV4l2M2m = true;})
+ 
+     # images
+     viu # Terminal image viewer with native support for iTerm and Kitty
+     imagemagick
+     graphviz
+-  ];
++  ])
++  ++
++  (with pkgs-unstable; [
++    ]);
+ }
+diff --git a/home/base/desktop/neovim/astronvim_user/init.lua b/home/base/desktop/neovim/astronvim_user/init.lua
+index 5494f87..1637018 100644
+--- a/home/base/desktop/neovim/astronvim_user/init.lua
++++ b/home/base/desktop/neovim/astronvim_user/init.lua
+@@ -25,6 +25,7 @@ return {
+     { import = "astrocommunity.motion.flit-nvim" },
+     { import = "astrocommunity.scrolling.nvim-scrollbar" },
+     { import = "astrocommunity.editing-support.todo-comments-nvim" },
++    { import = "astrocommunity.editing-support.suda-vim" },
+     -- Language Support
+     ---- Frontend & NodeJS
+     { import = "astrocommunity.pack.typescript-all-in-one" },
+@@ -72,6 +73,14 @@ return {
+       end,
+     },
+ 
++    {
++      "skyfireitdiy/codegeex-vim",
++    },
++
++    {
++      "neoclide/coc.nvim",
++    },
++
+     {
+       "0x00-ketsu/autosave.nvim",
+       -- lazy-loading on events
+diff --git a/home/base/server/bash.nix b/home/base/server/bash.nix
+index b089d55..0468489 100644
+--- a/home/base/server/bash.nix
++++ b/home/base/server/bash.nix
+@@ -4,6 +4,7 @@ _: {
+     enableCompletion = true;
+     bashrcExtra = ''
+       export PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/go/bin"
++      export REPO_URL='https://mirrors.tuna.tsinghua.edu.cn/git/git-repo/'
+     '';
+ 
+     shellAliases = {
+diff --git a/home/base/server/git.nix b/home/base/server/git.nix
+index db40295..d1d9628 100644
+--- a/home/base/server/git.nix
++++ b/home/base/server/git.nix
+@@ -32,16 +32,28 @@
+       }
+     ];
+ 
+-    extraConfig = {
++    extraConfig = let
++      proxy = {
++        proxy = "sock5://127.0.0.1:7890";
++      };
++    in {
+       init.defaultBranch = "main";
+       push.autoSetupRemote = true;
+       pull.rebase = true;
+-
++      http = {
++        "https://github.com" = proxy;
++        "https://gitlab.com" = proxy;
++        "https://android.googlesource.com" = proxy;
++        "https://gerrit.googlesource.com" = proxy;
++      };
+       # replace https with ssh
+       url = {
+         "ssh://git@github.com/ryan4yin" = {
+           insteadOf = "https://github.com/ryan4yin";
+         };
++        "ssh://git@github.com/DataEraserC" = {
++          insteadOf = "https://github.com/DataEraserC";
++        };
+         # "ssh://git@gitlab.com/" = {
+         #   insteadOf = "https://gitlab.com/";
+         # };
+diff --git a/home/base/server/nushell/config.nu b/home/base/server/nushell/config.nu
+index 40bcaa5..7b13003 100644
+--- a/home/base/server/nushell/config.nu
++++ b/home/base/server/nushell/config.nu
+@@ -30,6 +30,7 @@ let surface0  = "#313244"
+ let base      = "#1e1e2e"
+ let mantle    = "#181825"
+ let crust     = "#11111b"
++let REPO_URL = 'https://mirrors.tuna.tsinghua.edu.cn/git/git-repo/'
+ 
+ # we're creating a theme here that uses the colors we defined above.
+ 
+diff --git a/home/linux/desktop/creative.nix b/home/linux/desktop/creative.nix
+index 159f4b8..9ea2f3c 100644
+--- a/home/linux/desktop/creative.nix
++++ b/home/linux/desktop/creative.nix
+@@ -2,12 +2,21 @@
+   pkgs,
+   pkgs-unstable,
+   nur-ryan4yin,
++  nur-program-learning,
+   ...
+ }: {
+   home.packages = with pkgs; [
+     # creative
+     blender # 3d modeling
+     # gimp      # image editing, I prefer using figma in browser instead of this one
++    (gimp-with-plugins.override {
++      plugins = with gimpPlugins; [
++        fourier
++        # resynthesizer # broken since 2023-03-20
++        gmic
++      ];
++    })
++    shotcut
+     inkscape # vector graphics
+     krita # digital painting
+     musescore # music notation
+@@ -15,7 +24,12 @@
+     pkgs-unstable.sonic-pi # music programming
+ 
+     # this app consumes a lot of storage, so do not install it currently
+-    # kicad     # 3d printing, eletrical engineering
++    kicad-unstable     # 3d printing, eletrical engineering
++    ngspice
++    digital # A digital logic designer and circuit simulator.
++    logisim-evolution # Digital logic designer and simulator
++
++    freecad
+ 
+     # fpga
+     pkgs-unstable.python311Packages.apycula # gowin fpga
+@@ -23,10 +37,40 @@
+     pkgs-unstable.nextpnr # fpga place and route
+     pkgs-unstable.openfpgaloader # fpga programming
+     nur-ryan4yin.packages.${pkgs.system}.gowin-eda-edu-ide # app: `gowin-env` => `gw_ide` / `gw_pack` / ...
++    nur-program-learning.packages.${pkgs.system}.Adobe_Photoshop_CS6_appimage
++    nur-program-learning.packages.${pkgs.system}.Adobe_Illustrator_CS6_appimage
+   ];
+ 
+   programs = {
+     # live streaming
+-    obs-studio.enable = true;
++    obs-studio = {
++      enable = true;
++      plugins = with pkgs; [
++        # screen capture
++        obs-studio-plugins.wlrobs
++        # obs-studio-plugins.obs-ndi
++        obs-studio-plugins.obs-vaapi
++        obs-studio-plugins.obs-nvfbc
++        obs-studio-plugins.obs-teleport
++        # obs-studio-plugins.obs-hyperion
++        obs-studio-plugins.droidcam-obs
++        obs-studio-plugins.obs-vkcapture
++        obs-studio-plugins.obs-gstreamer
++        obs-studio-plugins.obs-3d-effect
++        obs-studio-plugins.input-overlay
++        obs-studio-plugins.obs-multi-rtmp
++        obs-studio-plugins.obs-source-clone
++        obs-studio-plugins.obs-shaderfilter
++        obs-studio-plugins.obs-source-record
++        obs-studio-plugins.obs-livesplit-one
++        obs-studio-plugins.looking-glass-obs
++        obs-studio-plugins.obs-vintage-filter
++        obs-studio-plugins.obs-command-source
++        obs-studio-plugins.obs-move-transition
++        obs-studio-plugins.obs-backgroundremoval
++        obs-studio-plugins.advanced-scene-switcher
++        obs-studio-plugins.obs-pipewire-audio-capture
++      ];
++    };
+   };
+ }
+diff --git a/home/linux/desktop/custom-addon.nix b/home/linux/desktop/custom-addon.nix
+new file mode 100644
+index 0000000..aa7dbbf
+--- /dev/null
++++ b/home/linux/desktop/custom-addon.nix
+@@ -0,0 +1,314 @@
++{
++  config,
++  pkgs,
++  pkgs-unstable,
++  nur-ryan4yin,
++  nur-program-learning,
++  nur-linyinfeng,
++  nur-xddxdd,
++  nur-AtaraxiaSjel,
++  nur-arti5an,
++  nix-gaming,
++  aagl,
++  nixpkgs-23_05,
++  ...
++}: let
++  aagl-gtk-on-nix =
++    import (builtins.fetchTarball
++      "https://github.com/ezKEa/aagl-gtk-on-nix/archive/main.tar.gz");
++in {
++  nix.settings.substituters = ["https://mirror.sjtu.edu.cn/nix-channels/store" "https://mirrors.ustc.edu.cn/nix-channels/store"];
++  home.packages =
++    [
++      # aagl-gtk-on-nix.anime-game-launcher
++      # aagl-gtk-on-nix.anime-borb-launcher
++      # aagl-gtk-on-nix.honkers-railway-launcher
++      # aagl-gtk-on-nix.honkers-launcher
++    ]
++    ++ (with pkgs;
++      # nixpkgs here
++        [
++          trickle
++          # use this to pop a input window
++          gnome.zenity
++          jansson
++          nftables
++          cachix
++          weston
++          libsForQt5.qtstyleplugin-kvantum
++          gnome.adwaita-icon-theme
++          go-musicfox
++          mpvpaper
++          # --nvidia cuda
++          cudatoolkit
++
++          # bilibili
++          yutto
++
++          konsole
++          powerdevil
++
++          # --android
++          gnome.gnome-boxes
++          gnirehtet
++          libmtp
++          adb-sync
++          abootimg
++          android-studio
++          android-tools
++          edl
++          genymotion
++          # --payload-dumper
++          payload-dumper-go
++
++          # --java ide
++          # jetbrains.idea-ultimate
++          jetbrains.idea-community
++          eclipses.eclipse-sdk
++
++          # --mc
++          # minecraft
++          # prismlauncher
++
++          warp
++          cloudflare-warp
++
++          glib
++          calcurse
++
++          # --haskell
++          ghc
++
++          appimage-run
++
++          # --vim-like browser
++          vimb
++
++          # --Netease music
++          yesplaymusic
++
++          # --agent
++          clash-verge
++          sing-box
++
++          # --Office
++          onlyoffice-bin
++          libreoffice
++          mdp
++          slides
++
++          # --math software
++          # geogebra6
++
++          # --communication apps
++
++          # --video software
++          vlc
++
++          # --achieve/file managers
++          xarchiver
++          mate.engrampa
++          gnome.nautilus
++          nautilus-open-any-terminal
++          gnome.file-roller
++          ark
++          dolphin
++          ranger
++
++          # --download manager
++          motrix
++
++          # --wine
++          protonup-qt
++          wine-staging
++          # wine64Packages.stagingFull
++          # winePackages.stagingFull
++          winetricks
++          onscripter-en
++          playonlinux
++          bottles
++          # bottles-unwrapped
++          lutris
++          # lutris-unwrapped
++
++          # --remote control
++          rustdesk
++          # sunshine
++          moonlight-qt
++          # moonlight-embedded
++          wayvnc
++          waypipe
++          # turbovnc
++          xrdp
++          libvncserver
++          gnome.gnome-remote-desktop
++          gnome.gnome-clocks
++          novnc
++
++          # dunst
++          # pipewire
++          wireplumber
++          tofi
++          eww-wayland
++          rofi-wayland
++          polkit-kde-agent
++          qt6.qtwayland
++          # wayland
++          # wayland-scanner
++          # wayland-utils
++          # egl-wayland
++          # wayland-protocols
++          # glfw-wayland
++          wev
++          # libsForQt5.qt5.qtwayland
++          xdg-desktop-portal-hyprland
++          libsForQt5.qt5ct
++          linuxKernel.packages.linux_6_1.v4l2loopback
++          libsForQt5.polkit-kde-agent
++          brightnessctl
++          # kitty-themes
++
++          adwaita-qt
++          adwaita-qt6
++          lxde.lxsession # lxpolkit
++          # polkit_gnome
++          # deepin.dde-polkit-agent
++          hyprpicker
++          swappy
++          bluez
++          sysfsutils
++          # jq
++          # wlroots
++          # catppuccin-kvantum
++          # htop
++          vim # file editor
++          # postman
++          artha
++          iw
++          file
++          coreutils
++          openssl
++          gitRepo
++          # python310 python310.pkgs.pip pipenv
++          nodejs
++          # php mysql80 apacheHttpd nginxShibboleth # PHP
++          php
++          php81Packages.composer
++          nixfmt
++          fuse
++          ntfs3g
++          foot # terminal
++          fish # shell
++          scrcpy
++          jadx
++          meld
++          distrobox
++          darling-dmg
++          dash
++          unrar-wrapper
++          # python2Full
++          inotify-tools
++          python311Packages.gpustat
++          vmware-workstation
++
++          # --usb flashing
++          ventoy
++
++          # --Graphical application to analyse disk usage in any GNOME environment
++          baobab
++
++          # vaapi
++          gst_all_1.gst-vaapi
++          # sshfs
++          sftpman
++          # edge browser
++          microsoft-edge
++          # sql
++          mysql80
++
++          # pkg required by nix-shell
++          pkg-config
++          ncurses
++          # ncurses6
++          # ncurses5
++          pkgsCross.aarch64-multiplatform.stdenv.cc
++          pkgsCross.arm-embedded.stdenv.cc
++          #clang15Stdenv
++          #pkgsLLVM.crossLibcStdenv
++          # clang-tools
++          # glibc
++          libcxx
++          zlib
++          ninja
++        ])
++    # nixpkgs-unstable
++    ++ (with pkgs-unstable; [
++      fastfetch
++      hmcl
++      OVMFFull.fd
++      mission-center
++    ])
++    # nur packages here
++    ++ (
++      # with pkgs.nur.repos;
++      [
++        # YisuiMilena.hmcl-bin
++        nur-linyinfeng.packages.${pkgs.system}.wemeet
++        nur-linyinfeng.packages.${pkgs.system}.icalingua-plus-plus
++        nur-linyinfeng.packages.${pkgs.system}.matrix-wechat
++        nur-xddxdd.packages.${pkgs.system}.wechat-uos
++        nur-xddxdd.packages.${pkgs.system}.dingtalk
++        # nur-xddxdd.packages.${pkgs.system}.bilibili
++        nur-xddxdd.packages.${pkgs.system}.onepush
++        nur-xddxdd.packages.${pkgs.system}.grasscutter
++        nur-AtaraxiaSjel.packages.${pkgs.system}.waydroid-script
++        nur-arti5an.packages.${pkgs.system}.mount-zip
++        nur-program-learning.packages.${pkgs.system}.qtscrcpy
++        nur-program-learning.packages.${pkgs.system}.escrcpy_appimage
++        nur-program-learning.packages.${pkgs.system}.watt-toolkit_2
++        nur-program-learning.packages.${pkgs.system}.AppimageLauncher
++        # nur-program-learning.packages.${pkgs.system}.CrossOver
++        # nur-program-learning.packages.${pkgs.system}.waybar-bluetooth_battery_parse
++        nix-gaming.packages.${pkgs.system}.osu-stable
++        # aleksana.go-musicfox
++        # aleksana.fastfetch
++        # alexnortung.pkgs.papermc-1_18_x
++      ]
++    )
++    # ++ (with nixpkgs-23_05; [sqliteman])
++    ++ (let
++      nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
++        export __NV_PRIME_RENDER_OFFLOAD=1
++        export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
++        export __GLX_VENDOR_LIBRARY_NAME=nvidia
++        export __VK_LAYER_NV_optimus=NVIDIA_only
++        exec "$@"
++      '';
++    in [nvidia-offload]);
++
++  # Custom Desktop Shortcuts
++  home.file = {
++    # ".local/share/icons/wechat_devtools.png".source =
++    #   ./shortcuts/wechat-devtools.png;
++    # ".local/share/applications/io.github.msojocs.wechat_devtools.desktop".source =
++    #   ./shortcuts/io.github.msojocs.wechat_devtools.desktop;
++
++    # ".local/share/icons/Adobe_Photoshop_CS6.png".source =
++    #   ./shortcuts/Adobe_Photoshop_CS6.png;
++    # ".local/share/applications/Adobe_Photoshop_CS6.desktop".source =
++    #   ./shortcuts/Adobe_Photoshop_CS6.desktop;
++
++    # ".local/share/icons/Adobe_Illustrator_CS6.png".source =
++    #   ./shortcuts/Adobe_Illustrator_CS6.png;
++    # ".local/share/applications/Adobe_Illustrator_CS6.desktop".source =
++    #   ./shortcuts/Adobe_Illustrator_CS6.desktop;
++  };
++  # home.file.".local/share/applications/vim.desktop".source = ./shortcuts/vim.desktop;
++  # home.file.".local/share/applications/code_ime.desktop".source = ./shortcuts/code_ime.desktop;
++  # home.file.".local/share/applications/code_no_gpu.desktop".source = ./shortcuts/code_no_gpu.desktop;
++
++  services = {
++    kdeconnect.enable = true;
++    kdeconnect.indicator = true;
++  };
++}
+diff --git a/home/linux/desktop/default.nix b/home/linux/desktop/default.nix
+index be6b8a0..7165535 100644
+--- a/home/linux/desktop/default.nix
++++ b/home/linux/desktop/default.nix
+@@ -1,4 +1,9 @@
+-{pkgs, ...}: {
++{
++  pkgs,
++  nur-program-learning,
++  pkgs-unstable,
++  ...
++}: {
+   imports = [
+     ./creative.nix
+     ./gtk.nix
+@@ -8,6 +13,8 @@
+     ./wallpaper.nix
+     ./xdg.nix
+     ./eye-protection.nix
++
++    ./custom-addon.nix
+   ];
+ 
+   home.packages = with pkgs; [
+@@ -20,7 +27,7 @@
+     telegram-desktop
+     discord
+     qq # https://github.com/NixOS/nixpkgs/tree/master/pkgs/applications/networking/instant-messengers/qq
+-
++    # nur-program-learning.packages.${pkgs.system}.llqqnt
+     # remote desktop(rdp connect)
+     remmina
+     freerdp # required by remmina
+diff --git a/home/linux/desktop/gtk.nix b/home/linux/desktop/gtk.nix
+index 8088459..a2b5ac2 100644
+--- a/home/linux/desktop/gtk.nix
++++ b/home/linux/desktop/gtk.nix
+@@ -18,9 +18,9 @@
+   # set dpi for 4k monitor
+   xresources.properties = {
+     # dpi for Xorg's font
+-    "Xft.dpi" = 150;
++    "Xft.dpi" = 96;
+     # or set a generic dpi
+-    "*.dpi" = 150;
++    "*.dpi" = 96;
+   };
+ 
+   # gtk's theme settings, generate files:
+diff --git a/home/linux/desktop/shortcuts/Adobe_Illustrator_CS6.desktop b/home/linux/desktop/shortcuts/Adobe_Illustrator_CS6.desktop
+new file mode 100755
+index 0000000..2c9ad1e
+--- /dev/null
++++ b/home/linux/desktop/shortcuts/Adobe_Illustrator_CS6.desktop
+@@ -0,0 +1,9 @@
++[Desktop Entry]
++Name=Adobe Illustrator CS6
++Exec=sh -c 'xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 1 && adobe_illustrator_cs6 && xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2'
++Type=Application
++Terminal=false
++StartupNotify=false
++Comment=GameLinux
++Icon=Adobe_Illustrator_CS6
++Categories=Graphics;2DGraphics;
+diff --git a/home/linux/desktop/shortcuts/Adobe_Illustrator_CS6.png b/home/linux/desktop/shortcuts/Adobe_Illustrator_CS6.png
+new file mode 100644
+index 0000000..42029c0
+Binary files /dev/null and b/home/linux/desktop/shortcuts/Adobe_Illustrator_CS6.png differ
+diff --git a/home/linux/desktop/shortcuts/Adobe_Photoshop_CS6.desktop b/home/linux/desktop/shortcuts/Adobe_Photoshop_CS6.desktop
+new file mode 100755
+index 0000000..e86a105
+--- /dev/null
++++ b/home/linux/desktop/shortcuts/Adobe_Photoshop_CS6.desktop
+@@ -0,0 +1,9 @@
++[Desktop Entry]
++Name=Adobe Photoshop CS6
++Exec=sh -c 'xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 1 && adobe_photoshop_cs6 && xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2'
++Type=Application
++Terminal=false
++StartupNotify=false
++Comment=GameLinux CS6
++Icon=Adobe_Photoshop_CS6
++Categories=Graphics;2DGraphics;
+diff --git a/home/linux/desktop/shortcuts/Adobe_Photoshop_CS6.png b/home/linux/desktop/shortcuts/Adobe_Photoshop_CS6.png
+new file mode 100755
+index 0000000..41af4fa
+Binary files /dev/null and b/home/linux/desktop/shortcuts/Adobe_Photoshop_CS6.png differ
+diff --git a/home/linux/desktop/shortcuts/code_ime.desktop b/home/linux/desktop/shortcuts/code_ime.desktop
+new file mode 100644
+index 0000000..2723773
+--- /dev/null
++++ b/home/linux/desktop/shortcuts/code_ime.desktop
+@@ -0,0 +1,19 @@
++[Desktop Entry]
++Actions=new-empty-window
++Categories=Utility;TextEditor;Development;IDE
++Comment=Code Editing. Redefined.
++Exec=code --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime %F
++GenericName=Text Editor
++Icon=code
++Keywords=vscode
++MimeType=text/plain;inode/directory
++Name=Visual Studio Code on Wayland With Fcitx5
++StartupNotify=true
++StartupWMClass=Code
++Type=Application
++Version=1.4
++
++[Desktop Action new-empty-window]
++Exec=code --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime --new-window %F
++Icon=code
++Name=New Empty Window
+diff --git a/home/linux/desktop/shortcuts/code_no_gpu.desktop b/home/linux/desktop/shortcuts/code_no_gpu.desktop
+new file mode 100644
+index 0000000..a90ab88
+--- /dev/null
++++ b/home/linux/desktop/shortcuts/code_no_gpu.desktop
+@@ -0,0 +1,19 @@
++[Desktop Entry]
++Actions=new-empty-window
++Categories=Utility;TextEditor;Development;IDE
++Comment=Code Editing. Redefined.
++Exec=code --disable-gpu %F
++GenericName=Text Editor
++Icon=code
++Keywords=vscode
++MimeType=text/plain;inode/directory
++Name=Visual Studio Code without gpu acc
++StartupNotify=true
++StartupWMClass=Code
++Type=Application
++Version=1.4
++
++[Desktop Action new-empty-window]
++Exec=code --disable-gpu --new-window %F
++Icon=code
++Name=New Empty Window
+diff --git a/home/linux/desktop/shortcuts/io.github.msojocs.wechat_devtools.desktop b/home/linux/desktop/shortcuts/io.github.msojocs.wechat_devtools.desktop
+new file mode 100644
+index 0000000..5a1a5fe
+--- /dev/null
++++ b/home/linux/desktop/shortcuts/io.github.msojocs.wechat_devtools.desktop
+@@ -0,0 +1,14 @@
++[Desktop Entry]
++Name=WeChat Dev Tools
++Name[zh_CN]=微信开发者工具
++Comment=The development tools for wechat projects
++Comment[zh_CN]=提供微信开发相关项目的开发IDE支持
++Categories=Development;WebDevelopment;IDE;
++Exec=wechat_dev_tools
++Icon=wechat_devtools
++Type=Application
++Terminal=false
++StartupWMClass=wechat_devtools
++Actions=
++MimeType=x-scheme-handler/wechatide
++X-AppImage-Version=v1.06.2306020-1
+diff --git a/home/linux/desktop/shortcuts/vim.desktop b/home/linux/desktop/shortcuts/vim.desktop
+new file mode 100644
+index 0000000..fd33cf3
+--- /dev/null
++++ b/home/linux/desktop/shortcuts/vim.desktop
+@@ -0,0 +1,10 @@
++[Desktop Entry]
++Name=NVim Text Editor
++Comment=Edit text files
++Exec=nvim %F
++Terminal=true
++Type=Application
++Icon=terminal
++Categories=Utility;TextEditor;
++StartupNotify=true
++MimeType=text/plain;
+\ No newline at end of file
+diff --git a/home/linux/desktop/shortcuts/wechat-devtools.png b/home/linux/desktop/shortcuts/wechat-devtools.png
+new file mode 100644
+index 0000000..0585021
+Binary files /dev/null and b/home/linux/desktop/shortcuts/wechat-devtools.png differ
+diff --git a/home/linux/desktop/ssh.nix b/home/linux/desktop/ssh.nix
+index 4d2ae66..19e151b 100644
+--- a/home/linux/desktop/ssh.nix
++++ b/home/linux/desktop/ssh.nix
+@@ -59,6 +59,18 @@
+         ForwardAgent yes
+         IdentityFile ~/.ssh/romantic
+         IdentitiesOnly yes
++
++      Host mondrian_1
++        HostName 192.168.0.121
++        ForwardAgent yes
++        IdentityFile ~/.ssh/id_ed25519
++        IdentitiesOnly yes
++
++      Host pstar_1
++        HostName 192.168.0.123
++        ForwardAgent yes
++        IdentityFile ~/.ssh/id_ed25519
++        IdentitiesOnly yes
+     '';
+   };
+ }
+diff --git a/home/linux/desktop/wallpaper.nix b/home/linux/desktop/wallpaper.nix
+index 26deb94..72fe187 100644
+--- a/home/linux/desktop/wallpaper.nix
++++ b/home/linux/desktop/wallpaper.nix
+@@ -5,4 +5,8 @@
+     source = "${wallpapers}/wallpaper_random.py";
+     executable = true;
+   };
++  home.file.".local/bin/default_wall" = {
++    source = "${wallpapers}/default_wall.py";
++    executable = true;
++  };
+ }
+diff --git a/home/linux/desktop/xdg.nix b/home/linux/desktop/xdg.nix
+index d7b7b25..4372191 100644
+--- a/home/linux/desktop/xdg.nix
++++ b/home/linux/desktop/xdg.nix
+@@ -25,14 +25,30 @@
+     #  ls /etc/profiles/per-user/ryan/share/applications/
+     mimeApps = {
+       enable = true;
++      associations.added = let
++        browser = ["firefox.desktop"];
++        office = ["onlyoffice-desktopeditors.desktop" "writer.desktop"];
++        code = ["code.desktop" "nvim.desktop"];
++        editor = ["nvim.desktop" "Helix.desktop" "code.desktop"];
++      in {
++        "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = office;
++        "application/x-php" = code;
++        "text/plain" = editor;
++        "text/x-makefile" = editor;
++        "application/x-wine-extension-ini" = editor;
++      };
+       defaultApplications = let
+         browser = ["firefox.desktop"];
++        office = ["onlyoffice-desktopeditors.desktop" "writer.desktop"];
++        code = ["code.desktop" "nvim.desktop"];
++        editor = ["nvim.desktop" "Helix.desktop" "code.desktop"];
+       in {
+         "application/json" = browser;
+         "application/pdf" = browser; # TODO: pdf viewer
+ 
+         "text/html" = browser;
+         "text/xml" = browser;
++        "text/plain" = editor;
+         "application/xml" = browser;
+         "application/xhtml+xml" = browser;
+         "application/xhtml_xml" = browser;
+@@ -43,6 +59,8 @@
+         "application/x-extension-shtml" = browser;
+         "application/x-extension-xht" = browser;
+         "application/x-extension-xhtml" = browser;
++        "application/x-shellscript" = editor;
++        "application/x-php" = code;
+ 
+         "x-scheme-handler/about" = browser;
+         "x-scheme-handler/ftp" = browser;
+@@ -60,6 +78,8 @@
+         "image/jpeg" = ["imv.desktop"];
+         "image/png" = ["imv.desktop"];
+         "image/webp" = ["imv.desktop"];
++        "application/x-wine-extension-ini" = editor;
++        "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = office;
+       };
+ 
+       associations.removed = {
+diff --git a/home/linux/fcitx5/.pam_environment b/home/linux/fcitx5/.pam_environment
+new file mode 100644
+index 0000000..fdc72a8
+--- /dev/null
++++ b/home/linux/fcitx5/.pam_environment
+@@ -0,0 +1,3 @@
++GTK_IM_MODULE DEFAULT=fcitx
++QT_IM_MODULE DEFAULT=fcitx
++XMODIFIERS DEFAULT=@im=fcitx
+diff --git a/home/linux/fcitx5/profile b/home/linux/fcitx5/profile
+index ca43a79..0467f9d 100644
+--- a/home/linux/fcitx5/profile
++++ b/home/linux/fcitx5/profile
+@@ -1,3 +1,23 @@
++[Groups/1]
++# Group Name
++Name=Default
++# Layout
++Default Layout=us
++# Default Input Method
++DefaultIM=pinyin
++
++[Groups/1/Items/0]
++# Name
++Name=keyboard-us
++# Layout
++Layout=
++
++[Groups/1/Items/1]
++# Name
++Name=pinyin
++# Layout
++Layout=
++
+ [Groups/0]
+ # Group Name
+ Name=Other
+@@ -13,5 +33,6 @@ Name=rime
+ Layout=
+ 
+ [GroupOrder]
+-0=Other
++0=Default
++1=Other
+ 
+diff --git a/home/linux/hyprland/default.nix b/home/linux/hyprland/default.nix
+index 07fd2e4..3e0b730 100644
+--- a/home/linux/hyprland/default.nix
++++ b/home/linux/hyprland/default.nix
+@@ -8,6 +8,7 @@
+   imports = [
+     ./anyrun.nix
+     ./wayland-apps.nix
++    ./hyprland-utils
+   ];
+ 
+   # NOTE:
+@@ -57,6 +58,9 @@
+     "NIXOS_OZONE_WL" = "1"; # for any ozone-based browser & electron apps to run on wayland
+     "MOZ_ENABLE_WAYLAND" = "1"; # for firefox to run on wayland
+     "MOZ_WEBRENDER" = "1";
++    "QT_QPA_PLATFORM" = "wayland";
++    "SDL_VIDEODRIVER" = "wayland";
++    "GDK_BACKEND" = "wayland";
+ 
+     # for hyprland with nvidia gpu, ref https://wiki.hyprland.org/Nvidia/
+     "LIBVA_DRIVER_NAME" = "nvidia";
+diff --git a/home/linux/hyprland/hypr-conf/hyprland.conf b/home/linux/hyprland/hypr-conf/hyprland.conf
+index f67a28a..0c2ef13 100644
+--- a/home/linux/hyprland/hypr-conf/hyprland.conf
++++ b/home/linux/hyprland/hypr-conf/hyprland.conf
+@@ -13,8 +13,8 @@ env = WLR_NO_HARDWARE_CURSORS,1
+ 
+  # format:
+  #    monitor=name,resolution,position,scale
+- monitor=DP-2,3840x2160@144,0x0,1.6
+- workspace=DP-2,1
++ monitor=eDP-1,2560x1600@60,0x0,1
++ workspace=eDP-1,1
+ 
+ #-- Input ----------------------------------------------------
+ # Configure mouse and touchpad here.
+@@ -26,6 +26,10 @@ input {
+     kb_rules=
+     follow_mouse=1
+     natural_scroll=0
++    touchpad {
++        natural_scroll = 1
++    }
++
+ 	force_no_accel=0
+     # repeat_rate=
+     # repeat_delay=
+@@ -70,10 +74,10 @@ decoration {
+ #-- Animations ----------------------------------------------------
+ animations {
+     enabled=1
+-    animation=windows,1,8,default,popin 80%
+-    animation=fadeOut,1,8,default
+-    animation=fadeIn,1,8,default
+-    animation=workspaces,1,8,default
++    animation=windows,1,3,default,popin 80%
++    animation=fadeOut,1,3,default
++    animation=fadeIn,1,3,default
++    animation=workspaces,1,3,default
+     #animation=workspaces,1,6,overshot
+ }
+ 
+@@ -82,6 +86,16 @@ dwindle {
+     pseudotile=0 			# enable pseudotiling on dwindle
+ }
+ 
++
++#-- plugin ----------------------------------------------------
++plugin {
++    hyprbars {
++        buttons {
++
++        }
++    }
++}
++
+ #-- Window Rules ----------------------------------------------------
+ windowrule=float,foot-float
+ windowrule=float,yad|nm-connection-editor|pavucontrolk
+@@ -89,6 +103,9 @@ windowrule=float,xfce-polkit|kvantummanager|qt5ct
+ windowrule=float,feh|imv|Gpicview|Gimp|nomacs
+ windowrule=float,VirtualBox Manager|qemu|Qemu-system-x86_64
+ windowrule=float,xfce4-appfinder
++windowrule=float,wemeet
++windowrule=float,fcitx5-config-qt|fcitx5-configtool
++windowrule=float,fcitx5-config-qt
+ 
+ windowrule=float,foot-full
+ windowrule=move 0 0,foot-full
+@@ -100,6 +117,7 @@ windowrule=size 100% 100%,wlogout
+ windowrule=animation slide,wlogout
+ 
+ #-- Keybindings ----------------------------------------------------
++$mainMod = SUPER
+ $term = kitty
+ $app_launcher = ~/.config/hypr/scripts/menu
+ $volume = ~/.config/hypr/scripts/volume
+@@ -108,7 +126,8 @@ $screenshot = ~/.config/hypr/scripts/screenshot
+ $lockscreen = ~/.config/hypr/scripts/lockscreen
+ $wlogout = ~/.config/hypr/scripts/wlogout
+ $colorpicker = ~/.config/hypr/scripts/colorpicker
+-$files = thunar
++$files = nautilus
++$editor = vim  # vim
+ $browser = firefox
+ 
+ # -- Terminal --
+@@ -147,9 +166,9 @@ bind=,XF86AudioPlay,exec,mpc toggle
+ bind=,XF86AudioStop,exec,mpc stop
+ 
+ # -- Screenshots --
+-bind=,Print,exec,$screenshot --now
+-bind=SUPER,Print,exec,$screenshot --win
+-bind=CTRL,Print,exec,$screenshot --area
++bind=,Print,exec,hyprshot -m output -o ~/Pictures/Screenshots -- imv
++bind=SUPER,Print,exec,hyprshot -m window -o ~/Pictures/Screenshots -- imv
++bind=CTRL,Print,exec,hyprshot -m region -o ~/Pictures/Screenshots -- imv
+ 
+ # Focus
+ bind=SUPER,left,movefocus,l
+@@ -218,7 +237,7 @@ exec-once = hyprctl setcursor "Bibata-Modern-Ice" 24
+ # 相比较一开始的方案输入法字体大小也正确了．唯一有点问题的可能是 xwayland 窗口下的鼠标指针大小不对
+ exec-once = xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2
+ 
+--- Fix HiDPI - xwayland
++#-- Fix HiDPI - xwayland
+ # change monitor to high resolution, the last argument is the scale factor
+ monitor=,highres,auto,2
+ 
+@@ -228,5 +247,41 @@ xwayland {
+ }
+ 
+ # toolkit-specific scale
+-env = GDK_SCALE,2
++env = GDK_SCALE,1
+ env = XCURSOR_SIZE,32
++
++
++
++
++exec-once = xrdb -merge ~/.Xresources
++
++#-- brightnessctl
++bind = , XF86MonBrightnessDown, exec, brightnessctl set 5%-
++bind = , XF86MonBrightnessUp, exec, brightnessctl set 5%+
++
++#-- playerctl
++bind = , XF86AudioNext , exec, playerctl next
++bind = , XF86AudioPrev , exec, playerctl previous
++# the play-pause button beside delete button
++bind = , XF86AudioPlay, exec, playerctl play-pause
++# the stop button beside play-pause button
++bind = , XF86AudioStop, exec, playerctl stop
++# From my bluetootn device
++bind = , XF86AudioPause , exec, playerctl play-pause
++bind = SUPER, E, exec, $files
++
++# movewindow
++bind = SUPERSHIFT , h, moveactive,-20 0 
++bind = SUPERSHIFT , j, moveactive,0 20
++bind = SUPERSHIFT , l, moveactive,20 0
++bind = SUPERSHIFT , K, moveactive,0 -20
++# tun off screen
++bind = SUPER , XF86PowerOff , exec , sleep 2 && hyprctl dispatch dpms off
++bind =  , XF86PowerOff , exec , hyprctl dispatch dpms on
++
++#-- qt_theme
++env = QT_STYLE_OVERRIDE,kvantum
++
++#-- gtk darkmode
++env = GTK_THEME,Adwaita:dark
++
+diff --git a/home/linux/hyprland/hypr-conf/scripts/bluetooth_battery b/home/linux/hyprland/hypr-conf/scripts/bluetooth_battery
+new file mode 100755
+index 0000000..c0f1a07
+--- /dev/null
++++ b/home/linux/hyprland/hypr-conf/scripts/bluetooth_battery
+@@ -0,0 +1,30 @@
++#!/usr/bin/env bash
++
++devices=()
++
++# 获取已连接蓝牙设备列表
++connected_devices=$(bluetoothctl devices Connected | grep -oP 'Device \K.*')
++
++# 遍历每个设备
++while IFS= read -r device; do
++    # 提取设备的MAC地址
++    mac=$(echo "$device" | awk '{print $1}')
++ 
++    # 提取设备的名称
++    name=$(echo "$device" | awk '{$1=""; print substr($0,2)}')
++ 
++    # 获取设备的电池信息
++    battery=-1
++    if [[ $(bluetoothctl info "$mac" | grep -c "Battery Percentage:") -eq 1 ]]; then
++        battery=$(bluetoothctl info "$mac" | grep -oP 'Battery Percentage: \K.*' | tr -d '(' | tr -d ')' | awk '{print $2}')
++    fi
++ 
++    # 构建设备字典
++    device_info='{"mac":"'${mac}'","name":"'${name}'","battery":'${battery}'}'
++ 
++    # 将设备字典添加到设备列表中
++    devices+=("$device_info")
++done <<< "$connected_devices"
++
++# 输出设备列表为JSON数组
++echo '['$(IFS=,; echo "${devices[*]}")']'
+diff --git a/home/linux/hyprland/hypr-conf/scripts/cpugovernor b/home/linux/hyprland/hypr-conf/scripts/cpugovernor
+new file mode 100755
+index 0000000..4e640ba
+--- /dev/null
++++ b/home/linux/hyprland/hypr-conf/scripts/cpugovernor
+@@ -0,0 +1,4 @@
++#!/usr/bin/env bash
++
++GOV=$(cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor)
++echo '{"text": "perf", "alt": "'$GOV'", "class": "'$GOV'", "tooltip": "Governor <b>'$GOV'</b>"}'
+diff --git a/home/linux/hyprland/hypr-conf/scripts/recording b/home/linux/hyprland/hypr-conf/scripts/recording
+new file mode 100755
+index 0000000..9836fd1
+--- /dev/null
++++ b/home/linux/hyprland/hypr-conf/scripts/recording
+@@ -0,0 +1,52 @@
++#!/usr/bin/env bash
++# $HOME/.config/hypr/scripts/recording
++
++ScreenRecordDir="$HOME/Videos/ScreenRecordings"
++ProcessInfo="$ScreenRecordDir/process.pid"
++WF_RECORDER_OPTS=""
++VIDEOEXT="mkv"
++
++if [ "$1" == "status" ];
++then
++	if [ -f "$ProcessInfo" ];
++	then
++		awk 'BEGIN{printf "{\"text\":\"\", \"tooltip\":\"Recording\\n"}
++		NR==1{printf "PID: %s\\n", $0}
++		NR==2{printf "Save to: %s\\n", $0}
++		NR==3{printf "Log to: %s\"}", $0}' "$ProcessInfo"
++	else
++		echo '{"text":"", "tooltip":"Left: FullScreen\nRight: Selection"}'
++	fi
++	exit
++elif [ "$1" == "toggle" ];
++then
++	if [ -f "$ProcessInfo" ];
++	then
++		pid=$(cat $ProcessInfo | head -n 1)
++		kill -s SIGINT "$pid"
++		rm "$ProcessInfo"
++	else
++		[ -d $ScreenRecordDir ] || mkdir -p "$ScreenRecordDir"
++		PrefixOfFiles="$ScreenRecordDir/$(date +'%Y%m%dT%H%M%S')"
++		VideoFileName="$PrefixOfFiles.$VIDEOEXT"
++		LogFileName="$PrefixOfFiles.log"
++		if [ "$2" == "fullscreen" ]; then
++			wf-recorder $WF_RECORDER_OPTS -f "$VideoFileName" 1>"$LogFileName" 2>&1 &
++		elif [ "$2" == "region" ]; then
++			region=$(slurp -b 1B1F2800 -c E06B74ff -s C778DD0D -w 2 -d -o)
++			while [ ! -z $(pgrep -x slurp) ]; do wait; done
++			wf-recorder $WF_RECORDER_OPTS -g "$region" -f "$VideoFileName" 1>"$LogFileName" 2>&1 &
++		else
++			printf "Argument %s not valid" "$2"
++			exit
++		fi
++		pid=$(jobs -p | tail -n 1)
++		printf "%d\n%s\n%s" "$pid" "$VideoFileName" "$LogFileName" > "$ProcessInfo"
++		disown "$pid"
++	fi
++	exit
++else
++	printf "Argument %s not valid" "$1"
++fi
++
++# https://gist.github.com/raffaem/bb9c35c6aab663efd7a0400c33d248a1
+diff --git a/home/linux/hyprland/hypr-conf/scripts/screenshot b/home/linux/hyprland/hypr-conf/scripts/screenshot
+index 851f334..c1d5c7b 100755
+--- a/home/linux/hyprland/hypr-conf/scripts/screenshot
++++ b/home/linux/hyprland/hypr-conf/scripts/screenshot
+@@ -34,7 +34,7 @@ shotwin () {
+ }
+ 
+ shotarea () {
+-	cd ${dir} && grim -g "$(slurp -b 1B1F28CC -c E06B74ff -s C778DD0D -w 2)" - | tee "$file" | wl-copy
++	cd ${dir} && grim -g "$(slurp -b 1B1F2800 -c E06B74ff -s C778DD0D -w 2 -d)" - | tee "$file" | wl-copy
+ 	notify_view
+ }
+ 
+diff --git a/home/linux/hyprland/hypr-conf/scripts/showkey b/home/linux/hyprland/hypr-conf/scripts/showkey
+new file mode 100755
+index 0000000..a14ba19
+--- /dev/null
++++ b/home/linux/hyprland/hypr-conf/scripts/showkey
+@@ -0,0 +1,23 @@
++#!/usr/bin/env bash
++
++if [ "$1" == "status" ];
++then
++    if [[ $(pidof wshowkeys) ]];
++  then
++    echo "{\"text\":\"√\", \"tooltip\":\"isStarted\"}" 
++  else
++    echo "{\"text\":\"x\", \"tooltip\":\"isStoped\"}" 
++  fi
++elif [ "$1" == "toggle" ];
++then
++  if [[ $(pidof wshowkeys) ]];
++  then
++    killall -9 wshowkeys &
++  else
++    wshowkeys -t 100000000 -a right -a top &
++  fi
++else
++  echo "usage:
++  - showkey status
++  - showkey toggle"
++fi
+diff --git a/home/linux/hyprland/hypr-conf/scripts/startup b/home/linux/hyprland/hypr-conf/scripts/startup
+index 6888d59..ed74849 100755
+--- a/home/linux/hyprland/hypr-conf/scripts/startup
++++ b/home/linux/hyprland/hypr-conf/scripts/startup
+@@ -3,7 +3,7 @@
+ ## Autostart Programs
+ 
+ # Kill already running process
+-_ps=(waybar mako mpd)
++_ps=(waybar mako mpd wayvnc lxpolkit swaybg clash-verge swayidle clash xdg-desktop-portal-hyprland)
+ for _prs in "${_ps[@]}"; do
+ 	if [[ $(pidof ${_prs}) ]]; then
+ 		killall -9 ${_prs}
+@@ -17,7 +17,23 @@ swaybg --output '*' --mode fill --image ~/.config/wallpapers/default_wallpaper &
+ ~/.config/hypr/scripts/notifications &
+ 
+ # Lauch statusbar (waybar)
+-~/.config/hypr/scripts/statusbar &
++# ~/.config/hypr/scripts/statusbar &
++~/.config/hypr/scripts/statusbar_debug &
+ 
+ # Start mpd
+ exec mpd &
++
++# Start wayvnc
++exec wayvnc &
++
++# Start clash-verge
++exec clash-verge &
++
++# Start lxpolkit
++exec lxpolkit &
++
++exec /nix/store/*xdg-desktop-portal-hyprland*/libexec/xdg-desktop-portal-hyprland &
++
++# Start swayidle
++# exec swayidle -w timeout 1800 'systemctl suspend' resume 'hyprctl dispatch dpms on' timeout 120 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on' before-sleep 'swaylock'
++exec swayidle -w timeout 120 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on' before-sleep 'swaylock' &
+\ No newline at end of file
+diff --git a/home/linux/hyprland/hypr-conf/scripts/statusbar_debug b/home/linux/hyprland/hypr-conf/scripts/statusbar_debug
+new file mode 100755
+index 0000000..79a1655
+--- /dev/null
++++ b/home/linux/hyprland/hypr-conf/scripts/statusbar_debug
+@@ -0,0 +1,15 @@
++#!/usr/bin/env bash
++
++## launch waybar with alt config
++
++CONFIG="$HOME/.config/hypr/waybar/config.jsonc"
++STYLE="$HOME/.config/hypr/waybar/style.css"
++
++kill $(pgrep waybar)
++while true; do
++    if [[ ! $(pidof waybar) ]]; then
++        waybar --bar main-bar --log-level error --config ${CONFIG} --style ${STYLE}
++    fi
++    inotifywait -e create,modify $CONFIG $STYLE
++    kill $(pgrep waybar)
++done
+\ No newline at end of file
+diff --git a/home/linux/hyprland/hypr-conf/scripts/toggle-wf-recorder b/home/linux/hyprland/hypr-conf/scripts/toggle-wf-recorder
+new file mode 100755
+index 0000000..16b02f4
+--- /dev/null
++++ b/home/linux/hyprland/hypr-conf/scripts/toggle-wf-recorder
+@@ -0,0 +1,44 @@
++#!/usr/bin/env bash
++
++dir=$(xdg-user-dir VIDEOS)/Aufnahmen
++
++[ -d $dir ] || mkdir -p $dir
++
++file=$dir/$(date +'recording_%Y-%m-%d-%H%M%S.mp4')
++
++echo $file
++
++if [ -z $(pgrep wf-recorder) ]
++then
++  # do not disturb
++  # pkill --signal SIGINT mako
++  if [ "$1" == "-s" ]
++  then
++    notify-send "Record Selection"
++    area=$(slurp -b 1B1F2800 -c E06B74ff -s C778DD0D -w 2 -d)
++    while [ ! -z $(pgrep -x slurp) ]; do wait; done
++    wf-recorder -f $file -a -g "$area" &
++  elif [ "$1" == "-w" ]
++  then
++    slurp -b 00000000 -c 00000000 -s 00000000
++    sleep 5
++    w_pos=$(hyprctl activewindow | grep 'at:' | cut -d':' -f2 | tr -d ' ' | tail -n1)
++	  w_size=$(hyprctl activewindow | grep 'size:' | cut -d':' -f2 | tr -d ' ' | tail -n1 | sed s/,/x/g)
++    notify-send "Record Window"
++    wf-recorder -f $file -a -g "$w_pos $w_size" &
++  else
++    wf-recorder -f $file -a -g "$(swaymsg -t get_outputs | jq -r '.. | select(.active?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' | slurp -c "#FFFFFF" )"&
++    while [ ! -z $(pgrep -x slurp) ]; do wait; done
++  fi
++else
++  notify-send "Record Output"
++  pkill --signal SIGINT wf-recorder
++  while [ ! -z $(pgrep -x wf-recorder) ]; do wait; done
++  notify-send "Recording Stopped"
++  name=$(zenity --entry --text "Enter a filename")
++
++  if [ -n $name ]
++  then
++    mv $(ls -d $(xdg-user-dir VIDEOS)/Aufnahmen/* -t | head -n1) $(xdg-user-dir VIDEOS)/Aufnahmen/$name.mp4
++  fi
++fi
+diff --git a/home/linux/hyprland/hypr-conf/scripts/wf-recorder-status b/home/linux/hyprland/hypr-conf/scripts/wf-recorder-status
+new file mode 100755
+index 0000000..a5829f2
+--- /dev/null
++++ b/home/linux/hyprland/hypr-conf/scripts/wf-recorder-status
+@@ -0,0 +1,7 @@
++#!/usr/bin/env bash
++
++if pgrep -x wf-recorder >/dev/null; then
++  echo '{"text":"On","class":"on","alt":"on"}'
++else
++  echo '{"text":"Off","class":"off","alt":"off","tooltip": "Left: Selection\nRight: Window\nMiddle: Screen"}'
++fi
+diff --git a/home/linux/hyprland/hypr-conf/waybar/config.jsonc b/home/linux/hyprland/hypr-conf/waybar/config.jsonc
+index 143c2ba..a1cc409 100644
+--- a/home/linux/hyprland/hypr-conf/waybar/config.jsonc
++++ b/home/linux/hyprland/hypr-conf/waybar/config.jsonc
+@@ -4,6 +4,8 @@
+ 
+   "modules-left": [
+     "custom/launcher",
++    "custom/recording",
++    "custom/showkey",
+     "temperature",
+     "backlight",
+     "wlr/workspaces"
+@@ -13,7 +15,9 @@
+   ],
+   "modules-right": [
+     "mpd",
++    "bluetooth",
+     "pulseaudio",
++    "battery",
+     "memory",
+     "cpu",
+     "network",
+@@ -26,18 +30,7 @@
+     "format": "{icon}",
+     "on-click": "activate",
+     "format-icons": {
+-      "1": "",
+-      "2": "",
+-      "3": "",
+-      "4": "",
+-      "5": "",
+-      "6": "",
+-      "7": "",
+-      "8": "",
+-      "9": "",
+-      "10": "〇",
+-      "focused": "",
+-      "default": ""
++      "focused": ""
+     }
+   },
+ 
+@@ -47,7 +40,9 @@
+     "rotate": 0,
+     "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>",
+     "format": " {:%H:%M}",
+-    "format-alt": " {:%a %b %d, %G}"
++    "format-alt": " {:%a %b %d, %G}",
++    "on-double-click": "kitty calcurse",
++    "on-click-right": "gnome-clocks"
+   },
+   "cpu": {
+     "format": "\udb80\udf5b {usage}%",
+@@ -80,7 +75,9 @@
+     "interval": 1,
+     "states": {
+       "warning": 85
+-    }
++    },
++    "on-click-middle": "kitty btop",
++    "on-click-right": "kitty btop"
+   },
+   "mpd": {
+       "interval": 2,
+@@ -104,6 +101,11 @@
+       "on-scroll-down": "mpc seek -00:00:01",
+       "smooth-scrolling-threshold": 1
+   },
++  "custom/bluetooth_battery": {
++    "format":"  <span>{}</span>",
++    "return-type": "json",
++    "exec": "waybar-bluetooth_battery_parse"
++  },
+   "custom/playerctl": {
+      "format": "{icon}  <span>{}</span>",
+      "return-type": "json",
+@@ -129,7 +131,7 @@
+       "tooltip-format": " {ifname} via {gwaddr}",
+       "on-click-middle": "nm-connection-editor",
+       "on-click-right": "kitty nmtui"
+-  },
++    },
+   "pulseaudio": {
+       //"format": "{volume}% {icon} {format_source}",
+       "format": "{icon} {volume}%",
+@@ -155,7 +157,7 @@
+       // Commands to execute on events
+       "on-click": "amixer set Master toggle",
+       "on-click-right": "pavucontrol",
+-      "smooth-scrolling-threshold": 1,
++      "smooth-scrolling-threshold": 1
+   },
+   "temperature": {
+     "format": "\uf2c9 {temperatureC}\u00b0C",
+@@ -178,5 +180,88 @@
+   "tray": {
+     "icon-size": 15,
+     "spacing": 5
++  },
++  "battery": {
++    "bat": "BAT0",
++    "adapter": "ADP0",
++    "interval": 60,
++    "states": {
++      "warning": 30,
++      "critical": 15
++    },
++    "max-length": 20,
++    "format": "{icon} {capacity}%",
++    "format-warning": "{icon} {capacity}%",
++    "format-critical": "{icon} {capacity}%",
++    "format-charging": "<span font-family='Font Awesome 6 Free'></span> {capacity}%",
++    "format-plugged": " {capacity}%",
++    "format-alt": "{icon} {time}",
++    "format-full": " {capacity}%",
++    "format-icons": [
++      " ",
++      " ",
++      " ",
++      " ",
++      " "
++    ]
++  },
++  "custom/recorder": {
++        "format": "{icon}",
++        "return-type": "json",
++        "interval": 2,
++        "format-icons": {
++          "on": "",
++          "off": ""
++        },
++        "tooltip": true,
++        "exec": "$HOME/.config/hypr/scripts/wf-recorder-status",
++        "on-click": "$HOME/.config/hypr/scripts/toggle-wf-recorder -s",
++        "on-click-right": "$HOME/.config/hypr/scripts/toggle-wf-recorder -w",
++        "on-click-middle": "$HOME/.config/hypr/scripts/toggle-wf-recorder"
++    },
++  "custom/recording": {
++	  "exec": "$HOME/.config/hypr/scripts/recording status",
++	  "format": "{}",
++	  "on-click": "$HOME/.config/hypr/scripts/recording toggle fullscreen",
++	  "on-click-right": "$HOME/.config/hypr/scripts/recording toggle region",
++	  "restart-interval": 1,
++	  "return-type": "json",
++	  "tooltip": true
++  },
++  "custom/showkey": {
++	  "exec": "$HOME/.config/hypr/scripts/showkey status",
++	  "format": "{}",
++	  "on-click": "$HOME/.config/hypr/scripts/showkey toggle",
++	  "restart-interval": 1,
++	  "return-type": "json",
++	  "tooltip": true
++  },
++  "bluetooth": {
++    "format-on": "",
++    "format-off": "",
++    "format-disabled": "",
++    "format-connected": "<b> {num_connections}</b>",
++    "format-connected-battery": " {device_alias} {device_battery_percentage}%",
++    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
++    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
++    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
++    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
++    "on-click": "blueman-manager",
++    // "on-click": "rofi-bluetooth -config ~/.config/rofi/menu.d/network.rasi -i"
+   }
++  // "custom/cpugovernor": {
++  //   "format": "{icon}",
++  //   "interval": "1",
++  //   "return-type": "json",
++  //   "exec": "$HOME/.config/hypr/scripts/cpugovernor",
++  //   "min-length": 2,
++  //   "format-icons": {
++  //     "performance": "󰓅",
++  //     "powersave": "",
++  //     "userspace": "",
++  //     "ondemand": "",
++  //     "conservative": "",
++  //     "schedutil": "󰻠"
++  //   }
++  // }
+ }
+diff --git a/home/linux/hyprland/hypr-conf/waybar/style.css b/home/linux/hyprland/hypr-conf/waybar/style.css
+index cb5e2d5..3082619 100644
+--- a/home/linux/hyprland/hypr-conf/waybar/style.css
++++ b/home/linux/hyprland/hypr-conf/waybar/style.css
+@@ -1,3 +1,39 @@
++/* -----------------------------------------------------------------------------
++ * Styles
++ * -------------------------------------------------------------------------- */
++
++/* COLORS */
++
++/* Nord */
++@define-color bg #2E3440;
++/*@define-color bg #353C4A;*/
++@define-color light #D8DEE9;
++/*@define-color dark @nord_dark_font;*/
++@define-color warning #ebcb8b; /* yellow */
++@define-color critical #BF616A; /* red */
++@define-color success #a3be8c; /* green */
++@define-color mode #434C5E;
++/*@define-color workspaces @bg;*/
++/*@define-color workspaces @nord_dark_font;*/
++/*@define-color workspacesfocused #434C5E;*/
++@define-color workspacesfocused #4C566A;
++@define-color tray @workspacesfocused;
++@define-color sound #EBCB8B;
++@define-color network #5D7096;
++@define-color memory #546484;
++@define-color cpu #596A8D;
++@define-color temp #4D5C78;
++@define-color layout #5e81ac;
++@define-color battery #4D5C78;
++@define-color date #434C5E;
++@define-color time #434C5E;
++@define-color backlight #434C5E;
++@define-color nord_bg #434C5E;
++@define-color nord_bg_blue #546484;
++@define-color nord_light #D8DEE9;
++@define-color nord_light_font #D8DEE9;
++@define-color nord_dark_font #434C5E;
++
+ * {
+   font-family: "JetBrainsMono Nerd Font";
+   font-size: 12pt;
+@@ -76,9 +112,15 @@ tooltip label {
+ #temperature,
+ #backlight,
+ #pulseaudio,
++#custom-bluetooth_battery,
+ #network,
+ #battery,
+-#custom-powermenu {
++#custom-powermenu,
++#custom-cpugovernor,
++#custom-recording,
++#custom-showkey,
++#bluetooth,
++#custom-recorder {
+   padding-left: 10px;
+   padding-right: 10px;
+ }
+@@ -97,9 +139,29 @@ tooltip label {
+ #clock {
+   color: rgb(217, 224, 238);
+ }
+-/* #idle_inhibitor {
+-                 color: rgb(221, 182, 242);
+-               }*/
++
++#idle_inhibitor {
++  color: rgb(221, 182, 242);
++  padding-right: 8px;
++}
++#battery {
++  min-width: 55px;
++  color: rgb(126, 186, 244);;
++}
++#battery.charging,
++#battery.full,
++#battery.plugged {
++  color: #26a65b;
++}
++#battery.critical:not(.charging) {
++  color: #f53c3c;
++  animation-name: blink;
++  animation-duration: 0.5s;
++  animation-timing-function: linear;
++  animation-iteration-count: infinite;
++  animation-direction: alternate;
++}
++
+ #custom-wall {
+   color: #33ccff;
+ }
+@@ -112,6 +174,10 @@ tooltip label {
+ #pulseaudio {
+   color: rgb(245, 224, 220);
+ }
++#custom-bluetooth_battery,
++#bluetooth{
++  color: #5276B1;
++}
+ #network {
+   color: #abe9b3;
+ }
+@@ -122,6 +188,7 @@ tooltip label {
+   color: rgb(242, 143, 173);
+   padding-right: 8px;
+ }
++
+ #tray {
+   padding-right: 8px;
+   padding-left: 10px;
+@@ -136,3 +203,34 @@ tooltip label {
+ #mpd {
+   color: #c0caf5;
+ }
++
++#custom-recorder.on {
++    animation-name: blink-critical;
++    animation-duration: 2s;
++}
++#custom-recorder {
++    animation-timing-function: linear;
++    animation-iteration-count: infinite;
++    animation-direction: alternate;
++}
++
++#custom-recorder {
++    font-weight: bold;
++    padding: 0 0.6em;
++}
++#custom-recorder.on {
++    color: #abe9b3;
++    font-weight: bold;
++    padding: 0 0.6em;
++}
++#custom-recorder.off {
++  color: #414868;
++}
++
++#custom-recording {
++  color: #414868;
++}
++
++#custom-showkey {
++  color: #414868;
++}
+diff --git a/home/linux/hyprland/hyprland-utils/default.nix b/home/linux/hyprland/hyprland-utils/default.nix
+new file mode 100644
+index 0000000..a306e12
+--- /dev/null
++++ b/home/linux/hyprland/hyprland-utils/default.nix
+@@ -0,0 +1,10 @@
++{
++  pkgs,
++  hyprland,
++  catppuccin-hyprland,
++  ...
++}: {
++  imports = [
++    ./screenshot.nix
++  ];
++}
+diff --git a/home/linux/hyprland/hyprland-utils/screenshot.nix b/home/linux/hyprland/hyprland-utils/screenshot.nix
+new file mode 100644
+index 0000000..4e03b00
+--- /dev/null
++++ b/home/linux/hyprland/hyprland-utils/screenshot.nix
+@@ -0,0 +1,20 @@
++{
++  config,
++  pkgs,
++  pkgs-unstable,
++  nur-ryan4yin,
++  nur-program-learning,
++  nur-linyinfeng,
++  nur-xddxdd,
++  nur-AtaraxiaSjel,
++  nur-arti5an,
++  nix-gaming,
++  aagl,
++  nixpkgs-23_05,
++  ...
++}: let
++in {
++  home.packages = [
++    pkgs-unstable.hyprshot
++  ];
++}
+diff --git a/home/linux/hyprland/mpd/mpd.conf b/home/linux/hyprland/mpd/mpd.conf
+index 15c359f..805bba9 100644
+--- a/home/linux/hyprland/mpd/mpd.conf
++++ b/home/linux/hyprland/mpd/mpd.conf
+@@ -11,7 +11,7 @@ log_file           "syslog"
+ #auto_update "yes"
+ 
+ # Uncomment to enable the functionalities
+-#playlist_directory "~/.config/mpd/playlists"
+-#pid_file           "~/.config/mpd/pid"
+-#state_file         "~/.local/state/mpd/state"
+-#sticker_file       "~/.config/mpd/sticker.sql"
++playlist_directory "~/.config/mpd/playlists"
++pid_file           "~/.config/mpd/pid"
++state_file         "~/.local/state/mpd/state"
++sticker_file       "~/.config/mpd/sticker.sql"
+diff --git a/home/linux/hyprland/wayland-apps.nix b/home/linux/hyprland/wayland-apps.nix
+index 246ebd9..db84654 100644
+--- a/home/linux/hyprland/wayland-apps.nix
++++ b/home/linux/hyprland/wayland-apps.nix
+@@ -1,4 +1,4 @@
+-{pkgs, ...}: {
++{pkgs, pkgs-unstable,...}: {
+   # TODO vscode & chrome both have wayland support, but they don't work with fcitx5, need to fix it.
+   programs = {
+     # source code: https://github.com/nix-community/home-manager/blob/master/modules/programs/chromium.nix
+@@ -24,5 +24,26 @@
+       enableGnomeExtensions = false;
+       package = pkgs.firefox-wayland; # firefox with wayland support
+     };
++
++    vscode = {
++      enable = true;
++      # use the stable version
++      package = pkgs-unstable.vscode.override {
++        commandLineArgs = [
++          # it seems that my gpu is not supported
++          # "--disable-gpu"
++          # make it use text-input-v1, which works for kwin 5.27 and weston
++          # "--enable-features=UseOzonePlatform"
++          # "--ozone-platform=wayland"
++          # "--enable-wayland-ime"
++          # "--enable-features=UseOzonePlatform"
++          # "--ozone-platform=x11"
++          # "--force-device-scale-factor=1"
++        ];
++      };
++
++      # let vscode sync and update its configuration & extensions across devices, using github account.
++      # userSettings = {};
++    };
+   };
+ }
+diff --git a/hosts/idols/y9000k2021h/README.md b/hosts/idols/y9000k2021h/README.md
+new file mode 100644
+index 0000000..6b5d27b
+--- /dev/null
++++ b/hosts/idols/y9000k2021h/README.md
+@@ -0,0 +1,34 @@
++---
++runme:
++  id: 01HHT03EYXXSZRW6HB1DAJJVFV
++  version: v2.0
++---
++
++# Host - y9000k2021h
++
++disk status & mountpoints:
++
++```bash {"id":"01HHT03EYXXSZRW6HB1CXE1W1N"}
++› df -Th
++Filesystem     Type      Size  Used Avail Use% Mounted on
++devtmpfs       devtmpfs  790M     0  790M   0% /dev
++tmpfs          tmpfs     7.8G   83M  7.7G   2% /dev/shm
++tmpfs          tmpfs     3.9G  7.3M  3.9G   1% /run
++tmpfs          tmpfs     7.8G  1.8M  7.8G   1% /run/wrappers
++/dev/nvme0n1p2 ext4      921G  811G   64G  93% /
++tmpfs          tmpfs     4.0M     0  4.0M   0% /sys/fs/cgroup
++/dev/nvme0n1p1 vfat      511M   43M  469M   9% /boot/efi
++tmpfs          tmpfs     1.6G  6.4M  1.6G   1% /run/user/1000
++tmpfs          tmpfs     100K     0  100K   0% /var/lib/lxd/shmounts
++tmpfs          tmpfs     100K     0  100K   0% /var/lib/lxd/devlxd
++/dev/loop0     btrfs      30G  1.3G   29G   5% /var/lib/lxd/storage-pools/default
++
++› lsblk
++NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
++loop0         7:0    0    30G  0 loop /var/lib/lxd/storage-pools/default
++nvme0n1     259:0    0 953.9G  0 disk 
++├─nvme0n1p1 259:1    0   512M  0 part /boot/efi
++├─nvme0n1p2 259:2    0 936.4G  0 part /nix/store
++│                                     /
++└─nvme0n1p3 259:3    0    17G  0 part [SWAP]
++```
+diff --git a/hosts/idols/y9000k2021h/cifs-mount.nix b/hosts/idols/y9000k2021h/cifs-mount.nix
+new file mode 100644
+index 0000000..d40a031
+--- /dev/null
++++ b/hosts/idols/y9000k2021h/cifs-mount.nix
+@@ -0,0 +1,16 @@
++{
++  config,
++  pkgs,
++
++  username,
++  ...
++}: {
++  # mount a smb/cifs share
++  fileSystems."/home/${username}/SMB-Downloads" = {
++    device = "//192.168.5.194/Downloads";
++    fsType = "cifs";
++    options = [
++      "vers=3.0,uid=1000,gid=100,dir_mode=0755,file_mode=0755,mfsymlinks,credentials=${config.age.secrets.smb-credentials.path},nofail"
++    ];
++  };
++}
+diff --git a/hosts/idols/y9000k2021h/default.nix b/hosts/idols/y9000k2021h/default.nix
+new file mode 100644
+index 0000000..cdb7e82
+--- /dev/null
++++ b/hosts/idols/y9000k2021h/default.nix
+@@ -0,0 +1,77 @@
++{lanzaboote, ...} @ args:
++#############################################################
++#
++# y9000k2021h - my main computer, with NixOS + i7-11800H + RTX 3060 Mobile / Max-Q GPU, for gaming & daily use.
++#
++#############################################################
++{
++  imports = [
++    # ./cifs-mount.nix
++    # Include the results of the hardware scan.
++    ./hardware-configuration.nix
++
++    # ./impermanence.nix
++    # ./secureboot.nix
++  ];
++
++  nixpkgs.overlays = import ../../../overlays args;
++
++  networking = {
++    hostName = "y9000k2021h";
++    wireless.enable = false; # Enables wireless support via wpa_supplicant.
++
++    # Configure network proxy if necessary
++    # proxy.default = "http://user:password@proxy:port/";
++    # proxy.noProxy = "127.0.0.1,localhost,internal.domain";
++
++    networkmanager.enable = true;
++
++    # enableIPv6 = false; # disable ipv6
++    interfaces.wlp0s20f3 = {
++      useDHCP = true;
++      # ipv4.addresses = [
++      #   {
++      #     address = "192.168.0.120";
++      #     prefixLength = 24;
++      #   }
++      # ];
++    };
++    # defaultGateway = "192.168.0.1";
++    nameservers = [
++      "119.29.29.29" # DNSPod
++      "223.5.5.5" # AliDNS
++    ];
++  };
++
++  # conflict with feature: containerd-snapshotter
++  # and my device can not enable this since it is ext4
++  # virtualisation.docker.storageDriver = "btrfs";
++
++  # for Nvidia GPU
++  services.xserver.videoDrivers = ["nvidia"]; # will install nvidia-vaapi-driver by default
++  hardware.nvidia = {
++    # Optionally, you may need to select the appropriate driver version for your specific GPU.
++    # package = config.boot.kernelPackages.nvidiaPackages.stable;
++
++    # required by most wayland compositors!
++    modesetting.enable = true;
++    powerManagement.enable = true;
++  };
++  virtualisation.docker.enableNvidia = true; # for nvidia-docker
++
++  hardware.opengl = {
++    enable = true;
++    # if hardware.opengl.driSupport is enabled, mesa is installed and provides Vulkan for supported hardware.
++    driSupport = true;
++    # needed by nvidia-docker
++    driSupport32Bit = true;
++  };
++
++  # This value determines the NixOS release from which the default
++  # settings for stateful data, like file locations and database versions
++  # on your system were taken. It‘s perfectly fine and recommended to leave
++  # this value at the release version of the first install of this system.
++  # Before changing this value read the documentation for this option
++  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
++  system.stateVersion = "23.11"; # Did you read the comment?
++}
+diff --git a/hosts/idols/y9000k2021h/hardware-configuration.nix b/hosts/idols/y9000k2021h/hardware-configuration.nix
+new file mode 100644
+index 0000000..f575da4
+--- /dev/null
++++ b/hosts/idols/y9000k2021h/hardware-configuration.nix
+@@ -0,0 +1,100 @@
++# Do not modify this file!  It was generated by ‘nixos-generate-config’
++# and may be overwritten by future invocations.  Please make changes
++# to /etc/nixos/configuration.nix instead.
++{
++  config,
++  lib,
++  pkgs,
++  modulesPath,
++  ...
++}: {
++  imports = [
++    (modulesPath + "/installer/scan/not-detected.nix")
++  ];
++
++  # Use the EFI boot loader.
++  boot.loader.efi.canTouchEfiVariables = true;
++  # depending on how you configured your disk mounts, change this to /boot or /boot/efi.
++  boot.loader.efi.efiSysMountPoint = "/boot/efi";
++  boot.loader.systemd-boot.enable = true;
++
++
++  # boot.kernelPackages = pkgs.linuxPackages_latest;
++  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
++
++  boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod"];
++  boot.initrd.kernelModules = [];
++  boot.kernelModules = [
++    # kvm
++    "kvm-intel"
++    # Virtual Camera
++    "v4l2loopback"
++    # Virtual Microphone, built-in
++    "snd-aloop"
++    #"acpi_call"
++  ];
++  boot.extraModprobeConfig = ''
++    # exclusive_caps: Skype, Zoom, Teams etc. will only show device when actually streaming
++    # card_label: Name of virtual camera, how it'll show up in Skype, Zoom, Teams
++    # https://github.com/umlaeute/v4l2loopback
++    options v4l2loopback exclusive_caps=1 video_nr=9 card_label="Virtual Camera"
++  '';
++  boot.kernelParams = ["nvidia.NVreg_PreserveVideoMemoryAllocations=1"];
++  boot.extraModulePackages = [
++    config.boot.kernelPackages.v4l2loopback.out
++    # config.boot.kernelPackages.acpi_call.out
++    # config.boot.kernelPackages.v4l2loopback
++  ];
++
++  # Enable binfmt emulation of aarch64-linux, this is required for cross compilation.
++  boot.binfmt.emulatedSystems = ["aarch64-linux" "riscv64-linux"];
++  # supported fil systems, so we can mount any removable disks with these filesystems
++  boot.supportedFilesystems = [
++    "ext4"
++    "btrfs"
++    "xfs"
++    "ntfs"
++    "fat"
++    "vfat"
++    "exfat"
++    "cifs" # mount windows share
++  ];
++
++  # boot.initrd = {
++  #   # unlocked luks devices via a keyfile or prompt a passphrase.
++  #   luks.devices."crypted-nixos" = {
++  #     device = "/dev/nvme0n1p2";
++  #     # the keyfile(or device partition) that should be used as the decryption key for the encrypted device.
++  #     # if not specified, you will be prompted for a passphrase instead.
++  #     #keyFile = "/root-part.key";
++
++  #     # whether to allow TRIM requests to the underlying device.
++  #     # it's less secure, but faster.
++  #     allowDiscards = true;
++  #   };
++  # };
++
++  fileSystems."/" = {
++    device = "/dev/disk/by-uuid/7bd1f58c-482d-4c70-bba8-a3aa216eaef6";
++    fsType = "ext4";
++  };
++
++  fileSystems."/boot/efi" = {
++    device = "/dev/disk/by-uuid/DBEB-5479";
++    fsType = "vfat";
++  };
++
++  swapDevices = [{device = "/dev/disk/by-uuid/49e5a291-fc25-4d0e-84dd-9e30369a9a5f";}];
++
++  # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
++  # (the default) this is the recommended approach. When using systemd-networkd it's
++  # still possible to use this option, but it's recommended to use it in conjunction
++  # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
++  networking.useDHCP = lib.mkDefault true;
++  # networking.interfaces.enp5s0.useDHCP = lib.mkDefault true;
++  # networking.interfaces.wlo1.useDHCP = lib.mkDefault true;
++
++  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
++  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
++  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
++}
+diff --git a/hosts/idols/y9000k2021h/impermanence.nix b/hosts/idols/y9000k2021h/impermanence.nix
+new file mode 100644
+index 0000000..0633ccb
+--- /dev/null
++++ b/hosts/idols/y9000k2021h/impermanence.nix
+@@ -0,0 +1,118 @@
++{
++  impermanence,
++  pkgs,
++  ...
++}: {
++  imports = [
++    impermanence.nixosModules.impermanence
++  ];
++
++  environment.systemPackages = [
++    # `sudo ncdu -x /`
++    pkgs.ncdu
++  ];
++
++  # There are two ways to clear the root filesystem on every boot:
++  ##  1. use tmpfs for /
++  ##  2. (btrfs/zfs only)take a blank snapshot of the root filesystem and revert to it on every boot via:
++  ##     boot.initrd.postDeviceCommands = ''
++  ##       mkdir -p /run/mymount
++  ##       mount -o subvol=/ /dev/disk/by-uuid/UUID /run/mymount
++  ##       btrfs subvolume delete /run/mymount
++  ##       btrfs subvolume snapshot / /run/mymount
++  ##     '';
++  #
++  #  See also https://grahamc.com/blog/erase-your-darlings/
++
++  # NOTE: impermanence only mounts the directory/file list below to /persistent
++  # If the directory/file already exists in the root filesystem, you should
++  # move those files/directories to /persistent first!
++  environment.persistence."/persistent" = {
++    # sets the mount option x-gvfs-hide on all the bind mounts
++    # to hide them from the file manager
++    hideMounts = true;
++    directories = [
++      "/etc/NetworkManager/system-connections"
++      "/etc/ssh"
++      "/etc/nix/inputs"
++      "/etc/secureboot" # lanzaboote - secure boot
++      # my secrets
++      "/etc/agenix/"
++
++      "/var/log"
++      "/var/lib"
++
++      # created by modules/nixos/misc/fhs-fonts.nix
++      # for flatpak apps
++      # "/usr/share/fonts"
++      # "/usr/share/icons"
++    ];
++    files = [
++      "/etc/machine-id"
++    ];
++
++    # the following directories will be passed to /persistent/home/$USER
++    users.nixos = {
++      directories = [
++        "codes"
++        "nix-config"
++        "tmp"
++
++        "Downloads"
++        "Music"
++        "Pictures"
++        "Documents"
++        "Videos"
++
++        {
++          directory = ".gnupg";
++          mode = "0700";
++        }
++        {
++          directory = ".ssh";
++          mode = "0700";
++        }
++        {
++          directory = ".aws";
++          mode = "0700";
++        }
++        {
++          directory = ".docker";
++          mode = "0700";
++        }
++        {
++          directory = ".kube";
++          mode = "0700";
++        }
++
++        # misc
++        ".config/pulse"
++        ".pki"
++
++        # remote desktop
++        ".config/remmina"
++        ".config/freerdp"
++
++        # browsers
++        ".mozilla"
++        ".config/google-chrome"
++
++        # neovim / remmina / flatpak / ...
++        ".local/share"
++        ".local/state"
++
++        # language package managers
++        ".npm"
++        "go"
++
++        # neovim plugins(wakatime & copilot)
++        ".wakatime"
++        ".config/github-copilot"
++      ];
++      files = [
++        ".wakatime.cfg"
++        ".config/nushell/history.txt"
++      ];
++    };
++  };
++}
+diff --git a/hosts/idols/y9000k2021h/secureboot.nix b/hosts/idols/y9000k2021h/secureboot.nix
+new file mode 100644
+index 0000000..b796717
+--- /dev/null
++++ b/hosts/idols/y9000k2021h/secureboot.nix
+@@ -0,0 +1,34 @@
++{
++  pkgs,
++  lib,
++  lanzaboote,
++  ...
++}: {
++  # How to enter setup mode - msi motherboard
++  ## 1. enter BIOS via [Del] Key
++  ## 2. <Advance mode> => <Settings> => <Security> => <Secure Boot>
++  ## 3. enable <Secure Boot>
++  ## 4. set <Secure Boot Mode> to <Custom>
++  ## 5. enter <Key Management>
++  ## 6. select <Delete All Secure Boot Variables>, and then select <No> for <Reboot Without Saving>
++  ## 7. Press F10 to saving and reboot.
++  imports = [
++    lanzaboote.nixosModules.lanzaboote
++  ];
++
++  environment.systemPackages = [
++    # For debugging and troubleshooting Secure Boot.
++    pkgs.sbctl
++  ];
++
++  # Lanzaboote currently replaces the systemd-boot module.
++  # This setting is usually set to true in configuration.nix
++  # generated at installation time. So we force it to false
++  # for now.
++  boot.loader.systemd-boot.enable = lib.mkForce false;
++
++  boot.lanzaboote = {
++    enable = true;
++    pkiBundle = "/etc/secureboot";
++  };
++}
+diff --git a/modules/base.nix b/modules/base.nix
+index 3177706..27b6836 100644
+--- a/modules/base.nix
++++ b/modules/base.nix
+@@ -22,16 +22,18 @@
+       # status: https://mirror.sjtu.edu.cn/
+       "https://mirror.sjtu.edu.cn/nix-channels/store"
+       # status: https://mirrors.ustc.edu.cn/status/
+-      # "https://mirrors.ustc.edu.cn/nix-channels/store"
++      "https://mirrors.ustc.edu.cn/nix-channels/store"
+ 
+       "https://nix-community.cachix.org"
+       # my own cache server
+       "https://ryan4yin.cachix.org"
++      "https://program-learning.cachix.org"
+     ];
+ 
+     trusted-public-keys = [
+       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+       "ryan4yin.cachix.org-1:Gbk27ZU5AYpGS9i3ssoLlwdvMIh0NxG0w8it/cv9kbU="
++      "program-learning.cachix.org-1:Pfl2r+J5L9wJqpDnop6iQbrR3/Ts4AUyotu89INRlSU="
+     ];
+     builders-use-substitutes = true;
+   };
+diff --git a/modules/nixos/base/user-group.nix b/modules/nixos/base/user-group.nix
+index e105c1f..2e94d23 100644
+--- a/modules/nixos/base/user-group.nix
++++ b/modules/nixos/base/user-group.nix
+@@ -18,7 +18,8 @@
+   users.users."${username}" = {
+     # generated by `mkpasswd -m scrypt`
+     # we have to use initialHashedPassword here when using tmpfs for /
+-    initialHashedPassword = "$7$CU..../....Sdl/JRH..9eIvZ6mE/52r.$xeR6lyvTcVVKt28Owcoc/vPOOECcYSiq1xjw/QCz2t0";
++    initialHashedPassword = "$7$CU..../....lO1U0fsl954fC3porcCY41$OXiwbYrYuY4Z3KSFQ6IM04D9yFBExkENIewhjyTqN7C";
++    hashedPassword = "$7$CU..../....lO1U0fsl954fC3porcCY41$OXiwbYrYuY4Z3KSFQ6IM04D9yFBExkENIewhjyTqN7C";
+     home = "/home/${username}";
+     isNormalUser = true;
+     description = username;
+@@ -31,14 +32,20 @@
+       "wireshark"
+       "adbusers"
+       "libvirtd"
++
++      "vboxusers"
++      "input"
++      "plugdev"
+     ];
+     openssh.authorizedKeys.keys = [
+-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDiipi59EnVbi6bK1bGrcbfEM263wgdNfbrt6VBC1rHx ryan@ai-idols"
+-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII7PTkP3ixXTZlrJNSHnXgkmHNT+QslFi9wNYXOpVwGB ryan@harmonica"
++      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPj89CeLdjkz7bj5j0u+wlHHu5e0hKQIQl36rthhpW+K nix-on-droid@localhost"
++      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBO0+WOKwK9EcRj2Bcdt/VpiB9MvZYqk4JKxlcQElskx nixos@nixos"
++      "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDD9oj03QzeGTx7l3XEcIt/rDD6UwarjxeV38iVa8FKQftwuhFVqeJpI+kAeWwUynTOhKLCG/WbcLNCFGI9I9E3NjkSPMXv018yy7X30VFcEn7Arl7Ab48ZVEgRguru5XpuZZWI+IID4T5erbsng1ekQGLBgz0hEokGOKhyqoTgUb/Fpm5S6Ubl66//OF5OIkcdmKQ8mRtQxrjxqYB3ZWX4xbxevKHQbGFtbjZVWO70GfGnMfl6urpPMVmJXe+tHarDsQAiU9BySO+7kmkRfQfUtwiOJ7o2M0evIcKuxyzQ5yRSO9ZeHMzjDLaGAK/5UMvoEP7yZfrom0qBfQpEeHnvEUct80tugH0xCvmqMq1SKxaG64LsRXJIFsv71vPHvLU/U1PTYEEuSVOg+coGG/hMl/iuq9bdfuiiyDjNZtn6FpY5fDj6lBF49wqQuc7JMQ4pWH88aRqCFLlRXDk/jTe+BuaEfghOgbCpq1Xyrb3cnc9iR88udXzas18SqcAT9ec= 102341238+DataEraserC@users.noreply.github.com"
+     ];
+   };
+   users.users.root = {
+-    initialHashedPassword = "$7$CU..../....X6uvZYnFD.i1CqqFFNl4./$4vgqzIPyw5XBr0aCDFbY/UIRRJr7h5SMGoQ/ZvX3FP2";
++    hashedPassword = "$7$CU..../....lO1U0fsl954fC3porcCY41$OXiwbYrYuY4Z3KSFQ6IM04D9yFBExkENIewhjyTqN7C";
++    initialHashedPassword = "$7$CU..../....lO1U0fsl954fC3porcCY41$OXiwbYrYuY4Z3KSFQ6IM04D9yFBExkENIewhjyTqN7C";
+     openssh.authorizedKeys.keys = config.users.users."${username}".openssh.authorizedKeys.keys;
+   };
+ 
+diff --git a/modules/nixos/custom-addon.nix b/modules/nixos/custom-addon.nix
+new file mode 100644
+index 0000000..b44f694
+--- /dev/null
++++ b/modules/nixos/custom-addon.nix
+@@ -0,0 +1,111 @@
++{ config, pkgs, lib, ... }: {
++  imports = [
++    ./features/sunshine.nix
++    ./features/wf-recorder.nix
++  ];
++  programs = {
++    wshowkeys.enable = true;
++    steam = {
++      enable = true;
++      remotePlay.openFirewall =
++        true; # Open ports in the firewall for Steam Remote Play
++      dedicatedServer.openFirewall =
++        true; # Open ports in the firewall for Source Dedicated Server
++    };
++
++    proxychains = {
++      enable = true;
++      proxies = {
++        myproxy = {
++          enable = true;
++          type = "socks5";
++          host = "127.0.0.1";
++          port = 7890;
++        };
++      };
++    };
++
++    darling = { enable = true; };
++
++  };
++
++  # environment.variables = {
++  #   QT_AUTO_SCREEN_SCALE_FACTOR = "1";
++  #   QT_QPA_PLATFORM = "wayland";
++  #   QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
++  #   SDL_VIDEODRIVER = "wayland";
++  #   _JAVA_AWT_WM_NONEREPARENTING = "1";
++  #   GDK_BACKEND = "wayland";
++  #   MOZ_ENABLE_WAYLAND = "1";
++  #   QT_SCALE_FACTOR = "1";
++  # };
++
++  services = {
++
++    logind = {
++      lidSwitch = "ignore";
++      lidSwitchDocked = "ignore";
++      lidSwitchExternalPower = "ignore";
++      extraConfig = "HandlePowerKey=ignore";
++      # powerKey = "ignore";
++      # rebootKey = "ignore";
++    };
++
++    # tlp = {
++    #   enable = true;
++    #   settings = {
++    #     CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
++    #     CPU_SCALING_GOVERNOR_ON_AC = "powersave";
++
++    #     # The following prevents the battery from charging fully to
++    #     # preserve lifetime. Run `tlp fullcharge` to temporarily force
++    #     # full charge.
++    #     # https://linrunner.de/tlp/faq/battery.html#how-to-choose-good-battery-charge-thresholds
++    #     START_CHARGE_THRESH_BAT0 = 40;
++    #     STOP_CHARGE_THRESH_BAT0 = 50;
++
++    #     # 100 being the maximum, limit the speed of my CPU to reduce
++    #     # heat and increase battery usage:
++    #     CPU_MAX_PERF_ON_AC = 75;
++    #     CPU_MAX_PERF_ON_BAT = 60;
++    #   };
++    # };
++
++  };
++
++  systemd.services = {
++
++    cpolar = {
++      enable = true;
++      # path = "/home/nixos/Apps/Bins/cpolar/";
++      description =
++        "cpolar secure tunnels to localhost webhook development tool and debugging tool.";
++      unitConfig = {
++        # ...
++      };
++      serviceConfig = {
++        Type = "simple";
++        ExecStart = ''
++          /home/nixos/Apps/Bins/cpolar/cpolar "start-all" "-daemon=on" "-dashboard=on" "-log=/home/nixos/Apps/Bins/cpolar/.cpolar/logs/cpolar_service.log" "-config=/home/nixos/Apps/Bins/cpolar/.cpolar/cpolar.yml"'';
++        # ...
++      };
++      wantedBy = [ "multi-user.target" ];
++      # ...
++    };
++
++  };
++
++  nixpkgs.config.permittedInsecurePackages =
++    [ "openssl-1.1.1v" "electron-19.0.7" ];
++
++  environment.extraOutputsToInstall = [ "dev" ];
++
++  nixpkgs.config.allowUnfreePredicate = [ "wechat_dev_tools" ];
++
++  documentation.dev.enable = true;
++
++  features.sunshine.enable = true;
++
++  features.wf-recorder.enable = true;
++
++}
+diff --git a/modules/nixos/desktop/fonts.nix b/modules/nixos/desktop/fonts.nix
+index cbf2cbf..f32df63 100644
+--- a/modules/nixos/desktop/fonts.nix
++++ b/modules/nixos/desktop/fonts.nix
+@@ -24,6 +24,7 @@
+       source-han-sans # 思源黑体
+       source-han-serif # 思源宋体
+ 
++      sarasa-gothic
+       # nerdfonts
+       (nerdfonts.override {
+         fonts = [
+@@ -41,8 +42,10 @@
+     # the reason there's Noto Color Emoji everywhere is to override DejaVu's
+     # B&W emojis that would sometimes show instead of some Color emojis
+     fontconfig.defaultFonts = {
+-      serif = ["Noto Serif CJK SC" "Noto Serif CJK TC" "Noto Serif CJK JP" "Noto Color Emoji"];
+-      sansSerif = ["Noto Sans CJK SC" "Noto Sans CJK TC" "Noto Sans CJK JP" "Noto Color Emoji"];
++      # serif = ["Noto Serif CJK SC" "Noto Serif CJK TC" "Noto Serif CJK JP" "Noto Color Emoji"];
++      # sansSerif = ["Noto Sans CJK SC" "Noto Sans CJK TC" "Noto Sans CJK JP" "Noto Color Emoji"];
++      serif = ["Noto Serif" "Noto Color Emoji"];
++      sansSerif = ["Noto Sans" "Noto Color Emoji"];
+       monospace = ["JetBrainsMono Nerd Font" "Noto Color Emoji"];
+       emoji = ["Noto Color Emoji"];
+     };
+diff --git a/modules/nixos/desktop/misc.nix b/modules/nixos/desktop/misc.nix
+index 0b07aff..2c1134e 100644
+--- a/modules/nixos/desktop/misc.nix
++++ b/modules/nixos/desktop/misc.nix
+@@ -48,7 +48,11 @@
+       plugins = with pkgs.xfce; [
+         thunar-archive-plugin
+         thunar-volman
++        thunar-media-tags-plugin
+       ];
+     };
++    # Terminal fix:
++    # In Thunar Edit>Configure custom actions... then edit "Open Terminal Here"
++    # wezterm start --cwd %f
+   };
+ }
+diff --git a/modules/nixos/desktop/peripherals.nix b/modules/nixos/desktop/peripherals.nix
+index 5532632..e3dd443 100644
+--- a/modules/nixos/desktop/peripherals.nix
++++ b/modules/nixos/desktop/peripherals.nix
+@@ -44,6 +44,11 @@
+   # Bluetooth devices automatically connect with bluetoothctl as well:
+   # [bluetooth] # trust [hex-address]
+   hardware.bluetooth.enable = true;
++  hardware.bluetooth.settings = {
++    General = {
++      Experimental = true;
++    };
++  };
+   services.blueman.enable = true;
+ 
+   #================================= Misc =================================
+@@ -68,6 +73,7 @@
+         main = {
+           # overloads the capslock key to function as both escape (when tapped) and control (when held)
+           capslock = "overload(control, esc)";
++          esc = "capslock";
+         };
+       };
+     };
+diff --git a/modules/nixos/desktop/visualisation.nix b/modules/nixos/desktop/visualisation.nix
+index 3357139..d4a1ca5 100644
+--- a/modules/nixos/desktop/visualisation.nix
++++ b/modules/nixos/desktop/visualisation.nix
+@@ -1,4 +1,9 @@
+-{pkgs, ...}: {
++{
++  lib,
++  pkgs,
++  pkgs-unstable,
++  ...
++}: {
+   ###################################################################################
+   #
+   #  Visualisation - Libvirt(QEMU/KVM) / Docker / LXD / WayDroid
+@@ -15,15 +20,49 @@
+       enable = true;
+       # hanging this option to false may cause file permission issues for existing guests.
+       # To fix these, manually change ownership of affected files in /var/lib/libvirt/qemu to qemu-libvirtd.
+-      qemu.runAsRoot = true;
++      qemu = {
++        runAsRoot = true;
++        swtpm.enable = true;
++        ovmf.enable = true;
++        ovmf.packages = [ pkgs-unstable.OVMFFull.fd ];
++      };
+     };
++    spiceUSBRedirection.enable = true;
+     waydroid.enable = true;
+-    lxd.enable = true;
++    lxd = {
++      enable = true;
++      ui.enable = true;
++    };
++    virtualbox.host.enable = true;
++    virtualbox.host.enableExtensionPack = true;
+   };
+ 
++  services.spice-vdagentd.enable = true;
++
++  programs.dconf.enable = true;
+   environment.systemPackages = with pkgs; [
+     # Need to add [File (in the menu bar) -> Add connection] when start for the first time
+     virt-manager
++    virt-manager-qt
++    virt-viewer
++
++    spice
++    spice-gtk
++    spice-protocol
++    win-spice
++
++    win-virtio
++
++    iproute
++
++    edk2
++    edk2-uefi-shell
++
++    x11docker
++
++    virtiofsd
++
++    dmg2img
+ 
+     # QEMU/KVM, provides:
+     #   qemu-storage-daemon qemu-edid qemu-ga
+diff --git a/modules/nixos/features/sunshine.nix b/modules/nixos/features/sunshine.nix
+new file mode 100644
+index 0000000..1eafc9c
+--- /dev/null
++++ b/modules/nixos/features/sunshine.nix
+@@ -0,0 +1,59 @@
++# https://github.com/LongerHV/nixos-configuration/blob/c7a06a2125673c472946cda68b918f68c635c41f/modules/nixos/sunshine.nix
++# https://github.com/RandomNinjaAtk/nixos/blob/fc7d6e8734e6de175e0a18a43460c48003108540/services.sunshine.nix
++
++# First import me
++# Enable using:
++# features.sunshine.enable = true;
++# Get Service Status
++# systemctl --user status sunshine
++# get logs
++# journalctl --user -u sunshine --since "2 minutes ago"
++{
++  config,
++  lib,
++  pkgs,
++  ...
++}: let
++  cfg = config.features.sunshine;
++in {
++  options.features.sunshine = with lib; {
++    enable = mkEnableOption "sunshine";
++  };
++
++  config = lib.mkIf cfg.enable {
++    networking.firewall.allowedTCPPortRanges = [
++      {
++        from = 47984;
++        to = 48010;
++      }
++    ];
++    networking.firewall.allowedUDPPortRanges = [
++      {
++        from = 47998;
++        to = 48010;
++      }
++    ];
++    security.wrappers.sunshine = {
++      owner = "root";
++      group = "root";
++      capabilities = "cap_sys_admin+p";
++      source = "${pkgs.sunshine}/bin/sunshine";
++    };
++    # Requires to simulate input
++    boot.kernelModules = ["uinput"];
++    services.udev.extraRules = ''
++      KERNEL=="uinput", SUBSYSTEM=="misc", OPTIONS+="static_node=uinput", TAG+="uaccess"
++    '';
++    systemd.user.services.sunshine = {
++      description = "Sunshine self-hosted game stream host for Moonlight";
++      startLimitBurst = 5;
++      startLimitIntervalSec = 500;
++      serviceConfig = {
++        ExecStart = "${config.security.wrapperDir}/sunshine";
++        Restart = "on-failure";
++        RestartSec = "5s";
++      };
++    };
++  };
++}
++
+diff --git a/modules/nixos/features/wf-recorder.nix b/modules/nixos/features/wf-recorder.nix
+new file mode 100644
+index 0000000..f3c4f51
+--- /dev/null
++++ b/modules/nixos/features/wf-recorder.nix
+@@ -0,0 +1,51 @@
++# https://github.com/colescott/dotfiles/blob/1d85d3e3e4bb8e49b095d19da9ce318d21826794/features/vt420.nix
++# usage features.wf-recorder.enable = true;
++# remember to import me!
++{ pkgs, config, lib, ... }:
++
++with lib;
++
++let
++  cfg = config.features.wf-recorder;
++  
++  wf-screenshare = pkgs.writeScriptBin "wf-screenshare"
++    ''
++      #!${pkgs.bash}/bin/bash
++      set -e -o pipefail
++      pkill -x wf-recorder
++
++      [ $? -ne 0 ] && {
++          notify-send -t 2000 'Screen sharing' 'Select an area to start the recording...'
++          geometry="$(${pkgs.slurp}/bin/slurp)"
++          #{ sleep 1 && pkill -RTMIN+3 -x waybar; } &
++          ${pkgs.wf-recorder}/bin/wf-recorder --audio --muxer=v4l2 --codec=rawvideo --pixel-format=yuv420p --file=/dev/video9 --geometry="$geometry"
++          #pkill -RTMIN+3 -x waybar
++          #notify-send 'Screen sharing' 'Recording is complete'
++      }
++    '';
++in
++{
++  options.features.wf-recorder = {
++    enable = mkEnableOption "Enable wf-recorder screensharing module";
++  };
++
++  config = mkIf cfg.enable {
++    # Extra kernel modules
++    boot.extraModulePackages = [
++      config.boot.kernelPackages.v4l2loopback
++    ];
++
++    # Register a v4l2loopback device at boot
++    boot.kernelModules = [
++      "v4l2loopback"
++    ];
++
++    boot.extraModprobeConfig = ''
++      options v4l2loopback exclusive_caps=1 video_nr=9
++    '';
++
++    environment.systemPackages = [
++      wf-screenshare
++    ];
++  };
++}
+diff --git a/modules/nixos/hyprland.nix b/modules/nixos/hyprland.nix
+index 7a44679..4134e33 100644
+--- a/modules/nixos/hyprland.nix
++++ b/modules/nixos/hyprland.nix
+@@ -1,4 +1,4 @@
+-{pkgs, ...}: {
++{pkgs, username, hyprland, ...}: {
+   ##########################################################################################################
+   #
+   #  NixOS's Configuration for Wayland based Window Manager
+@@ -24,6 +24,7 @@
+     wlr.enable = true;
+     extraPortals = with pkgs; [
+       xdg-desktop-portal-wlr
++      # xdg-desktop-portal-hyprland
+     ];
+   };
+ 
+@@ -32,11 +33,17 @@
+     # https://wiki.archlinux.org/title/Greetd
+     greetd = {
+       enable = true;
++      restart = false;
+       settings = {
+         default_session = {
+-          user = "ryan"; # Hyprland is installed only for user ryan via home-manager!
+-          command = "Hyprland"; # start Hyprland directly without a login manager
+-          # command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland";  # start Hyprland with a TUI login manager
++          user = "greeter"; # Hyprland is installed only for user ryan via home-manager!
++          # command = "Hyprland"; # start Hyprland directly without a login manager
++          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland";  # start Hyprland with a TUI login manager
++        };
++        # autologin
++        initial_session = {
++          command = "Hyprland";
++          user = username;
+         };
+       };
+     };
+@@ -64,9 +71,11 @@
+ 
+     # audio
+     alsa-utils # provides amixer/alsamixer/...
++    kew # terminal music player
+     mpd # for playing system sounds
+     mpc-cli # command-line mpd client
+     ncmpcpp # a mpd client with a UI
++    vimpc # A curses mpd client with vi-like key bindings.
+     networkmanagerapplet # provide GUI app: nm-connection-editor
+   ];
+ 
+diff --git a/overlays/waybar/default.nix b/overlays/waybar/default.nix
+new file mode 100644
+index 0000000..7c3f6d0
+--- /dev/null
++++ b/overlays/waybar/default.nix
+@@ -0,0 +1,7 @@
++{ ... }:
++(self: super: {
++  waybar = super.waybar.overrideAttrs (oldAttrs: {
++    mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true"  "-Dmpd=enabled"];
++  });
++
++})
+diff --git a/secrets/nixos.nix b/secrets/nixos.nix
+index d586f23..b0cafc7 100644
+--- a/secrets/nixos.nix
++++ b/secrets/nixos.nix
+@@ -18,7 +18,9 @@
+   age.identityPaths = [
+     # To decrypt secrets on boot, this key should exists when the system is booting,
+     # so we should use the real key file path(prefixed by `/persistent/`) here, instead of the path mounted by impermanence.
+-    "/persistent/home/${username}/.ssh/juliet-age" # Linux
++    # "/persistent/home/${username}/.ssh/juliet-age" # Linux
++
++    "/home/${username}/.ssh/juliet-age" # Linux
+   ];
+ 
+   # Used only by NixOS Modules
+@@ -45,6 +47,12 @@
+       mode = "0600";
+       owner = username;
+     };
++
++    "nix-access-tokens" = {
++      file = "${mysecrets}/nix-access-tokens.age";
++      mode = "0600";
++      owner = username;
++    };
+   };
+ 
+   # place secrets in /etc/
+diff --git a/systems/nixos.nix b/systems/nixos.nix
+index fb0b75a..4abd1a9 100644
+--- a/systems/nixos.nix
++++ b/systems/nixos.nix
+@@ -10,6 +10,11 @@ with args; let
+   };
+ in {
+   nixosConfigurations = {
++    # y9000k2021h with i3 window manager
++    y9000k2021h_i3 = nixosSystem (idol_y9000k2021h_modules_i3 // base_args);
++    # y9000k2021h with hyprland compositor
++    y9000k2021h_hyprland = nixosSystem (idol_y9000k2021h_modules_hyprland // base_args);
++      
+     # ai with i3 window manager
+     ai_i3 = nixosSystem (idol_ai_modules_i3 // base_args);
+     # ai with hyprland compositor
+diff --git a/systems/vars.nix b/systems/vars.nix
+index fcb111f..67fe7c1 100644
+--- a/systems/vars.nix
++++ b/systems/vars.nix
+@@ -1,4 +1,24 @@
+ {
++  # y9000k2021h
++  idol_y9000k2021h_modules_i3 = {
++    nixos-modules = [
++      ../hosts/idols/y9000k2021h
++      ../secrets/nixos.nix
++      ../modules/nixos/i3.nix
++    ];
++    home-module = import ../home/linux/desktop-i3.nix;
++  };
++  idol_y9000k2021h_modules_hyprland = {
++    nixos-modules = [
++      ../hosts/idols/y9000k2021h
++      ../secrets/nixos.nix
++      ../modules/nixos/hyprland.nix
++      ../modules/nixos/custom-addon.nix
++
++    ];
++    home-module = import ../home/linux/desktop-hyprland.nix;
++  };
++
+   # 星野 アイ, Hoshino Ai
+   idol_ai_modules_i3 = {
+     nixos-modules = [
