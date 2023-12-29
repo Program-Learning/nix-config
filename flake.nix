@@ -73,7 +73,6 @@
       "https://hyprland.cachix.org"
       "https://nixpkgs-wayland.cachix.org"
 
-
       "https://nix-gaming.cachix.org"
       "https://ezkea.cachix.org"
     ];
@@ -81,7 +80,6 @@
       "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
-
 
       "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
       "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI="
@@ -187,7 +185,7 @@
 
     # my wallpapers
     wallpapers = {
-      url = "github:Program-Learning/wallpapers";
+      url = "github:Program-Learning/wallpapers/2a6b757b5aa2395342fed9cbcb22aace003625bc";
       # url = "git+file:////home/nixos/Documents/code/wallpapers?shallow=1";
       flake = false;
     };
