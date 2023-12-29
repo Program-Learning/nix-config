@@ -10,11 +10,17 @@
 #
 ############################################################################
 
+y9000k2021h_i3:
+	nixos-rebuild switch --flake .#y9000k2021h_i3 --use-remote-sudo
+
 i3: 
 	nixos-rebuild switch --flake .#ai_i3 --use-remote-sudo
 
 s-i3:
 	nixos-rebuild switch --flake .#shoukei_i3 --use-remote-sudo
+
+y9000k2021h_hypr:
+	nixos-rebuild switch --flake .#y9000k2021h_hyprland --use-remote-sudo
 
 hypr:
 	nixos-rebuild switch --flake .#ai_hyprland --use-remote-sudo
@@ -22,8 +28,14 @@ hypr:
 s-hypr:
 	nixos-rebuild switch --flake .#shoukei_hyprland --use-remote-sudo
 
+y9000k2021h_i3-debug:
+	nixos-rebuild switch --flake .#y9000k2021h_i3 --use-remote-sudo --show-trace --verbose
+
 i3-debug:
 	nixos-rebuild switch --flake .#ai_i3 --use-remote-sudo --show-trace --verbose
+
+y9000k2021h_hypr-debug:
+	nixos-rebuild switch --flake .#y9000k2021h_hyprland --use-remote-sudo --show-trace --verbose
 
 hypr-debug:
 	nixos-rebuild switch --flake .#ai_hyprland --use-remote-sudo --show-trace --verbose
@@ -48,6 +60,31 @@ gc:
 
 	# garbage collect all unused nix store entries
 	# sudo nix store gc --debug
+
+############################################################################
+#
+#  My often-used command
+#
+############################################################################
+
+nur_all := nur-program-learning nur-ryan4yin nur-linyinfeng nur-xddxdd nur-AtaraxiaSjel nur-arti5an
+
+# Update nur inputs 
+# (can use with ''
+# proxychains4 make update_nur
+# '' 
+# or ''
+# http_proxy='http://localhost:7890' https_proxy='http://localhost:7890' make update_nur 
+# '')
+update_nur:
+	$(foreach repo,$(nur_all)\
+		,nix flake lock --update-input $(repo) &&) true
+
+upgrade_switch_system:
+	sudo NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 http_proxy='http://localhost:7890' https_proxy='http://localhost:7890' nixos-rebuild switch --flake /home/nixos/Documents/code/nix-config/#y9000k2021h_hyprland --upgrade --impure --show-trace
+
+upgrade_system:
+	sudo NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 http_proxy='http://localhost:7890' https_proxy='http://localhost:7890' nixos-rebuild boot --flake /home/nixos/Documents/code/nix-config/#y9000k2021h_hyprland --upgrade --impure --show-trace
 
 ############################################################################
 #

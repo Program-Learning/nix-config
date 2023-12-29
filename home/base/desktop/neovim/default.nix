@@ -54,6 +54,7 @@
           cmake
           cmake-language-server
           gnumake
+          ccache
           checkmake
           gcc # c/c++ compiler, required by nvim-treesitter!
           llvmPackages.clang-unwrapped # c/c++ tools with clang-tools such as clangd
@@ -73,6 +74,24 @@
                 requests
                 pyquery
                 pyyaml
+                pip # use in venv "python -m venv .venv" "source .venv/bin/activate"
+
+                ipykernel
+                jupyterlab
+                matplotlib
+                numpy
+                seaborn
+                networkx
+                beautifulsoup4
+                selenium
+                urllib3
+                pyclip
+                pybluez
+                pymysql
+                jieba
+                # wordcloud
+                pandas-datareader
+                pyperclip
               ]
           ))
 

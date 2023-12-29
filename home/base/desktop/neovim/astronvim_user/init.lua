@@ -29,6 +29,7 @@ return {
     { import = "astrocommunity.motion.flit-nvim" },
     { import = "astrocommunity.scrolling.nvim-scrollbar" },
     { import = "astrocommunity.editing-support.todo-comments-nvim" },
+    { import = "astrocommunity.editing-support.suda-vim" },
     -- Language Support
     ---- Frontend & NodeJS
     { import = "astrocommunity.pack.typescript-all-in-one" },
@@ -408,6 +409,17 @@ return {
         })
       end,
     },
+
+    -- The plugins required by Mayuri
+    -- AI prompt for programming
+    {
+      "skyfireitdiy/codegeex-vim",
+    },
+    -- Language Servers
+    {
+      "neoclide/coc.nvim",
+    },
+
   },
 
   -- Configure require("lazy").setup() options

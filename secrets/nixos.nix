@@ -18,7 +18,8 @@
   age.identityPaths = [
     # To decrypt secrets on boot, this key should exists when the system is booting,
     # so we should use the real key file path(prefixed by `/persistent/`) here, instead of the path mounted by impermanence.
-    "/persistent/home/${username}/.ssh/juliet-age" # Linux
+    # "/persistent/home/${username}/.ssh/juliet-age" # Linux
+    "/home/${username}/.ssh/juliet-age" # Linux
   ];
 
   # Used only by NixOS Modules
@@ -66,7 +67,7 @@
       source = config.age.secrets."wg-business.conf".path;
     };
 
-   "agenix/ssh-key-romantic" = {
+    "agenix/ssh-key-romantic" = {
       source = config.age.secrets."ssh-key-romantic".path;
       mode = "0600";
       user = username;

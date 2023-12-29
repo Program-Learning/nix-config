@@ -30,6 +30,7 @@ let surface0  = "#313244"
 let base      = "#1e1e2e"
 let mantle    = "#181825"
 let crust     = "#11111b"
+let REPO_URL = 'https://mirrors.tuna.tsinghua.edu.cn/git/git-repo/'
 
 # we're creating a theme here that uses the colors we defined above.
 

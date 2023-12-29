@@ -1,6 +1,7 @@
 {
   pkgs,
   pkgs-unstable,
+  nur-program-learning,
   ...
 }: {
   #############################################################
@@ -24,6 +25,7 @@
             requests
             pyquery
             pyyaml
+            pip # use in venv "python -m venv .venv" "source .venv/bin/activate"
           ]
       ))
 
@@ -70,6 +72,13 @@
         mitmproxy # http/https proxy tool
         insomnia # REST client
         wireshark # network analyzer
+
+        # manual
+        man-pages
+        man-pages-posix
+
+        nur-program-learning.packages.${pkgs.system}.wechat_dev_tools_appimage
+        nur-program-learning.packages.${pkgs.system}.wechat_dev_tools_deb
       ]
       else []
     );

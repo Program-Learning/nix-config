@@ -30,14 +30,30 @@
     #  ls /etc/profiles/per-user/ryan/share/applications/
     mimeApps = {
       enable = true;
+      associations.added = let
+        browser = ["firefox.desktop"];
+        office = ["onlyoffice-desktopeditors.desktop" "writer.desktop"];
+        code = ["code.desktop" "nvim.desktop"];
+        editor = ["nvim.desktop" "Helix.desktop" "code.desktop"];
+      in {
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = office;
+        "application/x-php" = code;
+        "text/plain" = editor;
+        "text/x-makefile" = editor;
+        "application/x-wine-extension-ini" = editor;
+      };
       defaultApplications = let
         browser = ["firefox.desktop"];
+        office = ["onlyoffice-desktopeditors.desktop" "writer.desktop"];
+        code = ["code.desktop" "nvim.desktop"];
+        editor = ["nvim.desktop" "Helix.desktop" "code.desktop"];
       in {
         "application/json" = browser;
         "application/pdf" = browser; # TODO: pdf viewer
 
         "text/html" = browser;
         "text/xml" = browser;
+        "text/plain" = editor;
         "application/xml" = browser;
         "application/xhtml+xml" = browser;
         "application/xhtml_xml" = browser;
@@ -48,6 +64,8 @@
         "application/x-extension-shtml" = browser;
         "application/x-extension-xht" = browser;
         "application/x-extension-xhtml" = browser;
+        "application/x-shellscript" = editor;
+        "application/x-php" = code;
 
         "x-scheme-handler/about" = browser;
         "x-scheme-handler/ftp" = browser;
@@ -65,6 +83,8 @@
         "image/jpeg" = ["imv.desktop"];
         "image/png" = ["imv.desktop"];
         "image/webp" = ["imv.desktop"];
+        "application/x-wine-extension-ini" = editor;
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = office;
       };
 
       associations.removed = {

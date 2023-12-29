@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  pkgs-unstable,
+  ...
+}: {
   home.packages = with pkgs; [
     waybar # the status bar
     swaybg # the wallpaper
@@ -7,6 +11,8 @@
     wlogout # logout menu
     wl-clipboard # copying and pasting
     hyprpicker # color picker
+    pkgs-unstable.hyprshot
+    wshowkeys # Show which key is triggered
 
     wf-recorder # creen recording
     grim # taking screenshots
@@ -19,9 +25,11 @@
 
     # audio
     alsa-utils # provides amixer/alsamixer/...
+    kew # terminal music player
     mpd # for playing system sounds
     mpc-cli # command-line mpd client
     ncmpcpp # a mpd client with a UI
+    vimpc # A curses mpd client with vi-like key bindings.
     networkmanagerapplet # provide GUI app: nm-connection-editor
   ];
 }

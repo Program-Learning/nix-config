@@ -9,6 +9,37 @@ let
     ];
   };
 in {
+  # y9000k2021h
+  idol_y9000k2021h_modules_i3 = {
+    nixos-modules =
+      [
+        ../hosts/idols/y9000k2021h
+        {modules.desktop.xorg.enable = true;}
+      ]
+      ++ desktop_base_modules.nixos-modules;
+    home-module.imports =
+      [
+        ../hosts/idols/y9000k2021h/home.nix
+        {modules.desktop.i3.enable = true;}
+      ]
+      ++ desktop_base_modules.home-module.imports;
+  };
+
+  idol_y9000k2021h_modules_hyprland = {
+    nixos-modules =
+      [
+        ../hosts/idols/y9000k2021h
+        {modules.desktop.wayland.enable = true;}
+      ]
+      ++ desktop_base_modules.nixos-modules;
+    home-module.imports =
+      [
+        ../hosts/idols/y9000k2021h/home.nix
+        {modules.desktop.hyprland.enable = true;}
+      ]
+      ++ desktop_base_modules.home-module.imports;
+  };
+
   # 星野 アイ, Hoshino Ai
   idol_ai_modules_i3 = {
     nixos-modules =

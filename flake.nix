@@ -75,12 +75,18 @@
     extra-substituters = [
       "https://anyrun.cachix.org"
       "https://hyprland.cachix.org"
-      # "https://nixpkgs-wayland.cachix.org"
+      "https://nixpkgs-wayland.cachix.org"
+
+      "https://nix-gaming.cachix.org"
+      "https://ezkea.cachix.org"
     ];
     extra-trusted-public-keys = [
       "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-      # "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
+      "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
+
+      "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
+      "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI="
     ];
   };
 
@@ -94,6 +100,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
     # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-23_05.url = "github:nixos/nixpkgs/nixos-23.05";
 
     # for macos
     nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-23.11-darwin";
@@ -125,6 +132,8 @@
       url = "github:hyprwm/Hyprland/v0.33.1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
 
     # community wayland nixpkgs
     # nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
@@ -174,20 +183,55 @@
     # my private secrets, it's a private repository, you need to replace it with your own.
     # use ssh protocol to authenticate via ssh-agent/ssh-key, and shallow clone to save time
     mysecrets = {
-      url = "git+ssh://git@github.com/ryan4yin/nix-secrets.git?shallow=1";
+      url = "git+ssh://git@github.com/DataEraserC/nix-secrets.git?shallow=1";
+      # url = "git+file:////home/nixos/Documents/code/nix-config/secrets?shallow=1";
       flake = false;
     };
 
     # my wallpapers
     wallpapers = {
-      url = "github:ryan4yin/wallpapers";
+      url = "github:Program-Learning/wallpapers/dark_wallpapers";
+      # url = "git+file:////home/nixos/Documents/code/wallpapers?shallow=1";
       flake = false;
     };
+
+    # NUR package source
+    nur.url = "github:nix-community/NUR";
 
     nur-ryan4yin = {
       url = "github:ryan4yin/nur-packages";
       # inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nur-program-learning = {
+      url = "github:Program-Learning/nur-packages";
+      # url = "gitfile:////home/nixos/Documents/code/program-learning-nur-packages?shallow=1";
+      # inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nur-linyinfeng = {
+      url = "github:linyinfeng/nur-packages";
+      # inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nur-xddxdd = {
+      url = "github:xddxdd/nur-packages";
+      # inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nur-AtaraxiaSjel = {
+      url = "github:AtaraxiaSjel/nur";
+      # inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nur-arti5an = {
+      url = "github:arti5an/nur-packages";
+      # inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nix-gaming.url = "github:fufexan/nix-gaming";
+
+    aagl.url = "github:ezKEa/aagl-gtk-on-nix";
 
     # riscv64 SBCs
     nixos-licheepi4a.url = "github:ryan4yin/nixos-licheepi4a";

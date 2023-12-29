@@ -1,6 +1,7 @@
 {
   pkgs,
   nur-ryan4yin,
+  pkgs-unstable,
   ...
 }: {
   # refer to https://codeberg.org/dnkl/foot/src/branch/master/foot.ini
@@ -11,7 +12,7 @@
       font=JetBrainsMono Nerd Font:size=13
       shell=${pkgs.bash}/bin/bash --login -c 'nu --login --interactive'
       term=foot
-      initial-window-size-pixels=3840x2160
+      initial-window-size-pixels=2560x1600
       initial-window-mode=windowed
       pad=0x0                             # optionally append 'center'
       resize-delay-ms=10
@@ -57,6 +58,27 @@
       enable = true;
       enableGnomeExtensions = false;
       package = pkgs.firefox-wayland; # firefox with wayland support
+    };
+
+    vscode = {
+      enable = true;
+      # use the stable version
+      package = pkgs-unstable.vscode.override {
+        commandLineArgs = [
+          # it seems that my gpu is not supported
+          # "--disable-gpu"
+          # make it use text-input-v1, which works for kwin 5.27 and weston
+          # "--enable-features=UseOzonePlatform"
+          # "--ozone-platform=wayland"
+          # "--enable-wayland-ime"
+          # "--enable-features=UseOzonePlatform"
+          # "--ozone-platform=x11"
+          # "--force-device-scale-factor=1"
+        ];
+      };
+
+      # let vscode sync and update its configuration & extensions across devices, using github account.
+      # userSettings = {};
     };
   };
 }

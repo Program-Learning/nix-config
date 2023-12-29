@@ -4,6 +4,8 @@
 
   "modules-left": [
     "custom/launcher",
+    "custom/recording",
+    "custom/showkey",
     "temperature",
     "backlight",
     "wlr/workspaces"
@@ -13,6 +15,7 @@
   ],
   "modules-right": [
     "mpd",
+    "bluetooth",
     "pulseaudio",
     "battery", 
     "memory",
@@ -27,18 +30,7 @@
     "format": "{icon}",
     "on-click": "activate",
     "format-icons": {
-      "1": "",
-      "2": "",
-      "3": "",
-      "4": "",
-      "5": "",
-      "6": "",
-      "7": "",
-      "8": "",
-      "9": "",
-      "10": "〇",
-      "focused": "",
-      "default": ""
+      "focused": ""
     }
   },
 
@@ -48,7 +40,9 @@
     "rotate": 0,
     "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>",
     "format": " {:%H:%M}",
-    "format-alt": " {:%a %b %d, %G}"
+    "format-alt": " {:%a %b %d, %G}",
+    "on-double-click": "kitty calcurse",
+    "on-click-right": "gnome-clocks"
   },
   "cpu": {
     "format": "\udb80\udf5b {usage}%",
@@ -63,6 +57,36 @@
     "on-click-right": "exec wallpaper_random",
     "tooltip": false
   },
+  "custom/recording": {
+	  "exec": "$HOME/.config/hypr/scripts/recording status",
+	  "format": "{}",
+	  "on-click": "$HOME/.config/hypr/scripts/recording toggle fullscreen",
+	  "on-click-right": "$HOME/.config/hypr/scripts/recording toggle region",
+	  "restart-interval": 1,
+	  "return-type": "json",
+	  "tooltip": true
+  },
+  "custom/showkey": {
+	  "exec": "$HOME/.config/hypr/scripts/showkey status",
+	  "format": "{}",
+	  "on-click": "$HOME/.config/hypr/scripts/showkey toggle",
+	  "restart-interval": 1,
+	  "return-type": "json",
+	  "tooltip": true
+  },
+  "bluetooth": {
+    "format-on": "",
+    "format-off": "",
+    "format-disabled": "",
+    "format-connected": "<b> {num_connections}</b>",
+    "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+    "on-click": "blueman-manager",
+    // "on-click": "rofi-bluetooth -config ~/.config/rofi/menu.d/network.rasi -i"
+   },
   "custom/powermenu": {
     "format": "\uf011",
     "on-click": "$HOME/.config/hypr/scripts/wlogout",
@@ -81,7 +105,9 @@
     "interval": 1,
     "states": {
       "warning": 85
-    }
+    },
+    "on-click-middle": "kitty btop",
+    "on-click-right": "kitty btop"
   },
   "mpd": {
       "interval": 2,

@@ -10,6 +10,10 @@ with allSystemAttrs; let
   };
 in {
   nixosConfigurations = {
+    # y9000k2021h with i3 window manager
+    y9000k2021h_i3 = nixosSystem (idol_y9000k2021h_modules_i3 // base_args);
+    # y9000k2021h with hyprland compositor
+    y9000k2021h_hyprland = nixosSystem (idol_y9000k2021h_modules_hyprland // base_args);
     # ai with i3 window manager
     ai_i3 = nixosSystem (idol_ai_modules_i3 // base_args);
     # ai with hyprland compositor

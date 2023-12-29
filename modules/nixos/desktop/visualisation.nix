@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  pkgs-unstable,
+  ...
+}: {
   ###################################################################################
   #
   #  Visualisation - Libvirt(QEMU/KVM) / Docker / LXD / WayDroid
@@ -15,15 +19,46 @@
       enable = true;
       # hanging this option to false may cause file permission issues for existing guests.
       # To fix these, manually change ownership of affected files in /var/lib/libvirt/qemu to qemu-libvirtd.
-      qemu.runAsRoot = true;
+      qemu = {
+        runAsRoot = true;
+        swtpm.enable = true;
+        ovmf.enable = true;
+        ovmf.packages = [pkgs-unstable.OVMFFull.fd];
+      };
     };
+    spiceUSBRedirection.enable = true;
     waydroid.enable = true;
-    lxd.enable = true;
+    lxd = {
+      enable = true;
+      ui.enable = true;
+    };
+    virtualbox.host.enable = true;
+    virtualbox.host.enableExtensionPack = true;
   };
 
   environment.systemPackages = with pkgs; [
     # Need to add [File (in the menu bar) -> Add connection] when start for the first time
     virt-manager
+    virt-manager-qt
+    virt-viewer
+
+    spice
+    spice-gtk
+    spice-protocol
+    win-spice
+
+    win-virtio
+
+    iproute
+
+    edk2
+    edk2-uefi-shell
+
+    x11docker
+
+    virtiofsd
+
+    dmg2img
 
     # QEMU/KVM, provides:
     #   qemu-storage-daemon qemu-edid qemu-ga
