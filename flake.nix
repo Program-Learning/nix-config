@@ -164,12 +164,18 @@
     };
 
     nuenv.url = "github:DeterminateSystems/nuenv";
+    emacs-overlay.url = "github:nix-community/emacs-overlay";
 
     ########################  Some non-flake repositories  #########################################
 
     # AstroNvim is an aesthetic and feature-rich neovim config.
     astronvim = {
       url = "github:AstroNvim/AstroNvim/v3.40.3";
+      flake = false;
+    };
+    # doom-emacs is a configuration framework for GNU Emacs.
+    doomemacs = {
+      url = "github:doomemacs/doomemacs";
       flake = false;
     };
 
