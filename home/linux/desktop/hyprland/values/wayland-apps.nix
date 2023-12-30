@@ -2,6 +2,7 @@
   pkgs,
   nur-ryan4yin,
   pkgs-unstable,
+  firefox,
   ...
 }: {
   # refer to https://codeberg.org/dnkl/foot/src/branch/master/foot.ini
@@ -57,7 +58,7 @@
     firefox = {
       enable = true;
       enableGnomeExtensions = false;
-      package = pkgs.firefox-wayland; # firefox with wayland support
+      package = firefox.packages.${pkgs.system}.firefox-nightly-bin; # firefox with wayland support
     };
 
     vscode = {

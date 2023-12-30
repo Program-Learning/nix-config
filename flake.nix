@@ -133,6 +133,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    firefox = {
+      url = "github:nix-community/flake-firefox-nightly";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
 
     # community wayland nixpkgs
