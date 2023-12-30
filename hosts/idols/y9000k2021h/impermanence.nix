@@ -52,7 +52,7 @@
     ];
 
     # the following directories will be passed to /persistent/home/$USER
-    users.ryan = {
+    users.nixos = {
       directories = [
         "codes"
         "nix-config"
