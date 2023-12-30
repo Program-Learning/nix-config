@@ -92,7 +92,8 @@ in {
           sing-box
 
           # --Office
-          onlyoffice-bin
+          # onlyoffice-bin # has some font issue
+          onlyoffice-bin_7_5
           libreoffice
           mdp
           slides
