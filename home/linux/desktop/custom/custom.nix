@@ -134,6 +134,7 @@ in {
           # --remote control
           rustdesk
           # sunshine
+          parsec-bin
           moonlight-qt
           # moonlight-embedded
           wayvnc
