@@ -96,6 +96,8 @@ in {
           libreoffice
           mdp
           slides
+          wpsoffice # unfree
+
 
           # --math software
           # geogebra6
