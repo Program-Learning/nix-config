@@ -765,6 +765,26 @@
         "type": "github"
       }
     },
+    "hyprland-plugins": {
+      "inputs": {
+        "hyprland": [
+          "hyprland"
+        ]
+      },
+      "locked": {
+        "lastModified": 1704069298,
+        "narHash": "sha256-Efw9FFwf/QRvwpSdLDWh+t75YSTf+03wn9BRER4WjXs=",
+        "owner": "hyprwm",
+        "repo": "hyprland-plugins",
+        "rev": "f7853b9cc6aab627b37b7be6575628e788ad6d1d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hyprwm",
+        "repo": "hyprland-plugins",
+        "type": "github"
+      }
+    },
     "hyprland-protocols": {
       "inputs": {
         "nixpkgs": [
@@ -1832,6 +1852,7 @@
         "firefox": "firefox",
         "home-manager": "home-manager_2",
         "hyprland": "hyprland",
+        "hyprland-plugins": "hyprland-plugins",
         "impermanence": "impermanence",
         "lanzaboote": "lanzaboote",
         "mysecrets": "mysecrets",

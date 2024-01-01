@@ -132,6 +132,10 @@
       url = "github:hyprwm/Hyprland/v0.33.1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
 
     firefox = {
       url = "github:nix-community/flake-firefox-nightly";
