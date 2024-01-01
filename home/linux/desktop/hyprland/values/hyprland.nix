@@ -2,7 +2,6 @@
   pkgs,
   lib,
   hyprland,
-  hyprland-plugins,
   nur-ryan4yin,
   ...
 }: {
@@ -27,10 +26,6 @@
       ];
     };
     package = hyprland.packages.${pkgs.system}.hyprland;
-    plugins = [
-      hyprland-plugins.packages.${pkgs.system}.hyprbars
-      # ...
-    ];
     extraConfig = builtins.readFile ../conf/hyprland.conf;
     # gammastep/wallpaper-switcher need this to be enabled.
     systemd.enable = true;
