@@ -53,6 +53,7 @@
 
         mitmproxy # http/https proxy tool
         insomnia # REST client
+        hoppscotch # Api Test Tool
         wireshark # network analyzer
 
         # manual

@@ -31,7 +31,7 @@
     mimeApps = {
       enable = true;
       associations.added = let
-        browser = ["firefox.desktop"];
+        browser = ["google-chrome.desktop" "firefox.desktop"];
         office = ["onlyoffice-desktopeditors.desktop" "writer.desktop"];
         code = ["code.desktop" "nvim.desktop"];
         editor = ["nvim.desktop" "Helix.desktop" "code.desktop"];
@@ -43,7 +43,7 @@
         "application/x-wine-extension-ini" = editor;
       };
       defaultApplications = let
-        browser = ["firefox.desktop"];
+        browser = ["google-chrome.desktop" "firefox.desktop"];
         office = ["onlyoffice-desktopeditors.desktop" "writer.desktop"];
         code = ["code.desktop" "nvim.desktop"];
         editor = ["nvim.desktop" "Helix.desktop" "code.desktop"];
