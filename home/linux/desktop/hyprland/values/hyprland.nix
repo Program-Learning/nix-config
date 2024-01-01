@@ -2,6 +2,7 @@
   pkgs,
   lib,
   hyprland,
+  hyprland-plugins,
   nur-ryan4yin,
   ...
 }: {

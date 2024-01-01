@@ -61,6 +61,9 @@
       package = firefox.packages.${pkgs.system}.firefox-nightly-bin; # firefox with wayland support
     };
 
+    # Fix crash: https://github.com/NixOS/nixpkgs/issues/246509
+    # "window.titleBarStyle" = "custom";
+    # or `env -u WAYLAND_DISPLAY code`
     vscode = {
       enable = true;
       # use the stable version
