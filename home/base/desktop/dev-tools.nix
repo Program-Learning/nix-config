@@ -53,7 +53,8 @@
 
         mitmproxy # http/https proxy tool
         insomnia # REST client
-        hoppscotch # Api Test Tool
+        # hoppscotch is not in nixpkgs now
+        # hoppscotch # Api Test Tool
         wireshark # network analyzer
 
         # manual
