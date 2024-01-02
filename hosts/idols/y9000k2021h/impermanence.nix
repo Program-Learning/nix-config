@@ -93,6 +93,10 @@
         ".config/remmina"
         ".config/freerdp"
 
+        # doom-emacs
+        ".config/emacs"
+        "org" #  org files
+
         # browsers
         ".mozilla"
         ".config/google-chrome"

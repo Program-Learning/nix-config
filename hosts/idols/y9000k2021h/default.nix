@@ -23,7 +23,7 @@
 
     networkmanager.enable = true;
 
-    # enableIPv6 = false; # disable ipv6
+    enableIPv6 = true; # disable ipv6
     interfaces.wlp0s20f3 = {
       useDHCP = true;
       #ipv4.addresses = [
