@@ -11,12 +11,9 @@
   home.pointerCursor = {
     gtk.enable = true;
     x11.enable = true;
-    #package = nur-program-learning.packages.${pkgs.system}.xcursor-genshin-nahida;
-    #name = "xcursor-genshin-nahida";
-    #size = 24;
-    package = pkgs.catppuccin-cursors.mochaSky;
-    name = "Catppuccin-Mocha-Sky-Cursors";
-    size = 48;
+    package = pkgs.bibata-cursors;
+    name = "Bibata-Modern-Ice";
+    size = 24;
   };
 
   # set dpi for 4k monitor
