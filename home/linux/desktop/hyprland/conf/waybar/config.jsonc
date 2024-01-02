@@ -8,7 +8,7 @@
     "custom/showkey",
     "temperature",
     "backlight",
-    "wlr/workspaces"
+    "hyprland/workspaces"
   ],
   "modules-center": [
     "custom/playerctl"
@@ -26,7 +26,7 @@
     "custom/powermenu",
     "tray"
   ],
-  "wlr/workspaces": {
+  "hyprland/workspaces": {
     "format": "{icon}",
     "on-click": "activate",
     "format-icons": {
