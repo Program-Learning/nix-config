@@ -13,9 +13,10 @@
     x11.enable = true;
     #package = nur-program-learning.packages.${pkgs.system}.xcursor-genshin-nahida;
     #name = "xcursor-genshin-nahida";
-    package = pkgs.catppuccin-cursors.mochaDark;
-    name = "Catppuccin-Mocha-Dark-Cursors";
-    size = 24;
+    #size = 24;
+    package = pkgs.catppuccin-cursors.mochaSky;
+    name = "Catppuccin-Mocha-Sky-Cursors";
+    size = 48;
   };
 
   # set dpi for 4k monitor
