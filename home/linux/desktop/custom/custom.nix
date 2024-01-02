@@ -8,7 +8,6 @@
   nur-xddxdd,
   nur-AtaraxiaSjel,
   nur-arti5an,
-  nix-gaming,
   aagl,
   nixpkgs-23_05,
   ...
@@ -19,16 +18,15 @@
 in {
   nix.settings.substituters = ["https://mirror.sjtu.edu.cn/nix-channels/store" "https://mirrors.ustc.edu.cn/nix-channels/store"];
   home.packages =
-    [
-      # aagl-gtk-on-nix.anime-game-launcher
-      # aagl-gtk-on-nix.anime-borb-launcher
-      # aagl-gtk-on-nix.honkers-railway-launcher
-      # aagl-gtk-on-nix.honkers-launcher
+    with aagl-gtk-on-nix; [
+      # anime-game-launcher
+      # anime-borb-launcher
+      # honkers-railway-launcher
+      # honkers-launcher
     ]
     ++ (with pkgs;
       # nixpkgs here
         [
-          intel-gpu-tools
           trickle
           # use this to pop a input window
           gnome.zenity
@@ -40,10 +38,12 @@ in {
           gnome.adwaita-icon-theme
           go-musicfox
           mpvpaper
+
+          intel-gpu-tools
           # --nvidia cuda
           cudatoolkit
 
-          # bilibili
+          # Bilibili video download
           yutto
 
           konsole
@@ -66,10 +66,6 @@ in {
           # jetbrains.idea-ultimate
           jetbrains.idea-community
           eclipses.eclipse-sdk
-
-          # --mc
-          # minecraft
-          # prismlauncher
 
           warp
           cloudflare-warp
@@ -247,7 +243,6 @@ in {
     # nixpkgs-unstable
     ++ (with pkgs-unstable; [
       fastfetch
-      hmcl
       OVMFFull.fd
       mission-center
     ])
@@ -263,7 +258,6 @@ in {
         nur-xddxdd.packages.${pkgs.system}.dingtalk
         # nur-xddxdd.packages.${pkgs.system}.bilibili
         nur-xddxdd.packages.${pkgs.system}.onepush
-        nur-xddxdd.packages.${pkgs.system}.grasscutter
         nur-AtaraxiaSjel.packages.${pkgs.system}.waydroid-script
         nur-arti5an.packages.${pkgs.system}.mount-zip
         nur-program-learning.packages.${pkgs.system}.qtscrcpy
@@ -272,7 +266,6 @@ in {
         nur-program-learning.packages.${pkgs.system}.AppimageLauncher
         # nur-program-learning.packages.${pkgs.system}.CrossOver
         # nur-program-learning.packages.${pkgs.system}.waybar-bluetooth_battery_parse
-        nix-gaming.packages.${pkgs.system}.osu-stable
         # aleksana.go-musicfox
         # aleksana.fastfetch
         # alexnortung.pkgs.papermc-1_18_x
