@@ -3,45 +3,52 @@
 # use nushell for shell commands
 set shell := ["nu", "-c"]
 
+# ================= NixOS related =========================
+nixos-switch := "nixos-rebuild switch --use-remote-sudo --flake"
+nixos-boot := "nixos-rebuild boot --use-remote-sudo --flake"
+debug-args := "--show-trace --verbose"
+
+
 ############################################################################
 #
 #  Nix commands related to the local machine
 #
 ############################################################################
 
-nixos-switch := "nixos-rebuild switch --use-remote-sudo --flake"
-nixos-boot := "nixos-rebuild boot --use-remote-sudo --flake"
-debug-args := "--show-trace --verbose"
+y9000k2021h_i3 mode="default":
+  use utils.nu *; \
+  nixos-switch y9000k2021h_i3 {{mode}}
 
-y9000k2021h_i3:
-  {{nixos-switch}} .#y9000k2021h_i3
+y9000k2021h_hypr mode="default":
+  use utils.nu *; \
+  nixos-switch y9000k2021h_hyprland {{mode}}
 
-y9000k2021h_hypr:
-	{{nixos-switch}} .#y9000k2021h_hyprland
+y9000k2021h_i3-debug mode="debug":
+  use utils.nu *; \
+  nixos-switch y9000k2021h_i3 {{mode}}
 
-i3:
-  {{nixos-switch}} .#ai_i3
+y9000k2021h_hypr-debug mode="debug":
+  use utils.nu *; \
+  nixos-switch y9000k2021h_hyprland {{mode}}
 
-hypr:
-	{{nixos-switch}} .#ai_hyprland
+i3 mode="default":
+  use utils.nu *; \
+  nixos-switch ai_i3 {{mode}}
 
-s-i3:
-	{{nixos-switch}} .#shoukei_i3
+hypr mode="default":
+  use utils.nu *; \
+  nixos-switch ai_hyprland {{mode}}
 
-s-hypr:
-	{{nixos-switch}} .#shoukei_hyprland
 
-y9000k2021h_i3-debug:
-  {{nixos-switch}} .#y9000k2021h_i3 {{debug-args}}
+s-i3 mode="default":
+  use utils.nu *; \
+  nixos-switch shoukei_i3 {{mode}}
 
-y9000k2021h_hypr-debug:
-	{{nixos-switch}} .#y9000k2021h_hyprland {{debug-args}}
 
-i3-debug:
-	{{nixos-switch}} .#ai_i3 {{debug-args}}
+s-hypr mode="default":
+  use utils.nu *; \
+  nixos-switch shoukei_hyprland {{mode}}
 
-hypr-debug:
-	{{nixos-switch}} .#ai_hyprland {{debug-args}}
 
 up:
   nix flake update
@@ -71,31 +78,23 @@ gc:
 #
 ############################################################################
 
-darwin-prefix := "./result/sw/bin/darwin-rebuild"
-darwin-switch := "{{darwin-prefix}} switch --flake"
-
 darwin-set-proxy:
   sudo python3 scripts/darwin_set_proxy.py
-  sleep 1
+  sleep 1sec
 
 darwin-rollback:
-  {{darwin-prefix}} rollback
+  use utils.nu *; \
+  darwin-rollback
 
-ha: darwin-set-proxy
-  nix build .#darwinConfigurations.harmonica.system
-  {{darwin-switch}} .#harmonica
+ha mode="default": darwin-set-proxy
+  use utils.nu *; \
+  darwin-build "harmonica" {{mode}}; \
+  darwin-switch "harmonica" {{mode}}
 
-ha-debug: darwin-set-proxy
-  nom build .#darwinConfigurations.harmonica.system {{debug-args}}
-  {{darwin-switch}} .#harmonica {{debug-args}}
-
-fe: darwin-set-proxy
-  nix build .#darwinConfigurations.fern.system
-  {{darwin-switch}} .#fern
-
-fe-debug: darwin-set-proxy
-  nom build .#darwinConfigurations.fern.system {{debug-args}}
-  {{darwin-switch}} .#fern {{debug-args}}
+fe mode="default": darwin-set-proxy
+  use utils.nu *; \
+  darwin-build "fern" {{mode}}; \
+  darwin-switch "fern" {{mode}}
 
 ############################################################################
 #

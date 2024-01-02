@@ -93,6 +93,7 @@
       # HTML/CSS/JSON/ESLint language servers extracted from vscode
       nodePackages.vscode-langservers-extracted
       nodePackages."@tailwindcss/language-server"
+      emmet-ls
 
       #-- CloudNative
       nodePackages.dockerfile-language-server-nodejs
@@ -109,7 +110,6 @@
       actionlint # GitHub Actions linter
       buf # protoc plugin for linting and formatting
       proselint # English prose linter
-      racket-minimal # scheme language(racket cli only tools)
 
       #-- Misc
       tree-sitter # common language parser/highlighter
