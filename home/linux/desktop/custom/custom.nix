@@ -28,6 +28,7 @@ in {
     ++ (with pkgs;
       # nixpkgs here
         [
+          intel-gpu-tools
           trickle
           # use this to pop a input window
           gnome.zenity
@@ -97,7 +98,6 @@ in {
           mdp
           slides
           wpsoffice # unfree
-
 
           # --math software
           # geogebra6
@@ -279,15 +279,19 @@ in {
       ]
     )
     # ++ (with nixpkgs-23_05; [sqliteman])
-    ++ (let
-      nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
-        export __NV_PRIME_RENDER_OFFLOAD=1
-        export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
-        export __GLX_VENDOR_LIBRARY_NAME=nvidia
-        export __VK_LAYER_NV_optimus=NVIDIA_only
-        exec "$@"
-      '';
-    in [nvidia-offload]);
+
+    # use hardware.nvidia.prime.offload.enableOffloadCmd instead!
+    #++ (let
+    #  nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
+    #    export __NV_PRIME_RENDER_OFFLOAD=1
+    #    export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
+    #    export __GLX_VENDOR_LIBRARY_NAME=nvidia
+    #    export __VK_LAYER_NV_optimus=NVIDIA_only
+    #    exec "$@"
+    #  '';
+    #in [nvidia-offload])
+
+    ;
 
   # Custom Desktop Shortcuts
   home.file = {

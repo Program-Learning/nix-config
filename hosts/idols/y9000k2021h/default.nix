@@ -51,7 +51,23 @@
 
     # required by most wayland compositors!
     modesetting.enable = true;
+    # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
     powerManagement.enable = true;
+    # Fine-grained power management. Turns off GPU when not in use.
+    # Experimental and only works on modern Nvidia GPUs (Turing or newer).
+    powerManagement.finegrained = false;
+    prime = {
+    	offload = {
+			  enable = false;
+			  enableOffloadCmd = false;
+		  };
+      # Make sure to use the correct Bus ID values for your system!
+		  intelBusId = "PCI:0:2:0";
+		  nvidiaBusId = "PCI:1:0:0";
+    };
+    # Enable the Nvidia settings menu,
+  	# accessible via `nvidia-settings`.
+    nvidiaSettings = true;
   };
   virtualisation.docker.enableNvidia = true; # for nvidia-docker
 
