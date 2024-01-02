@@ -1,5 +1,6 @@
 {
   pkgs,
+  nur-program-learning,
   config,
   ...
 }: {
@@ -10,8 +11,10 @@
   home.pointerCursor = {
     gtk.enable = true;
     x11.enable = true;
-    package = pkgs.bibata-cursors;
-    name = "Bibata-Modern-Ice";
+    #package = nur-program-learning.packages.${pkgs.system}.xcursor-genshin-nahida;
+    #name = "xcursor-genshin-nahida";
+    package = pkgs.catppuccin-cursors.mochaDark;
+    name = "Catppuccin-Mocha-Dark-Cursors";
     size = 24;
   };
 

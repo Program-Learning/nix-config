@@ -222,27 +222,27 @@
     nur-program-learning = {
       url = "github:Program-Learning/nur-packages";
       # url = "gitfile:////home/nixos/Documents/code/program-learning-nur-packages?shallow=1";
-      # inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nur-linyinfeng = {
       url = "github:linyinfeng/nur-packages";
-      # inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nur-xddxdd = {
       url = "github:xddxdd/nur-packages";
-      # inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nur-AtaraxiaSjel = {
       url = "github:AtaraxiaSjel/nur";
-      # inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nur-arti5an = {
       url = "github:arti5an/nur-packages";
-      # inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nix-gaming.url = "github:fufexan/nix-gaming";
