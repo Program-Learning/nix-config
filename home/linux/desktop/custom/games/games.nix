@@ -1,8 +1,14 @@
-{ pkgs, pkgs-unstable, nix-gaming, nur-xddxdd, ... }:
-let
+{
+  pkgs,
+  pkgs-unstable,
+  nix-gaming,
+  nur-xddxdd,
+  ...
+}: let
   # Mihoyo Game Launcher
-  aagl-gtk-on-nix = import (builtins.fetchTarball
-    "https://github.com/ezKEa/aagl-gtk-on-nix/archive/main.tar.gz");
+  aagl-gtk-on-nix =
+    import (builtins.fetchTarball
+      "https://github.com/ezKEa/aagl-gtk-on-nix/archive/main.tar.gz");
 in {
   home.packages = with pkgs-unstable; [
     # MineCraft Launcher
@@ -22,6 +28,5 @@ in {
     # An anime game server
     nur-xddxdd.packages.${pkgs.system}.grasscutter
     nix-gaming.packages.${pkgs.system}.osu-stable
-
   ];
 }
