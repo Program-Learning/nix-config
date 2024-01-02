@@ -5,6 +5,15 @@
 ;; on the command line, then restart Emacs for the changes to take effect -- or
 ;; use 'M-x doom/reload'.
 
+(package! copilot
+  :recipe (:host github :repo "copilot-emacs/copilot.el" :files ("*.el" "dist")))
+
+(package! super-save
+  :recipe (:host github :repo "bbatsov/super-save" :files ("*.el" "dist")))
+
+(package! wakatime-mode
+  :recipe (:host github :repo "wakatime/wakatime-mode" :files ("*.el" "dist")))
+
 
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
 ;; (package! some-package)

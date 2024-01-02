@@ -38,6 +38,8 @@
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
 
+(setq warning-minimum-level :error)
+
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
@@ -74,3 +76,26 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+;; accept completion from copilot and fallback to company
+(use-package! copilot
+  :hook (prog-mode . copilot-mode)
+  :bind (:map copilot-completion-map
+              ("<tab>" . 'copilot-accept-completion)
+              ("TAB" . 'copilot-accept-completion)
+              ("C-TAB" . 'copilot-accept-completion-by-word)
+              ("C-<tab>" . 'copilot-accept-completion-by-word))
+  :config
+  (copilot-mode +1))
+
+(use-package super-save
+  :ensure t
+  :config
+  (super-save-mode +1))
+
+(setq super-save-auto-save-when-idle t)
+(setq super-save-all-buffers t)
+(setq super-save-delete-trailing-whitespace t)
+
+(use-package wakatime-mode
+  :ensure t)
