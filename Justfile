@@ -203,6 +203,8 @@ reload-emacs-cmd := if os() == "macos" {
     + "launchctl load " + emacs-plist-path
   } else {
     "systemctl --user restart emacs.service"
+    + "\n"
+    + "systemctl --user status emacs.service"
   }
 
 reload-emacs:
