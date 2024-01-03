@@ -1,11 +1,17 @@
 # Emacs Editor
 
 - Framework: <https://github.com/doomemacs/doomemacs>
-  - key bindings: <https://github.com/doomemacs/doomemacs/blob/master/modules/config/default/%2Bevil-bindings.el>
+  - key bindings:
+    - source code: <https://github.com/doomemacs/doomemacs/blob/master/modules/config/default/%2Bevil-bindings.el>
+    - docs: <https://github.com/doomemacs/doomemacs/blob/master/modules/editor/evil/README.org>
+  - module index: <https://github.com/doomemacs/doomemacs/blob/master/docs/modules.org>
 - Chinese(rime) support: <https://github.com/DogLooksGood/emacs-rime>
 - modal editing:
   - <https://github.com/emacs-evil/evil>: evil mode, enabled by default in doom-emacs.
   - <https://github.com/meow-edit/meow>
+- LSP Client: <https://github.com/manateelazycat/lsp-bridge>
+- Emacs Wiki: <https://www.emacswiki.org/emacs/SiteMap>
+- Awesome Emacs: <https://github.com/emacs-tw/awesome-emacs#lsp-client>
 
 Emacs daemon:
 
@@ -20,6 +26,14 @@ After deploying this nix flake, run the following command to install or update e
 doom sync
 ```
 
+when in doubt, run `doom sync`!
+
+## Why emacs?
+
+1. Explore the unknown, just for fun!
+2. Better support for Lisp-like Languages.
+3. Org Mode
+
 ## Terminal Related
 
 zellij provides a more powerful and stable terminal experience, so here is zellij's terminal shortcuts I use frequently now:
@@ -30,6 +44,7 @@ zellij provides a more powerful and stable terminal experience, so here is zelli
 | Horizontal Split Terminal | `Ctrl + <p> + <d>` |
 | Vertical Split Terminal   | `Ctrl + <p> + <n>` |
 | Open file tree sidebar    | `SPC + o + p`      |
+| Exit                      | `M-x C-c`          |
 
 ## Visual Modes
 
@@ -66,12 +81,14 @@ The same as neovim/vim:
 
 ## Splitting and Buffers
 
-| Action                | Shortcut          |
-| --------------------- | ----------------- |
-| Next Buffer (Tab)     | `]b`              |
-| Previous Buffer (Tab) | `[b`              |
-| Buffer List           | `<Space> + ,`     |
-| Save all buffers(Tab) | `<Space> + b + S` |
+| Action                  | Shortcut          |
+| ----------------------- | ----------------- |
+| Next Buffer (Tab)       | `]b`              |
+| Previous Buffer (Tab)   | `[b`              |
+| Buffer List             | `<Space> + ,`     |
+| Save all buffers(Tab)   | `<Space> + b + S` |
+| Kill the current buffer | `<Space> + b + k` |
+| Kill all buffers        | `<Space> + b + K` |
 
 ## Editing and Formatting
 
@@ -81,7 +98,11 @@ The same as neovim/vim:
 | Code Actions                             | `<Space> + ca`      |
 | Rename                                   | `<Space> + cr`      |
 | Opening LSP symbols                      | `<Space> + cS`      |
-| Comment Line(support multiple lines)     | `<Space> + /`       |
+| Show all LSP Errors                      | `<Space> + c + x/X` |
+| Jump to Definition                       |  `gd` |
+| Jump to References                       |  `gD` |
+| (Un)Comment the selected context         | `gc`                |
+| (Un)Comment the current line             | `gcc`               |
 | Open filepath/URL at cursor              | `gf`                |
 | Find files by keyword in path            | `<Space> + <Space>` |
 | Grep string in files (vertico + ripgrep) | `<Space> + sd`      |

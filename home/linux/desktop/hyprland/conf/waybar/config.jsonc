@@ -17,7 +17,7 @@
     "mpd",
     "bluetooth",
     "pulseaudio",
-    "battery", 
+    "battery",
     "memory",
     "cpu",
     "network",
