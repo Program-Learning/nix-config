@@ -36,6 +36,7 @@ exec clash-verge &
 # Start lxpolkit
 exec lxpolkit &
 
+# Launch xdg-desktop-portal-hyprland
 exec /nix/store/*xdg-desktop-portal-hyprland*/libexec/xdg-desktop-portal-hyprland &
 
 # Start swayidle
