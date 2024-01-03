@@ -33,6 +33,7 @@ then
 		if [ "$2" == "fullscreen" ]; then
 			wf-recorder $WF_RECORDER_OPTS -f "$VideoFileName" 1>"$LogFileName" 2>&1 &
 		elif [ "$2" == "region" ]; then
+			sleep 1
 			region=$(slurp -b 1B1F2800 -c E06B74ff -s C778DD0D -w 2 -d -o)
 			while [ ! -z $(pgrep -x slurp) ]; do wait; done
 			wf-recorder $WF_RECORDER_OPTS -g "$region" -f "$VideoFileName" 1>"$LogFileName" 2>&1 &
