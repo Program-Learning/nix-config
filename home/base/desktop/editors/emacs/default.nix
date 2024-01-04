@@ -19,9 +19,7 @@ with lib; let
     export PATH="${config.xdg.configHome}/emacs/bin:$PATH"
   '';
   shellAliases = {
-    e = "emacsclient -c";
-    ediff = ''emacsclient -c -nw --eval "(ediff-files \"$1\" \"$2\")"'';
-    eman = ''emacsclient -c -nw --eval "(switch-to-buffer (man \"$1\"))"'';
+    e = "emacsclient --create-frame --tty";
   };
 in {
   options.modules.editors.emacs = {
@@ -76,7 +74,8 @@ in {
     }
 
     (mkIf pkgs.stdenv.isLinux (
-    let emacsPkg = pkgs.emacs29-nox; in
+    # Do not use emacs-nox here, which makes the mouse wheel work abnormally in terminal mode.
+    let emacsPkg = pkgs.emacs29; in
     {
       home.packages = [emacsPkg];
       services.emacs = {
@@ -87,7 +86,8 @@ in {
     }))
 
     (mkIf pkgs.stdenv.isDarwin (
-    let emacsPkg = pkgs.emacs29-macport; in
+    # Do not use emacs-nox here, which makes the mouse wheel work abnormally in terminal mode.
+    let emacsPkg = pkgs.emacs29; in
     {
       home.packages = [emacsPkg];
       launchd.enable = true;
