@@ -45,6 +45,11 @@
         ForwardAgent yes
         IdentityFile ~/.ssh/y9000k2021h_id_ed25519
         IdentitiesOnly yes
+      Host oracle_ubuntu_1
+        HostName 155.248.179.129
+        ForwardAgent yes
+        IdentityFile ~/.ssh/y9000k2021h_id_ed25519
+        IdentitiesOnly yes
     '';
   };
 }
