@@ -31,9 +31,14 @@ in {
 
   config = mkIf cfg.enable (mkMerge [
     {
-      home.packages = with pkgs; [
-        librime
+      home.packages = with pkgs;
+        let
+          epkgs = emacsPackages;
+        in
+        [
         emacs-all-the-icons-fonts
+        # epkgs.parinfer-rust-mode
+        # epkgs.rime
 
         ## Doom dependencies
         git
@@ -64,7 +69,10 @@ in {
       # allow fontconfig to discover fonts and configurations installed through `home.packages`
       fonts.fontconfig.enable = true;
 
-      xdg.configFile."doom".source = ./doom;
+      xdg.configFile."doom" = {
+        source = ./doom;
+        force = true;
+      };
 
       home.activation = mkIf cfg.doom.enable {
         installDoomEmacs = lib.hm.dag.entryAfter ["writeBoundary"] ''
