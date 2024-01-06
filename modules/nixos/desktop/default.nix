@@ -6,5 +6,6 @@
     ./peripherals.nix
     ./security.nix
     ./visualisation.nix
+    ./custom
   ];
 }

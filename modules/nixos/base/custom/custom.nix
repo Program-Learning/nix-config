@@ -10,13 +10,6 @@
   ];
   programs = {
     wshowkeys.enable = true;
-    steam = {
-      enable = true;
-      remotePlay.openFirewall =
-        true; # Open ports in the firewall for Steam Remote Play
-      dedicatedServer.openFirewall =
-        true; # Open ports in the firewall for Source Dedicated Server
-    };
 
     proxychains = {
       enable = true;
@@ -74,9 +67,7 @@
     #   };
     # };
 
-    tailscale = {
-      enable = true;
-    };
+
   };
 
   systemd.services = {
@@ -100,13 +91,20 @@
 
   nixpkgs.config.permittedInsecurePackages = ["openssl-1.1.1v" "electron-19.0.7"];
 
+  documentation.dev.enable = true;
+
   environment.extraOutputsToInstall = ["dev"];
 
   nixpkgs.config.allowUnfreePredicate = ["wechat_dev_tools"];
 
-  documentation.dev.enable = true;
-
+  # remote desktop server
   features.sunshine.enable = true;
-
+  # virtual network
+  services.tailscale.enable = true;
+  services.zerotierone = {
+    enable = true;
+    joinNetworks = ["c7c8172af18872cd"];
+  };
+  # recording tool
   features.wf-recorder.enable = true;
 }
