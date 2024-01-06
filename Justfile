@@ -182,11 +182,11 @@ fmt:
   # format the nix files in this repo
   nix fmt
 
-test-nvim:
+nvim-test:
   rm -rf $"($env.HOME)/.config/astronvim/lua/user"
   rsync -avz --copy-links --chmod=D2755,F744 home/base/desktop/editors/neovim/astronvim_user/ $"($env.HOME)/.config/astronvim/lua/user"
 
-test-nvim-clean:
+nvim-clean:
   rm -rf $"($env.HOME)/.config/astronvim/lua/user"
 
 # =================================================
@@ -207,18 +207,20 @@ reload-emacs-cmd := if os() == "macos" {
     + "systemctl --user status emacs.service"
   }
 
-test-emacs:
+emacs-test:
   rm -rf $"($env.HOME)/.config/doom"
   rsync -avz --copy-links --chmod=D2755,F744 home/base/desktop/editors/emacs/doom/ $"($env.HOME)/.config/doom"
+  doom clean
   doom sync
+
+emacs-clean:
+  rm -rf $"($env.HOME)/.config/doom/"
+
+emacs-purge:
   doom purge
   doom clean
   doom sync
+
+emacs-reload:
+  doom sync
   {{reload-emacs-cmd}}
-
-reload-emacs:
-  {{reload-emacs-cmd}}
-
-test-emacs-clean:
-  rm -rf $"($env.HOME)/.config/doom/"
-
