@@ -261,7 +261,7 @@ in {
           nur-xddxdd.packages.${pkgs.system}.onepush
           nur-AtaraxiaSjel.packages.${pkgs.system}.waydroid-script
           nur-arti5an.packages.${pkgs.system}.mount-zip
-          nur-program-learning.packages.${pkgs.system}.qtscrcpy
+          nur-program-learning.packages.${pkgs.system}.qtscrcpy_git
           nur-program-learning.packages.${pkgs.system}.escrcpy_appimage
           nur-program-learning.packages.${pkgs.system}.watt-toolkit_2
           nur-program-learning.packages.${pkgs.system}.AppimageLauncher
