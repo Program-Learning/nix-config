@@ -28,6 +28,7 @@ in {
       ++ (with pkgs;
         # nixpkgs here
           [
+            glib
             trickle
             # use this to pop a input window
             gnome.zenity
