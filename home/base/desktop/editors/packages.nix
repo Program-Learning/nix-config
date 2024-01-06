@@ -13,18 +13,28 @@
 
       #-- python
       nodePackages.pyright # python language server
-      python3Packages.black # python formatter
-      python3Packages.ruff-lsp
       (python310.withPackages (
         ps:
           with ps; [
-            pynvim # Python client and plugin host for Nvim
+            ruff-lsp
+            black # python formatter
 
             ipython
             pandas
             requests
             pyquery
             pyyaml
+
+           ## emacs's lsp-bridge dependenciesge
+            epc
+            orjson
+            sexpdata
+            six
+            setuptools
+            paramiko
+            rapidfuzz
+
+            # modules used by Mayuri
             pip # use in venv "python -m venv .venv" "source .venv/bin/activate"
 
             ipykernel
@@ -103,9 +113,10 @@
       jsonnet-language-server
       hadolint # Dockerfile linter
 
-      # -- Scheme
+      # -- Lisp like Languages
       guile
       racket-minimal
+      fnlfmt  # fennel
 
       #-- Others
       taplo # TOML language server / formatter / validator

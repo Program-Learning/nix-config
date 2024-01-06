@@ -26,13 +26,19 @@
 
       sarasa-gothic
       # nerdfonts
+      # https://github.com/NixOS/nixpkgs/blob/nixos-23.11/pkgs/data/fonts/nerdfonts/shas.nix
       (nerdfonts.override {
         fonts = [
+          # symbols icon only
+          "NerdFontsSymbolsOnly"
+          # Characters
           "FiraCode"
           "JetBrainsMono"
           "Iosevka"
         ];
       })
+      julia-mono
+      dejavu_fonts
     ];
 
     # user defined fonts
