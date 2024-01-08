@@ -83,7 +83,7 @@ in {
   # homebrew need to be installed manually, see https://brew.sh
   # https://github.com/LnL7/nix-darwin/blob/master/modules/homebrew.nix
   homebrew = {
-    enable = false;  # disable homebrew for fast deploy
+    enable = false; # disable homebrew for fast deploy
 
     onActivation = {
       autoUpdate = false;
@@ -106,7 +106,6 @@ in {
     };
 
     taps = [
-      "homebrew/cask"
       "homebrew/cask-fonts"
       "homebrew/services"
       "homebrew/cask-versions"
@@ -155,8 +154,6 @@ in {
       # IM & audio & remote desktop & meeting
       "telegram"
       "discord"
-      "neteasemusic"
-      "qqmusic"
       "microsoft-remote-desktop"
 
       # "anki"

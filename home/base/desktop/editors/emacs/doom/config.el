@@ -21,7 +21,7 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 ;;
-(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 18 :weight 'normal)
+(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 18)
       doom-variable-pitch-font (font-spec :family "DejaVu Sans")
       doom-symbol-font (font-spec :family "Symbols Nerd Font Mono")
       doom-big-font (font-spec :family "JetBrainsMono Nerd Font" :size 28))
@@ -46,9 +46,17 @@
 ;; other doom's official themes:
 ;;   https://github.com/doomemacs/themes
 (setq doom-theme 'doom-dracula) ;; doom-one doom-dracula doom-nord
-;; Transparent Background
-(set-frame-parameter nil 'alpha-background 93) ; For current frame
-(add-to-list 'default-frame-alist '(alpha-background . 93)); For all new frames henceforth
+(if (eq system-type 'darwin)
+    ;; Transparent Backgroud - for macOS
+    ;;(set-frame-parameter (selected-frame) 'alpha '(<active> . <inactive>))
+    ;;(set-frame-parameter (selected-frame) 'alpha <both>)
+    (progn
+      (set-frame-parameter (selected-frame) 'alpha '(85 . 70))
+      (add-to-list 'default-frame-alist '(alpha . (85 . 70))))
+  ;; Transparent Background - for Linux Xorg/Wayland
+  (set-frame-parameter nil 'alpha-background 93) ; For current frame
+  (add-to-list 'default-frame-alist '(alpha-background . 93))); For all new frames henceforth
+
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
@@ -88,6 +96,9 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
+(after! vterm
+  (setq vterm-shell "nu")) ; use nushell by defualt
+
 (use-package! lsp-bridge
   :config
   (setq lsp-bridge-enable-log nil)  ;; disabled for performance
@@ -100,11 +111,13 @@
 ;; fully enable tree-sitter highlighting
 (after! tree-sitter
   (setq +tree-sitter-hl-enabled-modes t))
+
 ;; fix: https://github.com/jrblevin/markdown-mode/issues/380
 ;; even add this one, editing a large markdown table is still very slow.
 ;; so avoid editing large markdown file in emacs, use neovim instead...
-(after! markdown-mode
-  (global-font-lock-mode 0))
+;; and this setting make vterm's color theme not work!
+;; (after! markdown-mode
+;;   (global-font-lock-mode 0))
 
 ;; use alejandra to format nix files
 ;; (use-package! lsp-nix
@@ -154,4 +167,5 @@
 (add-hook 'racket-mode-hook         #'turn-off-smartparens-mode)
 (add-hook 'fennel-mode-hook         #'turn-off-smartparens-mode)
 (add-hook 'hy-mode-hook             #'turn-off-smartparens-mode)
+
 

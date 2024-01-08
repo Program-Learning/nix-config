@@ -1,4 +1,10 @@
 {pkgs, ...}: {
+  nixpkgs.config = {
+    programs.npm.npmrc = ''
+      prefix = ''${HOME}/.npm-global
+    '';
+  };
+
   home.packages = with pkgs;
     [
       #-- c/c++
@@ -7,8 +13,11 @@
       gnumake
       ccache
       checkmake
-      gcc # c/c++ compiler, required by nvim-treesitter!
-      llvmPackages.clang-unwrapped # c/c++ tools with clang-tools such as clangd
+      # c/c++ compiler, required by nvim-treesitter!
+      gcc
+      # c/c++ tools with clang-tools, the unwrapped version won't 
+      # add alias like `cc` and `c++`, so that it won't conflict with gcc
+      llvmPackages.clang-unwrapped
       lldb
 
       #-- python
@@ -25,7 +34,7 @@
             pyquery
             pyyaml
 
-           ## emacs's lsp-bridge dependenciesge
+            ## emacs's lsp-bridge dependenciesge
             epc
             orjson
             sexpdata
@@ -118,7 +127,7 @@
       # -- Lisp like Languages
       guile
       racket-minimal
-      fnlfmt  # fennel
+      fnlfmt # fennel
 
       #-- Others
       taplo # TOML language server / formatter / validator

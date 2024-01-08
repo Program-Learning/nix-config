@@ -18,7 +18,7 @@ This repository is home to the nix code that builds my systems.
 
 ## Why NixOS & Flakes?
 
-Nix allows for easy-to-manage, collaborative, reproducible deployments. This means that once something is setup and configured once, it works (almost) forever. If someone else shares their configuration, anyone can just use of it(if you really understand what you're copying/refering now).
+Nix allows for easy-to-manage, collaborative, reproducible deployments. This means that once something is setup and configured once, it works (almost) forever. If someone else shares their configuration, anyone else can just use it (if you really understand what you're copying/refering now).
 
 As for Flakes, refer to [Introduction to Flakes - NixOS & Nix Flakes Book](https://nixos-and-flakes.thiscute.world/nixos-with-flakes/introduction-to-flakes)
 
@@ -54,11 +54,13 @@ As for Flakes, refer to [Introduction to Flakes - NixOS & Nix Flakes Book](https
 
 Wallpapers: https://github.com/ryan4yin/wallpapers
 
-## Hyprland + AstroNvim
+## Hyprland + AstroNvim + DoomEmacs
 
 ![](./_img/hyprland_2023-07-29_1.webp)
 
 ![](./_img/hyprland_2023-07-29_2.webp)
+
+![](./_img/emacs-2024-01-07.webp)
 
 ## I3 + AstroNvim
 
