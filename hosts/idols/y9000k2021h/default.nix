@@ -45,10 +45,10 @@
   # virtualisation.docker.storageDriver = "btrfs";
 
   # for Nvidia GPU
-  services.xserver.videoDrivers = ["nvidia"]; # will install nvidia-vaapi-driver by default
+  services.xserver.videoDrivers = ["nvidia" "modesetting"]; # will install nvidia-vaapi-driver by default
   hardware.nvidia = {
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    package = config.boot.kernelPackages.nvidiaPackages.beta;
+    # package = config.boot.kernelPackages.nvidiaPackages.stable;
 
     # required by most wayland compositors!
     modesetting.enable = true;

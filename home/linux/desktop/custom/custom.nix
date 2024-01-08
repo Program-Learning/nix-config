@@ -28,6 +28,7 @@ in {
       ++ (with pkgs;
         # nixpkgs here
           [
+            inxi
             patchelf
             glib
             trickle
