@@ -28,6 +28,7 @@ in {
       ++ (with pkgs;
         # nixpkgs here
           [
+            patchelf
             glib
             trickle
             # use this to pop a input window
@@ -265,7 +266,7 @@ in {
           nur-program-learning.packages.${pkgs.system}.qtscrcpy_git
           nur-program-learning.packages.${pkgs.system}.escrcpy_appimage
           nur-program-learning.packages.${pkgs.system}.watt-toolkit_2
-          nur-program-learning.packages.${pkgs.system}.AppimageLauncher
+          nur-program-learning.packages.${pkgs.system}.AppimageLauncher_deb
           # nur-program-learning.packages.${pkgs.system}.CrossOver
           # nur-program-learning.packages.${pkgs.system}.waybar-bluetooth_battery_parse
           # aleksana.go-musicfox

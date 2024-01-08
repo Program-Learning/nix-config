@@ -39,12 +39,14 @@
 
   services = {
     logind = {
+      killUserProcesses = true;
       lidSwitch = "ignore";
       lidSwitchDocked = "ignore";
       lidSwitchExternalPower = "ignore";
-      extraConfig = "HandlePowerKey=ignore";
-      # powerKey = "ignore";
+      powerKey = "ignore";
       # rebootKey = "ignore";
+      extraConfig = ''
+      '';
     };
 
     # tlp = {
@@ -66,8 +68,6 @@
     #     CPU_MAX_PERF_ON_BAT = 60;
     #   };
     # };
-
-
   };
 
   systemd.services = {
@@ -107,4 +107,6 @@
   };
   # recording tool
   features.wf-recorder.enable = true;
+  # firmware update tool
+  services.fwupd.enable = true;
 }

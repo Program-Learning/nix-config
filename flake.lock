@@ -1491,11 +1491,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1704534909,
-        "narHash": "sha256-AmA2DBbLGqqkXFtyMnyYqf7HtGk/XxBgygeSvk38RR8=",
+        "lastModified": 1704717234,
+        "narHash": "sha256-gfunxgaXFMwEXFgTclcw3i0EFaWOhiuO56d2hbGnqSY=",
         "owner": "Program-Learning",
         "repo": "nur-packages",
-        "rev": "1230d53791fa5ec05eddae070ed2651a4097c6d8",
+        "rev": "7b59f1267f8b0e319c9cc986ddee7ed7290d11e9",
         "type": "github"
       },
       "original": {
