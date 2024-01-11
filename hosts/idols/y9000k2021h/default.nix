@@ -1,4 +1,8 @@
-{config, ...} @ args:
+{
+  config,
+  pkgs,
+  ...
+} @ args:
 #############################################################
 #
 # y9000k2021h - my main computer, with NixOS + i7-11800H + RTX 3060 Mobile / Max-Q GPU, for gaming & daily use.
@@ -79,6 +83,7 @@
     # needed by nvidia-docker
     driSupport32Bit = true;
   };
+  environment.systemPackages = with pkgs; [lenovo-legion];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
