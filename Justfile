@@ -3,11 +3,11 @@
 # use nushell for shell commands
 set shell := ["nu", "-c"]
 
- ############################################################################
- #
- #  NixOS related commands
- #
- ############################################################################
+############################################################################
+#
+#  NixOS related commands
+#
+############################################################################
 
 nixos-switch := "nixos-rebuild switch --use-remote-sudo --flake"
 nixos-boot := "nixos-rebuild boot --use-remote-sudo --flake"
