@@ -1,11 +1,3 @@
-{
-  imports = [
-    ./fonts.nix
-    ./graphic.nix
-    ./misc.nix
-    ./peripherals.nix
-    ./security.nix
-    ./visualisation.nix
-    ./custom
-  ];
+{mylib, ...}: {
+  imports = mylib.scanPaths ./.;
 }
