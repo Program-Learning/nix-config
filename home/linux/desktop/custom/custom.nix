@@ -28,6 +28,7 @@ in {
       ++ (with pkgs;
         # nixpkgs here
           [
+            cpu-x
             inxi
             patchelf
             glib
@@ -260,6 +261,8 @@ in {
           nur-linyinfeng.packages.${pkgs.system}.matrix-wechat
           nur-xddxdd.packages.${pkgs.system}.wechat-uos
           nur-xddxdd.packages.${pkgs.system}.dingtalk
+          nur-xddxdd.packages.${pkgs.system}.baidunetdisk
+          nur-xddxdd.packages.${pkgs.system}.baidupcs-go
           # nur-xddxdd.packages.${pkgs.system}.bilibili
           nur-xddxdd.packages.${pkgs.system}.onepush
           nur-AtaraxiaSjel.packages.${pkgs.system}.waydroid-script
