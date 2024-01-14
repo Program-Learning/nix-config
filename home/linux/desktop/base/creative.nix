@@ -24,8 +24,8 @@
     pkgs-unstable.sonic-pi # music programming
 
     # this app consumes a lot of storage, so do not install it currently
-    # kicad     # 3d printing, eletrical engineering
-    kicad-unstable # 3d printing, eletrical engineering
+    kicad # 3d printing, eletrical engineering
+    # kicad-unstable # 3d printing, eletrical engineering
     ngspice # eletrical engineering
     digital # A digital logic designer and circuit simulator.
     logisim-evolution # Digital logic designer and simulator
