@@ -13,7 +13,7 @@ in {
   home.packages = with pkgs-unstable; [
     # MineCraft Launcher
     hmcl
-    # minecraft
+    minecraft
     # prismlauncher
 
     mindustry-wayland
