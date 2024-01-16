@@ -1,4 +1,8 @@
-{pkgs,pkgs-unstable, ...}: {
+{
+  pkgs,
+  pkgs-unstable,
+  ...
+}: {
   ###################################################################################
   #
   #  Visualisation - Libvirt(QEMU/KVM) / Docker / LXD / WayDroid
@@ -18,6 +22,8 @@
       # This is required for containers which are created with the `--restart=always` flag to work.
       enableOnBoot = true;
     };
+    # Do not use "--restart=always" to create container, or shutdown/reboot will be slow
+    # https://github.com/containers/podman/issues/15284
     podman = {
       enable = true;
 
