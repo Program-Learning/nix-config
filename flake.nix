@@ -214,6 +214,10 @@
       flake = false;
     };
 
+    nixified-ai = {
+      url = "github:Program-Learning/nixified-ai-flake";
+    };
+
     # NUR package source
     nur.url = "github:nix-community/NUR";
 
