@@ -62,7 +62,7 @@ just emacs-clean
 - I use git command frequently, but doomemacs only autoupdates status of git diff / treemacs when using magit.
   - I have to learn magit to avoid this issue...
 - GitHub's orgmode support is not well, Markdown is better for GitHub.
-    - Use markdown for repo's README.md, and use orgmode for my personal notes and docs only.
+  - Use markdown for repo's README.md, and use orgmode for my personal notes and docs only.
 
 ## Cheetsheet
 
@@ -167,7 +167,7 @@ SPC s p foo C-; E C-c C-p :%s/foo/bar/g RET Z Z
 
 > easily switch between projects without exit emacs!
 
-| Action                     |               |
+| Action                     | Shortcut      |
 | -------------------------- | ------------- |
 | Switch between projects    | `SPC + p + p` |
 | Browse the current project | `SPC + p + .` |
@@ -177,10 +177,45 @@ SPC s p foo C-; E C-c C-p :%s/foo/bar/g RET Z Z
 
 > Very useful when run emacs in daemon/client modes
 
-| Action                      |                             |
+| Action                      | Shortcut                    |
 | --------------------------- | --------------------------- |
 | Switch between workspaces   | `M-1/2/3/...`(Alt-1/2/3/..) |
 | New Workspace               | `SPC + TAB + n`             |
 | New Named Workspace         | `SPC + TAB + N`             |
 | Delete Workspace            | `SPC + TAB + d`             |
 | Display Workspaces bar blow | `SPC + TAB + TAB`           |
+
+### Magit
+
+> https://github.com/magit/magit
+
+
+Magit is a powerful tool that make git operations easy and intuitive.
+
+| Action        | Shortcut                 |
+| ------------- | ------------------------ |
+| Open Magit    | `C-x g` or `SPC + g + g` |
+| Switch branch | `SPC + g + b`            |
+
+Shortcuts in magit's pane:
+
+> When run `git commit` / `git add` / `git push` /... via magit, multiple Arguments can be set.
+> Set arguments won't trigger a git command immediately. Magit will try to run a git command only after an Action key is pressed.
+
+| Action                                             | Shortcut                                      |
+| -------------------------------------------------- | --------------------------------------------- |
+| Quit the current Magit pane                        | `q`                                           |
+| Commit                                             | `c`                                           |
+| Stage                                              | `s`                                           |
+| Unstage                                            | `u`                                           |
+| Push                                               | `p`                                           |
+| Pull                                               | `f`                                           |
+| Rebase                                             | `r`                                           |
+| Rebase Interactively                               | `r + i`, select on a commit, then `C-c + C-c` |
+| Stash                                              | `z`                                           |
+| Merge                                              | `m`                                           |
+| Fold/Unfold                                        | `TAB`                                         |
+| Show details of the current unit(commit/stage/...) | `<ENTER>`                                     |
+
+KeyBinding full list: <https://github.com/emacs-evil/evil-collection/tree/master/modes/magit#key-bindings>
+

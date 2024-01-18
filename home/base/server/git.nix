@@ -46,6 +46,7 @@
         "https://gitlab.com" = proxy;
         "https://android.googlesource.com" = proxy;
         "https://gerrit.googlesource.com" = proxy;
+        # "https://huggingface.co" = proxy;
       };
 
       # replace https with ssh
