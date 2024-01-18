@@ -4,8 +4,8 @@
   nixified-ai,
   ...
 }: {
-  home.packages = with nixified-ai; [
-    invokeai-nvidia
-    textgen-nvidia
+  home.packages = [
+    nixified-ai.packages.${pkgs.system}.invokeai-nvidia
+    nixified-ai.packages.${pkgs.system}.textgen-nvidia
   ];
 }
