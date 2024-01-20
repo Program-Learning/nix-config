@@ -61,6 +61,7 @@
             pyclip
             pybluez
             pymysql
+            redis
             jieba
             # wordcloud
             pandas-datareader
