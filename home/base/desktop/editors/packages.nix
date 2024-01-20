@@ -65,6 +65,7 @@
             # wordcloud
             pandas-datareader
             pyperclip
+            fake-useragent
           ]
       ))
 

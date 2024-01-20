@@ -24,6 +24,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     ventoy
+    etcher
     gnumake
 
     colmena # nixos's remote deployment tool
