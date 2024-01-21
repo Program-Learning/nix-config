@@ -5,7 +5,7 @@
 }: {
   ###################################################################################
   #
-  #  Visualisation - Libvirt(QEMU/KVM) / Docker / LXD / WayDroid
+  #  Virtualisation - Libvirt(QEMU/KVM) / Docker / LXD / WayDroid
   #
   ###################################################################################
 
