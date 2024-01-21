@@ -2,7 +2,7 @@
   pkgs,
   nur-ryan4yin,
   pkgs-unstable,
-  firefox,
+  firefox-nightly,
   ...
 }: {
   # refer to https://codeberg.org/dnkl/foot/src/branch/master/foot.ini
@@ -58,7 +58,7 @@
     firefox = {
       enable = true;
       enableGnomeExtensions = false;
-      package = firefox.packages.${pkgs.system}.firefox-nightly-bin; # firefox with wayland support
+      package = firefox-nightly.packages.${pkgs.system}.firefox-nightly-bin; # firefox with wayland support
     };
 
     # Fix crash: https://github.com/NixOS/nixpkgs/issues/246509
