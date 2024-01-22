@@ -274,6 +274,7 @@ in {
           nur-program-learning.packages.${pkgs.system}.escrcpy_appimage
           nur-program-learning.packages.${pkgs.system}.watt-toolkit_2
           nur-program-learning.packages.${pkgs.system}.AppimageLauncher_deb
+          nur-program-learning.packages.${pkgs.system}.XiaoMiToolV2
           # nur-program-learning.packages.${pkgs.system}.CrossOver
           # nur-program-learning.packages.${pkgs.system}.waybar-bluetooth_battery_parse
           # aleksana.go-musicfox
