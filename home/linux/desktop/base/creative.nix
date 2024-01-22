@@ -1,6 +1,7 @@
 {
   pkgs,
   pkgs-unstable,
+  pkgs-stable,
   nur-ryan4yin,
   nur-program-learning,
   ...
@@ -46,31 +47,31 @@
     # live streaming
     obs-studio = {
       enable = true;
-      plugins = with pkgs; [
+      plugins = with pkgs-stable.obs-studio-plugins; [
         # screen capture
-        obs-studio-plugins.wlrobs
-        # obs-studio-plugins.obs-ndi
-        obs-studio-plugins.obs-vaapi
-        obs-studio-plugins.obs-nvfbc
-        obs-studio-plugins.obs-teleport
-        # obs-studio-plugins.obs-hyperion
-        obs-studio-plugins.droidcam-obs
-        obs-studio-plugins.obs-vkcapture
-        obs-studio-plugins.obs-gstreamer
-        obs-studio-plugins.obs-3d-effect
-        obs-studio-plugins.input-overlay
-        obs-studio-plugins.obs-multi-rtmp
-        obs-studio-plugins.obs-source-clone
-        obs-studio-plugins.obs-shaderfilter
-        obs-studio-plugins.obs-source-record
-        obs-studio-plugins.obs-livesplit-one
-        obs-studio-plugins.looking-glass-obs
-        obs-studio-plugins.obs-vintage-filter
-        obs-studio-plugins.obs-command-source
-        obs-studio-plugins.obs-move-transition
-        obs-studio-plugins.obs-backgroundremoval
-        obs-studio-plugins.advanced-scene-switcher
-        obs-studio-plugins.obs-pipewire-audio-capture
+        wlrobs
+        # obs-ndi
+        obs-vaapi
+        obs-nvfbc
+        obs-teleport
+        # obs-hyperion
+        droidcam-obs
+        obs-vkcapture
+        obs-gstreamer
+        obs-3d-effect
+        input-overlay
+        obs-multi-rtmp
+        obs-source-clone
+        obs-shaderfilter
+        obs-source-record
+        obs-livesplit-one
+        looking-glass-obs
+        obs-vintage-filter
+        obs-command-source
+        obs-move-transition
+        obs-backgroundremoval
+        advanced-scene-switcher
+        obs-pipewire-audio-capture
       ];
     };
   };
