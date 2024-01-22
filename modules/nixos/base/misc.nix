@@ -80,6 +80,7 @@
           })
     )
   ];
+  programs.partition-manager.enable = true;
 
   # replace default editor with neovim
   environment.variables.EDITOR = "nvim";
