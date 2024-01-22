@@ -172,7 +172,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-gaming.url = "github:fufexan/nix-gaming";
+    nix-gaming = {
+      url = "github:fufexan/nix-gaming";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # add git hooks to format nix code before commit
     pre-commit-hooks = {
@@ -254,11 +257,6 @@
 
     nur-arti5an = {
       url = "github:arti5an/nur-packages";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nix-gaming = {
-      url = "github:fufexan/nix-gaming";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
