@@ -7,6 +7,7 @@
   home.packages = with pkgs; [
     skopeo
     docker-compose
+    podman-compose
     dive # explore docker layers
     lazydocker # Docker terminal UI.
 
