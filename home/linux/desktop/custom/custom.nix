@@ -2,6 +2,7 @@
   config,
   pkgs,
   pkgs-unstable,
+  pkgs-stable,
   nur-ryan4yin,
   nur-program-learning,
   nur-linyinfeng,
@@ -49,7 +50,7 @@ in {
             cudatoolkit
 
             # Bilibili video download
-            yutto
+            pkgs-stable.yutto
 
             konsole
             powerdevil
