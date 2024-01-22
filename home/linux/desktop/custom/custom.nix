@@ -100,6 +100,9 @@ in {
             slides
             wpsoffice # unfree
 
+            # --note
+            anytype
+
             # --math software
             # geogebra6
 
