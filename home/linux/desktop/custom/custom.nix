@@ -29,7 +29,6 @@ in {
       ++ (with pkgs;
         # nixpkgs here
           [
-            cpu-x
             inxi
             patchelf
             glib
@@ -42,8 +41,6 @@ in {
             weston
             libsForQt5.qtstyleplugin-kvantum
             gnome.adwaita-icon-theme
-            go-musicfox
-            mpvpaper
 
             intel-gpu-tools
             # --nvidia cuda
@@ -55,18 +52,6 @@ in {
             konsole
             powerdevil
 
-            # --android
-            gnome.gnome-boxes
-            gnirehtet
-            libmtp
-            adb-sync
-            abootimg
-            android-studio
-            android-tools
-            edl
-            genymotion
-            # --payload-dumper
-            payload-dumper-go
 
             # --java ide
             # jetbrains.idea-ultimate
@@ -89,6 +74,7 @@ in {
 
             # --Netease music
             yesplaymusic
+            go-musicfox
 
             # --agent
             clash-verge
@@ -122,9 +108,6 @@ in {
             dolphin
             ranger
 
-            # --download manager
-            motrix
-
             # --wine
             protonup-qt
             wine-staging
@@ -157,9 +140,9 @@ in {
             # pipewire
             wireplumber
             tofi
+            polkit-kde-agent
             eww-wayland
             rofi-wayland
-            polkit-kde-agent
             qt6.qtwayland
             # wayland
             # wayland-scanner
@@ -167,7 +150,6 @@ in {
             # egl-wayland
             # wayland-protocols
             # glfw-wayland
-            wev
             # libsForQt5.qt5.qtwayland
             xdg-desktop-portal-hyprland
             libsForQt5.qt5ct
@@ -181,7 +163,6 @@ in {
             lxde.lxsession # lxpolkit
             # polkit_gnome
             # deepin.dde-polkit-agent
-            hyprpicker
             swappy
             bluez
             sysfsutils
@@ -207,7 +188,6 @@ in {
             ntfs3g
             foot # terminal
             fish # shell
-            scrcpy
             jadx
             meld
             distrobox
@@ -218,9 +198,6 @@ in {
             inotify-tools
             python311Packages.gpustat
             vmware-workstation
-
-            # --usb flashing
-            ventoy
 
             # --Graphical application to analyse disk usage in any GNOME environment
             baobab

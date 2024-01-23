@@ -37,6 +37,8 @@
   };
 
   environment.systemPackages = with pkgs; [
+    gnome.gnome-boxes
+
     # Need to add [File (in the menu bar) -> Add connection] when start for the first time
     virt-manager
     virt-manager-qt

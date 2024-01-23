@@ -5,6 +5,7 @@
 }: {
   home.packages = with pkgs; [
     neofetch
+    cpu-x
 
     # networking tools
     mtr # A network diagnostic tool

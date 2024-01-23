@@ -20,6 +20,9 @@
     remmina
     freerdp # required by remmina
 
+    # Download Manager
+    motrix
+
     # misc
     flameshot
     ventoy # multi-boot usb creator
