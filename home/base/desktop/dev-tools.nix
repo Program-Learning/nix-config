@@ -62,8 +62,9 @@
         man-pages
         man-pages-posix
 
-        nur-program-learning.packages.${pkgs.system}.wechat_dev_tools_appimage
-        nur-program-learning.packages.${pkgs.system}.wechat_dev_tools_deb
+        # nur-program-learning.packages.${pkgs.system}.wechat_dev_tools_appimage
+        nur-program-learning.packages.${pkgs.system}.clang_dev_env_fhs
+        nur-program-learning.packages.${pkgs.system}.wechat_dev_tools_bin
       ]
       else []
     );

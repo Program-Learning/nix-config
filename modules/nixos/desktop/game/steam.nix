@@ -8,6 +8,8 @@
     #   ~/.steam/root        - A symlink to ~/.local/share/Steam
     #   ~/.steam             - Some Symlinks & user info
     enable = true;
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
 
     # fix gamescope inside steam
     package = pkgs.steam.override {

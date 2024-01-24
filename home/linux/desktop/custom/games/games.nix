@@ -11,6 +11,7 @@
       "https://github.com/ezKEa/aagl-gtk-on-nix/archive/main.tar.gz");
 in {
   home.packages = with pkgs-unstable; [
+    steamPackages.steamcmd
     # MineCraft Launcher
     hmcl
     minecraft
