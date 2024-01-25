@@ -27,8 +27,20 @@
           # required to prevent sending default identity files first.
           IdentitiesOnly yes
 
+      Host oracle_ubuntu_1
+        HostName 155.248.179.129
+        ForwardAgent yes
+        IdentityFile ~/.ssh/y9000k2021h_id_ed25519
+        IdentitiesOnly yes
+
       Host mondrian_1_school
         HostName 192.168.0.121
+        ForwardAgent yes
+        IdentityFile ~/.ssh/y9000k2021h_id_ed25519
+        IdentitiesOnly yes
+
+      Host mondrian_1_home
+        HostName 192.168.2.121
         ForwardAgent yes
         IdentityFile ~/.ssh/y9000k2021h_id_ed25519
         IdentitiesOnly yes
@@ -39,13 +51,20 @@
         IdentityFile ~/.ssh/y9000k2021h_id_ed25519
         IdentitiesOnly yes
 
+      Host pstar_1_home
+        HostName 192.168.2.123
+        ForwardAgent yes
+        IdentityFile ~/.ssh/y9000k2021h_id_ed25519
+        IdentitiesOnly yes
+
       Host y9000k2021h_1_school
         HostName 192.168.0.120
         ForwardAgent yes
         IdentityFile ~/.ssh/y9000k2021h_id_ed25519
         IdentitiesOnly yes
-      Host oracle_ubuntu_1
-        HostName 155.248.179.129
+
+      Host y9000k2021h_1_home
+        HostName 192.168.2.120
         ForwardAgent yes
         IdentityFile ~/.ssh/y9000k2021h_id_ed25519
         IdentitiesOnly yes
