@@ -103,7 +103,9 @@
   services.tailscale.enable = true;
   services.zerotierone = {
     enable = true;
-    joinNetworks = ["c7c8172af18872cd"];
+    joinNetworks = [
+      "c7c8172af18872cd"
+    ];
   };
   # recording tool
   features.wf-recorder.enable = true;
