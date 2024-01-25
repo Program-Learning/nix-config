@@ -25,11 +25,19 @@ in {
         from = 47984;
         to = 48010;
       }
+      {
+        from = 9992;
+        to = 9994;
+      }
     ];
     networking.firewall.allowedUDPPortRanges = [
       {
         from = 47998;
         to = 48010;
+      }
+      {
+        from = 9992;
+        to = 9994;
       }
     ];
     security.wrappers.sunshine = {

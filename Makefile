@@ -14,7 +14,7 @@
 y9000k2021h_i3:
 	nixos-rebuild switch --flake .#y9000k2021h_i3 --use-remote-sudo
 
-i3: 
+i3:
 	nixos-rebuild switch --flake .#ai_i3 --use-remote-sudo
 
 s-i3:
@@ -70,10 +70,10 @@ gc:
 
 nur_all := nur-program-learning nur-ryan4yin nur-linyinfeng nur-xddxdd nur-AtaraxiaSjel nur-arti5an
 
-# Update nur inputs 
+# Update nur inputs
 # (can use with ''
 # proxychains4 make update_nur
-# '' 
+# ''
 # or ''
 # http_proxy='http://localhost:7890' https_proxy='http://localhost:7890' make update_nur 
 # '')
