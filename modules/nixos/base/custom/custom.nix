@@ -101,6 +101,7 @@
   features.sunshine.enable = true;
   # virtual network
   services.tailscale.enable = true;
+  services.netbird.enable = true;
   services.zerotierone = {
     enable = true;
     joinNetworks = [
