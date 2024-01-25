@@ -59,6 +59,7 @@
             selenium
             urllib3
             pyclip
+            pygobject3
             pybluez
             pymysql
             redis

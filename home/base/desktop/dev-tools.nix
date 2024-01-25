@@ -25,7 +25,10 @@
       sqlite
 
       # embedded development
+      rkdeveloptool
+      rkflashtool
       minicom
+      screen
 
       # ai related
       python311Packages.huggingface-hub # huggingface-cli

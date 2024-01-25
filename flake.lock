@@ -1518,11 +1518,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1705999483,
-        "narHash": "sha256-83IaL9ZW5WzlbkNwqaCeWXBPf8Y64j8gFMJ9LhIEsWg=",
+        "lastModified": 1706085971,
+        "narHash": "sha256-pGW8805lPj18vjerYj4BJVdmhvpXmTNtAwGyDqzfKV4=",
         "owner": "AtaraxiaSjel",
         "repo": "nur",
-        "rev": "e7a18b039fb840e236b5d6044ce8b91064a98226",
+        "rev": "76bc32fe14de57f370f3c9abbfe09a895b090d8a",
         "type": "github"
       },
       "original": {
@@ -1565,11 +1565,11 @@
         "treefmt-nix": "treefmt-nix_2"
       },
       "locked": {
-        "lastModified": 1706059148,
-        "narHash": "sha256-xve4na0grVDJyAMdHgtBhyD9gviQ3NkPgbbTLU0MmeM=",
+        "lastModified": 1706099661,
+        "narHash": "sha256-ifx3WkQan9PsI6KQ1cFSdWgdSA84o0DKMAvpqJNra9Y=",
         "owner": "linyinfeng",
         "repo": "nur-packages",
-        "rev": "373b6bbaf514123e94bc86686d24279e93a1fe62",
+        "rev": "b8cd5702482478db6c7296a9bec51c5c31ddbc80",
         "type": "github"
       },
       "original": {
@@ -1585,11 +1585,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1706080597,
-        "narHash": "sha256-EBl4oaLQ0SLpWk6SVMyf1RVJdqMZgmAAl+JNOzv4xz0=",
+        "lastModified": 1706118237,
+        "narHash": "sha256-942Zar+R7fM7UlTIQrFNFrr7wrAP57ywLNxuWUrkarw=",
         "owner": "Program-Learning",
         "repo": "nur-packages",
-        "rev": "4dac9885669f8741ba8ca81d5e005b5b9846de75",
+        "rev": "c2bde7f74d9f2b25cc182de0893433b314712529",
         "type": "github"
       },
       "original": {
