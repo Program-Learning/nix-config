@@ -16,15 +16,7 @@
     };
   };
   networking.firewall.allowedTCPPortRanges = [
-    {
-      from = 10000;
-      to = 10010;
-    }
   ];
   networking.firewall.allowedUDPPortRanges = [
-    {
-      from = 10000;
-      to = 10010;
-    }
   ];
 }
