@@ -79,10 +79,6 @@
     # productivity
     caddy # A webserver with automatic HTTPS via Let's Encrypt(replacement of nginx)
     croc # File transfer between computers securely and easily
-
-    # security
-    age
-    sops
   ];
 
   programs = {

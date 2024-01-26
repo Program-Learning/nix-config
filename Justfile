@@ -78,6 +78,10 @@ gc:
   sudo nix store gc --debug
   sudo nix-collect-garbage --delete-old
 
+gitgc:
+  git reflog expire --expire-unreachable=now --all
+  git gc --prune=now
+
 ############################################################################
 #
 #  Darwin related commands, harmonica is my macbook pro's hostname
