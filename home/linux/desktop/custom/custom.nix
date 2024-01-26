@@ -29,6 +29,7 @@ in {
       ++ (with pkgs;
         # nixpkgs here
           [
+            tmux
             inxi
             patchelf
             glib
