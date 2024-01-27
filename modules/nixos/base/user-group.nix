@@ -39,7 +39,7 @@
   };
   users.users.root = {
     hashedPassword = "$7$CU..../....lO1U0fsl954fC3porcCY41$OXiwbYrYuY4Z3KSFQ6IM04D9yFBExkENIewhjyTqN7C";
-    initialHashedPassword = "$7$CU..../....lO1U0fsl954fC3porcCY41$OXiwbYrYuY4Z3KSFQ6IM04D9yFBExkENIewhjyTqN7C";
+    initialHashedPassword = config.users.users."${username}".initialHashedPassword;
     openssh.authorizedKeys.keys = config.users.users."${username}".openssh.authorizedKeys.keys;
   };
 
