@@ -98,7 +98,7 @@
   nixpkgs.config.allowUnfreePredicate = ["wechat_dev_tools"];
 
   # remote desktop server
-  features.sunshine.enable = true;
+  features.sunshine.enable = false;
   # virtual network
   services.tailscale.enable = true;
   services.netbird.enable = true;

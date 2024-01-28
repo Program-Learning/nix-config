@@ -32,12 +32,15 @@
     "snd-aloop"
     #"acpi_call"
   ];
-  boot.extraModprobeConfig = ''
-    # exclusive_caps: Skype, Zoom, Teams etc. will only show device when actually streaming
-    # card_label: Name of virtual camera, how it'll show up in Skype, Zoom, Teams
-    # https://github.com/umlaeute/v4l2loopback
-    options v4l2loopback exclusive_caps=1 video_nr=9 card_label="Virtual Camera"
-  '';
+  boot.extraModprobeConfig =
+    # for intel cpu
+    "options kvm_intel nested=1"
+    + ''
+      # exclusive_caps: Skype, Zoom, Teams etc. will only show device when actually streaming
+      # card_label: Name of virtual camera, how it'll show up in Skype, Zoom, Teams
+      # https://github.com/umlaeute/v4l2loopback
+      options v4l2loopback exclusive_caps=1 video_nr=9 card_label="Virtual Camera"
+    '';
   boot.kernelParams = ["nvidia.NVreg_PreserveVideoMemoryAllocations=1"];
   boot.extraModulePackages = [
     config.boot.kernelPackages.v4l2loopback.out
@@ -64,7 +67,7 @@
   #boot.initrd = {
   #  # unlocked luks devices via a keyfile or prompt a passphrase.
   #  luks.devices."crypted-nixos" = {
-  #    # NOTE: DO NOT use device name here(like /dev/sda, /dev/nvme0n1p2, etc), use the UUID instead.
+  #    # NOTE: DO NOT use device name here(like /dev/sda, /dev/nvme0n1p2, etc), use UUID instead.
   #    # https://github.com/ryan4yin/nix-config/issues/43
   #    device = "/dev/disk/by-uuid/a21ca82a-9ee6-4e5c-9d3f-a93e84e4e0f4";
   #    # the keyfile(or device partition) that should be used as the decryption key for the encrypted device.
