@@ -72,10 +72,9 @@
           # it seems that my gpu is not supported
           # "--disable-gpu"
           # make it use text-input-v1, which works for kwin 5.27 and weston
-          # "--enable-features=UseOzonePlatform"
-          # "--ozone-platform=wayland"
-          # "--enable-wayland-ime"
-          # "--enable-features=UseOzonePlatform"
+          "--enable-features=UseOzonePlatform"
+          "--ozone-platform=wayland"
+          "--enable-wayland-ime"
           # "--ozone-platform=x11"
           # "--force-device-scale-factor=1"
         ];

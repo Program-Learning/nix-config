@@ -23,7 +23,8 @@
 
   boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod"];
   boot.initrd.kernelModules = [];
-  boot.kernelModules = ["kvm-intel"];
+  boot.kernelModules = ["kvm-intel"]; # kvm virtualization support
+  boot.extraModprobeConfig = "options kvm_intel nested=1"; # for intel cpu
   boot.kernelParams = ["nvidia.NVreg_PreserveVideoMemoryAllocations=1"];
   boot.extraModulePackages = [];
   # clear /tmp on boot to get a stateless /tmp directory.
@@ -45,7 +46,7 @@
   boot.initrd = {
     # unlocked luks devices via a keyfile or prompt a passphrase.
     luks.devices."crypted-nixos" = {
-      # NOTE: DO NOT use device name here(like /dev/sda, /dev/nvme0n1p2, etc), use the UUID instead.
+      # NOTE: DO NOT use device name here(like /dev/sda, /dev/nvme0n1p2, etc), use UUID instead.
       # https://github.com/ryan4yin/nix-config/issues/43
       device = "/dev/disk/by-uuid/a21ca82a-9ee6-4e5c-9d3f-a93e84e4e0f4";
       # the keyfile(or device partition) that should be used as the decryption key for the encrypted device.
@@ -118,7 +119,7 @@
   };
 
   fileSystems."/boot" = {
-    device = "/dev/nvme0n1p1";
+    device = "/dev/disk/by-uuid/90FB-9F88";
     fsType = "vfat";
   };
 
