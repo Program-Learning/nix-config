@@ -1,20 +1,25 @@
-{
-  nixos-rk3588,
-  vars_networking,
-  ...
-}:
+{vars_networking, ...}:
 #############################################################
 #
-#  Suzu - Orange Pi 5, RK3588s
+#  Tailscale Gateway(homelab subnet router) - a NixOS VM running on Proxmox
 #
 #############################################################
 let
-  hostName = "suzu"; # Define your hostname.
+  hostName = "tailscale_gw"; # Define your hostname.
   hostAddress = vars_networking.hostAddress.${hostName};
 in {
   imports = [
-    # import the rk3588 module, which contains the configuration for bootloader/kernel/firmware
-    nixos-rk3588.nixosModules.orangepi5
+    ./tailscale.nix
+  ];
+
+  # supported file systems, so we can mount any removable disks with these filesystems
+  boot.supportedFilesystems = [
+    "ext4"
+    "btrfs"
+    "xfs"
+    "fat"
+    "vfat"
+    "exfat"
   ];
 
   networking = {
@@ -22,7 +27,7 @@ in {
     inherit (vars_networking) defaultGateway nameservers;
 
     networkmanager.enable = false;
-    interfaces.end1 = {
+    interfaces.ens18 = {
       useDHCP = false;
       ipv4.addresses = [hostAddress];
     };

@@ -78,12 +78,9 @@ in {
       ../modules/nixos/server/server.nix
       ../modules/nixos/server/proxmox-hardware-configuration.nix
     ];
-    home-module.imports = [
-      ../hosts/idols_aquamarine/home.nix
-      ../home/linux/server.nix
-    ];
+    # home-module.imports = [];
   };
-  idol_aquamarine_tags = ["dist-build" "aqua"];
+  idol_aquamarine_tags = ["aqua" "router"];
 
   # 星野 瑠美衣, Hoshino Rubii
   idol_ruby_modules = {
@@ -92,10 +89,7 @@ in {
       ../modules/nixos/server/server.nix
       ../modules/nixos/server/proxmox-hardware-configuration.nix
     ];
-    home-module.imports = [
-      ../hosts/idols_ruby/home.nix
-      ../home/linux/server.nix
-    ];
+    # home-module.imports = [];
   };
   idol_ruby_tags = ["dist-build" "ruby"];
 
@@ -106,12 +100,19 @@ in {
       ../modules/nixos/server/server.nix
       ../modules/nixos/server/proxmox-hardware-configuration.nix
     ];
-    home-module.imports = [
-      ../hosts/idols_kana/home.nix
-      ../home/linux/server.nix
-    ];
+    # home-module.imports = [];
   };
   idol_kana_tags = ["dist-build" "kana"];
+
+  homelab_tailscale_gw_modules = {
+    nixos-modules = [
+      ../hosts/homelab_tailscale_gw
+      ../modules/nixos/server/server.nix
+      ../modules/nixos/server/proxmox-hardware-configuration.nix
+    ];
+    # home-module.imports = [];
+  };
+  homelab_tailscale_gw_tags = ["tailscale_gw"];
 
   # 森友 望未, Moritomo Nozomi
   rolling_nozomi_modules = {
