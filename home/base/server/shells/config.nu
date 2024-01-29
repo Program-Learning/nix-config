@@ -30,6 +30,7 @@ let surface0  = "#313244"
 let base      = "#1e1e2e"
 let mantle    = "#181825"
 let crust     = "#11111b"
+
 let REPO_URL = 'https://mirrors.tuna.tsinghua.edu.cn/git/git-repo/'
 let TLDR_AUTO_UPDATE_DISABLED = 1
 

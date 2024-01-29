@@ -79,6 +79,9 @@
             extraOutputsToInstall = ["dev"];
           })
     )
+
+    # A tool to run appimage directly
+    appimage-run
   ];
   programs.partition-manager.enable = true;
 

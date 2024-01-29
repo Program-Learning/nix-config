@@ -29,6 +29,7 @@
       rkflashtool
       minicom
       screen
+      baobab # Graphical disk usage analyzer
 
       # ai related
       python311Packages.huggingface-hub # huggingface-cli

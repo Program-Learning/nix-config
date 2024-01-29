@@ -51,17 +51,8 @@
           glib
           calcurse
 
-          # --haskell
-          ghc
-
-          appimage-run
-
           # --vim-like browser
-          vimb
-
-          # --Netease music
-          yesplaymusic
-          go-musicfox
+          # vimb
 
           # --agent
           clash-verge
@@ -78,12 +69,7 @@
           anytype
 
           # --math software
-          # geogebra6
-
-          # --communication apps
-
-          # --video software
-          vlc
+          geogebra6
 
           # --achieve/file managers
           xarchiver
@@ -110,7 +96,6 @@
 
           # --remote control
           # sunshine
-          parsec-bin
           # moonlight-embedded
           # turbovnc
           xrdp
@@ -138,7 +123,6 @@
           libsForQt5.qt5ct
           linuxKernel.packages.linux_6_1.v4l2loopback
           libsForQt5.polkit-kde-agent
-          brightnessctl
           # kitty-themes
 
           adwaita-qt
@@ -163,21 +147,14 @@
           gitRepo
           fuse
           ntfs3g
-          foot # terminal
-          fish # shell
           jadx
           meld
-          distrobox
           darling-dmg
-          dash
+          # dash
           unrar-wrapper
           # python2Full
           inotify-tools
-          python311Packages.gpustat
           vmware-workstation
-
-          # --Graphical application to analyse disk usage in any GNOME environment
-          baobab
 
           # vaapi
           gst_all_1.gst-vaapi
@@ -206,7 +183,6 @@
     # nixpkgs-unstable
     ++ (with pkgs-unstable; [
       OVMFFull.fd
-      mission-center
     ])
     # nur packages here
     ++ (
@@ -220,7 +196,7 @@
         nur-xddxdd.packages.${pkgs.system}.dingtalk
         nur-xddxdd.packages.${pkgs.system}.baidunetdisk
         nur-xddxdd.packages.${pkgs.system}.baidupcs-go
-        # nur-xddxdd.packages.${pkgs.system}.bilibili
+        nur-xddxdd.packages.${pkgs.system}.bilibili
         nur-xddxdd.packages.${pkgs.system}.onepush
         nur-AtaraxiaSjel.packages.${pkgs.system}.waydroid-script
         nur-arti5an.packages.${pkgs.system}.mount-zip

@@ -7,6 +7,8 @@
 
   home.packages = with pkgs;
     [
+      #-- haskell
+      ghc
       #-- c/c++
       cmake
       cmake-language-server

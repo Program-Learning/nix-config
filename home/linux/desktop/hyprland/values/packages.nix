@@ -4,6 +4,7 @@
   ...
 }: {
   home.packages = with pkgs; [
+    brightnessctl # a tool to set screen brightness
     wev # debug which key is pressed
     waybar # the status bar
     swaybg # the wallpaper

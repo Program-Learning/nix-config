@@ -6,6 +6,7 @@
   home.packages = with pkgs; [
     fastfetch
     inxi
+    python311Packages.gpustat
     neofetch
     cpu-x
 

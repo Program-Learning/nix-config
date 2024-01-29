@@ -27,6 +27,7 @@
     # misc
     flameshot
     ventoy # multi-boot usb creator
+    mission-center # Graphical task usage analyzer
   ];
 
   # GitHub CLI tool
