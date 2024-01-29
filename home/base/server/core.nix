@@ -4,6 +4,8 @@
   ...
 }: {
   home.packages = with pkgs; [
+    fastfetch
+    inxi
     neofetch
     cpu-x
 
