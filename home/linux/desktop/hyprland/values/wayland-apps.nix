@@ -61,29 +61,6 @@
       package = firefox-nightly.packages.${pkgs.system}.firefox-nightly-bin; # firefox with wayland support
     };
 
-    # Fix crash: https://github.com/NixOS/nixpkgs/issues/246509
-    # "window.titleBarStyle" = "custom";
-    # or `env -u WAYLAND_DISPLAY code`
-    vscode = {
-      enable = true;
-      # use the stable version
-      package = pkgs-unstable.vscode.override {
-        commandLineArgs = [
-          # it seems that my gpu is not supported
-          # "--disable-gpu"
-          # make it use text-input-v1, which works for kwin 5.27 and weston
-          "--enable-features=UseOzonePlatform"
-          "--ozone-platform=wayland"
-          "--enable-wayland-ime"
-          # "--ozone-platform=x11"
-          # "--force-device-scale-factor=1"
-        ];
-      };
-
-      # let vscode sync and update its configuration & extensions across devices, using github account.
-      # userSettings = {};
-    };
-
     vscode = {
       enable = true;
       # let vscode sync and update its configuration & extensions across devices, using github account.
@@ -105,6 +82,11 @@
           })
         .overrideAttrs (oldAttrs: rec {
           # Use VSCode Insiders to fix crash: https://github.com/NixOS/nixpkgs/issues/246509
+          # Or
+          # For vscode normal version now
+          # "window.titleBarStyle" = "custom";
+          # Or
+          # `env -u WAYLAND_DISPLAY code`
           src = builtins.fetchTarball {
             url = "https://update.code.visualstudio.com/latest/linux-x64/insider";
             sha256 = "0k2sh7rb6mrx9d6bkk2744ry4g17d13xpnhcisk4akl4x7dn6a83";

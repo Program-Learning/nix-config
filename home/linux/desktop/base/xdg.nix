@@ -65,12 +65,9 @@
         "application/x-extension-shtml" = browser;
         "application/x-extension-xht" = browser;
         "application/x-extension-xhtml" = browser;
-<<<<<<< HEAD
         "application/x-shellscript" = editor;
         "application/x-php" = code;
-=======
         "application/x-wine-extension-ini" = editor;
->>>>>>> upstream/main
 
         # define default applications for some url schemes.
         "x-scheme-handler/about" = browser; # open `about:` url with `browser`
@@ -93,7 +90,6 @@
         "image/jpeg" = ["imv.desktop"];
         "image/png" = ["imv.desktop"];
         "image/webp" = ["imv.desktop"];
-        "application/x-wine-extension-ini" = editor;
         "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = office;
       };
 
