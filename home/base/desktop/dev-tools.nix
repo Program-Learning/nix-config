@@ -37,6 +37,7 @@
 
       # misc
       pkgs-unstable.devbox
+      pre-commit
       bfg-repo-cleaner # remove large files from git history
       k6 # load testing tool
       protobuf # protocol buffer compiler
