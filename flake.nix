@@ -227,6 +227,7 @@
     nixified-ai-nixpkgs.url = "github:nixos/nixpkgs/c757e9bd77b16ca2e03c89bf8bc9ecb28e0c06ad";
 
     # NUR package source
+
     nur.url = "github:nix-community/NUR";
 
     nur-ryan4yin = {
@@ -264,6 +265,9 @@
       url = "github:ezKEa/aagl-gtk-on-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    fh.url = "https://flakehub.com/f/DeterminateSystems/fh/0.1.9.tar.gz";
+
     # riscv64 SBCs
     nixos-licheepi4a.url = "github:ryan4yin/nixos-licheepi4a";
     # nixos-jh7110.url = "github:ryan4yin/nixos-jh7110";

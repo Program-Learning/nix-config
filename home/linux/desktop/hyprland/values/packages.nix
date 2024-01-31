@@ -17,10 +17,10 @@
     pkgs-unstable.hyprshot
     wshowkeys # Show which key is triggered
 
-    wf-recorder # creen recording
+    pkgs-unstable.hyprshot # screen shot
     grim # taking screenshots
     slurp # selecting a region to screenshot
-    # TODO replace by `flameshot gui --raw | wl-copy`
+    wf-recorder # creen recording
 
     mako # the notification daemon, the same as dunst
 

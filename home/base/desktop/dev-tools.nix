@@ -28,6 +28,7 @@
       rkdeveloptool
       rkflashtool
       minicom
+      dtc
       screen
       baobab # Graphical disk usage analyzer
 

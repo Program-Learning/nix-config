@@ -67,7 +67,7 @@ cryptsetup --help
 
 # NOTE: `cat shoukei.md | grep luks > format.sh` to generate this script
 # encrypt the root partition with luks2 and argon2id, will prompt for a passphrase, which will be used to unlock the partition.
-cryptsetup luksFormat --type luks2 --pbkdf argon2id --cipher aes-xts-plain64 --key-size 512 --hash sha512 /dev/nvme0n1p4
+cryptsetup luksFormat --type luks2 --cipher aes-xts-plain64 --hash sha512 --iter-time 5000 --key-size 256 --pbkdf argon2id --use-urandom --verify-passphrase /dev/nvme0n1p4
 
 # show status
 cryptsetup luksDump /dev/nvme0n1p4
@@ -224,18 +224,27 @@ And then reboot.
 
 ## Deploying the main flake's NixOS configuration
 
-After rebooting, we can deploy the main flake's NixOS configuration by running:
+After rebooting, we need to generate a new SSH key for the new machine, and add it to GitHub, so that the new machine can pull my private secrets repo:
 
 ```bash
-# 1. Add the ssh key to the ssh-agent, so that nixos-rebuild can use it to pull my private git repositories.
-ssh-add ~/.ssh/xxx
+# 1. Generate a new SSH key with a strong passphrase
+ssh-keygen -t ed25519 -a 256 -C "ryan@idols-ai" -f ~/.ssh/shoukei
+# 2. Add the ssh key to the ssh-agent, so that nixos-rebuild can use it to pull my private secrets repo.
+ssh-add ~/.ssh/shoukei
+```
 
+Then follow the instructions in [../secrets/README.md](../secrets/README.md) to rekey all my secrets with the new host's system-level SSH key(`/etc/ssh/ssh_host_ed25519_key`),
+so that agenix can decrypt them automatically on the new host when I deploy my NixOS configuration.
+
+After all these steps, we can finally deploy the main flake's NixOS configuration by:
+
+```bash
 sudo mv /etc/nixos ~/nix-config
-chown -R ryan:ryan ~/nix-config
+sudo chown -R ryan:ryan ~/nix-config
 
 cd ~/nix-config
 
-# deploy the configuration
+# deploy the configuration via Justfile
 just s-hypr
 ```
 
