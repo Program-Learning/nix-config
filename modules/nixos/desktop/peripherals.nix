@@ -57,6 +57,9 @@
     printing.enable = true; # Enable CUPS to print documents.
     geoclue2.enable = true; # Enable geolocation services.
 
+    # https://flatpak.org/setup/NixOS
+    flatpak.enable = true;
+
     udev.packages = with pkgs; [
       gnome.gnome-settings-daemon
       platformio # udev rules for platformio

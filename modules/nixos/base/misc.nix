@@ -81,8 +81,6 @@
             extraOutputsToInstall = ["dev"];
           })
     )
-    # Another linux app platform
-    flatpak
 
     # A tool to run appimage directly
     appimage-run
