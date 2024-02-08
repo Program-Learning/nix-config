@@ -20,8 +20,8 @@ in {
       # fix https://github.com/hyprwm/Hyprland/issues/1520
       "WLR_NO_HARDWARE_CURSORS,1"
       # nvidia-offload
-      #"__NV_PRIME_RENDER_OFFLOAD,1" 
-      #"__NV_PRIME_RENDER_OFFLOAD_PROVIDER,NVIDIA-G0" 
+      #"__NV_PRIME_RENDER_OFFLOAD,1"
+      #"__NV_PRIME_RENDER_OFFLOAD_PROVIDER,NVIDIA-G0"
       #"__VK_LAYER_NV_optimus,NVIDIA_only"
       #"__GLX_VENDOR_LIBRARY_NAME,nvidia"
     ];

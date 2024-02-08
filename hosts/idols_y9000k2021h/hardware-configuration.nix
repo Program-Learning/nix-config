@@ -52,7 +52,7 @@
 
   # Enable binfmt emulation of aarch64-linux, this is required for cross compilation.
   boot.binfmt.emulatedSystems = ["aarch64-linux" "riscv64-linux"];
-  # supported fil systems, so we can mount any removable disks with these filesystems
+  # supported file systems, so we can mount any removable disks with these filesystems
   boot.supportedFilesystems = [
     "ext4"
     "btrfs"
@@ -64,21 +64,25 @@
     "cifs" # mount windows share
   ];
 
-  #boot.initrd = {
-  #  # unlocked luks devices via a keyfile or prompt a passphrase.
-  #  luks.devices."crypted-nixos" = {
-  #    # NOTE: DO NOT use device name here(like /dev/sda, /dev/nvme0n1p2, etc), use UUID instead.
-  #    # https://github.com/ryan4yin/nix-config/issues/43
-  #    device = "/dev/disk/by-uuid/a21ca82a-9ee6-4e5c-9d3f-a93e84e4e0f4";
-  #    # the keyfile(or device partition) that should be used as the decryption key for the encrypted device.
-  #    # if not specified, you will be prompted for a passphrase instead.
-  #    #keyFile = "/root-part.key";
+  # boot.initrd = {
+  #   # unlocked luks devices via a keyfile or prompt a passphrase.
+  #   luks.devices."crypted-nixos" = {
+  #     # NOTE: DO NOT use device name here(like /dev/sda, /dev/nvme0n1p2, etc), use UUID instead.
+  #     # https://github.com/ryan4yin/nix-config/issues/43
+  #     device = "/dev/disk/by-uuid/a21ca82a-9ee6-4e5c-9d3f-a93e84e4e0f4";
+  #     # the keyfile(or device partition) that should be used as the decryption key for the encrypted device.
+  #     # if not specified, you will be prompted for a passphrase instead.
+  #     #keyFile = "/root-part.key";
 
-  #    # whether to allow TRIM requests to the underlying device.
-  #    # it's less secure, but faster.
-  #    allowDiscards = true;
-  #  };
-  #};
+  #     # whether to allow TRIM requests to the underlying device.
+  #     # it's less secure, but faster.
+  #     allowDiscards = true;
+  #     # Whether to bypass dm-crypt’s internal read and write workqueues.
+  #     # Enabling this should improve performance on SSDs;
+  #     # https://wiki.archlinux.org/index.php/Dm-crypt/Specialties#Disable_workqueue_for_increased_solid_state_drive_(SSD)_performance
+  #     bypassWorkqueues = true;
+  #   };
+  # };
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/7bd1f58c-482d-4c70-bba8-a3aa216eaef6";

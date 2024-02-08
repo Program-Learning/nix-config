@@ -7,6 +7,10 @@
   prefixLength = 24;
 
   hostAddress = {
+    "y9000k2021h" = {
+      inherit prefixLength;
+      address = "192.168.0.120";
+    };
     "ai" = {
       inherit prefixLength;
       address = "192.168.5.100";

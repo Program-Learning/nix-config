@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  vars_networking,
   ...
 } @ args:
 #############################################################
@@ -9,7 +10,10 @@
 # y9000k2021h - my main computer, with NixOS + i7-11800H + RTX 3060 Mobile / Max-Q GPU, for gaming & daily use.
 #
 #############################################################
-{
+let
+  hostName = "y9000k2021h"; # Define your hostname.
+  hostAddress = vars_networking.hostAddress.${hostName};
+in {
   imports = [
     # ./cifs-mount.nix
     # Include the results of the hardware scan.
@@ -20,30 +24,24 @@
   ];
 
   networking = {
-    hostName = "y9000k2021h";
+    inherit hostName;
+    inherit (vars_networking) defaultGateway nameservers;
+
     wireless.enable = false; # Enables wireless support via wpa_supplicant.
 
     # Configure network proxy if necessary
     # proxy.default = "http://user:password@proxy:port/";
     # proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
+    # configures the network interface(include wireless) via `nmcli` & `nmtui`
     networkmanager.enable = true;
 
     enableIPv6 = true; # disable ipv6
     interfaces.wlp0s20f3 = {
       useDHCP = true;
-      #ipv4.addresses = [
-      #  {
-      #    address = "192.168.0.120";
-      #    prefixLength = 24;
-      #  }
-      #];
+      # ipv4.addresses = [hostAddress];
     };
     #defaultGateway = "192.168.0.1";
-    nameservers = [
-      "119.29.29.29" # DNSPod
-      "223.5.5.5" # AliDNS
-    ];
     extraHosts = ''
       155.248.179.129 oracle_ubuntu_1
       192.168.0.121 mondrian_1_school
