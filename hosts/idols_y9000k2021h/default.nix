@@ -41,7 +41,6 @@ in {
       useDHCP = true;
       # ipv4.addresses = [hostAddress];
     };
-    #defaultGateway = "192.168.0.1";
     extraHosts = ''
       155.248.179.129 oracle_ubuntu_1
       192.168.0.121 mondrian_1_school
