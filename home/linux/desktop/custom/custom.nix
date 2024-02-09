@@ -102,7 +102,6 @@
           libvncserver
           gnome.gnome-remote-desktop
           gnome.gnome-clocks
-          novnc
 
           # dunst
           # pipewire

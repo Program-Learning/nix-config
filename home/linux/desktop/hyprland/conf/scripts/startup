@@ -30,6 +30,9 @@ exec wayvnc &
 # Start moonlight
 exec sunshine &
 
+# Start novnc
+exec novnc &
+
 # Start sunshine(moonlight) (PORT:47990)
 exec systemctl --user start sunshine &
 
