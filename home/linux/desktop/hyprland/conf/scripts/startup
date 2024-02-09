@@ -27,6 +27,9 @@ exec mpd &
 # Start wayvnc
 exec wayvnc &
 
+# Start moonlight
+exec sunshine &
+
 # Start sunshine(moonlight) (PORT:47990)
 exec systemctl --user start sunshine &
 
