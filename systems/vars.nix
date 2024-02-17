@@ -14,7 +14,11 @@ in {
     nixos-modules =
       [
         ../hosts/idols_y9000k2021h
-        {modules.desktop.xorg.enable = true;}
+        {
+          modules.desktop.xorg.enable = true;
+          modules.secrets.desktop.enable = true;
+          modules.secrets.impermanence.enable = true;
+        }
       ]
       ++ desktop_base_modules.nixos-modules;
     home-module.imports =
@@ -29,7 +33,11 @@ in {
     nixos-modules =
       [
         ../hosts/idols_y9000k2021h
-        {modules.desktop.wayland.enable = true;}
+        {
+          modules.desktop.wayland.enable = true;
+          modules.secrets.desktop.enable = true;
+          modules.secrets.impermanence.enable = true;
+        }
       ]
       ++ desktop_base_modules.nixos-modules;
     home-module.imports =
