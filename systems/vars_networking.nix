@@ -1,5 +1,5 @@
 {lib, ...}: rec {
-  defaultGateway = "192.168.1.1";
+  defaultGateway = "192.168.2.1";
   nameservers = [
     "119.29.29.29" # DNSPod
     "223.5.5.5" # AliDNS
@@ -9,7 +9,7 @@
   hostAddress = {
     "y9000k2021h" = {
       inherit prefixLength;
-      address = "192.168.0.120";
+      address = "192.168.2.120";
     };
     "ai" = {
       inherit prefixLength;
