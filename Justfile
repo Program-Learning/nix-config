@@ -127,6 +127,8 @@ dist-debug:
 
 aqua:
   colmena apply --on '@aqua'
+  # some config changes require a restart of the dae service
+  ssh ryan@aquamarine "sudo systemctl stop dae; sleep 1; sudo systemctl start dae"
 
 ruby:
   colmena apply --on '@ruby'
@@ -134,21 +136,24 @@ ruby:
 kana:
   colmena apply --on '@kana'
 
-tailscale_gw:
+tsgw:
   colmena apply --on '@tailscale_gw'
 
-pve-image:
-  nom build .#tailscale_gw
-  rsync -avz --progress --copy-links result root@s500plus:/var/lib/vz/dump/vzdump-qemu-tailscale_gw.vma.zst
-
+pve-aqua:
   nom build .#aquamarine
-  rsync -avz --progress --copy-links result root@s500plus:/var/lib/vz/dump/vzdump-qemu-aquamarine.vma.zst
+  rsync -avz --progress --copy-links result root@um560:/var/lib/vz/dump/vzdump-qemu-aquamarine.vma.zst
 
+pve-ruby:
   nom build .#ruby
-  rsync -avz --progress --copy-links result root@gtr5:/var/lib/vz/dump/vzdump-qemu-ruby.vma.zst
+  rsync -avz --progress --copy-links result root@um560:/var/lib/vz/dump/vzdump-qemu-ruby.vma.zst
 
+pve-kana:
   nom build .#kana
-  rsync -avz --progress --copy-links result root@um560:/var/lib/vz/dump/vzdump-qemu-kana.vma.zst
+  rsync -avz --progress --copy-links result root@gtr5:/var/lib/vz/dump/vzdump-qemu-kana.vma.zst
+
+pve-tsgw:
+  nom build .#tailscale_gw
+  rsync -avz --progress --copy-links result root@um560:/var/lib/vz/dump/vzdump-qemu-tailscale_gw.vma.zst
 
 
 ############################################################################
@@ -161,7 +166,7 @@ roll:
   colmena apply --on '@riscv'
 
 roll-debug:
-  colmena apply --on '@dist-build' --verbose --show-trace
+  colmena apply --on '@riscv' --verbose --show-trace
 
 nozomi:
   colmena apply --on '@nozomi'

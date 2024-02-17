@@ -89,7 +89,7 @@
         publicKey = value.publicKey;
       })
       {
-        aquamarine.publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO0EzzjnuHBE9xEOZupLmaAj9xbYxkUDeLbMqFZ7YPjU";
+        aquamarine.publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHJrHY3BZRTu0hrlsKxqS+O4GDp4cbumF8aNnbPCGKji root@aquamarine";
         ruby.publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHrDXNQXELnbevZ1rImfXwmQHkRcd3TDNLsQo33c2tUf";
         kana.publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJMVX05DQD1XJ0AqFZzsRsqgeUOlZ4opAI+8tkVXyjq+";
       };
