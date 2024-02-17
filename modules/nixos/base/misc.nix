@@ -63,6 +63,10 @@
   environment.systemPackages = with pkgs; [
     fh.packages.${system}.default
     neofetch
+    fastfetch
+    inxi
+    python311Packages.gpustat
+    cpu-x
     neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     git # used by nix flakes
     git-lfs # used by huggingface models
