@@ -1833,11 +1833,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1706719018,
-        "narHash": "sha256-L8UjmsQ6UsV/xk6amW5ojcczCELHVDH/xvdmWPrvhYs=",
+        "lastModified": 1708209350,
+        "narHash": "sha256-h34jeCWd0C4gg2jy7Jb/dYtiHXmhx8673zhIY5hWcK0=",
         "owner": "Program-Learning",
         "repo": "nur-packages",
-        "rev": "e70bfcd781f2b0d18da2a8361a1e9a2716f4528f",
+        "rev": "8485e62d8b01f080d5d56eee625491fa5c9b46d6",
         "type": "github"
       },
       "original": {

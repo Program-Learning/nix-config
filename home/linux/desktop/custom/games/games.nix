@@ -11,6 +11,9 @@
       "https://github.com/ezKEa/aagl-gtk-on-nix/archive/main.tar.gz");
 in {
   home.packages = with pkgs-unstable; [
+    yuzu # Switch games
+    ryujinx # Switch games
+
     steamPackages.steamcmd
     # MineCraft Launcher
     hmcl

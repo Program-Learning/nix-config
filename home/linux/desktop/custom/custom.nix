@@ -69,7 +69,7 @@
           anytype
 
           # --math software
-          geogebra6
+          # geogebra6
 
           # --achieve/file managers
           xarchiver
@@ -153,7 +153,7 @@
           unrar-wrapper
           # python2Full
           inotify-tools
-          vmware-workstation
+          # vmware-workstation
 
           # vaapi
           gst_all_1.gst-vaapi
