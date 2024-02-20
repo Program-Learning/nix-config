@@ -14,7 +14,13 @@
   </a>
 </p>
 
-This repository is home to the nix code that builds my systems.
+This repository is home to the nix code that builds my systems:
+
+1. NixOS Desktops: NixOS with home-manager, i3, hyprland, agenix, etc.
+2. macOS Desktops: nix-darwin with home-manager, zsh, kitty, etc. Share the same home-manager configuration with NixOS Desktops.
+3. NixOS Servers: virtual machines running on Proxmox, with various services, such as homepage, prometheus, grafana, etc.
+
+See [./hosts](./hosts) for details of each host.
 
 ## Why NixOS & Flakes?
 
@@ -75,17 +81,16 @@ See [./home/base/desktop/editors/neovim/](./home/base/desktop/editors/neovim/) f
 
 See [./home/base/desktop/editors/emacs/](./home/base/desktop/editors/emacs/) for details.
 
-## Hosts
-
-See [./hosts](./hosts) for details.
-
 ## Secrets Management
 
 See [./secrets](./secrets) for details.
 
 ## How to Deploy this Flake?
 
-> :red_circle: **IMPORTANT**: **You should NOT deploy this flake directly on your machine:exclamation: It will not succeed.** this flake contains my hardware configuration(such as [hardware-configuration.nix](hosts/idols_ai/hardware-configuration.nix), [cifs-mount.nix](https://github.com/ryan4yin/nix-config/blob/v0.1.1/hosts/idols_ai/cifs-mount.nix), [Nvidia Support](https://github.com/ryan4yin/nix-config/blob/v0.1.1/hosts/idols_ai/default.nix#L77-L91), etc.) which is not suitable for your hardware, and my private secrets repository [ryan4yin/nix-secrets](https://github.com/ryan4yin/nix-config/tree/main/secrets) that only I have access to. You may use this repo as a reference to build your own configuration.
+> :red_circle: **IMPORTANT**: **You should NOT deploy this flake directly on your machine :exclamation: It will not succeed.** 
+> This flake contains my hardware configuration(such as [hardware-configuration.nix](hosts/idols_ai/hardware-configuration.nix), [cifs-mount.nix](https://github.com/ryan4yin/nix-config/blob/v0.1.1/hosts/idols_ai/cifs-mount.nix), [Nvidia Support](https://github.com/ryan4yin/nix-config/blob/v0.1.1/hosts/idols_ai/default.nix#L77-L91), etc.) which is not suitable for your hardwares,
+> and requires my private secrets repository [ryan4yin/nix-secrets](https://github.com/ryan4yin/nix-config/tree/main/secrets) to deploy.
+> You may use this repo as a reference to build your own configuration.
 
 For NixOS:
 

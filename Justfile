@@ -112,32 +112,29 @@ yabai-reload:
 
 ############################################################################
 #
-#  Colmena - Remote NixOS deployment
+#  Homelab - Virtual Machines running on Proxmox
 #
 ############################################################################
 
 colmena-ssh-key:
   ssh-add /etc/agenix/ssh-key-romantic
 
-dist:
-  colmena apply --on '@dist-build'
-
-dist-debug:
-  colmena apply --on '@dist-build' --verbose --show-trace
+lab:
+  colmena apply --on '@homelab-*' --verbose --show-trace
 
 aqua:
-  colmena apply --on '@aqua'
+  colmena apply --on '@aqua' --verbose --show-trace
   # some config changes require a restart of the dae service
   ssh ryan@aquamarine "sudo systemctl stop dae; sleep 1; sudo systemctl start dae"
 
 ruby:
-  colmena apply --on '@ruby'
+  colmena apply --on '@ruby' --verbose --show-trace
 
 kana:
-  colmena apply --on '@kana'
+  colmena apply --on '@kana' --verbose --show-trace
 
 tsgw:
-  colmena apply --on '@tailscale_gw'
+  colmena apply --on '@tailscale-gw' --verbose --show-trace
 
 pve-aqua:
   nom build .#aquamarine
@@ -158,14 +155,49 @@ pve-tsgw:
 
 ############################################################################
 #
+# Kubernetes related commands
+#
+############################################################################
+
+k8s:
+  colmena apply --on '@k8s-*'
+
+master:
+  colmena apply --on '@k8s-prod-master'
+
+worker:
+  colmena apply --on '@k8s-prod-worker'
+
+pve-k8s:
+  nom build .#k3s_prod_1_master_1
+  rsync -avz --progress --copy-links result root@um560:/var/lib/vz/dump/vzdump-qemu-k3s_prod_1_master_1.vma.zst
+
+  nom build .#k3s_prod_1_master_2
+  rsync -avz --progress --copy-links result root@gtr5:/var/lib/vz/dump/vzdump-qemu-k3s_prod_1_master_2.vma.zst
+
+  nom build .#k3s_prod_1_master_3
+  rsync -avz --progress --copy-links result root@s500plus:/var/lib/vz/dump/vzdump-qemu-k3s_prod_1_master_3.vma.zst
+
+  nom build .#k3s_prod_1_worker_1
+  rsync -avz --progress --copy-links result root@gtr5:/var/lib/vz/dump/vzdump-qemu-k3s_prod_1_worker_1.vma.zst
+
+  nom build .#k3s_prod_1_worker_2
+  rsync -avz --progress --copy-links result root@s500plus:/var/lib/vz/dump/vzdump-qemu-k3s_prod_1_worker_2.vma.zst
+
+  nom build .#k3s_prod_1_worker_3
+  rsync -avz --progress --copy-links result root@s500plus:/var/lib/vz/dump/vzdump-qemu-k3s_prod_1_worker_3.vma.zst
+
+
+############################################################################
+#
 #  RISC-V related commands
 #
 ############################################################################
 
-roll:
+riscv:
   colmena apply --on '@riscv'
 
-roll-debug:
+riscv-debug:
   colmena apply --on '@riscv' --verbose --show-trace
 
 nozomi:
@@ -182,6 +214,9 @@ yukina:
 
 aarch:
   colmena apply --on '@aarch'
+
+aarch-debug:
+  colmena apply --on '@aarch' --verbose --show-trace
 
 suzu:
   colmena apply --on '@suzu'

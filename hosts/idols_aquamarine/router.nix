@@ -166,11 +166,13 @@ in {
   };
 
   # monitoring with prometheus
+  # https://github.com/NixOS/nixpkgs/blob/nixos-23.11/nixos/modules/services/monitoring/prometheus/exporters/dnsmasq.nix
   services.prometheus.exporters.dnsmasq = {
     enable = true;
     listenAddress = "0.0.0.0";
     port = 9153;
     openFirewall = false;
+    leasesPath = "/var/lib/dnsmasq/dnsmasq.leases";
   };
 
   # The service irqbalance is useful as it assigns certain IRQ calls to specific CPUs instead of

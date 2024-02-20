@@ -1,53 +1,33 @@
 {lib, ...}: rec {
-  defaultGateway = "192.168.2.1";
+  mainGateway = "192.168.2.1"; # main router
+  defaultGateway = "192.168.2.120";  # subrouter with a transparent proxy
   nameservers = [
     "119.29.29.29" # DNSPod
     "223.5.5.5" # AliDNS
   ];
   prefixLength = 24;
 
-  hostAddress = {
-    "y9000k2021h" = {
-      inherit prefixLength;
-      address = "192.168.2.120";
+  hostAddress =
+    lib.attrsets.mapAttrs
+    (name: address: {inherit prefixLength address;})
+    {
+      "ai" = "192.168.5.100";
+      "aquamarine" = "192.168.5.101";
+      "ruby" = "192.168.5.102";
+      "kana" = "192.168.5.103";
+      "nozomi" = "192.168.5.104";
+      "yukina" = "192.168.5.105";
+      "chiaya" = "192.168.5.106";
+      "suzu" = "192.168.5.107";
+      "k3s-prod-1-master-1" = "192.168.5.108";
+      "k3s-prod-1-master-2" = "192.168.5.109";
+      "k3s-prod-1-master-3" = "192.168.5.110";
+      "k3s-prod-1-worker-1" = "192.168.5.111";
+      "k3s-prod-1-worker-2" = "192.168.5.112";
+      "k3s-prod-1-worker-3" = "192.168.5.113";
+      "tailscale-gw" = "192.168.5.192";
+      "y9000k2021h" = "192.168.2.120";
     };
-    "ai" = {
-      inherit prefixLength;
-      address = "192.168.5.100";
-    };
-    "aquamarine" = {
-      inherit prefixLength;
-      address = "192.168.5.101";
-    };
-    "ruby" = {
-      inherit prefixLength;
-      address = "192.168.5.102";
-    };
-    "kana" = {
-      inherit prefixLength;
-      address = "192.168.5.103";
-    };
-    "nozomi" = {
-      inherit prefixLength;
-      address = "192.168.5.104";
-    };
-    "yukina" = {
-      inherit prefixLength;
-      address = "192.168.5.105";
-    };
-    "chiaya" = {
-      inherit prefixLength;
-      address = "192.168.5.106";
-    };
-    "suzu" = {
-      inherit prefixLength;
-      address = "192.168.5.107";
-    };
-    "tailscale_gw" = {
-      inherit prefixLength;
-      address = "192.168.5.192";
-    };
-  };
 
   ssh = {
     # define the host alias for remote builders
@@ -90,8 +70,8 @@
       })
       {
         aquamarine.publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHJrHY3BZRTu0hrlsKxqS+O4GDp4cbumF8aNnbPCGKji root@aquamarine";
-        ruby.publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHrDXNQXELnbevZ1rImfXwmQHkRcd3TDNLsQo33c2tUf";
-        kana.publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJMVX05DQD1XJ0AqFZzsRsqgeUOlZ4opAI+8tkVXyjq+";
+        ruby.publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOAMmGni8imcaS40cXgLbVQqPYnDYKs8MSbyWL91RV98 root@ruby";
+        kana.publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIcINkxU3KxPsCpWltfEBjDYtKEeCmgrDxyUadl1iZ1D root@kana";
       };
   };
 }
