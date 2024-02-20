@@ -1136,10 +1136,10 @@
     "mysecrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1708171916,
-        "narHash": "sha256-tXsEJrI+0b3vNn7mqmP4fsGaRaQK9MiH5pCWXSvsmWw=",
+        "lastModified": 1708458788,
+        "narHash": "sha256-rGdLRN8P4idlpKmAzUYOlFVAnqjvgWUOguldxI+AvT8=",
         "ref": "refs/heads/main",
-        "rev": "060daffbdcead2cb98caeaf56321adc6873d18e1",
+        "rev": "fd5d6caae624ec59516287ff30574a204429cecb",
         "shallow": true,
         "type": "git",
         "url": "ssh://git@github.com/DataEraserC/nix-secrets.git"
@@ -1387,11 +1387,11 @@
     },
     "nixos-stable": {
       "locked": {
-        "lastModified": 1707978831,
-        "narHash": "sha256-UblFdWQ2MMZNzD9C/w8+7RjAJ2QIbebbzHUniQ/a44o=",
+        "lastModified": 1708294118,
+        "narHash": "sha256-evZzmLW7qoHXf76VCepvun1esZDxHfVRFUJtumD7L2M=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "c68a9fc85c2cb3a313be6ff40511635544dde8da",
+        "rev": "e0da498ad77ac8909a980f07eff060862417ccf7",
         "type": "github"
       },
       "original": {
@@ -1766,11 +1766,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1708157441,
-        "narHash": "sha256-fwPmdnluRT0qlXkTF9CXMOy05Sj1pOO0joyrz+pcy8U=",
+        "lastModified": 1708415388,
+        "narHash": "sha256-gya0KaZF4Jt4dhsCCUHaY/xM0DmysZbOTRkL+aAh0LI=",
         "owner": "AtaraxiaSjel",
         "repo": "nur",
-        "rev": "2314a55725021757c694a60592c030440973c0d5",
+        "rev": "4dbe43314bb99b76a5f71380b015eab32b51bfc6",
         "type": "github"
       },
       "original": {
@@ -1813,11 +1813,11 @@
         "treefmt-nix": "treefmt-nix_2"
       },
       "locked": {
-        "lastModified": 1708144028,
-        "narHash": "sha256-1QaqqIn3zetUR8bPX92KZakLxvtb5zrR/HiRqSLwjY4=",
+        "lastModified": 1708453412,
+        "narHash": "sha256-8pjyibO9rLJXilWZk8mdUaA5oAW5VFl98EqsPYf1Un4=",
         "owner": "linyinfeng",
         "repo": "nur-packages",
-        "rev": "0c32ec12fa30ae2eaf7ba5b02dce07a1995e3055",
+        "rev": "a9a10737fd7d3d7c6db81ac80ac9ddbcf13f105b",
         "type": "github"
       },
       "original": {
@@ -1874,11 +1874,11 @@
         "nvfetcher": "nvfetcher_2"
       },
       "locked": {
-        "lastModified": 1708149844,
-        "narHash": "sha256-Odr+g4J+plflkB2J/N2BHCa///bs85E6VE026dAXVQw=",
+        "lastModified": 1708414565,
+        "narHash": "sha256-WZkGKDIT4ItkIBhHc0wXtDq2WJaGNay0++DDgM07ESQ=",
         "owner": "xddxdd",
         "repo": "nur-packages",
-        "rev": "f6f447a21e67d16ef3df5acb50008671f2311a78",
+        "rev": "245d22d7d665a95be337e687f93f4cd642defa83",
         "type": "github"
       },
       "original": {
@@ -2429,11 +2429,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1707300477,
-        "narHash": "sha256-qQF0fEkHlnxHcrKIMRzOETnRBksUK048MXkX0SOmxvA=",
+        "lastModified": 1708335038,
+        "narHash": "sha256-ETLZNFBVCabo7lJrpjD6cAbnE11eDOjaQnznmg/6hAE=",
         "owner": "numtide",
         "repo": "treefmt-nix",
-        "rev": "ac599dab59a66304eb511af07b3883114f061b9d",
+        "rev": "e504621290a1fd896631ddbc5e9c16f4366c9f65",
         "type": "github"
       },
       "original": {
