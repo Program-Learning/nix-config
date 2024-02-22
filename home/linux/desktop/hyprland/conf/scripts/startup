@@ -34,7 +34,7 @@ exec sunshine &
 exec novnc &
 
 # Start sunshine(moonlight) (PORT:47990)
-exec systemctl --user start sunshine &
+# exec systemctl --user start sunshine &
 
 # Start clash-verge
 exec clash-verge &
