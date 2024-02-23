@@ -83,8 +83,8 @@
 
           # --wine
           protonup-qt
-          wine-staging
-          # wine64Packages.stagingFull
+          # wine-staging
+          wine64Packages.stagingFull
           # winePackages.stagingFull
           winetricks
           onscripter-en
