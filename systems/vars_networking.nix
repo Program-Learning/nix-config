@@ -1,6 +1,6 @@
 {lib, ...}: rec {
-  mainGateway = "192.168.2.1"; # main router
-  defaultGateway = "192.168.2.120";  # subrouter with a transparent proxy
+  mainGateway = "192.168.0.1"; # main router
+  defaultGateway = "192.168.0.1";  # subrouter with a transparent proxy
   nameservers = [
     "119.29.29.29" # DNSPod
     "223.5.5.5" # AliDNS
@@ -26,7 +26,10 @@
       "k3s-prod-1-worker-2" = "192.168.5.112";
       "k3s-prod-1-worker-3" = "192.168.5.113";
       "tailscale-gw" = "192.168.5.192";
-      "y9000k2021h" = "192.168.2.120";
+      "y9000k2021h_1_home" = "192.168.2.120";
+      "y9000k2021h_1_school" = "192.168.0.120";
+      "y9000k2021h_1_zerotier" = "10.147.20.120";
+      "y9000k2021h_1_tailscale" = "100.95.7.36";
     };
 
   ssh = {

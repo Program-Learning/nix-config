@@ -68,6 +68,18 @@
         ForwardAgent yes
         IdentityFile ~/.ssh/y9000k2021h_id_ed25519
         IdentitiesOnly yes
+
+      Host y9000k2021h_1_zerotier
+        HostName 10.147.20.120
+        ForwardAgent yes
+        IdentityFile ~/.ssh/y9000k2021h_id_ed25519
+        IdentitiesOnly yes
+
+      Host y9000k2021h_1_tailscale
+        HostName 100.95.7.36
+        ForwardAgent yes
+        IdentityFile ~/.ssh/y9000k2021h_id_ed25519
+        IdentitiesOnly yes
     '';
   };
 }
