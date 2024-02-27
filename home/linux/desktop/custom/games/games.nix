@@ -14,10 +14,10 @@ in {
     yuzu # Switch games
     ryujinx # Switch games
 
-    steamPackages.steamcmd
-    # MineCraft Launcher
-    hmcl
-    minecraft
+    steamPackages.steamcmd # steam command line
+    
+    hmcl # MineCraft Launcher
+    minecraft # Official MineCraft Launcher
     # prismlauncher
 
     mindustry-wayland
