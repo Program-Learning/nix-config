@@ -17,6 +17,8 @@
 
   home.packages = with pkgs;
     [
+      colmena # nixos's remote deployment tool
+
       # db related
       dbeaver
       mycli
@@ -71,6 +73,8 @@
         # nur-program-learning.packages.${pkgs.system}.wechat_dev_tools_appimage
         nur-program-learning.packages.${pkgs.system}.clang_dev_env_fhs
         nur-program-learning.packages.${pkgs.system}.wechat_dev_tools_bin
+        ventoy # create bootable usb
+        etcher
       ]
       else []
     );
