@@ -20,12 +20,12 @@
     shotcut # video editor
     inkscape # vector graphics
     krita # digital painting
-    musescore # music notation
+    pkgs-stable.musescore # music notation
     # reaper # audio production
     # sonic-pi # music programming
 
     # this app consumes a lot of storage, so do not install it currently
-    kicad # 3d printing, eletrical engineering
+    pkgs-stable.kicad # 3d printing, eletrical engineering
     # kicad-unstable # 3d printing, eletrical engineering
     ngspice # eletrical engineering
     digital # A digital logic designer and circuit simulator.

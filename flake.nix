@@ -145,6 +145,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    vscode-server= {
+      url = "github:nix-community/nixos-vscode-server";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+
     nixpkgs-wayland = {
       url = "github:nix-community/nixpkgs-wayland";
       inputs.nixpkgs.follows = "nixpkgs";
