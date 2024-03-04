@@ -24,6 +24,7 @@
       source-han-sans # 思源黑体
       source-han-serif # 思源宋体
 
+      sarasa-gothic
       # nerdfonts
       # https://github.com/NixOS/nixpkgs/blob/nixos-23.11/pkgs/data/fonts/nerdfonts/shas.nix
       (nerdfonts.override {

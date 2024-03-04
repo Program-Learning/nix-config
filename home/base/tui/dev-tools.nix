@@ -1,6 +1,7 @@
 {
   pkgs,
   pkgs-unstable,
+  nur-program-learning,
   ...
 }: {
   #############################################################
@@ -25,6 +26,12 @@
 
     # embedded development
     minicom
+    rkdeveloptool
+    rkflashtool
+    dtc
+    screen
+
+    baobab # Graphical disk usage analyzer
 
     # ai related
     python311Packages.huggingface-hub # huggingface-cli
@@ -34,6 +41,8 @@
     bfg-repo-cleaner # remove large files from git history
     k6 # load testing tool
     protobuf # protocol buffer compiler
+
+    pre-commit
 
     # solve coding extercises - learn by doing
     exercism
@@ -46,6 +55,22 @@
     # need to run `conda-shell` before using command `conda`
     # conda is not available for MacOS
     conda
+
+    mitmproxy # http/https proxy tool
+    insomnia # REST client
+    wireshark # network analyzer
+    ventoy # create bootable usb
+    etcher
+    # hoppscotch is not in nixpkgs now
+    # hoppscotch # Api Test Tool
+
+    # manual
+    man-pages
+    man-pages-posix
+
+    # nur-program-learning.packages.${pkgs.system}.wechat_dev_tools_appimage
+    nur-program-learning.packages.${pkgs.system}.clang_dev_env_fhs
+    nur-program-learning.packages.${pkgs.system}.wechat_dev_tools_bin
   ];
 
   programs = {

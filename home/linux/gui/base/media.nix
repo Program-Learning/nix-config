@@ -21,6 +21,8 @@
     vdpauinfo
     vulkan-tools
     glxinfo
+
+    vlc # Cross-platform media player and streaming server
   ];
 
   # https://github.com/catppuccin/cava

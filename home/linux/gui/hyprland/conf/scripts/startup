@@ -3,7 +3,7 @@
 ## Autostart Programs
 
 # Kill already running process
-_ps=(waybar mako mpd)
+_ps=(waybar mako mpd wayvnc lxpolkit swaybg clash-verge swayidle clash xdg-desktop-portal-hyprland)
 for _prs in "${_ps[@]}"; do
 	if [[ $(pidof ${_prs}) ]]; then
 		killall -9 ${_prs}
@@ -18,7 +18,36 @@ done
 ~/.config/hypr/scripts/notifications &
 
 # Lauch statusbar (waybar)
-~/.config/hypr/scripts/statusbar &
+# ~/.config/hypr/scripts/statusbar &
+~/.config/hypr/scripts/statusbar_debug &
 
 # Start mpd
 exec mpd &
+
+# Start wayvnc
+exec wayvnc &
+
+# Start moonlight
+exec sunshine &
+
+# Start novnc
+exec novnc &
+
+# Start sunshine(moonlight) (PORT:47990)
+# exec systemctl --user start sunshine &
+
+# Start clash-verge
+exec clash-verge &
+
+# Start lxpolkit
+exec lxpolkit &
+
+# Launch xdg-desktop-portal-hyprland
+exec /nix/store/*xdg-desktop-portal-hyprland*/libexec/xdg-desktop-portal-hyprland &
+
+# Start swayidle
+# exec swayidle -w timeout 1800 'systemctl suspend' resume 'hyprctl dispatch dpms on' timeout 120 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on' before-sleep 'swaylock'
+exec swayidle -w timeout 120 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on' before-sleep 'swaylock' &
+
+# Start alist
+exec podman container start alist &

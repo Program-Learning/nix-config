@@ -20,6 +20,8 @@ in {
     enableCompletion = true;
     bashrcExtra = ''
       export PATH="$HOME/.local/bin:$HOME/go/bin:$PATH"
+      export REPO_URL='https://mirrors.tuna.tsinghua.edu.cn/git/git-repo/'
+      export TLDR_AUTO_UPDATE_DISABLED=1
     '';
   };
 }

@@ -1,8 +1,8 @@
-{lib}: rec {
-  mainGateway = "192.168.5.1"; # main router
+{lib, ...}: rec {
+  mainGateway = "192.168.0.1"; # main router
   # use suzi as the default gateway
   # it's a subrouter with a transparent proxy
-  defaultGateway = "192.168.5.178";
+  defaultGateway = "192.168.0.1";
   nameservers = [
     "119.29.29.29" # DNSPod
     "223.5.5.5" # AliDNS
@@ -33,6 +33,26 @@
       # Desktop PC
       iface = "enp5s0";
       ipv4 = "192.168.5.100";
+    };
+    y9000k2021h_1_home = {
+      # Laptop
+      iface = "wlp0s20f3";
+      ipv4 = "192.168.2.120";
+    };
+    y9000k2021h_1_school = {
+      # Laptop
+      iface = "wlp0s20f3";
+      ipv4 = "192.168.0.120";
+    };
+    y9000k2021h_1_zerotier = {
+      # Laptop
+      iface = "wlp0s20f3";
+      ipv4 = "10.147.20.120";
+    };
+    y9000k2021h_1_tailscale = {
+      # Laptop
+      iface = "wlp0s20f3";
+      ipv4 = "100.95.7.36";
     };
     aquamarine = {
       # VM

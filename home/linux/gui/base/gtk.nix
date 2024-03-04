@@ -1,5 +1,6 @@
 {
   pkgs,
+  nur-program-learning,
   config,
   ...
 }: {
@@ -7,6 +8,7 @@
   # try setting them with home.pointerCursor and gtk.theme,
   # which enable a bunch of compatibility options that should make the themes load in all situations.
 
+  home.packages = with pkgs; [win2xcur];
   home.pointerCursor = {
     gtk.enable = true;
     x11.enable = true;
@@ -18,9 +20,9 @@
   # set dpi for 4k monitor
   xresources.properties = {
     # dpi for Xorg's font
-    "Xft.dpi" = 150;
+    "Xft.dpi" = 96;
     # or set a generic dpi
-    "*.dpi" = 150;
+    "*.dpi" = 96;
   };
 
   # gtk's theme settings, generate files:
