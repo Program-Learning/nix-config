@@ -3,3 +3,8 @@ result/
 .direnv/
 .DS_Store
 .pre-commit-config.yaml
+secrets/
+!secrets/README.md
+!secrets/darwin.nix
+!secrets/nixos.nix
+

@@ -1,6 +1,7 @@
 {
   pkgs,
   pkgs-unstable,
+  nur-program-learning,
   ...
 }: {
   home.packages = with pkgs; [
@@ -12,15 +13,21 @@
     # instant messaging
     telegram-desktop
     discord
-    pkgs-unstable.qq # https://github.com/NixOS/nixpkgs/tree/master/pkgs/applications/networking/instant-messengers/qq
+    # temporarily fix for https://github.com/NixOS/nixpkgs/commit/7e3940735af718435c7f34cbc1f0f9c0105e8159
+    # pkgs-unstable.qq # https://github.com/NixOS/nixpkgs/tree/master/pkgs/applications/networking/instant-messengers/qq
+    nur-program-learning.packages.${pkgs.system}.llqqnt
 
     # remote desktop(rdp connect)
     remmina
     freerdp # required by remmina
 
+    # Download Manager
+    motrix
+
     # misc
     flameshot
     ventoy # multi-boot usb creator
+    mission-center # Graphical task usage analyzer
   ];
 
   # GitHub CLI tool

@@ -1,6 +1,8 @@
 {
   pkgs,
   nur-ryan4yin,
+  pkgs-unstable,
+  firefox-nightly,
   ...
 }: {
   # refer to https://codeberg.org/dnkl/foot/src/branch/master/foot.ini
@@ -11,7 +13,7 @@
       font=JetBrainsMono Nerd Font:size=13
       shell=${pkgs.bash}/bin/bash --login -c 'nu --login --interactive'
       term=foot
-      initial-window-size-pixels=3840x2160
+      initial-window-size-pixels=2560x1600
       initial-window-mode=windowed
       pad=0x0                             # optionally append 'center'
       resize-delay-ms=10
@@ -57,7 +59,7 @@
     firefox = {
       enable = true;
       enableGnomeExtensions = false;
-      package = pkgs.firefox-wayland; # firefox with wayland support
+      package = firefox-nightly.packages.${pkgs.system}.firefox-nightly-bin; # firefox with wayland support
     };
 
     vscode = {
@@ -85,9 +87,14 @@
           })
         .overrideAttrs (oldAttrs: rec {
           # Use VSCode Insiders to fix crash: https://github.com/NixOS/nixpkgs/issues/246509
+          # Or
+          # For vscode normal version now
+          # "window.titleBarStyle" = "custom";
+          # Or
+          # `env -u WAYLAND_DISPLAY code`
           src = builtins.fetchTarball {
             url = "https://update.code.visualstudio.com/latest/linux-x64/insider";
-            sha256 = "0k2sh7rb6mrx9d6bkk2744ry4g17d13xpnhcisk4akl4x7dn6a83";
+            sha256 = "1diwmkw4yy1pdawqgrjymlpqpjxcgy1h5crf1nm2m4c9dwvswrsa";
           };
           version = "latest";
         });

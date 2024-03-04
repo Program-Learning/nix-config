@@ -4,13 +4,18 @@
   ...
 }: {
   home.packages = with pkgs; [
+    brightnessctl # a tool to set screen brightness
+    wev # debug which key is pressed
     waybar # the status bar
     swaybg # the wallpaper
+    mpvpaper # A video wallpaper program for wlroots based wayland compositors.
     swayidle # the idle timeout
     swaylock # locking the screen
     wlogout # logout menu
     wl-clipboard # copying and pasting
     hyprpicker # color picker
+    pkgs-unstable.hyprshot
+    wshowkeys # Show which key is triggered
 
     pkgs-unstable.hyprshot # screen shot
     grim # taking screenshots
@@ -23,9 +28,11 @@
 
     # audio
     alsa-utils # provides amixer/alsamixer/...
+    kew # terminal music player
     mpd # for playing system sounds
     mpc-cli # command-line mpd client
     ncmpcpp # a mpd client with a UI
+    vimpc # A curses mpd client with vi-like key bindings.
     networkmanagerapplet # provide GUI app: nm-connection-editor
   ];
 }
