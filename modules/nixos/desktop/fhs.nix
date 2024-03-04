@@ -17,6 +17,6 @@
     )
 
     # A tool to run appimage directly
-    appimage-run
+    pkgs.appimage-run
   ];
 }
