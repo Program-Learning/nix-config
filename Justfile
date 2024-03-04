@@ -112,12 +112,28 @@ yabai-reload:
 
 ############################################################################
 #
-#  Homelab - Virtual Machines running on Proxmox
+#  Homelab - NixOS servers running on bare metal
 #
 ############################################################################
 
-colmena-ssh-key:
-  ssh-add /etc/agenix/ssh-key-romantic
+virt:
+  colmena apply --on '@virt-*' --verbose --show-trace
+
+shoryu:
+  colmena apply --on '@shoryu' --verbose --show-trace
+
+shushou:
+  colmena apply --on '@shushou' --verbose --show-trace
+
+youko:
+  colmena apply --on '@youko' --verbose --show-trace
+
+
+############################################################################
+#
+#  Homelab - Virtual Machines running on Kubevirt
+#
+############################################################################
 
 lab:
   colmena apply --on '@homelab-*' --verbose --show-trace
@@ -136,22 +152,22 @@ kana:
 tsgw:
   colmena apply --on '@tailscale-gw' --verbose --show-trace
 
-pve-aqua:
-  nom build .#aquamarine
-  rsync -avz --progress --copy-links result root@um560:/var/lib/vz/dump/vzdump-qemu-aquamarine.vma.zst
-
-pve-ruby:
-  nom build .#ruby
-  rsync -avz --progress --copy-links result root@um560:/var/lib/vz/dump/vzdump-qemu-ruby.vma.zst
-
-pve-kana:
-  nom build .#kana
-  rsync -avz --progress --copy-links result root@gtr5:/var/lib/vz/dump/vzdump-qemu-kana.vma.zst
-
-pve-tsgw:
-  nom build .#tailscale_gw
-  rsync -avz --progress --copy-links result root@um560:/var/lib/vz/dump/vzdump-qemu-tailscale_gw.vma.zst
-
+# pve-aqua:
+#   nom build .#aquamarine
+#   rsync -avz --progress --copy-links result root@um560:/var/lib/vz/dump/vzdump-qemu-aquamarine.vma.zst
+#
+# pve-ruby:
+#   nom build .#ruby
+#   rsync -avz --progress --copy-links result root@um560:/var/lib/vz/dump/vzdump-qemu-ruby.vma.zst
+#
+# pve-kana:
+#   nom build .#kana
+#   rsync -avz --progress --copy-links result root@gtr5:/var/lib/vz/dump/vzdump-qemu-kana.vma.zst
+#
+# pve-tsgw:
+#   nom build .#tailscale_gw
+#   rsync -avz --progress --copy-links result root@um560:/var/lib/vz/dump/vzdump-qemu-tailscale_gw.vma.zst
+#
 
 ############################################################################
 #
@@ -160,33 +176,33 @@ pve-tsgw:
 ############################################################################
 
 k8s:
-  colmena apply --on '@k8s-*'
+  colmena apply --on '@k8s-*' --verbose --show-trace
 
 master:
-  colmena apply --on '@k8s-prod-master'
+  colmena apply --on '@k8s-prod-master-*' --verbose --show-trace
 
 worker:
-  colmena apply --on '@k8s-prod-worker'
+  colmena apply --on '@k8s-prod-worker-*' --verbose --show-trace
 
-pve-k8s:
-  nom build .#k3s_prod_1_master_1
-  rsync -avz --progress --copy-links result root@um560:/var/lib/vz/dump/vzdump-qemu-k3s_prod_1_master_1.vma.zst
-
-  nom build .#k3s_prod_1_master_2
-  rsync -avz --progress --copy-links result root@gtr5:/var/lib/vz/dump/vzdump-qemu-k3s_prod_1_master_2.vma.zst
-
-  nom build .#k3s_prod_1_master_3
-  rsync -avz --progress --copy-links result root@s500plus:/var/lib/vz/dump/vzdump-qemu-k3s_prod_1_master_3.vma.zst
-
-  nom build .#k3s_prod_1_worker_1
-  rsync -avz --progress --copy-links result root@gtr5:/var/lib/vz/dump/vzdump-qemu-k3s_prod_1_worker_1.vma.zst
-
-  nom build .#k3s_prod_1_worker_2
-  rsync -avz --progress --copy-links result root@s500plus:/var/lib/vz/dump/vzdump-qemu-k3s_prod_1_worker_2.vma.zst
-
-  nom build .#k3s_prod_1_worker_3
-  rsync -avz --progress --copy-links result root@s500plus:/var/lib/vz/dump/vzdump-qemu-k3s_prod_1_worker_3.vma.zst
-
+# pve-k8s:
+#   nom build .#k3s_prod_1_master_1
+#   rsync -avz --progress --copy-links result root@um560:/var/lib/vz/dump/vzdump-qemu-k3s_prod_1_master_1.vma.zst
+#
+#   nom build .#k3s_prod_1_master_2
+#   rsync -avz --progress --copy-links result root@gtr5:/var/lib/vz/dump/vzdump-qemu-k3s_prod_1_master_2.vma.zst
+#
+#   nom build .#k3s_prod_1_master_3
+#   rsync -avz --progress --copy-links result root@s500plus:/var/lib/vz/dump/vzdump-qemu-k3s_prod_1_master_3.vma.zst
+#
+#   nom build .#k3s_prod_1_worker_1
+#   rsync -avz --progress --copy-links result root@gtr5:/var/lib/vz/dump/vzdump-qemu-k3s_prod_1_worker_1.vma.zst
+#
+#   nom build .#k3s_prod_1_worker_2
+#   rsync -avz --progress --copy-links result root@s500plus:/var/lib/vz/dump/vzdump-qemu-k3s_prod_1_worker_2.vma.zst
+#
+#   nom build .#k3s_prod_1_worker_3
+#   rsync -avz --progress --copy-links result root@s500plus:/var/lib/vz/dump/vzdump-qemu-k3s_prod_1_worker_3.vma.zst
+#
 
 ############################################################################
 #
@@ -195,16 +211,13 @@ pve-k8s:
 ############################################################################
 
 riscv:
-  colmena apply --on '@riscv'
-
-riscv-debug:
   colmena apply --on '@riscv' --verbose --show-trace
 
 nozomi:
-  colmena apply --on '@nozomi'
+  colmena apply --on '@nozomi' --verbose --show-trace
 
 yukina:
-  colmena apply --on '@yukina'
+  colmena apply --on '@yukina' --verbose --show-trace
 
 ############################################################################
 #
@@ -213,13 +226,10 @@ yukina:
 ############################################################################
 
 aarch:
-  colmena apply --on '@aarch'
-
-aarch-debug:
   colmena apply --on '@aarch' --verbose --show-trace
 
 suzu:
-  colmena apply --on '@suzu'
+  colmena apply --on '@suzu' --verbose --show-trace
 
 suzu-debug:
   colmena apply --on '@suzu' --verbose --show-trace
@@ -279,3 +289,14 @@ emacs-purge:
 emacs-reload:
   doom sync
   {{reload-emacs-cmd}}
+
+
+# =================================================
+#
+# Kubernetes related commands
+#
+# =================================================
+
+
+del-failed:
+   kubectl delete pod --all-namespaces --field-selector="status.phase==Failed"

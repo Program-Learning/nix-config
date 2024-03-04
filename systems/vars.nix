@@ -156,6 +156,43 @@ in {
   };
   homelab_tailscale_gw_tags = ["tailscale-gw" "homelab-network"];
 
+  # --- Kubevirt Nodes --- #
+  kubevirt_shoryu_modules = {
+    nixos-modules =
+      [
+        ../hosts/k8s/kubevirt_shoryu
+      ]
+      ++ kube_base_modules.nixos-modules;
+    home-module.imports = [
+      ../home/linux/server.nix
+    ];
+  };
+  kubevirt_shoryu_tags = ["virt-shoryu"];
+
+  kubevirt_shushou_modules = {
+    nixos-modules =
+      [
+        ../hosts/k8s/kubevirt_shushou
+      ]
+      ++ kube_base_modules.nixos-modules;
+    home-module.imports = [
+      ../home/linux/server.nix
+    ];
+  };
+  kubevirt_shushou_tags = ["virt-shushou"];
+
+  kubevirt_youko_modules = {
+    nixos-modules =
+      [
+        ../hosts/k8s/kubevirt_youko
+      ]
+      ++ kube_base_modules.nixos-modules;
+    home-module.imports = [
+      ../home/linux/server.nix
+    ];
+  };
+  kubevirt_youko_tags = ["virt-youko"];
+
   # --- Kubernetes Nodes --- #
 
   k3s_prod_1_master_1_modules = {
@@ -168,7 +205,7 @@ in {
       ../home/linux/server.nix
     ];
   };
-  k3s_prod_1_master_1_tags = ["k8s-prod-master"];
+  k3s_prod_1_master_1_tags = ["k8s-prod-master-1"];
 
   k3s_prod_1_master_2_modules = {
     nixos-modules =
@@ -177,7 +214,7 @@ in {
       ]
       ++ kube_base_modules.nixos-modules;
   };
-  k3s_prod_1_master_2_tags = ["k8s-prod-master"];
+  k3s_prod_1_master_2_tags = ["k8s-prod-master-2"];
 
   k3s_prod_1_master_3_modules = {
     nixos-modules =
@@ -186,7 +223,7 @@ in {
       ]
       ++ kube_base_modules.nixos-modules;
   };
-  k3s_prod_1_master_3_tags = ["k8s-prod-master"];
+  k3s_prod_1_master_3_tags = ["k8s-prod-master-3"];
 
   k3s_prod_1_worker_1_modules = {
     nixos-modules =
@@ -195,7 +232,7 @@ in {
       ]
       ++ kube_base_modules.nixos-modules;
   };
-  k3s_prod_1_worker_1_tags = ["k8s-prod-worker"];
+  k3s_prod_1_worker_1_tags = ["k8s-prod-worker-1"];
 
   k3s_prod_1_worker_2_modules = {
     nixos-modules =
@@ -204,7 +241,7 @@ in {
       ]
       ++ kube_base_modules.nixos-modules;
   };
-  k3s_prod_1_worker_2_tags = ["k8s-prod-worker"];
+  k3s_prod_1_worker_2_tags = ["k8s-prod-worker-2"];
 
   k3s_prod_1_worker_3_modules = {
     nixos-modules =
@@ -213,7 +250,7 @@ in {
       ]
       ++ kube_base_modules.nixos-modules;
   };
-  k3s_prod_1_worker_3_tags = ["k8s-prod-worker"];
+  k3s_prod_1_worker_3_tags = ["k8s-prod-worker-3"];
 
   # --- RISC-V / AARCH64 Systems --- #
 
@@ -247,7 +284,7 @@ in {
   _12kingdoms_suzu_modules = {
     nixos-modules = [
       ../hosts/12kingdoms_suzu
-      ../modules/nixos/server/server-riscv64.nix
+      ../modules/nixos/server/server-aarch64.nix
 
       # cross-compilation this flake.
       {nixpkgs.crossSystem.config = "aarch64-unknown-linux-gnu";}

@@ -13,6 +13,7 @@
 
     kubectl
     istioctl
+    kubevirt # virtctl
     kubernetes-helm
   ];
 

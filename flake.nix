@@ -183,6 +183,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # add git hooks to format nix code before commit
     pre-commit-hooks = {
       url = "github:cachix/pre-commit-hooks.nix";
@@ -193,6 +198,8 @@
 
     # daeuniverse.url = "github:daeuniverse/flake.nix/unstable";
     daeuniverse.url = "github:daeuniverse/flake.nix/exp";
+
+    attic.url = "github:zhaofengli/attic";
 
     ########################  Some non-flake repositories  #########################################
 
