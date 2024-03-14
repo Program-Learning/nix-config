@@ -18,6 +18,7 @@
     (with pkgs;
       # nixpkgs here
         [
+          tmux
           patchelf
           glib
           trickle
