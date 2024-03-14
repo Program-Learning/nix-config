@@ -11,35 +11,35 @@
 #
 ############################################################################
 
-y9000k2021h_i3:
-	nixos-rebuild switch --flake .#y9000k2021h-i3 --use-remote-sudo
+ai-i3:
+	nixos-rebuild switch --flake .#ai-i3 --use-remote-sudo
 
 i3:
-	nixos-rebuild switch --flake .#ai-i3 --use-remote-sudo
+	nixos-rebuild switch --flake .#y9000k2021h-i3 --use-remote-sudo
 
 s-i3:
 	nixos-rebuild switch --flake .#shoukei-i3 --use-remote-sudo
 
-y9000k2021h_hypr:
-	nixos-rebuild switch --flake .#y9000k2021h-hyprland --use-remote-sudo
+ai-hyprland:
+	nixos-rebuild switch --flake .#ai-hyprland --use-remote-sudo
 
 hypr:
-	nixos-rebuild switch --flake .#ai-hyprland --use-remote-sudo
+	nixos-rebuild switch --flake .#y9000k2021h-hyprland --use-remote-sudo
 
 s-hypr:
 	nixos-rebuild switch --flake .#shoukei-hyprland --use-remote-sudo
 
-y9000k2021h_i3-debug:
-	nixos-rebuild switch --flake .#y9000k2021h-i3 --use-remote-sudo --show-trace --verbose
-
-i3-debug:
+ai-i3-debug:
 	nixos-rebuild switch --flake .#ai-i3 --use-remote-sudo --show-trace --verbose
 
-y9000k2021h_hypr-debug:
+i3-debug:
 	nixos-rebuild switch --flake .#y9000k2021h-hyprland --use-remote-sudo --show-trace --verbose
 
-hypr-debug:
+ai-hyprland-debug:
 	nixos-rebuild switch --flake .#ai-hyprland --use-remote-sudo --show-trace --verbose
+
+hypr-debug:
+	nixos-rebuild switch --flake .#y9000k2021h-hyprland --use-remote-sudo --show-trace --verbose
 
 up:
 	nix flake update
