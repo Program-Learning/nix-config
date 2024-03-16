@@ -52,6 +52,20 @@
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
+    # for nix-on-droid
+    nixpkgs-nod.url = "github:NixOS/nixpkgs/nixos-23.11";
+
+    home-manager-nod = {
+      url = "github:nix-community/home-manager/release-23.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nix-on-droid-nod = {
+      url = "github:nix-community/nix-on-droid/release-23.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
+
     # home-manager, used for managing user configuration
     home-manager = {
       # url = "github:nix-community/home-manager/release-23.11";
