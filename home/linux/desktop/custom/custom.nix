@@ -63,7 +63,8 @@
           # vimb
 
           # --agent
-          clash-verge
+          # pkgs-unstable.clash-verge-rev
+          pkgs-unstable.clash-nyanpasu
           sing-box
 
           # --Office
