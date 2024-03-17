@@ -214,6 +214,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    llqqnt = {
+      url = "github:Program-Learning/nur-packages";
+      # url = "gitfile:////home/nixos/Documents/code/program-learning-nur-packages?shallow=1";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
+
     nur-linyinfeng = {
       url = "github:linyinfeng/nur-packages";
       inputs.nixpkgs.follows = "nixpkgs";
