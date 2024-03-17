@@ -18,7 +18,13 @@
     (with pkgs;
       # nixpkgs here
         [
+          # AutoClick tool
           xdotool
+          dotool
+          ydotool
+          wlrctl
+          wtype
+
           tmux
           patchelf
           glib
