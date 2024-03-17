@@ -18,6 +18,7 @@
     (with pkgs;
       # nixpkgs here
         [
+          xdotool
           tmux
           patchelf
           glib
