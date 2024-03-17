@@ -14,7 +14,6 @@
     wlogout # logout menu
     wl-clipboard # copying and pasting
     hyprpicker # color picker
-    pkgs-unstable.hyprshot
     wshowkeys # Show which key is triggered
 
     pkgs-unstable.hyprshot # screen shot
