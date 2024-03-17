@@ -1,5 +1,6 @@
 {
   pkgs,
+  pkgs-stable,
   pkgs-unstable,
   nix-gaming,
   nur-xddxdd,
@@ -21,7 +22,7 @@ in {
     minecraft # Official MineCraft Launcher
     # prismlauncher
 
-    mindustry-wayland
+    pkgs-stable.mindustry-wayland
     #mindustry-server
 
     # Mihoyo Game Launcher
