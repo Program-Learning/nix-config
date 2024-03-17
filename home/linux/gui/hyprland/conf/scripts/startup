@@ -37,7 +37,8 @@ exec novnc &
 # exec systemctl --user start sunshine &
 
 # Start clash-verge
-exec clash-verge &
+# exec clash-verge &
+exec LIBGL_ALWAYS_SOFTWARE=1 clash-nyanpasu &
 
 # Start lxpolkit
 exec lxpolkit &
