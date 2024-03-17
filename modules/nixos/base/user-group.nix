@@ -35,6 +35,7 @@
       "wireshark"
       "adbusers"
       "libvirtd"
+      "disk"
     ];
   };
 
