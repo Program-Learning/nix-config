@@ -15,7 +15,7 @@
       chain.type = "dynamic";
       enable = true;
       proxies = {
-        y9000k2021h_1_clash_proxy = {
+        localhost_clash_proxy = {
           enable = true;
           type = "socks5";
           host = "127.0.0.1";
