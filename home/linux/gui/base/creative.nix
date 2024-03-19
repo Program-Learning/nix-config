@@ -39,6 +39,8 @@
     pkgs-unstable.nextpnr # fpga place and route
     pkgs-unstable.openfpgaloader # fpga programming
     nur-ryan4yin.packages.${pkgs.system}.gowin-eda-edu-ide # app: `gowin-env` => `gw_ide` / `gw_pack` / ...
+    # nur-program-learning.packages.${pkgs.system}.wechat_dev_tools_appimage
+    nur-program-learning.packages.${pkgs.system}.wechat_dev_tools_bin
     nur-program-learning.packages.${pkgs.system}.Adobe_Photoshop_CS6_appimage
     nur-program-learning.packages.${pkgs.system}.Adobe_Illustrator_CS6_appimage
   ];
