@@ -31,8 +31,6 @@
     dtc
     screen
 
-    baobab # Graphical disk usage analyzer
-
     # ai related
     python311Packages.huggingface-hub # huggingface-cli
 
@@ -56,21 +54,11 @@
     # conda is not available for MacOS
     conda
 
-    mitmproxy # http/https proxy tool
-    insomnia # REST client
-    wireshark # network analyzer
-    ventoy # create bootable usb
-    etcher
-    # hoppscotch is not in nixpkgs now
-    # hoppscotch # Api Test Tool
-
     # manual
     man-pages
     man-pages-posix
 
-    # nur-program-learning.packages.${pkgs.system}.wechat_dev_tools_appimage
     nur-program-learning.packages.${pkgs.system}.clang_dev_env_fhs
-    nur-program-learning.packages.${pkgs.system}.wechat_dev_tools_bin
   ];
 
   programs = {

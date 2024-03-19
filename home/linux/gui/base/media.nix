@@ -12,6 +12,7 @@
     playerctl
     pulsemixer
     imv # simple image viewer
+    vlc # Cross-platform media player and streaming server
 
     nvtop
 
@@ -21,8 +22,6 @@
     vdpauinfo
     vulkan-tools
     glxinfo
-
-    vlc # Cross-platform media player and streaming server
   ];
 
   # https://github.com/catppuccin/cava

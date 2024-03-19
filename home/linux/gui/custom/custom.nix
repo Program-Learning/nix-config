@@ -25,7 +25,6 @@
           wlrctl
           wtype
 
-          tmux
           patchelf
           glib
           trickle
