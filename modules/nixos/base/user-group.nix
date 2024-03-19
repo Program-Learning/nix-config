@@ -36,6 +36,7 @@
       "adbusers"
       "libvirtd"
       "disk"
+      "vboxusers"
     ];
   };
 
