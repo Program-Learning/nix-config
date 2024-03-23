@@ -8,7 +8,6 @@
   nur-linyinfeng,
   nur-xddxdd,
   nur-AtaraxiaSjel,
-  nur-arti5an,
   aagl,
   nixpkgs-23_05,
   ...
@@ -18,6 +17,7 @@
     (with pkgs;
       # nixpkgs here
         [
+          mount-zip
           # AutoClick tool
           xdotool
           dotool
@@ -206,7 +206,6 @@
         nur-xddxdd.packages.${pkgs.system}.bilibili
         nur-xddxdd.packages.${pkgs.system}.onepush
         nur-AtaraxiaSjel.packages.${pkgs.system}.waydroid-script
-        nur-arti5an.packages.${pkgs.system}.mount-zip
         nur-program-learning.packages.${pkgs.system}.watt-toolkit_2
         nur-program-learning.packages.${pkgs.system}.AppimageLauncher_deb
         nur-program-learning.packages.${pkgs.system}.XiaoMiToolV2

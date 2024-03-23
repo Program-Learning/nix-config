@@ -202,11 +202,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1710156081,
-        "narHash": "sha256-4PMY6aumJi5dLFjBzF5O4flKXmadMNq3AGUHKYfchh0=",
+        "lastModified": 1711099426,
+        "narHash": "sha256-HzpgM/wc3aqpnHJJ2oDqPBkNsqWbW0WfWUO8lKu8nGk=",
         "owner": "numtide",
         "repo": "devshell",
-        "rev": "bc68b058dc7e6d4d6befc4ec6c60082b6e844b7d",
+        "rev": "2d45b54ca4a183f2fdcf4b19c895b64fbf620ee8",
         "type": "github"
       },
       "original": {
@@ -1752,11 +1752,11 @@
     },
     "nixos-stable": {
       "locked": {
-        "lastModified": 1710420202,
-        "narHash": "sha256-MvFKESbq4rUWuaf2RKPNYENaSZEw/jaCLo2gU6oREcM=",
+        "lastModified": 1711124224,
+        "narHash": "sha256-l0zlN/3CiodvWDtfBOVxeTwYSRz93muVbXWSpaMjXxM=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "878ef7d9721bee9f81f8a80819f9211ad1f993da",
+        "rev": "56528ee42526794d413d6f244648aaee4a7b56c0",
         "type": "github"
       },
       "original": {
@@ -2299,36 +2299,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1710490177,
-        "narHash": "sha256-9f/4pBi7ApB5/DgMVgRggvfbVg+YsIL4IkonFNjU4XY=",
+        "lastModified": 1710576011,
+        "narHash": "sha256-v5QlJWslclCAJJmWIE4PDcq6bR4IqfigUAMSyD1edbk=",
         "owner": "AtaraxiaSjel",
         "repo": "nur",
-        "rev": "35222857eee7eac33c377873e83340c2bdbd214a",
+        "rev": "6a214b9d3aafb1e09c09bd93bacac5633e7ddb47",
         "type": "github"
       },
       "original": {
         "owner": "AtaraxiaSjel",
         "repo": "nur",
-        "type": "github"
-      }
-    },
-    "nur-arti5an": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1710289436,
-        "narHash": "sha256-A8UKu+azWkvUr86sjJ1zwiPecPNdTBogySFxR2zKP8s=",
-        "owner": "arti5an",
-        "repo": "nur-packages",
-        "rev": "1231a166cd05f377892eaafcabaf7c082929c7eb",
-        "type": "github"
-      },
-      "original": {
-        "owner": "arti5an",
-        "repo": "nur-packages",
         "type": "github"
       }
     },
@@ -2346,11 +2326,11 @@
         "treefmt-nix": "treefmt-nix_2"
       },
       "locked": {
-        "lastModified": 1710505944,
-        "narHash": "sha256-qeRteclIsWFfNg8gJY6lD/40kJrUxyYKhuS+57amMdI=",
+        "lastModified": 1711180287,
+        "narHash": "sha256-0gL1pDTmJbLA3afKiUnLXXG8DKHYIftgj+uywtyWVh4=",
         "owner": "linyinfeng",
         "repo": "nur-packages",
-        "rev": "30469542be64c60501b61b42e491c45cc0223be5",
+        "rev": "066a7836d2b9a14476c9aaa3e63df525eeef13c3",
         "type": "github"
       },
       "original": {
@@ -2406,11 +2386,11 @@
         "nvfetcher": "nvfetcher_2"
       },
       "locked": {
-        "lastModified": 1710485100,
-        "narHash": "sha256-2KQFo3iFs2RzU4Ojy8QVQ/zyh7zFOeSkN1+oQN+7V1k=",
+        "lastModified": 1711180644,
+        "narHash": "sha256-KHCY/U5rCJiPlfostr0eyYNSMq7Dnt5H4Oh1I+50cQQ=",
         "owner": "xddxdd",
         "repo": "nur-packages",
-        "rev": "d784c666cf30fd3465df7c5b03303dfe9d53f10d",
+        "rev": "865c8b3e719857dde7278506f91cec9990deefba",
         "type": "github"
       },
       "original": {
@@ -2661,7 +2641,6 @@
         "nuenv": "nuenv",
         "nur": "nur",
         "nur-AtaraxiaSjel": "nur-AtaraxiaSjel",
-        "nur-arti5an": "nur-arti5an",
         "nur-linyinfeng": "nur-linyinfeng",
         "nur-program-learning": "nur-program-learning",
         "nur-ryan4yin": "nur-ryan4yin",
@@ -3004,11 +2983,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1710278050,
-        "narHash": "sha256-Oc6BP7soXqb8itlHI8UKkdf3V9GeJpa1S39SR5+HJys=",
+        "lastModified": 1710781103,
+        "narHash": "sha256-nehQK/XTFxfa6rYKtbi8M1w+IU1v5twYhiyA4dg1vpg=",
         "owner": "numtide",
         "repo": "treefmt-nix",
-        "rev": "35791f76524086ab4b785a33e4abbedfda64bd22",
+        "rev": "7ee5aaac63c30d3c97a8c56efe89f3b2aa9ae564",
         "type": "github"
       },
       "original": {
