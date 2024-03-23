@@ -68,7 +68,7 @@ gc:
 #
 ############################################################################
 
-nur_all := nur-program-learning nur-ryan4yin nur-linyinfeng nur-xddxdd nur-AtaraxiaSjel nur-arti5an
+nur_all := nur-program-learning nur-ryan4yin nur-linyinfeng nur-xddxdd nur-AtaraxiaSjel
 
 # Update nur inputs
 # (can use with ''

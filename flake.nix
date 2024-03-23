@@ -99,11 +99,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    vscode-server= {
+    vscode-server = {
       url = "github:nix-community/nixos-vscode-server";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
 
     nixpkgs-wayland = {
       url = "github:nix-community/nixpkgs-wayland";
@@ -227,7 +226,6 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
-
     nur-linyinfeng = {
       url = "github:linyinfeng/nur-packages";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -240,11 +238,6 @@
 
     nur-AtaraxiaSjel = {
       url = "github:AtaraxiaSjel/nur";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nur-arti5an = {
-      url = "github:arti5an/nur-packages";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
