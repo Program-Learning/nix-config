@@ -9,7 +9,7 @@
   ];
   prefixLength = 24;
 
-  hostsAddr = {
+  hostsAddr = rec {
     # ============================================
     # Homelab's Physical Machines (KubeVirt Nodes)
     # ============================================
@@ -54,6 +54,7 @@
       iface = "wlp0s20f3";
       ipv4 = "100.95.7.36";
     };
+    y9000k2021h = y9000k2021h_1_school;
     aquamarine = {
       # VM
       iface = "enp2s0";

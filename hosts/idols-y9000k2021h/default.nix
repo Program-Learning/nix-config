@@ -12,7 +12,6 @@
 #############################################################
 let
   hostName = "y9000k2021h"; # Define your hostname.
-  hostAddress = myvars.networking.hostAddress.${hostName};
 in {
   imports = [
     # ./cifs-mount.nix
@@ -26,17 +25,10 @@ in {
   networking = {
     inherit hostName;
     inherit (myvars.networking) defaultGateway nameservers;
-
-    wireless.enable = false; # Enables wireless support via wpa_supplicant.
-    # configures the network interface(include wireless) via `nmcli` & `nmtui`
+    inherit (myvars.networking.hostsInterface.${hostName}) interfaces;
     networkmanager.enable = true;
-    
     enableIPv6 = true; # disable ipv6
-    interfaces.wlp0s20f3 = {
-      useDHCP = true;
-      # ipv4.addresses = [hostAddress];
-    };
-extraHosts = ''
+    extraHosts = ''
       155.248.179.129 oracle_ubuntu_1
       192.168.0.121 mondrian_1_school
       192.168.2.121 mondrian_1_home
@@ -64,9 +56,9 @@ extraHosts = ''
 
     # required by most wayland compositors!
     modesetting.enable = true;
-# Nvidia power management. Experimental, and can cause sleep/suspend to fail.
+    # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
     powerManagement.enable = true;
-# Fine-grained power management. Turns off GPU when not in use.
+    # Fine-grained power management. Turns off GPU when not in use.
     # Experimental and only works on modern Nvidia GPUs (Turing or newer).
     powerManagement.finegrained = true;
     prime = {
@@ -91,7 +83,7 @@ extraHosts = ''
     # needed by nvidia-docker
     driSupport32Bit = true;
   };
-environment.systemPackages = with pkgs; [lenovo-legion];
+  environment.systemPackages = with pkgs; [lenovo-legion];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
