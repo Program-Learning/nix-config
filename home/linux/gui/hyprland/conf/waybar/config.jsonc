@@ -2,7 +2,15 @@
   "position": "top",
   "layer": "top",
 
-  "modules-left": ["custom/launcher", "custom/recording", "custom/showkey", "temperature", "backlight", "hyprland/workspaces"],
+  "modules-left": [
+    "custom/launcher",
+    "custom/recording",
+    "custom/showkey",
+    "custom/cloudflare_warp",
+    "temperature",
+    "backlight",
+    "hyprland/workspaces",
+  ],
   "modules-center": ["custom/playerctl"],
   "modules-right": [
     "mpd",
@@ -21,8 +29,8 @@
     "format": "{icon}",
     "on-click": "activate",
     "format-icons": {
-      "focused": ""
-    }
+      "focused": "",
+    },
   },
 
   "clock": {
@@ -33,7 +41,7 @@
     "format": " {:%H:%M}",
     "format-alt": " {:%a %b %d, %G}",
     "on-double-click": "kitty calcurse",
-    "on-click-right": "gnome-clocks"
+    "on-click-right": "gnome-clocks",
   },
   "cpu": {
     "format": "\udb80\udf5b {usage}%",
@@ -49,21 +57,29 @@
     "tooltip": false,
   },
   "custom/recording": {
-	  "exec": "$HOME/.config/hypr/scripts/recording status",
-	  "format": "{}",
-	  "on-click": "$HOME/.config/hypr/scripts/recording toggle fullscreen",
-	  "on-click-right": "$HOME/.config/hypr/scripts/recording toggle region",
-	  "restart-interval": 1,
-	  "return-type": "json",
-	  "tooltip": true
+    "exec": "$HOME/.config/hypr/scripts/recording status",
+    "format": "{}",
+    "on-click": "$HOME/.config/hypr/scripts/recording toggle fullscreen",
+    "on-click-right": "$HOME/.config/hypr/scripts/recording toggle region",
+    "restart-interval": 1,
+    "return-type": "json",
+    "tooltip": true,
   },
   "custom/showkey": {
-	  "exec": "$HOME/.config/hypr/scripts/showkey status",
-	  "format": "{}",
-	  "on-click": "$HOME/.config/hypr/scripts/showkey toggle",
-	  "restart-interval": 1,
-	  "return-type": "json",
-	  "tooltip": true
+    "exec": "$HOME/.config/hypr/scripts/showkey status",
+    "format": "{}",
+    "on-click": "$HOME/.config/hypr/scripts/showkey toggle",
+    "restart-interval": 1,
+    "return-type": "json",
+    "tooltip": true,
+  },
+  "custom/cloudflare_warp": {
+    "exec": "$HOME/.config/hypr/scripts/cloudflare_warp status",
+    "format": "{}",
+    "on-click": "$HOME/.config/hypr/scripts/cloudflare_warp toggle",
+    "restart-interval": 1,
+    "return-type": "json",
+    "tooltip": true,
   },
   "bluetooth": {
     "format-on": "",
@@ -77,7 +93,7 @@
     "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
     "on-click": "blueman-manager",
     // "on-click": "rofi-bluetooth -config ~/.config/rofi/menu.d/network.rasi -i"
-   },
+  },
   "custom/powermenu": {
     "format": "\uf011",
     "on-click": "$HOME/.config/hypr/scripts/wlogout",
@@ -98,7 +114,7 @@
       "warning": 85,
     },
     "on-click-middle": "kitty btop",
-    "on-click-right": "kitty btop"
+    "on-click-right": "kitty btop",
   },
   "mpd": {
     "interval": 2,
