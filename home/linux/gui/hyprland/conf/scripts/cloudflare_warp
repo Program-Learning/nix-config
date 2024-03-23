@@ -4,9 +4,9 @@ if [ "$1" == "status" ];
 then
     if [[ $(pidof warp-svc) ]];
   then
-    echo "{\"text\":\"🛡️\", \"tooltip\":\"isStarted\"}"
+    echo "{\"text\":\"🌏\", \"tooltip\":\"isStarted\"}"
   else
-    echo "{\"text\":\"🛡️x\", \"tooltip\":\"isStopped\"}"
+    echo "{\"text\":\"🔓\", \"tooltip\":\"isStopped\"}"
   fi
 elif [ "$1" == "toggle" ];
 then

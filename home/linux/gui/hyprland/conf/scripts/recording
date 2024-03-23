@@ -10,12 +10,12 @@ if [ "$1" == "status" ];
 then
 	if [ -f "$ProcessInfo" ];
 	then
-		awk 'BEGIN{printf "{\"text\":\"\", \"tooltip\":\"Recording\\n"}
+		awk 'BEGIN{printf "{\"text\":\"🔴\", \"tooltip\":\"Recording\\n"}
 		NR==1{printf "PID: %s\\n", $0}
 		NR==2{printf "Save to: %s\\n", $0}
 		NR==3{printf "Log to: %s\"}", $0}' "$ProcessInfo"
 	else
-		echo '{"text":"", "tooltip":"Left: FullScreen\nRight: Selection"}'
+		echo '{"text":"▶", "tooltip":"Left: FullScreen\nRight: Selection"}'
 	fi
 	exit
 elif [ "$1" == "toggle" ];
