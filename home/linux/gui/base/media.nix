@@ -22,6 +22,9 @@
     vdpauinfo
     vulkan-tools
     glxinfo
+
+    # e-book
+    calibre
   ];
 
   # https://github.com/catppuccin/cava
