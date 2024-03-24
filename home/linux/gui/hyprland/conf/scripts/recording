@@ -15,7 +15,7 @@ then
 		NR==2{printf "Save to: %s\\n", $0}
 		NR==3{printf "Log to: %s\"}", $0}' "$ProcessInfo"
 	else
-		echo '{"text":"▶", "tooltip":"Left: FullScreen\nRight: Selection"}'
+		echo '{"text":"", "tooltip":"Left: FullScreen\nRight: Selection"}'
 	fi
 	exit
 elif [ "$1" == "toggle" ];
