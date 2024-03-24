@@ -94,7 +94,7 @@
     fsType = "vfat";
   };
 
-  fileSystems."/mnt/c" = {
+  fileSystems."/run/media/nixos/windows" = {
     device = "/dev/disk/by-uuid/9A5C86205C85F6F3";
     fsType = "ntfs";
   };
