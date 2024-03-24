@@ -116,7 +116,7 @@
           wireplumber
           # tofi
           polkit-kde-agent
-          # eww-wayland
+          # eww
           # rofi-wayland
           # qt6.qtwayland
           # wayland

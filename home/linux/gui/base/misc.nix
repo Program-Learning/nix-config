@@ -24,6 +24,7 @@
 
     # Download Manager
     motrix
+    uget
 
     # misc
     flameshot
