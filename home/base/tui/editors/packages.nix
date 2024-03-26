@@ -96,7 +96,7 @@
 
     # -- java
     jdk17
-    tomcat9
+    # tomcat9
     gradle
     maven
     spring-boot-cli
