@@ -46,6 +46,7 @@
           rapidfuzz
 
           # modules used by Mayuri
+          virtualenv
           pip # use in venv "python -m venv .venv" "source .venv/bin/activate"
           tkinter # The standard Python interface to the Tcl/Tk GUI toolkit
 
