@@ -7,7 +7,7 @@
     ./development_manual.nix
     ./extra_keys.nix
     ./font.nix
-    ./proxychains.nix
+    # ./proxychains.nix
     ./sshd.nix
   ];
 }
