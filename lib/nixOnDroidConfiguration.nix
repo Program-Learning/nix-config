@@ -40,5 +40,5 @@ in
         ]
       );
 
-    home-manager-path = home-manager.outPath;
+    home-manager-path = home-manager-nod.outPath;
   }
