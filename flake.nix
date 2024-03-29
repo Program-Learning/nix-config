@@ -54,16 +54,38 @@
 
     # for nix-on-droid
     nixpkgs-nod.url = "github:NixOS/nixpkgs/nixos-23.11";
+    nixpkgs-unstable-nod.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager-nod = {
       url = "github:nix-community/home-manager/release-23.11";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-nod";
     };
 
-    nix-on-droid-nod = {
+    nix-on-droid = {
       url = "github:nix-community/nix-on-droid/release-23.11";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
+      inputs.nixpkgs.follows = "nixpkgs-nod";
+      inputs.home-manager.follows = "home-manager-nod";
+    };
+
+    nur-ryan4yin-nod = {
+      url = "github:ryan4yin/nur-packages";
+      # inputs.nixpkgs.follows = "nixpkgs-nod";
+    };
+
+    catppuccin-urxvt-nod = {
+      url = "github:catppuccin/urxvt/ccd8eb763edd0a382b5e9bbfbd9697c4d4129edf";
+      flake = false;
+    };
+
+    # AstroNvim is an aesthetic and feature-rich neovim config.
+    astronvim-nod = {
+      url = "github:AstroNvim/AstroNvim/v3.37.12";
+      flake = false;
+    };
+
+    nur-program-learning-nod = {
+      url = "github:Program-Learning/nur-packages";
+      inputs.nixpkgs.follows = "nixpkgs-nod";
     };
 
     # home-manager, used for managing user configuration

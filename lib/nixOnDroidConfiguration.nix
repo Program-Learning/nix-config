@@ -5,11 +5,11 @@
   genSpecialArgs,
   nix-on-droid-modules,
   home-modules ? [],
+  specialArgs ? (genSpecialArgs system),
   myvars,
   ...
 }: let
-  inherit (inputs) nix-on-droid nixpkgs-nod home-manager nixos-generators;
-  specialArgs = genSpecialArgs system;
+  inherit (inputs) nix-on-droid nixpkgs-nod home-manager-nod;
 in
   nix-on-droid.lib.nixOnDroidConfiguration {
     inherit system specialArgs;
