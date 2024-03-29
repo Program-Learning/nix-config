@@ -46,17 +46,22 @@
     aarch64-darwin = import ./aarch64-darwin (args // {system = "aarch64-darwin";});
     x86_64-darwin = import ./x86_64-darwin (args // {system = "x86_64-darwin";});
   };
-  allSystems = nixosSystems // darwinSystems;
+  droidSystems = {
+    aarch64-droid = import ./aarch64-droid (args // {system = "aarch64-droid";});
+    # x86_64-droid = import ./x86_64-droid (args // {system = "x86_64-droid";});
+  };
+  allSystems = nixosSystems // darwinSystems // droidSystems;
   allSystemNames = builtins.attrNames allSystems;
   nixosSystemValues = builtins.attrValues nixosSystems;
   darwinSystemValues = builtins.attrValues darwinSystems;
-  allSystemValues = nixosSystemValues ++ darwinSystemValues;
+  droidSystemValues = builtins.attrValues droidSystems;
+  allSystemValues = nixosSystemValues ++ darwinSystemValues ++ droidSystemValues;
 
   # Helper function to generate a set of attributes for each system
   forAllSystems = func: (nixpkgs.lib.genAttrs allSystemNames func);
 in {
   # Add attribute sets into outputs, for debugging
-  debugAttrs = {inherit nixosSystems darwinSystems allSystems allSystemNames;};
+  debugAttrs = {inherit nixosSystems darwinSystems droidSystems allSystems allSystemNames;};
 
   # NixOS Hosts
   nixosConfigurations =
@@ -86,6 +91,10 @@ in {
   # macOS Hosts
   darwinConfigurations =
     lib.attrsets.mergeAttrsList (map (it: it.darwinConfigurations or {}) darwinSystemValues);
+
+  # droid Hosts
+  nixOnDroidConfigurations =
+    lib.attrsets.mergeAttrsList (map (it: it.nixOnDroidConfigurations or {}) droidSystemValues);
 
   # Packages
   packages = forAllSystems (

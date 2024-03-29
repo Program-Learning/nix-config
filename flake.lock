@@ -1117,7 +1117,7 @@
     "home-manager-nod": {
       "inputs": {
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-nod"
         ]
       },
       "locked": {
@@ -1557,7 +1557,7 @@
     "nix-formatter-pack": {
       "inputs": {
         "nixpkgs": [
-          "nix-on-droid-nod",
+          "nix-on-droid",
           "nixpkgs"
         ],
         "nmd": "nmd",
@@ -1642,14 +1642,14 @@
         "type": "github"
       }
     },
-    "nix-on-droid-nod": {
+    "nix-on-droid": {
       "inputs": {
         "home-manager": [
-          "home-manager"
+          "home-manager-nod"
         ],
         "nix-formatter-pack": "nix-formatter-pack",
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-nod"
         ],
         "nixpkgs-docs": "nixpkgs-docs",
         "nixpkgs-for-bootstrap": "nixpkgs-for-bootstrap",
@@ -2096,6 +2096,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-unstable-nod": {
+      "locked": {
+        "lastModified": 1711523803,
+        "narHash": "sha256-UKcYiHWHQynzj6CN/vTcix4yd1eCu1uFdsuarupdCQQ=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "2726f127c15a4cc9810843b96cad73c7eb39e443",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-unstable-yuzu": {
       "locked": {
         "lastModified": 1709274256,
@@ -2136,6 +2152,22 @@
       }
     },
     "nixpkgs_10": {
+      "locked": {
+        "lastModified": 1702921762,
+        "narHash": "sha256-O/rP7gulApQAB47u6szEd8Pn8Biw0d84j5iuP2tcxzY=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "d02ffbbe834b5599fc5f134e644e49397eb07188",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-23.11",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_11": {
       "locked": {
         "lastModified": 1702921762,
         "narHash": "sha256-O/rP7gulApQAB47u6szEd8Pn8Biw0d84j5iuP2tcxzY=",
@@ -2293,7 +2325,7 @@
     "nmd_2": {
       "inputs": {
         "nixpkgs": [
-          "nix-on-droid-nod",
+          "nix-on-droid",
           "nixpkgs-docs"
         ],
         "scss-reset": "scss-reset"
@@ -2445,9 +2477,47 @@
         "type": "github"
       }
     },
+    "nur-program-learning-nod": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs-nod"
+        ]
+      },
+      "locked": {
+        "lastModified": 1711223504,
+        "narHash": "sha256-t6AvK//EbN0EXP1HMfNX+yokoyvPt3iCa5aEJXHc7kE=",
+        "owner": "Program-Learning",
+        "repo": "nur-packages",
+        "rev": "b115502c6a8dddaa94e59449250c95a1e98f0925",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Program-Learning",
+        "repo": "nur-packages",
+        "type": "github"
+      }
+    },
     "nur-ryan4yin": {
       "inputs": {
         "nixpkgs": "nixpkgs_10"
+      },
+      "locked": {
+        "lastModified": 1705366605,
+        "narHash": "sha256-dtqRDMUIHENtk+phT2ZlMpvjwoL/NSqooYUHGzbTYAI=",
+        "owner": "ryan4yin",
+        "repo": "nur-packages",
+        "rev": "5d78b74e08398b02344edd462c1cf95febab841e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ryan4yin",
+        "repo": "nur-packages",
+        "type": "github"
+      }
+    },
+    "nur-ryan4yin-nod": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_11"
       },
       "locked": {
         "lastModified": 1705366605,
@@ -2693,6 +2763,13 @@
         "aagl": "aagl",
         "agenix": "agenix",
         "anyrun": "anyrun",
+<<<<<<< HEAD
+=======
+        "astronvim": "astronvim",
+        "astronvim-nod": "astronvim-nod",
+        "attic": "attic",
+        "catppuccin-urxvt-nod": "catppuccin-urxvt-nod",
+>>>>>>> ffd8471a (feat: Initial Commit for nix-on-droid(Fix required))
         "daeuniverse": "daeuniverse",
         "disko": "disko",
         "doomemacs": "doomemacs",
@@ -2710,7 +2787,7 @@
         "mysecrets": "mysecrets",
         "nix-darwin": "nix-darwin",
         "nix-gaming": "nix-gaming",
-        "nix-on-droid-nod": "nix-on-droid-nod",
+        "nix-on-droid": "nix-on-droid",
         "nixified-ai": "nixified-ai",
         "nixified-ai-nixpkgs": "nixified-ai-nixpkgs",
         "nixos-generators": "nixos-generators",
@@ -2723,6 +2800,7 @@
         "nixpkgs-nod": "nixpkgs-nod",
         "nixpkgs-stable": "nixpkgs-stable_4",
         "nixpkgs-unstable": "nixpkgs-unstable",
+        "nixpkgs-unstable-nod": "nixpkgs-unstable-nod",
         "nixpkgs-unstable-yuzu": "nixpkgs-unstable-yuzu",
         "nixpkgs-wayland": "nixpkgs-wayland",
         "nuenv": "nuenv",
@@ -2730,7 +2808,9 @@
         "nur-AtaraxiaSjel": "nur-AtaraxiaSjel",
         "nur-linyinfeng": "nur-linyinfeng",
         "nur-program-learning": "nur-program-learning",
+        "nur-program-learning-nod": "nur-program-learning-nod",
         "nur-ryan4yin": "nur-ryan4yin",
+        "nur-ryan4yin-nod": "nur-ryan4yin-nod",
         "nur-xddxdd": "nur-xddxdd",
         "polybar-themes": "polybar-themes",
         "pre-commit-hooks": "pre-commit-hooks_3",
