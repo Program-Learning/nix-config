@@ -32,7 +32,7 @@ in
         [
           {
             home-manager = {
-              config = home-modules;
+              config = lib.mkMerge home-modules;
               backupFileExtension = "hm-bak";
               useGlobalPkgs = true;
             };
