@@ -49,6 +49,7 @@
     mtr # A network diagnostic tool
     iperf3
     iproute2
+    macchanger
     dnsutils # `dig` + `nslookup`
     ldns # replacement of `dig`, it provide the command `drill`
     aria2 # A lightweight multi-protocol & multi-source command-line download utility
