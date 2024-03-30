@@ -12,7 +12,8 @@
 #############################################################
 let
   hostName = "y9000k2021h"; # Define your hostname.
-in {
+  TempMacAddress = "be:fc:85:71:a4:c0";
+in rec {
   imports = [
     # ./cifs-mount.nix
     # Include the results of the hardware scan.
@@ -27,6 +28,8 @@ in {
     inherit (myvars.networking) defaultGateway nameservers;
     inherit (myvars.networking.hostsInterface.${hostName}) interfaces;
     networkmanager.enable = true;
+    networkmanager.wifi.macAddress = TempMacAddress;
+    networkmanager.ethernet.macAddress = TempMacAddress;
     enableIPv6 = true; # disable ipv6
     extraHosts = ''
       155.248.179.129 oracle_ubuntu_1

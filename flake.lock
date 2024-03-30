@@ -3266,11 +3266,11 @@
     "wallpapers": {
       "flake": false,
       "locked": {
-        "lastModified": 1707987551,
-        "narHash": "sha256-L2bSkI/1WYVmgXrPdODy4hszRrt/ngqk+TuB3U/stWU=",
+        "lastModified": 1711784012,
+        "narHash": "sha256-SYDPrLtr1rC2SJD13T2NOtuzBhK5ofSHR1SdpOeSgJw=",
         "owner": "Program-Learning",
         "repo": "wallpapers",
-        "rev": "e8704aa53818bf4bb43a5b26d0de53f6c05aa7e4",
+        "rev": "da03d2bd17055a3bfd13624a72867d25f8b134ee",
         "type": "github"
       },
       "original": {
