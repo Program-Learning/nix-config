@@ -12,6 +12,6 @@ _: {
       userServices = true;
     };
   };
-  networking.networkmanager.wifi.macAddress = "random";
-  networking.networkmanager.ethernet.macAddress = "random";
+  networking.networkmanager.wifi.macAddress = "be:fc:85:71:a4:c0";
+  networking.networkmanager.ethernet.macAddress = "be:fc:85:71:a4:c0";
 }
