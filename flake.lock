@@ -2460,11 +2460,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1711797741,
-        "narHash": "sha256-EJO5ZLaqdVKyhySt1KSpc2xvkNN7vBh2ePtEYXBcAaY=",
+        "lastModified": 1711805413,
+        "narHash": "sha256-CjxDO2dXZr/les7zfQxgv/zYsHDHsyaxIpITI88cZ2c=",
         "owner": "Program-Learning",
         "repo": "nur-packages",
-        "rev": "1a3c5a6967fba06a73a9438c80e2a84d5d3128e0",
+        "rev": "8103dbf66330604974a3405ad91eee98a9cb9ed6",
         "type": "github"
       },
       "original": {
@@ -3266,11 +3266,11 @@
     "wallpapers": {
       "flake": false,
       "locked": {
-        "lastModified": 1711784012,
-        "narHash": "sha256-SYDPrLtr1rC2SJD13T2NOtuzBhK5ofSHR1SdpOeSgJw=",
+        "lastModified": 1711817146,
+        "narHash": "sha256-hqHwbQvQ7DmPtFeWpYidCmWERW0ysJe5OJH25Kzdm+s=",
         "owner": "Program-Learning",
         "repo": "wallpapers",
-        "rev": "da03d2bd17055a3bfd13624a72867d25f8b134ee",
+        "rev": "c4d3e122b5ec1b4376ba0e75ddde4e5fee3e66c3",
         "type": "github"
       },
       "original": {
