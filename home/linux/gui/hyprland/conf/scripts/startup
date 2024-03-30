@@ -14,10 +14,10 @@ done
 # it will by start by home-manager automatically, do not need to restart it here.
 # systemctl --user restart wallpaper.service
 
-# Lauch notification daemon (mako)
+# Launch notification daemon (mako)
 ~/.config/hypr/scripts/notifications &
 
-# Lauch statusbar (waybar)
+# Launch statusbar (waybar)
 # ~/.config/hypr/scripts/statusbar &
 ~/.config/hypr/scripts/statusbar_debug &
 
@@ -42,6 +42,11 @@ exec env LIBGL_ALWAYS_SOFTWARE=1 clash-nyanpasu &
 
 # Start lxpolkit
 exec lxpolkit &
+
+# set default file-manager to thunar
+# Try with command
+#  dbus-send --session --print-reply --dest=org.freedesktop.FileManager1 /org/freedesktop/FileManager1 org.freedesktop.FileManager1.ShowFolders array:string:"file:/" string:""
+exec thunar --daemon &
 
 # Launch xdg-desktop-portal-hyprland
 exec /nix/store/*xdg-desktop-portal-hyprland*/libexec/xdg-desktop-portal-hyprland &

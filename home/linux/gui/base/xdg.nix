@@ -35,6 +35,7 @@
         office = ["onlyoffice-desktopeditors.desktop" "writer.desktop"];
         code = ["code.desktop" "nvim.desktop"];
         editor = ["nvim.desktop" "Helix.desktop" "code.desktop" "code-insiders.desktop"];
+        file-manager = ["org.gnome.Nautilus.desktop"];
       in {
         "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = office;
         "application/x-php" = code;
@@ -48,6 +49,7 @@
         office = ["onlyoffice-desktopeditors.desktop" "writer.desktop"];
         code = ["code.desktop" "nvim.desktop"];
         editor = ["nvim.desktop" "Helix.desktop" "code.desktop" "code-insiders.desktop"];
+        file-manager = ["org.gnome.Nautilus.desktop"];
       in {
         "application/json" = browser;
         "application/pdf" = browser; # TODO: pdf viewer
@@ -84,13 +86,15 @@
         "x-scheme-handler/tg" = ["org.telegram.desktop.desktop "];
 
         "audio/*" = ["mpv.desktop"];
-        "video/*" = ["mpv.dekstop"];
+        "video/*" = ["mpv.desktop"];
         "image/*" = ["imv-dir.desktop"];
         "image/gif" = ["imv-dir.desktop"];
         "image/jpeg" = ["imv-dir.desktop"];
         "image/png" = ["imv-dir.desktop"];
         "image/webp" = ["imv-dir.desktop"];
         "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = office;
+
+        "inode/directory" = file-manager;
       };
 
       associations.removed = {
