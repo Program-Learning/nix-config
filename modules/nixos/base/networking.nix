@@ -12,4 +12,6 @@ _: {
       userServices = true;
     };
   };
+  networking.networkmanager.wifi.macAddress = "random";
+  networking.networkmanager.ethernet.macAddress = "random";
 }
