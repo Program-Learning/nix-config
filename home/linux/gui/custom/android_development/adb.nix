@@ -1,6 +1,7 @@
 {
   pkgs,
   nur-program-learning,
+  fakedroid,
   ...
 }: {
   home.packages = with pkgs; [
@@ -17,5 +18,6 @@
     genymotion
     # --payload-dumper
     payload-dumper-go
+    fakedroid.packages.${pkgs.system}.fakedroid
   ];
 }
