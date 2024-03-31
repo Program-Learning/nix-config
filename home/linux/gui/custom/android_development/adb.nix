@@ -18,6 +18,6 @@
     genymotion
     # --payload-dumper
     payload-dumper-go
-    fakedroid.packages.${pkgs.system}.fakedroid
+    # fakedroid.packages.${pkgs.system}.fakedroid
   ];
 }
