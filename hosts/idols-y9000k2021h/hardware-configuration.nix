@@ -66,7 +66,7 @@
 
   # boot.initrd = {
   #   # unlocked luks devices via a keyfile or prompt a passphrase.
-  #   luks.devices."crypted-nixos" = {
+  #   luks.devices."encrypted-nixos" = {
   #     # NOTE: DO NOT use device name here(like /dev/sda, /dev/nvme0n1p2, etc), use UUID instead.
   #     # https://github.com/ryan4yin/nix-config/issues/43
   #     device = "/dev/disk/by-uuid/a21ca82a-9ee6-4e5c-9d3f-a93e84e4e0f4";
