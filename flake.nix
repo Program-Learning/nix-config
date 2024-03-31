@@ -61,6 +61,11 @@
       inputs.nixpkgs.follows = "nixpkgs-nod";
     };
 
+    fakedroid = {
+      url = "github:nix-community/nix-on-droid";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nix-on-droid = {
       url = "github:nix-community/nix-on-droid/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs-nod";
