@@ -24,7 +24,7 @@
       ++ [];
     home-modules = map mylib.relativeToRoot [
       # common
-      "home/linux/gui.nix"
+      #"home/linux/gui.nix"
       "home/droid"
       # host specific
       "hosts/droid-${name}/home.nix"

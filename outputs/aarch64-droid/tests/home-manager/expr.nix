@@ -11,5 +11,5 @@ in
   lib.genAttrs
   hosts
   (
-    name: outputs.nixOnDroidConfigurations.${name}.config.home-manager.users.${username}.home.homeDirectory
+    name: outputs.nixOnDroidConfigurations.${name}.config.home-manager.config.home.homeDirectory
   )

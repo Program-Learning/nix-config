@@ -9,5 +9,6 @@
     ./font.nix
     # ./proxychains.nix
     ./sshd.nix
+    ./user.nix
   ];
 }
