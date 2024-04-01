@@ -32,9 +32,10 @@ in
         [
           {
             home-manager = {
-              config = lib.mkMerge home-modules;
+              config = {imports = home-modules;};
               backupFileExtension = "hm-bak";
               useGlobalPkgs = true;
+              extraSpecialArgs = specialArgs;
             };
           }
         ]

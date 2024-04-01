@@ -47,8 +47,8 @@
     x86_64-darwin = import ./x86_64-darwin (args // {system = "x86_64-darwin";});
   };
   droidSystems = {
-    aarch64-droid = import ./aarch64-droid (args // {system = "aarch64-droid";});
-    # x86_64-droid = import ./x86_64-droid (args // {system = "x86_64-droid";});
+    aarch64-droid = import ./aarch64-droid (args // {system = "aarch64-linux";});
+    # x86_64-droid = import ./x86_64-droid (args // {system = "x86_64-linux";});
   };
   allSystems = nixosSystems // darwinSystems // droidSystems;
   allSystemNames = builtins.attrNames allSystems;

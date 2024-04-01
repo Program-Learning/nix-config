@@ -1,8 +1,4 @@
-{
-  config,
-  catppuccin-urxvt,
-  ...
-} @ args: {
+{config, ...} @ args: {
   imports = [
     ./development_manual.nix
     ./extra_keys.nix
