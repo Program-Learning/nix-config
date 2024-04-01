@@ -3429,11 +3429,11 @@
     "wallpapers": {
       "flake": false,
       "locked": {
-        "lastModified": 1711817146,
-        "narHash": "sha256-hqHwbQvQ7DmPtFeWpYidCmWERW0ysJe5OJH25Kzdm+s=",
+        "lastModified": 1711983726,
+        "narHash": "sha256-fyHZ5JsXzZ5ShdoojqYcf/2F7YnasXmD8XIdPilRUn0=",
         "owner": "Program-Learning",
         "repo": "wallpapers",
-        "rev": "c4d3e122b5ec1b4376ba0e75ddde4e5fee3e66c3",
+        "rev": "0e54b3a73c50b12c59a3d31b291707fa11e3b747",
         "type": "github"
       },
       "original": {
