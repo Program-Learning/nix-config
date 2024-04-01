@@ -7,4 +7,4 @@
     "mondrian"
   ];
 in
-  lib.genAttrs hosts (_: "/home/${username}")
+  lib.genAttrs hosts (_: "/data/data/com.termux.nix/files/home")

@@ -5,5 +5,5 @@
 lib.genAttrs
 (builtins.attrNames outputs.nixOnDroidConfigurations)
 (
-  name: outputs.nixOnDroidConfigurations.${name}.config.networking.hostName
+  name: outputs.nixOnDroidConfigurations.${name}.config.user.userName
 )

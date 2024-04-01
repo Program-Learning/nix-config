@@ -18,7 +18,7 @@
     ./x11_catppuccin.nix
     ./nix.nix
     # common
-    ./neovim
+    # ./neovim
     ./fhs.nix
   ];
 }
