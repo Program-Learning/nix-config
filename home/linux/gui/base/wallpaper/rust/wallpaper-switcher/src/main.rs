@@ -113,7 +113,24 @@ impl WallpaperSwitcher {
         self.current_wallpaper_index = 0;
     }
 
-    fn set_wallpaper(&mut self, wallpaper: &str) -> u32 {
+    fn set_wallpaper(&mut self, wallpaper: String) -> u32 {
+        if os::getenv("WAYLAND_DISPLAY").is_ok() || os::getenv("XDG_SESSION_TYPE").eq("wayland") {
+            return self.set_wallpaper_wayland(wallpaper);
+        } else {
+            return self.set_wallpaper_x11(wallpaper);
+        }
+    }
+    fn set_wallpaper_x11(&mut self, wallpaper: &str) -> u32 {
+        // Implement the code to set wallpaper for x11 using feh
+        let _output = std::process::Command::new("feh")
+            .args(&["--bg-fill",wallpaper]) // Adjust feh command as needed
+            .spawn()
+            .expect("Error setting wallpaper with feh");
+
+        thread::sleep(Duration::from_secs(1)); // Wait for swaybg to start
+        return _output.id();
+    }
+    fn set_wallpaper_wayland(&mut self, wallpaper: &str) -> u32 {
         // Implement the code to set wallpaper for Wayland using swaybg
         let _output = std::process::Command::new("swaybg")
             .args(&["--output", "*", "--mode", "fill", "--image", wallpaper]) // Adjust swaybg command as needed
