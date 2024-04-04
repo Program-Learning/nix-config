@@ -3438,18 +3438,18 @@
     "wallpapers": {
       "flake": false,
       "locked": {
-        "lastModified": 1711983726,
-        "narHash": "sha256-fyHZ5JsXzZ5ShdoojqYcf/2F7YnasXmD8XIdPilRUn0=",
-        "owner": "Program-Learning",
-        "repo": "wallpapers",
-        "rev": "0e54b3a73c50b12c59a3d31b291707fa11e3b747",
-        "type": "github"
+        "lastModified": 1712213166,
+        "narHash": "sha256-9lprIfVwuCUs23KjMoizk06bKDLF+Qffu0Yb0Z1Dc7g=",
+        "ref": "refs/heads/dark_wallpapers",
+        "rev": "4567db5eec362a2e6b3330cef21e876d806b5061",
+        "shallow": true,
+        "type": "git",
+        "url": "file:////home/nixos/Documents/code/wallpapers"
       },
       "original": {
-        "owner": "Program-Learning",
-        "ref": "dark_wallpapers",
-        "repo": "wallpapers",
-        "type": "github"
+        "shallow": true,
+        "type": "git",
+        "url": "file:////home/nixos/Documents/code/wallpapers"
       }
     },
     "wlroots": {

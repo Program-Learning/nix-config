@@ -221,8 +221,8 @@
 
     # my wallpapers
     wallpapers = {
-      url = "github:Program-Learning/wallpapers/dark_wallpapers";
-      # url = "git+file:////home/nixos/Documents/code/wallpapers?shallow=1";
+      # url = "github:Program-Learning/wallpapers/dark_wallpapers";
+      url = "git+file:////home/nixos/Documents/code/wallpapers?shallow=1";
       flake = false;
     };
 
