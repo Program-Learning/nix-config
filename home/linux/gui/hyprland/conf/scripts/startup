@@ -28,7 +28,8 @@ exec mpd &
 exec wayvnc &
 
 # Start moonlight
-exec sunshine &
+# exec sunshine &
+exec systemctl --user start sunshine &
 
 # Start novnc
 exec novnc &
