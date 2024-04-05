@@ -95,6 +95,7 @@ in {
       # broken on my pc (warp mode)
       services.warp-svc = {
         # disabled
+        # users can manually exec "warp-svc" wrapper
         enable = false;
         description = "Cloudflare Zero Trust Client Daemon";
         after = ["pre-network.target"];
