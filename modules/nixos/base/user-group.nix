@@ -37,6 +37,7 @@
       "libvirtd"
       "disk"
       "vboxusers"
+      "warp"
     ];
   };
 

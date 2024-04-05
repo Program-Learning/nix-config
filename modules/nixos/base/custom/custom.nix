@@ -1,4 +1,5 @@
 {
+  mysecrets,
   config,
   pkgs,
   lib,
@@ -7,25 +8,24 @@
   imports = [
     ./features/sunshine.nix
     ./features/wf-recorder.nix
+    ./features/cloudflare-warp.nix
   ];
-  programs = {
-    wshowkeys.enable = true;
+  programs.wshowkeys.enable = true;
 
-    proxychains = {
-      chain.type = "dynamic";
-      enable = true;
-      proxies = {
-        localhost_clash_proxy = {
-          enable = true;
-          type = "socks5";
-          host = "127.0.0.1";
-          port = 7890;
-        };
+  programs.proxychains = {
+    chain.type = "dynamic";
+    enable = true;
+    proxies = {
+      localhost_clash_proxy = {
+        enable = true;
+        type = "socks5";
+        host = "127.0.0.1";
+        port = 7890;
       };
     };
-
-    darling = {enable = true;};
   };
+
+  programs.darling = {enable = true;};
 
   # environment.variables = {
   #   QT_AUTO_SCREEN_SCALE_FACTOR = "1";
@@ -37,39 +37,41 @@
   #   MOZ_ENABLE_WAYLAND = "1";
   #   QT_SCALE_FACTOR = "1";
   # };
-
-  services = {
-    logind = {
-      killUserProcesses = true;
-      lidSwitch = "ignore";
-      lidSwitchDocked = "ignore";
-      lidSwitchExternalPower = "ignore";
-      powerKey = "ignore";
-      # rebootKey = "ignore";
-      extraConfig = ''
-      '';
-    };
-
-    # tlp = {
-    #   enable = true;
-    #   settings = {
-    #     CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
-    #     CPU_SCALING_GOVERNOR_ON_AC = "powersave";
-
-    #     # The following prevents the battery from charging fully to
-    #     # preserve lifetime. Run `tlp fullcharge` to temporarily force
-    #     # full charge.
-    #     # https://linrunner.de/tlp/faq/battery.html#how-to-choose-good-battery-charge-thresholds
-    #     START_CHARGE_THRESH_BAT0 = 40;
-    #     STOP_CHARGE_THRESH_BAT0 = 50;
-
-    #     # 100 being the maximum, limit the speed of my CPU to reduce
-    #     # heat and increase battery usage:
-    #     CPU_MAX_PERF_ON_AC = 75;
-    #     CPU_MAX_PERF_ON_BAT = 60;
-    #   };
-    # };
+  services.cloudflare-warp = {
+    enable = true;
+    certificate = "${mysecrets}/public/Cloudflare_CA.pem"; # download here https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/install-cloudflare-cert/
   };
+
+  services.logind = {
+    killUserProcesses = true;
+    lidSwitch = "ignore";
+    lidSwitchDocked = "ignore";
+    lidSwitchExternalPower = "ignore";
+    powerKey = "ignore";
+    # rebootKey = "ignore";
+    extraConfig = ''
+    '';
+  };
+
+  # services.tlp = {
+  #   enable = true;
+  #   settings = {
+  #     CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+  #     CPU_SCALING_GOVERNOR_ON_AC = "powersave";
+
+  #     # The following prevents the battery from charging fully to
+  #     # preserve lifetime. Run `tlp fullcharge` to temporarily force
+  #     # full charge.
+  #     # https://linrunner.de/tlp/faq/battery.html#how-to-choose-good-battery-charge-thresholds
+  #     START_CHARGE_THRESH_BAT0 = 40;
+  #     STOP_CHARGE_THRESH_BAT0 = 50;
+
+  #     # 100 being the maximum, limit the speed of my CPU to reduce
+  #     # heat and increase battery usage:
+  #     CPU_MAX_PERF_ON_AC = 75;
+  #     CPU_MAX_PERF_ON_BAT = 60;
+  #   };
+  # };
 
   systemd.services = {
     cpolar = {
