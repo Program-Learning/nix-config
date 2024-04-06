@@ -32,7 +32,20 @@ Name=rime
 # Layout
 Layout=
 
+[Groups/2]
+# Group Name
+Name=BlockIME
+# Layout
+Default Layout=us
+
+[Groups/2/Items/0]
+# Name
+Name=keyboard-us
+# Layout
+Layout=
+
 [GroupOrder]
 0=Default
 1=Other
+2=BlockIME
 
