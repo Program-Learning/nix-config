@@ -43,6 +43,7 @@
     '';
   boot.kernelParams = ["nvidia.NVreg_PreserveVideoMemoryAllocations=1"];
   boot.extraModulePackages = [
+    config.boot.kernelPackages.lenovo-legion-module
     config.boot.kernelPackages.v4l2loopback.out
     # config.boot.kernelPackages.acpi_call.out
     # config.boot.kernelPackages.v4l2loopback
