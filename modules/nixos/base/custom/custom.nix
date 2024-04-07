@@ -22,6 +22,12 @@
         host = "127.0.0.1";
         port = 7890;
       };
+      zerotier_mondrian_nekobox_proxy = {
+        enable = true;
+        type = "socks5";
+        host = "10.147.20.120";
+        port = 7890;
+      };
     };
   };
 
