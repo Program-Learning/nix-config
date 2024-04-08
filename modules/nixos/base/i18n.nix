@@ -1,4 +1,4 @@
-{
+rec {
   # Set your time zone.
   time.timeZone = "Asia/Shanghai";
 
@@ -16,4 +16,11 @@
     LC_TELEPHONE = "zh_CN.UTF-8";
     LC_TIME = "zh_CN.UTF-8";
   };
+
+  i18n.supportedLocales = [
+    "C.UTF-8/UTF-8"
+    "en_US.UTF-8/UTF-8"
+    "zh_CN.UTF-8/UTF-8"
+    "ja_JP.UTF-8/UTF-8"
+  ];
 }

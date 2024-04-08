@@ -12,7 +12,9 @@
     linux-wallpaperengine # A video wallpaper program
     mpvpaper # A video wallpaper program for wlroots based wayland compositors.
     swayidle # the idle timeout
+    # hypridle # the idle timeout
     swaylock # locking the screen
+    # hyprlock # locking the screen
     wlogout # logout menu
     wl-clipboard # copying and pasting
     hyprpicker # color picker
