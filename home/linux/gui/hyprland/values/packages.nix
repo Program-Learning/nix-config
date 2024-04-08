@@ -20,8 +20,11 @@
     hyprpicker # color picker
     wshowkeys # Show which key is triggered
 
+    hdrop # a tool to switch windows status (foreground/background)
+
     pkgs-unstable.hyprshot # screen shot
     grim # taking screenshots
+    grimblast # taking screenshots
     slurp # selecting a region to screenshot
     wf-recorder # screen recording
 
