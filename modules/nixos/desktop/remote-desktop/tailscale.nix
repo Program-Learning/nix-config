@@ -43,7 +43,4 @@
     extraUpFlags = "--accept-routes";
     # authKeyFile = "/var/lib/tailscale/authkey";
   };
-  services.cloudflared = {
-    enable = true;
-  };
 }

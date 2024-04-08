@@ -106,6 +106,10 @@
 
   nixpkgs.config.allowUnfreePredicate = ["wechat_dev_tools"];
 
+  services.cloudflared = {
+    enable = false;
+  };
+
   # remote desktop server
   features.sunshine.enable = false;
   # virtual network
