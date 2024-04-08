@@ -17,6 +17,7 @@
       cmake
       cmake-language-server
       gnumake
+      just
       ccache
       checkmake
       # c/c++ compiler, required by nvim-treesitter!
