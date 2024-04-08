@@ -13,6 +13,21 @@ export def nixos-switch [
     }
 }
 
+# ================= NixOnDroid related =========================
+
+export def nod-switch [
+    name: string
+    mode: string
+] {
+    if "debug" == $mode {
+        # show details via nix-output-monitor
+        NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nom build $"nixOnDroidConfigurations.#.($name).config.system.build.toplevel" --show-trace --verbose
+        NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nix-on-droid switch --flake $".#($name)" --show-trace --verbose
+    } else {
+        NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nix-on-droid switch --flake $".#($name)"
+    }
+}
+
 
 # ====================== Misc =============================
 
@@ -54,7 +69,7 @@ export def darwin-rollback [] {
     ./result/sw/bin/darwin-rebuild --rollback
 }
 
-# ==================== Virutal Machines related =====================
+# ==================== Virtual Machines related =====================
 
 # Build and upload a VM image
 export def upload-vm [
