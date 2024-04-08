@@ -69,16 +69,11 @@
     #    2. Never leave the device and never sent over the network.
     # 2. Or just use hardware security keys like Yubikey/CanoKey.
     openssh.authorizedKeys.keys = [
-      # nix-on-droid_mondrian_1
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICj06cIQGq3dqjoNHjKU6p3OI3ulTcbLdZKQebFs11+i nix-on-droid@localhost"
-      # nixos_y9000k2021h_1
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBO0+WOKwK9EcRj2Bcdt/VpiB9MvZYqk4JKxlcQElskx nixos@nixos"
-      # Termux_mondrian_1
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAmMzt29uz/LWwidz/Pxv5DLaz3HZeqDU8NtuBkE6KX5 u0_a345@localhost"
-      # Termux_pstar_1
-      "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDD9oj03QzeGTx7l3XEcIt/rDD6UwarjxeV38iVa8FKQftwuhFVqeJpI+kAeWwUynTOhKLCG/WbcLNCFGI9I9E3NjkSPMXv018yy7X30VFcEn7Arl7Ab48ZVEgRguru5XpuZZWI+IID4T5erbsng1ekQGLBgz0hEokGOKhyqoTgUb/Fpm5S6Ubl66//OF5OIkcdmKQ8mRtQxrjxqYB3ZWX4xbxevKHQbGFtbjZVWO70GfGnMfl6urpPMVmJXe+tHarDsQAiU9BySO+7kmkRfQfUtwiOJ7o2M0evIcKuxyzQ5yRSO9ZeHMzjDLaGAK/5UMvoEP7yZfrom0qBfQpEeHnvEUct80tugH0xCvmqMq1SKxaG64LsRXJIFsv71vPHvLU/U1PTYEEuSVOg+coGG/hMl/iuq9bdfuiiyDjNZtn6FpY5fDj6lBF49wqQuc7JMQ4pWH88aRqCFLlRXDk/jTe+BuaEfghOgbCpq1Xyrb3cnc9iR88udXzas18SqcAT9ec= 102341238+DataEraserC@users.noreply.github.com"
-      # nixos_y9000k2021h_1
-      "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDEIdxYFQnQuvMttMJcXIPxDRn1OhbirLIxfELoDPI0RKjub1nowOM+mo9QGatPUFBf2OcMKHYES9h5mYUyf243Nyykef9RneBKB6fzfk+k6UQRwpuGObM4ZXVUSVG6g1vsdvb7TbXkFGtwSsOZliuiO12XLg4x26DRuVNJsHpsLdTY5cwLH4w/pcjm/TAIjBNTd37ziaVReQsp2t9zPIkuMH5FwKaBUUXgIy47DCTYOpaEzfanzFe4+EP7BDo4Ch3KviAeAVub1WluwvByXNSgUT7fZC7b0ru8uQyovHNlUXJpMSI1ccXj7DRLWJbsfDD2/h/vv8ErTWVxHZ/am9fqkvgjD7FgrD543u39TtppZzEV3pWlZfemy5uWi9BjnNcx10yIC3Gt9ixgx6jiLjHH25zgQheecVrBB9ggtKX3dnwbhR3ItOA7MhimABeinkXAXhpinwlKzjapRUiNxcNXp9LjzcXkHyd/GNYk9gCiqb7sdsUNbWsSbrNEhyMBhMk= nixos@nixos"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBiYaQw5Zd3zph4ESSmzTeThQs4mUvQl6VmAgwhFQeIj nix-on-droid@pstar"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIESZxsPpUfvzrLVVu7O1QYnUvSKWG4U6Fcv3kdxiLQTg termux@pstar"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMKycQztUbwaCQnvF6wiQz+WukpAXbkubMMMp4VUtwt/ nix-on-droid@mondrian"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBPciOhklQslFUU2Y+ARt+HvBLLScjQ+c+3S2ZX9NGOK termux@mondrian"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBO0+WOKwK9EcRj2Bcdt/VpiB9MvZYqk4JKxlcQElskx nixos@y9000k2021h"
     ];
   };
 
