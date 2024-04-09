@@ -8,13 +8,14 @@
 }: {
   home.packages = with pkgs; [
     # creative
-    blender # 3d modeling
+    pkgs-stable.blender # 3d modeling
     # gimp      # image editing, I prefer using figma in browser instead of this one
     (gimp-with-plugins.override {
       plugins = with gimpPlugins; [
         fourier
         # resynthesizer # broken since 2023-03-20
         gmic
+        bimp
       ];
     })
     shotcut # video editor
@@ -41,8 +42,8 @@
     nur-ryan4yin.packages.${pkgs.system}.gowin-eda-edu-ide # app: `gowin-env` => `gw_ide` / `gw_pack` / ...
     # nur-program-learning.packages.${pkgs.system}.wechat_dev_tools_appimage
     nur-program-learning.packages.${pkgs.system}.wechat_dev_tools_bin
-    nur-program-learning.packages.${pkgs.system}.Adobe_Photoshop_CS6_appimage
-    nur-program-learning.packages.${pkgs.system}.Adobe_Illustrator_CS6_appimage
+    # nur-program-learning.packages.${pkgs.system}.Adobe_Photoshop_CS6_appimage
+    # nur-program-learning.packages.${pkgs.system}.Adobe_Illustrator_CS6_appimage
   ];
 
   programs = {

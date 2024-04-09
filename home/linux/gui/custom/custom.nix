@@ -197,7 +197,7 @@
       [
         # YisuiMilena.hmcl-bin
         nur-linyinfeng.packages.${pkgs.system}.wemeet
-        nur-linyinfeng.packages.${pkgs.system}.icalingua-plus-plus
+        # nur-linyinfeng.packages.${pkgs.system}.icalingua-plus-plus
         nur-linyinfeng.packages.${pkgs.system}.matrix-wechat
         nur-xddxdd.packages.${pkgs.system}.wechat-uos
         nur-xddxdd.packages.${pkgs.system}.dingtalk
