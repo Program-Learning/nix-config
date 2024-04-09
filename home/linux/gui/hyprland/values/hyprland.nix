@@ -4,6 +4,7 @@
   hyprland,
   hyprland-plugins,
   nur-ryan4yin,
+  end-4_dots-hyprland,
   ...
 }: let
   package = hyprland.packages.${pkgs.system}.hyprland;
@@ -31,7 +32,7 @@ in {
     };
     extraConfig = builtins.readFile ../conf/hyprland.conf;
     plugins = [
-      # hyprland-plugins.packages.${pkgs.system}.hyprbars
+      hyprland-plugins.packages.${pkgs.system}.hyprbars
       # ...
     ];
     # gammastep/wallpaper-switcher need this to be enabled.
