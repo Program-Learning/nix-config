@@ -270,6 +270,22 @@
         "type": "github"
       }
     },
+    "end-4_dots-hyprland": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1712643181,
+        "narHash": "sha256-LepXmPpqVKodk1b0OtPs31spCvc7B8RSfTtDSHfTvJI=",
+        "owner": "end-4",
+        "repo": "dots-hyprland",
+        "rev": "06ccd0acb51320b02280a3293043a32e2c3fa1af",
+        "type": "github"
+      },
+      "original": {
+        "owner": "end-4",
+        "repo": "dots-hyprland",
+        "type": "github"
+      }
+    },
     "fakedroid": {
       "inputs": {
         "home-manager": "home-manager_2",
@@ -1153,11 +1169,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1712645849,
-        "narHash": "sha256-67v20E0gH7nvAaMsah2oRIocnxGO25fATUyzQHIywxQ=",
+        "lastModified": 1712688495,
+        "narHash": "sha256-NrVLXkpT9ZigiI8md6NIzHS+3lE4QTj30IgXG57O9iM=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "40a99619da804a78a0b166e5c6911108c059c3a8",
+        "rev": "b00d0e4fe9cba0047f54e77418ddda5f17e6ef2c",
         "type": "github"
       },
       "original": {
@@ -1421,11 +1437,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1712597153,
-        "narHash": "sha256-hxJFFjhsROZT6+Nw9X83FanFS7UgHbd0UkqDjl4G/dI=",
+        "lastModified": 1712686269,
+        "narHash": "sha256-33406JXyrq0ZtD3/IgYGWcpfzp2Ccs3+mPsm9YsigIA=",
         "owner": "Program-Learning",
         "repo": "nur-packages",
-        "rev": "ab67a9a9c893713c8761dada9289420bef3108f4",
+        "rev": "6c3d7a09388fb0f6427ca2a25470691415e96c2a",
         "type": "github"
       },
       "original": {
@@ -1900,11 +1916,11 @@
     },
     "nixos-stable": {
       "locked": {
-        "lastModified": 1712310679,
-        "narHash": "sha256-XgC/a/giEeNkhme/AV1ToipoZ/IVm1MV2ntiK4Tm+pw=",
+        "lastModified": 1712588820,
+        "narHash": "sha256-y31s5idk3jMJMAVE4Ud9AdI7HT3CgTAeMTJ0StqKN7Y=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "72da83d9515b43550436891f538ff41d68eecc7f",
+        "rev": "d272ca50d1f7424fbfcd1e6f1c9e01d92f6da167",
         "type": "github"
       },
       "original": {
@@ -2545,11 +2561,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1712677672,
-        "narHash": "sha256-/bDMXXtF4rvGkOm6/RQ8OlzQY20+NMxqjEnzJH7H+Uk=",
+        "lastModified": 1712689316,
+        "narHash": "sha256-HQWirQ0BFAk7X60oy3avPsxMiJodCRd+MLqtQ2bvO4s=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "b85169271d1df1b9e93709647842df4840dbdc2e",
+        "rev": "228a36fecc0ac131c4f93ee2836f1158c5884dad",
         "type": "github"
       },
       "original": {
@@ -2592,11 +2608,11 @@
         "treefmt-nix": "treefmt-nix_3"
       },
       "locked": {
-        "lastModified": 1712428138,
-        "narHash": "sha256-9E9LnZ5HfpYfRjc75xOCJqflplWhWw8tWWK9Ms7bEnc=",
+        "lastModified": 1712687062,
+        "narHash": "sha256-/KT5fxtbfgcvtIIUGEairzNJMEFT0KidU5aL71ermMY=",
         "owner": "linyinfeng",
         "repo": "nur-packages",
-        "rev": "76ad6055d59906c333a0c6bc3f63b5af26b26f73",
+        "rev": "4716d8ca043d2cdc4f1f19fe2fac745670132d6d",
         "type": "github"
       },
       "original": {
@@ -2612,11 +2628,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1712597153,
-        "narHash": "sha256-hxJFFjhsROZT6+Nw9X83FanFS7UgHbd0UkqDjl4G/dI=",
+        "lastModified": 1712686269,
+        "narHash": "sha256-33406JXyrq0ZtD3/IgYGWcpfzp2Ccs3+mPsm9YsigIA=",
         "owner": "Program-Learning",
         "repo": "nur-packages",
-        "rev": "ab67a9a9c893713c8761dada9289420bef3108f4",
+        "rev": "6c3d7a09388fb0f6427ca2a25470691415e96c2a",
         "type": "github"
       },
       "original": {
@@ -2632,11 +2648,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1712597153,
-        "narHash": "sha256-hxJFFjhsROZT6+Nw9X83FanFS7UgHbd0UkqDjl4G/dI=",
+        "lastModified": 1712686269,
+        "narHash": "sha256-33406JXyrq0ZtD3/IgYGWcpfzp2Ccs3+mPsm9YsigIA=",
         "owner": "Program-Learning",
         "repo": "nur-packages",
-        "rev": "ab67a9a9c893713c8761dada9289420bef3108f4",
+        "rev": "6c3d7a09388fb0f6427ca2a25470691415e96c2a",
         "type": "github"
       },
       "original": {
@@ -2720,11 +2736,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1711328620,
-        "narHash": "sha256-stBBJu/yH+6zj6XoQj86Jwbzvjh5UPknQblkYN+cLQA=",
+        "lastModified": 1712538578,
+        "narHash": "sha256-+fFOtg2fQK6kafSucYDpMG8ENXgo52+YSQtCoXv/+Ik=",
         "owner": "berberman",
         "repo": "nvfetcher",
-        "rev": "fd9fb0afd56a297d04d31eab2bd0304c885664d8",
+        "rev": "1463db224a54cbc9499860ef5a51a9b6bf7c3180",
         "type": "github"
       },
       "original": {
@@ -2915,6 +2931,7 @@
         "daeuniverse": "daeuniverse",
         "disko": "disko",
         "doomemacs": "doomemacs",
+        "end-4_dots-hyprland": "end-4_dots-hyprland",
         "fakedroid": "fakedroid",
         "fh": "fh",
         "firefox-nightly": "firefox-nightly",
@@ -3444,10 +3461,10 @@
     "wallpapers": {
       "flake": false,
       "locked": {
-        "lastModified": 1712499597,
-        "narHash": "sha256-xEva7pS7QNLuXu5NzCjWg3zLEO3cE4X8eDXjLL3r4Oc=",
+        "lastModified": 1712681856,
+        "narHash": "sha256-A9rw5T8V0cAgB7AkGSOjaajX+1iLf6SB3A/dsWbprwk=",
         "ref": "refs/heads/dark_wallpapers",
-        "rev": "42fc3f8f2329f94d82adade1fee25de7aeab5a1e",
+        "rev": "9cf624bb584773a2b2fe1bbd1df7d8a2e1bdce27",
         "shallow": true,
         "type": "git",
         "url": "file:////home/nixos/Documents/code/wallpapers"

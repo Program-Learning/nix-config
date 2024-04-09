@@ -191,6 +191,11 @@
 
     ########################  Some non-flake repositories  #########################################
 
+    end-4_dots-hyprland = {
+      url = "github:end-4/dots-hyprland";
+      flake = false;
+    };
+
     # doom-emacs is a configuration framework for GNU Emacs.
     doomemacs = {
       url = "github:doomemacs/doomemacs";
