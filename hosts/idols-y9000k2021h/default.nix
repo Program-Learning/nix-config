@@ -12,7 +12,7 @@
 #############################################################
 let
   hostName = "y9000k2021h"; # Define your hostname.
-  TempMacAddress = "be:fc:85:71:a5:c4";
+  TempMacAddress = "31:c6:b2:4c:cd:07";
 in rec {
   imports = [
     # ./cifs-mount.nix
@@ -33,15 +33,12 @@ in rec {
     enableIPv6 = true; # disable ipv6
     extraHosts = ''
       155.248.179.129 oracle_ubuntu_1
-      192.168.0.121 mondrian_1_school
       192.168.2.121 mondrian_1_home
       10.147.20.121 mondrian_1_cli_zerotier
       10.147.20.107 mondrian_1_app_zerotier
       100.110.6.16 mondrian_1_cli_tailscale
       100.72.65.125 mondrian_1_app_tailscale
-      192.168.0.123 pstar_1_school
       192.168.2.123 pstar_1_home
-      192.168.0.120 y9000k2021h_1_school
       192.168.2.120 y9000k2021h_1_home
       10.147.20.120 y9000k2021h_1_zerotier
       100.95.7.36 y9000k2021h_1_tailscale
