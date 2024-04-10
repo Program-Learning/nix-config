@@ -16,6 +16,7 @@
   - `programs.eza.enableAliases` to `programs.eza.enableIonIntegration` +
     `programs.eza.enableZshIntegration` + `programs.eza.enableFishIntegration` +
     `programs.eza.enableBashIntegration` + `programs.eza.enableNushellIntegration`
+  - `atuin` is broken. see https://github.com/atuinsh/atuin/issues/1934
 
 ## config
 

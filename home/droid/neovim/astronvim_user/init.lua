@@ -89,7 +89,7 @@ return {
             node_decremental = "<bs>", -- Backspace
           },
         }
-        opts.ignore_install = { "gotmpl" }
+        opts.ignore_install = { "gotmpl", "helm" }
         opts.ensure_installed = utils.list_insert_unique(opts.ensure_installed, {
           -- neovim
           "vim",

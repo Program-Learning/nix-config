@@ -32,7 +32,7 @@ in {
     };
     extraConfig = builtins.readFile ../conf/hyprland.conf;
     plugins = [
-      hyprland-plugins.packages.${pkgs.system}.hyprbars
+      # hyprland-plugins.packages.${pkgs.system}.hyprbars
       # ...
     ];
     # gammastep/wallpaper-switcher need this to be enabled.

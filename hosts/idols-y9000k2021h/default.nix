@@ -12,7 +12,7 @@
 #############################################################
 let
   hostName = "y9000k2021h"; # Define your hostname.
-  TempMacAddress = "31:c6:b2:4c:cd:07";
+  TempMacAddress = "be:fc:85:71:a5:c7";
 in rec {
   imports = [
     # ./cifs-mount.nix

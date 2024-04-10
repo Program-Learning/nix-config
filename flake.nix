@@ -189,6 +189,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    DataEraserC_dots-hyprland = {
+      url = "github:DataEraserC/dots-hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     ########################  Some non-flake repositories  #########################################
 
     end-4_dots-hyprland = {
