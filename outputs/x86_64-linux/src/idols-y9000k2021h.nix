@@ -52,12 +52,16 @@
           modules.desktop.wayland.enable = true;
           modules.secrets.desktop.enable = true;
           modules.secrets.impermanence.enable = true;
+          # modules.desktop.end_4-dots_hyprland-nixos_module.enable = true;
         }
       ]
       ++ base-modules.nixos-modules;
     home-modules =
       [
-        {modules.desktop.hyprland.enable = true;}
+        {
+          modules.desktop.hyprland.enable = true;
+          # modules.desktop.end_4-dots_hyprland-hm_module.enable = true;
+        }
       ]
       ++ base-modules.home-modules;
   };

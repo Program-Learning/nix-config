@@ -3,6 +3,7 @@
   config,
   lib,
   myvars,
+  DataEraserC-dots_hyprland,
   ...
 }:
 with lib; let
@@ -14,6 +15,7 @@ in {
     ../base.nix
 
     ./desktop
+    DataEraserC-dots_hyprland.nixosModules.end_4-dots_hyprland
   ];
 
   options.modules.desktop = {

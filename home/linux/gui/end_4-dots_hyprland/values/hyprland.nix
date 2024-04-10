@@ -4,16 +4,53 @@
   hyprland,
   hyprland-plugins,
   nur-ryan4yin,
+  end_4-dots_hyprland,
   ...
 }: let
-  package = hyprland.packages.${pkgs.system}.hyprland;
+  mkRootPath = f: /. + "${f}";
+  mkXdgConfigFile = RootPath: f: {
+    "${f}" = {
+      source = mkRootPath "${RootPath}/${f}";
+      recursive = true;
+    };
+  };
+  plugins = hyprland-plugins.packages.${pkgs.system};
+
+  launcher = pkgs.writeShellScriptBin "hypr" ''
+    #!/${pkgs.bash}/bin/bash
+
+    export WLR_NO_HARDWARE_CURSORS=1
+    export _JAVA_AWT_WM_NONREPARENTING=1
+
+    exec ${hyprland.packages.${pkgs.system}.hyprland}/bin/Hyprland
+  '';
 in {
+  home.packages = with pkgs; [
+    launcher
+    adoptopenjdk-jre-bin
+    # jdk17
+  ];
+
+  xdg.desktopEntries."org.gnome.Settings" = {
+    name = "Settings";
+    comment = "Gnome Control Center";
+    icon = "org.gnome.Settings";
+    exec = "env XDG_CURRENT_DESKTOP=gnome ${pkgs.gnome.gnome-control-center}/bin/gnome-control-center";
+    categories = ["X-Preferences"];
+    terminal = false;
+  };
+
+  programs = {
+    swaylock = {
+      enable = true;
+      package = pkgs.swaylock-effects;
+    };
+  };
   # NOTE:
   # We have to enable hyprland/i3's systemd user service in home-manager,
   # so that gammastep/wallpaper-switcher's user service can be start correctly!
   # they are all depending on hyprland/i3's user graphical-session
   wayland.windowManager.hyprland = {
-    inherit package;
     enable = true;
     settings = {
       source = "${nur-ryan4yin.packages.${pkgs.system}.catppuccin-hyprland}/themes/mocha.conf";
@@ -29,7 +66,8 @@ in {
         "GDK_BACKEND,wayland"
       ];
     };
-    extraConfig = builtins.readFile ../conf/hyprland.conf;
+    package = hyprland.packages.${pkgs.system}.hyprland;
+    extraConfig = builtins.replaceStrings ["~"] ["${end_4-dots_hyprland}"] (builtins.readFile "${end_4-dots_hyprland}/.config/hypr/hyprland.conf");
     plugins = [
       # hyprland-plugins.packages.${pkgs.system}.hyprbars
       # ...
@@ -37,37 +75,12 @@ in {
     # gammastep/wallpaper-switcher need this to be enabled.
     systemd.enable = true;
   };
+  xdg.configFile.".config/hypr/hyprland.conf".enable = false;
 
   # NOTE: this executable is used by greetd to start a wayland session when system boot up
   # with such a vendor-no-locking script, we can switch to another wayland compositor without modifying greetd's config in NixOS module
   home.file.".wayland-session" = {
-    source = "${package}/bin/Hyprland";
+    source = "${pkgs.hyprland}/bin/Hyprland";
     executable = true;
-  };
-
-  # hyprland configs, based on https://github.com/notwidow/hyprland
-  xdg.configFile = {
-    "hypr/mako" = {
-      source = ../conf/mako;
-      recursive = true;
-    };
-    "hypr/scripts" = {
-      source = ../conf/scripts;
-      recursive = true;
-    };
-    "hypr/waybar" = {
-      source = ../conf/waybar;
-      recursive = true;
-    };
-    "hypr/wlogout" = {
-      source = ../conf/wlogout;
-      recursive = true;
-    };
-
-    # music player - mpd
-    "mpd" = {
-      source = ../conf/mpd;
-      recursive = true;
-    };
   };
 }
