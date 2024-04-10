@@ -1,7 +1,6 @@
 {
   pkgs,
   nur-ryan4yin,
-  pkgs-unstable,
   firefox-nightly,
   ...
 }: {

@@ -3,7 +3,6 @@
   config,
   lib,
   myvars,
-  DataEraserC-dots_hyprland,
   ...
 }:
 with lib; let
@@ -15,7 +14,6 @@ in {
     ../base.nix
 
     ./desktop
-    DataEraserC-dots_hyprland.nixosModules.end_4-dots_hyprland
   ];
 
   options.modules.desktop = {
@@ -59,7 +57,6 @@ in {
             # autologin
             initial_session = {
               command = "$HOME/.wayland-session";
-              # command = "bash -c '__NV_PRIME_RENDER_OFFLOAD=1 __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0 __GLX_VENDOR_LIBRARY_NAME=nvidia __VK_LAYER_NV_optimus=NVIDIA_only Hyprland'";
               user = myvars.username;
             };
           };

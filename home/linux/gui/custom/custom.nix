@@ -8,7 +8,6 @@
   nur-linyinfeng,
   nur-xddxdd,
   nur-AtaraxiaSjel,
-  aagl,
   nixpkgs-23_05,
   ...
 }: {
@@ -212,44 +211,10 @@
         nur-program-learning.packages.${pkgs.system}.XiaoMiToolV2
         # nur-program-learning.packages.${pkgs.system}.CrossOver
         # nur-program-learning.packages.${pkgs.system}.waybar-bluetooth_battery_parse
-        # aleksana.go-musicfox
-        # aleksana.fastfetch
         # alexnortung.pkgs.papermc-1_18_x
       ]
     )
-    # ++ (with nixpkgs-23_05; [sqliteman])
-    # use hardware.nvidia.prime.offload.enableOffloadCmd instead!
-    #++ (let
-    #  nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
-    #    export __NV_PRIME_RENDER_OFFLOAD=1
-    #    export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
-    #    export __GLX_VENDOR_LIBRARY_NAME=nvidia
-    #    export __VK_LAYER_NV_optimus=NVIDIA_only
-    #    exec "$@"
-    #  '';
-    #in [nvidia-offload])
     ;
-
-  # Custom Desktop Shortcuts
-  home.file = {
-    # ".local/share/icons/wechat_devtools.png".source =
-    #   ./shortcuts/wechat-devtools.png;
-    # ".local/share/applications/io.github.msojocs.wechat_devtools.desktop".source =
-    #   ./shortcuts/io.github.msojocs.wechat_devtools.desktop;
-
-    # ".local/share/icons/Adobe_Photoshop_CS6.png".source =
-    #   ./shortcuts/Adobe_Photoshop_CS6.png;
-    # ".local/share/applications/Adobe_Photoshop_CS6.desktop".source =
-    #   ./shortcuts/Adobe_Photoshop_CS6.desktop;
-
-    # ".local/share/icons/Adobe_Illustrator_CS6.png".source =
-    #   ./shortcuts/Adobe_Illustrator_CS6.png;
-    # ".local/share/applications/Adobe_Illustrator_CS6.desktop".source =
-    #   ./shortcuts/Adobe_Illustrator_CS6.desktop;
-  };
-  # home.file.".local/share/applications/vim.desktop".source = ./shortcuts/vim.desktop;
-  # home.file.".local/share/applications/code_ime.desktop".source = ./shortcuts/code_ime.desktop;
-  # home.file.".local/share/applications/code_no_gpu.desktop".source = ./shortcuts/code_no_gpu.desktop;
 
   services = {
     kdeconnect.enable = true;

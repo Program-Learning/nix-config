@@ -1,13 +1,12 @@
 {
   pkgs,
   config,
-  pkgs-unstable,
   ...
 }:
 # processing audio/video
 {
   home.packages = with pkgs; [
-    ffmpeg
+    ffmpeg-full
 
     # images
     viu # Terminal image viewer with native support for iTerm and Kitty

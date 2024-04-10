@@ -190,6 +190,7 @@
     };
 
     ######################## dots_hyprland required  #########################################
+
     impurity.url = "github:outfoxxed/impurity.nix";
     thorium.url = "github:end-4/nix-thorium";
     ags.url = "github:Aylur/ags";

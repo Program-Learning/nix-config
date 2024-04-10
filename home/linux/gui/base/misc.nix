@@ -1,7 +1,6 @@
 {
   pkgs,
   pkgs-unstable,
-  nur-program-learning,
   llqqnt,
   ...
 }: {
