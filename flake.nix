@@ -125,6 +125,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    browser-previews = {
+      url = "github:r-k-b/browser-previews";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     vscode-server = {
       url = "github:nix-community/nixos-vscode-server";
       inputs.nixpkgs.follows = "nixpkgs";

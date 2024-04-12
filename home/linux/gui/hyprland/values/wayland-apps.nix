@@ -2,6 +2,7 @@
   pkgs,
   nur-ryan4yin,
   firefox-nightly,
+  browser-previews,
   ...
 }: {
   # refer to https://codeberg.org/dnkl/foot/src/branch/master/foot.ini
@@ -39,6 +40,7 @@
     # source code: https://github.com/nix-community/home-manager/blob/master/modules/programs/chromium.nix
     google-chrome = {
       enable = true;
+      package =  browser-previews.packages.${pkgs.system}.google-chrome-dev;
 
       # https://wiki.archlinux.org/title/Chromium#Native_Wayland_support
       commandLineArgs = [

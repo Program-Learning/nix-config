@@ -5,5 +5,6 @@
 }: {
   home.packages = with pkgs-unstable; [
     tor-browser
+    google-chrome
   ];
 }
