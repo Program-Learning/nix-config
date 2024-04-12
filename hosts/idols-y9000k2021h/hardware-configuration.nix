@@ -62,7 +62,6 @@
     "fat"
     "vfat"
     "exfat"
-    "cifs" # mount windows share
   ];
 
   # boot.initrd = {

@@ -15,7 +15,7 @@ let
   TempMacAddress = "be:fc:85:71:a5:c7";
 in rec {
   imports = [
-    # ./cifs-mount.nix
+    # ./netdev-mount.nix
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
 
