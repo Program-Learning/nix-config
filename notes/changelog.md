@@ -7,7 +7,7 @@
 
 ## pkgs
 
-- `rnix-lsp` is deprecated
+- `rnix-lsp` is [deprecated](https://github.com/NixOS/nixpkgs/commits/master/pkgs/development/tools/language-servers/rnix-lsp/default.nix)
 - `nvtop` updated to `nvtopPackages.full`
 
 ## home config

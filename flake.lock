@@ -2456,22 +2456,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-23_05": {
-      "locked": {
-        "lastModified": 1704290814,
-        "narHash": "sha256-LWvKHp7kGxk/GEtlrGYV68qIvPHkU9iToomNFGagixU=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "70bdadeb94ffc8806c0570eb5c2695ad29f0e421",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "nixos-23.05",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs-darwin": {
       "locked": {
         "lastModified": 1712530949,
@@ -2686,11 +2670,11 @@
     },
     "nixpkgs-stable_3": {
       "locked": {
-        "lastModified": 1712588820,
-        "narHash": "sha256-y31s5idk3jMJMAVE4Ud9AdI7HT3CgTAeMTJ0StqKN7Y=",
+        "lastModified": 1712741485,
+        "narHash": "sha256-bCs0+MSTra80oXAsnM6Oq62WsirOIaijQ/BbUY59tR4=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "d272ca50d1f7424fbfcd1e6f1c9e01d92f6da167",
+        "rev": "b2cf36f43f9ef2ded5711b30b1f393ac423d8f72",
         "type": "github"
       },
       "original": {
@@ -3266,11 +3250,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1712686269,
-        "narHash": "sha256-33406JXyrq0ZtD3/IgYGWcpfzp2Ccs3+mPsm9YsigIA=",
+        "lastModified": 1712857215,
+        "narHash": "sha256-fNOvKnN9+zJMZKltWx3eFCtuUNZSZ53wNZkmyR2sINM=",
         "owner": "Program-Learning",
         "repo": "nur-packages",
-        "rev": "6c3d7a09388fb0f6427ca2a25470691415e96c2a",
+        "rev": "f625e4976d0ac7c2c03b1fb30831d37dc7d00e00",
         "type": "github"
       },
       "original": {
@@ -3603,7 +3587,6 @@
         "nixos-licheepi4a": "nixos-licheepi4a",
         "nixos-rk3588": "nixos-rk3588",
         "nixpkgs": "nixpkgs_14",
-        "nixpkgs-23_05": "nixpkgs-23_05",
         "nixpkgs-darwin": "nixpkgs-darwin",
         "nixpkgs-nod": "nixpkgs-nod",
         "nixpkgs-stable": "nixpkgs-stable_3",

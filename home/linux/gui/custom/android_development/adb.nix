@@ -6,7 +6,7 @@
 }: {
   home.packages = with pkgs; [
     nur-program-learning.packages.${pkgs.system}.qtscrcpy_git
-    nur-program-learning.packages.${pkgs.system}.escrcpy_appimage
+    nur-program-learning.packages.${pkgs.system}.escrcpy_deb
     gnirehtet
     scrcpy
     libmtp
