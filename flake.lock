@@ -2193,12 +2193,12 @@
         "rev": "6525863fa78a6d7abe33777f68f07c79eae39a08",
         "shallow": true,
         "type": "git",
-        "url": "ssh://git@github.com/DataEraserC/nix-secrets.git"
+        "url": "file:////home/nixos/Documents/code/nix-config/secrets"
       },
       "original": {
         "shallow": true,
         "type": "git",
-        "url": "ssh://git@github.com/DataEraserC/nix-secrets.git"
+        "url": "file:////home/nixos/Documents/code/nix-config/secrets"
       }
     },
     "naersk": {
@@ -2944,11 +2944,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1712924873,
-        "narHash": "sha256-LJUgYhDDdQ9YSAFXZDRfbxMbcVD9D8aO4Y/zSbxbFYo=",
+        "lastModified": 1712939253,
+        "narHash": "sha256-5g8YhCOV7WitkEow8PiWH5xDCBTQCBhzgJiecxtou/o=",
         "owner": "nix-community",
         "repo": "nixpkgs-wayland",
-        "rev": "3b9aa2a64e793923f5acbeeacc3a35e5353c477e",
+        "rev": "f5126211793409ec71f5ab7c82b63e238335ccd5",
         "type": "github"
       },
       "original": {
@@ -3369,11 +3369,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1712936795,
-        "narHash": "sha256-HIBTo4GjLKpjVtUK7hgJf0pvkXLUU0QANWQU3fQtOIs=",
+        "lastModified": 1712939470,
+        "narHash": "sha256-rm62FqVAKSkOX9aEbIcsj6eCvmb8P3I/iowPY3DkXRg=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "4cdb0dedbb61e2ddb69749f5e440187436842936",
+        "rev": "012961c34f8d195cc2a1a96f466d4f1f819cad95",
         "type": "github"
       },
       "original": {
