@@ -1,4 +1,4 @@
-{lib, ...}: rec {
+{lib}: rec {
   mainGateway = "192.168.0.1"; # main router
   # use suzi as the default gateway
   # it's a subrouter with a transparent proxy
