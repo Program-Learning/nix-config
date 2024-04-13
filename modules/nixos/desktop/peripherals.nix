@@ -44,6 +44,11 @@
   # Bluetooth devices automatically connect with bluetoothctl as well:
   # [bluetooth] # trust [hex-address]
   hardware.bluetooth.enable = true;
+  hardware.bluetooth.settings = {
+    General = {
+      Experimental = true;
+    };
+  };
   services.blueman.enable = true;
 
   #================================= Misc =================================
@@ -51,6 +56,9 @@
   services = {
     printing.enable = true; # Enable CUPS to print documents.
     geoclue2.enable = true; # Enable geolocation services.
+
+    # https://flatpak.org/setup/NixOS
+    flatpak.enable = true;
 
     udev.packages = with pkgs; [
       gnome.gnome-settings-daemon

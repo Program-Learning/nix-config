@@ -1,5 +1,6 @@
 {
   pkgs,
+  nur-program-learning,
   config,
   ...
 }: {
@@ -18,9 +19,9 @@
   # set dpi for 4k monitor
   xresources.properties = {
     # dpi for Xorg's font
-    "Xft.dpi" = 150;
+    "Xft.dpi" = 96;
     # or set a generic dpi
-    "*.dpi" = 150;
+    "*.dpi" = 96;
   };
 
   # gtk's theme settings, generate files:

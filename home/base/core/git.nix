@@ -31,16 +31,28 @@
       }
     ];
 
-    extraConfig = {
+    extraConfig = let
+      proxy = {
+        proxy = "sock5://127.0.0.1:7890";
+      };
+    in {
       init.defaultBranch = "main";
       trim.bases = "develop,master,main"; # for git-trim
       push.autoSetupRemote = true;
       pull.rebase = true;
 
+      #http = {
+      #  "https://github.com" = proxy;
+      #  "https://gitlab.com" = proxy;
+      #  "https://android.googlesource.com" = proxy;
+      #  "https://gerrit.googlesource.com" = proxy;
+      #  # "https://huggingface.co" = proxy;
+      #};
+
       # replace https with ssh
       url = {
-        "ssh://git@github.com/ryan4yin" = {
-          insteadOf = "https://github.com/ryan4yin";
+        "ssh://git@github.com/DataEraserC" = {
+          insteadOf = "https://github.com/DataEraserC";
         };
         # "ssh://git@gitlab.com/" = {
         #   insteadOf = "https://gitlab.com/";

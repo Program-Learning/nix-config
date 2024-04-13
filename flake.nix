@@ -19,13 +19,15 @@
       "https://anyrun.cachix.org"
       "https://hyprland.cachix.org"
       "https://nix-gaming.cachix.org"
-      # "https://nixpkgs-wayland.cachix.org"
+      "https://nixpkgs-wayland.cachix.org"
+      "https://ezkea.cachix.org"
     ];
     extra-trusted-public-keys = [
       "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
-      # "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
+      "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
+      "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI="
     ];
   };
 
@@ -37,8 +39,10 @@
 
     # Official NixOS package source, using nixos's unstable branch by default
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable-small";
-    # nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs-unstable-yuzu.url = "github:nixos/nixpkgs?rev=6a59b7def496268fc32175183e4041d92586b00b";
+    nixpkgs-unstable-etcher.url = "github:nixos/nixpkgs?rev=15cf1bacec81d3905d40b8005f88bb3ad8dc5a56";
 
     # for macos
     nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-24.05-darwin";
@@ -47,6 +51,47 @@
       inputs.nixpkgs.follows = "nixpkgs-darwin";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
+    # for nix-on-droid
+    nixpkgs-nod.url = "github:NixOS/nixpkgs/nixos-23.11";
+    nixpkgs-unstable-nod.url = "github:nixos/nixpkgs/nixos-unstable";
+
+    home-manager-nod = {
+      url = "github:nix-community/home-manager/release-23.11";
+      inputs.nixpkgs.follows = "nixpkgs-nod";
+    };
+
+    fakedroid = {
+      url = "github:nix-community/nix-on-droid";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nix-on-droid = {
+      url = "github:nix-community/nix-on-droid/release-23.11";
+      inputs.nixpkgs.follows = "nixpkgs-nod";
+      inputs.home-manager.follows = "home-manager-nod";
+    };
+
+    nur-ryan4yin-nod = {
+      url = "github:ryan4yin/nur-packages";
+      # inputs.nixpkgs.follows = "nixpkgs-nod";
+    };
+
+    catppuccin-urxvt-nod = {
+      url = "github:catppuccin/urxvt/ccd8eb763edd0a382b5e9bbfbd9697c4d4129edf";
+      flake = false;
+    };
+
+    # AstroNvim is an aesthetic and feature-rich neovim config.
+    astronvim-nod = {
+      url = "github:AstroNvim/AstroNvim/v3.37.12";
+      flake = false;
+    };
+
+    nur-program-learning-nod = {
+      url = "github:Program-Learning/nur-packages";
+      inputs.nixpkgs.follows = "nixpkgs-nod";
+    };
 
     # home-manager, used for managing user configuration
     home-manager = {
@@ -68,6 +113,31 @@
 
     hyprland = {
       url = "github:hyprwm/Hyprland/v0.39.1";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
+
+    firefox-nightly = {
+      url = "github:nix-community/flake-firefox-nightly";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    browser-previews = {
+      url = "github:r-k-b/browser-previews";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    vscode-server = {
+      url = "github:nix-community/nixos-vscode-server";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixpkgs-wayland = {
+      url = "github:nix-community/nixpkgs-wayland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -121,6 +191,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    ######################## dots_hyprland required  #########################################
+
+    DataEraserC-dots_hyprland = {
+      #url = "github:DataEraserC/dots-hyprland";
+      url = "git+file:////home/nixos/Documents/code/dots-hyprland?shallow=1";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     ########################  Some non-flake repositories  #########################################
 
     # doom-emacs is a configuration framework for GNU Emacs.
@@ -139,20 +217,66 @@
     # my private secrets, it's a private repository, you need to replace it with your own.
     # use ssh protocol to authenticate via ssh-agent/ssh-key, and shallow clone to save time
     mysecrets = {
-      url = "git+ssh://git@github.com/ryan4yin/nix-secrets.git?shallow=1";
+      # url = "git+ssh://git@github.com/DataEraserC/nix-secrets.git?shallow=1";
+      url = "git+file:////home/nixos/Documents/code/nix-config/secrets?shallow=1";
       flake = false;
     };
 
     # my wallpapers
     wallpapers = {
-      url = "github:ryan4yin/wallpapers";
+      # url = "github:Program-Learning/wallpapers/dark_wallpapers";
+      url = "git+file:////home/nixos/Documents/code/wallpapers?shallow=1";
       flake = false;
     };
+
+    nixified-ai = {
+      url = "github:Program-Learning/nixified-ai-flake";
+      inputs.nixpkgs.follows = "nixified-ai-nixpkgs";
+    };
+    nixified-ai-nixpkgs.url = "github:nixos/nixpkgs/c757e9bd77b16ca2e03c89bf8bc9ecb28e0c06ad";
+
+    # NUR package source
+
+    nur.url = "github:nix-community/NUR";
 
     nur-ryan4yin = {
       url = "github:ryan4yin/nur-packages";
       # inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nur-program-learning = {
+      url = "github:Program-Learning/nur-packages";
+      # url = "gitfile:////home/nixos/Documents/code/program-learning-nur-packages?shallow=1";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    llqqnt = {
+      url = "github:Program-Learning/nur-packages";
+      # url = "gitfile:////home/nixos/Documents/code/program-learning-nur-packages?shallow=1";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nur-linyinfeng = {
+      url = "github:linyinfeng/nur-packages";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nur-xddxdd = {
+      url = "github:xddxdd/nur-packages";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nur-AtaraxiaSjel = {
+      url = "github:AtaraxiaSjel/nur";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    aagl = {
+      url = "github:ezKEa/aagl-gtk-on-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    fh.url = "https://flakehub.com/f/DeterminateSystems/fh/0.1.9.tar.gz";
 
     # riscv64 SBCs
     nixos-licheepi4a.url = "github:ryan4yin/nixos-licheepi4a";
