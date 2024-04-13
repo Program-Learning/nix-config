@@ -30,10 +30,26 @@
     #  ls /etc/profiles/per-user/ryan/share/applications/
     mimeApps = {
       enable = true;
+      associations.added = let
+        browser = ["google-chrome.desktop" "firefox.desktop"];
+        office = ["onlyoffice-desktopeditors.desktop" "writer.desktop"];
+        code = ["code.desktop" "nvim.desktop"];
+        editor = ["nvim.desktop" "Helix.desktop" "code.desktop" "code-insiders.desktop"];
+        file-manager = ["org.gnome.Nautilus.desktop"];
+      in {
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = office;
+        "application/x-php" = code;
+        "text/plain" = editor;
+        "text/x-makefile" = editor;
+        "application/x-wine-extension-ini" = editor;
+      };
       # let `xdg-open` to open the url with the correct application.
       defaultApplications = let
-        browser = ["firefox.desktop"];
+        browser = ["google-chrome.desktop" "firefox.desktop"];
+        office = ["onlyoffice-desktopeditors.desktop" "writer.desktop"];
+        code = ["code.desktop" "nvim.desktop"];
         editor = ["nvim.desktop" "Helix.desktop" "code.desktop" "code-insiders.desktop"];
+        file-manager = ["org.gnome.Nautilus.desktop"];
       in {
         "application/json" = browser;
         "application/pdf" = browser; # TODO: pdf viewer
@@ -51,6 +67,8 @@
         "application/x-extension-shtml" = browser;
         "application/x-extension-xht" = browser;
         "application/x-extension-xhtml" = browser;
+        "application/x-shellscript" = editor;
+        "application/x-php" = code;
         "application/x-wine-extension-ini" = editor;
 
         # define default applications for some url schemes.
@@ -74,6 +92,9 @@
         "image/jpeg" = ["imv-dir.desktop"];
         "image/png" = ["imv-dir.desktop"];
         "image/webp" = ["imv-dir.desktop"];
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = office;
+
+        "inode/directory" = file-manager;
       };
 
       associations.removed = {

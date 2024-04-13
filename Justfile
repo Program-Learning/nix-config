@@ -55,6 +55,16 @@ gitgc:
 
 ############################################################################
 #
+#  NixOnDroid related commands
+#
+############################################################################
+
+droid mode="default":
+  use utils.nu *; \
+  nod-switch mondrian {{mode}}
+
+############################################################################
+#
 #  NixOS Desktop related commands
 #
 ############################################################################
@@ -62,12 +72,12 @@ gitgc:
 [linux]
 i3 mode="default":
   use utils.nu *; \
-  nixos-switch ai-i3 {{mode}}
+  nixos-switch y9000k2021h-i3 {{mode}}
 
 [linux]
 hypr mode="default":
   use utils.nu *; \
-  nixos-switch ai-hyprland {{mode}}
+  nixos-switch y9000k2021h-hyprland {{mode}}
 
 
 [linux]

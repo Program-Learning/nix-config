@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  pkgs-stable,
+  ...
+}: {
   nixpkgs.config = {
     programs.npm.npmrc = ''
       prefix = ''${HOME}/.npm-global
@@ -6,9 +10,12 @@
   };
 
   home.packages = with pkgs; [
+    #-- haskell
+    ghc
     #-- c/c++
     cmake
     cmake-language-server
+    ccache
     gnumake
     checkmake
     # c/c++ compiler, required by nvim-treesitter!
@@ -44,6 +51,32 @@
           setuptools
           paramiko
           rapidfuzz
+
+          # modules used by Mayuri
+          virtualenv
+          pip # use in venv "python -m venv .venv" "source .venv/bin/activate"
+          tkinter # The standard Python interface to the Tcl/Tk GUI toolkit
+
+          pycryptodome
+          ipykernel
+          jupyterlab
+          matplotlib
+          numpy
+          seaborn
+          networkx
+          beautifulsoup4
+          selenium
+          urllib3
+          pyclip
+          pygobject3
+          pybluez
+          pymysql
+          redis
+          jieba
+          # wordcloud
+          pandas-datareader
+          pyperclip
+          fake-useragent
         ]
     ))
 
@@ -71,6 +104,7 @@
 
     # -- java
     jdk17
+    # tomcat9
     gradle
     maven
     spring-boot-cli
