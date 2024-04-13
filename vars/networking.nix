@@ -37,22 +37,22 @@
     y9000k2021h_1_home = {
       # Laptop
       iface = "wlp0s20f3";
-      ipv4 = "192.168.2.120";
+      ipv4 = "192.168.2.150";
     };
     y9000k2021h_1_school = {
       # Laptop
       iface = "wlp0s20f3";
-      ipv4 = "192.168.0.120";
+      ipv4 = "192.168.0.150";
     };
     y9000k2021h_1_zerotier = {
       # Laptop
-      iface = "wlp0s20f3";
-      ipv4 = "10.147.20.120";
+      iface = "zt5u4z6wb4";
+      ipv4 = "10.147.20.150";
     };
     y9000k2021h_1_tailscale = {
       # Laptop
-      iface = "wlp0s20f3";
-      ipv4 = "100.95.7.36";
+      iface = "tailscale0";
+      ipv4 = "100.95.92.150";
     };
     y9000k2021h = y9000k2021h_1_school;
     aquamarine = {

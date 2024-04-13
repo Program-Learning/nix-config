@@ -41,6 +41,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-unstable-yuzu.url = "github:nixos/nixpkgs?rev=6a59b7def496268fc32175183e4041d92586b00b";
+    nixpkgs-unstable-etcher.url = "github:nixos/nixpkgs?rev=15cf1bacec81d3905d40b8005f88bb3ad8dc5a56";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
 
     # for macos
@@ -162,10 +163,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-gaming = {
-      url = "github:fufexan/nix-gaming";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nix-gaming.url = "github:fufexan/nix-gaming";
 
     disko = {
       url = "github:nix-community/disko";
@@ -194,11 +192,14 @@
     };
 
     ######################## dots_hyprland required  #########################################
+
     DataEraserC-dots_hyprland = {
       #url = "github:DataEraserC/dots-hyprland";
       url = "git+file:////home/nixos/Documents/code/dots-hyprland?shallow=1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    ########################  Some non-flake repositories  #########################################
 
     # doom-emacs is a configuration framework for GNU Emacs.
     doomemacs = {

@@ -25,7 +25,7 @@
       zerotier_mondrian_nekobox_proxy = {
         enable = true;
         type = "socks5";
-        host = "10.147.20.120";
+        host = "10.147.20.153";
         port = 7890;
       };
     };

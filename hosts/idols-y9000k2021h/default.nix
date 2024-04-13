@@ -33,15 +33,19 @@ in rec {
     enableIPv6 = true; # disable ipv6
     extraHosts = ''
       155.248.179.129 oracle_ubuntu_1
-      192.168.2.121 mondrian_1_home
-      10.147.20.121 mondrian_1_cli_zerotier
-      10.147.20.107 mondrian_1_app_zerotier
-      100.110.6.16 mondrian_1_cli_tailscale
-      100.72.65.125 mondrian_1_app_tailscale
-      192.168.2.123 pstar_1_home
-      192.168.2.120 y9000k2021h_1_home
-      10.147.20.120 y9000k2021h_1_zerotier
-      100.95.7.36 y9000k2021h_1_tailscale
+      192.168.2.151 mondrian_1_home
+      10.147.20.151 mondrian_1_cli_zerotier
+      10.147.20.115 mondrian_1_app_zerotier
+      100.95.92.151 mondrian_1_cli_tailscale
+      0.0.0.0 mondrian_1_app_tailscale
+      192.168.2.153 pstar_1_home
+      10.147.20.153 pstar_1_cli_zerotier
+      0.0.0.0 pstar_1_app_zerotier
+      100.95.92.153 pstar_1_cli_tailscale
+      0.0.0.0 pstar_1_app_tailscale
+      192.168.2.150 y9000k2021h_1_home
+      10.147.20.150 y9000k2021h_1_zerotier
+      100.95.92.150 y9000k2021h_1_tailscale
     '';
   };
 

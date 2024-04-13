@@ -8,7 +8,7 @@ in {
       settings = {
         # Configure your Display resolution, offset, scale and Monitors here, use `hyprctl monitors` to get the info.
         #   highres:      get the best possible resolution
-        #   auto:         postition automatically
+        #   auto:         position automatically
         #   1.5:          scale to 1.5 times
         #   bitdepth,10:  enable 10 bit support
         monitor = "eDP-1,2560x1600@60,0x0,1";
@@ -42,49 +42,49 @@ in {
         IdentitiesOnly yes
 
       Host mondrian_1_school
-        HostName 192.168.0.121
+        HostName 192.168.0.151
         ForwardAgent yes
         IdentityFile ~/.ssh/y9000k2021h_id_ed25519
         IdentitiesOnly yes
 
       Host mondrian_1_home
-        HostName 192.168.2.121
+        HostName 192.168.2.151
         ForwardAgent yes
         IdentityFile ~/.ssh/y9000k2021h_id_ed25519
         IdentitiesOnly yes
 
       Host pstar_1_school
-        HostName 192.168.0.123
+        HostName 192.168.0.153
         ForwardAgent yes
         IdentityFile ~/.ssh/y9000k2021h_id_ed25519
         IdentitiesOnly yes
 
       Host pstar_1_home
-        HostName 192.168.2.123
+        HostName 192.168.2.153
         ForwardAgent yes
         IdentityFile ~/.ssh/y9000k2021h_id_ed25519
         IdentitiesOnly yes
 
       Host y9000k2021h_1_school
-        HostName 192.168.0.120
+        HostName 192.168.0.150
         ForwardAgent yes
         IdentityFile ~/.ssh/y9000k2021h_id_ed25519
         IdentitiesOnly yes
 
       Host y9000k2021h_1_home
-        HostName 192.168.2.120
+        HostName 192.168.2.150
         ForwardAgent yes
         IdentityFile ~/.ssh/y9000k2021h_id_ed25519
         IdentitiesOnly yes
 
       Host y9000k2021h_1_zerotier
-        HostName 10.147.20.120
+        HostName 10.147.20.150
         ForwardAgent yes
         IdentityFile ~/.ssh/y9000k2021h_id_ed25519
         IdentitiesOnly yes
 
       Host y9000k2021h_1_tailscale
-        HostName 100.95.7.36
+        HostName 100.95.92.150
         ForwardAgent yes
         IdentityFile ~/.ssh/y9000k2021h_id_ed25519
         IdentitiesOnly yes

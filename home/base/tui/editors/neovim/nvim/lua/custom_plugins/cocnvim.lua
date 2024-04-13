@@ -1,2 +1,2 @@
 -- coc.nvim
-return { "debugloop/telescope-undo.nvim" }
+return { "neoclide/coc.nvim" }
