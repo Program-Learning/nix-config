@@ -1,6 +1,7 @@
 {
   pkgs,
   pkgs-unstable,
+  nur-program-learning,
   ...
 }: {
   #############################################################
@@ -25,6 +26,10 @@
 
     # embedded development
     minicom
+    rkdeveloptool
+    rkflashtool
+    dtc
+    screen
 
     # ai related
     python311Packages.huggingface-hub # huggingface-cli
@@ -34,6 +39,8 @@
     bfg-repo-cleaner # remove large files from git history
     k6 # load testing tool
     protobuf # protocol buffer compiler
+
+    pre-commit
 
     # solve coding extercises - learn by doing
     exercism
@@ -46,6 +53,12 @@
     # need to run `conda-shell` before using command `conda`
     # conda is not available for MacOS
     conda
+
+    # manual
+    man-pages
+    man-pages-posix
+
+    nur-program-learning.packages.${pkgs.system}.clang_dev_env_fhs
   ];
 
   programs = {

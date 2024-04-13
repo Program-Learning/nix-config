@@ -6,5 +6,6 @@
     mitmproxy # http/https proxy tool
     insomnia # REST client
     wireshark # network analyzer
+    hoppscotch # Api Test Tool
   ];
 }
