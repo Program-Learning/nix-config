@@ -35,59 +35,6 @@ in {
           # required to prevent sending default identity files first.
           IdentitiesOnly yes
 
-      Host oracle_ubuntu_1
-        HostName 155.248.179.129
-        ForwardAgent yes
-        IdentityFile ~/.ssh/y9000k2021h_id_ed25519
-        IdentitiesOnly yes
-
-      Host mondrian_1_school
-        HostName 192.168.0.151
-        ForwardAgent yes
-        IdentityFile ~/.ssh/y9000k2021h_id_ed25519
-        IdentitiesOnly yes
-
-      Host mondrian_1_home
-        HostName 192.168.2.151
-        ForwardAgent yes
-        IdentityFile ~/.ssh/y9000k2021h_id_ed25519
-        IdentitiesOnly yes
-
-      Host pstar_1_school
-        HostName 192.168.0.153
-        ForwardAgent yes
-        IdentityFile ~/.ssh/y9000k2021h_id_ed25519
-        IdentitiesOnly yes
-
-      Host pstar_1_home
-        HostName 192.168.2.153
-        ForwardAgent yes
-        IdentityFile ~/.ssh/y9000k2021h_id_ed25519
-        IdentitiesOnly yes
-
-      Host y9000k2021h_1_school
-        HostName 192.168.0.150
-        ForwardAgent yes
-        IdentityFile ~/.ssh/y9000k2021h_id_ed25519
-        IdentitiesOnly yes
-
-      Host y9000k2021h_1_home
-        HostName 192.168.2.150
-        ForwardAgent yes
-        IdentityFile ~/.ssh/y9000k2021h_id_ed25519
-        IdentitiesOnly yes
-
-      Host y9000k2021h_1_zerotier
-        HostName 10.147.20.150
-        ForwardAgent yes
-        IdentityFile ~/.ssh/y9000k2021h_id_ed25519
-        IdentitiesOnly yes
-
-      Host y9000k2021h_1_tailscale
-        HostName 100.95.92.150
-        ForwardAgent yes
-        IdentityFile ~/.ssh/y9000k2021h_id_ed25519
-        IdentitiesOnly yes
     '';
   };
 
