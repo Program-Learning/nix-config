@@ -77,7 +77,7 @@
       # inputs.nixpkgs.follows = "nixpkgs-nod";
     };
 
-    catppuccin-urxvt-nod = {
+    catppuccin-urxvt = {
       url = "github:catppuccin/urxvt/ccd8eb763edd0a382b5e9bbfbd9697c4d4129edf";
       flake = false;
     };
