@@ -220,7 +220,7 @@
         "type": "github"
       }
     },
-    "catppuccin-urxvt-nod": {
+    "catppuccin-urxvt": {
       "flake": false,
       "locked": {
         "lastModified": 1665544602,
@@ -3564,7 +3564,7 @@
         "anyrun": "anyrun_2",
         "astronvim-nod": "astronvim-nod",
         "browser-previews": "browser-previews",
-        "catppuccin-urxvt-nod": "catppuccin-urxvt-nod",
+        "catppuccin-urxvt": "catppuccin-urxvt",
         "daeuniverse": "daeuniverse",
         "disko": "disko",
         "doomemacs": "doomemacs",

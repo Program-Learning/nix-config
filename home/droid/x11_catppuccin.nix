@@ -1,5 +1,5 @@
 {
-  catppuccin-urxvt-nod,
+  catppuccin-urxvt,
   pkgs,
   pkgs-unstable,
   ...
@@ -25,7 +25,7 @@ with pkgs; let
     ${x11vnc}/bin/x11vnc -display $1 -passwd test -rfbport 5902 -noshm -forever &  #not sure why noshm still needed
 
     ${xorg.xrdb}/bin/xrdb -merge ~/.Xresources
-    ${xorg.xrdb}/bin/xrdb -merge "${catppuccin-urxvt-nod}/mocha.Xresources"
+    ${xorg.xrdb}/bin/xrdb -merge "${catppuccin-urxvt}/mocha.Xresources"
 
     awesome &
     urxvt -e env TERM=xterm tmux & #TODO probably wrong
