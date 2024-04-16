@@ -217,15 +217,15 @@
     # my private secrets, it's a private repository, you need to replace it with your own.
     # use ssh protocol to authenticate via ssh-agent/ssh-key, and shallow clone to save time
     mysecrets = {
-      # url = "git+ssh://git@github.com/DataEraserC/nix-secrets.git?shallow=1";
-      url = "git+file:////home/nixos/Documents/code/nix-config/secrets?shallow=1";
+      url = "git+ssh://git@github.com/DataEraserC/nix-secrets.git?shallow=1";
+      # url = "git+file:////home/nixos/Documents/code/nix-config/secrets?shallow=1";
       flake = false;
     };
 
     # my wallpapers
     wallpapers = {
-      # url = "github:Program-Learning/wallpapers/dark_wallpapers";
-      url = "git+file:////home/nixos/Documents/code/wallpapers?shallow=1";
+      url = "github:Program-Learning/wallpapers/dark_wallpapers";
+      # url = "git+file:////home/nixos/Documents/code/wallpapers?shallow=1";
       flake = false;
     };
 
