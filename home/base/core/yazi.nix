@@ -12,6 +12,7 @@
     enableBashIntegration = true;
     # TODO: nushellIntegration is broken on release-23.11, wait for master's fix to be released
     enableNushellIntegration = false;
+    enableFishIntegration = true;
   };
 
   xdg.configFile."yazi/theme.toml".source = "${nur-ryan4yin.packages.${pkgs.system}.catppuccin-yazi}/mocha.toml";
