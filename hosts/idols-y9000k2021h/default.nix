@@ -12,7 +12,7 @@
 #############################################################
 let
   hostName = "y9000k2021h"; # Define your hostname.
-  TempMacAddress = "be:fc:85:71:a5:c7";
+  TempMacAddress = "be:fc:85:71:a5:c8";
 in rec {
   imports = [
     # ./netdev-mount.nix
