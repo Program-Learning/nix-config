@@ -2215,12 +2215,12 @@
         "revCount": 93,
         "shallow": true,
         "type": "git",
-        "url": "file:////home/nixos/Documents/code/nix-config/secrets"
+        "url": "ssh://git@github.com/DataEraserC/nix-secrets.git"
       },
       "original": {
         "shallow": true,
         "type": "git",
-        "url": "file:////home/nixos/Documents/code/nix-config/secrets"
+        "url": "ssh://git@github.com/DataEraserC/nix-secrets.git"
       }
     },
     "naersk": {
@@ -4734,9 +4734,10 @@
         "url": "file:////home/nixos/Documents/code/wallpapers"
       },
       "original": {
-        "shallow": true,
-        "type": "git",
-        "url": "file:////home/nixos/Documents/code/wallpapers"
+        "owner": "Program-Learning",
+        "ref": "dark_wallpapers",
+        "repo": "wallpapers",
+        "type": "github"
       }
     },
     "wlroots": {

@@ -26,7 +26,7 @@ with pkgs; let
     urxvt -e env TERM=xterm tmux & #TODO probably wrong
   '';
 in {
-  home.packages = with pkgs-unstable; [
+  home.packages = with pkgs; [
     myx
     awesome
     rxvt-unicode
