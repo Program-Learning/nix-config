@@ -2034,12 +2034,12 @@
         "rev": "6525863fa78a6d7abe33777f68f07c79eae39a08",
         "shallow": true,
         "type": "git",
-        "url": "file:////home/nixos/Documents/code/nix-config/secrets"
+        "url": "ssh://git@github.com/DataEraserC/nix-secrets.git"
       },
       "original": {
         "shallow": true,
         "type": "git",
-        "url": "file:////home/nixos/Documents/code/nix-config/secrets"
+        "url": "ssh://git@github.com/DataEraserC/nix-secrets.git"
       }
     },
     "naersk": {
@@ -4175,16 +4175,16 @@
       "locked": {
         "lastModified": 1712681856,
         "narHash": "sha256-A9rw5T8V0cAgB7AkGSOjaajX+1iLf6SB3A/dsWbprwk=",
-        "ref": "refs/heads/dark_wallpapers",
+        "owner": "Program-Learning",
+        "repo": "wallpapers",
         "rev": "9cf624bb584773a2b2fe1bbd1df7d8a2e1bdce27",
-        "shallow": true,
-        "type": "git",
-        "url": "file:////home/nixos/Documents/code/wallpapers"
+        "type": "github"
       },
       "original": {
-        "shallow": true,
-        "type": "git",
-        "url": "file:////home/nixos/Documents/code/wallpapers"
+        "owner": "Program-Learning",
+        "ref": "dark_wallpapers",
+        "repo": "wallpapers",
+        "type": "github"
       }
     },
     "wlroots": {

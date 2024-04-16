@@ -18,7 +18,10 @@
     ./x11_catppuccin.nix
     ./nix.nix
     # common
-    ../base/tui/editors/neovim
+    ../base/tui/editors
+    ../base/tui/zellij
+    ../base/tui/dev-tools.nix
+    ../base/tui/shell.nix
     ./fhs.nix
   ];
 }

@@ -3,50 +3,8 @@
   pkgs-unstable,
   ...
 }: let
-  my_python = pkgs-unstable.python311.withPackages (ps:
-    with ps; [
-      ipykernel
-      #jupyterlab
-      matplotlib
-      numpy
-      seaborn
-      networkx
-      beautifulsoup4
-      selenium
-      urllib3
-      pyclip
-      pybluez
-      pymysql
-      jieba
-      wordcloud
-      pandas-datareader
-      pip # use in venv "python -m venv .venv" "source .venv/bin/activate"
-
-      ipython
-      pandas
-      requests
-      pyquery
-      pyyaml
-
-      #docx2pdf
-    ]);
 in {
-  home.packages = with pkgs-unstable; [
-    #-- python
-    # my_python
-
-    #-- golang
-    go
-    gomodifytags
-    iferr # generate error handling code for go
-    impl # generate function implementation for go
-    gotools # contains tools like: godoc, goimports, etc.
-    gopls # go language server
-    delve # go debugger
-
-    #-- jdk
-    jdk17 # used to run some java based tools(.jar)
-
+  home.packages = with pkgs; [
     rsync # File Copy/Snyc
     ranger # Terminal FileManager
     proxychains

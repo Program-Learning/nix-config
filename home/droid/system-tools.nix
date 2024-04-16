@@ -4,7 +4,7 @@
   ...
 }: {
   # Linux Only Packages, not available on Darwin
-  home.packages = with pkgs-unstable; [
+  home.packages = with pkgs; [
     nmon
     iotop
     iftop
