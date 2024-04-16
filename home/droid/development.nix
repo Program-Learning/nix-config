@@ -20,6 +20,7 @@ in {
     openssh
     curl
     gnumake
+    just
 
     # Some common stuff that people expect to have
     fzf
