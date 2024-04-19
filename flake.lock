@@ -4726,12 +4726,10 @@
       "locked": {
         "lastModified": 1717403485,
         "narHash": "sha256-CKww0Hryl+5BOqkj1lnwXtvFqkfC19I4LLhl/ltIfgM=",
-        "ref": "refs/heads/dark_wallpapers",
+        "owner": "Program-Learning",
+        "repo": "wallpapers",
         "rev": "dbbbddcd38fd00a0f0cd9e4fd114a211c9058fef",
-        "revCount": 15,
-        "shallow": true,
-        "type": "git",
-        "url": "file:////home/nixos/Documents/code/wallpapers"
+        "type": "github"
       },
       "original": {
         "owner": "Program-Learning",

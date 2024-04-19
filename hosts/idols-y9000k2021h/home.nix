@@ -1,7 +1,4 @@
-let
-  intel_card = "/dev/dri/card0";
-  nvidia_card = "/dev/dri/card1";
-in {
+{
   modules.desktop = {
     hyprland = {
       nvidia = false;
@@ -34,12 +31,6 @@ in {
           # Specifies that ssh should only use the identity file explicitly configured above
           # required to prevent sending default identity files first.
           IdentitiesOnly yes
-
     '';
-  };
-
-  xdg.configFile = {
-    "gpus/intel_card".source = /. + "/dev/dri/by-path/pci-0000:00:02.0-card";
-    "gpus/nvidia_card".source = /. + "/dev/dri/by-path/pci-0000:01:00.0-card";
   };
 }
