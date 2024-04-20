@@ -27,6 +27,8 @@ in rec {
     inherit hostName;
     inherit (myvars.networking) defaultGateway nameservers;
     inherit (myvars.networking.hostsInterface.${hostName}) interfaces;
+
+    # desktop need its cli for status bar
     networkmanager.enable = true;
     networkmanager.wifi.macAddress = TempMacAddress;
     networkmanager.ethernet.macAddress = TempMacAddress;
@@ -56,6 +58,7 @@ in rec {
   services.xserver.videoDrivers = ["nvidia" "modesetting"]; # will install nvidia-vaapi-driver by default
   hardware.nvidia = {
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
+    # https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/os-specific/linux/nvidia-x11/default.nix
     package = config.boot.kernelPackages.nvidiaPackages.latest;
 
     # required by most wayland compositors!

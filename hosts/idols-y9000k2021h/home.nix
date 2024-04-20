@@ -26,7 +26,6 @@
           IdentitiesOnly yes
 
       Host github.com
-          # github is controlled by gluttony~
           IdentityFile ~/.ssh/y9000k2021h_id_ed25519
           # Specifies that ssh should only use the identity file explicitly configured above
           # required to prevent sending default identity files first.
