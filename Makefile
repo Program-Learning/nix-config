@@ -78,8 +78,7 @@ nur_all := nur-program-learning nur-ryan4yin nur-linyinfeng nur-xddxdd nur-Atara
 # http_proxy='http://localhost:7890' https_proxy='http://localhost:7890' make update_nur 
 # '')
 update_nur:
-	$(foreach repo,$(nur_all)\
-		,nix flake lock --update-input $(repo) &&) true
+	nix flake update $(nur_all)
 
 upgrade_switch_system:
 	sudo NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 http_proxy='http://localhost:7890' https_proxy='http://localhost:7890' nixos-rebuild switch --flake /home/nixos/Documents/code/nix-config/#y9000k2021h-hyprland --upgrade --impure --show-trace
