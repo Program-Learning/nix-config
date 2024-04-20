@@ -194,8 +194,8 @@
     ######################## dots_hyprland required  #########################################
 
     DataEraserC-dots_hyprland = {
-      #url = "github:DataEraserC/dots-hyprland";
-      url = "git+file:////home/nixos/Documents/code/dots-hyprland?shallow=1";
+      url = "github:DataEraserC/dots-hyprland";
+      # url = "git+file:////home/nixos/Documents/code/dots-hyprland?shallow=1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
