@@ -13,6 +13,7 @@
     #-- haskell
     ghc
     #-- c/c++
+    xmake
     cmake
     cmake-language-server
     ccache
