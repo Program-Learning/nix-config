@@ -37,7 +37,7 @@
 
           intel-gpu-tools
           # --nvidia cuda
-          cudatoolkit
+          # cudatoolkit
 
           # Bilibili video download
           pkgs-stable.yutto
@@ -212,8 +212,7 @@
         # nur-program-learning.packages.${pkgs.system}.waybar-bluetooth_battery_parse
         # alexnortung.pkgs.papermc-1_18_x
       ]
-    )
-    ;
+    );
 
   services = {
     kdeconnect.enable = true;
