@@ -2222,7 +2222,7 @@
         "narHash": "sha256-X3URKbcgIy4UaQGrsy3DmY5x+fePQ5IYaa76YewoUE0=",
         "owner": "nix-community",
         "repo": "lib-aggregate",
-        "rev": "f347ed9a1cab12c27541ed4d173e2f2d5c9bc0bb",
+        "rev": "3b32a98eb3053f8c8ca55497d1881443ef2996e6",
         "type": "github"
       },
       "original": {
@@ -2257,11 +2257,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1713586525,
-        "narHash": "sha256-BhJKg77DTfQMf+auxz1+KIcg111c97tFaOksoWZNE18=",
+        "lastModified": 1713794028,
+        "narHash": "sha256-oHrWXXPIac9XnOsVABftgQa8pNxcxsKyTouVC4mgVVI=",
         "owner": "Program-Learning",
         "repo": "nur-packages",
-        "rev": "077932e694e439e6799030547fa6aa2f3d2bb652",
+        "rev": "437c51ed31e9cb8a6d84b3c9869b28c98c5071a3",
         "type": "github"
       },
       "original": {
