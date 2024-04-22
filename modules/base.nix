@@ -77,6 +77,7 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIESZxsPpUfvzrLVVu7O1QYnUvSKWG4U6Fcv3kdxiLQTg termux@pstar"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMKycQztUbwaCQnvF6wiQz+WukpAXbkubMMMp4VUtwt/ nix-on-droid@mondrian"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBPciOhklQslFUU2Y+ARt+HvBLLScjQ+c+3S2ZX9NGOK termux@mondrian"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOZ5jg4mJdPLLwQqY5DFJwSAaQtTO6UFoPW5Z18pZroe nix-on-droid@fily_pad_f12"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBO0+WOKwK9EcRj2Bcdt/VpiB9MvZYqk4JKxlcQElskx nixos@y9000k2021h"
     ];
   };
