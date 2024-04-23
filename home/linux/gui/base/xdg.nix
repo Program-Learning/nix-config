@@ -31,7 +31,7 @@
     mimeApps = {
       enable = true;
       associations.added = let
-        browser = ["google-chrome.desktop" "firefox.desktop"];
+        browser = ["google-chrome-unstable.desktop" "google-chrome.desktop" "firefox.desktop"];
         office = ["onlyoffice-desktopeditors.desktop" "writer.desktop"];
         code = ["code.desktop" "nvim.desktop"];
         editor = ["nvim.desktop" "Helix.desktop" "code.desktop" "code-insiders.desktop"];
@@ -45,7 +45,7 @@
       };
       # let `xdg-open` to open the url with the correct application.
       defaultApplications = let
-        browser = ["google-chrome.desktop" "firefox.desktop"];
+        browser = ["google-chrome-unstable.desktop" "google-chrome.desktop" "firefox.desktop"];
         office = ["onlyoffice-desktopeditors.desktop" "writer.desktop"];
         code = ["code.desktop" "nvim.desktop"];
         editor = ["nvim.desktop" "Helix.desktop" "code.desktop" "code-insiders.desktop"];
