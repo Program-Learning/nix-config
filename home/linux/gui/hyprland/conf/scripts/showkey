@@ -4,9 +4,9 @@ if [ "$1" == "status" ];
 then
     if [[ $(pidof wshowkeys) ]];
   then
-    echo "{\"text\":\"📠\", \"tooltip\":\"isStarted\"}"
+    echo "{\"text\":\"📠\", \"tooltip\":\"wshowkeys isStarted\"}"
   else
-    echo "{\"text\":\"⌨️\", \"tooltip\":\"isStopped\"}"
+    echo "{\"text\":\"⌨️\", \"tooltip\":\"wshowkeys isStopped\"}"
   fi
 elif [ "$1" == "toggle" ];
 then
