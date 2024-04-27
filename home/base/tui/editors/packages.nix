@@ -83,6 +83,9 @@
         ]
     ))
 
+    #-- flutter
+    flutter
+
     #-- rust
     rust-analyzer
     cargo # rust package manager
