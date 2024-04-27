@@ -84,7 +84,7 @@
     ))
 
     #-- flutter
-    flutter
+    # flutter
 
     #-- rust
     rust-analyzer
