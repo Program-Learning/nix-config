@@ -42,7 +42,7 @@
     # archives
     zip
     xz
-    unzip
+    unzipNLS
     p7zip
 
     # networking tools

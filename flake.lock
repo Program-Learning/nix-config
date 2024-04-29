@@ -2222,7 +2222,7 @@
         "narHash": "sha256-X3URKbcgIy4UaQGrsy3DmY5x+fePQ5IYaa76YewoUE0=",
         "owner": "nix-community",
         "repo": "lib-aggregate",
-        "rev": "3b32a98eb3053f8c8ca55497d1881443ef2996e6",
+        "rev": "49d9b510614b9bd137e067eb31445a8feca83313",
         "type": "github"
       },
       "original": {
@@ -2257,11 +2257,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1713794028,
-        "narHash": "sha256-oHrWXXPIac9XnOsVABftgQa8pNxcxsKyTouVC4mgVVI=",
+        "lastModified": 1714397875,
+        "narHash": "sha256-tX0dqbmzw/aSWg66c4Ysk4+oLMYRfvEpe4hV3LrqrwM=",
         "owner": "Program-Learning",
         "repo": "nur-packages",
-        "rev": "437c51ed31e9cb8a6d84b3c9869b28c98c5071a3",
+        "rev": "656d713090e5e25c695060314a509d6180c2e25a",
         "type": "github"
       },
       "original": {
@@ -4647,11 +4647,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1711963903,
-        "narHash": "sha256-N3QDhoaX+paWXHbEXZapqd1r95mdshxToGowtjtYkGI=",
+        "lastModified": 1714058656,
+        "narHash": "sha256-Qv4RBm4LKuO4fNOfx9wl40W2rBbv5u5m+whxRYUMiaA=",
         "owner": "numtide",
         "repo": "treefmt-nix",
-        "rev": "49dc4a92b02b8e68798abd99184f228243b6e3ac",
+        "rev": "c6aaf729f34a36c445618580a9f95a48f5e4e03f",
         "type": "github"
       },
       "original": {

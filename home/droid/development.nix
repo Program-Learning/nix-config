@@ -37,7 +37,7 @@ in {
     gzip
     xz
     zip
-    unzip
+    unzipNLS
     ncurses # command clear
     which
     htop
