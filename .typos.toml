@@ -7,6 +7,7 @@ extend-exclude = ["themes/", "data/", "static-surprises/", "resources/"]
 binary = false
 # ignore some special identifiers(sha256, mac address, crypto keys, etc)
 extend-ignore-re = [
+  "osu-lazer-bin",
   "iterm2",
   "iHgEIBYKACAWIQSizQe9ljFEyyclWmtVhZllwnQrSwUCZZ1T9wIdAAAKCRBVhZll", # crypto keys
   "noice", # noice.nvim

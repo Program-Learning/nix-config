@@ -1,16 +1,23 @@
 # Changelog
 
+## Until 20240501
+
+### home config
+
+- `atuin` is fixed. see https://github.com/atuinsh/atuin/issues/1934
+
 ## Until 20240410
 
 - Updated to commit:
   [97d675f41172e88f1339513eaff0b84f996e6230](https://github.com/NixOS/nixpkgs/tree/97d675f41172e88f1339513eaff0b84f996e6230)
 
-## pkgs
+### pkgs
 
-- `rnix-lsp` is [deprecated](https://github.com/NixOS/nixpkgs/commits/master/pkgs/development/tools/language-servers/rnix-lsp/default.nix)
+- `rnix-lsp` is
+  [deprecated](https://github.com/NixOS/nixpkgs/commits/master/pkgs/development/tools/language-servers/rnix-lsp/default.nix)
 - `nvtop` updated to `nvtopPackages.full`
 
-## home config
+### home config
 
 - Changed:
   - `programs.eza.enableAliases` to `programs.eza.enableIonIntegration` +
@@ -18,7 +25,7 @@
     `programs.eza.enableBashIntegration` + `programs.eza.enableNushellIntegration`
   - `atuin` is broken. see https://github.com/atuinsh/atuin/issues/1934
 
-## config
+### config
 
 - Changed:
   - `programs.gnupg.agent.pinentryFlavor = "curses";` to
