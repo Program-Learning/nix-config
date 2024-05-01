@@ -33,8 +33,8 @@
       associations.added = let
         browser = ["google-chrome-unstable.desktop" "google-chrome.desktop" "firefox.desktop"];
         office = ["onlyoffice-desktopeditors.desktop" "writer.desktop"];
-        code = ["code.desktop" "nvim.desktop"];
-        editor = ["nvim.desktop" "Helix.desktop" "code.desktop" "code-insiders.desktop"];
+        code = ["code-insiders.desktop" "code.desktop" "nvim.desktop"];
+        editor = ["code-insiders.desktop" "code.desktop" "nvim.desktop" "Helix.desktop"];
         file-manager = ["org.gnome.Nautilus.desktop"];
       in {
         "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = office;
@@ -47,8 +47,8 @@
       defaultApplications = let
         browser = ["google-chrome-unstable.desktop" "google-chrome.desktop" "firefox.desktop"];
         office = ["onlyoffice-desktopeditors.desktop" "writer.desktop"];
-        code = ["code.desktop" "nvim.desktop"];
-        editor = ["nvim.desktop" "Helix.desktop" "code.desktop" "code-insiders.desktop"];
+        code = ["code-insiders.desktop" "code.desktop" "nvim.desktop"];
+        editor = ["code-insiders.desktop" "code.desktop" "nvim.desktop" "Helix.desktop"];
         file-manager = ["org.gnome.Nautilus.desktop"];
       in {
         "application/json" = browser;
