@@ -155,7 +155,7 @@
           jadx
           meld
           darling-dmg
-          darling
+          # darling
           # dash
           unrar-wrapper
           # python2Full

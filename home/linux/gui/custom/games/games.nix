@@ -4,7 +4,7 @@
   pkgs-unstable,
   nix-gaming,
   nur-xddxdd,
-  pkgs-unstable-yuzu ,
+  pkgs-unstable-yuzu,
   ...
 }: let
   # Mihoyo Game Launcher
@@ -17,7 +17,7 @@ in {
     ryujinx # Switch games
 
     steamPackages.steamcmd # steam command line
-    
+
     hmcl # MineCraft Launcher
     minecraft # Official MineCraft Launcher
     # prismlauncher
@@ -33,6 +33,7 @@ in {
 
     # An anime game server
     nur-xddxdd.packages.${pkgs.system}.grasscutter
-    nix-gaming.packages.${pkgs.system}.osu-stable
+    # nix-gaming.packages.${pkgs.system}.osu-stable
+    nix-gaming.packages.${pkgs.system}.osu-lazer-bin
   ];
 }
