@@ -121,6 +121,11 @@
       inputs.hyprland.follows = "hyprland";
     };
 
+    hyprland-easymotion = {
+      url = "github:DreamMaoMao/hyprland-easymotion";
+      inputs.hyprland.follows = "hyprland";
+    };
+
     firefox-nightly = {
       url = "github:nix-community/flake-firefox-nightly";
       inputs.nixpkgs.follows = "nixpkgs";
