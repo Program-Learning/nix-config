@@ -1798,6 +1798,26 @@
         "type": "github"
       }
     },
+    "hyprland-easymotion": {
+      "inputs": {
+        "hyprland": [
+          "hyprland"
+        ]
+      },
+      "locked": {
+        "lastModified": 1713749866,
+        "narHash": "sha256-aUOy8YC2Cs2xWrl2yJJ6Z8d0m1T8Z7Z7bzCPjv5+XRg=",
+        "owner": "DreamMaoMao",
+        "repo": "hyprland-easymotion",
+        "rev": "f0f5c4cd9e2931124c094a279b86997ab07a407f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "DreamMaoMao",
+        "repo": "hyprland-easymotion",
+        "type": "github"
+      }
+    },
     "hyprland-plugins": {
       "inputs": {
         "hyprland": "hyprland_2",
@@ -4171,6 +4191,7 @@
         "home-manager": "home-manager_4",
         "home-manager-nod": "home-manager-nod",
         "hyprland": "hyprland_3",
+        "hyprland-easymotion": "hyprland-easymotion",
         "hyprland-plugins": "hyprland-plugins_2",
         "impermanence": "impermanence",
         "lanzaboote": "lanzaboote",

@@ -3,6 +3,7 @@
   lib,
   hyprland,
   hyprland-plugins,
+  hyprland-easymotion,
   nur-ryan4yin,
   ...
 }: let
@@ -32,6 +33,7 @@ in {
     extraConfig = builtins.readFile ../conf/hyprland.conf;
     plugins = [
       # hyprland-plugins.packages.${pkgs.system}.hyprbars
+      # hyprland-easymotion.packages.${pkgs.system}.hypreasymotion
       # ...
     ];
     # gammastep/wallpaper-switcher need this to be enabled.

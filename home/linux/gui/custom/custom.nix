@@ -8,6 +8,8 @@
   nur-linyinfeng,
   nur-xddxdd,
   nur-AtaraxiaSjel,
+  hyprland-plugins,
+  hyprland,
   ...
 }: {
   nix.settings.substituters = ["https://mirror.sjtu.edu.cn/nix-channels/store" "https://mirrors.ustc.edu.cn/nix-channels/store"];
@@ -124,7 +126,7 @@
           # wayland-protocols
           # glfw-wayland
           # libsForQt5.qt5.qtwayland
-          xdg-desktop-portal-hyprland
+          hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland
           libsForQt5.qt5ct
           linuxKernel.packages.linux_6_1.v4l2loopback
           libsForQt5.polkit-kde-agent
