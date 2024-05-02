@@ -25,6 +25,7 @@ return {
     -- vim options can be configured here
     options = {
       opt = { -- vim.opt.<key>
+        fileencodings = { "iso-2022-jp", "cp932", "euc-jp", "latin", "cp936", "gb18030", "big5", "ucs-bom", "utf-8", "default" },
         relativenumber = true, -- Show relative numberline
         signcolumn = "auto", -- Show sign column when used only
         spell = false, -- Spell checking
@@ -101,7 +102,6 @@ return {
         -- search and replace globally
         ["<Leader>sw"] = { '<esc><cmd>lua require("spectre").open_visual()<CR>', desc = "Search current word" },
       },
-
     },
   },
 }
