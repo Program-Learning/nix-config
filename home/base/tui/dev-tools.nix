@@ -59,7 +59,6 @@
     man-pages-posix
 
     nur-program-learning.packages.${pkgs.system}.clang_dev_env_fhs
-    nur-program-learning.packages.${pkgs.system}.cudatoolkit_dev_env_fhs
   ];
 
   programs = {
