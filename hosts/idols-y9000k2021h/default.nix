@@ -3,6 +3,7 @@
   pkgs,
   lib,
   myvars,
+  nur-program-learning,
   ...
 } @ args:
 #############################################################
@@ -90,7 +91,10 @@ in rec {
     # needed by nvidia-docker
     driSupport32Bit = true;
   };
-  environment.systemPackages = with pkgs; [lenovo-legion];
+  environment.systemPackages = with pkgs; [
+    lenovo-legion
+    nur-program-learning.packages.${pkgs.system}.cudatoolkit_dev_env_fhs
+  ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
