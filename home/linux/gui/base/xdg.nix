@@ -38,6 +38,7 @@
         file-manager = ["org.gnome.Nautilus.desktop"];
       in {
         "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = office;
+        "application/wps-office.docx" = office;
         "application/x-php" = code;
         "text/plain" = editor;
         "text/x-makefile" = editor;
@@ -93,6 +94,7 @@
         "image/png" = ["imv-dir.desktop"];
         "image/webp" = ["imv-dir.desktop"];
         "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = office;
+        "application/wps-office.docx" = office;
 
         "inode/directory" = file-manager;
       };
