@@ -35,7 +35,7 @@
       # This is required for containers which are created with the `--restart=always` flag to work.
       enableOnBoot = true;
     };
-    
+
     # Do not use "--restart=always" to create container, or shutdown/reboot will be slow
     # https://github.com/containers/podman/issues/15284
     podman = {
@@ -77,8 +77,11 @@
       enable = true;
       ui.enable = true;
     };
-    virtualbox.host.enable = true;
-    virtualbox.host.enableExtensionPack = true;
+    virtualbox = {
+      host.enable = true;
+      host.enableExtensionPack = true;
+      guest.enable = true;
+    };
   };
 
   environment.systemPackages = with pkgs; [
