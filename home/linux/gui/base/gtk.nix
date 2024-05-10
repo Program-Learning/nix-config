@@ -13,6 +13,8 @@
     x11.enable = true;
     package = pkgs.bibata-cursors;
     name = "Bibata-Modern-Ice";
+    # package = nur-program-learning.packages.${pkgs.system}.xcursor-genshin-nahida;
+    # name = "xcursor-genshin-nahida";
     size = 24;
   };
 
