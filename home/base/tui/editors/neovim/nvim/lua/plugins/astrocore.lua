@@ -25,7 +25,18 @@ return {
     -- vim options can be configured here
     options = {
       opt = { -- vim.opt.<key>
-        fileencodings = { "iso-2022-jp", "cp932", "euc-jp", "latin", "cp936", "gb18030", "big5", "ucs-bom", "utf-8", "default" },
+        fileencodings = {
+          "utf-8",
+          "iso-2022-jp",
+          "cp932",
+          "euc-jp",
+          "latin",
+          "cp936",
+          "gb18030",
+          "big5",
+          "ucs-bom",
+          "default",
+        },
         relativenumber = true, -- Show relative numberline
         signcolumn = "auto", -- Show sign column when used only
         spell = false, -- Spell checking
