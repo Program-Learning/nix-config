@@ -11,7 +11,7 @@ for _prs in "${_ps[@]}"; do
 done
 
 # Custom hook(remove this)
-exec ~/.config/hypr/scripts/tp_link_script http://192.168.0.1 w9BVlghc9TefbwK "$(cat /sys/class/net/wlp0s20f3/address)" "Galaxy-Z-Fold4" 0 &
+exec ~/.config/hypr/scripts/tp_link_script http://192.168.0.1 w9BVlghc9TefbwK "$(cat /sys/class/net/wlp0s20f3/address)" "y700" 0 &
 
 # Start wayvnc
 exec wayvnc &
