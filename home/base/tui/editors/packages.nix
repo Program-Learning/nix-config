@@ -28,6 +28,7 @@
 
     #-- python
     nodePackages.pyright # python language server
+    poetry
     (python311.withPackages (
       ps:
         with ps; [
