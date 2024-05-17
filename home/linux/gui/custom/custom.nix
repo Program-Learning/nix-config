@@ -63,7 +63,8 @@
 
           # --agent
           # pkgs-unstable.clash-verge-rev
-          pkgs-unstable.clash-nyanpasu
+          # pkgs-unstable.clash-nyanpasu
+          nekoray
           sing-box
 
           # --Office
