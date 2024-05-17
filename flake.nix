@@ -238,6 +238,11 @@
       url = "github:Program-Learning/nixified-ai-flake";
       inputs.nixpkgs.follows = "nixified-ai-nixpkgs";
     };
+
+    LaphaeLaicmd-linux = {
+      url = "github:DataEraserC/LaphaeLaicmd-linux";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixified-ai-nixpkgs.url = "github:nixos/nixpkgs/c757e9bd77b16ca2e03c89bf8bc9ecb28e0c06ad";
 
     # NUR package source
