@@ -11,4 +11,5 @@ extend-ignore-re = [
   "iterm2",
   "iHgEIBYKACAWIQSizQe9ljFEyyclWmtVhZllwnQrSwUCZZ1T9wIdAAAKCRBVhZll", # crypto keys
   "noice", # noice.nvim
+  "AAAAC3NzaC1lZDI1NTE5AAAAIOZ5jg4mJdPLLwQqY5DFJwSAaQtTO6UFoPW5Z18pZroe" # ssh public key
 ]
