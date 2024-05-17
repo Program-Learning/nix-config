@@ -16,7 +16,7 @@
     # temporarily fix for https://github.com/NixOS/nixpkgs/commit/7e3940735af718435c7f34cbc1f0f9c0105e8159
     # pkgs-unstable.qq # https://github.com/NixOS/nixpkgs/tree/master/pkgs/applications/networking/instant-messengers/qq
     llqqnt.packages.${pkgs.system}.llqqnt
-    wechat-uos
+    # wechat-uos
     feishu
 
     # remote desktop(rdp connect)
