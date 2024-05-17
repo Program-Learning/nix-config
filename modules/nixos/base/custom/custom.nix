@@ -26,7 +26,7 @@
         enable = true;
         type = "socks5";
         host = "10.147.20.151";
-        port = 7890;
+        port = 2080;
       };
     };
   };
