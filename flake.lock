@@ -2073,11 +2073,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1714559281,
-        "narHash": "sha256-9diB9u4USCcknwHlCm1ZqY0zHfqiDl8TttwL7gUQRbw=",
+        "lastModified": 1715917111,
+        "narHash": "sha256-GTo/9sYfHumdKi4avHC6InHSmi/ATuEsa6EhsaI+TR4=",
         "owner": "Program-Learning",
         "repo": "nur-packages",
-        "rev": "671b70687375c52c1c74c505fde1c7377ea5ace8",
+        "rev": "5009ae84c0cdd83234774bbb4bfe1441032feb80",
         "type": "github"
       },
       "original": {
@@ -3424,11 +3424,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1714559281,
-        "narHash": "sha256-9diB9u4USCcknwHlCm1ZqY0zHfqiDl8TttwL7gUQRbw=",
+        "lastModified": 1715917111,
+        "narHash": "sha256-GTo/9sYfHumdKi4avHC6InHSmi/ATuEsa6EhsaI+TR4=",
         "owner": "Program-Learning",
         "repo": "nur-packages",
-        "rev": "671b70687375c52c1c74c505fde1c7377ea5ace8",
+        "rev": "5009ae84c0cdd83234774bbb4bfe1441032feb80",
         "type": "github"
       },
       "original": {
