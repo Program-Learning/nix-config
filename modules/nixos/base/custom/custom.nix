@@ -22,6 +22,12 @@
         host = "127.0.0.1";
         port = 7890;
       };
+      localhost_nekobox_proxy = {
+        enable = true;
+        type = "socks5";
+        host = "127.0.0.1";
+        port = 2080;
+      };
       zerotier_mondrian_nekobox_proxy = {
         enable = true;
         type = "socks5";
@@ -123,6 +129,18 @@
   };
   # recording tool
   features.wf-recorder.enable = true;
+  # clash tun mode fix
+  programs.clash-nyanpasu = {
+    enable = true;
+    package = pkgs.clash-nyanpasu;
+    tunMode = true;
+  };
+  # useless
+  programs.nekoray = {
+    enable = false;
+    package = pkgs.nekoray;
+    tunMode = true;
+  };
   # firmware update tool
   services.fwupd.enable = true;
 }
