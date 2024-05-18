@@ -64,6 +64,7 @@
           # --agent
           # pkgs-unstable.clash-verge-rev
           # pkgs-unstable.clash-nyanpasu
+          # nekoray_patched
           nekoray
           sing-box
 

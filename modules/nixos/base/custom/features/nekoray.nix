@@ -23,11 +23,18 @@
         }))
       ];
 
-      security.wrappers."${cfg.package.pname}" = lib.mkIf cfg.tunMode {
+      security.wrappers.nekoray_core = lib.mkIf cfg.tunMode {
         owner = "root";
         group = "root";
         capabilities = "cap_net_bind_service,cap_net_admin=+ep";
-        source = "${lib.getExe cfg.package}";
+        source = "${cfg.package}/share/nekoray/nekoray_core";
+      };
+
+      security.wrappers.nekobox_core = lib.mkIf cfg.tunMode {
+        owner = "root";
+        group = "root";
+        capabilities = "cap_net_bind_service,cap_net_admin=+ep";
+        source = "${cfg.package}/share/nekoray/nekobox_core";
       };
     };
 
