@@ -42,11 +42,11 @@
         "poetry2nix": "poetry2nix"
       },
       "locked": {
-        "lastModified": 1715863765,
-        "narHash": "sha256-swd6UvqoWYKMCQ/zwAuI3QouNDn2Q2RAl+Pi7a+WWrc=",
+        "lastModified": 1716132825,
+        "narHash": "sha256-HaIr1jmdmctWWN/Bllui/wRDvg9nmRNbH0HmFMfzFUk=",
         "owner": "DataEraserC",
         "repo": "LaphaeLaicmd-linux",
-        "rev": "9c71aacb6f008ae66a2bde83f47f4c2675686452",
+        "rev": "25bc5f4370c552ada1db3b90e72b006d2c78c523",
         "type": "github"
       },
       "original": {
@@ -3604,15 +3604,15 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1715251496,
-        "narHash": "sha256-vRBfJCKvJtu5sYev56XStirA3lAOPv0EkoEV2Nfc+tc=",
-        "owner": "nix-community",
+        "lastModified": 1716132412,
+        "narHash": "sha256-0pbOe0ZZsF4w7EOBLplZeUn5LrojEwu1GXKYFMtZM6M=",
+        "owner": "DataEraserC",
         "repo": "poetry2nix",
-        "rev": "291a863e866972f356967d0a270b259f46bf987f",
+        "rev": "b37c4288b63e8a184b9c30b6a7b1ad6a3958cf59",
         "type": "github"
       },
       "original": {
-        "owner": "nix-community",
+        "owner": "DataEraserC",
         "repo": "poetry2nix",
         "type": "github"
       }
