@@ -4163,7 +4163,7 @@
         "type": "github"
       },
       "original": {
-        "owner": "nix-community",
+        "owner": "DataEraserC",
         "repo": "poetry2nix",
         "type": "github"
       }
