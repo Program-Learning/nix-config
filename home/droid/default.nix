@@ -18,6 +18,7 @@
     ./x11_catppuccin.nix
     ./nix.nix
     # common
+    ../base/tui/custom
     ../base/tui/editors
     ../base/tui/zellij
     ../base/tui/dev-tools.nix
