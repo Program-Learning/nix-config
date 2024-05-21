@@ -26,27 +26,19 @@
   boot.kernelModules = [
     # kvm
     "kvm-intel"
-    # Virtual Camera
-    "v4l2loopback"
-    # Virtual Microphone, built-in
-    "snd-aloop"
     #"acpi_call"
   ];
   boot.extraModprobeConfig =
     # for intel cpu
-    "options kvm_intel nested=1"
-    + ''
-      # exclusive_caps: Skype, Zoom, Teams etc. will only show device when actually streaming
-      # card_label: Name of virtual camera, how it'll show up in Skype, Zoom, Teams
-      # https://github.com/umlaeute/v4l2loopback
-      options v4l2loopback exclusive_caps=1 video_nr=9 card_label="Virtual Camera"
+    ''
+      options kvm_intel nested=1
+      options kvm_intel emulate_invalid_guest_state=0
+      options kvm ignore_msrs=1
     '';
   boot.kernelParams = ["nvidia.NVreg_PreserveVideoMemoryAllocations=1"];
   boot.extraModulePackages = [
     config.boot.kernelPackages.lenovo-legion-module
-    config.boot.kernelPackages.v4l2loopback.out
     # config.boot.kernelPackages.acpi_call.out
-    # config.boot.kernelPackages.v4l2loopback
   ];
   # clear /tmp on boot to get a stateless /tmp directory.
   boot.tmp.cleanOnBoot = true;
