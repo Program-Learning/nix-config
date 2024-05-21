@@ -93,6 +93,8 @@
     commitizen # Tool to create committing rules for projects, auto bump versions, and generate changelogs
     #-- nix
     nil
+    nurl
+
     # rnix-lsp
     # nixd
     statix # Lints and suggestions for the nix programming language
