@@ -1,6 +1,7 @@
 {
   pkgs,
   pkgs-unstable,
+  nur-program-learning,
   ...
 }: {
   ###################################################################################
@@ -82,7 +83,12 @@
       host.enableExtensionPack = true;
     };
     vmware = {
-      host.enable = true;
+      host = {
+        package = nur-program-learning.packages.${pkgs.system}.vmware-workstation.override {
+          enableMacOSGuests = false;
+        };
+        enable = true;
+      };
     };
   };
 
