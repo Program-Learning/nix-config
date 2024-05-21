@@ -51,16 +51,23 @@ in {
   config = mkIf cfg.enable {
     # Extra kernel modules
     boot.extraModulePackages = [
+      # config.boot.kernelPackages.v4l2loopback.out
       config.boot.kernelPackages.v4l2loopback
     ];
 
     # Register a v4l2loopback device at boot
     boot.kernelModules = [
+      # Virtual Camera
       "v4l2loopback"
+      # Virtual Microphone, built-in
+      "snd-aloop"
     ];
 
     boot.extraModprobeConfig = ''
-      options v4l2loopback exclusive_caps=1 video_nr=9
+      # exclusive_caps: Skype, Zoom, Teams etc. will only show device when actually streaming
+      # card_label: Name of virtual camera, how it'll show up in Skype, Zoom, Teams
+      # https://github.com/umlaeute/v4l2loopback
+      options v4l2loopback exclusive_caps=1 video_nr=9 card_label="Virtual Camera"
     '';
 
     environment.systemPackages = [
