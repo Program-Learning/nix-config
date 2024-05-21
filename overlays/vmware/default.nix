@@ -5,6 +5,7 @@ self: (self: super: {
     urlBase = "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${vself.version}/${vself.build}/linux/";
     file = "VMware-Workstation-${vself.version}-${vself.build}.x86_64.bundle";
     lib = super.lib;
+    enableMacOSGuests = false;
   in {
     src = "${self.fetchzip {
       url = urlBase + "core/${file}.tar";
@@ -38,8 +39,26 @@ self: (self: super: {
         ) (builtins.attrNames hashes);
       in
         lib.concatMapStringsSep " " (src: "--install-component ${src}") srcs;
+
+      fusionVersion = "13.5.1";
+      fusionBuild = "23298085";
+
+      # macOS - ISOs
+      darwinIsoSrc = super.fetchurl {
+        url = "https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/${fusionVersion}/${fusionBuild}/universal/core/com.vmware.fusion.zip.tar";
+        sha256 = "sha256-bn6hoicby2YVj1pZTBzBhabNhKefzVQTm5vIrdTO2K4=";
+      };
     in ''
       ${vmware-unpack-env}/bin/vmware-unpack-env -c "sh ${vself.src} ${vmware-tools} --extract unpacked"
+
+      ${lib.optionalString enableMacOSGuests ''
+        mkdir -p fusion/
+        tar -xvpf "${darwinIsoSrc}" -C fusion/
+        unzip "fusion/com.vmware.fusion.zip" \
+          "payload/VMware Fusion.app/Contents/Library/isoimages/x86_x64/darwin.iso" \
+          "payload/VMware Fusion.app/Contents/Library/isoimages/x86_x64/darwinPre15.iso" \
+          -d fusion/
+      ''}
     '';
   });
 })
