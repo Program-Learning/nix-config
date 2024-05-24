@@ -10,9 +10,7 @@
     "backlight",
     "hyprland/workspaces",
   ],
-  "modules-center": [
-    "custom/playerctl"
-  ],
+  "modules-center": ["custom/playerctl"],
   "modules-right": [
     "mpd",
     "bluetooth",
@@ -27,6 +25,7 @@
     "tray",
   ],
   "hyprland/workspaces": {
+    "disable-scroll": false,
     "format": "{icon}",
     "on-click": "activate",
     "format-icons": {
@@ -107,15 +106,12 @@
       "default": "▶",
       "mpv": "🎵",
       "spotify": "",
-      "firefox": ""
+      "firefox": "",
     },
     "status-icons": {
-      "paused": ""
+      "paused": "",
     },
-    "ignored-players": [
-      "vlc",
-      "firefox"
-    ]
+    "ignored-players": ["vlc", "firefox"],
   },
   "custom/powermenu": {
     "format": "\uf011",
@@ -202,11 +198,7 @@
       "phone": "",
       "portable": "",
       "car": "",
-      "default": [
-        "",
-        "",
-        ""
-      ],
+      "default": ["", "", ""],
     },
     "scroll-step": 5.0,
     // Commands to execute on events
@@ -220,17 +212,7 @@
   },
   "backlight": {
     "format": "{icon} {percent}%",
-    "format-icons": [
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      ""
-    ],
+    "format-icons": ["", "", "", "", "", "", "", "", ""],
   },
   "tray": {
     "icon-size": 15,
@@ -252,12 +234,6 @@
     "format-plugged": " {capacity}%",
     "format-alt": "{icon} {time}",
     "format-full": " {capacity}%",
-    "format-icons": [
-      " ",
-      " ",
-      " ",
-      " ",
-      " "
-    ],
+    "format-icons": [" ", " ", " ", " ", " "],
   },
 }
