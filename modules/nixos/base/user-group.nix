@@ -1,6 +1,7 @@
 {
   myvars,
   config,
+  lib,
   ...
 }: {
   # Don't allow mutation of users outside the config.
@@ -44,7 +45,7 @@
 
   # root's ssh key are mainly used for remote deployment
   users.users.root = {
-    initialHashedPassword = config.users.users."${myvars.username}".initialHashedPassword;
-    openssh.authorizedKeys.keys = config.users.users."${myvars.username}".openssh.authorizedKeys.keys;
+    initialHashedPassword = lib.mkDefault config.users.users."${myvars.username}".initialHashedPassword;
+    openssh.authorizedKeys.keys = lib.mkDefault config.users.users."${myvars.username}".openssh.authorizedKeys.keys;
   };
 }
