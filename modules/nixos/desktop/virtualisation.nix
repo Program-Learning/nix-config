@@ -134,5 +134,6 @@
     #   qemu-system-xtensa qemu-xtensa qemu-system-xtensaeb qemu-xtensaeb
     #   ......
     qemu
+    nixos-shell
   ];
 }
