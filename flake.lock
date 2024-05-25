@@ -4265,7 +4265,7 @@
         "type": "github"
       },
       "original": {
-        "owner": "DataEraserC",
+        "owner": "nix-community",
         "repo": "poetry2nix",
         "type": "github"
       }
@@ -5366,11 +5366,11 @@
     "wallpapers": {
       "flake": false,
       "locked": {
-        "lastModified": 1716204045,
-        "narHash": "sha256-jV7/PXYgFhlmuKzG/+R8aHP2HqehE60ByXl+J6y4JOw=",
+        "lastModified": 1716662377,
+        "narHash": "sha256-QjRmclf+s4UkZKUr/XG3mJyQkhIGMhCuEohxhuH/EwQ=",
         "owner": "Program-Learning",
         "repo": "wallpapers",
-        "rev": "4ffac96ecb2bd5189194011a76892d16e7582b26",
+        "rev": "08fea580d94e80dd6974072f2b61343474e80a1c",
         "type": "github"
       },
       "original": {
