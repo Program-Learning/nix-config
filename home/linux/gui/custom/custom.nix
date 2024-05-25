@@ -199,11 +199,7 @@
       # with pkgs.nur.repos;
       [
         # YisuiMilena.hmcl-bin
-        nur-linyinfeng.packages.${pkgs.system}.wemeet
-        # nur-linyinfeng.packages.${pkgs.system}.icalingua-plus-plus
         nur-linyinfeng.packages.${pkgs.system}.matrix-wechat
-        nur-xddxdd.packages.${pkgs.system}.wechat-uos
-        nur-xddxdd.packages.${pkgs.system}.dingtalk
         nur-xddxdd.packages.${pkgs.system}.baidunetdisk
         nur-xddxdd.packages.${pkgs.system}.baidupcs-go
         nur-xddxdd.packages.${pkgs.system}.bilibili

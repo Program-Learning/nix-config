@@ -90,7 +90,6 @@
     cargo # rust package manager
     rustfmt
 
-    commitizen # Tool to create committing rules for projects, auto bump versions, and generate changelogs
     #-- nix
     nil
     nurl

@@ -6,12 +6,12 @@
   ...
 }:
 with lib; let
-  cfg = config.services.cloudflare-warp;
+  cfg = config.features.cloudflare-warp;
 in {
   meta.maintainers = with maintainers; [wolfangaukang];
 
   options = {
-    services.cloudflare-warp = {
+    features.cloudflare-warp = {
       enable = mkEnableOption (lib.mdDoc "cloudflare-warp, a service that replaces the connection between your device and the Internet with a modern, optimized, protocol");
 
       package = mkOption {

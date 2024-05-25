@@ -41,6 +41,7 @@
     protobuf # protocol buffer compiler
 
     pre-commit
+    commitizen # Tool to create committing rules for projects, auto bump versions, and generate changelogs
 
     # solve coding extercises - learn by doing
     exercism

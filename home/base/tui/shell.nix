@@ -36,8 +36,4 @@ in {
       # use ${nu_scripts}/share/nu_scripts/aliases/bat/bat-aliases.nu *
     '';
   };
-
-  programs.fish = {
-    enable = true;
-  };
 }

@@ -5,11 +5,6 @@
   lib,
   ...
 }: {
-  imports = [
-    ./features/sunshine.nix
-    ./features/wf-recorder.nix
-    ./features/cloudflare-warp.nix
-  ];
   programs.wshowkeys.enable = true;
 
   programs.proxychains = {
@@ -49,7 +44,7 @@
   #   MOZ_ENABLE_WAYLAND = "1";
   #   QT_SCALE_FACTOR = "1";
   # };
-  services.cloudflare-warp = {
+  features.cloudflare-warp = {
     enable = true;
     certificate = "${mysecrets}/public/Cloudflare_CA.pem"; # download here https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/install-cloudflare-cert/
   };
@@ -130,13 +125,13 @@
   # recording tool
   features.wf-recorder.enable = true;
   # clash tun mode fix
-  programs.clash-nyanpasu = {
+  features.clash-nyanpasu = {
     enable = true;
     package = pkgs.clash-nyanpasu;
     tunMode = true;
   };
   # useless
-  programs.nekoray = {
+  features.nekoray = {
     enable = false;
     package = pkgs.nekoray;
     tunMode = true;
