@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: {
-  options.programs.nekoray = {
+  options.features.nekoray = {
     enable = lib.mkEnableOption (lib.mdDoc "nekoray");
     package = lib.mkPackageOption pkgs "nekoray" {};
     autoStart = lib.mkEnableOption (lib.mdDoc "nekoray auto launch");
@@ -12,7 +12,7 @@
   };
 
   config = let
-    cfg = config.programs.nekoray;
+    cfg = config.features.nekoray;
   in
     lib.mkIf cfg.enable {
       environment.systemPackages = [

@@ -6,7 +6,7 @@
 }: let
   clash_version = "clash-nyanpasu";
 in {
-  options.programs."${clash_version}" = {
+  options.features."${clash_version}" = {
     enable = lib.mkEnableOption (lib.mdDoc "Clash");
     package = lib.mkPackageOption pkgs "${clash_version}" {};
     autoStart = lib.mkEnableOption (lib.mdDoc "Clash auto launch");
@@ -14,7 +14,7 @@ in {
   };
 
   config = let
-    cfg = config.programs."${clash_version}";
+    cfg = config.features."${clash_version}";
   in
     lib.mkIf cfg.enable {
       environment.systemPackages = [

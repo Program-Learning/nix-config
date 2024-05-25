@@ -6,7 +6,7 @@
     "custom/recording",
     "custom/showkey",
     "custom/cloudflare_warp",
-    "temperature",
+    // "temperature",
     "backlight",
     "hyprland/workspaces",
   ],

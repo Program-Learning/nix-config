@@ -25,4 +25,8 @@ in {
       export TLDR_AUTO_UPDATE_DISABLED=1
     '';
   };
+
+  programs.fish = {
+    enable = true;
+  };
 }
