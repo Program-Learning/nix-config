@@ -12,7 +12,6 @@
   hyprland,
   ...
 }: {
-  nix.settings.substituters = ["https://mirror.sjtu.edu.cn/nix-channels/store" "https://mirrors.ustc.edu.cn/nix-channels/store"];
   home.packages =
     (with pkgs;
       # nixpkgs here
