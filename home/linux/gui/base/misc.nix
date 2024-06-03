@@ -28,7 +28,7 @@
 
     nur-xddxdd.packages.${pkgs.system}.dingtalk
 
-    feishu
+    pkgs-unstable.feishu
 
     # remote desktop(rdp connect)
     remmina

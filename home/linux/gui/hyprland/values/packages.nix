@@ -9,7 +9,7 @@
     wev # debug which key is pressed
     waybar # the status bar
     swaybg # the wallpaper
-    linux-wallpaperengine # A video wallpaper program
+    pkgs-unstable.linux-wallpaperengine # A video wallpaper program
     mpvpaper # A video wallpaper program for wlroots based wayland compositors.
     swayidle # the idle timeout
     # hypridle # the idle timeout

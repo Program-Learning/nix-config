@@ -1,7 +1,7 @@
 {
   pkgs,
   pkgs-unstable,
-  # pkgs-stable,
+  pkgs-stable,
   nur-ryan4yin,
   nur-program-learning,
   ...
