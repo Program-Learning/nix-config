@@ -72,12 +72,12 @@ droid mode="default":
 [linux]
 i3 mode="default":
   use utils.nu *; \
-  nixos-switch y9000k2021h-i3 {{mode}}
+  nixos-switch ai-i3 {{mode}}
 
 [linux]
 hypr mode="default":
   use utils.nu *; \
-  nixos-switch y9000k2021h-hyprland {{mode}}
+  nixos-switch ai-hyprland {{mode}}
 
 
 [linux]
