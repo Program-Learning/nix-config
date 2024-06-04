@@ -1,5 +1,6 @@
 {
   pkgs,
+  pkgs-stable,
   pkgs-unstable,
   nur-program-learning,
   ...
@@ -84,10 +85,10 @@
     };
     vmware = {
       host = {
-        package = nur-program-learning.packages.${pkgs.system}.vmware-workstation.override {
-          enableMacOSGuests = true;
-        };
-        enable = false;
+        # package = nur-program-learning.packages.${pkgs.system}.vmware-workstation.override {
+        #   enableMacOSGuests = true;
+        # };
+        enable = true;
       };
     };
   };
@@ -99,7 +100,7 @@
 
     # Need to add [File (in the menu bar) -> Add connection] when start for the first time
     virt-manager
-    pkgs-unstable.virt-manager-qt
+    # virt-manager-qt
     virt-viewer
 
     spice

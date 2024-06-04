@@ -23,10 +23,25 @@
 
   boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod"];
   boot.initrd.kernelModules = [];
-  boot.kernelModules = ["kvm-intel"]; # kvm virtualization support
-  boot.extraModprobeConfig = "options kvm_intel nested=1"; # for intel cpu
+  boot.kernelModules = [
+    # kvm
+    "kvm-intel"
+    #"acpi_call"
+  ];
+  boot.extraModprobeConfig =
+    # for intel cpu
+    ''
+      options intel_iommu=on
+      options iommu=pt
+      options kvm_intel nested=1
+      options kvm_intel emulate_invalid_guest_state=0
+      options kvm ignore_msrs=1
+    '';
   boot.kernelParams = ["nvidia.NVreg_PreserveVideoMemoryAllocations=1"];
-  boot.extraModulePackages = [];
+  boot.extraModulePackages = [
+    config.boot.kernelPackages.lenovo-legion-module
+    # config.boot.kernelPackages.acpi_call.out
+  ];
   # clear /tmp on boot to get a stateless /tmp directory.
   boot.tmp.cleanOnBoot = true;
 

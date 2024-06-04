@@ -99,13 +99,16 @@
     };
   };
 
-  nixpkgs.config.permittedInsecurePackages = ["openssl-1.1.1v" "electron-19.0.7"];
+  nixpkgs.config.permittedInsecurePackages = ["openssl-1.1.1v" "electron-19.0.7" "electron-19.1.9"];
 
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    builtins.elem (lib.getName pkg) [
+      "wechat_dev_tools"
+      "qq"
+    ];
   documentation.dev.enable = true;
 
   environment.extraOutputsToInstall = ["dev"];
-
-  nixpkgs.config.allowUnfreePredicate = ["wechat_dev_tools"];
 
   services.cloudflared = {
     enable = false;

@@ -29,11 +29,11 @@
     # ============================================
     # Other VMs and Physical Machines
     # ============================================
-    ai = {
-      # Desktop PC
-      iface = "enp5s0";
-      ipv4 = "192.168.5.100";
-    };
+    # ai = {
+    #   # Desktop PC
+    #   iface = "enp5s0";
+    #   ipv4 = "192.168.5.100";
+    # };
     y9000k2021h_1_home = {
       # Laptop
       iface = "wlp0s20f3";
@@ -55,6 +55,7 @@
       ipv4 = "100.95.92.150";
     };
     y9000k2021h = y9000k2021h_1_school;
+    ai = y9000k2021h;
     aquamarine = {
       # VM
       iface = "enp2s0";

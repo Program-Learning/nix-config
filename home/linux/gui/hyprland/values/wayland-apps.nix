@@ -40,14 +40,14 @@
     # source code: https://github.com/nix-community/home-manager/blob/master/modules/programs/chromium.nix
     google-chrome = {
       enable = true;
-      package =  browser-previews.packages.${pkgs.system}.google-chrome-dev;
+      package = browser-previews.packages.${pkgs.system}.google-chrome-dev;
 
       # https://wiki.archlinux.org/title/Chromium#Native_Wayland_support
       commandLineArgs = [
         "--ozone-platform-hint=auto"
-        #"--ozone-platform=wayland"
+        "--ozone-platform=wayland"
+        # "--ozone-platform=x11"
         # temporary use x11 for gpu acceleration
-        "--ozone-platform=x11"
         # make it use GTK_IM_MODULE if it runs with Gtk4, so fcitx5 can work with it.
         # (only supported by chromium/chrome at this time, not electron)
         "--gtk-version=4"
@@ -97,7 +97,7 @@
           # `env -u WAYLAND_DISPLAY code`
           src = builtins.fetchTarball {
             url = "https://update.code.visualstudio.com/latest/linux-x64/insider";
-            sha256 = "1diwmkw4yy1pdawqgrjymlpqpjxcgy1h5crf1nm2m4c9dwvswrsa";
+            sha256 = "05s0fyb9d9k5rhj02bd33whphrbgyrqg49cyjgka3zyhjmwa93gd";
           };
           version = "latest";
         });

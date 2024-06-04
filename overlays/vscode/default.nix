@@ -27,7 +27,7 @@ _: (_: super: {
       # `env -u WAYLAND_DISPLAY code`
       src = builtins.fetchTarball {
         url = "https://update.code.visualstudio.com/latest/linux-x64/insider";
-        sha256 = "1diwmkw4yy1pdawqgrjymlpqpjxcgy1h5crf1nm2m4c9dwvswrsa";
+        sha256 = "05s0fyb9d9k5rhj02bd33whphrbgyrqg49cyjgka3zyhjmwa93gd";
       };
       version = "latest";
     });
