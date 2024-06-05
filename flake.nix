@@ -121,6 +121,11 @@
       inputs.hyprland.follows = "hyprland";
     };
 
+    hyprfocus = {
+      url = "github:VortexCoyote/hyprfocus";
+      inputs.hyprland.follows = "hyprland";
+    };
+
     hyprland-easymotion = {
       url = "github:DreamMaoMao/hyprland-easymotion";
       inputs.hyprland.follows = "hyprland";

@@ -4,6 +4,7 @@
   hyprland,
   hyprland-plugins,
   hyprland-easymotion,
+  hyprfocus,
   nur-ryan4yin,
   ...
 }: let
@@ -34,6 +35,7 @@ in {
     plugins = [
       # hyprland-plugins.packages.${pkgs.system}.hyprbars
       # hyprland-easymotion.packages.${pkgs.system}.hypreasymotion
+      # hyprfocus.packages.${pkgs.system}.hyprfocus
       # ...
     ];
     # gammastep/wallpaper-switcher need this to be enabled.

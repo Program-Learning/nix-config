@@ -1849,6 +1849,27 @@
         "type": "github"
       }
     },
+    "hyprfocus": {
+      "inputs": {
+        "hyprland": [
+          "hyprland"
+        ],
+        "nix-filter": "nix-filter"
+      },
+      "locked": {
+        "lastModified": 1710409234,
+        "narHash": "sha256-eECQvz7iKXKYAqpQF+xucjJcXDi47QKpiFz8L5rU+o4=",
+        "owner": "VortexCoyote",
+        "repo": "hyprfocus",
+        "rev": "fa6775c0481f0d3628487cc26f7c7456fa082fb7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "VortexCoyote",
+        "repo": "hyprfocus",
+        "type": "github"
+      }
+    },
     "hyprland": {
       "inputs": {
         "hyprcursor": "hyprcursor",
@@ -2454,6 +2475,21 @@
       "original": {
         "owner": "nix-community",
         "repo": "nix-eval-jobs",
+        "type": "github"
+      }
+    },
+    "nix-filter": {
+      "locked": {
+        "lastModified": 1694857738,
+        "narHash": "sha256-bxxNyLHjhu0N8T3REINXQ2ZkJco0ABFPn6PIe2QUfqo=",
+        "owner": "numtide",
+        "repo": "nix-filter",
+        "rev": "41fd48e00c22b4ced525af521ead8792402de0ea",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "nix-filter",
         "type": "github"
       }
     },
@@ -3744,11 +3780,11 @@
         "nixpkgs": "nixpkgs_17"
       },
       "locked": {
-        "lastModified": 1716254884,
-        "narHash": "sha256-hD81HKsakexq9d1au5bUr7zdt+hl2WphQfJzzZl1Z1I=",
+        "lastModified": 1717568000,
+        "narHash": "sha256-3VJ+LluCDykchp5J7saJkJLaQG9qxirxNaJIPWWDQTQ=",
         "owner": "ryan4yin",
         "repo": "nur-packages",
-        "rev": "91884156a05dca68fb2b30883af819c39a6ac910",
+        "rev": "b60cb5c4d0d11d0827ce24e0d5088654f1f95253",
         "type": "github"
       },
       "original": {
@@ -3787,11 +3823,11 @@
         "treefmt-nix": "treefmt-nix_8"
       },
       "locked": {
-        "lastModified": 1717481294,
-        "narHash": "sha256-yGg+n/t/hQdqaOF8Cv/ZNGHPeb3xNe71e3UiGsPBLNQ=",
+        "lastModified": 1717569039,
+        "narHash": "sha256-wQwbfiQmGM8JocfeMikdzlXmvYdAvB7GhTyTw8HszLA=",
         "owner": "xddxdd",
         "repo": "nur-packages",
-        "rev": "6fac48f624d117798b6a079ce39be378a4404b9b",
+        "rev": "15aca0503475997cc6d40ce2ea01618e1cbd7c79",
         "type": "github"
       },
       "original": {
@@ -4149,6 +4185,7 @@
         "haumea": "haumea",
         "home-manager": "home-manager_4",
         "home-manager-nod": "home-manager-nod",
+        "hyprfocus": "hyprfocus",
         "hyprland": "hyprland_3",
         "hyprland-easymotion": "hyprland-easymotion",
         "hyprland-plugins": "hyprland-plugins_2",
