@@ -33,6 +33,27 @@
         "type": "github"
       }
     },
+    "Hyprspace": {
+      "inputs": {
+        "hyprland": [
+          "hyprland"
+        ]
+      },
+      "locked": {
+        "lastModified": 1713989021,
+        "narHash": "sha256-oIpcibtKHP8e7yhYilK9+TaiOTApS4TqXQbdKqJpyWQ=",
+        "owner": "KZDKM",
+        "repo": "Hyprspace",
+        "rev": "a44d834af279f233a269d065d2e14fe4101d6f41",
+        "type": "github"
+      },
+      "original": {
+        "owner": "KZDKM",
+        "repo": "Hyprspace",
+        "rev": "a44d834af279f233a269d065d2e14fe4101d6f41",
+        "type": "github"
+      }
+    },
     "LaphaeLaicmd-linux": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -1788,6 +1809,27 @@
         "type": "github"
       }
     },
+    "hycov": {
+      "inputs": {
+        "hyprland": [
+          "hyprland"
+        ]
+      },
+      "locked": {
+        "lastModified": 1713326226,
+        "narHash": "sha256-dsrkrf+6aFavDg9QuhFO9j0IewDtLRebDfYc9rRmTEQ=",
+        "owner": "DreamMaoMao",
+        "repo": "hycov",
+        "rev": "05fb15703d07a372b14a3260a337de13d1c16b91",
+        "type": "github"
+      },
+      "original": {
+        "owner": "DreamMaoMao",
+        "repo": "hycov",
+        "rev": "05fb15703d07a372b14a3260a337de13d1c16b91",
+        "type": "github"
+      }
+    },
     "hyprcursor": {
       "inputs": {
         "hyprlang": [
@@ -1857,16 +1899,17 @@
         "nix-filter": "nix-filter"
       },
       "locked": {
-        "lastModified": 1710409234,
-        "narHash": "sha256-eECQvz7iKXKYAqpQF+xucjJcXDi47QKpiFz8L5rU+o4=",
-        "owner": "VortexCoyote",
+        "lastModified": 1712965558,
+        "narHash": "sha256-gB2nYDzb3Zh14XqaLSZqgSoYUR3p7o/r6UHJcsydY44=",
+        "owner": "pyt0xic",
         "repo": "hyprfocus",
-        "rev": "fa6775c0481f0d3628487cc26f7c7456fa082fb7",
+        "rev": "e44b956dd4b7507489219bd2b02a3886d547b7e2",
         "type": "github"
       },
       "original": {
-        "owner": "VortexCoyote",
+        "owner": "pyt0xic",
         "repo": "hyprfocus",
+        "rev": "e44b956dd4b7507489219bd2b02a3886d547b7e2",
         "type": "github"
       }
     },
@@ -1901,16 +1944,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1716094113,
-        "narHash": "sha256-/q0JyCBYO8r+ZlZbsYNwfekWTXSVKj+ayZzK+gINuRk=",
+        "lastModified": 1713747411,
+        "narHash": "sha256-xO2nM11YV0RTmfR31GSdy3yscatz+1jHLILCBiDBqo4=",
         "owner": "DreamMaoMao",
         "repo": "hyprland-easymotion",
-        "rev": "69e5a2cda15b9f5cb050038bd829b75b21db06e2",
+        "rev": "a1a4969ddf68dc78be024a0fdf4ce1f8f6b9d74d",
         "type": "github"
       },
       "original": {
         "owner": "DreamMaoMao",
         "repo": "hyprland-easymotion",
+        "rev": "a1a4969ddf68dc78be024a0fdf4ce1f8f6b9d74d",
         "type": "github"
       }
     },
@@ -1950,16 +1994,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1717171694,
-        "narHash": "sha256-LN2lrcGdAMpkooleWSOV+/q1+wx1f3pSBs1TWeoMCkA=",
+        "lastModified": 1712836056,
+        "narHash": "sha256-qf6yev9OlJuQv557ApLQ/5V8pQj0YOO9tyh5j3It1mY=",
         "owner": "hyprwm",
         "repo": "hyprland-plugins",
-        "rev": "e0cad229c3d799c7f72b1217ab2eb300ceecf3ac",
+        "rev": "e9457e08ca3ff16dc5a815be62baf9e18b539197",
         "type": "github"
       },
       "original": {
         "owner": "hyprwm",
         "repo": "hyprland-plugins",
+        "rev": "e9457e08ca3ff16dc5a815be62baf9e18b539197",
         "type": "github"
       }
     },
@@ -4168,6 +4213,7 @@
     "root": {
       "inputs": {
         "DataEraserC-dots_hyprland": "DataEraserC-dots_hyprland",
+        "Hyprspace": "Hyprspace",
         "LaphaeLaicmd-linux": "LaphaeLaicmd-linux",
         "aagl": "aagl",
         "agenix": "agenix",
@@ -4185,6 +4231,7 @@
         "haumea": "haumea",
         "home-manager": "home-manager_4",
         "home-manager-nod": "home-manager-nod",
+        "hycov": "hycov",
         "hyprfocus": "hyprfocus",
         "hyprland": "hyprland_3",
         "hyprland-easymotion": "hyprland-easymotion",

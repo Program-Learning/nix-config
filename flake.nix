@@ -117,17 +117,29 @@
     };
 
     hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
+      url = "github:hyprwm/hyprland-plugins/e9457e08ca3ff16dc5a815be62baf9e18b539197";
+      inputs.hyprland.follows = "hyprland";
+    };
+
+    Hyprspace = {
+      url = "github:KZDKM/Hyprspace/a44d834af279f233a269d065d2e14fe4101d6f41";
+
+      # Hyprspace uses latest Hyprland. We declare this to keep them in sync.
+      inputs.hyprland.follows = "hyprland";
+    };
+
+    hycov = {
+      url = "github:DreamMaoMao/hycov/05fb15703d07a372b14a3260a337de13d1c16b91";
       inputs.hyprland.follows = "hyprland";
     };
 
     hyprfocus = {
-      url = "github:VortexCoyote/hyprfocus";
+      url = "github:pyt0xic/hyprfocus/e44b956dd4b7507489219bd2b02a3886d547b7e2";
       inputs.hyprland.follows = "hyprland";
     };
 
     hyprland-easymotion = {
-      url = "github:DreamMaoMao/hyprland-easymotion";
+      url = "github:DreamMaoMao/hyprland-easymotion/a1a4969ddf68dc78be024a0fdf4ce1f8f6b9d74d";
       inputs.hyprland.follows = "hyprland";
     };
 
