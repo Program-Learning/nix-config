@@ -27,6 +27,7 @@
     # kvm
     "kvm-intel"
     #"acpi_call"
+    "usb_storage"
   ];
   boot.extraModprobeConfig =
     # for intel cpu
@@ -66,7 +67,7 @@
       device = "/dev/disk/by-uuid/979348b2-fcc5-4db0-85df-69819a218470";
       # the keyfile(or device partition) that should be used as the decryption key for the encrypted device.
       # if not specified, you will be prompted for a passphrase instead.
-      #keyFile = "/root-part.key";
+      keyFile = "/root-part.key";
 
       # whether to allow TRIM requests to the underlying device.
       # it's less secure, but faster.
@@ -75,6 +76,7 @@
       # Enabling this should improve performance on SSDs;
       # https://wiki.archlinux.org/index.php/Dm-crypt/Specialties#Disable_workqueue_for_increased_solid_state_drive_(SSD)_performance
       bypassWorkqueues = true;
+      fallbackToPassword = true;
     };
   };
 
