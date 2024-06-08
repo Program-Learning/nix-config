@@ -60,6 +60,13 @@
   ];
 
   boot.initrd = {
+    systemd.mounts = [
+      {
+        what = "UUID=5AA6-4155";
+        where = "/key";
+        type = "vfat";
+      }
+    ];
     # unlocked luks devices via a keyfile or prompt a passphrase.
     luks.devices."encrypted-nixos" = {
       # NOTE: DO NOT use device name here(like /dev/sda, /dev/nvme0n1p2, etc), use UUID instead.
@@ -67,7 +74,7 @@
       device = "/dev/disk/by-uuid/979348b2-fcc5-4db0-85df-69819a218470";
       # the keyfile(or device partition) that should be used as the decryption key for the encrypted device.
       # if not specified, you will be prompted for a passphrase instead.
-      # keyFile = "/boot/luks/root-part.key";
+      keyFile = "/key/luks/root-part.key";
 
       # whether to allow TRIM requests to the underlying device.
       # it's less secure, but faster.
