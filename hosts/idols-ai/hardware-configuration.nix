@@ -22,7 +22,7 @@
   boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
 
   boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod"];
-  boot.initrd.kernelModules = [];
+  boot.initrd.kernelModules = ["uas" "usbcore" "usb_storage" "vfat" "nls_cp437" "nls_iso8859_1"];
   boot.kernelModules = [
     # kvm
     "kvm-intel"
@@ -60,13 +60,15 @@
   ];
 
   boot.initrd = {
-    systemd.mounts = [
-      {
-        what = "UUID=5AA6-4155";
-        where = "/key";
-        type = "vfat";
-      }
-    ];
+    postDeviceCommands = let
+      PRIMARYUSBID = "12CE-A600";
+      BACKUPUSBID = "12CE-A600";
+    in
+      pkgs.lib.mkBefore ''
+        mkdir -m 0755 -p /key
+        sleep 2 # To make sure the usb key has been loaded
+        mount -n -t vfat -o ro `findfs UUID=${PRIMARYUSBID}` /key || mount -n -t vfat -o ro `findfs UUID=${BACKUPUSBID}` /key
+      '';
     # unlocked luks devices via a keyfile or prompt a passphrase.
     luks.devices."encrypted-nixos" = {
       # NOTE: DO NOT use device name here(like /dev/sda, /dev/nvme0n1p2, etc), use UUID instead.
@@ -75,6 +77,7 @@
       # the keyfile(or device partition) that should be used as the decryption key for the encrypted device.
       # if not specified, you will be prompted for a passphrase instead.
       keyFile = "/key/luks/root-part.key";
+      preLVM = false; # If this is true the decryption is attempted before the postDeviceCommands can run
 
       # whether to allow TRIM requests to the underlying device.
       # it's less secure, but faster.
