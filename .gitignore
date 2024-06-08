@@ -8,4 +8,4 @@ secrets/
 !secrets/README.md
 !secrets/darwin.nix
 !secrets/nixos.nix
-
+*.key
