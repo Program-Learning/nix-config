@@ -77,9 +77,7 @@
       # https://wiki.archlinux.org/index.php/Dm-crypt/Specialties#Disable_workqueue_for_increased_solid_state_drive_(SSD)_performance
       bypassWorkqueues = true;
       fallbackToPassword = true;
-    };
-    secrets = {
-      # "/boot/luks/root-part.key"= null;
+      tryEmptyPassphrase = true;
     };
   };
 
