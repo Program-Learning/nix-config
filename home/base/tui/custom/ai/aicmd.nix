@@ -1,10 +1,10 @@
 {
   pkgs,
   pkgs-unstable,
-  LaphaeLaicmd-linux,
+  LaphaeL-aicmd,
   ...
 }: {
   home.packages = [
-    LaphaeLaicmd-linux.packages.${pkgs.system}.laphaelaicmd_linux
+    LaphaeL-aicmd.packages.${pkgs.system}.laphael_aicmd
   ];
 }

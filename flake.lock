@@ -54,7 +54,7 @@
         "type": "github"
       }
     },
-    "LaphaeLaicmd-linux": {
+    "LaphaeL-aicmd": {
       "inputs": {
         "flake-utils": "flake-utils",
         "nixpkgs": [
@@ -63,20 +63,20 @@
         "poetry2nix": "poetry2nix"
       },
       "locked": {
-        "lastModified": 1717617403,
-        "narHash": "sha256-5rqJ2JiTo1pZLm/cHobtNPtCol+ssuMxwx4D4CrkyrM=",
+        "lastModified": 1717835998,
+        "narHash": "sha256-TIIHbSmDiimWhwlqRZnqlMjkMxstrqbLjTsEsJQdaxo=",
         "owner": "DataEraserC",
-        "repo": "LaphaeLaicmd-linux",
-        "rev": "108baacc9d344d410888a1ad6199b714b7c3b98c",
+        "repo": "LaphaeL-aicmd",
+        "rev": "d767381911376d1436c69d7297b125dd984bfb32",
         "type": "github"
       },
       "original": {
         "owner": "DataEraserC",
-        "repo": "LaphaeLaicmd-linux",
+        "repo": "LaphaeL-aicmd",
         "type": "github"
       }
     },
-    "LaphaeLaicmd-linux_2": {
+    "LaphaeL-aicmd_2": {
       "inputs": {
         "flake-utils": "flake-utils_12",
         "nixpkgs": [
@@ -86,20 +86,20 @@
         "poetry2nix": "poetry2nix_2"
       },
       "locked": {
-        "lastModified": 1716888077,
-        "narHash": "sha256-1IHarOLvgqDoKo7WKEnOK+PUBzBeDeBb9MqkNkqegq4=",
+        "lastModified": 1717835998,
+        "narHash": "sha256-TIIHbSmDiimWhwlqRZnqlMjkMxstrqbLjTsEsJQdaxo=",
         "owner": "DataEraserC",
-        "repo": "LaphaeLaicmd-linux",
-        "rev": "e082503f0e5bbb4f33f67068579e5a97bcfafd54",
+        "repo": "LaphaeL-aicmd",
+        "rev": "d767381911376d1436c69d7297b125dd984bfb32",
         "type": "github"
       },
       "original": {
         "owner": "DataEraserC",
-        "repo": "LaphaeLaicmd-linux",
+        "repo": "LaphaeL-aicmd",
         "type": "github"
       }
     },
-    "LaphaeLaicmd-linux_3": {
+    "LaphaeL-aicmd_3": {
       "inputs": {
         "flake-utils": "flake-utils_19",
         "nixpkgs": [
@@ -109,20 +109,20 @@
         "poetry2nix": "poetry2nix_3"
       },
       "locked": {
-        "lastModified": 1716888077,
-        "narHash": "sha256-1IHarOLvgqDoKo7WKEnOK+PUBzBeDeBb9MqkNkqegq4=",
+        "lastModified": 1717835998,
+        "narHash": "sha256-TIIHbSmDiimWhwlqRZnqlMjkMxstrqbLjTsEsJQdaxo=",
         "owner": "DataEraserC",
-        "repo": "LaphaeLaicmd-linux",
-        "rev": "e082503f0e5bbb4f33f67068579e5a97bcfafd54",
+        "repo": "LaphaeL-aicmd",
+        "rev": "d767381911376d1436c69d7297b125dd984bfb32",
         "type": "github"
       },
       "original": {
         "owner": "DataEraserC",
-        "repo": "LaphaeLaicmd-linux",
+        "repo": "LaphaeL-aicmd",
         "type": "github"
       }
     },
-    "LaphaeLaicmd-linux_4": {
+    "LaphaeLaicmd-linux": {
       "inputs": {
         "flake-utils": "flake-utils_21",
         "nixpkgs": [
@@ -678,11 +678,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1717676900,
-        "narHash": "sha256-UPm1CzqjKDRUC3LcYv5XRHxGo1TeLnQCAnidvXgEqTk=",
+        "lastModified": 1717808650,
+        "narHash": "sha256-qhluG2P75zUIv8QfTmYbNOJxdO7pNS11Lb9PiFbW6I0=",
         "owner": "nix-community",
         "repo": "flake-firefox-nightly",
-        "rev": "9b907004e87e7a195cdb8ac0123333dfc69f26cc",
+        "rev": "c69ddded425b98d2618d99242c59af2b9395a97c",
         "type": "github"
       },
       "original": {
@@ -2334,17 +2334,17 @@
     },
     "llqqnt": {
       "inputs": {
-        "LaphaeLaicmd-linux": "LaphaeLaicmd-linux_2",
+        "LaphaeL-aicmd": "LaphaeL-aicmd_2",
         "nixpkgs": [
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1717355948,
-        "narHash": "sha256-Omvro2ezTlicipWXvfG9npUq36Y08UIg2BkHp5E4IW8=",
+        "lastModified": 1717836011,
+        "narHash": "sha256-8tX3UiewRN47h18GXUTOYe2aChtjLRSllpEoMyEJf1M=",
         "owner": "Program-Learning",
         "repo": "nur-packages",
-        "rev": "2d6cf759a7206a5888f5ff8f37fe1ef8c1e8b0ff",
+        "rev": "00d8310c083b13864cbf296cef72461831f9d40e",
         "type": "github"
       },
       "original": {
@@ -2428,10 +2428,10 @@
     "mysecrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1717531880,
-        "narHash": "sha256-LaV+mVxXsFM6y7QNapzx0ok8gG8VM9UMcg3qEYQwtdI=",
+        "lastModified": 1717833370,
+        "narHash": "sha256-cTycwWGlljtD6UoKS+YpEWfjaXCcC1EWvE6y5pv4cZA=",
         "ref": "refs/heads/main",
-        "rev": "41cf5d499129e71a29c7b1047d5f2db25c20cfaa",
+        "rev": "8effe86602fa398a357197345eed6cde756096be",
         "shallow": true,
         "type": "git",
         "url": "ssh://git@github.com/DataEraserC/nix-secrets.git"
@@ -2606,7 +2606,7 @@
     "nix-github-actions": {
       "inputs": {
         "nixpkgs": [
-          "LaphaeLaicmd-linux",
+          "LaphaeL-aicmd",
           "poetry2nix",
           "nixpkgs"
         ]
@@ -2651,7 +2651,7 @@
       "inputs": {
         "nixpkgs": [
           "llqqnt",
-          "LaphaeLaicmd-linux",
+          "LaphaeL-aicmd",
           "poetry2nix",
           "nixpkgs"
         ]
@@ -2696,7 +2696,7 @@
       "inputs": {
         "nixpkgs": [
           "nur-program-learning",
-          "LaphaeLaicmd-linux",
+          "LaphaeL-aicmd",
           "poetry2nix",
           "nixpkgs"
         ]
@@ -2746,11 +2746,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1717297675,
-        "narHash": "sha256-43UmlS1Ifx17y93/Vc258U7bOlAAIZbu8dsGDHOIIr0=",
+        "lastModified": 1717744769,
+        "narHash": "sha256-1usk5faO+KRn/03xKW3G3ex9/wHeLfwKTa7x8QNcygc=",
         "owner": "nix-community",
         "repo": "nix-index-database",
-        "rev": "972a52bee3991ae1f1899e6452e0d7c01ee566d9",
+        "rev": "4ac3639cebb6286f1a68d015b80e9e0c6c869ce6",
         "type": "github"
       },
       "original": {
@@ -3738,11 +3738,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1717661448,
-        "narHash": "sha256-cWbkddkor8glRJwrdb2WF4tsxAx3YMnvVRXAJ9x0p6A=",
+        "lastModified": 1717834193,
+        "narHash": "sha256-6fz+TM14K4ZKDo071vNerMyO5OWOG0ezqJQHFwU+Qk8=",
         "owner": "AtaraxiaSjel",
         "repo": "nur",
-        "rev": "16236993ca9a105b6e3f62e122520223cd3dd52a",
+        "rev": "b6c68a84b3e61a27ba8eaca9b4a5c738abddf99b",
         "type": "github"
       },
       "original": {
@@ -3765,11 +3765,11 @@
         "treefmt-nix": "treefmt-nix_5"
       },
       "locked": {
-        "lastModified": 1717636373,
-        "narHash": "sha256-cXOPFR4XNXliCOFLTRr7R1Ss0pNTX1LulGOO8nzENuE=",
+        "lastModified": 1717763866,
+        "narHash": "sha256-P0nMud1CwXRMxSde+DySofO0QSdB4oyTbP7iLYxLj68=",
         "owner": "linyinfeng",
         "repo": "nur-packages",
-        "rev": "1637a3d6f56c4e4303534e283cff80bd6321a1ed",
+        "rev": "dd12fdf210bb864930adf80ce3b0fd340bc5a2d5",
         "type": "github"
       },
       "original": {
@@ -3780,17 +3780,17 @@
     },
     "nur-program-learning": {
       "inputs": {
-        "LaphaeLaicmd-linux": "LaphaeLaicmd-linux_3",
+        "LaphaeL-aicmd": "LaphaeL-aicmd_3",
         "nixpkgs": [
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1717355948,
-        "narHash": "sha256-Omvro2ezTlicipWXvfG9npUq36Y08UIg2BkHp5E4IW8=",
+        "lastModified": 1717836011,
+        "narHash": "sha256-8tX3UiewRN47h18GXUTOYe2aChtjLRSllpEoMyEJf1M=",
         "owner": "Program-Learning",
         "repo": "nur-packages",
-        "rev": "2d6cf759a7206a5888f5ff8f37fe1ef8c1e8b0ff",
+        "rev": "00d8310c083b13864cbf296cef72461831f9d40e",
         "type": "github"
       },
       "original": {
@@ -3801,7 +3801,7 @@
     },
     "nur-program-learning-nod": {
       "inputs": {
-        "LaphaeLaicmd-linux": "LaphaeLaicmd-linux_4",
+        "LaphaeLaicmd-linux": "LaphaeLaicmd-linux",
         "nixpkgs": [
           "nixpkgs-nod"
         ]
@@ -3868,11 +3868,11 @@
         "treefmt-nix": "treefmt-nix_8"
       },
       "locked": {
-        "lastModified": 1717569039,
-        "narHash": "sha256-wQwbfiQmGM8JocfeMikdzlXmvYdAvB7GhTyTw8HszLA=",
+        "lastModified": 1717827778,
+        "narHash": "sha256-asej5x+SpB3r6Tr7XHNibwi6zd6kFK5na87Ts5rdWSc=",
         "owner": "xddxdd",
         "repo": "nur-packages",
-        "rev": "15aca0503475997cc6d40ce2ea01618e1cbd7c79",
+        "rev": "5f048cf72bd4c872fab621d2f2318a462f61ae90",
         "type": "github"
       },
       "original": {
@@ -3960,7 +3960,7 @@
         "flake-utils": "flake-utils_2",
         "nix-github-actions": "nix-github-actions",
         "nixpkgs": [
-          "LaphaeLaicmd-linux",
+          "LaphaeL-aicmd",
           "nixpkgs"
         ],
         "systems": "systems_5",
@@ -3986,7 +3986,7 @@
         "nix-github-actions": "nix-github-actions_3",
         "nixpkgs": [
           "llqqnt",
-          "LaphaeLaicmd-linux",
+          "LaphaeL-aicmd",
           "nixpkgs"
         ],
         "systems": "systems_19",
@@ -4012,7 +4012,7 @@
         "nix-github-actions": "nix-github-actions_5",
         "nixpkgs": [
           "nur-program-learning",
-          "LaphaeLaicmd-linux",
+          "LaphaeL-aicmd",
           "nixpkgs"
         ],
         "systems": "systems_27",
@@ -4141,11 +4141,11 @@
         "nixpkgs-stable": "nixpkgs-stable_4"
       },
       "locked": {
-        "lastModified": 1716213921,
-        "narHash": "sha256-xrsYFST8ij4QWaV6HEokCUNIZLjjLP1bYC60K8XiBVA=",
+        "lastModified": 1717664902,
+        "narHash": "sha256-7XfBuLULizXjXfBYy/VV+SpYMHreNRHk9nKMsm1bgb4=",
         "owner": "cachix",
         "repo": "pre-commit-hooks.nix",
-        "rev": "0e8fcc54b842ad8428c9e705cb5994eaf05c26a0",
+        "rev": "cc4d466cb1254af050ff7bdf47f6d404a7c646d1",
         "type": "github"
       },
       "original": {
@@ -4214,7 +4214,7 @@
       "inputs": {
         "DataEraserC-dots_hyprland": "DataEraserC-dots_hyprland",
         "Hyprspace": "Hyprspace",
-        "LaphaeLaicmd-linux": "LaphaeLaicmd-linux",
+        "LaphaeL-aicmd": "LaphaeL-aicmd",
         "aagl": "aagl",
         "agenix": "agenix",
         "android-nixpkgs": "android-nixpkgs",
@@ -4925,7 +4925,7 @@
     "treefmt-nix": {
       "inputs": {
         "nixpkgs": [
-          "LaphaeLaicmd-linux",
+          "LaphaeL-aicmd",
           "poetry2nix",
           "nixpkgs"
         ]
@@ -4970,7 +4970,7 @@
       "inputs": {
         "nixpkgs": [
           "llqqnt",
-          "LaphaeLaicmd-linux",
+          "LaphaeL-aicmd",
           "poetry2nix",
           "nixpkgs"
         ]
@@ -5036,7 +5036,7 @@
       "inputs": {
         "nixpkgs": [
           "nur-program-learning",
-          "LaphaeLaicmd-linux",
+          "LaphaeL-aicmd",
           "poetry2nix",
           "nixpkgs"
         ]
