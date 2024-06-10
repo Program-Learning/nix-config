@@ -2,6 +2,8 @@
   pkgs,
   myvars,
   nuenv,
+  nur-xddxdd,
+  nur-DataEraserC,
   ...
 } @ args: {
   nixpkgs.overlays =
@@ -103,7 +105,8 @@
       "https://nix-community.cachix.org"
       # my own cache server
       "https://ryan4yin.cachix.org"
-      "https://xddxdd.cachix.org"
+      nur-xddxdd.meta.cachixUrl
+      nur-DataEraserC.meta.cachixUrl
       "https://linyinfeng.cachix.org"
       # cuda-maintainer's cache server
       "https://cuda-maintainers.cachix.org"

@@ -293,6 +293,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nur-DataEraserC = {
+      url = "github:DataEraserC/nur-packages";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nur-AtaraxiaSjel = {
       url = "github:AtaraxiaSjel/nur";
       inputs.nixpkgs.follows = "nixpkgs";

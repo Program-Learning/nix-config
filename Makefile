@@ -68,7 +68,7 @@ gc:
 #
 ############################################################################
 
-nur_all := nur-program-learning nur-ryan4yin nur-linyinfeng nur-xddxdd nur-AtaraxiaSjel llqqnt browser-previews firefox-nightly LaphaeLaicmd-linux
+nur_all := nur-program-learning nur-ryan4yin nur-linyinfeng nur-xddxdd nur-AtaraxiaSjel llqqnt browser-previews firefox-nightly LaphaeL-aicmd nur-DataEraserC
 
 # Update nur inputs
 # (can use with ''
