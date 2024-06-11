@@ -157,13 +157,13 @@
         ".config/clash-verge"
         ".config/qv2ray"
         ".config/nekoray"
-        "/home/nixos/.ollama"
 
         # ai related file dirs
         "invokeai"
         ".textgen"
         ".config/LaphaeLaicmd"
         ".config/aichat"
+        ".ollama"
         ".lingma"
 
         ".vmware"
