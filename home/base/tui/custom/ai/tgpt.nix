@@ -1,9 +1,9 @@
 {
   pkgs,
-  pkgs-unstable,
+  pkgs-latest,
   ...
 }: {
   home.packages = [
-    pkgs-unstable.tgpt
+    pkgs-latest.tgpt
   ];
 }
