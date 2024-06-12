@@ -163,6 +163,7 @@
         ".textgen"
         ".config/LaphaeLaicmd"
         ".config/aichat"
+        ".config/open-webui"
         ".ollama"
         ".lingma"
 
