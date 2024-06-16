@@ -2,6 +2,11 @@
   pkgs,
   lib,
   hyprland,
+  hyprland-plugins,
+  hyprland-easymotion,
+  hyprfocus,
+  Hyprspace,
+  hycov,
   nur-ryan4yin,
   ...
 }: let
@@ -29,6 +34,15 @@ in {
       ];
     };
     extraConfig = builtins.readFile ../conf/hyprland.conf;
+    plugins = [
+      hyprland-plugins.packages.${pkgs.system}.hyprbars # windows bar
+      hyprland-easymotion.packages.${pkgs.system}.hypreasymotion # label windows
+      hyprfocus.packages.${pkgs.system}.hyprfocus # focus anime
+      Hyprspace.packages.${pkgs.system}.Hyprspace # hyprexpo
+      hycov.packages.${pkgs.system}.hycov # a new tiling WM workflow with overview.
+
+      # ...
+    ];
     # gammastep/wallpaper-switcher need this to be enabled.
     systemd.enable = true;
   };

@@ -22,11 +22,27 @@
   boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
 
   boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod"];
-  boot.initrd.kernelModules = [];
-  boot.kernelModules = ["kvm-intel"]; # kvm virtualization support
-  boot.extraModprobeConfig = "options kvm_intel nested=1"; # for intel cpu
+  boot.initrd.kernelModules = ["uas" "usbcore" "usb_storage" "vfat" "nls_cp437" "nls_iso8859_1"];
+  boot.kernelModules = [
+    # kvm
+    "kvm-intel"
+    #"acpi_call"
+    "usb_storage"
+  ];
+  boot.extraModprobeConfig =
+    # for intel cpu
+    ''
+      options intel_iommu=on
+      options iommu=pt
+      options kvm_intel nested=1
+      options kvm_intel emulate_invalid_guest_state=0
+      options kvm ignore_msrs=1
+    '';
   boot.kernelParams = ["nvidia.NVreg_PreserveVideoMemoryAllocations=1"];
-  boot.extraModulePackages = [];
+  boot.extraModulePackages = [
+    config.boot.kernelPackages.lenovo-legion-module
+    # config.boot.kernelPackages.acpi_call.out
+  ];
   # clear /tmp on boot to get a stateless /tmp directory.
   boot.tmp.cleanOnBoot = true;
 
@@ -44,14 +60,24 @@
   ];
 
   boot.initrd = {
+    postDeviceCommands = let
+      PRIMARYUSBID = "12CE-A600";
+      BACKUPUSBID = "12CE-A600";
+    in
+      pkgs.lib.mkBefore ''
+        mkdir -m 0755 -p /key
+        sleep 2 # To make sure the usb key has been loaded
+        mount -n -t vfat -o ro `findfs UUID=${PRIMARYUSBID}` /key || mount -n -t vfat -o ro `findfs UUID=${BACKUPUSBID}` /key
+      '';
     # unlocked luks devices via a keyfile or prompt a passphrase.
     luks.devices."crypted-nixos" = {
       # NOTE: DO NOT use device name here(like /dev/sda, /dev/nvme0n1p2, etc), use UUID instead.
       # https://github.com/ryan4yin/nix-config/issues/43
-      device = "/dev/disk/by-uuid/a21ca82a-9ee6-4e5c-9d3f-a93e84e4e0f4";
+      device = "/dev/disk/by-uuid/979348b2-fcc5-4db0-85df-69819a218470";
       # the keyfile(or device partition) that should be used as the decryption key for the encrypted device.
       # if not specified, you will be prompted for a passphrase instead.
-      #keyFile = "/root-part.key";
+      keyFile = "/key/luks/root-part.key";
+      preLVM = false; # If this is true the decryption is attempted before the postDeviceCommands can run
 
       # whether to allow TRIM requests to the underlying device.
       # it's less secure, but faster.
@@ -60,11 +86,13 @@
       # Enabling this should improve performance on SSDs;
       # https://wiki.archlinux.org/index.php/Dm-crypt/Specialties#Disable_workqueue_for_increased_solid_state_drive_(SSD)_performance
       bypassWorkqueues = true;
+      fallbackToPassword = true;
+      tryEmptyPassphrase = true;
     };
   };
 
   fileSystems."/btr_pool" = {
-    device = "/dev/disk/by-uuid/1167076c-dee1-486c-83c1-4b1af37555cd";
+    device = "/dev/disk/by-uuid/17df699e-6502-4205-955f-c456eb378d48";
     fsType = "btrfs";
     # btrfs's top-level subvolume, internally has an id 5
     # we can access all other subvolumes from this subvolume.
@@ -81,20 +109,20 @@
   };
 
   fileSystems."/nix" = {
-    device = "/dev/disk/by-uuid/1167076c-dee1-486c-83c1-4b1af37555cd";
+    device = "/dev/disk/by-uuid/17df699e-6502-4205-955f-c456eb378d48";
     fsType = "btrfs";
     options = ["subvol=@nix" "noatime" "compress-force=zstd:1"];
   };
 
   # for guix store, which use `/gnu/store` as its store directory.
   fileSystems."/gnu" = {
-    device = "/dev/disk/by-uuid/1167076c-dee1-486c-83c1-4b1af37555cd";
+    device = "/dev/disk/by-uuid/17df699e-6502-4205-955f-c456eb378d48";
     fsType = "btrfs";
     options = ["subvol=@guix" "noatime" "compress-force=zstd:1"];
   };
 
   fileSystems."/persistent" = {
-    device = "/dev/disk/by-uuid/1167076c-dee1-486c-83c1-4b1af37555cd";
+    device = "/dev/disk/by-uuid/17df699e-6502-4205-955f-c456eb378d48";
     fsType = "btrfs";
     options = ["subvol=@persistent" "compress-force=zstd:1"];
     # impermanence's data is required for booting.
@@ -102,20 +130,20 @@
   };
 
   fileSystems."/snapshots" = {
-    device = "/dev/disk/by-uuid/1167076c-dee1-486c-83c1-4b1af37555cd";
+    device = "/dev/disk/by-uuid/17df699e-6502-4205-955f-c456eb378d48";
     fsType = "btrfs";
     options = ["subvol=@snapshots" "compress-force=zstd:1"];
   };
 
   fileSystems."/tmp" = {
-    device = "/dev/disk/by-uuid/1167076c-dee1-486c-83c1-4b1af37555cd";
+    device = "/dev/disk/by-uuid/17df699e-6502-4205-955f-c456eb378d48";
     fsType = "btrfs";
     options = ["subvol=@tmp" "compress-force=zstd:1"];
   };
 
   # mount swap subvolume in readonly mode.
   fileSystems."/swap" = {
-    device = "/dev/disk/by-uuid/1167076c-dee1-486c-83c1-4b1af37555cd";
+    device = "/dev/disk/by-uuid/17df699e-6502-4205-955f-c456eb378d48";
     fsType = "btrfs";
     options = ["subvol=@swap" "ro"];
   };
@@ -131,7 +159,7 @@
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/90FB-9F88";
+    device = "/dev/disk/by-uuid/F91B-B32A";
     fsType = "vfat";
   };
 

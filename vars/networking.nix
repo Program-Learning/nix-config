@@ -1,15 +1,15 @@
 {lib}: rec {
-  mainGateway = "192.168.5.1"; # main router
+  mainGateway = "192.168.0.1"; # main router
   # use suzi as the default gateway
   # it's a subrouter with a transparent proxy
-  defaultGateway = "192.168.5.178";
+  defaultGateway = "192.168.0.1";
   nameservers = [
     "119.29.29.29" # DNSPod
     "223.5.5.5" # AliDNS
   ];
   prefixLength = 24;
 
-  hostsAddr = {
+  hostsAddr = rec {
     # ============================================
     # Homelab's Physical Machines (KubeVirt Nodes)
     # ============================================
@@ -29,11 +29,33 @@
     # ============================================
     # Other VMs and Physical Machines
     # ============================================
-    ai = {
-      # Desktop PC
-      iface = "enp5s0";
-      ipv4 = "192.168.5.100";
+    # ai = {
+    #   # Desktop PC
+    #   iface = "enp5s0";
+    #   ipv4 = "192.168.5.100";
+    # };
+    y9000k2021h_1_home = {
+      # Laptop
+      iface = "wlp0s20f3";
+      ipv4 = "192.168.2.150";
     };
+    y9000k2021h_1_school = {
+      # Laptop
+      iface = "wlp0s20f3";
+      ipv4 = "192.168.0.150";
+    };
+    y9000k2021h_1_zerotier = {
+      # Laptop
+      iface = "zt5u4z6wb4";
+      ipv4 = "10.147.20.150";
+    };
+    y9000k2021h_1_tailscale = {
+      # Laptop
+      iface = "tailscale0";
+      ipv4 = "100.95.92.150";
+    };
+    y9000k2021h = y9000k2021h_1_school;
+    ai = y9000k2021h;
     aquamarine = {
       # VM
       iface = "enp2s0";

@@ -15,5 +15,11 @@
             extraOutputsToInstall = ["dev"];
           })
     )
+
+    # A tool to run appimage directly
+    pkgs.appimage-run
   ];
+
+  # https://flatpak.org/setup/NixOS
+  services.flatpak.enable = true;
 }

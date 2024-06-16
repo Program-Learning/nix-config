@@ -12,4 +12,5 @@ _: {
       userServices = true;
     };
   };
+  programs.wireshark.enable = true;
 }

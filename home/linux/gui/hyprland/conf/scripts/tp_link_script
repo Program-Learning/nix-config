@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+
+login() {
+        local url=$1
+        local password=$2
+
+        stok=$(curl -s -X POST "$url" -d '{"method":"do","login":{"password":"'$password'"}}' | jq -r '.stok')
+        echo "$stok"
+}
+
+set_down_speed() {
+        local url=$1
+        local stok=$2
+        local mac=$3
+        local name=$4
+        local down_limit=$5
+
+        curl -X POST "${url}/stok=${stok}/ds" -d '{"hosts_info":{"set_flux_limit":{"mac":"'$mac'","is_blocked":"0","name":"'$name'","down_limit":'$down_limit',"up_limit":"0","limit_time":"","forbid_domain":""}},"method":"do"}'
+}
+
+if [ $# -lt 4 ]; then
+        echo "Usage: $0 <url> <password> <mac> <name> <downLimit>"
+        exit 1
+fi
+
+url=$1
+password=$2
+mac=$3
+mac=${mac//:/-}
+name=$4
+downLimit=$5
+
+# invoke login function
+stok=$(login "$url" "$password")
+if [ -z "$stok" ]; then
+        echo "Login failed."
+        exit 1
+fi
+
+# invoke set down_speed function
+set_down_speed "$url" "$stok" "$mac" "$name" "$downLimit"
