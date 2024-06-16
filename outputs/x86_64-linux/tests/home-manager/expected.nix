@@ -4,6 +4,8 @@
 }: let
   username = myvars.username;
   hosts = [
+    "y9000k2021h-hyprland"
+    "y9000k2021h-i3"
     "ai-hyprland"
     "ai-i3"
     "shoukei-hyprland"

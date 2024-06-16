@@ -3,22 +3,65 @@
 ## Autostart Programs
 
 # Kill already running process
-_ps=(waybar mako mpd)
+_ps=(waybar mako mpd wayvnc novnc lxpolkit thunar xdg-desktop-portal-hyprland swayidle swaylock swaybg clash-verge clash clash-nyanpasu)
 for _prs in "${_ps[@]}"; do
 	if [[ $(pidof ${_prs}) ]]; then
 		killall -9 ${_prs}
 	fi
 done
 
+# Custom hook(remove this)
+exec ~/.config/hypr/scripts/tp_link_script http://192.168.0.1 w9BVlghc9TefbwK "$(cat /sys/class/net/wlp0s20f3/address)" "匿名主机" 0 &
+
+# Start wayvnc
+exec wayvnc &
+
+# Start novnc
+exec novnc &
+
+# Start moonlight
+# exec sunshine &
+exec systemctl --user restart sunshine &
+
+# Start sunshine(moonlight) (PORT:47990)
+# exec systemctl --user start sunshine &
+
+systemctl --user stop wallpaper.service
+
+swaylock -e -f -F -c 12121B
+
 # Set wallpaper via a wallpaper.service
 # it will by start by home-manager automatically, do not need to restart it here.
-# systemctl --user restart wallpaper.service
+systemctl --user restart wallpaper.service
 
 # Launch notification daemon (mako)
 ~/.config/hypr/scripts/notifications &
 
 # Launch statusbar (waybar)
-~/.config/hypr/scripts/statusbar &
+# ~/.config/hypr/scripts/statusbar &
+~/.config/hypr/scripts/statusbar_debug &
 
 # Start mpd
 exec mpd &
+
+# Start clash-verge
+# exec clash-verge &
+exec env LIBGL_ALWAYS_SOFTWARE=1 clash-nyanpasu &
+
+# Start lxpolkit
+exec lxpolkit &
+
+# set default file-manager to thunar
+# Try with command
+#  dbus-send --session --print-reply --dest=org.freedesktop.FileManager1 /org/freedesktop/FileManager1 org.freedesktop.FileManager1.ShowFolders array:string:"file:/" string:""
+exec thunar --daemon &
+
+# Launch xdg-desktop-portal-hyprland
+exec /nix/store/*xdg-desktop-portal-hyprland*/libexec/xdg-desktop-portal-hyprland &
+
+# Start swayidle
+# exec swayidle -w timeout 1800 'systemctl suspend' resume 'hyprctl dispatch dpms on' timeout 120 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on' before-sleep 'swaylock'
+exec swayidle -w timeout 120 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on' before-sleep 'swaylock' &
+
+# Start alist
+exec podman container restart alist &

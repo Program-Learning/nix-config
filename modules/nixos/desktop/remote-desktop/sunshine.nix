@@ -38,20 +38,16 @@
     KERNEL=="uinput", SUBSYSTEM=="misc", OPTIONS+="static_node=uinput", TAG+="uaccess"
   '';
 
-  # systemd.user.services.sunshine = {
-  #   description = "A self-hosted game stream server for Moonlight(Client)";
-  #   after = ["graphical-session-pre.target"];
-  #   wants = ["graphical-session-pre.target"];
-  #   wantedBy = ["graphical-session.target"];
-  #   startLimitIntervalSec = 500;
-  #   startLimitBurst = 5;
-  #
-  #   serviceConfig = {
-  #     ExecStart = "${config.security.wrapperDir}/sunshine";
-  #     Restart = "on-failure";
-  #     RestartSec = "5s";
-  #   };
-  # };
+  systemd.user.services.sunshine = {
+    description = "Sunshine self-hosted game stream host for Moonlight";
+    startLimitBurst = 5;
+    startLimitIntervalSec = 500;
+    serviceConfig = {
+      ExecStart = "${config.security.wrapperDir}/sunshine";
+      Restart = "on-failure";
+      RestartSec = "5s";
+    };
+  };
 
   networking.firewall = {
     allowedTCPPortRanges = [

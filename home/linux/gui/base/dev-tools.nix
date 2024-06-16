@@ -1,5 +1,10 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  pkgs-stable,
+  ...
+}: {
   home.packages = with pkgs; [
-    android-tools
+    pkgs-stable.android-tools
+    win2xcur
   ];
 }
