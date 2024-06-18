@@ -12,6 +12,7 @@
     # e-book viewer(.epub/.mobi/...)
     # do not support .pdf
     foliate
+    koodo-reader
 
     # instant messaging
     telegram-desktop
