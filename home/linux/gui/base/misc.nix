@@ -1,6 +1,7 @@
 {
   pkgs,
   pkgs-unstable,
+  pkgs-latest,
   pkgs-unstable-etcher,
   llqqnt,
   nur-linyinfeng,
@@ -29,7 +30,7 @@
 
     nur-xddxdd.packages.${pkgs.system}.dingtalk
 
-    pkgs-unstable.feishu
+    pkgs-latest.feishu
 
     # remote desktop(rdp connect)
     remmina
