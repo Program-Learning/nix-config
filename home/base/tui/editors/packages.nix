@@ -1,6 +1,8 @@
 {
   pkgs,
   pkgs-stable,
+  gomod2nix,
+  gradle2nix,
   ...
 }: {
   nixpkgs.config = {
@@ -12,6 +14,16 @@
   home.packages = with pkgs; (
     # -*- Data & Configuration Languages -*-#
     [
+      #-- golang
+      go
+      gomodifytags
+      gomod2nix.packages.${pkgs.system}.default
+      iferr # generate error handling code for go
+      impl # generate function implementation for go
+      gotools # contains tools like: godoc, goimports, etc.
+      gopls # go language server
+      delve # go debugger
+
       # -- java
       jdk17
       # tomcat9
