@@ -1,6 +1,8 @@
 {
   pkgs,
   pkgs-stable,
+  gomod2nix,
+  gradle2nix,
   ...
 }: {
   nixpkgs.config = {
@@ -104,6 +106,7 @@
     #-- golang
     go
     gomodifytags
+    gomod2nix.packages.${pkgs.system}.default
     iferr # generate error handling code for go
     impl # generate function implementation for go
     gotools # contains tools like: godoc, goimports, etc.
@@ -114,6 +117,7 @@
     jdk17
     # tomcat9
     gradle
+    # gradle2nix.packages.${pkgs.system}.gradle2nix
     maven
     spring-boot-cli
 

@@ -284,6 +284,18 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    gradle2nix = {
+      url = "github:tadfisher/gradle2nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    gomod2nix = {
+      url = "github:nix-community/gomod2nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+    };
+    flake-utils.url = "github:numtide/flake-utils";
+
     nur-linyinfeng = {
       url = "github:linyinfeng/nur-packages";
       inputs.nixpkgs.follows = "nixpkgs";
