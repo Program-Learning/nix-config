@@ -4,6 +4,7 @@
   lib,
   myvars,
   nur-program-learning,
+  nixGL,
   ...
 } @ args:
 #############################################################
@@ -94,6 +95,14 @@ in rec {
   environment.systemPackages = with pkgs; [
     lenovo-legion
     nur-program-learning.packages.${pkgs.system}.cudatoolkit_dev_env_fhs
+    # nixGL
+    # nixGL.packages.${pkgs.system}.nixGL
+    nixGL.packages.${pkgs.system}.nixGLDefault
+    nixGL.packages.${pkgs.system}.nixGLNvidia
+    # nixGL.packages.${pkgs.system}.nixGLNvidiaBumblebee
+    nixGL.packages.${pkgs.system}.nixGLIntel
+    nixGL.packages.${pkgs.system}.nixVulkanNvidia
+    nixGL.packages.${pkgs.system}.nixVulkanIntel
   ];
 
   # This value determines the NixOS release from which the default
