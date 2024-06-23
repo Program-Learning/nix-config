@@ -296,6 +296,11 @@
     };
     flake-utils.url = "github:numtide/flake-utils";
 
+    nixGL = {
+      url = "github:nix-community/nixGL";
+      inputs.flake-utils.follows = "flake-utils";
+    };
+
     nur-linyinfeng = {
       url = "github:linyinfeng/nur-packages";
       inputs.nixpkgs.follows = "nixpkgs";

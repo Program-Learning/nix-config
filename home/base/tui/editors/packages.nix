@@ -3,6 +3,7 @@
   pkgs-stable,
   gomod2nix,
   gradle2nix,
+  nixGL,
   ...
 }: {
   nixpkgs.config = {
