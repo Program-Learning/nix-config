@@ -72,7 +72,7 @@
           libreoffice
           mdp
           slides
-          wpsoffice # unfree
+          wpsoffice-cn # unfree
 
           # --note
           anytype

@@ -6,6 +6,7 @@
     fontDir.enable = true;
 
     packages = with pkgs; [
+      corefonts
       # icon fonts
       material-design-icons
       font-awesome
