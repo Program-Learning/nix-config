@@ -3,7 +3,7 @@
   pkgs-stable,
   pkgs-unstable,
   nix-gaming,
-  nur-xddxdd,
+  nur-DataEraserC,
   pkgs-unstable-yuzu,
   ...
 }: let
@@ -32,7 +32,7 @@ in {
     # aagl-gtk-on-nix.honkers-launcher
 
     # An anime game server
-    nur-xddxdd.packages.${pkgs.system}.grasscutter
+    nur-DataEraserC.packages.${pkgs.system}.grasscutter
     # nix-gaming.packages.${pkgs.system}.osu-stable
     nix-gaming.packages.${pkgs.system}.osu-lazer-bin
   ];

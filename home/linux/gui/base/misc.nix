@@ -5,7 +5,7 @@
   pkgs-unstable-etcher,
   llqqnt,
   nur-linyinfeng,
-  nur-xddxdd,
+  nur-DataEraserC,
   ...
 }: {
   home.packages = with pkgs; [
@@ -26,9 +26,9 @@
     nur-linyinfeng.packages.${pkgs.system}.wemeet
 
     # wechat-uos
-    nur-xddxdd.packages.${pkgs.system}.wechat-uos
+    nur-DataEraserC.packages.${pkgs.system}.wechat-uos
 
-    nur-xddxdd.packages.${pkgs.system}.dingtalk
+    nur-DataEraserC.packages.${pkgs.system}.dingtalk
 
     pkgs-latest.feishu
 
