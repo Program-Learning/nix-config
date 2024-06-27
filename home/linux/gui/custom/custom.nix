@@ -6,7 +6,7 @@
   nur-ryan4yin,
   nur-program-learning,
   nur-linyinfeng,
-  nur-xddxdd,
+  nur-DataEraserC,
   nur-AtaraxiaSjel,
   hyprland-plugins,
   hyprland,
@@ -199,10 +199,10 @@
       [
         # YisuiMilena.hmcl-bin
         nur-linyinfeng.packages.${pkgs.system}.matrix-wechat
-        nur-xddxdd.packages.${pkgs.system}.baidunetdisk
-        nur-xddxdd.packages.${pkgs.system}.baidupcs-go
-        nur-xddxdd.packages.${pkgs.system}.bilibili
-        nur-xddxdd.packages.${pkgs.system}.onepush
+        nur-DataEraserC.packages.${pkgs.system}.baidunetdisk
+        nur-DataEraserC.packages.${pkgs.system}.baidupcs-go
+        nur-DataEraserC.packages.${pkgs.system}.bilibili
+        nur-DataEraserC.packages.${pkgs.system}.onepush
         nur-AtaraxiaSjel.packages.${pkgs.system}.waydroid-script
         nur-program-learning.packages.${pkgs.system}.watt-toolkit_2
         nur-program-learning.packages.${pkgs.system}.AppimageLauncher_deb
