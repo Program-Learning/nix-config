@@ -279,7 +279,7 @@
     };
 
     llqqnt = {
-      url = "github:Program-Learning/nur-packages";
+      url = "github:DataEraserC/nur-packages";
       # url = "gitfile:////home/nixos/Documents/code/program-learning-nur-packages?shallow=1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
