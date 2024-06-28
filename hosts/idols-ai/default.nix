@@ -22,7 +22,7 @@ in rec {
     ./hardware-configuration.nix
 
     ./impermanence.nix
-    # ./secureboot.nix
+    ./secureboot.nix
   ];
 
   networking = {
