@@ -51,8 +51,8 @@
           jetbrains.idea-community
           eclipses.eclipse-sdk
 
-          warp
           cloudflare-warp
+          wgcf
 
           glib
           calcurse
