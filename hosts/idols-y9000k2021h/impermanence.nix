@@ -54,6 +54,7 @@
     # the following directories will be passed to /persistent/home/$USER
     users.nixos = {
       directories = [
+        ".cache/waydroid-script"
         "codes"
         "nix-config"
         "tmp"
