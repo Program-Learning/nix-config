@@ -20,13 +20,13 @@
     nixos-modules = map mylib.relativeToRoot [
       # common
       "secrets/nixos.nix"
-      "modules/nixos/desktop.nix"
+      # "modules/nixos/desktop.nix"
       # host specific
       "hosts/wsl-${name}"
     ];
     home-modules = map mylib.relativeToRoot [
       # common
-      "home/linux/gui.nix"
+      # "home/linux/tui.nix"
       # host specific
       "hosts/wsl-${name}/home.nix"
     ];
@@ -36,15 +36,15 @@
     nixos-modules =
       [
         {
-          modules.desktop.xorg.enable = true;
-          modules.secrets.desktop.enable = true;
+          # modules.desktop.xorg.enable = true;
+          # modules.secrets.desktop.enable = true;
           modules.secrets.impermanence.enable = true;
         }
       ]
       ++ base-modules.nixos-modules ++ wsl-modules;
     home-modules =
       [
-        {modules.desktop.i3.enable = true;}
+        # {modules.desktop.i3.enable = true;}
       ]
       ++ base-modules.home-modules;
   };
@@ -53,15 +53,15 @@
     nixos-modules =
       [
         {
-          modules.desktop.wayland.enable = true;
-          modules.secrets.desktop.enable = true;
+          # modules.desktop.wayland.enable = true;
+          # modules.secrets.desktop.enable = true;
           modules.secrets.impermanence.enable = true;
         }
       ]
       ++ base-modules.nixos-modules ++ wsl-modules;
     home-modules =
       [
-        {modules.desktop.hyprland.enable = true;}
+        # {modules.desktop.hyprland.enable = true;}
       ]
       ++ base-modules.home-modules;
   };

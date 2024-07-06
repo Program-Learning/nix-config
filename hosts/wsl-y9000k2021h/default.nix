@@ -93,7 +93,7 @@ in rec {
     driSupport32Bit = true;
   };
   environment.systemPackages = with pkgs; [
-    lenovo-legion
+    # lenovo-legion
     nur-program-learning.packages.${pkgs.system}.cudatoolkit_dev_env_fhs
     # nixGL
     # nixGL.packages.${pkgs.system}.nixGL
