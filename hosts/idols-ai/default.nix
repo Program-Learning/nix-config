@@ -93,7 +93,6 @@ in rec {
     driSupport32Bit = true;
   };
   environment.systemPackages = with pkgs; [
-    lenovo-legion
     nur-program-learning.packages.${pkgs.system}.cudatoolkit_dev_env_fhs
     # nixGL
     # nixGL.packages.${pkgs.system}.nixGL
@@ -104,6 +103,14 @@ in rec {
     nixGL.packages.${pkgs.system}.nixVulkanNvidia
     nixGL.packages.${pkgs.system}.nixVulkanIntel
   ];
+  features.lenovo-legion = {
+    enable = true;
+    enhanceMode = true;
+  };
+  features.intel-gpu-tools = {
+    enable = true;
+    enhanceMode = true;
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

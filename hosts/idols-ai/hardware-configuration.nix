@@ -45,7 +45,6 @@
     '';
   boot.kernelParams = ["nvidia.NVreg_PreserveVideoMemoryAllocations=1"];
   boot.extraModulePackages = [
-    config.boot.kernelPackages.lenovo-legion-module
     # config.boot.kernelPackages.acpi_call.out
   ];
   # clear /tmp on boot to get a stateless /tmp directory.
