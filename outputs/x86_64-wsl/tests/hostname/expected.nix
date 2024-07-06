@@ -3,12 +3,8 @@
   outputs,
 }: let
   specialExpected = {
-    "y9000k2021h-hyprland" = "y9000k2021h";
-    "y9000k2021h-i3" = "y9000k2021h";
-    "ai-hyprland" = "ai";
-    "ai-i3" = "ai";
-    "shoukei-hyprland" = "shoukei";
-    "shoukei-i3" = "shoukei";
+    "wsl-y9000k2021h-hyprland" = "y9000k2021h";
+    "wsl-y9000k2021h-i3" = "y9000k2021h";
   };
   specialHostNames = builtins.attrNames specialExpected;
 
