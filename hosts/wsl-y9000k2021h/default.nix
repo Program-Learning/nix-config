@@ -98,10 +98,10 @@ in rec {
     # nixGL
     # nixGL.packages.${pkgs.system}.nixGL
     nixGL.packages.${pkgs.system}.nixGLDefault
-    nixGL.packages.${pkgs.system}.nixGLNvidia
+    # nixGL.packages.${pkgs.system}.nixGLNvidia
     # nixGL.packages.${pkgs.system}.nixGLNvidiaBumblebee
     nixGL.packages.${pkgs.system}.nixGLIntel
-    nixGL.packages.${pkgs.system}.nixVulkanNvidia
+    # nixGL.packages.${pkgs.system}.nixVulkanNvidia
     nixGL.packages.${pkgs.system}.nixVulkanIntel
   ];
 
