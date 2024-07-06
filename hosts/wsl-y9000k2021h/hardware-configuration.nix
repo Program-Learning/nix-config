@@ -31,6 +31,7 @@
     wslConf.boot.systemd = true;
     useWindowsDriver = true;
     wslConf.automount.enabled = true;
+    wsl.interop.register = true;
   };
   system.stateVersion = "24.05";
 }
