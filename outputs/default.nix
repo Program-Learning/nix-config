@@ -52,6 +52,10 @@
     aarch64-linux = import ./aarch64-linux (args // {system = "aarch64-linux";});
     riscv64-linux = import ./riscv64-linux (args // {system = "riscv64-linux";});
   };
+  wslSystems = {
+    x86_64-wsl = import ./x86_64-wsl (args // {inherit (inputs) nixos-wsl; system = "x86_64-linux";});
+    # aarch64-wsl = import ./aarch64-wsl (args // {system = "aarch64-linux";});
+  };
   darwinSystems = {
     aarch64-darwin = import ./aarch64-darwin (args // {system = "aarch64-darwin";});
     x86_64-darwin = import ./x86_64-darwin (args // {system = "x86_64-darwin";});
@@ -60,22 +64,23 @@
     aarch64-droid = import ./aarch64-droid (args // {system = "aarch64-linux";});
     # x86_64-droid = import ./x86_64-droid (args // {system = "x86_64-linux";});
   };
-  allSystems = nixosSystems // darwinSystems // droidSystems;
+  allSystems = nixosSystems // darwinSystems // droidSystems // wslSystems;
   allSystemNames = builtins.attrNames allSystems;
   nixosSystemValues = builtins.attrValues nixosSystems;
   darwinSystemValues = builtins.attrValues darwinSystems;
   droidSystemValues = builtins.attrValues droidSystems;
-  allSystemValues = nixosSystemValues ++ darwinSystemValues ++ droidSystemValues;
+  wslSystemValues = builtins.attrValues wslSystems;
+  allSystemValues = nixosSystemValues ++ darwinSystemValues ++ droidSystemValues ++ wslSystemValues;
 
   # Helper function to generate a set of attributes for each system
   forAllSystems = func: (nixpkgs.lib.genAttrs allSystemNames func);
-in {
+in rec {
   # Add attribute sets into outputs, for debugging
   debugAttrs = {inherit nixosSystems darwinSystems droidSystems allSystems allSystemNames;};
 
   # NixOS Hosts
   nixosConfigurations =
-    lib.attrsets.mergeAttrsList (map (it: it.nixosConfigurations or {}) nixosSystemValues);
+    lib.attrsets.mergeAttrsList (map (it: it.nixosConfigurations or {}) nixosSystemValues) // wslConfigurations;
 
   # Colmena - remote deployment via SSH
   colmena =
@@ -106,6 +111,10 @@ in {
   nixOnDroidConfigurations =
     lib.attrsets.mergeAttrsList (map (it: it.nixOnDroidConfigurations or {}) droidSystemValues);
 
+  # WSL Hosts
+  wslConfigurations =
+    lib.attrsets.mergeAttrsList (map (it: it.nixosConfigurations or {}) wslSystemValues);
+  
   # Packages
   packages = forAllSystems (
     system: allSystems.${system}.packages or {}

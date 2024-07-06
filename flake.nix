@@ -53,6 +53,9 @@
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
+    # for windows wsl
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
+
     # for nix-on-droid
     nixpkgs-nod.url = "github:NixOS/nixpkgs/nixos-23.11";
     nixpkgs-unstable-nod.url = "github:nixos/nixpkgs/nixos-unstable";
