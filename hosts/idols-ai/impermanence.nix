@@ -133,6 +133,10 @@
         ".config/vscode-sqltools"
         ".config/Code - Insiders"
 
+        # zed
+        ".config/zed"
+        ".local/share/zed"
+
         # browsers
         ".mozilla"
         ".config/google-chrome"
