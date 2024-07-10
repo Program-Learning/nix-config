@@ -35,9 +35,5 @@
   home.stateVersion = "24.05";
   home.packages = [
     llqqnt.packages.${pkgs.system}.llqqnt
-    pkgs.just
-    pkgs.git
-    pkgs.gnumake
-    pkgs.nushell
   ];
 }
