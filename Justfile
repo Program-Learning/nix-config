@@ -95,6 +95,11 @@ hypr mode="default":
   use utils.nu *; \
   nixos-switch ai-hyprland {{mode}}
 
+[linux]
+gnome-wayland mode="default":
+  use utils.nu *; \
+  nixos-switch ai-gnome-wayland {{mode}}
+
 
 [linux]
 s-i3 mode="default":
