@@ -19,12 +19,13 @@
   boot.loader.systemd-boot.enable = true;
 
   # boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_xanmod.override {
-    structuredExtraConfig = with lib.kernel; {
-      DMABUF_HEAPS = yes;
-      DMABUF_HEAPS_SYSTEM = yes;
-    };
-  });
+  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
+  # boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_xanmod.override {
+  #   structuredExtraConfig = with lib.kernel; {
+  #     DMABUF_HEAPS = yes;
+  #     DMABUF_HEAPS_SYSTEM = yes;
+  #   };
+  # });
 
   boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod"];
   boot.initrd.kernelModules = ["uas" "usbcore" "usb_storage" "vfat" "nls_cp437" "nls_iso8859_1"];
