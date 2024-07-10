@@ -20,13 +20,13 @@
     nixos-modules = map mylib.relativeToRoot [
       # common
       "secrets/nixos.nix"
-      # "modules/nixos/desktop.nix"
+      "modules/nixos/server/server.nix"
       # host specific
       "hosts/wsl-${name}"
     ];
     home-modules = map mylib.relativeToRoot [
       # common
-      # "home/linux/tui.nix"
+      "home/linux/tui.nix"
       # host specific
       "hosts/wsl-${name}/home.nix"
     ];
