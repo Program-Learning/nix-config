@@ -28,15 +28,18 @@ class WallpaperSwitcher:
         self,
         wait_min,
         wait_max,
-        wallpapers_dir: Path,
+        wallpapers_base_dir: Path,
         state_filepath: Path,
         image_extensions: Union[tuple, list],
+        wallpaper_class: str,
     ) -> None:
-        self.wallpapers_dir = wallpapers_dir
+        self.wallpapers_base_dir = wallpapers_base_dir
+        self.wallpapers_dir = wallpapers_base_dir / wallpaper_class
         self.image_extensions = image_extensions
         self.state_filepath = state_filepath
         self.wait_min = wait_min
         self.wait_max = wait_max
+        self.wallpaper_class = wallpaper_class
 
         # initialize the state file
         self.state_filepath.parent.mkdir(parents=True, exist_ok=True)
@@ -50,6 +53,11 @@ class WallpaperSwitcher:
         self.initialize_state()
         while True:
             for i, w in enumerate(self.current_wallpaper_list):
+                self.current_state.seek(0)
+                new_wallpaper_class = json.loads(self.current_state.read())["wallpaper_class"]
+                ischanged = self.set_class(new_wallpaper_class)
+                if ischanged:
+                    break
                 if i < self.current_wallpaper_index:
                     continue
 
@@ -74,6 +82,7 @@ class WallpaperSwitcher:
         state = {
             "current_wallpaper_list": wallpaper_list,
             "current_wallpaper_index": self.current_wallpaper_index,
+            "wallpaper_class": self.wallpaper_class,
         }
         self.current_state.truncate(0)
         self.current_state.write(json.dumps(state, indent=4))
@@ -85,6 +94,7 @@ class WallpaperSwitcher:
         if not data:
             logger.info("No state found, resetting...")
             self.reset_state()
+            self.save_state()
         else:
             logger.info("State found, reloading...")
             state = json.loads(data)
@@ -136,7 +146,21 @@ class WallpaperSwitcher:
                 os.kill(int(pid), 9)
             except ProcessLookupError:
                 pass
-
+    def set_class(self, wallpaper_class: str):
+        if wallpaper_class != self.wallpaper_class:
+            self.wallpaper_class = wallpaper_class
+            self.wallpapers_dir = self.wallpapers_base_dir / self.wallpaper_class
+            self.current_state.seek(0)
+            data = self.current_state.read()
+            state = json.loads(data)
+            wallpapers = [Path(w) for w in state["current_wallpaper_list"]]
+            self.current_wallpaper_list = wallpapers
+            self.current_wallpaper_index = state["current_wallpaper_index"]
+            self.current_wallpaper_index = 0
+            self.reset_state()
+            logger.info(f"Wallpaper class changed to {wallpaper_class}")
+            return 1
+        return 0
 
 def main():
     wallpapers_dir = os.getenv("WALLPAPERS_DIR")
@@ -153,6 +177,7 @@ def main():
         # ".gif",
         # ".webp"
     )
+    wallpaper_class = os.getenv("WALLPAPERS_CLASS") or "dark"
     wait_min = int(os.getenv("WALLPAPER_WAIT_MIN", 60))
     wait_max = int(os.getenv("WALLPAPER_WAIT_MAX", 300))
     wallpaper_switcher = WallpaperSwitcher(
@@ -161,6 +186,7 @@ def main():
         Path(wallpapers_dir).expanduser(),
         Path(state_filepath).expanduser(),
         image_postfix,
+        wallpaper_class,
     )
     wallpaper_switcher.run()
 
