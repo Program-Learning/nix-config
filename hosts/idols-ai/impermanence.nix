@@ -135,7 +135,6 @@
 
         # zed
         ".config/zed"
-        ".local/share/zed"
 
         # browsers
         ".mozilla"
@@ -143,7 +142,7 @@
         ".config/google-chrome-unstable"
         ".config/microsoft-edge"
 
-        # neovim / remmina / flatpak / ...
+        # neovim / remmina / flatpak / zed ...
         ".local/share"
         ".local/state"
 
