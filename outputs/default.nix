@@ -53,7 +53,11 @@
     riscv64-linux = import ./riscv64-linux (args // {system = "riscv64-linux";});
   };
   wslSystems = {
-    x86_64-wsl = import ./x86_64-wsl (args // {inherit (inputs) nixos-wsl; system = "x86_64-linux";});
+    x86_64-wsl = import ./x86_64-wsl (args
+      // {
+        inherit (inputs) nixos-wsl;
+        system = "x86_64-linux";
+      });
     # aarch64-wsl = import ./aarch64-wsl (args // {system = "aarch64-linux";});
   };
   darwinSystems = {
@@ -114,7 +118,7 @@ in rec {
   # WSL Hosts
   wslConfigurations =
     lib.attrsets.mergeAttrsList (map (it: it.nixosConfigurations or {}) wslSystemValues);
-  
+
   # Packages
   packages = forAllSystems (
     system: allSystems.${system}.packages or {}
@@ -179,6 +183,7 @@ in rec {
           ${self.checks.${system}.pre-commit-check.shellHook}
         '';
       };
+      # TODO: move this to devshell dir
       mariadb = pkgs.mkShell {
         buildInputs = [pkgs.mariadb];
         shellHook = ''
