@@ -1,6 +1,6 @@
 .PHONY: test all clean
 #
-#  NOTE: Makefile's target name should not be the same as one of the file or directory in the current directory, 
+#  NOTE: Makefile's target name should not be the same as one of the file or directory in the current directory,
 #    otherwise the target will not be executed!
 #
 
@@ -75,7 +75,7 @@ nur_all := nur-program-learning nur-ryan4yin nur-linyinfeng nur-xddxdd nur-Atara
 # proxychains4 make update_nur
 # ''
 # or ''
-# http_proxy='http://localhost:7890' https_proxy='http://localhost:7890' make update_nur 
+# http_proxy='http://localhost:7890' https_proxy='http://localhost:7890' make update_nur
 # '')
 update_nur:
 	nix flake update $(nur_all)
@@ -156,11 +156,11 @@ idols-image:
 ############################################################################
 #
 #	RISC-V related commands
-#		
+#
 ############################################################################
 
 roll: add-idols-ssh-key
-	colmena apply --on '@riscv' 
+	colmena apply --on '@riscv'
 
 roll-debug: add-idols-ssh-key
 	colmena apply --on '@dist-build' --verbose --show-trace
