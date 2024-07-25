@@ -1,5 +1,5 @@
 _: (_: super: {
-  vscode =
+  overridden_vscode =
     (super.vscode.override
       {
         isInsiders = true;
@@ -27,7 +27,7 @@ _: (_: super: {
       # `env -u WAYLAND_DISPLAY code`
       src = builtins.fetchTarball {
         url = "https://update.code.visualstudio.com/latest/linux-x64/insider";
-        sha256 = "05s0fyb9d9k5rhj02bd33whphrbgyrqg49cyjgka3zyhjmwa93gd";
+        sha256 = "09gqwdda5j91xfi455z4lbvj8ybkjksyy4jzzf2ib578942brszv";
       };
       version = "latest";
     });
