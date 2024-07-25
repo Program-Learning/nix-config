@@ -4,3 +4,10 @@ result/
 .DS_Store
 .pre-commit-config.yaml
 logs/
+tmp/
+mysql/
+secrets/
+!secrets/README.md
+!secrets/darwin.nix
+!secrets/nixos.nix
+*.key

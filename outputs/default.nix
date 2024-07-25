@@ -21,8 +21,23 @@
         # To use chrome, we need to allow the installation of non-free software
         config.allowUnfree = true;
       };
+      pkgs-latest = import inputs.nixpkgs-latest {
+        inherit system; # refer the `system` parameter form outer scope recursively
+        # To use chrome, we need to allow the installation of non-free software
+        config.allowUnfree = true;
+      };
       pkgs-stable = import inputs.nixpkgs-stable {
         inherit system;
+        # To use chrome, we need to allow the installation of non-free software
+        config.allowUnfree = true;
+      };
+      pkgs-unstable-yuzu = import inputs.nixpkgs-unstable-yuzu {
+        inherit system; # refer the `system` parameter form outer scope recursively
+        # To use chrome, we need to allow the installation of non-free software
+        config.allowUnfree = true;
+      };
+      pkgs-unstable-etcher = import inputs.nixpkgs-unstable-etcher {
+        inherit system; # refer the `system` parameter form outer scope recursively
         # To use chrome, we need to allow the installation of non-free software
         config.allowUnfree = true;
       };
@@ -37,25 +52,39 @@
     aarch64-linux = import ./aarch64-linux (args // {system = "aarch64-linux";});
     riscv64-linux = import ./riscv64-linux (args // {system = "riscv64-linux";});
   };
+  wslSystems = {
+    x86_64-wsl = import ./x86_64-wsl (args
+      // {
+        inherit (inputs) nixos-wsl;
+        system = "x86_64-linux";
+      });
+    # aarch64-wsl = import ./aarch64-wsl (args // {system = "aarch64-linux";});
+  };
   darwinSystems = {
     aarch64-darwin = import ./aarch64-darwin (args // {system = "aarch64-darwin";});
     x86_64-darwin = import ./x86_64-darwin (args // {system = "x86_64-darwin";});
   };
-  allSystems = nixosSystems // darwinSystems;
+  droidSystems = {
+    aarch64-droid = import ./aarch64-droid (args // {system = "aarch64-linux";});
+    # x86_64-droid = import ./x86_64-droid (args // {system = "x86_64-linux";});
+  };
+  allSystems = nixosSystems // darwinSystems // droidSystems // wslSystems;
   allSystemNames = builtins.attrNames allSystems;
   nixosSystemValues = builtins.attrValues nixosSystems;
   darwinSystemValues = builtins.attrValues darwinSystems;
-  allSystemValues = nixosSystemValues ++ darwinSystemValues;
+  droidSystemValues = builtins.attrValues droidSystems;
+  wslSystemValues = builtins.attrValues wslSystems;
+  allSystemValues = nixosSystemValues ++ darwinSystemValues ++ droidSystemValues ++ wslSystemValues;
 
   # Helper function to generate a set of attributes for each system
   forAllSystems = func: (nixpkgs.lib.genAttrs allSystemNames func);
-in {
+in rec {
   # Add attribute sets into outputs, for debugging
-  debugAttrs = {inherit nixosSystems darwinSystems allSystems allSystemNames;};
+  debugAttrs = {inherit nixosSystems darwinSystems droidSystems wslSystems allSystems allSystemNames;};
 
   # NixOS Hosts
   nixosConfigurations =
-    lib.attrsets.mergeAttrsList (map (it: it.nixosConfigurations or {}) nixosSystemValues);
+    lib.attrsets.mergeAttrsList (map (it: it.nixosConfigurations or {}) nixosSystemValues) // wslConfigurations;
 
   # Colmena - remote deployment via SSH
   colmena =
@@ -81,6 +110,14 @@ in {
   # macOS Hosts
   darwinConfigurations =
     lib.attrsets.mergeAttrsList (map (it: it.darwinConfigurations or {}) darwinSystemValues);
+
+  # droid Hosts
+  nixOnDroidConfigurations =
+    lib.attrsets.mergeAttrsList (map (it: it.nixOnDroidConfigurations or {}) droidSystemValues);
+
+  # WSL Hosts
+  wslConfigurations =
+    lib.attrsets.mergeAttrsList (map (it: it.nixosConfigurations or {}) wslSystemValues);
 
   # Packages
   packages = forAllSystems (
@@ -144,6 +181,39 @@ in {
         name = "dots";
         shellHook = ''
           ${self.checks.${system}.pre-commit-check.shellHook}
+        '';
+      };
+      # TODO: move this to devshell dir
+      mariadb = pkgs.mkShell {
+        buildInputs = [pkgs.mariadb];
+        shellHook = ''
+          MYSQL_BASEDIR=${pkgs.mariadb}
+          MYSQL_HOME=$PWD/mysql
+          MYSQL_DATADIR=$MYSQL_HOME/data
+          export MYSQL_UNIX_PORT=$MYSQL_HOME/mysql.sock
+          MYSQL_PID_FILE=$MYSQL_HOME/mysql.pid
+          alias mysql='mysql -u root'
+
+          if [ ! -d "$MYSQL_HOME" ]; then
+            # Make sure to use normal authentication method otherwise we can only
+            # connect with unix account. But users do not actually exists in nix.
+            mysql_install_db --auth-root-authentication-method=normal \
+              --datadir=$MYSQL_DATADIR --basedir=$MYSQL_BASEDIR \
+              --pid-file=$MYSQL_PID_FILE
+          fi
+
+          # Starts the daemon
+          mysqld --datadir=$MYSQL_DATADIR --pid-file=$MYSQL_PID_FILE \
+            --socket=$MYSQL_UNIX_PORT 2> $MYSQL_HOME/mysql.log &
+          MYSQL_PID=$!
+
+          finish()
+          {
+            mysqladmin -u root --socket=$MYSQL_UNIX_PORT shutdown
+            kill $MYSQL_PID
+            wait $MYSQL_PID
+          }
+          trap finish EXIT
         '';
       };
     }
