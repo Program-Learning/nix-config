@@ -2,6 +2,7 @@
   colmenaSystem = import ./colmenaSystem.nix;
   macosSystem = import ./macosSystem.nix;
   nixosSystem = import ./nixosSystem.nix;
+  nixOnDroidConfiguration = import ./nixOnDroidConfiguration.nix;
 
   attrs = import ./attrs.nix {inherit lib;};
 

@@ -49,14 +49,15 @@ window > box {
   padding-right: 6px;
 }
 #workspaces button.active {
-  background-color: rgb(181, 232, 224);
+  background-color: rgb(51, 97, 129);
   color: rgb(26, 24, 38);
 }
 #workspaces button.urgent {
+  background-color: rgb(248, 189, 150);
   color: rgb(26, 24, 38);
 }
 #workspaces button:hover {
-  background-color: rgb(248, 189, 150);
+  background-color: rgb(65, 72, 104);
   color: rgb(26, 24, 38);
 }
 tooltip {
@@ -83,6 +84,9 @@ tooltip label {
 #pulseaudio,
 #network,
 #battery,
+#custom-recording,
+#custom-showkey,
+#bluetooth,
 #custom-powermenu {
   padding-left: 10px;
   padding-right: 10px;
@@ -136,11 +140,20 @@ tooltip label {
 #pulseaudio {
   color: rgb(245, 224, 220);
 }
+#bluetooth {
+  color: #5276b1;
+}
 #network {
   color: #abe9b3;
 }
 #network.disconnected {
   color: rgb(255, 255, 255);
+}
+#custom-recording {
+  color: #414868;
+}
+#custom-showkey {
+  color: #414868;
 }
 #custom-powermenu {
   color: rgb(242, 143, 173);

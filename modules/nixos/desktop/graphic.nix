@@ -1,5 +1,10 @@
-{pkgs, ...}: {
-  xdg.portal = {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
+  xdg.portal = lib.mkIf (!config.modules.desktop.gnome-wayland.enable) {
     enable = true;
 
     config = {

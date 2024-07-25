@@ -55,6 +55,32 @@ gitgc:
 
 ############################################################################
 #
+#  NixOS WSL related commands
+#
+############################################################################
+
+[linux]
+wsl-i3 mode="default":
+  use utils.nu *; \
+  nixos-switch wsl-y9000k2021h-i3 {{mode}}
+
+[linux]
+wsl-hypr mode="default":
+  use utils.nu *; \
+  nixos-switch wsl-y9000k2021h-hyprland {{mode}}
+
+############################################################################
+#
+#  NixOnDroid related commands
+#
+############################################################################
+
+droid mode="default":
+  use utils.nu *; \
+  nod-switch mondrian {{mode}}
+
+############################################################################
+#
 #  NixOS Desktop related commands
 #
 ############################################################################
@@ -68,6 +94,11 @@ i3 mode="default":
 hypr mode="default":
   use utils.nu *; \
   nixos-switch ai-hyprland {{mode}}
+
+[linux]
+gnome-wayland mode="default":
+  use utils.nu *; \
+  nixos-switch ai-gnome-wayland {{mode}}
 
 
 [linux]

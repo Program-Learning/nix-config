@@ -1,4 +1,10 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  pkgs-stable,
+  gomod2nix,
+  gradle2nix,
+  ...
+}: {
   nixpkgs.config = {
     programs.npm.npmrc = ''
       prefix = ''${HOME}/.npm-global
@@ -8,8 +14,33 @@
   home.packages = with pkgs; (
     # -*- Data & Configuration Languages -*-#
     [
+      #-- golang
+      go
+      gomodifytags
+      gomod2nix.packages.${pkgs.system}.default
+      iferr # generate error handling code for go
+      impl # generate function implementation for go
+      gotools # contains tools like: godoc, goimports, etc.
+      gopls # go language server
+      delve # go debugger
+
+      # -- java
+      jdk17
+      # tomcat9
+      gradle
+      maven
+      spring-boot-cli
+      jdt-language-server
+
+      #-- flutter
+      # flutter
+
+      #-- haskell
+      ghc
+
       #-- nix
       nil
+      nurl
       # rnix-lsp
       # nixd
       statix # Lints and suggestions for the nix programming language
@@ -49,9 +80,11 @@
     [
       #-- c/c++
       cmake
+      xmake
       cmake-language-server
       gnumake
       checkmake
+      ccache
       # c/c++ compiler, required by nvim-treesitter!
       gcc
       gdb
@@ -63,6 +96,7 @@
 
       #-- python
       pyright # python language server
+      poetry
       (python311.withPackages (
         ps:
           with ps; [
@@ -87,6 +121,32 @@
             # setuptools
             # paramiko
             # rapidfuzz
+
+            # modules used by Mayuri
+            virtualenv
+            pip # use in venv "python -m venv .venv" "source .venv/bin/activate"
+            tkinter # The standard Python interface to the Tcl/Tk GUI toolkit
+
+            pycryptodome
+            ipykernel
+            jupyterlab
+            matplotlib
+            numpy
+            seaborn
+            networkx
+            beautifulsoup4
+            selenium
+            urllib3
+            pyclip
+            pygobject3
+            pybluez
+            pymysql
+            redis
+            jieba
+            wordcloud
+            pandas-datareader
+            pyperclip
+            fake-useragent
           ]
       ))
 

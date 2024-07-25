@@ -45,6 +45,24 @@
       ++ base-modules.home-modules;
   };
 
+  modules-gnome-wayland = {
+    nixos-modules =
+      [
+        {
+          modules.desktop.wayland.enable = true;
+          modules.desktop.gnome-wayland.enable = true;
+          modules.secrets.desktop.enable = true;
+          modules.secrets.impermanence.enable = true;
+        }
+      ]
+      ++ base-modules.nixos-modules;
+    home-modules =
+      [
+        {modules.desktop.gnome-wayland.enable = true;}
+      ]
+      ++ base-modules.home-modules;
+  };
+
   modules-hyprland = {
     nixos-modules =
       [
@@ -63,6 +81,8 @@
   };
 in {
   nixosConfigurations = {
+    # with gnome-wayland window manager
+    "${name}-gnome-wayland" = mylib.nixosSystem (modules-gnome-wayland // args);
     # with i3 window manager
     "${name}-i3" = mylib.nixosSystem (modules-i3 // args);
     # host with hyprland compositor
