@@ -2,6 +2,9 @@
   mysecrets,
   config,
   pkgs,
+  pkgs-stable,
+  pkgs-latest,
+  nur-DataEraserC,
   lib,
   ...
 }: {
@@ -130,7 +133,7 @@
   # clash tun mode fix
   features.clash-nyanpasu = {
     enable = true;
-    package = pkgs.clash-nyanpasu;
+    package = nur-DataEraserC.packages.${pkgs.system}.clash-nyanpasu;
     tunMode = true;
   };
   # useless
