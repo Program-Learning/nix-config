@@ -119,6 +119,11 @@ gnome-wayland mode="default":
   use utils.nu *; \
   nixos-switch ai-gnome-wayland {{mode}}
 
+[linux]
+kde-wayland mode="default":
+  use utils.nu *; \
+  nixos-switch ai-kde-wayland {{mode}}
+
 
 [linux]
 [group('desktop')]

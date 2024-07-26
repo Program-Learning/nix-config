@@ -49,7 +49,6 @@
     nixos-modules =
       [
         {
-          modules.desktop.wayland.enable = true;
           modules.desktop.gnome-wayland.enable = true;
           modules.secrets.desktop.enable = true;
           modules.secrets.impermanence.enable = true;
@@ -59,6 +58,22 @@
     home-modules =
       [
         {modules.desktop.gnome-wayland.enable = true;}
+      ]
+      ++ base-modules.home-modules;
+  };
+  modules-kde-wayland = {
+    nixos-modules =
+      [
+        {
+          modules.desktop.kde-wayland.enable = true;
+          modules.secrets.desktop.enable = true;
+          modules.secrets.impermanence.enable = true;
+        }
+      ]
+      ++ base-modules.nixos-modules;
+    home-modules =
+      [
+        {modules.desktop.kde-wayland.enable = true;}
       ]
       ++ base-modules.home-modules;
   };
@@ -83,6 +98,8 @@ in {
   nixosConfigurations = {
     # with gnome-wayland window manager
     "${name}-gnome-wayland" = mylib.nixosSystem (modules-gnome-wayland // args);
+    # with kde-wayland window manager
+    "${name}-kde-wayland" = mylib.nixosSystem (modules-kde-wayland // args);
     # with i3 window manager
     "${name}-i3" = mylib.nixosSystem (modules-i3 // args);
     # host with hyprland compositor
@@ -91,6 +108,8 @@ in {
 
   # generate iso image for hosts with desktop environment
   packages = {
+    "${name}-gnome-wayland" = inputs.self.nixosConfigurations."${name}-gnome-wayland".config.formats.iso;
+    "${name}-kde-wayland" = inputs.self.nixosConfigurations."${name}-kde-wayland".config.formats.iso;
     "${name}-i3" = inputs.self.nixosConfigurations."${name}-i3".config.formats.iso;
     "${name}-hyprland" = inputs.self.nixosConfigurations."${name}-hyprland".config.formats.iso;
   };
