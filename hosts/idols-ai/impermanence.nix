@@ -207,6 +207,9 @@
 
         # kde related
         ".config/kdedefaults"
+
+        # Trash Bin
+        ".local/share/Trash"
       ];
       files = [
         ".wakatime.cfg"
