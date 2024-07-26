@@ -204,6 +204,9 @@
         ".config/bilibili"
         ".config/Google"
         ".config/Moonlight Game Streaming Project"
+
+        # kde related
+        ".config/kdedefaults"
       ];
       files = [
         ".wakatime.cfg"
