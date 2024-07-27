@@ -204,11 +204,11 @@
         nur-DataEraserC.packages.${pkgs.system}.bilibili
         nur-DataEraserC.packages.${pkgs.system}.onepush
         nur-AtaraxiaSjel.packages.${pkgs.system}.waydroid-script
-        nur-program-learning.packages.${pkgs.system}.watt-toolkit_2
-        nur-program-learning.packages.${pkgs.system}.AppimageLauncher_deb
-        nur-program-learning.packages.${pkgs.system}.XiaoMiToolV2
-        # nur-program-learning.packages.${pkgs.system}.CrossOver
-        # nur-program-learning.packages.${pkgs.system}.waybar-bluetooth_battery_parse
+        nur-DataEraserC.packages.${pkgs.system}.watt-toolkit_2
+        nur-DataEraserC.packages.${pkgs.system}.AppimageLauncher_deb
+        nur-DataEraserC.packages.${pkgs.system}.XiaoMiToolV2
+        # nur-DataEraserC.packages.${pkgs.system}.CrossOver
+        # nur-DataEraserC.packages.${pkgs.system}.waybar-bluetooth_battery_parse
         # alexnortung.pkgs.papermc-1_18_x
       ]
     );

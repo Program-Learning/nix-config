@@ -3,7 +3,7 @@
   pkgs,
   lib,
   myvars,
-  nur-program-learning,
+  nur-DataEraserC,
   nixGL,
   ...
 } @ args:
@@ -76,7 +76,7 @@ in rec {
     enable32Bit = true;
   };
   environment.systemPackages = with pkgs; [
-    nur-program-learning.packages.${pkgs.system}.cudatoolkit_dev_env
+    nur-DataEraserC.packages.${pkgs.system}.cudatoolkit_dev_env
     # nixGL
     # nixGL.packages.${pkgs.system}.nixGL
     nixGL.packages.${pkgs.system}.nixGLDefault

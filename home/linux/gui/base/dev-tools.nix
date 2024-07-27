@@ -1,13 +1,13 @@
 {
   pkgs,
   pkgs-stable,
-  nur-program-learning,
+  nur-DataEraserC,
   fakedroid,
   ...
 }: {
   home.packages = with pkgs; [
-    # nur-program-learning.packages.${pkgs.system}.qtscrcpy_git
-    nur-program-learning.packages.${pkgs.system}.escrcpy_deb
+    # nur-DataEraserC.packages.${pkgs.system}.qtscrcpy_git
+    nur-DataEraserC.packages.${pkgs.system}.escrcpy_deb
     gnirehtet
     scrcpy
     libmtp

@@ -1,6 +1,6 @@
 {
   pkgs,
-  nur-program-learning,
+  nur-DataEraserC,
   config,
   ...
 }: {
@@ -13,7 +13,7 @@
     x11.enable = true;
     package = pkgs.bibata-cursors;
     name = "Bibata-Modern-Ice";
-    # package = nur-program-learning.packages.${pkgs.system}.xcursor-genshin-nahida;
+    # package = nur-DataEraserClearning.packages.${pkgs.system}.xcursor-genshin-nahida;
     # name = "xcursor-genshin-nahida";
     size = 24;
   };

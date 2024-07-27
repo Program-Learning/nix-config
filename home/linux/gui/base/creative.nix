@@ -3,7 +3,7 @@
   pkgs-unstable,
   pkgs-stable,
   nur-ryan4yin,
-  nur-program-learning,
+  nur-DataEraserC,
   ...
 }: {
   home.packages = with pkgs; [
@@ -39,10 +39,10 @@
     pkgs-unstable.nextpnr # fpga place and route
     pkgs-unstable.openfpgaloader # fpga programming
     nur-ryan4yin.packages.${pkgs.system}.gowin-eda-edu-ide # app: `gowin-env` => `gw_ide` / `gw_pack` / ...
-    # nur-program-learning.packages.${pkgs.system}.wechat_dev_tools_appimage
-    nur-program-learning.packages.${pkgs.system}.wechat_dev_tools_bin
-    # nur-program-learning.packages.${pkgs.system}.Adobe_Photoshop_CS6_appimage
-    # nur-program-learning.packages.${pkgs.system}.Adobe_Illustrator_CS6_appimage
+    # nur-DataEraserC.packages.${pkgs.system}.wechat_dev_tools_appimage
+    nur-DataEraserC.packages.${pkgs.system}.wechat_dev_tools_bin
+    # nur-DataEraserC.packages.${pkgs.system}.Adobe_Photoshop_CS6_appimage
+    # nur-DataEraserC.packages.${pkgs.system}.Adobe_Illustrator_CS6_appimage
   ];
 
   programs = {
