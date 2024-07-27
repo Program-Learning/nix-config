@@ -28,13 +28,13 @@
           glib
           trickle
           # use this to pop a input window
-          gnome.zenity
+          zenity
           jansson
           nftables
           cachix
           weston
           libsForQt5.qtstyleplugin-kvantum
-          gnome.adwaita-icon-theme
+          adwaita-icon-theme
 
           intel-gpu-tools
           # --nvidia cuda
@@ -83,9 +83,9 @@
           # --achieve/file managers
           xarchiver
           mate.engrampa
-          gnome.nautilus
+          nautilus
           nautilus-open-any-terminal
-          gnome.file-roller
+          file-roller
           ark
           dolphin
           ranger

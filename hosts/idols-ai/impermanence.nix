@@ -208,7 +208,8 @@
         # kde related
         ".config/kdedefaults"
 
-        # Trash Bin
+        # Trash Bin(not work yet)
+        # https://github.com/nix-community/impermanence/issues/147
         ".local/share/Trash"
       ];
       files = [
