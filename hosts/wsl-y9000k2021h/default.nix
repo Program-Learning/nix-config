@@ -94,7 +94,7 @@ in rec {
   };
   environment.systemPackages = with pkgs; [
     # lenovo-legion
-    nur-program-learning.packages.${pkgs.system}.cudatoolkit_dev_env_fhs
+    nur-program-learning.packages.${pkgs.system}.cudatoolkit_dev_env
     # nixGL
     # nixGL.packages.${pkgs.system}.nixGL
     nixGL.packages.${pkgs.system}.nixGLDefault

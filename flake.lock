@@ -3418,11 +3418,11 @@
     },
     "nixpkgs-latest": {
       "locked": {
-        "lastModified": 1722062838,
-        "narHash": "sha256-NjI3N2deqK0ZxaMf4ep4Sgt1mbdBjkzuNQ0Hsh7lO4s=",
+        "lastModified": 1722065728,
+        "narHash": "sha256-AZ5y0QvUsexzX80k2unWjq/K521/z0jiSXQOW0JnLZU=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "6c3df72002546bdb60c2db7819ebc663ba63a6ac",
+        "rev": "bfe7a4a3ee94059c0b8003cdb0b6bccd74d3a0f7",
         "type": "github"
       },
       "original": {
@@ -4167,11 +4167,11 @@
         "treefmt-nix": "treefmt-nix_6"
       },
       "locked": {
-        "lastModified": 1722014738,
-        "narHash": "sha256-rYvjZy7vYIQL7TLaXv1WkFT5CaIdsuXFwAJLg3N9LTQ=",
+        "lastModified": 1722065959,
+        "narHash": "sha256-YSCRfLu3QVlLJZJ3fhE9NjKDVRzQbQOIk9vePo0P53g=",
         "owner": "DataEraserC",
         "repo": "nur-packages",
-        "rev": "bb8f09d9fe4fe8f9c22643d03cdee608d598a707",
+        "rev": "45e5aac8296c23a8a4096de0fe0bc121ff842c41",
         "type": "github"
       },
       "original": {
