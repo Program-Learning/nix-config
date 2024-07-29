@@ -8,22 +8,32 @@
   mylib,
   system,
   genSpecialArgs,
-  nixos-wsl,
   ...
 } @ args: let
   # y9000k2021h
   name = "y9000k2021h";
   wsl-modules = [
-    nixos-wsl.nixosModules.default
+    inputs.nixos-wsl.nixosModules.default
   ];
   base-modules = {
-    nixos-modules = map mylib.relativeToRoot [
-      # common
-      "secrets/nixos.nix"
-      "modules/nixos/server/server.nix"
-      # host specific
-      "hosts/wsl-${name}"
-    ];
+    nixos-modules =
+      (map mylib.relativeToRoot [
+        # common
+        "secrets/nixos.nix"
+        "modules/nixos/server/server.nix"
+        # host specific
+        "hosts/wsl-${name}"
+      ])
+      ++ [
+        inputs.vscode-server.nixosModules.default
+        ({
+          config,
+          pkgs,
+          ...
+        }: {
+          services.vscode-server.enable = true;
+        })
+      ];
     home-modules = map mylib.relativeToRoot [
       # common
       "home/linux/tui.nix"

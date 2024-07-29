@@ -53,11 +53,7 @@
     riscv64-linux = import ./riscv64-linux (args // {system = "riscv64-linux";});
   };
   wslSystems = {
-    x86_64-wsl = import ./x86_64-wsl (args
-      // {
-        inherit (inputs) nixos-wsl;
-        system = "x86_64-linux";
-      });
+    x86_64-wsl = import ./x86_64-wsl (args // {system = "x86_64-linux";});
     # aarch64-wsl = import ./aarch64-wsl (args // {system = "aarch64-linux";});
   };
   darwinSystems = {
