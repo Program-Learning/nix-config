@@ -91,6 +91,8 @@ in rec {
     enable32Bit = true;
   };
   environment.systemPackages = with pkgs; [
+    # for mount luks disk from nixos
+    cryptsetup
     # lenovo-legion
     nur-DataEraserC.packages.${pkgs.system}.cudatoolkit_dev_env
     # nixGL
