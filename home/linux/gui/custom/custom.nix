@@ -90,6 +90,8 @@
           dolphin
           ranger
 
+          qrencode
+
           # --wine
           protonup-qt
           # wine-staging

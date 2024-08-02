@@ -136,9 +136,23 @@
     package = nur-DataEraserC.packages.${pkgs.system}.clash-nyanpasu;
     tunMode = true;
   };
+  services.sing-box = {
+    enable = true;
+    settings = {
+      experimental = {
+        cache_file = {
+          enabled = true;
+        };
+        clash_api = {
+          external_controller = "0.0.0.0:9090";
+          external_ui = "@yacd@";
+        };
+      };
+    };
+  };
   # useless
   features.nekoray = {
-    enable = false;
+    enable = true;
     package = pkgs.nekoray;
     tunMode = true;
   };

@@ -21,6 +21,7 @@
       "https://nix-gaming.cachix.org"
       "https://nixpkgs-wayland.cachix.org"
       "https://ezkea.cachix.org"
+      "https://dataeraserc.cachix.org"
     ];
     extra-trusted-public-keys = [
       "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
@@ -28,6 +29,7 @@
       "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
       "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
       "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI="
+      "dataeraserc.cachix.org-1:VB/XTSZLKIg0sLnZxr+op45pII4pInaOP8pbfgUJ+Uc="
     ];
   };
 
@@ -115,14 +117,41 @@
 
     impermanence.url = "github:nix-community/impermanence";
 
-    hyprland = {
-      url = "github:hyprwm/Hyprland/v0.39.1";
-      inputs.nixpkgs.follows = "nixpkgs";
+    # hyprwm
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?rev=fe7b748eb668136dd0558b7c8279bfcd7ab4d759&submodules=1";
+
+    hypridle = {
+      url = "github:hyprwm/hypridle";
+      inputs.hyprlang.follows = "hyprland/hyprlang";
+      # inputs.hyprutils.follows = "hyprland/hyprutils";
+      inputs.nixpkgs.follows = "hyprland/nixpkgs";
+      inputs.systems.follows = "hyprland/systems";
+    };
+
+    hyprland-contrib = {
+      url = "github:hyprwm/contrib";
+      inputs.nixpkgs.follows = "hyprland/nixpkgs";
     };
 
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins/e9457e08ca3ff16dc5a815be62baf9e18b539197";
       inputs.hyprland.follows = "hyprland";
+    };
+
+    hyprlock = {
+      url = "github:hyprwm/hyprlock";
+      inputs.hyprlang.follows = "hyprland/hyprlang";
+      # inputs.hyprutils.follows = "hyprland/hyprutils";
+      inputs.nixpkgs.follows = "hyprland/nixpkgs";
+      inputs.systems.follows = "hyprland/systems";
+    };
+
+    hyprpaper = {
+      url = "github:hyprwm/hyprpaper";
+      inputs.hyprlang.follows = "hyprland/hyprlang";
+      # inputs.hyprutils.follows = "hyprland/hyprutils";
+      inputs.nixpkgs.follows = "hyprland/nixpkgs";
+      inputs.systems.follows = "hyprland/systems";
     };
 
     Hyprspace = {

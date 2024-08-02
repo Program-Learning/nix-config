@@ -37,6 +37,7 @@ in {
     extraConfig = builtins.readFile ../conf/hyprland.conf;
     plugins = [
       # hyprland-plugins.packages.${pkgs.system}.hyprbars # windows bar
+      # hyprland-plugins.packages.${pkgs.system}.hyprexpo
       # hyprland-easymotion.packages.${pkgs.system}.hypreasymotion # label windows
       # hyprfocus.packages.${pkgs.system}.hyprfocus # focus anime
       # Hyprspace.packages.${pkgs.system}.Hyprspace # hyprexpo
