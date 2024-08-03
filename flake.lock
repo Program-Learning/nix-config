@@ -686,11 +686,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1722564602,
-        "narHash": "sha256-5I9JS9he9v+uq57PwLmWoJBBsRIm+Ek4FZtACWQsmfM=",
+        "lastModified": 1722601690,
+        "narHash": "sha256-0T5UIj683XckcgZYAKauDQjDqQvcZf2b+hQrBxtvIKo=",
         "owner": "nix-community",
         "repo": "flake-firefox-nightly",
-        "rev": "e98396265bfb6d81034ca0546d7ada8afbd3d291",
+        "rev": "5783e7f3c40c73bfa2e2501da8d39670cbbd0f98",
         "type": "github"
       },
       "original": {
@@ -2863,10 +2863,10 @@
     "mysecrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1719914447,
-        "narHash": "sha256-asSOBjppJBO+GMV1cpMNSDRefEjVNfe8H0iFx5U7YXE=",
+        "lastModified": 1722658870,
+        "narHash": "sha256-UuFlOqlTG9uNdjBTMOf3p9om6bPVeJ2TAp7o+TNxyho=",
         "ref": "refs/heads/main",
-        "rev": "d31f8218935a141d31979d62ffa683a324a061d7",
+        "rev": "e64358b68f024940014155399cdc5b1e727357e0",
         "shallow": true,
         "type": "git",
         "url": "ssh://git@github.com/DataEraserC/nix-secrets.git"
@@ -3626,11 +3626,11 @@
     },
     "nixpkgs-latest": {
       "locked": {
-        "lastModified": 1722592276,
-        "narHash": "sha256-kTGYCNje9ysVZaO5Wg309JyC6spL3q7yHvboo++pYo0=",
+        "lastModified": 1722612660,
+        "narHash": "sha256-IQ3ZgBXbPri34PdRy4UFwn7CFg2rI6hqthLL7ImUHgo=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "e18c970b1ae118ecb5697fcf0dd0da1243596eb3",
+        "rev": "8764d898c4f365d98ef77af140b32c6396eb4e02",
         "type": "github"
       },
       "original": {
