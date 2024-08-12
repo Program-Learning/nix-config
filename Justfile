@@ -14,6 +14,10 @@ utils_nu := absolute_path("utils.nu")
 #
 ############################################################################
 
+# List all the just commands
+default:
+    @just --list
+
 # Run eval tests
 [group('nix')]
 test:
@@ -41,6 +45,7 @@ repl:
   nix repl -f flake:nixpkgs
 
 # remove all generations older than 7 days
+# on darwin, you may need to switch to root user to run this command
 [group('nix')]
 clean:
   sudo nix profile wipe-history --profile /nix/var/nix/profiles/system  --older-than 7d
@@ -49,7 +54,14 @@ clean:
 [group('nix')]
 gc:
   # garbage collect all unused nix store entries
-  sudo nix-collect-garbage --delete-old
+  # NOTE: it's a system-wide garbage collection, but it seems won't affect home-manager's gcroot on darwin
+  sudo nix-collect-garbage --delete-older-than 7d
+
+[group('nix')]
+gc-home:
+  # garbage collect all unused nix store entries(for the user - home-manager on nix-darwin)
+  # https://github.com/LnL7/nix-darwin/issues/237
+  nix-collect-garbage --delete-older-than 7d
 
 # Enter a shell session which has all the necessary tools for this flake
 [linux]
@@ -67,6 +79,11 @@ shell:
 fmt:
   # format the nix files in this repo
   nix fmt
+
+# Show all the auto gc roots in the nix store
+[group('nix')]
+gcroot:
+  ls -al /nix/var/nix/gcroots/auto/
 
 ############################################################################
 #
