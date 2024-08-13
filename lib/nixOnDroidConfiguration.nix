@@ -12,7 +12,6 @@
   inherit (inputs) nix-on-droid nixpkgs-nod home-manager-nod;
 in
   nix-on-droid.lib.nixOnDroidConfiguration {
-    inherit system;
     extraSpecialArgs = specialArgs;
 
     # set nixpkgs instance, it is recommended to apply `nix-on-droid.overlays.default`
