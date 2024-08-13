@@ -14,7 +14,7 @@
 in {
   home.packages = with pkgs-unstable; [
     pkgs-unstable-yuzu.yuzu # Switch games
-    ryujinx # Switch games
+    pkgs-stable.ryujinx # Switch games
 
     steamPackages.steamcmd # steam command line
 

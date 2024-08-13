@@ -35,7 +35,10 @@
     };
   };
 
-  programs.darling = {enable = true;};
+  programs.darling = {
+    enable = true;
+    package = pkgs-stable.darling;
+  };
 
   # environment.variables = {
   #   QT_AUTO_SCREEN_SCALE_FACTOR = "1";

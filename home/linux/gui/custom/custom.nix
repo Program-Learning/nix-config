@@ -1,6 +1,8 @@
 {
   config,
   pkgs,
+  pkgs-jadx-fix,
+  pkgs-latest,
   pkgs-unstable,
   pkgs-stable,
   nur-ryan4yin,
@@ -157,7 +159,7 @@
           gitRepo
           fuse
           ntfs3g
-          jadx
+          pkgs-jadx-fix.jadx
           meld
           darling-dmg
           # darling
