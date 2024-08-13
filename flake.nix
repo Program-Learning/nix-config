@@ -60,11 +60,11 @@
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
 
     # for nix-on-droid
-    nixpkgs-nod.url = "github:NixOS/nixpkgs/nixos-23.11";
+    nixpkgs-nod.url = "github:NixOS/nixpkgs/nixos-24.05";
     nixpkgs-unstable-nod.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager-nod = {
-      url = "github:nix-community/home-manager/release-23.11";
+      url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs-nod";
     };
 
@@ -74,7 +74,7 @@
     };
 
     nix-on-droid = {
-      url = "github:nix-community/nix-on-droid/release-23.11";
+      url = "github:nix-community/nix-on-droid/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs-nod";
       inputs.home-manager.follows = "home-manager-nod";
     };
