@@ -6,8 +6,8 @@
   ...
 }: {
   home.packages = with pkgs-latest; [
-    pkgs-unstable.ollama # Run ai locally
+    ollama # Run ai locally
     aichat # A ai cli interface
-    pkgs-unstable.open-webui # ollama webui
+    open-webui # ollama webui
   ];
 }
