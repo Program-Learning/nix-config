@@ -35,7 +35,7 @@
 
   # This is the standard format for flake.nix. `inputs` are the dependencies of the flake,
   # Each item in `inputs` will be passed as a parameter to the `outputs` function after being pulled and built.
-  inputs = {
+  inputs = rec {
     # There are many ways to reference flake inputs. The most widely used is github:owner/name/reference,
     # which represents the GitHub repository URL + branch/commit-id/tag.
 
@@ -60,17 +60,12 @@
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
 
     # for nix-on-droid
-    nixpkgs-nod.url = "github:NixOS/nixpkgs/nixos-24.05";
+    nixpkgs-nod = nixpkgs;
     nixpkgs-unstable-nod.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager-nod = {
       url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs-nod";
-    };
-
-    fakedroid = {
-      url = "github:nix-community/nix-on-droid";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nix-on-droid = {
@@ -98,6 +93,11 @@
     nur-program-learning-nod = {
       url = "github:Program-Learning/nur-packages";
       inputs.nixpkgs.follows = "nixpkgs-nod";
+    };
+
+    fakedroid = {
+      url = "github:nix-community/nix-on-droid";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # home-manager, used for managing user configuration
