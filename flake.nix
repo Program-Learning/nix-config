@@ -234,16 +234,8 @@
 
     nuenv.url = "github:DeterminateSystems/nuenv";
 
-    daeuniverse.url = "github:daeuniverse/flake.nix";
-    # daeuniverse.url = "github:daeuniverse/flake.nix/exp";
-
     haumea = {
       url = "github:nix-community/haumea/v0.2.2";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    microvm = {
-      url = "github:astro/microvm.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
