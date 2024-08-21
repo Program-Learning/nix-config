@@ -20,8 +20,8 @@
         specialArgs =
           inputs
           // {
-            myvars.username = "ryan";
-            myvars.userfullname = "Ryan Yin";
+            myvars.username = "nixos";
+            myvars.userfullname = "DataEraserC";
           };
         modules = [
           {networking.hostName = "ai";}
@@ -43,8 +43,8 @@
         specialArgs =
           inputs
           // {
-            myvars.username = "ryan";
-            myvars.userfullname = "Ryan Yin";
+            myvars.username = "nixos";
+            myvars.userfullname = "DataEraserC";
           };
         modules = [
           # Building on a USB installer is buggy, lack of disk space, memory, trublesome to setup substituteers, etc.

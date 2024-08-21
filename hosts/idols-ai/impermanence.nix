@@ -52,17 +52,20 @@
     ];
 
     # the following directories will be passed to /persistent/home/$USER
-    users.ryan = {
+    users.nixos = {
       directories = [
         "codes"
         "nix-config"
         "tmp"
 
+        "Desktop"
+        ".gnome"
         "Downloads"
         "Music"
         "Pictures"
         "Documents"
         "Videos"
+        "Templates"
 
         {
           directory = ".gnupg";
@@ -77,6 +80,22 @@
         ".config/pulse"
         ".pki"
         ".steam" # steam games
+        ".wine"
+        ".minecraft"
+        "GOG Games"
+
+        "Apps" # some apps temporarily store at here
+
+        ".config/Ryujinx"
+        ".config/yuzu"
+        ".config/lutris"
+        ".config/gnome-boxes"
+        "Android"
+        ".android"
+        ".config/.android"
+        ".Genymobile"
+        "AndroidStudioProjects"
+        "IdeaProjects"
 
         # cloud native
         {
@@ -97,6 +116,8 @@
           mode = "0700";
         }
 
+        ".tldr"
+
         # remote desktop
         ".config/remmina"
         ".config/freerdp"
@@ -108,14 +129,20 @@
         # vscode
         ".vscode"
         ".vscode-insiders"
-        ".config/Code/User"
-        ".config/Code - Insiders/User"
+        ".config/Code"
+        ".config/vscode-sqltools"
+        ".config/Code - Insiders"
+
+        # zed
+        ".config/zed"
 
         # browsers
         ".mozilla"
         ".config/google-chrome"
+        ".config/google-chrome-unstable"
+        ".config/microsoft-edge"
 
-        # neovim / remmina / flatpak / ...
+        # neovim / remmina / flatpak / zed ...
         ".local/share"
         ".local/state"
 
@@ -127,6 +154,63 @@
         # neovim plugins(wakatime & copilot)
         ".wakatime"
         ".config/github-copilot"
+
+        # clash
+        ".config/clash"
+        ".config/clash-verge"
+        ".config/qv2ray"
+        ".config/nekoray"
+
+        # ai related file dirs
+        "invokeai"
+        ".textgen"
+        ".config/LaphaeLaicmd"
+        ".config/aichat"
+        ".config/open-webui"
+        ".ollama"
+        ".lingma"
+
+        ".vmware"
+        ".config/VirtualBox"
+        ".config/lxc"
+        ".config/libvirt"
+
+        ".config/.cpolar"
+        ".config/blender"
+        ".config/aDrive"
+        ".config/baidunetdisk"
+        ".config/wechat-devtools"
+        ".config/JetBrains"
+        ".config/io.hoppscotch.desktop"
+        ".config/ncmpcpp"
+        ".config/uGet"
+        ".config/Motrix"
+        ".config/sunshine"
+        ".config/QQ"
+        ".config/icalingua"
+        ".config/MuseScore"
+        ".config/ghc"
+        ".config/Kingsoft"
+        ".config/libreoffice"
+        ".config/onlyoffice"
+        ".config/Genymobile"
+        ".config/gh"
+        ".config/go-musicfox"
+        ".config/GIMP"
+        ".config/anytype"
+        ".config/obs-studio"
+        ".config/kdeconnect"
+        ".config/DingTalk"
+        ".config/bilibili"
+        ".config/Google"
+        ".config/Moonlight Game Streaming Project"
+
+        # kde related
+        ".config/kdedefaults"
+
+        # Trash Bin(not work yet)
+        # https://github.com/nix-community/impermanence/issues/147
+        ".local/share/Trash"
       ];
       files = [
         ".wakatime.cfg"

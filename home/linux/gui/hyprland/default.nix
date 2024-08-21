@@ -3,6 +3,7 @@
   config,
   lib,
   anyrun,
+  hyprland,
   ...
 } @ args:
 with lib; let

@@ -1,5 +1,8 @@
 {
   pkgs,
+  pkgs-stable,
+  pkgs-unstable,
+  nur-program-learning,
   nur-ataraxiasjel,
   ...
 }: {
@@ -36,17 +39,62 @@
       enableOnBoot = true;
     };
 
-    # Usage: https://wiki.nixos.org/wiki/Waydroid
-    # waydroid.enable = true;
+    # Do not use "--restart=always" to create container, or shutdown/reboot will be slow
+    # https://github.com/containers/podman/issues/15284
+    podman = {
+      enable = true;
 
-    # libvirtd = {
-    #   enable = true;
-    #   # hanging this option to false may cause file permission issues for existing guests.
-    #   # To fix these, manually change ownership of affected files in /var/lib/libvirt/qemu to qemu-libvirtd.
-    #   qemu.runAsRoot = true;
+      # Create a `docker` alias for podman, to use it as a drop-in replacement
+      dockerCompat = false;
+
+      # Enable use of NVidia GPUs from within podman containers.
+      enableNvidia = false;
+
+      # Required for containers under podman-compose to be able to talk to each other.
+      defaultNetwork.settings.dns_enabled = true;
+    };
+
+    # podman containers as systemd services(will break nixos's declare feat)
+    # oci-containers.backend = "podman";
+    # oci-containers.containers = {
+    #   container-name = {
+    #     image = "container-image";
+    #     autoStart = true;
+    #     ports = [ "127.0.0.1:1234:1234" ];
+    #   };
     # };
 
-    # lxd.enable = true;
+    # Usage: https://wiki.nixos.org/wiki/Waydroid
+    waydroid.enable = true;
+
+    libvirtd = {
+      enable = true;
+      # hanging this option to false may cause file permission issues for existing guests.
+      # To fix these, manually change ownership of affected files in /var/lib/libvirt/qemu to qemu-libvirtd.
+      qemu = {
+        runAsRoot = true;
+        swtpm.enable = true;
+        ovmf.enable = true;
+        ovmf.packages = [pkgs-unstable.OVMFFull.fd];
+      };
+    };
+    spiceUSBRedirection.enable = true;
+    lxd = {
+      enable = true;
+      ui.enable = true;
+    };
+    virtualbox = {
+      host.enable = true;
+      host.enableExtensionPack = true;
+    };
+    vmware = {
+      host = {
+        # package = nur-program-learning.packages.${pkgs.system}.vmware-workstation.override {
+        #   enableMacOSGuests = true;
+        # };
+        enable = false;
+      };
+    };
   };
 
   environment.systemPackages = with pkgs; [
@@ -56,10 +104,32 @@
     # https://github.com/casualsnek/waydroid_script
     # https://github.com/AtaraxiaSjel/nur/tree/master/pkgs/waydroid-script
     # https://wiki.archlinux.org/title/Waydroid#ARM_Apps_Incompatible
-    # nur-ataraxiasjel.packages.${pkgs.system}.waydroid-script
+    nur-ataraxiasjel.packages.${pkgs.system}.waydroid-script
 
     # Need to add [File (in the menu bar) -> Add connection] when start for the first time
-    # virt-manager
+    virt-manager
+    # virt-manager-qt
+    virt-viewer
+    
+    distrobox
+
+    gnome.gnome-boxes
+
+    spice
+    spice-gtk
+    spice-protocol
+    win-spice
+
+    win-virtio
+
+    edk2
+    edk2-uefi-shell
+
+    x11docker
+
+    virtiofsd
+
+    dmg2img
 
     # QEMU/KVM(HostCpuOnly), provides:
     #   qemu-storage-daemon qemu-edid qemu-ga
@@ -75,5 +145,6 @@
     #   qemu-system-xtensa qemu-xtensa qemu-system-xtensaeb qemu-xtensaeb
     #   ......
     qemu
+    nixos-shell
   ];
 }

@@ -4,6 +4,8 @@
   nuenv,
   nixpkgs,
   lib,
+  nur-xddxdd,
+  nur-DataEraserC,
   ...
 } @ args: {
   nixpkgs.overlays =
@@ -98,14 +100,25 @@
       "https://nix-community.cachix.org"
       # my own cache server
       "https://ryan4yin.cachix.org"
+      nur-xddxdd.meta.cachixUrl
+      nur-DataEraserC.meta.cachixUrl
+      "https://linyinfeng.cachix.org"
       # cuda-maintainer's cache server
       "https://cuda-maintainers.cachix.org"
+      "https://program-learning.cachix.org"
+      "https://ai.cachix.org"
     ];
 
     trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "ryan4yin.cachix.org-1:Gbk27ZU5AYpGS9i3ssoLlwdvMIh0NxG0w8it/cv9kbU="
+      nur-xddxdd.meta.cachixPublicKey
+      nur-DataEraserC.meta.cachixPublicKey
+      "linyinfeng.cachix.org-1:sPYQXcNrnCf7Vr7T0YmjXz5dMZ7aOKG3EqLja0xr9MM="
       "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
+      "program-learning.cachix.org-1:Pfl2r+J5L9wJqpDnop6iQbrR3/Ts4AUyotu89INRlSU="
+      "ai.cachix.org-1:N9dzRK+alWwoKXQlnn0H6aUx0lU/mspIoz8hMvGvbbc="
+      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
     ];
     builders-use-substitutes = true;
   };
