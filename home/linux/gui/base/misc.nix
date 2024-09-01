@@ -45,6 +45,7 @@
     ventoy # multi-boot usb creator
     pkgs-unstable-etcher.etcher # create bootable usb
     mission-center # Graphical task usage analyzer
+    wvkbd # On-screen keyboard for wlroots
   ];
 
   # GitHub CLI tool

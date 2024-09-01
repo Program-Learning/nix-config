@@ -2668,7 +2668,6 @@
         "url": "ssh://git@github.com/DataEraserC/nix-secrets.git"
       },
       "original": {
-        "rev": "bb18d7c81af237d7949b9d262489d7612564385f",
         "shallow": true,
         "type": "git",
         "url": "ssh://git@github.com/DataEraserC/nix-secrets.git"
