@@ -207,6 +207,11 @@ in {
             mode = "0400";
             owner = "sftpgo";
           };
+          "minio.env" = {
+            file = "${mysecrets}/server/minio.env.age";
+            mode = "0400";
+            owner = "minio";
+          };
         };
       })
 
@@ -244,10 +249,15 @@ in {
 
       (mkIf cfg.server.webserver.enable {
         age.secrets = {
-          "certs/ecc-server.key" = {
+          "caddy-ecc-server.key" = {
             file = "${mysecrets}/certs/ecc-server.key.age";
             mode = "0400";
-            owner = "caddy"; # used by caddy only
+            owner = "caddy";
+          };
+          "postgres-ecc-server.key" = {
+            file = "${mysecrets}/certs/ecc-server.key.age";
+            mode = "0400";
+            owner = "postgres";
           };
         };
       })

@@ -11,7 +11,6 @@
         monitor = "eDP-1,2560x1600@60,0x0,1";
       };
     };
-    i3.nvidia = true;
   };
   modules.editors.emacs = {
     enable = true;

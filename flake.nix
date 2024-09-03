@@ -266,6 +266,7 @@
     # use ssh protocol to authenticate via ssh-agent/ssh-key, and shallow clone to save time
     mysecrets = {
       url = "git+ssh://git@github.com/DataEraserC/nix-secrets.git?shallow=1";
+      # url = "git+ssh://git@github.com/DataEraserC/nix-secrets.git?rev=28fbe24476a03bc56040b2c509cd3a5e16d6c8e7&shallow=1";
       # url = "git+file:////home/nixos/Documents/code/nix-config/secrets?shallow=1";
       flake = false;
     };

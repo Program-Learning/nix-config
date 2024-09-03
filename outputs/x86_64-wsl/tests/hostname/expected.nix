@@ -4,7 +4,6 @@
 }: let
   specialExpected = {
     "wsl-y9000k2021h-hyprland" = "y9000k2021h";
-    "wsl-y9000k2021h-i3" = "y9000k2021h";
   };
   specialHostNames = builtins.attrNames specialExpected;
 

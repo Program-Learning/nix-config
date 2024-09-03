@@ -28,23 +28,6 @@
     ];
   };
 
-  modules-i3 = {
-    nixos-modules =
-      [
-        {
-          modules.desktop.xorg.enable = true;
-          modules.secrets.desktop.enable = true;
-          modules.secrets.impermanence.enable = true;
-        }
-      ]
-      ++ base-modules.nixos-modules;
-    home-modules =
-      [
-        {modules.desktop.i3.enable = true;}
-      ]
-      ++ base-modules.home-modules;
-  };
-
   modules-gnome-wayland = {
     nixos-modules =
       [
@@ -100,8 +83,6 @@ in {
     "${name}-gnome-wayland" = mylib.nixosSystem (modules-gnome-wayland // args);
     # with kde-wayland window manager
     "${name}-kde-wayland" = mylib.nixosSystem (modules-kde-wayland // args);
-    # with i3 window manager
-    "${name}-i3" = mylib.nixosSystem (modules-i3 // args);
     # host with hyprland compositor
     "${name}-hyprland" = mylib.nixosSystem (modules-hyprland // args);
   };
@@ -110,7 +91,6 @@ in {
   packages = {
     "${name}-gnome-wayland" = inputs.self.nixosConfigurations."${name}-gnome-wayland".config.formats.iso;
     "${name}-kde-wayland" = inputs.self.nixosConfigurations."${name}-kde-wayland".config.formats.iso;
-    "${name}-i3" = inputs.self.nixosConfigurations."${name}-i3".config.formats.iso;
     "${name}-hyprland" = inputs.self.nixosConfigurations."${name}-hyprland".config.formats.iso;
   };
 }

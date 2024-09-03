@@ -115,13 +115,6 @@ droid mode="default":
 
 [linux]
 [group('desktop')]
-i3 mode="default":
-  #!/usr/bin/env nu
-  use {{utils_nu}} *;
-  nixos-switch ai-i3 {{mode}}
-
-[linux]
-[group('desktop')]
 hypr mode="default":
   #!/usr/bin/env nu
   use {{utils_nu}} *;
