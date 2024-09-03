@@ -18,7 +18,6 @@
     # system call monitoring
     strace # system call monitoring
     ltrace # library call monitoring
-    bpftrace # powerful tracing tool
     tcpdump # network sniffer
     lsof # list open files
 
@@ -26,7 +25,6 @@
     bpftrace # powerful tracing tool
     bpftop # monitor BPF programs
     bpfmon # BPF based visual packet rate monitor
-    bpftune # BPF-based auto-tuning of Linux system parameters
 
     # system monitoring
     sysstat
