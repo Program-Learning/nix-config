@@ -68,11 +68,10 @@ in rec {
     # accessible via `nvidia-settings`.
     nvidiaSettings = true;
   };
-
+  hardware.nvidia-container-toolkit.enable = true;
   hardware.graphics = {
     enable = true;
     # needed by nvidia-docker
-    nvidia-container-toolkit.enable = true;
     enable32Bit = true;
   };
   environment.systemPackages = with pkgs; [
