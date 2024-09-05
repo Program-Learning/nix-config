@@ -60,16 +60,16 @@
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
 
     # for nix-on-droid
-    nixpkgs-nod = nixpkgs;
+    nixpkgs-nod.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-unstable-nod.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager-nod = {
-      url = "github:nix-community/home-manager/release-24.05";
+      url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs-nod";
     };
 
     nix-on-droid = {
-      url = "github:nix-community/nix-on-droid/release-24.05";
+      url = "github:nix-community/nix-on-droid/master";
       inputs.nixpkgs.follows = "nixpkgs-nod";
       inputs.home-manager.follows = "home-manager-nod";
     };
@@ -77,6 +77,11 @@
     nur-ryan4yin-nod = {
       url = "github:ryan4yin/nur-packages";
       # inputs.nixpkgs.follows = "nixpkgs-nod";
+    };
+
+    nur-DataEraserC-nod = {
+      url = "github:DataEraserC/nur-packages";
+      inputs.nixpkgs.follows = "nixpkgs-nod";
     };
 
     catppuccin-urxvt = {
