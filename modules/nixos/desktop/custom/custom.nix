@@ -134,6 +134,11 @@
   # recording tool
   features.wf-recorder.enable = true;
   # clash tun mode fix
+  programs.clash-verge = {
+    enable = false;
+    package = pkgs.clash-verge-rev;
+    tunMode = true;
+  };
   features.clash-nyanpasu = {
     enable = true;
     package = nur-DataEraserC.packages.${pkgs.system}.clash-nyanpasu;

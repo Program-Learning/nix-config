@@ -95,9 +95,11 @@ in rec {
     cryptsetup
     # lenovo-legion
     nur-DataEraserC.packages.${pkgs.system}.cudatoolkit_dev_env
+
+    # too big so disabled
     # nixGL
     # nixGL.packages.${pkgs.system}.nixGL
-    nixGL.packages.${pkgs.system}.nixGLDefault
+    # nixGL.packages.${pkgs.system}.nixGLDefault
     # nixGL.packages.${pkgs.system}.nixGLNvidia
     # nixGL.packages.${pkgs.system}.nixGLNvidiaBumblebee
     nixGL.packages.${pkgs.system}.nixGLIntel

@@ -158,6 +158,7 @@
         # clash
         ".config/clash"
         ".config/clash-verge"
+        ".config/clash-nyanpasu"
         ".config/qv2ray"
         ".config/nekoray"
 
