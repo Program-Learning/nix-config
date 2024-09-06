@@ -2,6 +2,7 @@
   pkgs,
   pkgs-stable,
   nur-DataEraserC,
+  pkgs-latest,
   fakedroid,
   ...
 }: {
@@ -14,7 +15,7 @@
     adb-sync
     abootimg
     pkgs-stable.android-tools
-    android-studio
+    pkgs-latest.android-studio
     genymotion
     edl
     # --payload-dumper
