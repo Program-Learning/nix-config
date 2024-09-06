@@ -249,6 +249,10 @@
     DataEraserC-dots_hyprland = {
       url = "github:DataEraserC/dots-hyprland";
       # url = "git+file:////home/nixos/Documents/code/dots-hyprland?shallow=1";
+    };
+
+    nixpak = {
+      url = "github:nixpak/nixpak";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

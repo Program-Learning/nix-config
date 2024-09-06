@@ -18,19 +18,6 @@
     # instant messaging
     telegram-desktop
     discord
-    # temporarily fix for https://github.com/NixOS/nixpkgs/commit/7e3940735af718435c7f34cbc1f0f9c0105e8159
-    # pkgs-unstable.qq # https://github.com/NixOS/nixpkgs/tree/master/pkgs/applications/networking/instant-messengers/qq
-    llqqnt.packages.${pkgs.system}.llqqnt
-    # nur-linyinfeng.packages.${pkgs.system}.icalingua-plus-plus
-
-    nur-linyinfeng.packages.${pkgs.system}.wemeet
-
-    # wechat-uos
-    nur-DataEraserC.packages.${pkgs.system}.wechat-uos
-
-    nur-DataEraserC.packages.${pkgs.system}.dingtalk
-
-    pkgs-latest.feishu
 
     # remote desktop(rdp connect)
     remmina
@@ -46,6 +33,21 @@
     pkgs-unstable-etcher.etcher # create bootable usb
     mission-center # Graphical task usage analyzer
     wvkbd # On-screen keyboard for wlroots
+
+    # my custom hardened packages
+    pkgs.nixpaks.qq
+    pkgs.nixpaks.qq-desktop-item
+
+    # nur-linyinfeng.packages.${pkgs.system}.icalingua-plus-plus
+
+    nur-linyinfeng.packages.${pkgs.system}.wemeet
+
+    # wechat-uos
+    nur-DataEraserC.packages.${pkgs.system}.wechat-uos
+
+    nur-DataEraserC.packages.${pkgs.system}.dingtalk
+
+    pkgs-latest.feishu
   ];
 
   # GitHub CLI tool
