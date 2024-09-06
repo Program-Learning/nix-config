@@ -6,6 +6,7 @@
 {
   lib,
   pkgs,
+  firefox-nightly,
   mkNixPak,
   ...
 }:
@@ -17,6 +18,7 @@ mkNixPak {
   }: {
     app = {
       package = pkgs.firefox-wayland;
+      # package = firefox-nightly.packages.${pkgs.system}.firefox-nightly-bin;
       binPath = "bin/firefox";
     };
     flatpak.appId = "org.mozilla.firefox";

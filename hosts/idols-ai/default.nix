@@ -1,12 +1,21 @@
-{myvars, ...}:
+{
+  config,
+  pkgs,
+  lib,
+  myvars,
+  nur-DataEraserC,
+  nixGL,
+  ...
+} @ args:
 #############################################################
 #
-#  Ai - my main computer, with NixOS + I5-13600KF + RTX 4090 GPU, for gaming & daily use.
+#  Ai - my main computer, with NixOS + i7-11800H + RTX 3060 Mobile / Max-Q GPU, for gaming & daily use.
 #
 #############################################################
 let
   hostName = "ai"; # Define your hostname.
-in {
+  MacAddress = "random";
+in rec {
   imports = [
     ./netdev-mount.nix
     # Include the results of the hardware scan.
@@ -23,13 +32,17 @@ in {
 
     # desktop need its cli for status bar
     networkmanager.enable = true;
+    networkmanager.wifi.macAddress = MacAddress;
+    networkmanager.ethernet.macAddress = MacAddress;
+    enableIPv6 = true; # disable ipv6
+    extraHosts = myvars.networking.genericHosts;
   };
 
   # conflict with feature: containerd-snapshotter
   # virtualisation.docker.storageDriver = "btrfs";
 
   # for Nvidia GPU
-  services.xserver.videoDrivers = ["nvidia"]; # will install nvidia-vaapi-driver by default
+  services.xserver.videoDrivers = ["nvidia" "modesetting"]; # will install nvidia-vaapi-driver by default
   hardware.nvidia = {
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
     # https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/os-specific/linux/nvidia-x11/default.nix
@@ -37,13 +50,48 @@ in {
 
     # required by most wayland compositors!
     modesetting.enable = true;
+    # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
     powerManagement.enable = true;
+    # Fine-grained power management. Turns off GPU when not in use.
+    # Experimental and only works on modern Nvidia GPUs (Turing or newer).
+    powerManagement.finegrained = true;
+    prime = {
+      offload = {
+        enable = true;
+        enableOffloadCmd = true;
+      };
+      # Make sure to use the correct Bus ID values for your system!
+      intelBusId = "PCI:0:2:0";
+      nvidiaBusId = "PCI:1:0:0";
+    };
+    # Enable the Nvidia settings menu,
+    # accessible via `nvidia-settings`.
+    nvidiaSettings = true;
   };
   hardware.nvidia-container-toolkit.enable = true;
   hardware.graphics = {
     enable = true;
     # needed by nvidia-docker
     enable32Bit = true;
+  };
+  environment.systemPackages = with pkgs; [
+    nur-DataEraserC.packages.${pkgs.system}.cudatoolkit_dev_env
+    # nixGL
+    # nixGL.packages.${pkgs.system}.nixGL
+    nixGL.packages.${pkgs.system}.nixGLDefault
+    # nixGL.packages.${pkgs.system}.nixGLNvidia
+    # nixGL.packages.${pkgs.system}.nixGLNvidiaBumblebee
+    nixGL.packages.${pkgs.system}.nixGLIntel
+    # nixGL.packages.${pkgs.system}.nixVulkanNvidia
+    nixGL.packages.${pkgs.system}.nixVulkanIntel
+  ];
+  features.lenovo-legion = {
+    enable = true;
+    enhanceMode = true;
+  };
+  features.intel-gpu-tools = {
+    enable = true;
+    enhanceMode = true;
   };
 
   # This value determines the NixOS release from which the default

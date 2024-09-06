@@ -4,6 +4,8 @@
 }: let
   username = myvars.username;
   hosts = [
+    "ai-kde-wayland"
+    "ai-gnome-wayland"
     "ai-hyprland"
     "shoukei-hyprland"
     "ruby"

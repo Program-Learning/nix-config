@@ -5,3 +5,9 @@ result/
 .pre-commit-config.yaml
 logs/
 core*
+tmp/
+secrets/
+!secrets/README.md
+!secrets/darwin.nix
+!secrets/nixos.nix
+mysql/
