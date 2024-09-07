@@ -43,6 +43,7 @@
       #-- nix
       nil
       nurl
+      nvfetcher
       # rnix-lsp
       # nixd
       statix # Lints and suggestions for the nix programming language
