@@ -3,6 +3,7 @@
   pkgs-unstable,
   pkgs-stable,
   gomod2nix,
+  cargo2nix,
   gradle2nix,
   ...
 }: {
@@ -154,6 +155,7 @@
       #-- rust
       rust-analyzer
       cargo # rust package manager
+      cargo2nix.packages.${pkgs.system}.cargo2nix
       rustfmt
 
       #-- golang

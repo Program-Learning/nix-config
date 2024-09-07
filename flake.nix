@@ -332,11 +332,18 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    cargo2nix = {
+      url = "github:cargo2nix/cargo2nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+    };
+
     gomod2nix = {
       url = "github:nix-community/gomod2nix";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
     };
+
     flake-utils.url = "github:numtide/flake-utils";
 
     nixGL = {
