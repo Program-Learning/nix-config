@@ -59,16 +59,16 @@
     # riscv64-linux = import ./riscv64-linux (args // {system = "riscv64-linux";});
   };
   wslSystems = {
-    x86_64-wsl = import ./x86_64-wsl (args // {system = "x86_64-linux";});
-    # aarch64-wsl = import ./aarch64-wsl (args // {system = "aarch64-linux";});
+    x86_64-linux = import ./x86_64-wsl (args // {system = "x86_64-linux";});
+    # aarch64-linux = import ./aarch64-wsl (args // {system = "aarch64-linux";});
   };
   darwinSystems = {
     aarch64-darwin = import ./aarch64-darwin (args // {system = "aarch64-darwin";});
     x86_64-darwin = import ./x86_64-darwin (args // {system = "x86_64-darwin";});
   };
   droidSystems = {
-    aarch64-droid = import ./aarch64-droid (args // {system = "aarch64-linux";});
-    # x86_64-droid = import ./x86_64-droid (args // {system = "x86_64-linux";});
+    aarch64-linux = import ./aarch64-droid (args // {system = "aarch64-linux";});
+    # x86_64-linux = import ./x86_64-droid (args // {system = "x86_64-linux";});
   };
   allSystems = nixosSystems // darwinSystems // droidSystems // wslSystems;
   allSystemNames = builtins.attrNames allSystems;
@@ -161,65 +161,37 @@ in rec {
   );
 
   # Development Shells
-  devShells = forAllSystems (
-    system: let
-      pkgs = nixpkgs.legacyPackages.${system};
-    in {
-      default = pkgs.mkShell {
-        packages = with pkgs; [
-          # fix https://discourse.nixos.org/t/non-interactive-bash-errors-from-flake-nix-mkshell/33310
-          bashInteractive
-          # fix `cc` replaced by clang, which causes nvim-treesitter compilation error
-          gcc
-          # Nix-related
-          alejandra
-          deadnix
-          statix
-          # spell checker
-          typos
-          # code formatter
-          nodePackages.prettier
-        ];
-        name = "dots";
-        shellHook = ''
-          ${self.checks.${system}.pre-commit-check.shellHook}
-        '';
-      };
-      # TODO: move this to devshell dir
-      mariadb = pkgs.mkShell {
-        buildInputs = [pkgs.mariadb];
-        shellHook = ''
-          MYSQL_BASEDIR=${pkgs.mariadb}
-          MYSQL_HOME=$PWD/mysql
-          MYSQL_DATADIR=$MYSQL_HOME/data
-          export MYSQL_UNIX_PORT=$MYSQL_HOME/mysql.sock
-          MYSQL_PID_FILE=$MYSQL_HOME/mysql.pid
-          alias mysql='mysql -u root'
-
-          if [ ! -d "$MYSQL_HOME" ]; then
-            # Make sure to use normal authentication method otherwise we can only
-            # connect with unix account. But users do not actually exists in nix.
-            mysql_install_db --auth-root-authentication-method=normal \
-              --datadir=$MYSQL_DATADIR --basedir=$MYSQL_BASEDIR \
-              --pid-file=$MYSQL_PID_FILE
-          fi
-
-          # Starts the daemon
-          mysqld --datadir=$MYSQL_DATADIR --pid-file=$MYSQL_PID_FILE \
-            --socket=$MYSQL_UNIX_PORT 2> $MYSQL_HOME/mysql.log &
-          MYSQL_PID=$!
-
-          finish()
-          {
-            mysqladmin -u root --socket=$MYSQL_UNIX_PORT shutdown
-            kill $MYSQL_PID
-            wait $MYSQL_PID
-          }
-          trap finish EXIT
-        '';
-      };
-    }
-  );
+  devShells =
+    forAllSystems (
+      system: let
+        pkgs = nixpkgs.legacyPackages.${system};
+      in {
+        default = pkgs.mkShell {
+          packages = with pkgs; [
+            # fix https://discourse.nixos.org/t/non-interactive-bash-errors-from-flake-nix-mkshell/33310
+            bashInteractive
+            # fix `cc` replaced by clang, which causes nvim-treesitter compilation error
+            gcc
+            # Nix-related
+            alejandra
+            deadnix
+            statix
+            # spell checker
+            typos
+            # code formatter
+            nodePackages.prettier
+          ];
+          name = "dots";
+          shellHook = ''
+            ${self.checks.${system}.pre-commit-check.shellHook}
+          '';
+        };
+      }
+    )
+    // (import ../devshells (inputs
+      // {
+        inherit forAllSystems mylib self lib;
+      }));
 
   # Format the nix code in this flake
   formatter = forAllSystems (
