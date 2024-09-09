@@ -6,6 +6,7 @@
   llqqnt,
   nur-linyinfeng,
   nur-DataEraserC,
+  nur-DataEraserC-not-follow,
   ...
 }: {
   home.packages = with pkgs; [
@@ -48,6 +49,9 @@
     nur-DataEraserC.packages.${pkgs.system}.dingtalk
 
     pkgs-latest.feishu
+
+    # c001apk-flutter
+    nur-DataEraserC-not-follow.packages.${pkgs.system}.c001apk-flutter
   ];
 
   # GitHub CLI tool

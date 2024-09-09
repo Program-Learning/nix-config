@@ -366,6 +366,9 @@
       url = "github:DataEraserC/nur-packages";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nur-DataEraserC-not-follow = {
+      url = "github:DataEraserC/nur-packages";
+    };
 
     android-nixpkgs = {
       url = "github:tadfisher/android-nixpkgs";
