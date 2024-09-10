@@ -113,8 +113,8 @@
           # turbovnc
           xrdp
           libvncserver
-          gnome.gnome-remote-desktop
-          gnome.gnome-clocks
+          gnome-remote-desktop
+          gnome-clocks
 
           # dunst
           # pipewire

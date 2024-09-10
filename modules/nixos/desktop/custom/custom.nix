@@ -36,7 +36,7 @@
   };
 
   programs.darling = {
-    enable = true;
+    enable = false;
     package = pkgs-stable.darling;
   };
 

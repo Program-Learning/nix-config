@@ -113,7 +113,7 @@
 
     distrobox
 
-    gnome.gnome-boxes
+    gnome-boxes
 
     spice
     spice-gtk

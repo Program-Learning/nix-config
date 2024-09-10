@@ -149,7 +149,8 @@
             wordcloud
             pandas-datareader
             pyperclip
-            fake-useragent
+            # disable due to build test failed
+            # fake-useragent
           ]
       ))
 

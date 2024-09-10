@@ -10,7 +10,7 @@
     cliphist # Wayland clipboard manager
     waybar # the status bar
     swaybg # the wallpaper
-    pkgs-unstable.linux-wallpaperengine # A video wallpaper program
+    waypaper # GUI wallpaper setter for Wayland-based window managers
     mpvpaper # A video wallpaper program for wlroots based wayland compositors.
     swayidle # the idle timeout
     # hypridle # the idle timeout
