@@ -35,7 +35,10 @@
       jdt-language-server
 
       #-- flutter
-      # flutter
+      flutter
+
+      #-- dart
+      dart
 
       #-- haskell
       ghc

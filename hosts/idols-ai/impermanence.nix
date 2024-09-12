@@ -93,6 +93,7 @@
         ".config/gnome-boxes"
         "Android"
         ".android"
+        ".gradle"
         ".config/.android"
         ".Genymobile"
         "AndroidStudioProjects"
