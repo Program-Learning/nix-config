@@ -95,6 +95,7 @@
         ".android"
         ".gradle"
         ".config/.android"
+        "workspace"
         ".Genymobile"
         "AndroidStudioProjects"
         "IdeaProjects"
