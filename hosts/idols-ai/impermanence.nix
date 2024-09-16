@@ -93,7 +93,6 @@
         ".config/gnome-boxes"
         "Android"
         ".android"
-        ".gradle"
         ".config/.android"
         "workspace"
         ".Genymobile"
