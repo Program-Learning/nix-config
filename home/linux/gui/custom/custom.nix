@@ -63,6 +63,7 @@
           # vimb
 
           # --agent
+          protonvpn-cli_2
           # pkgs-unstable.clash-verge-rev
           # pkgs-unstable.clash-nyanpasu
           # nekoray_patched
@@ -99,6 +100,7 @@
           # wine-staging
           wine64Packages.stagingFull
           # winePackages.stagingFull
+          proton-ge-bin
           winetricks
           onscripter-en
           pkgs-stable.playonlinux
