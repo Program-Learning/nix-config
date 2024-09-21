@@ -99,6 +99,7 @@
       # llvmPackages.clang-unwrapped
       clang-tools
       lldb
+      vscode-extensions.vadimcn.vscode-lldb.adapter # codelldb - debugger
 
       #-- python
       pyright # python language server

@@ -12,7 +12,7 @@ return {
     features = {
       autoformat = true, -- enable or disable auto formatting on start
       codelens = true, -- enable/disable codelens refresh on start
-      inlay_hints = false, -- enable/disable inlay hints on start
+      inlay_hints = true, -- enable/disable inlay hints on start
       semantic_tokens = true, -- enable/disable semantic token highlighting
     },
     -- customize lsp formatting options
@@ -72,7 +72,7 @@ return {
       "nushell", -- nushell language server
 
       ---- Web Development
-      "tsserver", -- typescript/javascript language server
+      "ts_ls", -- typescript/javascript language server
       "tailwindcss", -- tailwindcss language server
       "html", -- html language server
       "cssls", -- css language server
@@ -100,6 +100,18 @@ return {
       scheme_langserver = {
         filetypes = { "scheme", "scm" },
         single_file_support = true,
+      },
+      rust_analyzer = {
+        settings = {
+          -- Make the rust-analyzer use its own profile,
+          -- so you can run cargo build without that being blocked while rust-analyzer runs.
+          ["rust-analyzer"] = {
+            cargo = {
+              extraEnv = { CARGO_PROFILE_RUST_ANALYZER_INHERITS = "dev" },
+              extraArgs = { "--profile", "rust-analyzer" },
+            },
+          },
+        },
       },
     },
     -- customize how language servers are attached

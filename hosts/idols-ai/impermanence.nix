@@ -160,6 +160,9 @@
         ".wakatime"
         ".config/github-copilot"
 
+        # others
+        ".config/blender"
+
         # clash
         ".config/clash"
         ".config/clash-verge"

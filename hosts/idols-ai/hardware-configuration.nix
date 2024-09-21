@@ -31,7 +31,7 @@
   boot.initrd.kernelModules = ["uas" "usbcore" "usb_storage" "vfat" "nls_cp437" "nls_iso8859_1"];
   boot.kernelModules = [
     # kvm
-    "kvm-intel"
+    "kvm-intel" # kvm virtualization support
     #"acpi_call"
     "usb_storage"
   ];
@@ -44,7 +44,6 @@
       options kvm_intel emulate_invalid_guest_state=0
       options kvm ignore_msrs=1
     '';
-  boot.kernelParams = ["nvidia.NVreg_PreserveVideoMemoryAllocations=1"];
   boot.extraModulePackages = [
     # config.boot.kernelPackages.acpi_call.out
   ];

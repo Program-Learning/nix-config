@@ -72,7 +72,7 @@
         obs-command-source
         obs-move-transition
         obs-backgroundremoval
-        advanced-scene-switcher
+        # advanced-scene-switcher
         obs-pipewire-audio-capture
       ];
     };
