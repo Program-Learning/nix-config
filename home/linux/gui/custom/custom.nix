@@ -53,9 +53,6 @@
           jetbrains.idea-community
           eclipses.eclipse-sdk
 
-          cloudflare-warp
-          wgcf
-
           glib
           calcurse
 
@@ -69,6 +66,8 @@
           # nekoray_patched
           nekoray
           sing-box
+          cloudflare-warp
+          wgcf
 
           # --Office
           onlyoffice-bin
@@ -156,7 +155,6 @@
           # postman
           artha
           iw
-          file
           coreutils
           openssl
           gitRepo
@@ -167,7 +165,6 @@
           darling-dmg
           # darling
           # dash
-          unrar-wrapper
           # python2Full
           inotify-tools
           # vmware-workstation
