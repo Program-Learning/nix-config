@@ -1,6 +1,6 @@
 {
   config,
-  catppuccin-urxvt-nod,
+  catppuccin-urxvt,
   ...
 } @ args: {
   imports = [

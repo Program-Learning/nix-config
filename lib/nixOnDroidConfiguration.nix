@@ -9,13 +9,13 @@
   myvars,
   ...
 }: let
-  inherit (inputs) nix-on-droid nixpkgs-nod home-manager-nod;
+  inherit (inputs) nix-on-droid nixpkgs home-manager;
 in
   nix-on-droid.lib.nixOnDroidConfiguration {
     extraSpecialArgs = specialArgs;
 
     # set nixpkgs instance, it is recommended to apply `nix-on-droid.overlays.default`
-    pkgs = import nixpkgs-nod {
+    pkgs = import nixpkgs {
       system = "aarch64-linux";
 
       overlays = [
@@ -41,5 +41,5 @@ in
         ]
       );
 
-    home-manager-path = home-manager-nod.outPath;
+    home-manager-path = home-manager.outPath;
   }
