@@ -192,6 +192,8 @@
           libcxx
           zlib
           ninja
+
+          ntfy-sh
         ])
     # nixpkgs-unstable
     ++ (with pkgs-unstable; [
