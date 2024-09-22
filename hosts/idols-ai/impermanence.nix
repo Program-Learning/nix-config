@@ -185,7 +185,6 @@
         ".config/libvirt"
 
         ".config/.cpolar"
-        ".config/blender"
         ".config/aDrive"
         ".config/baidunetdisk"
         ".config/wechat-devtools"
