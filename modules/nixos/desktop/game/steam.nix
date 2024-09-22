@@ -9,6 +9,9 @@
     #   ~/.steam/root        - A symlink to ~/.local/share/Steam
     #   ~/.steam             - Some Symlinks & user info
     enable = true;
+    # https://github.com/ValveSoftware/gamescope
+    # enables features such as resolution upscaling and stretched aspect ratios (such as 4:3)
+    gamescopeSession.enable = true;
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
     extraCompatPackages = [
@@ -19,22 +22,36 @@
     package = pkgs.steam.override {
       extraPkgs = pkgs:
         with pkgs; [
-          keyutils
-          libkrb5
-          libpng
-          libpulseaudio
-          libvorbis
-          stdenv.cc.cc.lib
           xorg.libXcursor
           xorg.libXi
           xorg.libXinerama
           xorg.libXScrnSaver
+          libpng
+          libpulseaudio
+          libvorbis
+          stdenv.cc.cc.lib
+          libkrb5
+          keyutils
 
           # fix CJK fonts
           source-sans
           source-serif
           source-han-sans
           source-han-serif
+
+          # audio
+          pipewire
+
+          # other common
+          udev
+          alsa-lib
+          vulkan-loader
+          xorg.libX11
+          xorg.libXcursor
+          xorg.libXi
+          xorg.libXrandr # To use the x11 feature
+          libxkbcommon
+          wayland # To use the wayland feature
         ];
     };
   };
