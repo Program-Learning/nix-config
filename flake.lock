@@ -3560,11 +3560,11 @@
     "nix-on-droid": {
       "inputs": {
         "home-manager": [
-          "home-manager-nod"
+          "home-manager"
         ],
         "nix-formatter-pack": "nix-formatter-pack_2",
         "nixpkgs": [
-          "nixpkgs-nod"
+          "nixpkgs"
         ],
         "nixpkgs-docs": "nixpkgs-docs_2",
         "nixpkgs-for-bootstrap": "nixpkgs-for-bootstrap_2",
@@ -4788,7 +4788,7 @@
         "flake-parts": "flake-parts_11",
         "nix-index-database": "nix-index-database_2",
         "nixpkgs": [
-          "nixpkgs-nod"
+          "nixpkgs"
         ],
         "nixpkgs-24_05": "nixpkgs-24_05_2",
         "nvfetcher": "nvfetcher_2",
