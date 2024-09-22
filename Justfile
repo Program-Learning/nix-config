@@ -88,11 +88,6 @@ gcroot:
 ############################################################################
 
 [linux]
-wsl-i3 mode="default":
-  use utils.nu *; \
-  nixos-switch wsl-y9000k2021h-i3 {{mode}}
-
-[linux]
 wsl-hypr mode="default":
   use utils.nu *; \
   nixos-switch wsl-y9000k2021h-hyprland {{mode}}
