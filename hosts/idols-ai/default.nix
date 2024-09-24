@@ -35,6 +35,20 @@ in rec {
     networkmanager.enable = true;
     networkmanager.wifi.macAddress = MacAddress;
     networkmanager.ethernet.macAddress = MacAddress;
+    networkmanager.dispatcherScripts = [
+      {
+        source = pkgs.writeText "upHook" ''
+          alias_for_work=/etc/agenix/alias-for-work.bash
+          if [ -f $alias_for_work ]; then
+            . $alias_for_work
+          else
+            echo "No alias file found for work"
+          fi
+          ${pkgs.ntfy-sh}/bin/ntfy publish $ntfy_topic "PC[y9000k2021h][nixos] online(Device Interface: $DEVICE_IFACE) at $(date +%Y-%m-%dT%H:%M:%S%Z)"
+        '';
+        type = "pre-up";
+      }
+    ];
     enableIPv6 = true; # disable ipv6
     extraHosts = myvars.networking.genericHosts;
   };

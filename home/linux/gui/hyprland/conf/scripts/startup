@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
 
 # source secret vars
-source /etc/agenix/alias-for-work.bash
+alias_for_work=/etc/agenix/alias-for-work.bash
+if [ -f $alias_for_work ]; then
+	. $alias_for_work
+else
+  echo "No alias file found for work"
+fi
 
 ## Fix anyrun
 ## https://github.com/anyrun-org/anyrun/issues/153
