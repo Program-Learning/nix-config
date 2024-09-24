@@ -70,8 +70,8 @@
 
     nix-on-droid = {
       url = "github:nix-community/nix-on-droid/master";
-      inputs.nixpkgs.follows = "nixpkgs-nod";
-      inputs.home-manager.follows = "home-manager-nod";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
     };
 
     nur-ryan4yin-nod = {
@@ -81,7 +81,7 @@
 
     nur-DataEraserC-nod = {
       url = "github:DataEraserC/nur-packages";
-      inputs.nixpkgs.follows = "nixpkgs-nod";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     catppuccin-urxvt = {

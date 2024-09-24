@@ -1,38 +1,21 @@
-diff --git a/home/base/tui/dev-tools.nix b/home/base/tui/dev-tools.nix
-index 3c8bf04f..d36b3d80 100644
---- a/home/base/tui/dev-tools.nix
-+++ b/home/base/tui/dev-tools.nix
-@@ -2,6 +2,7 @@
-   pkgs,
-   pkgs-unstable,
-   nur-DataEraserC,
-+  nur-DataEraserC-nod,
-   ...
- }: {
-   #############################################################
-@@ -61,7 +62,7 @@
-     man-pages
-     man-pages-posix
- 
--    nur-DataEraserC.packages.${pkgs.system}.clang_dev_env
-+    nur-DataEraserC-nod.packages.${pkgs.system}.clang_dev_env
-     comma
-   ];
- 
 diff --git a/home/base/tui/editors/packages.nix b/home/base/tui/editors/packages.nix
-index 36767ca0..c73327a1 100644
+index 1b7403e5..a1095a88 100644
 --- a/home/base/tui/editors/packages.nix
 +++ b/home/base/tui/editors/packages.nix
-@@ -147,7 +147,7 @@
-             wordcloud
-             pandas-datareader
-             pyperclip
--            fake-useragent
-+            # fake-useragent
-           ]
-       ))
+@@ -35,10 +35,10 @@
+       jdt-language-server
  
-@@ -188,7 +188,7 @@
+       #-- flutter
+-      flutter
++      # flutter
+ 
+       #-- dart
+-      dart
++      # dart
+ 
+       #-- haskell
+       ghc
+@@ -198,7 +198,7 @@
      ++ [
        nodePackages.nodejs
        nodePackages.typescript
@@ -41,7 +24,7 @@ index 36767ca0..c73327a1 100644
        # HTML/CSS/JSON/ESLint language servers extracted from vscode
        nodePackages.vscode-langservers-extracted
        nodePackages."@tailwindcss/language-server"
-@@ -199,11 +199,6 @@
+@@ -209,11 +209,6 @@
        guile
        racket-minimal
        fnlfmt # fennel
@@ -54,14 +37,15 @@ index 36767ca0..c73327a1 100644
      ++ [
        proselint # English prose linter
 diff --git a/home/droid/virtualisation.nix b/home/droid/virtualisation.nix
-index 294ad667..a6ffe200 100644
+index 294ad667..c082afb4 100644
 --- a/home/droid/virtualisation.nix
 +++ b/home/droid/virtualisation.nix
-@@ -3,7 +3,6 @@
+@@ -3,7 +3,7 @@
      docker
      podman
      lxd
 -    lxc
++    # lxc
    ];
  
    programs = {
