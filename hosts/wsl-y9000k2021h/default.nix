@@ -14,7 +14,7 @@
 #############################################################
 let
   hostName = "y9000k2021h"; # Define your hostname.
-  TempMacAddress = "random";
+  macAddress = "random";
 in rec {
   imports = [
     ./netdev-mount.nix
@@ -32,25 +32,24 @@ in rec {
 
     # desktop need its cli for status bar
     networkmanager.enable = true;
-    networkmanager.wifi.macAddress = TempMacAddress;
-    networkmanager.ethernet.macAddress = TempMacAddress;
+    networkmanager.wifi.macAddress = macAddress;
+    networkmanager.ethernet.macAddress = macAddress;
+    networkmanager.dispatcherScripts = [
+      {
+        source = pkgs.writeText "upHook" ''
+          alias_for_work=/etc/agenix/alias-for-work.bash
+          if [ -f $alias_for_work ]; then
+            . $alias_for_work
+          else
+            echo "No alias file found for work"
+          fi
+          ${pkgs.ntfy-sh}/bin/ntfy publish $ntfy_topic "PC[y9000k2021h][nixos] online(Device Interface: $DEVICE_IFACE) at $(date +%Y-%m-%dT%H:%M:%S%Z)"
+        '';
+        type = "pre-up";
+      }
+    ];
     enableIPv6 = true; # disable ipv6
-    extraHosts = ''
-      155.248.179.129 oracle_ubuntu_1
-      192.168.2.151 mondrian_1_home
-      10.147.20.151 mondrian_1_cli_zerotier
-      10.147.20.115 mondrian_1_app_zerotier
-      100.95.92.151 mondrian_1_cli_tailscale
-      0.0.0.0 mondrian_1_app_tailscale
-      192.168.2.153 pstar_1_home
-      10.147.20.153 pstar_1_cli_zerotier
-      0.0.0.0 pstar_1_app_zerotier
-      100.95.92.153 pstar_1_cli_tailscale
-      0.0.0.0 pstar_1_app_tailscale
-      192.168.2.150 y9000k2021h_1_home
-      10.147.20.150 y9000k2021h_1_zerotier
-      100.95.92.150 y9000k2021h_1_tailscale
-    '';
+    extraHosts = myvars.networking.genericHosts;
   };
 
   # conflict with feature: containerd-snapshotter

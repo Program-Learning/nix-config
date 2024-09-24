@@ -14,7 +14,7 @@
 #############################################################
 let
   hostName = "ai"; # Define your hostname.
-  MacAddress = "random";
+  macAddress = "random";
 in rec {
   imports = [
     ./netdev-mount.nix
@@ -33,8 +33,8 @@ in rec {
 
     # desktop need its cli for status bar
     networkmanager.enable = true;
-    networkmanager.wifi.macAddress = MacAddress;
-    networkmanager.ethernet.macAddress = MacAddress;
+    networkmanager.wifi.macAddress = macAddress;
+    networkmanager.ethernet.macAddress = macAddress;
     networkmanager.dispatcherScripts = [
       {
         source = pkgs.writeText "upHook" ''
