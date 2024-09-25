@@ -221,7 +221,7 @@
         # we already have .local/share
         # ".local/share/Trash"
 
-        "~/.cache/tlrc"
+        ".cache/tlrc"
       ];
       files = [
         ".wakatime.cfg"
