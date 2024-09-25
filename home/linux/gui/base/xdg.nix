@@ -31,6 +31,7 @@
     mimeApps = {
       enable = true;
       associations.added = let
+        picture = ["imv-dir.desktop"];
         browser = ["google-chrome-unstable.desktop" "google-chrome.desktop" "firefox.desktop"];
         office = ["onlyoffice-desktopeditors.desktop" "writer.desktop"];
         code = ["code-insiders.desktop" "code.desktop" "nvim.desktop"];
@@ -46,6 +47,7 @@
       };
       # let `xdg-open` to open the url with the correct application.
       defaultApplications = let
+        picture = ["imv-dir.desktop"];
         browser = ["google-chrome-unstable.desktop" "google-chrome.desktop" "firefox.desktop"];
         office = ["onlyoffice-desktopeditors.desktop" "writer.desktop"];
         code = ["code-insiders.desktop" "code.desktop" "nvim.desktop"];
@@ -93,6 +95,8 @@
         "image/jpeg" = ["imv-dir.desktop"];
         "image/png" = ["imv-dir.desktop"];
         "image/webp" = ["imv-dir.desktop"];
+        "image/bmp" = ["imv-dir.desktop"];
+        "image/tiff" = ["imv-dir.desktop"];
         "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = office;
         "application/wps-office.docx" = office;
 
