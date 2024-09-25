@@ -218,11 +218,15 @@
 
         # Trash Bin(not work yet)
         # https://github.com/nix-community/impermanence/issues/147
-        ".local/share/Trash"
+        # we already have .local/share
+        # ".local/share/Trash"
+
+        "~/.cache/tlrc"
       ];
       files = [
         ".wakatime.cfg"
         ".config/nushell/history.txt"
+        ".condarc"
       ];
     };
   };
