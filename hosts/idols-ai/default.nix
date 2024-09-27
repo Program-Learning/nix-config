@@ -24,6 +24,7 @@ in rec {
 
     ./impermanence.nix
     ./secureboot.nix
+    ./dae.nix
   ];
 
   networking = {
@@ -45,6 +46,7 @@ in rec {
             echo "No alias file found for work"
           fi
           ${pkgs.ntfy-sh}/bin/ntfy publish $ntfy_topic "PC[y9000k2021h][nixos] online(Device Interface: $DEVICE_IFACE) at $(date +%Y-%m-%dT%H:%M:%S%Z)"
+          ~/.config/hypr/scripts/tp_link_script http://192.168.0.1 w9BVlghc9TefbwK "$(cat /sys/class/net/wlp0s20f3/address)" "匿名主机" 0
         '';
         type = "pre-up";
       }

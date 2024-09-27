@@ -59,8 +59,9 @@ systemctl --user restart wallpaper.service
 exec mpd &
 
 # Start clash-verge
+# will try to replace clash by dae
 # exec clash-verge &
-exec clash-nyanpasu &
+# exec clash-nyanpasu &
 
 # Start lxpolkit
 exec lxpolkit &

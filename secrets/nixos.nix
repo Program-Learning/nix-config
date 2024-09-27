@@ -147,6 +147,16 @@ in {
               file = "${mysecrets}/alias-for-work.bash.age";
             }
             // user_readable;
+          "clash.dae" =
+            {
+              file = "${mysecrets}/clash.dae.age";
+            }
+            // high_security;
+          "dae.dae" =
+            {
+              file = "${mysecrets}/dae.dae.age";
+            }
+            // high_security;
         };
 
         # place secrets in /etc/

@@ -5,6 +5,7 @@
   pkgs-stable,
   pkgs-latest,
   nur-DataEraserC,
+  clash-nyanpasu,
   lib,
   ...
 }: {
@@ -141,7 +142,7 @@
   };
   features.clash-nyanpasu = {
     enable = true;
-    package = nur-DataEraserC.packages.${pkgs.system}.clash-nyanpasu;
+    package = clash-nyanpasu.packages.${pkgs.system}.clash-nyanpasu;
     tunMode = true;
   };
   services.sing-box = {

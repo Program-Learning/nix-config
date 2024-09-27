@@ -13,17 +13,22 @@
   # 星野 アイ, Hoshino Ai
   name = "ai";
   base-modules = {
-    nixos-modules = map mylib.relativeToRoot [
-      # common
-      "secrets/nixos.nix"
-      "modules/nixos/desktop.nix"
-      # host specific
-      "hosts/idols-${name}"
-      # nixos hardening
-      # "hardening/profiles/default.nix"
-      "hardening/nixpaks"
-      # "hardening/apparmor"
-    ];
+    nixos-modules =
+      map mylib.relativeToRoot [
+        # common
+        "secrets/nixos.nix"
+        "modules/nixos/desktop.nix"
+        # host specific
+        "hosts/idols-${name}"
+        # nixos hardening
+        # "hardening/profiles/default.nix"
+        "hardening/nixpaks"
+        # "hardening/apparmor"
+      ]
+      ++ [
+        inputs.daeuniverse.nixosModules.dae
+        inputs.daeuniverse.nixosModules.daed
+      ];
     home-modules = map mylib.relativeToRoot [
       # common
       "home/linux/gui.nix"

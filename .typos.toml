@@ -13,6 +13,7 @@ extend-ignore-re = [
   "crypted-nixos",
   "osu-lazer-bin",
   "shotcut",
+  "daed",
   "hight_of_titlebar",
   "AAAAC3NzaC1lZDI1NTE5AAAAIOZ5jg4mJdPLLwQqY5DFJwSAaQtTO6UFoPW5Z18pZroe", # ssh public key
 ]

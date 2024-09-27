@@ -102,9 +102,9 @@ in rec {
     # nixGL.packages.${pkgs.system}.nixGLDefault
     # nixGL.packages.${pkgs.system}.nixGLNvidia
     # nixGL.packages.${pkgs.system}.nixGLNvidiaBumblebee
-    nixGL.packages.${pkgs.system}.nixGLIntel
+    # nixGL.packages.${pkgs.system}.nixGLIntel
     # nixGL.packages.${pkgs.system}.nixVulkanNvidia
-    nixGL.packages.${pkgs.system}.nixVulkanIntel
+    # nixGL.packages.${pkgs.system}.nixVulkanIntel
   ];
 
   # This value determines the NixOS release from which the default

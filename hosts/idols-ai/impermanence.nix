@@ -42,6 +42,9 @@
       "/var/log"
       "/var/lib"
 
+      # daed
+      "/etc/daed/"
+
       # created by modules/nixos/misc/fhs-fonts.nix
       # for flatpak apps
       # "/usr/share/fonts"
@@ -167,6 +170,7 @@
         ".config/clash"
         ".config/clash-verge"
         ".config/clash-nyanpasu"
+        # v2ray
         ".config/qv2ray"
         ".config/nekoray"
 
@@ -222,11 +226,17 @@
         # ".local/share/Trash"
 
         ".cache/tlrc"
+
+        # nvfetcher
+        "_sources"
       ];
       files = [
         ".wakatime.cfg"
         ".config/nushell/history.txt"
         ".condarc"
+
+        # nvfetcher
+        "nvfetcher.toml"
       ];
     };
   };

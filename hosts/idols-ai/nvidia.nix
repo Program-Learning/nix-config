@@ -47,12 +47,12 @@
     nur-DataEraserC.packages.${pkgs.system}.cudatoolkit_dev_env
     # nixGL
     # nixGL.packages.${pkgs.system}.nixGL
-    nixGL.packages.${pkgs.system}.nixGLDefault
+    # nixGL.packages.${pkgs.system}.nixGLDefault
     # nixGL.packages.${pkgs.system}.nixGLNvidia
     # nixGL.packages.${pkgs.system}.nixGLNvidiaBumblebee
-    nixGL.packages.${pkgs.system}.nixGLIntel
+    # nixGL.packages.${pkgs.system}.nixGLIntel
     # nixGL.packages.${pkgs.system}.nixVulkanNvidia
-    nixGL.packages.${pkgs.system}.nixVulkanIntel
+    # nixGL.packages.${pkgs.system}.nixVulkanIntel
   ];
   # disable cudasupport before this issue get fixed:
   # https://github.com/NixOS/nixpkgs/issues/338315

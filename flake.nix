@@ -22,6 +22,10 @@
       "https://nixpkgs-wayland.cachix.org"
       "https://ezkea.cachix.org"
       "https://dataeraserc.cachix.org"
+      "https://program-learning.cachix.org"
+      "https://nykma.cachix.org"
+
+      "https://cache.garnix.io"
     ];
     extra-trusted-public-keys = [
       "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
@@ -29,7 +33,11 @@
       "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
       "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
       "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI="
-      "dataeraserc.cachix.org-1:VB/XTSZLKIg0sLnZxr+op45pII4pInaOP8pbfgUJ+Uc="
+      "dataeraserc.cachix.org-1:t0lYPod3nkn0ijiOzjwT57MmBDeJnxVurvV8ZdPpIHo="
+      "program-learning.cachix.org-1:Pfl2r+J5L9wJqpDnop6iQbrR3/Ts4AUyotu89INRlSU="
+      "nykma.cachix.org-1:z04hZH9YnR1B2lpLperwiazdkaT5yczgOPa1p/NHqK4="
+
+      "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
     ];
   };
 
@@ -309,6 +317,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    daeuniverse = {
+      url = "github:daeuniverse/flake.nix/unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # NUR package source
 
     nur.url = "github:nix-community/NUR";
@@ -330,7 +343,10 @@
       url = "github:Program-Learning/nur-packages";
       # url = "github:DataEraserC/nur-packages";
       # url = "gitfile:////home/nixos/Documents/code/program-learning-nur-packages?shallow=1";
-      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    clash-nyanpasu = {
+      url = "github:DataEraserC/nur-packages/142b102b895bfe9bedf23504eb30e73d81f0f130";
     };
 
     gradle2nix = {
@@ -362,6 +378,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nur-nykma = {
+      url = "github:nykma/nur-packages";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nur-xddxdd = {
       url = "github:xddxdd/nur-packages";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -371,6 +392,7 @@
       url = "github:DataEraserC/nur-packages";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     nur-DataEraserC-not-follow = {
       url = "github:DataEraserC/nur-packages";
     };
