@@ -6,7 +6,6 @@
 {
   lib,
   pkgs,
-  firefox-nightly,
   mkNixPak,
   ...
 }:

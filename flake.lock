@@ -3422,10 +3422,10 @@
     "mysecrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1727421770,
-        "narHash": "sha256-gFzzEJp/AKff97XEEwygeD0Xg8sroilC+qP/esmL+fs=",
+        "lastModified": 1727437209,
+        "narHash": "sha256-kY/E1RqLOMc+tY0Pin1b5VP88Anppu3odhRqP8IvQzI=",
         "ref": "refs/heads/main",
-        "rev": "737f9b576476bd6dda180c8b8469434a6a02521a",
+        "rev": "f2754765aed4c2d072de8fd761c44434f3c70a7c",
         "shallow": true,
         "type": "git",
         "url": "ssh://git@github.com/DataEraserC/nix-secrets.git"
@@ -5285,11 +5285,11 @@
         "treefmt-nix": "treefmt-nix_8"
       },
       "locked": {
-        "lastModified": 1727427413,
-        "narHash": "sha256-Ru8aRR77wlM5Et4NmCGsPop5UfRO18lJ/Rd3fxXQcJg=",
+        "lastModified": 1727428518,
+        "narHash": "sha256-SLDdQAvh7yiD94qrX5SMmg4RcUfR5jMrEDh8FAOfGSI=",
         "owner": "DataEraserC",
         "repo": "nur-packages",
-        "rev": "ab11d4ff707d9357e9292c546144a5f37431e0ce",
+        "rev": "aba51423461a2d9325510f2db8b60b5ce269c1d6",
         "type": "github"
       },
       "original": {
@@ -7511,11 +7511,11 @@
     "wallpapers": {
       "flake": false,
       "locked": {
-        "lastModified": 1720780737,
-        "narHash": "sha256-gRZJJFogzMcOFfqma7esjh1di/G7Ba9Y0ZtRCfqHr/w=",
+        "lastModified": 1727532651,
+        "narHash": "sha256-A3gqfMUAO5TDz0AG4bxICujFMChFLuzrj8a15i6loUk=",
         "owner": "Program-Learning",
         "repo": "wallpapers",
-        "rev": "938f6d1e0f95281de122195499ebbde4582ac886",
+        "rev": "c90a1aed4e4827acb2abaaaa90dcdd6d028adbf9",
         "type": "github"
       },
       "original": {
