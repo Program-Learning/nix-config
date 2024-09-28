@@ -57,7 +57,7 @@ with lib; let
   };
 in {
   options.features.fix-gsettings = {
-    enable = mkEnableOption "Enable wf-recorder screensharing module";
+    enable = mkEnableOption "fix gsettings";
   };
 
   config = mkIf cfg.enable {

@@ -42,7 +42,8 @@ exec systemctl --user restart sunshine &
 
 systemctl --user stop wallpaper.service
 
-swaylock -e -f -F -c 12121B
+# swaylock -e -f -F -c 12121B
+swaylock  --screenshots  --clock --timestr=%H:%M:%S --datestr=%Y-%m-%d  --indicator  --indicator-radius 100  --indicator-thickness 7  --effect-blur 7x5  --effect-vignette 0.5:0.5  --ring-color b5b5b5  --key-hl-color 3cdec3  --line-color 00000000  --inside-color 00000088  --separator-color 00000000  --grace 0  --fade-in 0.5 &
 
 # Set wallpaper via a wallpaper.service
 # it will by start by home-manager automatically, do not need to restart it here.
@@ -63,8 +64,9 @@ exec mpd &
 # exec clash-verge &
 # exec clash-nyanpasu &
 
-# Start lxpolkit
-exec lxpolkit &
+# Start polkit authentication agent
+# exec lxpolkit &
+exec polkit-gnome-authentication-agent-1 &
 
 # set default file-manager to thunar
 # Try with command

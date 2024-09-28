@@ -122,7 +122,6 @@
           # pipewire
           wireplumber
           # tofi
-          polkit-kde-agent
           # eww
           # rofi-wayland
           # qt6.qtwayland
@@ -136,14 +135,12 @@
           # hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland
           libsForQt5.qt5ct
           linuxKernel.packages.linux_6_1.v4l2loopback
-          libsForQt5.polkit-kde-agent
           # kitty-themes
 
           adwaita-qt
           adwaita-qt6
-          lxde.lxsession # lxpolkit
-          # polkit_gnome
-          # deepin.dde-polkit-agent
+          # lxde.lxsession # lxpolkit
+          polkit_gnome_exported
           swappy
           bluez
           sysfsutils
