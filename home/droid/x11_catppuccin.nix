@@ -22,7 +22,7 @@ with pkgs; let
     export DISPLAY=$1 #TODO dynamic?
     LD_PRELOAD=${id_so}/id.so ${xorg.xorgserver}/bin/Xvfb $1 -ac -listen tcp &
     sleep 5
-    ${x11vnc}/bin/x11vnc -display $1 -passwd test -rfbport 5902 -noshm -forever &  #not sure why noshm still needed
+    ${x11vnc}/bin/x11vnc -display $1 -passwd $2 -rfbport 5902 -noshm -forever &  #not sure why noshm still needed
 
     ${xorg.xrdb}/bin/xrdb -merge ~/.Xresources
     ${xorg.xrdb}/bin/xrdb -merge "${catppuccin-urxvt}/mocha.Xresources"

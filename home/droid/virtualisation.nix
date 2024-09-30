@@ -3,7 +3,7 @@
     docker
     podman
     lxd
-    lxc
+    # lxc
   ];
 
   programs = {
