@@ -23,16 +23,16 @@
     powerManagement.enable = true;
     # # Fine-grained power management. Turns off GPU when not in use.
     # # Experimental and only works on modern Nvidia GPUs (Turing or newer).
-    # powerManagement.finegrained = true;
-    # prime = {
-    #   offload = {
-    #     enable = true;
-    #     enableOffloadCmd = true;
-    #   };
-    #   # Make sure to use the correct Bus ID values for your system!
-    #   intelBusId = "PCI:0:2:0";
-    #   nvidiaBusId = "PCI:1:0:0";
-    # };
+    powerManagement.finegrained = true;
+    prime = {
+      offload = {
+        enable = true;
+        enableOffloadCmd = true;
+      };
+      # Make sure to use the correct Bus ID values for your system!
+      intelBusId = "PCI:0:2:0";
+      nvidiaBusId = "PCI:1:0:0";
+    };
     # # Enable the Nvidia settings menu,
     # # accessible via `nvidia-settings`.
     # nvidiaSettings = true;
@@ -45,6 +45,7 @@
   };
   environment.systemPackages = [
     nur-DataEraserC.packages.${pkgs.system}.cudatoolkit_dev_env
+    pkgs.vaapiVdpau
     # nixGL
     # nixGL.packages.${pkgs.system}.nixGL
     # nixGL.packages.${pkgs.system}.nixGLDefault

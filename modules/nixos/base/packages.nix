@@ -39,6 +39,7 @@
     psmisc # killall/pstree/prtstat/fuser/...
     lm_sensors # for `sensors` command
     ethtool
+    lshw
     pciutils # lspci
     usbutils # lsusb
     hdparm # for disk performance, command

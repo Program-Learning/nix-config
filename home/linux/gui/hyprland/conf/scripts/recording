@@ -3,7 +3,7 @@
 
 ScreenRecordDir="$HOME/Videos/ScreenRecordings"
 ProcessInfo="$ScreenRecordDir/process.pid"
-WF_RECORDER_OPTS=""
+WF_RECORDER_OPTS="--audio=alsa_output.platform-snd_aloop.0.analog-stereo.monitor"
 VIDEOEXT="mkv"
 
 if [ "$1" == "status" ];
