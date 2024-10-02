@@ -18,6 +18,8 @@
     (with pkgs;
       # nixpkgs here
         [
+          # test only
+          niri
           mount-zip
           # AutoClick tool
           xdotool

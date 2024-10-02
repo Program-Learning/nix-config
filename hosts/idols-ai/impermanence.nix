@@ -174,6 +174,9 @@
         ".config/qv2ray"
         ".config/nekoray"
 
+        # test niri
+        ".config/niri"
+
         # ai related file dirs
         "invokeai"
         ".textgen"
