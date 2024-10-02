@@ -84,8 +84,15 @@
       ui.enable = true;
     };
     virtualbox = {
-      host.enable = true;
-      host.enableExtensionPack = true;
+      host = {
+        enable = true;
+        enableExtensionPack = true;
+        enableKvm = true;
+        addNetworkInterface = false;
+        enableHardening = true;
+        enableWebService = true;
+        headless = true;
+      };
     };
     vmware = {
       host = {

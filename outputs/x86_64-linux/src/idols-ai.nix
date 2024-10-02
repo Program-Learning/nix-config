@@ -28,6 +28,7 @@
       ++ [
         inputs.daeuniverse.nixosModules.dae
         inputs.daeuniverse.nixosModules.daed
+        inputs.chaotic.nixosModules.default
       ];
     home-modules = map mylib.relativeToRoot [
       # common
