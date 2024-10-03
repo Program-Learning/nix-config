@@ -15,7 +15,8 @@
 in {
   home.packages = with pkgs-unstable; [
     pkgs-unstable-yuzu.yuzu # Switch games
-    suyu.packages.${pkgs.system}.suyu # Switch games
+    # broken so I disable it
+    # suyu.packages.${pkgs.system}.suyu # Switch games
     pkgs-stable.ryujinx # Switch games
 
     steamPackages.steamcmd # steam command line

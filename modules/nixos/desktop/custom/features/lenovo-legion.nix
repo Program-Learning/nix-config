@@ -11,6 +11,7 @@ in {
     package = lib.mkPackageOption pkgs "${pkg_name}" {};
     autoStart = lib.mkEnableOption (lib.mdDoc "${pkg_name} auto launch");
     enhanceMode = lib.mkEnableOption (lib.mdDoc "${pkg_name} enhanceMode mode");
+    installKernelModule = lib.mkEnableOption (lib.mdDoc "${pkg_name} installKernelModule");
   };
 
   config = let
@@ -34,7 +35,7 @@ in {
           source = "${pkgs.lenovo-legion}/bin/legion_gui";
         };
       };
-      boot.extraModulePackages = lib.mkIf cfg.enhanceMode [
+      boot.extraModulePackages = lib.mkIf cfg.installKernelModule [
         config.boot.kernelPackages.lenovo-legion-module
       ];
     };

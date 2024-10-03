@@ -31,7 +31,7 @@
     digital # A digital logic designer and circuit simulator.
     logisim-evolution # Digital logic designer and simulator
 
-    freecad # A CAD software
+    pkgs-stable.freecad # A CAD software
 
     # fpga
     pkgs-unstable.python312Packages.apycula # gowin fpga

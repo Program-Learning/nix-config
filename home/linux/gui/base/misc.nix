@@ -46,12 +46,13 @@
     # wechat-uos
     nur-DataEraserC.packages.${pkgs.system}.wechat-uos
 
-    nur-DataEraserC.packages.${pkgs.system}.dingtalk
+    # It is broken and I do not need this now
+    # nur-DataEraserC.packages.${pkgs.system}.dingtalk
 
     pkgs-latest.feishu
 
     # c001apk-flutter
-    nur-DataEraserC-not-follow.packages.${pkgs.system}.c001apk-flutter
+    nur-DataEraserC.packages.${pkgs.system}.c001apk-flutter
   ];
 
   # GitHub CLI tool

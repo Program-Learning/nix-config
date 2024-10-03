@@ -61,6 +61,7 @@ in rec {
   features.lenovo-legion = {
     enable = true;
     enhanceMode = true;
+    installKernelModule = false;
   };
   features.intel-gpu-tools = {
     enable = true;

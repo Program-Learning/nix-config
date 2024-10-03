@@ -133,7 +133,6 @@
 
     suyu = {
       url = "git+https://git.suyu.dev/suyu/nix-flake";
-      inputs.nixpkgs.follows = "nixpkgs"; # optional, saves space, recommended
     };
 
     # hyprwm
