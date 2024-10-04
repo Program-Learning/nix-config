@@ -91,7 +91,7 @@
         addNetworkInterface = false;
         enableHardening = true;
         enableWebService = true;
-        headless = true;
+        headless = false;
       };
     };
     vmware = {
