@@ -187,6 +187,7 @@
         ".lingma"
 
         ".vmware"
+        "VirtualBox VMs"
         ".config/VirtualBox"
         ".config/lxc"
         ".config/libvirt"
