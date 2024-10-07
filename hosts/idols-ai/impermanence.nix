@@ -184,6 +184,7 @@
         ".config/aichat"
         ".config/open-webui"
         ".ollama"
+        ".cache/huggingface"
         ".lingma"
 
         ".vmware"
