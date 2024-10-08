@@ -54,6 +54,13 @@
       "/etc/machine-id"
     ];
 
+    # avoid build failure
+    users.root = {
+      home = "/root";
+      directories = [
+        ".cache"
+      ];
+    };
     # the following directories will be passed to /persistent/home/$USER
     users.nixos = {
       directories = [
