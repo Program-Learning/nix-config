@@ -53,7 +53,8 @@
           # --java ide
           # jetbrains.idea-ultimate
           jetbrains.idea-community
-          eclipses.eclipse-sdk
+          # eclipses.eclipse-sdk
+          eclipses.eclipse-jee
 
           glib
           calcurse
