@@ -83,6 +83,10 @@
       enable = true;
       ui.enable = true;
     };
+    incus = {
+      enable = false;
+      ui.enable = true;
+    };
     virtualbox = {
       host = {
         enable = true;
