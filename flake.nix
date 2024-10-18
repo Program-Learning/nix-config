@@ -209,6 +209,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    coder = {
+      url = "github:coder/coder";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     vscode-server = {
       url = "github:nix-community/nixos-vscode-server";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -336,6 +341,7 @@
       # inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # my old nur, will remove
     nur-program-learning = {
       url = "github:Program-Learning/nur-packages";
       # url = "gitfile:////home/nixos/Documents/code/program-learning-nur-packages?shallow=1";
@@ -345,6 +351,7 @@
     llqqnt = {
       # url = "github:Program-Learning/nur-packages";
       url = "github:DataEraserC/nur-packages";
+      inputs.nixpkgs.follows = "nixpkgs";
       # url = "gitfile:////home/nixos/Documents/code/program-learning-nur-packages?shallow=1";
     };
 
@@ -401,10 +408,6 @@
     Snowpkgs = {
       url = "github:Daru-san/Snowpkgs";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nur-DataEraserC-not-follow = {
-      url = "github:DataEraserC/nur-packages";
     };
 
     android-nixpkgs = {

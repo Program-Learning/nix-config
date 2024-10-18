@@ -142,7 +142,7 @@
   };
   features.clash-nyanpasu = {
     enable = true;
-    package = clash-nyanpasu.packages.${pkgs.system}.clash-nyanpasu;
+    package = pkgs.clash-nyanpasu;
     tunMode = true;
   };
   services.sing-box = {

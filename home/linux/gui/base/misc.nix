@@ -6,7 +6,6 @@
   llqqnt,
   nur-linyinfeng,
   nur-DataEraserC,
-  nur-DataEraserC-not-follow,
   ...
 }: {
   home.packages = with pkgs; [
