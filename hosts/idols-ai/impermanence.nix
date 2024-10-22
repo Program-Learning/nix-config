@@ -172,6 +172,7 @@
 
         # others
         ".config/blender"
+        ".config/LDtk"
 
         # clash
         ".config/clash"
