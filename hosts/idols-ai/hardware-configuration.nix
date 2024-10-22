@@ -66,7 +66,7 @@
 
   boot.initrd = {
     postDeviceCommands = let
-      PRIMARYUSBID = "12CE-A600";
+      PRIMARYUSBID = "D7AB-22CE";
       BACKUPUSBID = "12CE-A600";
     in
       pkgs.lib.mkBefore ''

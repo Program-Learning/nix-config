@@ -39,16 +39,37 @@ in rec {
     networkmanager.dispatcherScripts = [
       {
         source = pkgs.writeText "upHook" ''
-          alias_for_work=/etc/agenix/alias-for-work.bash
-          if [ -f $alias_for_work ]; then
-            . $alias_for_work
-          else
-            echo "No alias file found for work"
-          fi
-          ${pkgs.ntfy-sh}/bin/ntfy publish $ntfy_topic "PC[y9000k2021h][nixos] online(Device Interface: $DEVICE_IFACE) at $(date +%Y-%m-%dT%H:%M:%S%Z)"
-          ~/.config/hypr/scripts/tp_link_script http://192.168.0.1 w9BVlghc9TefbwK "$(cat /sys/class/net/wlp0s20f3/address)" "匿名主机" 0
+          INTERFACE=$1
+          STATUS=$2
+          notify_online(){
+            alias_for_work=/etc/agenix/alias-for-work.bash
+            if [ -f $alias_for_work ]; then
+              . $alias_for_work
+            else
+              echo "No alias file found for work"
+            fi
+            ${pkgs.ntfy-sh}/bin/ntfy publish $ntfy_topic "PC[y9000k2021h][nixos] online(Device Interface: $DEVICE_IFACE) at $(date +%Y-%m-%dT%H:%M:%S%Z)"
+          }
+          anonymous(){
+            ~/.config/hypr/scripts/tp_link_script http://192.168.0.1 w9BVlghc9TefbwK "$(cat /sys/class/net/wlp0s20f3/address)" "匿名主机" 0
+          }
+
+          case "$STATUS" in
+            up)
+              notify_online
+              anonymous
+            ;;
+            vpn-up)
+              notify_online
+              anonymous
+            ;;
+            down)
+            ;;
+            vpn-down)
+            ;;
+          esac
         '';
-        type = "pre-up";
+        type = "basic";
       }
     ];
     enableIPv6 = true; # disable ipv6

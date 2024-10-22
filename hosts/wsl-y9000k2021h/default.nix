@@ -13,7 +13,7 @@
 #
 #############################################################
 let
-  hostName = "y9000k2021h"; # Define your hostname.
+  hostName = "wsl-y9000k2021h"; # Define your hostname.
   macAddress = "random";
 in rec {
   imports = [
@@ -37,15 +37,31 @@ in rec {
     networkmanager.dispatcherScripts = [
       {
         source = pkgs.writeText "upHook" ''
-          alias_for_work=/etc/agenix/alias-for-work.bash
-          if [ -f $alias_for_work ]; then
-            . $alias_for_work
-          else
-            echo "No alias file found for work"
-          fi
-          ${pkgs.ntfy-sh}/bin/ntfy publish $ntfy_topic "PC[y9000k2021h][nixos] online(Device Interface: $DEVICE_IFACE) at $(date +%Y-%m-%dT%H:%M:%S%Z)"
+          INTERFACE=$1
+          STATUS=$2
+          notify_online(){
+            alias_for_work=/etc/agenix/alias-for-work.bash
+            if [ -f $alias_for_work ]; then
+              . $alias_for_work
+            else
+              echo "No alias file found for work"
+            fi
+            ${pkgs.ntfy-sh}/bin/ntfy publish $ntfy_topic "PC[${hostName}][nixos] online(Device Interface: $DEVICE_IFACE) at $(date +%Y-%m-%dT%H:%M:%S%Z)"
+          }
+          case "$STATUS" in
+            up)
+              notify_online
+            ;;
+            vpn-up)
+              notify_online
+            ;;
+            down)
+            ;;
+            vpn-down)
+            ;;
+          esac
         '';
-        type = "pre-up";
+        type = "basic";
       }
     ];
     enableIPv6 = true; # disable ipv6
