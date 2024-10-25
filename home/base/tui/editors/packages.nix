@@ -38,7 +38,7 @@
       flutter
 
       #-- dart
-      dart
+      # dart
 
       #-- haskell
       ghc

@@ -44,7 +44,7 @@
     enable32Bit = true;
   };
   environment.systemPackages = [
-    nur-DataEraserC.packages.${pkgs.system}.cudatoolkit_dev_env
+    nur-DataEraserC.packages.${pkgs.system}.cudatoolkit_dev_env_fhs
     pkgs.vaapiVdpau
     # nixGL
     # nixGL.packages.${pkgs.system}.nixGL

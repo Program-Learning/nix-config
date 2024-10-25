@@ -326,7 +326,7 @@
     };
 
     daeuniverse = {
-      url = "github:daeuniverse/flake.nix/unstable";
+      url = "github:daeuniverse/flake.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

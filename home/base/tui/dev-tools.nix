@@ -61,7 +61,7 @@
     man-pages
     man-pages-posix
 
-    nur-DataEraserC.packages.${pkgs.system}.clang_dev_env
+    nur-DataEraserC.packages.${pkgs.system}.clang_dev_env_fhs
     comma
   ];
 

@@ -110,7 +110,7 @@ in rec {
     # for mount luks disk from nixos
     cryptsetup
     # lenovo-legion
-    nur-DataEraserC.packages.${pkgs.system}.cudatoolkit_dev_env
+    nur-DataEraserC.packages.${pkgs.system}.cudatoolkit_dev_env_fhs
 
     # too big so disabled
     # nixGL
