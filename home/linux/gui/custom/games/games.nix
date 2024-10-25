@@ -35,7 +35,7 @@ in {
     # aagl-gtk-on-nix.honkers-launcher
 
     # An anime game server
-    nur-DataEraserC.packages.${pkgs.system}.UnknownAnimeGamePS-wrapper
+    nur-DataEraserC.packages.${pkgs.system}.UnknownAnimeGamePS_env
     # nix-gaming.packages.${pkgs.system}.osu-stable
     nix-gaming.packages.${pkgs.system}.osu-lazer-bin
   ];
