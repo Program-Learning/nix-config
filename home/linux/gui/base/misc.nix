@@ -18,7 +18,7 @@
 
     # instant messaging
     telegram-desktop
-    discord
+    # discord # update too frequently, use the web version instead
 
     # remote desktop(rdp connect)
     remmina

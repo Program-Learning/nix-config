@@ -25,6 +25,7 @@ in
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
+            home-manager.backupFileExtension = "home-manager.backup";
 
             # Set Home Manager Backup Ext
             home-manager.backupFileExtension = "hm-bak";

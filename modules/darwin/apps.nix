@@ -159,17 +159,17 @@ in {
       # "tor-browser"
 
       # https://joplinapp.org/help/
-      "joplin" # note taking app
+      # "joplin" # note taking app
 
       # IM & audio & remote desktop & meeting
       "telegram"
-      "discord"
+      # "discord" # update too frequently, use the web version instead
       "microsoft-remote-desktop"
       "moonlight" # remote desktop client
       "rustdesk"
 
       # Misc
-      "shadowsocksx-ng" # proxy tool
+      # "shadowsocksx-ng" # proxy tool
       "iina" # video player
       "raycast" # (HotKey: alt/option + space)search, calculate and run scripts(with many plugins)
       "stats" # beautiful system status monitor in menu bar
