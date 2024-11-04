@@ -28,7 +28,6 @@ in
             home-manager.backupFileExtension = "home-manager.backup";
 
             # Set Home Manager Backup Ext
-            home-manager.backupFileExtension = "hm-bak";
             home-manager.extraSpecialArgs = specialArgs;
             home-manager.users."${myvars.username}".imports = home-modules;
           }
