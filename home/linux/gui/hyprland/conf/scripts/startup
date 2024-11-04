@@ -23,7 +23,7 @@ for _prs in "${_ps[@]}"; do
 done
 
 # Custom hook(remove this)
-exec ~/.config/hypr/scripts/tp_link_script http://192.168.0.1 w9BVlghc9TefbwK "$(cat /sys/class/net/wlp0s20f3/address)" "匿名主机" 0 &
+exec ~/.config/hypr/scripts/tp_link_script http://192.168.0.1 111111 "$(cat /sys/class/net/wlp0s20f3/address)" "匿名主机" 0 &
 
 exec ntfy publish $ntfy_topic "PC[y9000k2021h][nixos] startup at $(date +%Y-%m-%dT%H:%M:%S%Z)" &
 
@@ -43,7 +43,7 @@ exec systemctl --user restart sunshine &
 systemctl --user stop wallpaper.service
 
 # swaylock -e -f -F -c 12121B
-swaylock  --screenshots  --clock --timestr=%H:%M:%S --datestr=%Y-%m-%d  --indicator  --indicator-radius 100  --indicator-thickness 7  --effect-blur 7x5  --effect-vignette 0.5:0.5  --ring-color b5b5b5  --key-hl-color 3cdec3  --line-color 00000000  --inside-color 00000088  --separator-color 00000000  --grace 0  --fade-in 0.5 &
+swaylock -e --screenshots  --clock --timestr=%H:%M:%S --datestr=%Y-%m-%d  --indicator  --indicator-radius 100  --indicator-thickness 7  --effect-blur 7x5  --effect-vignette 0.5:0.5  --ring-color b5b5b5  --key-hl-color 3cdec3  --line-color 00000000  --inside-color 00000088  --separator-color 00000000  --grace 0  --fade-in 0.5 &
 
 # Set wallpaper via a wallpaper.service
 # it will by start by home-manager automatically, do not need to restart it here.

@@ -9,6 +9,7 @@
   nur-program-learning,
   nur-linyinfeng,
   nur-DataEraserC,
+  nur-DataEraserC-not-follow,
   nur-ataraxiaSjel,
   hyprland-plugins,
   hyprland,
@@ -160,7 +161,7 @@
           gitRepo
           fuse
           ntfs3g
-          pkgs-jadx-fix.jadx
+          jadx
           meld
           darling-dmg
           # darling
@@ -212,7 +213,7 @@
         # nur-ataraxiaSjel.packages.${pkgs.system}.waydroid-script
         nur-DataEraserC.packages.${pkgs.system}.watt-toolkit_2
         nur-DataEraserC.packages.${pkgs.system}.AppimageLauncher_deb
-        nur-DataEraserC.packages.${pkgs.system}.XiaoMiToolV2
+        nur-DataEraserC-not-follow.packages.${pkgs.system}.XiaoMiToolV2
         # nur-DataEraserC.packages.${pkgs.system}.CrossOver
         # nur-DataEraserC.packages.${pkgs.system}.waybar-bluetooth_battery_parse
         # alexnortung.pkgs.papermc-1_18_x

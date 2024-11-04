@@ -405,6 +405,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nur-DataEraserC-not-follow = {
+      url = "github:DataEraserC/nur-packages";
+    };
+
     Snowpkgs = {
       url = "github:Daru-san/Snowpkgs";
       inputs.nixpkgs.follows = "nixpkgs";

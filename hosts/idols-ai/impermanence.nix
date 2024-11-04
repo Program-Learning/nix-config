@@ -105,6 +105,7 @@
         ".android"
         ".config/.android"
         "workspace"
+        "eclipse-workspace"
         ".Genymobile"
         "AndroidStudioProjects"
         "IdeaProjects"

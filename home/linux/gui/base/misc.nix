@@ -14,6 +14,7 @@
     # do not support .pdf
     foliate
     koodo-reader
+    nur-DataEraserC.packages.${pkgs.system}.suwayomi-server
 
     # instant messaging
     telegram-desktop

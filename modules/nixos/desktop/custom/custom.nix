@@ -21,7 +21,7 @@
         host = "127.0.0.1";
         port = 7890;
       };
-      localhost_nekobox_proxy = {
+      localhost_nekoray_proxy = {
         enable = true;
         type = "socks5";
         host = "127.0.0.1";
