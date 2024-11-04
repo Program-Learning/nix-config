@@ -33,7 +33,7 @@ in
             home-manager = {
               config = {imports = home-modules;};
               # Set Home Manager Backup Ext
-              backupFileExtension = "hm-bak";
+              home-manager.backupFileExtension = "home-manager.backup";
               useGlobalPkgs = true;
               extraSpecialArgs = specialArgs;
             };
