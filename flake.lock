@@ -661,16 +661,17 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1730702922,
-        "narHash": "sha256-THxdrRVr6Wiou6u9thXQlkapxXaSY6HlqH8X93Ejz9M=",
+        "lastModified": 1728662507,
+        "narHash": "sha256-ngphPxk8GopC8mRx3df6E6dUewuI1wSM8N285MP99FA=",
         "owner": "daeuniverse",
         "repo": "flake.nix",
-        "rev": "009791f4fdb2fbe983ee7d565f08df7c7b13a9a4",
+        "rev": "2e60f8b35d78e20a94a6a0c4b014bfe78f9b95a0",
         "type": "github"
       },
       "original": {
         "owner": "daeuniverse",
         "repo": "flake.nix",
+        "rev": "2e60f8b35d78e20a94a6a0c4b014bfe78f9b95a0",
         "type": "github"
       }
     },
@@ -1564,9 +1565,8 @@
         "type": "github"
       },
       "original": {
-        "owner": "hercules-ci",
-        "repo": "flake-parts",
-        "type": "github"
+        "id": "flake-parts",
+        "type": "indirect"
       }
     },
     "flake-parts_6": {

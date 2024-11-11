@@ -6,6 +6,7 @@
   lib,
   nur-xddxdd,
   nur-DataEraserC,
+  chaotic,
   ...
 } @ args: {
   nixpkgs.overlays =
@@ -133,6 +134,7 @@
 
   # make `nix run nixpkgs#nixpkgs` use the same nixpkgs as the one used by this flake.
   nix.registry.nixpkgs.flake = nixpkgs;
+  nix.registry.chaotic-cx.flake = chaotic;
 
   environment.etc."nix/inputs/nixpkgs".source = "${nixpkgs}";
   # make `nix repl '<nixpkgs>'` use the same nixpkgs as the one used by this flake.

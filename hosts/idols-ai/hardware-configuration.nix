@@ -21,6 +21,7 @@
   # boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelPackages = pkgs.linuxPackages_cachyos;
   chaotic.scx.enable = true;
+  chaotic.scx.package = pkgs.scx_git.full;
   # boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_xanmod.override {
   #   structuredExtraConfig = with lib.kernel; {
   #     DMABUF_HEAPS = yes;

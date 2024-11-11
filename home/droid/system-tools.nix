@@ -49,7 +49,6 @@
     mtr # A network diagnostic tool
     iperf3
     iproute2
-    linux-wifi-hotspot
     macchanger
     dnsutils # `dig` + `nslookup`
     ldns # replacement of `dig`, it provide the command `drill`

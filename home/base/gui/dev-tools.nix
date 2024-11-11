@@ -7,6 +7,8 @@
     insomnia # REST client
     hoppscotch # Api Test Tool
     wireshark # network analyzer
+    linux-wifi-hotspot
+    hostapd
 
     # IDEs
     jetbrains.idea-community

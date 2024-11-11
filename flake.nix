@@ -326,7 +326,7 @@
     };
 
     daeuniverse = {
-      url = "github:daeuniverse/flake.nix";
+      url = "github:daeuniverse/flake.nix/2e60f8b35d78e20a94a6a0c4b014bfe78f9b95a0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
