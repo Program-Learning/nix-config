@@ -52,10 +52,6 @@
           powerdevil
 
           # --java ide
-          # jetbrains.idea-ultimate
-          jetbrains.idea-community
-          # eclipses.eclipse-sdk
-          eclipses.eclipse-jee
 
           glib
           calcurse
@@ -209,7 +205,6 @@
         nur-DataEraserC.packages.${pkgs.system}.baidunetdisk
         nur-DataEraserC.packages.${pkgs.system}.baidupcs-go
         nur-DataEraserC.packages.${pkgs.system}.bilibili
-        nur-DataEraserC.packages.${pkgs.system}.onepush
         # nur-ataraxiaSjel.packages.${pkgs.system}.waydroid-script
         nur-DataEraserC.packages.${pkgs.system}.watt-toolkit_2
         nur-DataEraserC.packages.${pkgs.system}.AppimageLauncher_deb

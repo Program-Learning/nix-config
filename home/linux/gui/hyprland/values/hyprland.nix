@@ -12,8 +12,8 @@
   ...
 }: let
   # package = pkgs-latest.hyprland;
-  # package = pkgs.hyprland;
-  package = hyprland.packages.${pkgs.system}.hyprland;
+  package = pkgs.hyprland;
+  # package = hyprland.packages.${pkgs.system}.hyprland;
 in {
   # NOTE:
   # We have to enable hyprland/i3's systemd user service in home-manager,

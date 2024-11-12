@@ -12,5 +12,8 @@
 
     # IDEs
     jetbrains.idea-community
+    # jetbrains.idea-ultimate
+    # eclipses.eclipse-sdk
+    eclipses.eclipse-jee
   ];
 }

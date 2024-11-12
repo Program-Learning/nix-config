@@ -19,7 +19,7 @@ in {
     suyu.packages.${pkgs.system}.suyu # Switch games
     pkgs-stable.ryujinx # Switch games
 
-    steamPackages.steamcmd # steam command line
+    steamcmd # steam command line
 
     hmcl # MineCraft Launcher
     minecraft # Official MineCraft Launcher

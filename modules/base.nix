@@ -2,11 +2,8 @@
   pkgs,
   myvars,
   nuenv,
-  nixpkgs,
-  lib,
   nur-xddxdd,
   nur-DataEraserC,
-  chaotic,
   ...
 } @ args: {
   nixpkgs.overlays =
@@ -22,8 +19,7 @@
 
   # auto upgrade nix to the unstable version
   # https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/tools/package-management/nix/default.nix#L284
-  # nix.package = pkgs.nixVersions.latest;
-  nix.package = pkgs.nixVersions.nix_2_22;
+  nix.package = pkgs.nixVersions.latest;
 
   environment.systemPackages = with pkgs; [
     git # used by nix flakes
@@ -102,14 +98,12 @@
       "https://mirror.sjtu.edu.cn/nix-channels/store"
 
       "https://nix-community.cachix.org"
-      # my own cache server
-      "https://ryan4yin.cachix.org"
+      # my own cache server, currently not used.
+      # "https://ryan4yin.cachix.org"
       nur-xddxdd.meta.cachixUrl
       nur-DataEraserC.meta.cachixUrl
       "https://nykma.cachix.org"
       "https://linyinfeng.cachix.org"
-      # cuda-maintainer's cache server
-      "https://cuda-maintainers.cachix.org"
       "https://program-learning.cachix.org"
       "https://ai.cachix.org"
 
@@ -123,7 +117,6 @@
       nur-DataEraserC.meta.cachixPublicKey
       "nykma.cachix.org-1:z04hZH9YnR1B2lpLperwiazdkaT5yczgOPa1p/NHqK4="
       "linyinfeng.cachix.org-1:sPYQXcNrnCf7Vr7T0YmjXz5dMZ7aOKG3EqLja0xr9MM="
-      "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
       "program-learning.cachix.org-1:Pfl2r+J5L9wJqpDnop6iQbrR3/Ts4AUyotu89INRlSU="
       "ai.cachix.org-1:N9dzRK+alWwoKXQlnn0H6aUx0lU/mspIoz8hMvGvbbc="
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
@@ -131,15 +124,4 @@
     ];
     builders-use-substitutes = true;
   };
-
-  # make `nix run nixpkgs#nixpkgs` use the same nixpkgs as the one used by this flake.
-  nix.registry.nixpkgs.flake = nixpkgs;
-  nix.registry.chaotic-cx.flake = chaotic;
-
-  environment.etc."nix/inputs/nixpkgs".source = "${nixpkgs}";
-  # make `nix repl '<nixpkgs>'` use the same nixpkgs as the one used by this flake.
-  # discard all the default paths, and only use the one from this flake.
-  nix.nixPath = lib.mkForce ["/etc/nix/inputs"];
-  # https://github.com/NixOS/nix/issues/9574
-  nix.settings.nix-path = lib.mkForce "nixpkgs=/etc/nix/inputs/nixpkgs";
 }
