@@ -1,5 +1,11 @@
 # Changelog
 
+## Until 20241112
+
+### pkgs
+
+- `zellij-0.41.1` has lots of different behavior with `zellij-0.40.1`
+
 ## Until 20240501
 
 ### home config
