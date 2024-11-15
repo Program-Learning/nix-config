@@ -81,6 +81,19 @@ fmt:
 gcroot:
   ls -al /nix/var/nix/gcroots/auto/
 
+# Verify all the store entries
+# Nix Store can contains corrupted entries if the nix store object has been modified unexpectedly.
+# This command will verify all the store entries,
+# and we need to fix the corrupted entries manually via `sudo nix store delete <store-path-1> <store-path-2> ...`
+[group('nix')]
+verify-store:
+  nix store verify --all
+
+# Repair Nix Store Objects
+[group('nix')]
+repair-store *paths:
+  nix store repair {{paths}}
+
 ############################################################################
 #
 #  NixOS WSL related commands
@@ -177,12 +190,12 @@ fe mode="default": darwin-set-proxy
   darwin-build "fern" {{mode}};
   darwin-switch "fern" {{mode}}
 
-# Reload yabai and skhd(macOS)
+# Reset launchpad to force it to reindex Applications
 [macos]
 [group('desktop')]
-yabai-reload:
-  launchctl kickstart -k "gui/502/org.nixos.yabai";
-  launchctl kickstart -k "gui/502/org.nixos.skhd"; 
+reset-launchpad:
+  defaults write com.apple.dock ResetLaunchPad -bool true
+  killall Dock
 
 ############################################################################
 #
@@ -406,6 +419,10 @@ emacs-reload:
 [group('common')]
 path:
    $env.PATH | split row ":"
+
+[group('common')]
+trace-access app *args:
+  strace -f -t -e trace=file {{app}} {{args}} | complete | $in.stderr | lines | find -v -r "(/nix/store|/newroot|/proc)" | parse --regex '"(/.+)"' | sort | uniq
 
 [linux]
 [group('common')]

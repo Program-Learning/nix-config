@@ -1,10 +1,13 @@
-{pkgs-stable, ...}: let
+{
+  pkgs-stable,
+  lib,
+  ...
+}: let
   shellAliases = {
     "zj" = "zellij";
   };
 in {
   programs.zellij = {
-    package = pkgs-stable.zellij;
     enable = true;
   };
   # only works in bash/zsh, not nushell

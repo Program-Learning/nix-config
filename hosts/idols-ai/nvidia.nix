@@ -9,9 +9,16 @@
   # for Nvidia GPU
   # ===============================================================================================
 
-  boot.kernelParams = ["nvidia.NVreg_PreserveVideoMemoryAllocations=1"];
-  services.xserver.videoDrivers = ["nvidia" "modesetting"]; # will install nvidia-vaapi-driver by default
-  hardware.nvidia = {
+  # https://wiki.hyprland.org/Nvidia/
+  boot.kernelParams = [
+    "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
+    # Since NVIDIA does not load kernel mode setting by default,
+    # enabling it is required to make Wayland compositors function properly.
+    # NOTE: DISABLE THIS BECAUSE IT CAUSE MY COMPUTER BROKEN DOWN
+    # "nvidia-drm.fbdev=1"
+  ];
+  services.xserver.videoDrivers = ["nvidia"]; # will install nvidia-vaapi-driver by default
+  hardware.nvidia = rec {
     open = false;
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
     # https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/os-specific/linux/nvidia-x11/default.nix
@@ -23,11 +30,11 @@
     powerManagement.enable = true;
     # # Fine-grained power management. Turns off GPU when not in use.
     # # Experimental and only works on modern Nvidia GPUs (Turing or newer).
-    powerManagement.finegrained = true;
-    prime = {
+    powerManagement.finegrained = prime.offload ? false;
+    prime = rec {
       offload = {
-        enable = true;
-        enableOffloadCmd = true;
+        enable = false;
+        enableOffloadCmd = offload ? false;
       };
       # Make sure to use the correct Bus ID values for your system!
       intelBusId = "PCI:0:2:0";
@@ -37,6 +44,7 @@
     # # accessible via `nvidia-settings`.
     # nvidiaSettings = true;
   };
+
   hardware.nvidia-container-toolkit.enable = true;
   hardware.graphics = {
     enable = true;

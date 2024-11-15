@@ -87,7 +87,7 @@ in {
   # homebrew need to be installed manually, see https://brew.sh
   # https://github.com/LnL7/nix-darwin/blob/master/modules/homebrew.nix
   homebrew = {
-    enable = true; # disable homebrew for fast deploy
+    enable = false; # disable homebrew for fast deploy
 
     onActivation = {
       autoUpdate = true; # Fetch the newest stable branch of Homebrew's git repo
@@ -155,8 +155,6 @@ in {
       "visual-studio-code"
       "zed" # zed editor
       "aerospace" # an i3-like tiling window manager for macOS
-      # "wezterm"
-      # "tor-browser"
 
       # https://joplinapp.org/help/
       # "joplin" # note taking app

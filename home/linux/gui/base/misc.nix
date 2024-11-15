@@ -39,12 +39,15 @@
     pkgs.nixpaks.qq
     pkgs.nixpaks.qq-desktop-item
 
+    wechat-uos
+    # pkgs.nixpaks.wechat-uos
+    # pkgs.nixpaks.wechat-uos-desktop-item
     # nur-linyinfeng.packages.${pkgs.system}.icalingua-plus-plus
 
     nur-linyinfeng.packages.${pkgs.system}.wemeet
 
     # wechat-uos
-    nur-DataEraserC.packages.${pkgs.system}.wechat-uos
+    # nur-DataEraserC.packages.${pkgs.system}.wechat-uos
 
     llqqnt.packages.${pkgs.system}.llqqnt
 

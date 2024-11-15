@@ -1,10 +1,20 @@
-let
+{
+  pkgs,
+  pkgs-stable,
+  ...
+}: let
   shellAliases = {
     "zj" = "zellij";
   };
 in {
   programs.zellij = {
     enable = true;
+    # [Linux] Revert to old v0.40.1 to fix:
+    # https://github.com/zellij-org/zellij/issues/3592
+    package =
+      if pkgs.stdenv.isLinux
+      then pkgs-stable.zellij
+      else pkgs.zellij;
   };
   # auto start zellij in nushell
   programs.nushell.extraConfig = ''

@@ -121,7 +121,7 @@ alt-shift-equal = 'resize smart +50'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
 alt-1 = 'workspace 1Kitty'
-alt-2 = 'workspace 2Wez'
+alt-2 = 'workspace 2Alacritty'
 alt-3 = 'workspace 3Work'
 alt-4 = 'workspace 4Firefox'
 alt-5 = 'workspace 5Chrome'
@@ -134,7 +134,7 @@ alt-0 = 'workspace 10'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 alt-shift-1 = 'move-node-to-workspace 1Kitty'
-alt-shift-2 = 'move-node-to-workspace 2Wez'
+alt-shift-2 = 'move-node-to-workspace 2Alacritty'
 alt-shift-3 = 'move-node-to-workspace 3Work'
 alt-shift-4 = 'move-node-to-workspace 4Firefox'
 alt-shift-5 = 'move-node-to-workspace 5Chrome'
@@ -200,8 +200,8 @@ if.app-id = 'net.kovidgoyal.kitty'
 run = 'move-node-to-workspace 1Kitty'
 
 [[on-window-detected]]
-if.app-id = 'com.github.wez.wezterm'
-run = 'move-node-to-workspace 2Wez'
+if.app-id = 'org.alacritty'
+run = 'move-node-to-workspace 2Alacritty'
 
 [[on-window-detected]]
 if.app-id = 'com.tencent.WeWorkMac'
@@ -246,7 +246,7 @@ run = 'layout floating'
 
 [workspace-to-monitor-force-assignment]
 1Kitty = 'secondary'  # Non-main monitor in case when there are only two monitors'
-2Wez = 'main'         # "Main" monitor ("main" as in System Settings → Displays → Use as)
+2Alacritty = 'main'         # "Main" monitor ("main" as in System Settings → Displays → Use as)
 3Work = 'main'
 4Firefox = 'main'
 5Chrome = 'secondary'
