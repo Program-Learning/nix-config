@@ -215,7 +215,6 @@
         ".config/uGet"
         ".config/Motrix"
         ".config/sunshine"
-        ".config/QQ"
         ".config/icalingua"
         ".config/MuseScore"
         ".config/ghc"

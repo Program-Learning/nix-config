@@ -6,6 +6,13 @@
 
 - `zellij-0.41.1` has lots of different behavior with `zellij-0.40.1`
 
+### bugs
+
+- Error 71 (Protocol error) dispatching to Wayland display.
+  > maybe cause by nvidia 560 driver see
+  > https://discussion.fedoraproject.org/t/gdk-message-error-71-protocol-error-dispatching-to-wayland-display/127927
+  > see https://gitlab.freedesktop.org/mesa/mesa/-/issues/11723
+
 ## Until 20240501
 
 ### home config

@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   pkgs-unstable,
   nur-DataEraserC,
@@ -19,10 +20,10 @@
   ];
   services.xserver.videoDrivers = ["nvidia"]; # will install nvidia-vaapi-driver by default
   hardware.nvidia = rec {
-    open = false;
+    open = true;
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
     # https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/os-specific/linux/nvidia-x11/default.nix
-    # package = config.boot.kernelPackages.nvidiaPackages.stable;
+    package = config.boot.kernelPackages.nvidiaPackages.production;
 
     # required by most wayland compositors!
     modesetting.enable = true;
