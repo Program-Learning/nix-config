@@ -175,6 +175,9 @@
         ".config/blender"
         ".config/LDtk"
 
+        # IM
+        ".config/QQ"
+        ".xwechat"
         # clash
         ".config/clash"
         ".config/clash-verge"
