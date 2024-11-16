@@ -1,17 +1,27 @@
 {
   pkgs,
   pkgs-unstable,
-  # pkgs-stable,
+  pkgs-stable,
   nur-ryan4yin,
+  nur-DataEraserC,
   ...
 }: {
   home.packages = with pkgs; [
     # creative
-    blender # 3d modeling
+    pkgs-stable.blender # 3d modeling
     # gimp      # image editing, I prefer using figma in browser instead of this one
+    (gimp-with-plugins.override {
+      plugins = with gimpPlugins; [
+        fourier
+        # resynthesizer # broken since 2023-03-20
+        gmic
+        bimp
+      ];
+    })
+    shotcut # video editor
     inkscape # vector graphics
     krita # digital painting
-    musescore # music notation
+    pkgs-stable.musescore # music notation
     # reaper # audio production
     # sonic-pi # music programming
 
@@ -20,7 +30,12 @@
     aseprite # Animated sprite editor & pixel art tool
 
     # this app consumes a lot of storage, so do not install it currently
-    # kicad     # 3d printing, eletrical engineering
+    pkgs-stable.kicad # 3d printing, eletrical engineering
+    ngspice # eletrical engineering
+    digital # A digital logic designer and circuit simulator.
+    logisim-evolution # Digital logic designer and simulator
+
+    pkgs-stable.freecad # A CAD software
 
     # fpga
     pkgs-unstable.python312Packages.apycula # gowin fpga
@@ -28,6 +43,10 @@
     pkgs-unstable.nextpnr # fpga place and route
     pkgs-unstable.openfpgaloader # fpga programming
     nur-ryan4yin.packages.${pkgs.system}.gowin-eda-edu-ide # app: `gowin-env` => `gw_ide` / `gw_pack` / ...
+    # nur-DataEraserC.packages.${pkgs.system}.wechat_dev_tools_appimage
+    nur-DataEraserC.packages.${pkgs.system}.wechat_dev_tools_bin
+    # nur-DataEraserC.packages.${pkgs.system}.Adobe_Photoshop_CS6_appimage
+    # nur-DataEraserC.packages.${pkgs.system}.Adobe_Illustrator_CS6_appimage
   ];
 
   programs = {

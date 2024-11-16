@@ -12,6 +12,7 @@
     playerctl
     pulsemixer
     imv # simple image viewer
+    vlc # Cross-platform media player and streaming server
 
     nvtopPackages.full
 

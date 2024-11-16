@@ -96,6 +96,29 @@ repair-store *paths:
 
 ############################################################################
 #
+#  NixOS WSL related commands
+#
+############################################################################
+
+[linux]
+wsl-hypr mode="default":
+  #!/usr/bin/env nu
+  use {{utils_nu}} *;
+  nixos-switch wsl-y9000k2021h-hyprland {{mode}}
+
+############################################################################
+#
+#  NixOnDroid related commands
+#
+############################################################################
+
+droid mode="default":
+  #!/usr/bin/env nu
+  use {{utils_nu}} *;
+  nod-switch mondrian {{mode}}
+
+############################################################################
+#
 #  NixOS Desktop related commands
 #
 ############################################################################
@@ -106,6 +129,26 @@ hypr mode="default":
   #!/usr/bin/env nu
   use {{utils_nu}} *;
   nixos-switch ai-hyprland {{mode}}
+
+[linux]
+gnome-wayland mode="default":
+  #!/usr/bin/env nu
+  use {{utils_nu}} *;
+  nixos-switch ai-gnome-wayland {{mode}}
+
+[linux]
+kde-wayland mode="default":
+  #!/usr/bin/env nu
+  use {{utils_nu}} *;
+  nixos-switch ai-kde-wayland {{mode}}
+
+
+[linux]
+[group('desktop')]
+s-i3 mode="default":
+  #!/usr/bin/env nu
+  use {{utils_nu}} *;
+  nixos-switch shoukei-i3 {{mode}}
 
 [linux]
 [group('desktop')]

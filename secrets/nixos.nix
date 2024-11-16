@@ -60,6 +60,7 @@ in {
             # To decrypt secrets on boot, this key should exists when the system is booting,
             # so we should use the real key file path(prefixed by `/persistent/`) here, instead of the path mounted by impermanence.
             "/persistent/etc/ssh/ssh_host_ed25519_key" # Linux
+            # "/home/${myvars.username}/.ssh/juliet-age" # Linux
           ]
           else [
             "/etc/ssh/ssh_host_ed25519_key"
@@ -88,9 +89,9 @@ in {
           # ---------------------------------------------
 
           # .age means the decrypted file is still encrypted by age(via a passphrase)
-          "ryan4yin-gpg-subkeys.priv.age" =
+          "nix-gpg-subkeys.priv.age" =
             {
-              file = "${mysecrets}/ryan4yin-gpg-subkeys-2024-01-27.priv.age.age";
+              file = "${mysecrets}/nix-gpg-subkeys-2024-01-27.priv.age.age";
             }
             // noaccess;
 
@@ -146,6 +147,16 @@ in {
               file = "${mysecrets}/alias-for-work.bash.age";
             }
             // user_readable;
+          "clash.dae" =
+            {
+              file = "${mysecrets}/clash.dae.age";
+            }
+            // high_security;
+          "dae.dae" =
+            {
+              file = "${mysecrets}/dae.dae.age";
+            }
+            // high_security;
         };
 
         # place secrets in /etc/
@@ -165,8 +176,8 @@ in {
             user = myvars.username;
           };
 
-          "agenix/ryan4yin-gpg-subkeys.priv.age" = {
-            source = config.age.secrets."ryan4yin-gpg-subkeys.priv.age".path;
+          "agenix/nix-gpg-subkeys.priv.age" = {
+            source = config.age.secrets."nix-gpg-subkeys.priv.age".path;
             mode = "0000";
           };
 

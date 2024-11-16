@@ -1,11 +1,19 @@
 {
   "position": "top",
   "layer": "top",
-
-  "modules-left": ["custom/launcher", "temperature", "backlight", "hyprland/workspaces"],
+  "modules-left": [
+    "custom/launcher",
+    "custom/recording",
+    "custom/showkey",
+    "custom/cloudflare_warp",
+    // "temperature",
+    "backlight",
+    "hyprland/workspaces",
+  ],
   "modules-center": ["custom/playerctl"],
   "modules-right": [
     "mpd",
+    "bluetooth",
     "pulseaudio",
     "battery",
     "memory",
@@ -17,24 +25,13 @@
     "tray",
   ],
   "hyprland/workspaces": {
+    "disable-scroll": false,
     "format": "{icon}",
     "on-click": "activate",
     "format-icons": {
-      "1": "",
-      "2": "",
-      "3": "",
-      "4": "",
-      "5": "",
-      "6": "",
-      "7": "",
-      "8": "",
-      "9": "",
-      "10": "〇",
       "focused": "",
-      "default": "",
     },
   },
-
   "clock": {
     "interval": 60,
     "align": 0,
@@ -42,6 +39,8 @@
     "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>",
     "format": " {:%H:%M}",
     "format-alt": " {:%a %b %d, %G}",
+    "on-double-click": "kitty calcurse",
+    "on-click-right": "gnome-clocks",
   },
   "cpu": {
     "format": "\udb80\udf5b {usage}%",
@@ -55,6 +54,64 @@
     "on-click-middle": "exec default_wall",
     "on-click-right": "exec wallpaper_random",
     "tooltip": false,
+  },
+  "custom/recording": {
+    "exec": "$HOME/.config/hypr/scripts/recording status",
+    "format": "{}",
+    "on-click": "$HOME/.config/hypr/scripts/recording toggle fullscreen",
+    "on-click-right": "$HOME/.config/hypr/scripts/recording toggle region",
+    "restart-interval": 1,
+    "return-type": "json",
+    "tooltip": true,
+  },
+  "custom/showkey": {
+    "exec": "$HOME/.config/hypr/scripts/showkey status",
+    "format": "{}",
+    "on-click": "$HOME/.config/hypr/scripts/showkey toggle",
+    "restart-interval": 1,
+    "return-type": "json",
+    "tooltip": true,
+  },
+  "custom/cloudflare_warp": {
+    "exec": "$HOME/.config/hypr/scripts/cloudflare_warp status",
+    "format": "{}",
+    "on-click": "$HOME/.config/hypr/scripts/cloudflare_warp toggle",
+    "restart-interval": 1,
+    "return-type": "json",
+    "tooltip": true,
+  },
+  "bluetooth": {
+    "format-on": "",
+    "format-off": "",
+    "format-disabled": "",
+    "format-connected": "<b> {num_connections}</b>",
+    "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+    "on-click": "blueman-manager",
+    // "on-click": "rofi-bluetooth -config ~/.config/rofi/menu.d/network.rasi -i"
+  },
+  "mpris": {
+    "title-len": 20,
+    "interval": 1,
+    "album-len": 0,
+    "max-len": 40,
+    "format": "{player_icon} {title} - {artist}",
+    "format-paused": "{player_icon} {title} - {artist}",
+    //"format-paused": "{player_icon} {dynamic}",
+    "truncate-hours": true,
+    "player-icons": {
+      "default": "▶",
+      "mpv": "🎵",
+      "spotify": "",
+      "firefox": "",
+    },
+    "status-icons": {
+      "paused": "",
+    },
+    "ignored-players": ["vlc", "firefox"],
   },
   "custom/powermenu": {
     "format": "\uf011",
@@ -75,6 +132,8 @@
     "states": {
       "warning": 85,
     },
+    "on-click-middle": "kitty btop",
+    "on-click-right": "kitty btop",
   },
   "mpd": {
     "interval": 2,
@@ -126,7 +185,7 @@
   },
   "pulseaudio": {
     //"format": "{volume}% {icon} {format_source}",
-    "format": "{icon} {volume}%",
+    "format": "{icon}  {volume}%",
     "format-muted": " Mute",
     "format-bluetooth": " {volume}% {format_source}",
     "format-bluetooth-muted": " Mute",
@@ -143,8 +202,8 @@
     },
     "scroll-step": 5.0,
     // Commands to execute on events
-    "on-click": "amixer set Master toggle",
-    "on-click-right": "pavucontrol",
+    "on-click-right": "amixer set Master toggle",
+    "on-click": "pavucontrol",
     "smooth-scrolling-threshold": 1,
   },
   "temperature": {
