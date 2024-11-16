@@ -105,6 +105,7 @@
         ".android"
         ".config/.android"
         "workspace"
+        "eclipse-workspace"
         ".Genymobile"
         "AndroidStudioProjects"
         "IdeaProjects"
@@ -142,8 +143,8 @@
         ".vscode"
         ".vscode-insiders"
         ".config/Code"
-        ".config/vscode-sqltools"
         ".config/Code - Insiders"
+        ".config/vscode-sqltools"
 
         # zed
         ".config/zed"
@@ -172,7 +173,11 @@
 
         # others
         ".config/blender"
+        ".config/LDtk"
 
+        # IM
+        ".config/QQ"
+        ".xwechat"
         # clash
         ".config/clash"
         ".config/clash-verge"
@@ -210,7 +215,6 @@
         ".config/uGet"
         ".config/Motrix"
         ".config/sunshine"
-        ".config/QQ"
         ".config/icalingua"
         ".config/MuseScore"
         ".config/ghc"

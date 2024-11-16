@@ -19,7 +19,7 @@
     # "nvidia-drm.fbdev=1"
   ];
   services.xserver.videoDrivers = ["nvidia"]; # will install nvidia-vaapi-driver by default
-  hardware.nvidia = rec {
+  hardware.nvidia = {
     open = true;
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
     # https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/os-specific/linux/nvidia-x11/default.nix
@@ -31,11 +31,11 @@
     powerManagement.enable = true;
     # # Fine-grained power management. Turns off GPU when not in use.
     # # Experimental and only works on modern Nvidia GPUs (Turing or newer).
-    powerManagement.finegrained = prime.offload ? false;
-    prime = rec {
+    powerManagement.finegrained = true;
+    prime = {
       offload = {
-        enable = false;
-        enableOffloadCmd = offload ? false;
+        enable = true;
+        enableOffloadCmd = true;
       };
       # Make sure to use the correct Bus ID values for your system!
       intelBusId = "PCI:0:2:0";

@@ -5,7 +5,7 @@
 }: {
   # modules.desktop = {
   #   hyprland = {
-  #     nvidia = false;
+  #     nvidia = true;
   #     settings = {
   #       # Configure your Display resolution, offset, scale and Monitors here, use `hyprctl monitors` to get the info.
   #       #   highres:      get the best possible resolution
@@ -15,7 +15,6 @@
   #       monitor = "eDP-1,2560x1600@60,0x0,1";
   #     };
   #   };
-  #   i3.nvidia = false;
   # };
   # modules.editors.emacs = {
   #   enable = true;
