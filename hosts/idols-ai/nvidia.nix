@@ -14,7 +14,7 @@
     "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
     # Since NVIDIA does not load kernel mode setting by default,
     # enabling it is required to make Wayland compositors function properly.
-    # NOTE: DISABLE THIS BECAUSE IT CAUSE MY COMPUTER BROKEN DOWN
+    # NOTE: DISABLE THIS BECAUSE IT CAUSE MY COMPUTER BROKEN DOWN (Custom kernel)
     # "nvidia-drm.fbdev=1"
   ];
   services.xserver.videoDrivers = ["nvidia"]; # will install nvidia-vaapi-driver by default
