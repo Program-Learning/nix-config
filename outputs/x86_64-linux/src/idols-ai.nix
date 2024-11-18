@@ -29,6 +29,8 @@
         inputs.daeuniverse.nixosModules.dae
         inputs.daeuniverse.nixosModules.daed
         inputs.chaotic.nixosModules.default
+        # NOTE: THIS BROKEN BUILD
+        # inputs.catppuccin.homeManagerModules.catppuccin
       ];
     home-modules = map mylib.relativeToRoot [
       # common
@@ -70,6 +72,23 @@
       ]
       ++ base-modules.home-modules;
   };
+  modules-niri = {
+    nixos-modules =
+      [
+        {
+          modules.desktop.niri.enable = true;
+          modules.desktop.wayland.enable = true;
+          modules.secrets.desktop.enable = true;
+          modules.secrets.impermanence.enable = true;
+        }
+      ]
+      ++ base-modules.nixos-modules;
+    home-modules =
+      [
+        {modules.desktop.niri.enable = true;}
+      ]
+      ++ base-modules.home-modules;
+  };
 
   modules-hyprland = {
     nixos-modules =
@@ -93,6 +112,8 @@ in {
     "${name}-gnome-wayland" = mylib.nixosSystem (modules-gnome-wayland // args);
     # with kde-wayland window manager
     "${name}-kde-wayland" = mylib.nixosSystem (modules-kde-wayland // args);
+    # host with niri compositor
+    "${name}-niri" = mylib.nixosSystem (modules-niri // args);
     # host with hyprland compositor
     "${name}-hyprland" = mylib.nixosSystem (modules-hyprland // args);
   };

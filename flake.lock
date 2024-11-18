@@ -591,6 +591,21 @@
         "type": "github"
       }
     },
+    "catppuccin": {
+      "locked": {
+        "lastModified": 1731232837,
+        "narHash": "sha256-0aIwr/RC/oe7rYkfJb47xjdEQDSNcqpFGsEa+EPlDEs=",
+        "owner": "catppuccin",
+        "repo": "nix",
+        "rev": "32359bf226fe874d3b7a0a5753d291a4da9616fe",
+        "type": "github"
+      },
+      "original": {
+        "owner": "catppuccin",
+        "repo": "nix",
+        "type": "github"
+      }
+    },
     "catppuccin-urxvt": {
       "flake": false,
       "locked": {
@@ -8094,6 +8109,7 @@
         "astronvim-nod": "astronvim-nod",
         "browser-previews": "browser-previews",
         "cargo2nix": "cargo2nix",
+        "catppuccin": "catppuccin",
         "catppuccin-urxvt": "catppuccin-urxvt",
         "chaotic": "chaotic",
         "clash-nyanpasu": "clash-nyanpasu",

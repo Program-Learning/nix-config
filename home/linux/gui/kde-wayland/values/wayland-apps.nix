@@ -23,6 +23,12 @@
     ''
     + (builtins.readFile "${nur-ryan4yin.packages.${pkgs.system}.catppuccin-foot}/catppuccin-mocha.conf");
 
+  home.packages = [
+    # pkgs.firefox-wayland
+    pkgs.nixpaks.firefox
+    pkgs.nixpaks.firefox-desktop-item
+  ];
+
   programs = {
     # a wayland only terminal emulator
     foot = {
@@ -45,8 +51,8 @@
       # https://wiki.archlinux.org/title/Chromium#Native_Wayland_support
       commandLineArgs = [
         "--ozone-platform-hint=auto"
-        # "--ozone-platform=wayland"
-        "--ozone-platform=x11"
+        "--ozone-platform=wayland"
+        # "--ozone-platform=x11"
         # temporary use x11 for gpu acceleration
         # make it use GTK_IM_MODULE if it runs with Gtk4, so fcitx5 can work with it.
         # (only supported by chromium/chrome at this time, not electron)
@@ -57,12 +63,6 @@
         # enable hardware acceleration - vulkan api
         # "--enable-features=Vulkan"
       ];
-    };
-
-    firefox = {
-      enable = true;
-      enableGnomeExtensions = false;
-      package = firefox-nightly.packages.${pkgs.system}.firefox-nightly-bin; # firefox with wayland support
     };
 
     vscode = {

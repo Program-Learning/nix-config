@@ -331,6 +331,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    catppuccin.url = "github:catppuccin/nix";
+
     # NUR package source
 
     nur.url = "github:nix-community/NUR";

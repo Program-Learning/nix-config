@@ -131,6 +131,12 @@ hypr mode="default":
   nixos-switch ai-hyprland {{mode}}
 
 [linux]
+niri mode="default":
+  #!/usr/bin/env nu
+  use {{utils_nu}} *;
+  nixos-switch ai-niri {{mode}}
+
+[linux]
 gnome-wayland mode="default":
   #!/usr/bin/env nu
   use {{utils_nu}} *;
