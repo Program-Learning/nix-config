@@ -169,8 +169,8 @@ in {
           user = myvars.username;
         };
 
-        "agenix/ryan4yin-gpg-subkeys.priv.age" = {
-          source = config.age.secrets."ryan4yin-gpg-subkeys.priv.age".path;
+        "agenix/nix-gpg-subkeys.priv.age" = {
+          source = config.age.secrets."nix-gpg-subkeys.priv.age".path;
           mode = "0000";
         };
 
