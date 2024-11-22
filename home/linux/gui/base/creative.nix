@@ -30,7 +30,7 @@
     aseprite # Animated sprite editor & pixel art tool
 
     # this app consumes a lot of storage, so do not install it currently
-    pkgs-stable.kicad # 3d printing, eletrical engineering
+    # kicad # 3d printing, eletrical engineering
     ngspice # eletrical engineering
     digital # A digital logic designer and circuit simulator.
     logisim-evolution # Digital logic designer and simulator

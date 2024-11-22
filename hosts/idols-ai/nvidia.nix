@@ -16,14 +16,15 @@
     # Since NVIDIA does not load kernel mode setting by default,
     # enabling it is required to make Wayland compositors function properly.
     # NOTE: DISABLE THIS BECAUSE IT CAUSE MY COMPUTER BROKEN DOWN (Custom kernel)
-    # "nvidia-drm.fbdev=1"
+    # ONLY SOME LATEST KERNEL REQUIRE THIS WORK AROUND
+    "nvidia-drm.fbdev=1"
   ];
   services.xserver.videoDrivers = ["nvidia"]; # will install nvidia-vaapi-driver by default
   hardware.nvidia = {
     open = true;
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
     # https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/os-specific/linux/nvidia-x11/default.nix
-    package = config.boot.kernelPackages.nvidiaPackages.production;
+    # package = config.boot.kernelPackages.nvidiaPackages.production;
 
     # required by most wayland compositors!
     modesetting.enable = true;
