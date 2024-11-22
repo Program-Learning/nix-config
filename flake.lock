@@ -4421,10 +4421,10 @@
     "mysecrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1731949098,
-        "narHash": "sha256-UHb48I53eKV2TeF3KZqdRywKwvAXfhmY42F3jEWbUP8=",
+        "lastModified": 1732008424,
+        "narHash": "sha256-jbjW3tdI215TeQJnV8qto3cZHKKO83/frc4tghGmX6w=",
         "ref": "refs/heads/main",
-        "rev": "d4e5074a97015afac42683b6d78c1dccc5279493",
+        "rev": "208f8c6a416861e38982d2963b5703c0ca770fc6",
         "shallow": true,
         "type": "git",
         "url": "ssh://git@github.com/DataEraserC/nix-secrets.git"
