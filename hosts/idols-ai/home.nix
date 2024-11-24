@@ -29,6 +29,10 @@
           # Specifies that ssh should only use the identity file explicitly configured above
           # required to prevent sending default identity files first.
           IdentitiesOnly yes
+
+      Host zerotier_devices
+        HostName 10.147.20.*
+        MACs hmac-sha2-256
     '';
   };
 }
