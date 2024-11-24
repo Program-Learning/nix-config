@@ -32,7 +32,7 @@
 
       Host zerotier_devices
         HostName 10.147.20.*
-        MACs hmac-sha2-256
+        MACs hmac-sha1,hmac-sha1-96,hmac-sha2-256,hmac-sha2-512,hmac-md5
     '';
   };
 }
