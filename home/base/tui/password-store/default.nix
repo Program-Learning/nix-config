@@ -33,7 +33,7 @@ in {
         "8A24187A88B7F2B4" # S - Ryan Yin (For pass & ssh only) <ryan4yin@linux.com>
       ];
       PASSWORD_STORE_CLIP_TIME = "60";
-      PASSWORD_STORE_GENERATED_LENGTH = "15";
+      PASSWORD_STORE_GENERATED_LENGTH = "12";
       PASSWORD_STORE_ENABLE_EXTENSIONS = "true";
     };
   };

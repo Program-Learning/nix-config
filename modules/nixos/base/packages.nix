@@ -7,13 +7,9 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     neofetch
-    fastfetch
     inxi
     python311Packages.gpustat
     cpu-x
-    neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    just # justfile
-    nushell # nushell
 
     # system call monitoring
     strace # system call monitoring
@@ -53,7 +49,4 @@
   programs.bcc.enable = true;
 
   programs.partition-manager.enable = true;
-
-  # replace default editor with neovim
-  environment.variables.EDITOR = "nvim";
 }
