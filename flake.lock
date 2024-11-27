@@ -9913,11 +9913,11 @@
     "wallpapers": {
       "flake": false,
       "locked": {
-        "lastModified": 1727532651,
-        "narHash": "sha256-n6OzOS9a+gHg1h9yT0yKf+VXEgAuu9gdYN2MyyPv3Hs=",
+        "lastModified": 1732730771,
+        "narHash": "sha256-UunO4sjkdKs6gO8mUjtEUPZi27aKQmPGl68KNPYFf5k=",
         "owner": "Program-Learning",
         "repo": "wallpapers",
-        "rev": "c5f69705267ba8547853bf4b7be408874fa2eb53",
+        "rev": "3e9a0006af6d24d8215885d2c5d2eefab4daad0d",
         "type": "github"
       },
       "original": {
