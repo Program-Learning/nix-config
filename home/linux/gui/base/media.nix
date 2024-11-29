@@ -17,7 +17,6 @@
     nvtopPackages.full
 
     # video/audio tools
-    # NOTE: disable because build failure
     # cava # for visualizing audio
     libva-utils
     vdpauinfo
