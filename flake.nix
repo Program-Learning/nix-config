@@ -49,7 +49,8 @@
 
     # Official NixOS package source, using nixos's unstable branch by default
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable-small";
+    # nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable-small";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-latest.url = "github:nixos/nixpkgs?ref=master";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs-unstable-yuzu.url = "github:nixos/nixpkgs?rev=6a59b7def496268fc32175183e4041d92586b00b";
@@ -57,7 +58,8 @@
     nixpkgs-unstable-jadx.url = "github:nixos/nixpkgs?rev=89db3afb1fcea0ed49e8af537a9de331b2441878";
 
     # for macos
-    nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-24.11-darwin";
+    # nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-24.11-darwin";
+    nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nix-darwin = {
       url = "github:lnl7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs-darwin";
@@ -249,7 +251,7 @@
     nix-gaming.url = "github:fufexan/nix-gaming";
 
     disko = {
-      url = "github:nix-community/disko/v1.6.1";
+      url = "github:nix-community/disko/v1.9.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
