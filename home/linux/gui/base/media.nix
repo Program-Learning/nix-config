@@ -1,6 +1,6 @@
 {
   pkgs,
-  pkgs-unstable,
+  pkgs-latest,
   nur-ryan4yin,
   ...
 }:
@@ -17,7 +17,8 @@
     nvtopPackages.full
 
     # video/audio tools
-    cava # for visualizing audio
+    # NOTE: disable because build failure
+    # cava # for visualizing audio
     libva-utils
     vdpauinfo
     vulkan-tools
