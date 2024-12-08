@@ -134,15 +134,21 @@
             pip # use in venv "python -m venv .venv" "source .venv/bin/activate"
             tkinter # The standard Python interface to the Tcl/Tk GUI toolkit
 
+            # AI/Digital Image
+            # matplotlib
+            # numpy
+            # opencv-python
+            # scipy
+            # pywavelets
+            # pillow
+
             pycryptodome
             ipykernel
             jupyterlab
-            matplotlib
-            numpy
             seaborn
             networkx
             beautifulsoup4
-            selenium
+            # selenium
             urllib3
             pyclip
             pygobject3
