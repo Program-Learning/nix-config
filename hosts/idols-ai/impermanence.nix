@@ -149,6 +149,9 @@
         # zed
         ".config/zed"
 
+        # zed editor
+        ".config/zed"
+
         # browsers
         ".mozilla"
         ".config/google-chrome"
