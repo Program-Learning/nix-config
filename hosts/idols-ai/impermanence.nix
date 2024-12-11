@@ -146,9 +146,6 @@
         ".config/Code - Insiders"
         ".config/vscode-sqltools"
 
-        # zed
-        ".config/zed"
-
         # zed editor
         ".config/zed"
 
