@@ -41,20 +41,21 @@
       intelBusId = "PCI:0:2:0";
       nvidiaBusId = "PCI:1:0:0";
     };
-    # # Enable the Nvidia settings menu,
-    # # accessible via `nvidia-settings`.
-    # nvidiaSettings = true;
+    # Enable the Nvidia settings menu,
+    # accessible via `nvidia-settings`.
+    nvidiaSettings = true;
   };
+  virtualisation.docker.enableNvidia = true; # for nvidia-docker
 
-  hardware.nvidia-container-toolkit.enable = true;
   hardware.graphics = {
     enable = true;
     # needed by nvidia-docker
     enable32Bit = true;
   };
-  environment.systemPackages = [
-    nur-DataEraserC.packages.${pkgs.system}.cudatoolkit_dev_env_fhs
-    pkgs.vaapiVdpau
+  environment.systemPackages = with pkgs; [
+    # nur-DataEraserC.packages.${pkgs.system}.cudatoolkit_dev_env_fhs
+
+    # too big so disabled
     # nixGL
     # nixGL.packages.${pkgs.system}.nixGL
     # nixGL.packages.${pkgs.system}.nixGLDefault

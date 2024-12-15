@@ -56,6 +56,7 @@
     };
     y9000k2021h = y9000k2021h_1_school;
     ai = y9000k2021h;
+    wsl-y9000k2021h = y9000k2021h;
     aquamarine = {
       # VM
       iface = "enp2s0";
