@@ -105,21 +105,26 @@
     options = ["subvolid=5"];
   };
 
+  modules.desktop.rootfs.fsType = "btrfs";
+  modules.desktop.rootfs.btrfsBlockDevice = "/dev/disk/by-uuid/17df699e-6502-4205-955f-c456eb378d48";
+
+  # disable here because it will become a cfg in my config
   # equal to `mount -t tmpfs tmpfs /`
-  fileSystems."/" = {
-    device = "tmpfs";
-    fsType = "tmpfs";
-    # set mode to 755, otherwise systemd will set it to 777, which cause problems.
-    # relatime: Update inode access times relative to modify or change time.
-    options = ["relatime" "mode=755"];
-  };
+  #fileSystems."/" = {
+  #  device = "tmpfs";
+  #  fsType = "tmpfs";
+  #  # set mode to 755, otherwise systemd will set it to 777, which cause problems.
+  #  # relatime: Update inode access times relative to modify or change time.
+  #  options = ["relatime" "mode=755"];
+  #};
+
   # fileSystems."/" = {
   #  device = "/dev/disk/by-uuid/17df699e-6502-4205-955f-c456eb378d48";
   #  fsType = "btrfs";
-  #  options = ["subvol=root" "mode=755"];
+  #  options = ["subvol=root"];
   # };
 
-  # postDeviceCommands = lib.mkAfter ''
+  # boot.initrd.postDeviceCommands = lib.mkAfter ''
   #  mkdir /btrfs_tmp
   #  mount /dev/disk/by-uuid/17df699e-6502-4205-955f-c456eb378d48 /btrfs_tmp
   #  if [[ -e /btrfs_tmp/root ]]; then

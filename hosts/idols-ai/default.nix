@@ -23,6 +23,7 @@ in rec {
     ./nvidia.nix
 
     ./impermanence.nix
+    ./impermanence_addon.nix
     ./secureboot.nix
     ./dae.nix
   ];
