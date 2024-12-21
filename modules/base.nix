@@ -41,6 +41,7 @@
     zstd
     unzipNLS
     p7zip
+    libnatspec
     unrar
     rar
 
