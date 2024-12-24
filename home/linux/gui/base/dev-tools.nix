@@ -15,7 +15,7 @@
     adb-sync
     abootimg
     pkgs-stable.android-tools
-    pkgs-latest.android-studio
+    pkgs-stable.android-studio
     genymotion
     edl
     # --payload-dumper

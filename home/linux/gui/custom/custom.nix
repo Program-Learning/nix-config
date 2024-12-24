@@ -74,7 +74,7 @@
           libreoffice
           mdp
           slides
-          wpsoffice-cn # unfree
+          pkgs-latest.wpsoffice-cn # unfree
 
           # --note
           anytype
@@ -204,7 +204,8 @@
         nur-linyinfeng.packages.${pkgs.system}.matrix-wechat
         nur-DataEraserC.packages.${pkgs.system}.baidunetdisk
         nur-DataEraserC.packages.${pkgs.system}.baidupcs-go
-        nur-DataEraserC.packages.${pkgs.system}.bilibili
+        # bilibili is broken
+        # nur-DataEraserC.packages.${pkgs.system}.bilibili
         # nur-ataraxiaSjel.packages.${pkgs.system}.waydroid-script
         nur-DataEraserC.packages.${pkgs.system}.watt-toolkit_2
         nur-DataEraserC.packages.${pkgs.system}.AppimageLauncher_deb

@@ -141,6 +141,7 @@ in {
             file = "${mysecrets}/alias-for-work.bash.age";
           }
           // user_readable;
+        # I do not have server for router request so I use dae locally
         "clash.dae" =
           {
             file = "${mysecrets}/clash.dae.age";
@@ -149,6 +150,11 @@ in {
         "dae.dae" =
           {
             file = "${mysecrets}/dae.dae.age";
+          }
+          // high_security;
+        "dae-subscription.dae" =
+          {
+            file = "${mysecrets}/server/dae-subscription.dae.age";
           }
           // high_security;
       };

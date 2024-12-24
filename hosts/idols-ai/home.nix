@@ -8,7 +8,12 @@
         #   auto:         position automatically
         #   1.5:          scale to 1.5 times
         #   bitdepth,10:  enable 10 bit support
-        monitor = "eDP-1,2560x1600@60,0x0,1";
+        monitor = "eDP-1,2560x1600@60,auto,1.6";
+        xwayland.force_zero_scaling = true;
+        env = [
+          "GDK_SCALE,2"
+          "ELM_SCALE,1.5"
+        ];
       };
     };
   };
