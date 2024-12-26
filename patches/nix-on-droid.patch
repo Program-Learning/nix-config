@@ -1,0 +1,59 @@
+diff --git a/home/base/tui/custom/ai/llm.nix b/home/base/tui/custom/ai/llm.nix
+index ecd072e6..5970e5ab 100644
+--- a/home/base/tui/custom/ai/llm.nix
++++ b/home/base/tui/custom/ai/llm.nix
+@@ -6,8 +6,8 @@
+   ...
+ }: {
+   home.packages = with pkgs-stable; [
+-    ollama # Run ai locally
+-    aichat # A ai cli interface
+-    open-webui # ollama webui
++    # ollama # Run ai locally
++    # aichat # A ai cli interface
++    # open-webui # ollama webui
+   ];
+ }
+diff --git a/home/base/tui/editors/packages.nix b/home/base/tui/editors/packages.nix
+index 1b7403e5..447f588c 100644
+--- a/home/base/tui/editors/packages.nix
++++ b/home/base/tui/editors/packages.nix
+@@ -35,10 +35,10 @@
+       jdt-language-server
+ 
+       #-- flutter
+-      flutter
++      # flutter
+ 
+       #-- dart
+-      dart
++      # dart
+ 
+       #-- haskell
+       ghc
+@@ -198,7 +198,7 @@
+     ++ [
+       nodePackages.nodejs
+       nodePackages.typescript
+-      nodePackages.typescript-language-server
++      # nodePackages.typescript-language-server
+       # HTML/CSS/JSON/ESLint language servers extracted from vscode
+       nodePackages.vscode-langservers-extracted
+       nodePackages."@tailwindcss/language-server"
+@@ -209,11 +209,11 @@
+       guile
+       racket-minimal
+       fnlfmt # fennel
+-      (
+-        if pkgs.stdenv.isDarwin
+-        then pkgs.emptyDirectory
+-        else pkgs-unstable.akkuPackages.scheme-langserver
+-      )
++      # (
++      #   if pkgs.stdenv.isDarwin
++      #   then pkgs.emptyDirectory
++      #   else pkgs-unstable.akkuPackages.scheme-langserver
++      # )
+     ]
+     ++ [
+       proselint # English prose linter

@@ -31,4 +31,10 @@ extend-ignore-re = [
   "f5e0dc",
   "f9e2af",
   "fab387",
+
+  # DataEraserC
+  "osu-lazer-bin",
+  "shotcut",
+  "hight_of_titlebar",
+  "AAAAC3NzaC1lZDI1NTE5AAAAIOZ5jg4mJdPLLwQqY5DFJwSAaQtTO6UFoPW5Z18pZroe", # ssh public key
 ]

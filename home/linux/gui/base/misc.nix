@@ -1,6 +1,11 @@
 {
   pkgs,
   pkgs-unstable,
+  pkgs-latest,
+  pkgs-unstable-etcher,
+  llqqnt,
+  nur-linyinfeng,
+  nur-DataEraserC,
   ...
 }: {
   home.packages = with pkgs; [
@@ -8,6 +13,9 @@
     # e-book viewer(.epub/.mobi/...)
     # do not support .pdf
     foliate
+    koodo-reader
+    calibre
+    nur-DataEraserC.packages.${pkgs.system}.suwayomi-server
 
     # instant messaging
     telegram-desktop
@@ -17,9 +25,16 @@
     remmina
     freerdp # required by remmina
 
+    # Download Manager
+    motrix
+    uget
+
     # misc
     flameshot
     ventoy # multi-boot usb creator
+    pkgs-unstable-etcher.etcher # create bootable usb
+    mission-center # Graphical task usage analyzer
+    wvkbd # On-screen keyboard for wlroots
 
     # my custom hardened packages
     pkgs.nixpaks.qq
@@ -28,6 +43,22 @@
     wechat-uos
     # pkgs.nixpaks.wechat-uos
     # pkgs.nixpaks.wechat-uos-desktop-item
+    # nur-linyinfeng.packages.${pkgs.system}.icalingua-plus-plus
+
+    nur-linyinfeng.packages.${pkgs.system}.wemeet
+
+    # wechat-uos
+    # nur-DataEraserC.packages.${pkgs.system}.wechat-uos
+
+    llqqnt.packages.${pkgs.system}.llqqnt
+
+    # It is broken and I do not need this now
+    # nur-DataEraserC.packages.${pkgs.system}.dingtalk
+
+    pkgs-latest.feishu
+
+    # c001apk-flutter
+    nur-DataEraserC.packages.${pkgs.system}.c001apk-flutter
   ];
 
   # GitHub CLI tool

@@ -3,6 +3,9 @@
   outputs,
 }: let
   specialExpected = {
+    "ai-gnome-wayland" = "ai";
+    "ai-kde-wayland" = "ai";
+    "ai-niri" = "ai";
     "ai-hyprland" = "ai";
     "shoukei-hyprland" = "shoukei";
   };

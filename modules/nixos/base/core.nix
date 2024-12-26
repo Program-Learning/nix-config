@@ -13,6 +13,12 @@
     power-profiles-daemon = {
       enable = true;
     };
-    upower.enable = true;
+    upower = {
+      enable = true;
+      percentageLow = 10;
+      percentageCritical = 3;
+      percentageAction = 2;
+      criticalPowerAction = "PowerOff";
+    };
   };
 }

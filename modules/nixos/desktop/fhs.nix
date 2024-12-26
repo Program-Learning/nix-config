@@ -15,6 +15,9 @@
             extraOutputsToInstall = ["dev"];
           })
     )
+
+    # A tool to run appimage directly
+    pkgs.appimage-run
   ];
 
   # https://github.com/Mic92/nix-ld
@@ -42,4 +45,6 @@
       stdenv.cc.cc
     ];
   };
+  # https://flatpak.org/setup/NixOS
+  services.flatpak.enable = true;
 }
