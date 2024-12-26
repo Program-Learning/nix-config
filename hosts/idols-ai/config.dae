@@ -36,7 +36,7 @@ global {
 
     # The LAN interface to bind. Use it if you want to proxy LAN.
     # Multiple interfaces split by ",".
-    lan_interface: docker0
+    #lan_interface: docker0
 
     # The WAN interface to bind. Use it if you want to proxy localhost.
     # Multiple interfaces split by ",". Use "auto" to auto detect.
@@ -63,8 +63,8 @@ global {
     # TCP DNS connectivity of nodes.
     # First is URL, others are IP addresses if given.
     # This DNS should have both IPv4 and IPv6 if you have double stack in local.
-    #udp_check_dns: 'dns.google.com:53'
-    udp_check_dns: 'dns.google.com:53,8.8.8.8,2001:4860:4860::8888'
+    #udp_check_dns: 'dns.google:53'
+    udp_check_dns: 'dns.google:53,8.8.8.8,2001:4860:4860::8888'
 
     check_interval: 300s
 
@@ -107,7 +107,13 @@ global {
 
     # Multipath TCP (MPTCP) support. If is true, dae will try to use MPTCP to connect all nodes, but it will only take
     # effects when the node supports MPTCP. It can use for load balance and failover to multiple interfaces and IPs.
-    #mptcp: false
+    mptcp: false
+
+    # The maximum bandwidth for accessing the Internet. It is useful for some specific protocols (e.g., Hysteria2),
+    # which will perform better with bandwith information provided. The unit can be b, kb, mb, gb, tb or bytes per second.
+    # supported formats: https://v2.hysteria.network/docs/advanced/Full-Client-Config/#bandwidth
+    bandwidth_max_tx: '200 mbps' # uplink, or '200 m' or '200 mb' or '200 mbps' or 25000000(which is 200/8*1000*1000)
+    bandwidth_max_rx: '1 gbps' # downlink, or '1 g' or '1 gb' or '1 gbps' or 125000000(which is 1000/8*1000*1000)
 }
 
 # See https://github.com/daeuniverse/dae/blob/main/docs/en/configuration/dns.md for full examples.
@@ -124,14 +130,29 @@ dns {
     #}
 
     upstream {
-        # Value can be scheme://host:port, where the scheme can be tcp/udp/tcp+udp.
+        # Value can be scheme://host:port, where the scheme can be tcp/udp/tcp+udp/h3/http3/quic/https/tls.
+        # If the protocol is h3/http3/https, it supports setting a custom path, that is, the format can be "protocol://host:port/custom path".
         # If host is a domain and has both IPv4 and IPv6 record, dae will automatically choose
         # IPv4 or IPv6 to use according to group policy (such as min latency policy).
         # Please make sure DNS traffic will go through and be forwarded by dae, which is REQUIRED for domain routing.
         # If dial_mode is "ip", the upstream DNS answer SHOULD NOT be polluted, so domestic public DNS is not recommended.
 
         alidns: 'udp://dns.alidns.com:53'
-        googledns: 'tcp+udp://dns.google.com:53'
+        googledns: 'tcp+udp://dns.google:53'
+
+        # alih3: 'h3://dns.alidns.com:443'
+        # alih3_path: 'h3://dns.alidns.com:443/dns-query'
+        # alihttp3: 'http3://dns.alidns.com:443'
+        # alihttp3_path: 'http3://dns.alidns.com:443/dns-query'
+        # ali_quic: 'quic://dns.alidns.com:853'
+
+        # h3_custom_path: 'h3://dns.example.com:443/custom-path'
+        # http3_custom_path: 'http3://dns.example.com:443/custom-path'
+
+        # ali_doh: 'https://dns.alidns.com:443'
+        # ali_dot: 'tls://dns.alidns.com:853'
+
+        # doh_custom_path: 'https://dns.example.com:443/custom-path'
     }
     routing {
         # According to the request of dns query, decide to use which DNS upstream.
@@ -141,8 +162,8 @@ dns {
             qname(geosite:cn) -> alidns
 
             qname(ext:'geosite:github') -> googledns
-	    qname(ext:'geosite:telegram') -> googledns
-	    qname(geosite:gfw) -> googledns
+	        qname(ext:'geosite:telegram') -> googledns
+	        qname(geosite:gfw) -> googledns
 
             # fallback is also called default.
             fallback: googledns
