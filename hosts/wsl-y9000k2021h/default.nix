@@ -13,7 +13,7 @@
 #
 #############################################################
 let
-  hostName = "wsl-y9000k2021h"; # Define your hostname.
+  hostName = "y9000k2021h"; # Define your hostname.
   macAddress = "random";
 in rec {
   imports = [
