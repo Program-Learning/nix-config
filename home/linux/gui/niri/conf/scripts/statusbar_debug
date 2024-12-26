@@ -8,7 +8,7 @@ STYLE="$HOME/.config/hypr/waybar/style.css"
 kill $(pgrep waybar)
 while true; do
     if [[ ! $(pidof waybar) ]]; then
-        waybar --bar main-bar --log-level error --config ${CONFIG} --style ${STYLE}
+        waybar --bar main-bar --log-level error --config ${CONFIG} --style ${STYLE} &
     fi
     inotifywait -e create,modify $CONFIG $STYLE
     kill $(pgrep waybar)
