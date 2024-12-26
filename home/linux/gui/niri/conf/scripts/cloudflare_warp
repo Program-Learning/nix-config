@@ -4,9 +4,9 @@ if [ "$1" == "status" ];
 then
     if [[ $(pidof warp-svc) ]];
   then
-    echo "{\"text\":\"🌏\", \"tooltip\":\"cloudflare_warp/warp-svc isStarted\"}"
+    echo "{\"text\":\"🌏\", \"tooltip\":\"cloudflare_warp/warp-svc is Started\"}"
   else
-    echo "{\"text\":\"🔓\", \"tooltip\":\"cloudflare_warp/warp-svc isStopped\"}"
+    echo "{\"text\":\"🔓\", \"tooltip\":\"cloudflare_warp/warp-svc is Stopped\"}"
   fi
 elif [ "$1" == "toggle" ];
 then
