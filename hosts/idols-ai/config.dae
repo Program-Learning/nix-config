@@ -353,7 +353,7 @@ routing {
 
     # Network managers in localhost should be direct to avoid false negative network connectivity check when binding to
     # WAN.
-    pname(NetworkManager, systemd-resolved, dnsmasq, mihomo, zerotier-one, tailscaled, nekobox_core, sing-box) -> must_direct
+    pname(NetworkManager, systemd-resolved, dnsmasq, mihomo, netbird, zerotier-one, tailscaled, nekobox_core, sing-box) -> must_direct
 
     # Put it in the front to prevent broadcast, multicast and other packets that should be sent to the LAN from being
     # forwarded by the proxy.

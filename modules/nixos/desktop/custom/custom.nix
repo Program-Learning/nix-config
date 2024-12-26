@@ -123,15 +123,6 @@
 
   # remote desktop server
   features.sunshine.enable = false;
-  # virtual network
-  services.tailscale.enable = true;
-  services.netbird.enable = true;
-  services.zerotierone = {
-    enable = true;
-    joinNetworks = [
-      "c7c8172af18872cd"
-    ];
-  };
   # recording tool
   features.wf-recorder.enable = true;
   # clash tun mode fix
@@ -141,7 +132,7 @@
     tunMode = true;
   };
   features.clash-nyanpasu = {
-    enable = true;
+    enable = false;
     package = pkgs.clash-nyanpasu;
     tunMode = true;
   };
