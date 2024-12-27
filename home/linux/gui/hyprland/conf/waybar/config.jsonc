@@ -141,7 +141,7 @@
     "format": "{stateIcon} {artist} - {title}",
     "format-disconnected": " Disconnected",
     "format-paused": "{stateIcon} {artist} - {title}",
-    "format-stopped": "Stopped ",
+    "format-stopped": "",
     "state-icons": {
       "paused": "",
       "playing": "",
