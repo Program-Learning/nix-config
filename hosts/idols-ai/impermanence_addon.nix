@@ -1,3 +1,4 @@
+#TODO: refactor
 {
   config,
   lib,
@@ -16,6 +17,11 @@ in {
       type = types.str;
       default = "";
       description = "The block device for btrfs root filesystem.";
+    };
+    retentionPeriod = mkOption {
+      type = types.int;
+      default = 30;
+      description = "Retention period for old root subvolumes (in days).";
     };
   };
 
@@ -63,7 +69,7 @@ in {
               btrfs subvolume delete "$1"
           }
 
-          for i in $(find /btrfs_tmp/old_roots/ -maxdepth 1 -mtime +30); do
+          for i in $(find /btrfs_tmp/old_roots/ -maxdepth 1 -mtime +${toString cfg.retentionPeriod}); do
               delete_subvolume_recursively "$i"
           done
 
