@@ -11,10 +11,10 @@
   home.pointerCursor = {
     gtk.enable = true;
     x11.enable = true;
-    package = pkgs.bibata-cursors;
-    name = "Bibata-Modern-Ice";
-    # package = nur-DataEraserClearning.packages.${pkgs.system}.xcursor-genshin-nahida;
-    # name = "xcursor-genshin-nahida";
+    # package = pkgs.bibata-cursors;
+    # name = "Bibata-Modern-Ice";
+    package = nur-DataEraserC.packages.${pkgs.system}.xcursor-genshin-nahida;
+    name = "xcursor-genshin-nahida";
     size = 24;
   };
 
