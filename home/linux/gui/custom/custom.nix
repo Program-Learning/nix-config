@@ -94,21 +94,6 @@
 
           qrencode
 
-          # --wine
-          protonup-qt
-          # wine-staging
-          wine64Packages.stagingFull
-          # winePackages.stagingFull
-          # proton-ge-bin should not be installed into environments. Please use programs.steam.extraCompatPackages instead.
-          # proton-ge-bin
-          winetricks
-          onscripter-en
-          pkgs-stable.playonlinux
-          bottles
-          # bottles-unwrapped
-          lutris
-          # lutris-unwrapped
-
           # --remote control
           # sunshine
           # moonlight-embedded
