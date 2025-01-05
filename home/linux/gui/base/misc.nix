@@ -19,6 +19,7 @@
 
     # instant messaging
     telegram-desktop
+    nur-DataEraserC.packages.${pkgs.system}.inter-knot
     # discord # update too frequently, use the web version instead
 
     # remote desktop(rdp connect)
