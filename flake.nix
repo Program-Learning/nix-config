@@ -207,7 +207,7 @@
     };
 
     browser-previews = {
-      url = "github:r-k-b/browser-previews";
+      url = "github:Apps-Used-By-Myself/browser-previews";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
