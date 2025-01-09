@@ -223,16 +223,16 @@
   };
   genericHosts = ''
     155.248.179.129 oracle_ubuntu_1
-    192.168.2.151 mondrian_1_home
-    10.147.20.151 mondrian_1_cli_zerotier
-    10.147.20.151 mondrian_1_app_zerotier
-    100.95.92.151 mondrian_1_cli_tailscale
-    0.0.0.0 mondrian_1_app_tailscale
-    192.168.2.153 pstar_1_home
-    10.147.20.153 pstar_1_cli_zerotier
-    0.0.0.0 pstar_1_app_zerotier
-    100.95.92.153 pstar_1_cli_tailscale
-    0.0.0.0 pstar_1_app_tailscale
+    192.168.2.151 mondrian_android_home
+    10.147.20.151 mondrian_android_cli_zerotier
+    10.147.20.151 mondrian_android_app_zerotier
+    100.95.92.151 mondrian_android_cli_tailscale
+    0.0.0.0 mondrian_android_app_tailscale
+    192.168.2.153 pstar_android_home
+    10.147.20.153 pstar_android_cli_zerotier
+    0.0.0.0 pstar_android_app_zerotier
+    100.95.92.153 pstar_android_cli_tailscale
+    0.0.0.0 pstar_android_app_tailscale
     192.168.2.150 y9000k2021h_1_home
     10.147.20.150 y9000k2021h_1_zerotier
     100.95.92.150 y9000k2021h_1_tailscale
