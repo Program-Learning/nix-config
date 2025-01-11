@@ -35,7 +35,11 @@
       jdt-language-server
 
       #-- flutter
-      flutter
+      (
+        if pkgs.stdenv.isAarch64 || pkgs.stdenv.isAarch32
+        then pkgs.emptyDirectory
+        else flutter
+      )
 
       #-- dart
       # dart
@@ -205,7 +209,11 @@
     ++ [
       nodePackages.nodejs
       nodePackages.typescript
-      nodePackages.typescript-language-server
+      (
+        if pkgs.stdenv.isAarch64 || pkgs.stdenv.isAarch32
+        then pkgs.emptyDirectory
+        else nodePackages.typescript-language-server
+      )
       # HTML/CSS/JSON/ESLint language servers extracted from vscode
       nodePackages.vscode-langservers-extracted
       nodePackages."@tailwindcss/language-server"
@@ -217,7 +225,7 @@
       racket-minimal
       fnlfmt # fennel
       (
-        if pkgs.stdenv.isDarwin
+        if pkgs.stdenv.isDarwin || pkgs.stdenv.isAarch64 || pkgs.stdenv.isAarch32
         then pkgs.emptyDirectory
         else pkgs-unstable.akkuPackages.scheme-langserver
       )
