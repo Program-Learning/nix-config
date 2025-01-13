@@ -1,6 +1,7 @@
 {
   pkgs,
   nur-ryan4yin,
+  nur-DataEraserC,
   ...
 }: {
   home.file.".local/share/fcitx5/themes".source = "${nur-ryan4yin.packages.${pkgs.system}.catppuccin-fcitx5}/src";
@@ -27,6 +28,10 @@
       fcitx5-chinese-addons
       # fcitx5-mozc    # japanese input method
       fcitx5-gtk # gtk im module
+      fcitx5-material-color
+      fcitx5-pinyin-moegirl
+      fcitx5-pinyin-zhwiki
+      nur-DataEraserC.packages.${pkgs.system}.fcitx5-pinyin-CustomPinyinDictionary
     ];
   };
 }
