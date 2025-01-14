@@ -17,6 +17,7 @@ in {
     direnv
 
     neofetch
+    fastfetch
     openssh
     curl
     gnumake
