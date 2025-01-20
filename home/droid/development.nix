@@ -14,6 +14,7 @@ in {
     vim # or some other editor, e.g. nano or neovim
     helix # An editor with lots of functions out of box
     git # Version Manager
+    patch
     direnv
 
     neofetch
