@@ -420,8 +420,11 @@ routing {
     domain(gemini.google.com,bard.google.com) -> gemini
 
     # Steam
-    domain(suffix: steampowered.com) -> direct
+    # from https://hky.moe/archives/471/
     domain(suffix: steamserver.net) -> direct
+    domain(suffix: steamcontent.com) -> direct
+    domain(store.steampowered.com, api.steampowered.com) -> proxy
+    domain(suffix: steampowered.com) -> direct
     domain(geosite:steam@cn) -> direct
     domain(geosite:steam) -> proxy
 
