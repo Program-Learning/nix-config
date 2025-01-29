@@ -31,7 +31,7 @@
 
           patchelf
           glib
-          trickle
+          pkgs-stable.trickle
           # use this to pop a input window
           zenity
           jansson

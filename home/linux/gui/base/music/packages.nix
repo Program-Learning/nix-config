@@ -1,7 +1,11 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  pkgs-stable,
+  ...
+}: {
   home.packages = with pkgs; [
     # --Netease music
-    yesplaymusic
+    pkgs-stable.yesplaymusic
     go-musicfox
   ];
 }

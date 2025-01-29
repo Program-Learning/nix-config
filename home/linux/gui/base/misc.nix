@@ -59,7 +59,8 @@
     pkgs-latest.feishu
 
     # c001apk-flutter
-    nur-DataEraserC.packages.${pkgs.system}.c001apk-flutter
+    # work when 759bc267c429347762dde6d2bca6953bc46711eb but not latest
+    # nur-DataEraserC.packages.${pkgs.system}.c001apk-flutter
   ];
 
   # GitHub CLI tool

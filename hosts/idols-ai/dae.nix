@@ -21,7 +21,7 @@ in {
     install -Dm 600 ${config.age.secrets."dae-subscription.dae".path} ${subscriptionConfigPath}
   '';
   services.daed = {
-    enable = true;
+    enable = false;
 
     openFirewall = {
       enable = true;

@@ -129,7 +129,6 @@
   programs.clash-verge = {
     enable = false;
     package = pkgs.clash-verge-rev;
-    tunMode = true;
   };
   features.clash-nyanpasu = {
     enable = false;

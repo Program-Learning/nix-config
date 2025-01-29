@@ -17,7 +17,7 @@
     pkgs-stable.android-tools
     pkgs-stable.android-studio
     genymotion
-    edl
+    pkgs-stable.edl
     # --payload-dumper
     payload-dumper-go
     # fakedroid.packages.${pkgs.system}.fakedroid
