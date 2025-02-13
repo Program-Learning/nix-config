@@ -93,7 +93,7 @@ in {
   # homebrew need to be installed manually, see https://brew.sh
   # https://github.com/LnL7/nix-darwin/blob/master/modules/homebrew.nix
   homebrew = {
-    enable = false; # disable homebrew for fast deploy
+    enable = true; # disable homebrew for fast deploy
 
     onActivation = {
       autoUpdate = true; # Fetch the newest stable branch of Homebrew's git repo
@@ -116,9 +116,7 @@ in {
     };
 
     taps = [
-      "homebrew/cask-fonts"
       "homebrew/services"
-      "homebrew/cask-versions"
 
       "hashicorp/tap"
       "nikitabobko/tap" # aerospace - an i3-like tiling window manager for macOS
@@ -161,6 +159,7 @@ in {
       "visual-studio-code"
       "zed" # zed editor
       "aerospace" # an i3-like tiling window manager for macOS
+      "ghostty" # terminal emulator
 
       # https://joplinapp.org/help/
       # "joplin" # note taking app
@@ -182,14 +181,18 @@ in {
       "tencent-lemon" # macOS cleaner
       "neteasemusic" # music
       "blender@lts" # 3D creation suite
+      "ibkr"
 
       # Development
       "mitmproxy" # HTTP/HTTPS traffic inspector
       "insomnia" # REST client
       "wireshark" # network analyzer
-      "jdk-mission-control" # Java Mission Control
-      "google-cloud-sdk" # Google Cloud SDK
+      # "jdk-mission-control" # Java Mission Control
+      # "google-cloud-sdk" # Google Cloud SDK
       "miniforge" # Miniconda's community-driven distribution
+
+      # Setup macfuse: https://github.com/macfuse/macfuse/wiki/Getting-Started
+      "macfuse" # for rclone to mount a fuse filesystem
     ];
   };
 }
