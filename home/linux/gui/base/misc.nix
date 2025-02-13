@@ -15,12 +15,16 @@
     foliate
     koodo-reader
     calibre
+    # tachiyomi web server for linux
     nur-DataEraserC.packages.${pkgs.system}.suwayomi-server
 
     # instant messaging
     telegram-desktop
-    nur-DataEraserC.packages.${pkgs.system}.inter-knot
+    # matrix
+    element-desktop
     # discord # update too frequently, use the web version instead
+    # inter-knot
+    nur-DataEraserC.packages.${pkgs.system}.inter-knot
 
     # remote desktop(rdp connect)
     remmina
@@ -59,8 +63,7 @@
     pkgs-latest.feishu
 
     # c001apk-flutter
-    # work when 759bc267c429347762dde6d2bca6953bc46711eb but not latest
-    # nur-DataEraserC.packages.${pkgs.system}.c001apk-flutter
+    nur-DataEraserC.packages.${pkgs.system}.c001apk-flutter
   ];
 
   # GitHub CLI tool
