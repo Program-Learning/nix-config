@@ -23,6 +23,16 @@ in {
       default = 30;
       description = "Retention period for old root subvolumes (in days).";
     };
+    PreBackupCommand = mkOption {
+      type = types.str;
+      default = "";
+      description = "The Command before Backup start";
+    };
+    PostBackupCommand = mkOption {
+      type = types.str;
+      default = "";
+      description = "The Command after Backup finished";
+    };
   };
 
   config =
@@ -56,9 +66,11 @@ in {
           mkdir -p /btrfs_tmp
           mount ${cfg.btrfsBlockDevice} /btrfs_tmp
           if [ -e /btrfs_tmp/root ]; then
+              ${cfg.PreBackupCommand}
               mkdir -p /btrfs_tmp/old_roots
               timestamp=$(date --date="@$(stat -c %Y /btrfs_tmp/root)" "+%Y-%m-%d_%H:%M:%S")
               mv /btrfs_tmp/root "/btrfs_tmp/old_roots/$timestamp"
+              ${cfg.PostBackupCommand}
           fi
 
           delete_subvolume_recursively() {

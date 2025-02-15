@@ -108,6 +108,9 @@
   modules.desktop.rootfs.fsType = "btrfs";
   modules.desktop.rootfs.btrfsBlockDevice = "/dev/disk/by-uuid/17df699e-6502-4205-955f-c456eb378d48";
   modules.desktop.rootfs.retentionPeriod = 7;
+  modules.desktop.rootfs.PreBackupCommand = ''
+    rm -rf /btrfs_tmp/root/etc/agenix
+  '';
 
   # disable here because it will become a cfg in my config
   # equal to `mount -t tmpfs tmpfs /`
