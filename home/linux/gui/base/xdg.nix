@@ -32,11 +32,11 @@
     mimeApps = {
       enable = true;
       associations.added = let
-        picture = ["imv-dir.desktop"];
         browser = ["google-chrome-unstable.desktop" "google-chrome.desktop" "firefox.desktop"];
+        editor = ["code-insiders.desktop" "code.desktop" "nvim.desktop" "Helix.desktop"];
+        picture = ["imv-dir.desktop"];
         office = ["onlyoffice-desktopeditors.desktop" "writer.desktop"];
         code = ["code-insiders.desktop" "code.desktop" "nvim.desktop"];
-        editor = ["code-insiders.desktop" "code.desktop" "nvim.desktop" "Helix.desktop"];
         file-manager = ["org.gnome.Nautilus.desktop"];
       in {
         "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = office;
@@ -48,11 +48,11 @@
       };
       # let `xdg-open` to open the url with the correct application.
       defaultApplications = let
-        picture = ["imv-dir.desktop"];
         browser = ["google-chrome-unstable.desktop" "google-chrome.desktop" "firefox.desktop"];
+        editor = ["code-insiders.desktop" "code.desktop" "nvim.desktop" "Helix.desktop"];
+        picture = ["imv-dir.desktop"];
         office = ["onlyoffice-desktopeditors.desktop" "writer.desktop"];
         code = ["code-insiders.desktop" "code.desktop" "nvim.desktop"];
-        editor = ["code-insiders.desktop" "code.desktop" "nvim.desktop" "Helix.desktop"];
         file-manager = ["org.gnome.Nautilus.desktop"];
       in {
         "application/json" = browser;

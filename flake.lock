@@ -441,11 +441,11 @@
         "systems": "systems_8"
       },
       "locked": {
-        "lastModified": 1739388333,
-        "narHash": "sha256-O1UfWbKyyzdLM2AxtseHaJ1MIs2M/Afha88TtyNEi1w=",
+        "lastModified": 1739474729,
+        "narHash": "sha256-SJaOqXfqgkxrjj+4u7XodoQ3K/7c9wqEV/IHkgN3DFU=",
         "owner": "Apps-Used-By-Myself",
         "repo": "browser-previews",
-        "rev": "cf49273a7e76e57944cb5423aa29154e398855e5",
+        "rev": "7a5c5a6e601ce30caa65e93d2c16f12d68e9928c",
         "type": "github"
       },
       "original": {
@@ -4588,10 +4588,10 @@
     "mysecrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1739473288,
-        "narHash": "sha256-0j4zU8WQAMUAvJh53O7yUjARbMYjJQJZOFKn3NememU=",
+        "lastModified": 1739561723,
+        "narHash": "sha256-ElJv3w6kxmjyQ8LNfXobR/ocG3/hB2EVruQmrRTij0E=",
         "ref": "refs/heads/main",
-        "rev": "51c1d7ba6bf92754e2595454eefd04caa29e06bd",
+        "rev": "372c684b64851c4bffd4b6a21d254ad25ef81200",
         "shallow": true,
         "type": "git",
         "url": "ssh://git@github.com/DataEraserC/nix-secrets.git"
@@ -6861,11 +6861,11 @@
         "treefmt-nix": "treefmt-nix_12"
       },
       "locked": {
-        "lastModified": 1739451689,
-        "narHash": "sha256-mLmVJUd+GKB5DWulA9LVrh3917lQS4ngKXcN/GiKYhA=",
+        "lastModified": 1739599649,
+        "narHash": "sha256-u007EARd/JM4L5cuQhq1h48YCwEYH//aG5Qv91zLqDk=",
         "owner": "DataEraserC",
         "repo": "nur-packages",
-        "rev": "d536d3fb089b3ac159c1713673d1c439e1a6b56b",
+        "rev": "346c9bc3ac96c15253e2d677ceb559cd588ba115",
         "type": "github"
       },
       "original": {
@@ -6919,11 +6919,11 @@
         "treefmt-nix": "treefmt-nix_20"
       },
       "locked": {
-        "lastModified": 1739451689,
-        "narHash": "sha256-mLmVJUd+GKB5DWulA9LVrh3917lQS4ngKXcN/GiKYhA=",
+        "lastModified": 1739599649,
+        "narHash": "sha256-u007EARd/JM4L5cuQhq1h48YCwEYH//aG5Qv91zLqDk=",
         "owner": "DataEraserC",
         "repo": "nur-packages",
-        "rev": "d536d3fb089b3ac159c1713673d1c439e1a6b56b",
+        "rev": "346c9bc3ac96c15253e2d677ceb559cd588ba115",
         "type": "github"
       },
       "original": {

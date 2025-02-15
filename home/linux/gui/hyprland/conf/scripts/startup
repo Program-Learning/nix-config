@@ -53,8 +53,8 @@ systemctl --user restart wallpaper.service
 ~/.config/hypr/scripts/notifications &
 
 # Launch statusbar (waybar)
-# ~/.config/hypr/scripts/statusbar &
-~/.config/hypr/scripts/statusbar_debug &
+~/.config/hypr/scripts/statusbar &
+# ~/.config/hypr/scripts/statusbar_debug &
 
 # Start mpd
 exec mpd &

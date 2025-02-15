@@ -11,8 +11,8 @@
   nur-ryan4yin,
   ...
 }: let
-  # package = pkgs-latest.hyprland;
   package = pkgs.hyprland;
+  # package = pkgs-latest.hyprland;
   # package = hyprland.packages.${pkgs.system}.hyprland;
 in {
   # NOTE:

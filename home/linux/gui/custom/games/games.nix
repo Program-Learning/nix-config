@@ -14,19 +14,6 @@
       "https://github.com/ezKEa/aagl-gtk-on-nix/archive/main.tar.gz");
 in {
   home.packages = with pkgs-unstable; [
-    pkgs-unstable-yuzu.yuzu # Switch games
-    # broken so I disable it
-    suyu.packages.${pkgs.system}.suyu # Switch games
-    pkgs-stable.ryujinx # Switch games
-
-    steamcmd # steam command line
-
-    hmcl # MineCraft Launcher
-    minecraft # Official MineCraft Launcher
-    # prismlauncher
-
-    pkgs-stable.mindustry-wayland
-    #mindustry-server
 
     # Mihoyo Game Launcher
     # aagl-gtk-on-nix.anime-game-launcher
@@ -36,7 +23,5 @@ in {
 
     # An anime game server
     nur-DataEraserC.packages.${pkgs.system}.UnknownAnimeGamePS-wrapper
-    # nix-gaming.packages.${pkgs.system}.osu-stable
-    nix-gaming.packages.${pkgs.system}.osu-lazer-bin
   ];
 }

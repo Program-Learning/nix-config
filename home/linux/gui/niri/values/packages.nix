@@ -36,10 +36,10 @@
     # audio
     alsa-utils # provides amixer/alsamixer/...
     kew # terminal music player
+    vimpc # A curses mpd client with vi-like key bindings.
     mpd # for playing system sounds
     mpc-cli # command-line mpd client
     ncmpcpp # a mpd client with a UI
-    vimpc # A curses mpd client with vi-like key bindings.
     networkmanagerapplet # provide GUI app: nm-connection-editor
   ];
 }

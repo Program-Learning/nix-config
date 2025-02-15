@@ -18,10 +18,11 @@
     # tachiyomi web server for linux
     nur-DataEraserC.packages.${pkgs.system}.suwayomi-server
 
-    # instant messaging
-    telegram-desktop
     # matrix
     element-desktop
+
+    # instant messaging
+    telegram-desktop
     # discord # update too frequently, use the web version instead
     # inter-knot
     nur-DataEraserC.packages.${pkgs.system}.inter-knot

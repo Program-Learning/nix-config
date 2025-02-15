@@ -21,13 +21,13 @@
         # To use chrome, we need to allow the installation of non-free software
         config.allowUnfree = true;
       };
-      pkgs-latest = import inputs.nixpkgs-latest {
-        inherit system; # refer the `system` parameter form outer scope recursively
+      pkgs-stable = import inputs.nixpkgs-stable {
+        inherit system;
         # To use chrome, we need to allow the installation of non-free software
         config.allowUnfree = true;
       };
-      pkgs-stable = import inputs.nixpkgs-stable {
-        inherit system;
+      pkgs-latest = import inputs.nixpkgs-latest {
+        inherit system; # refer the `system` parameter form outer scope recursively
         # To use chrome, we need to allow the installation of non-free software
         config.allowUnfree = true;
       };

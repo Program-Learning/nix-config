@@ -51,8 +51,8 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     # nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable-small";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-latest.url = "github:nixos/nixpkgs?ref=master";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs-latest.url = "github:nixos/nixpkgs?ref=master";
     nixpkgs-unstable-yuzu.url = "github:nixos/nixpkgs?rev=6a59b7def496268fc32175183e4041d92586b00b";
     nixpkgs-unstable-etcher.url = "github:nixos/nixpkgs?rev=15cf1bacec81d3905d40b8005f88bb3ad8dc5a56";
     nixpkgs-unstable-jadx.url = "github:nixos/nixpkgs?rev=89db3afb1fcea0ed49e8af537a9de331b2441878";
@@ -65,6 +65,108 @@
       inputs.nixpkgs.follows = "nixpkgs-darwin";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
+    # home-manager, used for managing user configuration
+    home-manager = {
+      url = "github:nix-community/home-manager/master";
+      # url = "github:nix-community/home-manager/release-24.11";
+
+      # The `follows` keyword in inputs is used for inheritance.
+      # Here, `inputs.nixpkgs` of home-manager is kept consistent with the `inputs.nixpkgs` of the current flake,
+      # to avoid problems caused by different versions of nixpkgs dependencies.
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.4.2";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    impermanence.url = "github:nix-community/impermanence";
+
+    # community wayland nixpkgs
+    # nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
+    # anyrun - a wayland launcher
+    anyrun = {
+      url = "github:Kirottu/anyrun";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # generate iso/qcow2/docker/... image from nixos configuration
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    # secrets management
+    agenix = {
+      # lock with git commit at 0.15.0
+      url = "github:ryantm/agenix/564595d0ad4be7277e07fa63b5a991b3c645655d";
+      # replaced with a type-safe reimplementation to get a better error message and less bugs.
+      # url = "github:ryan4yin/ragenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nix-gaming.url = "github:fufexan/nix-gaming";
+
+    disko = {
+      url = "github:nix-community/disko/v1.9.0";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # add git hooks to format nix code before commit
+    pre-commit-hooks = {
+      url = "github:cachix/pre-commit-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nuenv.url = "github:DeterminateSystems/nuenv";
+
+    haumea = {
+      url = "github:nix-community/haumea/v0.2.2";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixpak = {
+      url = "github:nixpak/nixpak";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    ghostty = {
+      url = "github:ghostty-org/ghostty";
+    };
+
+    ########################  Some non-flake repositories  #########################################
+
+    # doom-emacs is a configuration framework for GNU Emacs.
+    doomemacs = {
+      url = "github:doomemacs/doomemacs";
+      flake = false;
+    };
+
+    polybar-themes = {
+      url = "github:adi1090x/polybar-themes";
+      flake = false;
+    };
+
+    ########################  My own repositories  #########################################
+
+    # my private secrets, it's a private repository, you need to replace it with your own.
+    # use ssh protocol to authenticate via ssh-agent/ssh-key, and shallow clone to save time
+    mysecrets = {
+      url = "git+ssh://git@github.com/DataEraserC/nix-secrets.git?shallow=1";
+      # url = "git+file:////home/nixos/Documents/code/nix-config/secrets?shallow=1";
+      flake = false;
+    };
+
+    # my wallpapers
+    wallpapers = {
+      url = "github:Program-Learning/wallpapers/dark_wallpapers";
+      # url = "git+file:////home/nixos/Documents/code/wallpapers?shallow=1";
+      flake = false;
+    };
+
+    nur-ryan4yin.url = "github:ryan4yin/nur-packages";
+    nur-ataraxiasjel.url = "github:AtaraxiaSjel/nur";
 
     # for windows wsl
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
@@ -114,24 +216,6 @@
       url = "github:nix-community/nix-on-droid";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # home-manager, used for managing user configuration
-    home-manager = {
-      url = "github:nix-community/home-manager/master";
-      # url = "github:nix-community/home-manager/release-24.11";
-
-      # The `follows` keyword in inputs is used for inheritance.
-      # Here, `inputs.nixpkgs` of home-manager is kept consistent with the `inputs.nixpkgs` of the current flake,
-      # to avoid problems caused by different versions of nixpkgs dependencies.
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.4.2";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    impermanence.url = "github:nix-community/impermanence";
 
     suyu = {
       url = "git+https://git.suyu.dev/suyu/nix-flake";
@@ -226,92 +310,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # community wayland nixpkgs
-    # nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
-    # anyrun - a wayland launcher
-    anyrun = {
-      url = "github:Kirottu/anyrun";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # generate iso/qcow2/docker/... image from nixos configuration
-    nixos-generators = {
-      url = "github:nix-community/nixos-generators";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    # secrets management
-    agenix = {
-      # lock with git commit at 0.15.0
-      url = "github:ryantm/agenix/564595d0ad4be7277e07fa63b5a991b3c645655d";
-      # replaced with a type-safe reimplementation to get a better error message and less bugs.
-      # url = "github:ryan4yin/ragenix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nix-gaming.url = "github:fufexan/nix-gaming";
-
-    disko = {
-      url = "github:nix-community/disko/v1.9.0";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # add git hooks to format nix code before commit
-    pre-commit-hooks = {
-      url = "github:cachix/pre-commit-hooks.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nuenv.url = "github:DeterminateSystems/nuenv";
-
-    haumea = {
-      url = "github:nix-community/haumea/v0.2.2";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     ######################## dots_hyprland required  #########################################
 
     DataEraserC-dots_hyprland = {
       url = "github:DataEraserC/dots-hyprland";
       # url = "git+file:////home/nixos/Documents/code/dots-hyprland?shallow=1";
-    };
-
-    nixpak = {
-      url = "github:nixpak/nixpak";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    ghostty = {
-      url = "github:ghostty-org/ghostty";
-    };
-
-    ########################  Some non-flake repositories  #########################################
-
-    # doom-emacs is a configuration framework for GNU Emacs.
-    doomemacs = {
-      url = "github:doomemacs/doomemacs";
-      flake = false;
-    };
-
-    polybar-themes = {
-      url = "github:adi1090x/polybar-themes";
-      flake = false;
-    };
-
-    ########################  My own repositories  #########################################
-
-    # my private secrets, it's a private repository, you need to replace it with your own.
-    # use ssh protocol to authenticate via ssh-agent/ssh-key, and shallow clone to save time
-    mysecrets = {
-      url = "git+ssh://git@github.com/DataEraserC/nix-secrets.git?shallow=1";
-      # url = "git+file:////home/nixos/Documents/code/nix-config/secrets?shallow=1";
-      flake = false;
-    };
-
-    # my wallpapers
-    wallpapers = {
-      url = "github:Program-Learning/wallpapers/dark_wallpapers";
-      # url = "git+file:////home/nixos/Documents/code/wallpapers?shallow=1";
-      flake = false;
     };
 
     nixified-ai = {
@@ -342,10 +345,6 @@
     # NUR package source
 
     nur.url = "github:nix-community/NUR";
-
-    nur-ryan4yin.url = "github:ryan4yin/nur-packages";
-
-    nur-ataraxiasjel.url = "github:AtaraxiaSjel/nur";
 
     # my old nur, will remove
     nur-program-learning = {

@@ -40,10 +40,6 @@
     k6 # load testing tool
     protobuf # protocol buffer compiler
 
-    # git related
-    pre-commit
-    commitizen # Tool to create committing rules for projects, auto bump versions, and generate changelogs
-
     # solve coding extercises - learn by doing
     exercism
 
@@ -61,8 +57,15 @@
     man-pages
     man-pages-posix
 
+    # pin clang but do not add to env
     nur-DataEraserC.packages.${pkgs.system}.clang_dev_env_fhs
+
+    # tool for quick package using
     comma
+
+    # git related
+    pre-commit
+    commitizen # Tool to create committing rules for projects, auto bump versions, and generate changelogs
   ];
 
   programs = {
