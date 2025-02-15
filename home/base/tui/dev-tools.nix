@@ -1,6 +1,7 @@
 {
   pkgs,
   pkgs-unstable,
+  nur-DataEraserC,
   ...
 }: {
   #############################################################
@@ -25,6 +26,10 @@
 
     # embedded development
     minicom
+    rkdeveloptool
+    rkflashtool
+    dtc
+    screen
 
     # ai related
     pkgs-unstable.python312Packages.huggingface-hub # huggingface-cli
@@ -34,6 +39,10 @@
     bfg-repo-cleaner # remove large files from git history
     k6 # load testing tool
     protobuf # protocol buffer compiler
+
+    # git related
+    pre-commit
+    commitizen # Tool to create committing rules for projects, auto bump versions, and generate changelogs
 
     # solve coding extercises - learn by doing
     exercism
@@ -47,6 +56,13 @@
     # need to run `conda-shell` before using command `conda`
     # conda is not available for MacOS
     conda
+
+    # manual
+    man-pages
+    man-pages-posix
+
+    nur-DataEraserC.packages.${pkgs.system}.clang_dev_env_fhs
+    comma
   ];
 
   programs = {

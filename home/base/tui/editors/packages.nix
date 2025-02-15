@@ -1,6 +1,10 @@
 {
   pkgs,
   pkgs-unstable,
+  pkgs-stable,
+  gomod2nix,
+  cargo2nix,
+  gradle2nix,
   ...
 }: {
   nixpkgs.config = {
@@ -12,8 +16,41 @@
   home.packages = with pkgs; (
     # -*- Data & Configuration Languages -*-#
     [
+      #-- golang
+      go
+      gomodifytags
+      gomod2nix.packages.${pkgs.system}.default
+      iferr # generate error handling code for go
+      impl # generate function implementation for go
+      gotools # contains tools like: godoc, goimports, etc.
+      gopls # go language server
+      delve # go debugger
+
+      # -- java
+      jdk17
+      tomcat9
+      gradle
+      maven
+      spring-boot-cli
+      jdt-language-server
+
+      #-- flutter
+      (
+        if pkgs.stdenv.isAarch64 || pkgs.stdenv.isAarch32
+        then pkgs.emptyDirectory
+        else flutter
+      )
+
+      #-- dart
+      # dart
+
+      #-- haskell
+      ghc
+
       #-- nix
       nil
+      nurl
+      nvfetcher
       # rnix-lsp
       # nixd
       statix # Lints and suggestions for the nix programming language
@@ -53,9 +90,11 @@
     [
       #-- c/c++
       cmake
+      xmake
       cmake-language-server
       gnumake
       checkmake
+      ccache
       # c/c++ compiler, required by nvim-treesitter!
       gcc
       gdb
@@ -68,6 +107,7 @@
 
       #-- python
       pyright # python language server
+      poetry
       (python311.withPackages (
         ps:
           with ps; [
@@ -92,6 +132,39 @@
             # setuptools
             # paramiko
             # rapidfuzz
+
+            # modules used by Mayuri
+            virtualenv
+            pip # use in venv "python -m venv .venv" "source .venv/bin/activate"
+            tkinter # The standard Python interface to the Tcl/Tk GUI toolkit
+
+            # AI/Digital Image
+            # matplotlib
+            # numpy
+            # opencv-python
+            # scipy
+            # pywavelets
+            # pillow
+
+            pycryptodome
+            ipykernel
+            jupyterlab
+            seaborn
+            networkx
+            beautifulsoup4
+            # selenium
+            urllib3
+            pyclip
+            pygobject3
+            pybluez
+            pymysql
+            redis
+            jieba
+            wordcloud
+            pandas-datareader
+            pyperclip
+            # disable due to build test failed
+            # fake-useragent
           ]
       ))
 
@@ -102,6 +175,7 @@
       pkgs-unstable.cargo # rust package manager
       pkgs-unstable.rustfmt
       pkgs-unstable.clippy # rust linter
+      cargo2nix.packages.${pkgs.system}.cargo2nix
 
       #-- golang
       go
@@ -135,7 +209,11 @@
     ++ [
       nodePackages.nodejs
       nodePackages.typescript
-      nodePackages.typescript-language-server
+      (
+        if pkgs.stdenv.isAarch64 || pkgs.stdenv.isAarch32
+        then pkgs.emptyDirectory
+        else nodePackages.typescript-language-server
+      )
       # HTML/CSS/JSON/ESLint language servers extracted from vscode
       nodePackages.vscode-langservers-extracted
       nodePackages."@tailwindcss/language-server"
@@ -147,7 +225,7 @@
       racket-minimal
       fnlfmt # fennel
       (
-        if pkgs.stdenv.isDarwin
+        if pkgs.stdenv.isDarwin || pkgs.stdenv.isAarch64 || pkgs.stdenv.isAarch32
         then pkgs.emptyDirectory
         else pkgs-unstable.akkuPackages.scheme-langserver
       )

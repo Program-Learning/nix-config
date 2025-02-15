@@ -7,3 +7,9 @@ logs/
 core*
 !core/
 !core.nix
+tmp/
+secrets/
+!secrets/README.md
+!secrets/darwin.nix
+!secrets/nixos.nix
+mysql/

@@ -1,6 +1,6 @@
 {
   pkgs,
-  pkgs-unstable,
+  pkgs-latest,
   nur-ryan4yin,
   ...
 }:
@@ -12,6 +12,7 @@
     playerctl
     pulsemixer
     imv # simple image viewer
+    vlc # Cross-platform media player and streaming server
 
     nvtopPackages.full
 

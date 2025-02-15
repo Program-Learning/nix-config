@@ -1,0 +1,81 @@
+#!/usr/bin/env bash
+
+# source secret vars
+alias_for_work=/etc/agenix/alias-for-work.bash
+if [ -f $alias_for_work ]; then
+	. $alias_for_work
+else
+  echo "No alias file found for work"
+fi
+
+## Fix anyrun
+## https://github.com/anyrun-org/anyrun/issues/153
+# ln -s $XDG_RUNTIME_DIR/hypr /tmp/hypr
+
+## Autostart Programs
+
+# Kill already running process
+_ps=(waybar mako mpd wayvnc novnc lxpolkit thunar xdg-desktop-portal-hyprland swayidle swaylock swaybg clash-verge clash clash-nyanpasu)
+for _prs in "${_ps[@]}"; do
+	if [[ $(pidof ${_prs}) ]]; then
+		killall -9 ${_prs}
+	fi
+done
+
+# Custom hook(remove this)
+exec ~/.config/niri/scripts/tp_link_script http://192.168.0.1 111111 "$(cat /sys/class/net/wlp0s20f3/address)" "匿名主机" 0 &
+
+exec ntfy publish $ntfy_topic "PC[y9000k2021h][nixos] startup at $(date +%Y-%m-%dT%H:%M:%S%Z)" &
+
+# Start wayvnc
+exec wayvnc 0.0.0.0 &
+
+# Start novnc
+exec novnc &
+
+# Start moonlight
+# exec sunshine &
+exec systemctl --user restart sunshine &
+
+# Start sunshine(moonlight) (PORT:47990)
+# exec systemctl --user start sunshine &
+
+systemctl --user stop wallpaper.service
+
+# swaylock -e -f -F -c 12121B
+swaylock -e --screenshots  --clock --timestr=%H:%M:%S --datestr=%Y-%m-%d  --indicator  --indicator-radius 100  --indicator-thickness 7  --effect-blur 7x5  --effect-vignette 0.5:0.5  --ring-color b5b5b5  --key-hl-color 3cdec3  --line-color 00000000  --inside-color 00000088  --separator-color 00000000  --grace 0  --fade-in 0.5 &
+
+# Set wallpaper via a wallpaper.service
+# it will by start by home-manager automatically, do not need to restart it here.
+systemctl --user restart wallpaper.service
+
+# Launch notification daemon (mako)
+~/.config/niri/scripts/notifications &
+
+# Launch statusbar (waybar)
+# ~/.config/niri/scripts/statusbar &
+~/.config/niri/scripts/statusbar_debug &
+
+# Start mpd
+exec mpd &
+
+# Start clash-verge
+# will try to replace clash by dae
+# exec clash-verge &
+# exec clash-nyanpasu &
+
+# Start polkit authentication agent
+# exec lxpolkit &
+exec polkit-gnome-authentication-agent-1 &
+
+# set default file-manager to thunar
+# Try with command
+#  dbus-send --session --print-reply --dest=org.freedesktop.FileManager1 /org/freedesktop/FileManager1 org.freedesktop.FileManager1.ShowFolders array:string:"file:/" string:""
+exec thunar --daemon &
+
+# Start swayidle
+# exec swayidle -w timeout 1800 'systemctl suspend' resume 'hyprctl dispatch dpms on' timeout 120 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on' before-sleep 'swaylock'
+# exec swayidle -w timeout 120 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on' before-sleep 'swaylock' &
+
+# Start alist
+exec podman container restart alist &

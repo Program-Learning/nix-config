@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+set -e
+
+monitor=$1
+
+niri msg -j workspaces \
+    | jq -cr '
+        ["⓪", "➊", "➋", "➌", "➍", "➎", "➏", "➐", "➑", "➒", "➓"] as $active
+        | ["⓪", "①", "②", "③", "④", "⑤", "⑥", "⑦", "⑧", "⑨", "⑩"] as $inactive
+        | map(
+            select(.output == "'$monitor'")
+            | if(.is_active) then $active[.idx] else $inactive[.idx] end
+        ) | join(" ")
+    '

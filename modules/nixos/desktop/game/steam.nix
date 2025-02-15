@@ -12,6 +12,11 @@
     # https://github.com/ValveSoftware/gamescope
     # enables features such as resolution upscaling and stretched aspect ratios (such as 4:3)
     gamescopeSession.enable = true;
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+    extraCompatPackages = [
+      pkgs.proton-ge-bin
+    ];
 
     # fix gamescope inside steam
     package = pkgs.steam.override {
