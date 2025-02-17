@@ -7,6 +7,14 @@
   nur-DataEraserC,
   ...
 } @ args: {
+  imports = [
+    # nur-xddxdd.nixosModules.setupOverlay
+    nur-xddxdd.nixosModules.nix-cache-garnix
+    nur-xddxdd.nixosModules.nix-cache-attic
+
+    # nur-DataEraserC.nixosModules.setupOverlay
+    nur-DataEraserC.nixosModules.nix-cache-cachix
+  ];
   nixpkgs.overlays =
     [
       nuenv.overlays.default
@@ -113,8 +121,6 @@
       "https://nix-community.cachix.org"
       # my own cache server, currently not used.
       # "https://ryan4yin.cachix.org"
-      nur-xddxdd.meta.cachixUrl
-      nur-DataEraserC.meta.cachixUrl
       "https://nykma.cachix.org"
       "https://linyinfeng.cachix.org"
       "https://program-learning.cachix.org"
@@ -126,8 +132,6 @@
     trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "ryan4yin.cachix.org-1:Gbk27ZU5AYpGS9i3ssoLlwdvMIh0NxG0w8it/cv9kbU="
-      nur-xddxdd.meta.cachixPublicKey
-      nur-DataEraserC.meta.cachixPublicKey
       "nykma.cachix.org-1:z04hZH9YnR1B2lpLperwiazdkaT5yczgOPa1p/NHqK4="
       "linyinfeng.cachix.org-1:sPYQXcNrnCf7Vr7T0YmjXz5dMZ7aOKG3EqLja0xr9MM="
       "program-learning.cachix.org-1:Pfl2r+J5L9wJqpDnop6iQbrR3/Ts4AUyotu89INRlSU="

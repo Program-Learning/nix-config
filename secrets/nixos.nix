@@ -30,6 +30,10 @@ with lib; let
     mode = "0500";
     owner = myvars.username;
   };
+  MkPermAttr = username: mode: {
+    mode = mode;
+    owner = myvars.username;
+  };
 in {
   imports = [
     agenix.nixosModules.default
@@ -157,6 +161,11 @@ in {
             file = "${mysecrets}/server/dae-subscription.dae.age";
           }
           // high_security;
+        "cpolar.yml" =
+          {
+            file = "${mysecrets}/cpolar.yml.age";
+          }
+          // (MkPermAttr "cpolar" "0700");
       };
 
       # place secrets in /etc/

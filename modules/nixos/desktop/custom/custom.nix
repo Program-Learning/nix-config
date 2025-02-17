@@ -9,6 +9,9 @@
   lib,
   ...
 }: {
+  imports = [
+    nur-DataEraserC.nixosModules.cpolar
+  ];
   programs.wshowkeys.enable = true;
 
   programs.proxychains = {
@@ -87,23 +90,10 @@
   #   };
   # };
 
-  systemd.services = {
-    cpolar = {
-      enable = true;
-      # path = "/home/nixos/Apps/Bins/cpolar/";
-      description = "cpolar secure tunnels to localhost webhook development tool and debugging tool.";
-      unitConfig = {
-        # ...
-      };
-      serviceConfig = {
-        Type = "simple";
-        ExecStart = ''
-          /home/nixos/Apps/Bins/cpolar/cpolar "start-all" "-daemon=on" "-dashboard=on" "-log=/home/nixos/Apps/Bins/cpolar/.cpolar/logs/cpolar_service.log" "-config=/home/nixos/Apps/Bins/cpolar/.cpolar/cpolar.yml"'';
-        # ...
-      };
-      wantedBy = ["multi-user.target"];
-      # ...
-    };
+  services.cpolar = {
+    enable = true;
+    package = nur-DataEraserC.packages.${pkgs.system}.cpolar;
+    configFile = "${config.age.secrets."cpolar.yml".path}";
   };
 
   nixpkgs.config.permittedInsecurePackages = ["openssl-1.1.1v" "electron-19.0.7" "electron-19.1.9"];
