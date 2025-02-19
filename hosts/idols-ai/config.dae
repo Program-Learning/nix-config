@@ -227,10 +227,6 @@ group {
         filter: name(clash)
         policy: min_moving_avg
     }
-    chatgpt_manually {
-        filter: !name(keyword: '香港') && !name(keyword: '台湾')
-        policy: min_moving_avg
-    }
 
     gemini {
         filter: name(keyword: '日本')
@@ -417,7 +413,7 @@ routing {
     #domain(regex:'.+\.openai$') -> sg
 
     ### Gemini
-    domain(gemini.google.com,bard.google.com) -> gemini
+    domain(suffix: gemini.google.com, suffix: bard.google.com, suffix: ai.google.dev) -> gemini
 
     # Steam
     # from https://hky.moe/archives/471/
@@ -445,6 +441,7 @@ routing {
     domain(regex:'.+\.nixos\.org$') -> proxy
 
     domain(geosite:microsoft) -> proxy
+    domain(bing.com) -> proxy
     domain(geosite:linkedin) -> proxy
     domain(geosite:twitter) -> proxy
     domain(geosite:telegram) -> proxy

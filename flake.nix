@@ -291,7 +291,8 @@
     };
 
     browser-previews = {
-      url = "github:Apps-Used-By-Myself/browser-previews";
+      url = "github:nix-community/browser-previews";
+      # url = "github:Apps-Used-By-Myself/browser-previews";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
