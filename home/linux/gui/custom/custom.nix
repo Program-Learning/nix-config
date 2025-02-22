@@ -192,7 +192,7 @@
         # bilibili is broken
         # nur-DataEraserC.packages.${pkgs.system}.bilibili
         # nur-ataraxiaSjel.packages.${pkgs.system}.waydroid-script
-        nur-DataEraserC.packages.${pkgs.system}.watt-toolkit_2
+        nur-DataEraserC.packages.${pkgs.system}.watt-toolkit_bin
         nur-DataEraserC.packages.${pkgs.system}.AppimageLauncher_deb
         nur-DataEraserC-not-follow.packages.${pkgs.system}.XiaoMiToolV2
         # nur-DataEraserC.packages.${pkgs.system}.CrossOver
