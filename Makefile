@@ -68,7 +68,7 @@ gc:
 #
 ############################################################################
 
-nur_all := nur-program-learning nur-ryan4yin nur-linyinfeng nur-xddxdd nur-ataraxiasjel llqqnt browser-previews firefox-nightly LaphaeL-aicmd nur-DataEraserC nixpkgs-latest gradle2nix gomod2nix flake-utils nixos-wsl
+nur_all := nur-program-learning nur-ryan4yin nur-linyinfeng nur-xddxdd nur-ataraxiasjel qqnt browser-previews firefox-nightly LaphaeL-aicmd nur-DataEraserC nixpkgs-latest gradle2nix gomod2nix flake-utils nixos-wsl
 
 # Update nur inputs
 # (can use with ''

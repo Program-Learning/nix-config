@@ -3,7 +3,7 @@
   pkgs-unstable,
   pkgs-latest,
   pkgs-unstable-etcher,
-  llqqnt,
+  qqnt,
   nur-linyinfeng,
   nur-DataEraserC,
   ...
@@ -56,7 +56,8 @@
     # wechat-uos
     # nur-DataEraserC.packages.${pkgs.system}.wechat-uos
 
-    llqqnt.packages.${pkgs.system}.llqqnt
+    # qqnt.packages.${pkgs.system}.llqqnt
+    qqnt.packages.${pkgs.system}.bqqnt
 
     # It is broken and I do not need this now
     # nur-DataEraserC.packages.${pkgs.system}.dingtalk

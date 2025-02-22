@@ -1,6 +1,7 @@
 {
   pkgs,
-  llqqnt,
+  nur-DataEraserC,
+  qqnt,
   ...
 }: {
   # modules.desktop = {
@@ -41,6 +42,7 @@
   };
   home.stateVersion = "24.11";
   home.packages = [
-    llqqnt.packages.${pkgs.system}.llqqnt
+    # qqnt.packages.${pkgs.system}.llqqnt
+    qqnt.packages.${pkgs.system}.bqqnt
   ];
 }

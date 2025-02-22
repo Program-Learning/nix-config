@@ -354,7 +354,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    llqqnt = {
+    qqnt = {
       # url = "github:Program-Learning/nur-packages";
       url = "github:DataEraserC/nur-packages";
       inputs.nixpkgs.follows = "nixpkgs";
