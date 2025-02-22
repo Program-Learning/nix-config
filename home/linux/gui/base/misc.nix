@@ -43,8 +43,8 @@
     wvkbd # On-screen keyboard for wlroots
 
     # my custom hardened packages
-    pkgs.nixpaks.qq
-    pkgs.nixpaks.qq-desktop-item
+    # pkgs.nixpaks.qq
+    # pkgs.nixpaks.qq-desktop-item
 
     wechat-uos
     # pkgs.nixpaks.wechat-uos
