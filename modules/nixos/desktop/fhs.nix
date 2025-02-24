@@ -40,7 +40,7 @@
   # You can overwrite `NIX_LD_LIBRARY_PATH` in the environment where you run the non-NixOS binaries to customize the
   # search path for shared libraries.
   programs.nix-ld = {
-    enable = true;
+    enable = false;
     libraries = with pkgs; [
       stdenv.cc.cc
     ];
