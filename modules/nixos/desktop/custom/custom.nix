@@ -30,6 +30,12 @@
         host = "127.0.0.1";
         port = 2080;
       };
+      tailscale_mondrian_nekobox_proxy = {
+        enable = true;
+        type = "socks5";
+        host = "100.95.92.151";
+        port = 2080;
+      };
       zerotier_mondrian_nekobox_proxy = {
         enable = true;
         type = "socks5";
