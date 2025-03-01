@@ -29,8 +29,6 @@
           wlrctl
           wtype
 
-          patchelf
-          glib
           pkgs-stable.trickle
           # use this to pop a input window
           zenity
@@ -41,19 +39,18 @@
           libsForQt5.qtstyleplugin-kvantum
           adwaita-icon-theme
 
-          intel-gpu-tools
           # --nvidia cuda
           # cudatoolkit
 
           # Bilibili video download
           pkgs-stable.yutto
 
+          # ytb video download
+          # yt-dlp
+
           konsole
-          powerdevil
+          # powerdevil
 
-          # --java ide
-
-          glib
           calcurse
 
           # --vim-like browser
@@ -137,8 +134,8 @@
           # postman
           artha
           iw
-          coreutils
-          openssl
+          # coreutils
+          # openssl
           gitRepo
           fuse
           ntfs3g
@@ -156,17 +153,17 @@
           # sshfs
           sftpman
           # edge browser
-          microsoft-edge
+          # microsoft-edge
           # sql
-          mysql80
+          # mysql80
 
           # pkg required by nix-shell
           pkg-config
           ncurses
           # ncurses6
           # ncurses5
-          pkgsCross.aarch64-multiplatform.stdenv.cc
-          pkgsCross.arm-embedded.stdenv.cc
+          # pkgsCross.aarch64-multiplatform.stdenv.cc
+          # pkgsCross.arm-embedded.stdenv.cc
           #clang15Stdenv
           #pkgsLLVM.crossLibcStdenv
           # clang-tools
@@ -193,6 +190,7 @@
         # nur-DataEraserC.packages.${pkgs.system}.bilibili
         # nur-ataraxiaSjel.packages.${pkgs.system}.waydroid-script
         nur-DataEraserC.packages.${pkgs.system}.watt-toolkit_bin
+        nur-DataEraserC.packages.${pkgs.system}.cisco-packet-tracer # network learning
         nur-DataEraserC.packages.${pkgs.system}.AppimageLauncher_deb
         nur-DataEraserC-not-follow.packages.${pkgs.system}.XiaoMiToolV2
         # nur-DataEraserC.packages.${pkgs.system}.CrossOver

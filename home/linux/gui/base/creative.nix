@@ -21,28 +21,28 @@
     shotcut # video editor
     inkscape # vector graphics
     krita # digital painting
-    pkgs-stable.musescore # music notation
+    # pkgs-stable.musescore # music notation
     # reaper # audio production
     # sonic-pi # music programming
 
     # 2d game design
-    ldtk # A modern, versatile 2D level editor
-    aseprite # Animated sprite editor & pixel art tool
+    # ldtk # A modern, versatile 2D level editor
+    # aseprite # Animated sprite editor & pixel art tool
 
     # this app consumes a lot of storage, so do not install it currently
     # kicad # 3d printing, eletrical engineering
-    ngspice # eletrical engineering
-    digital # A digital logic designer and circuit simulator.
-    logisim-evolution # Digital logic designer and simulator
+    # ngspice # eletrical engineering
+    # digital # A digital logic designer and circuit simulator.
+    # logisim-evolution # Digital logic designer and simulator
 
-    pkgs-stable.freecad # A CAD software
+    # pkgs-stable.freecad # A CAD software
 
     # fpga
-    pkgs-unstable.python312Packages.apycula # gowin fpga
-    pkgs-unstable.yosys # fpga synthesis
-    pkgs-unstable.nextpnr # fpga place and route
-    pkgs-unstable.openfpgaloader # fpga programming
-    nur-ryan4yin.packages.${pkgs.system}.gowin-eda-edu-ide # app: `gowin-env` => `gw_ide` / `gw_pack` / ...
+    # pkgs-unstable.python312Packages.apycula # gowin fpga
+    # pkgs-unstable.yosys # fpga synthesis
+    # pkgs-unstable.nextpnr # fpga place and route
+    # pkgs-unstable.openfpgaloader # fpga programming
+    # nur-ryan4yin.packages.${pkgs.system}.gowin-eda-edu-ide # app: `gowin-env` => `gw_ide` / `gw_pack` / ...
 
     # wechat dev tool
     # nur-DataEraserC.packages.${pkgs.system}.wechat_dev_tools_appimage

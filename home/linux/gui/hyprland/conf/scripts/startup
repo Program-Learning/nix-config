@@ -40,14 +40,14 @@ exec systemctl --user restart sunshine &
 # Start sunshine(moonlight) (PORT:47990)
 # exec systemctl --user start sunshine &
 
-systemctl --user stop wallpaper.service
+systemctl --user stop wallpaper.service &
 
 # swaylock -e -f -F -c 12121B
 swaylock -e --screenshots  --clock --timestr=%H:%M:%S --datestr=%Y-%m-%d  --indicator  --indicator-radius 100  --indicator-thickness 7  --effect-blur 7x5  --effect-vignette 0.5:0.5  --ring-color b5b5b5  --key-hl-color 3cdec3  --line-color 00000000  --inside-color 00000088  --separator-color 00000000  --grace 0  --fade-in 0.5 &
 
 # Set wallpaper via a wallpaper.service
 # it will by start by home-manager automatically, do not need to restart it here.
-systemctl --user restart wallpaper.service
+systemctl --user restart wallpaper.service &
 
 # Launch notification daemon (mako)
 ~/.config/hypr/scripts/notifications &
@@ -79,6 +79,8 @@ exec /nix/store/*xdg-desktop-portal-hyprland*/libexec/xdg-desktop-portal-hyprlan
 # Start swayidle
 # exec swayidle -w timeout 1800 'systemctl suspend' resume 'hyprctl dispatch dpms on' timeout 120 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on' before-sleep 'swaylock'
 exec swayidle -w timeout 120 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on' before-sleep 'swaylock' &
+
+exec sway-audio-idle-inhibit &
 
 # Start alist
 exec podman container restart alist &

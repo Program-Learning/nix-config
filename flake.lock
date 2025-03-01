@@ -7075,11 +7075,11 @@
         "treefmt-nix": "treefmt-nix_8"
       },
       "locked": {
-        "lastModified": 1740251521,
-        "narHash": "sha256-S0avuWYZmGAxHxi8NkWsJ5yWh8d2+NTD2iRx+3Zl9DY=",
+        "lastModified": 1740769744,
+        "narHash": "sha256-swvNmFdY/m0fzTUVYXu7K1jk9qBnKssP6PV3aCSiFeI=",
         "owner": "DataEraserC",
         "repo": "nur-packages",
-        "rev": "1b053c2e47e053a4f1efff40ccf9f21e9716397f",
+        "rev": "f9f4c24446d375aa084369c7096c3c918f6e1db5",
         "type": "github"
       },
       "original": {
@@ -7134,11 +7134,11 @@
         "treefmt-nix": "treefmt-nix_16"
       },
       "locked": {
-        "lastModified": 1740251521,
-        "narHash": "sha256-S0avuWYZmGAxHxi8NkWsJ5yWh8d2+NTD2iRx+3Zl9DY=",
+        "lastModified": 1740769744,
+        "narHash": "sha256-swvNmFdY/m0fzTUVYXu7K1jk9qBnKssP6PV3aCSiFeI=",
         "owner": "DataEraserC",
         "repo": "nur-packages",
-        "rev": "1b053c2e47e053a4f1efff40ccf9f21e9716397f",
+        "rev": "f9f4c24446d375aa084369c7096c3c918f6e1db5",
         "type": "github"
       },
       "original": {
@@ -8298,11 +8298,11 @@
         "treefmt-nix": "treefmt-nix_24"
       },
       "locked": {
-        "lastModified": 1740251521,
-        "narHash": "sha256-S0avuWYZmGAxHxi8NkWsJ5yWh8d2+NTD2iRx+3Zl9DY=",
+        "lastModified": 1740769744,
+        "narHash": "sha256-swvNmFdY/m0fzTUVYXu7K1jk9qBnKssP6PV3aCSiFeI=",
         "owner": "DataEraserC",
         "repo": "nur-packages",
-        "rev": "1b053c2e47e053a4f1efff40ccf9f21e9716397f",
+        "rev": "f9f4c24446d375aa084369c7096c3c918f6e1db5",
         "type": "github"
       },
       "original": {

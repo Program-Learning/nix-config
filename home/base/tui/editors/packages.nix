@@ -56,6 +56,7 @@
       statix # Lints and suggestions for the nix programming language
       deadnix # Find and remove unused code in .nix source files
       alejandra # Nix Code Formatter
+      patchelf # Patch ELF for nixos
 
       #-- nickel lang
       nickel

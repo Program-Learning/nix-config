@@ -14,6 +14,7 @@
     mpvpaper # A video wallpaper program for wlroots based wayland compositors.
     swayidle # the idle timeout
     # hypridle # the idle timeout
+    sway-audio-idle-inhibit # audio idle inhibit
     swaylock # locking the screen
     # hyprlock # locking the screen
     wlogout # logout menu

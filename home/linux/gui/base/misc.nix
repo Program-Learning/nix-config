@@ -19,10 +19,12 @@
     nur-DataEraserC.packages.${pkgs.system}.suwayomi-server
 
     # matrix
-    element-desktop
+    # element-desktop
+    cinny-desktop
 
     # instant messaging
-    telegram-desktop
+    # telegram-desktop
+    ayugram-desktop
     # discord # update too frequently, use the web version instead
     # inter-knot
     nur-DataEraserC.packages.${pkgs.system}.inter-knot
@@ -66,6 +68,12 @@
 
     # c001apk-flutter
     nur-DataEraserC.packages.${pkgs.system}.c001apk-flutter
+
+    # Translate tool
+    translate-shell
+
+    # OCR Tool
+    tesseract
   ];
 
   # GitHub CLI tool

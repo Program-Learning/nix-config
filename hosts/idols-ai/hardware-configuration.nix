@@ -209,7 +209,10 @@
   };
 
   swapDevices = [
-    {device = "/swap/swapfile";}
+    {
+      device = "/swap/swapfile";
+      size = 8192;
+    }
   ];
 
   fileSystems."/run/media/nixos/windows" = {
