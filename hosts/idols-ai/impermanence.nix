@@ -185,6 +185,8 @@
         # v2ray
         ".config/qv2ray"
         ".config/nekoray"
+        # gg
+        ".config/gg"
 
         # test niri
         ".config/niri"
