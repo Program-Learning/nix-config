@@ -42,6 +42,18 @@
         host = "10.147.20.151";
         port = 2080;
       };
+      tailscale_pstar_nekobox_proxy = {
+        enable = true;
+        type = "socks5";
+        host = "100.95.92.153";
+        port = 2080;
+      };
+      zerotier_pstar_nekobox_proxy = {
+        enable = true;
+        type = "socks5";
+        host = "10.147.20.153";
+        port = 2080;
+      };
     };
   };
 

@@ -58,7 +58,7 @@
 
           # --agent
           protonvpn-cli_2
-          # pkgs-unstable.clash-verge-rev
+          clash-verge-rev
           # pkgs-unstable.clash-nyanpasu
           # nekoray_patched
           nekoray
