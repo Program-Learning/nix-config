@@ -129,8 +129,6 @@
     enable = false;
   };
 
-  # remote desktop server
-  features.sunshine.enable = false;
   # recording tool
   features.wf-recorder.enable = true;
   # clash tun mode fix
