@@ -46,7 +46,7 @@
           pkgs-stable.yutto
 
           # ytb video download
-          # yt-dlp
+          yt-dlp
 
           konsole
           # powerdevil
@@ -58,7 +58,6 @@
 
           # --agent
           protonvpn-cli_2
-          clash-verge-rev
           # pkgs-unstable.clash-nyanpasu
           # nekoray_patched
           nekoray
@@ -168,9 +167,9 @@
           #pkgsLLVM.crossLibcStdenv
           # clang-tools
           # glibc
-          libcxx
-          zlib
-          ninja
+          # libcxx
+          # zlib
+          # ninja
 
           ntfy-sh
         ])

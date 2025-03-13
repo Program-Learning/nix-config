@@ -146,6 +146,9 @@
         ".config/Code - Insiders"
         ".config/vscode-sqltools"
 
+        # cisco packet tracer
+        "pt"
+
         # zed editor
         ".config/zed"
 

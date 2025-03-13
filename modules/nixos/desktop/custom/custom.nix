@@ -133,7 +133,8 @@
   features.wf-recorder.enable = true;
   # clash tun mode fix
   programs.clash-verge = {
-    enable = false;
+    enable = true;
+    autoStart = true;
     package = pkgs.clash-verge-rev;
   };
   features.clash-nyanpasu = {

@@ -8,7 +8,7 @@
   subscriptionConfigPath = "/etc/dae/config.d/subscription.dae";
 in {
   services.dae = {
-    enable = true;
+    enable = false;
     configFile = daeConfigPath;
     openFirewall = {
       enable = true;
