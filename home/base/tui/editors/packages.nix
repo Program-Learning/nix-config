@@ -78,7 +78,7 @@
       marksman # language server for markdown
       glow # markdown previewer
       pandoc # document converter
-      pkgs-unstable.hugo # static site generator
+      hugo # static site generator
 
       #-- sql
       sqlfluff

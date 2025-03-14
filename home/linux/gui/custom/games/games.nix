@@ -14,7 +14,6 @@
       "https://github.com/ezKEa/aagl-gtk-on-nix/archive/main.tar.gz");
 in {
   home.packages = with pkgs-unstable; [
-
     # Mihoyo Game Launcher
     # aagl-gtk-on-nix.anime-game-launcher
     # aagl-gtk-on-nix.anime-borb-launcher
@@ -22,6 +21,6 @@ in {
     # aagl-gtk-on-nix.honkers-launcher
 
     # An anime game server
-    nur-DataEraserC.packages.${pkgs.system}.UnknownAnimeGamePS-wrapper
+    # nur-DataEraserC.packages.${pkgs.system}.UnknownAnimeGamePS-wrapper
   ];
 }

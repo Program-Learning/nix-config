@@ -19,8 +19,8 @@
     colmena # nixos's remote deployment tool
 
     # db related
-    pkgs-unstable.mycli
-    pkgs-unstable.pgcli
+    mycli
+    pgcli
     mongosh
     sqlite
 

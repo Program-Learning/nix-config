@@ -4,6 +4,7 @@
   nur-DataEraserC,
   pkgs-latest,
   fakedroid,
+  pkgs-unstable,
   ...
 }: {
   home.packages = with pkgs; [
@@ -14,10 +15,10 @@
     libmtp
     adb-sync
     abootimg
-    pkgs-stable.android-tools
-    pkgs-stable.android-studio
-    genymotion
-    pkgs-stable.edl
+    android-tools
+    android-studio
+    # genymotion
+    # edl
     # --payload-dumper
     payload-dumper-go
     # fakedroid.packages.${pkgs.system}.fakedroid

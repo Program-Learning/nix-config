@@ -1,12 +1,10 @@
 {
   config,
   pkgs,
-  pkgs-jadx-fix,
   pkgs-latest,
   pkgs-unstable,
   pkgs-stable,
   nur-ryan4yin,
-  nur-program-learning,
   nur-linyinfeng,
   nur-DataEraserC,
   nur-DataEraserC-not-follow,
@@ -29,7 +27,7 @@
           wlrctl
           wtype
 
-          pkgs-stable.trickle
+          # trickle
           # use this to pop a input window
           zenity
           jansson
@@ -43,7 +41,7 @@
           # cudatoolkit
 
           # Bilibili video download
-          pkgs-stable.yutto
+          yutto
 
           # ytb video download
           yt-dlp
@@ -90,13 +88,6 @@
 
           qrencode
 
-          # --remote control
-          # sunshine
-          # moonlight-embedded
-          # turbovnc
-          xrdp
-          libvncserver
-          gnome-remote-desktop
           gnome-clocks
 
           # dunst
@@ -140,10 +131,7 @@
           ntfs3g
           jadx
           meld
-          darling-dmg
-          # darling
           # dash
-          # python2Full
           inotify-tools
           # vmware-workstation
 

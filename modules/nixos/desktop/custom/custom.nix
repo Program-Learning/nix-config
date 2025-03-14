@@ -108,12 +108,6 @@
   #   };
   # };
 
-  services.cpolar = {
-    enable = true;
-    package = nur-DataEraserC.packages.${pkgs.system}.cpolar;
-    configFile = "${config.age.secrets."cpolar.yml".path}";
-  };
-
   nixpkgs.config.permittedInsecurePackages = ["openssl-1.1.1v" "electron-19.0.7" "electron-19.1.9"];
 
   nixpkgs.config.allowUnfreePredicate = pkg:
@@ -158,7 +152,7 @@
   };
   # useless
   features.nekoray = {
-    enable = true;
+    enable = false;
     package = pkgs.nekoray;
     tunMode = true;
   };

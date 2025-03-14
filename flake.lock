@@ -6455,22 +6455,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-unstable-jadx": {
-      "locked": {
-        "lastModified": 1722844419,
-        "narHash": "sha256-oe/kCu9l6EqSKCUeHijrsCSY8y0VlGjFr8IzKjNcRUM=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "89db3afb1fcea0ed49e8af537a9de331b2441878",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "89db3afb1fcea0ed49e8af537a9de331b2441878",
-        "type": "github"
-      }
-    },
     "nixpkgs-unstable-nod": {
       "locked": {
         "lastModified": 1740695751,
@@ -8464,7 +8448,6 @@
         "nixpkgs-stable": "nixpkgs-stable_4",
         "nixpkgs-unstable": "nixpkgs-unstable_2",
         "nixpkgs-unstable-etcher": "nixpkgs-unstable-etcher",
-        "nixpkgs-unstable-jadx": "nixpkgs-unstable-jadx",
         "nixpkgs-unstable-nod": "nixpkgs-unstable-nod",
         "nixpkgs-unstable-yuzu": "nixpkgs-unstable-yuzu",
         "nixpkgs-wayland": "nixpkgs-wayland",
