@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  myvars,
   ...
 }:
 with lib; let
@@ -15,8 +16,33 @@ in {
   };
 
   config = mkIf cfg.enable {
+    environment.persistence."/persistent" = {
+      users.hadoop = {
+        directories = [
+          {
+            directory = ".gnupg";
+            mode = "0700";
+          }
+          {
+            directory = ".ssh";
+            mode = "0700";
+          }
+        ];
+      };
+    };
     environment.variables = {
       HADOOP_HOME = "${cfg.package}";
+      JAVA_HOME = "${pkgs.jdk11_headless}";
+    };
+    networking.extraHosts = lib.mkForce "";
+    users.users.hadoop = {
+      inherit (myvars) initialHashedPassword hashedPassword;
+      isNormalUser = true;
+      group = "hadoop";
+      extraGroups = ["wheel"];
+      packages = [
+        pkgs.jdk11_headless
+      ];
     };
     services.hadoop = {
       package = cfg.package;
