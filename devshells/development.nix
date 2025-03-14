@@ -8,7 +8,7 @@ forAllSystems (
   system: let
     pkgs = nixpkgs.legacyPackages.${system};
   in {
-    default = pkgs.mkShell {
+    development = pkgs.mkShell {
       packages = with pkgs; [
         # fix https://discourse.nixos.org/t/non-interactive-bash-errors-from-flake-nix-mkshell/33310
         bashInteractive

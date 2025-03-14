@@ -161,37 +161,10 @@ in rec {
   );
 
   # Development Shells
-  devShells =
-    forAllSystems (
-      system: let
-        pkgs = nixpkgs.legacyPackages.${system};
-      in {
-        default = pkgs.mkShell {
-          packages = with pkgs; [
-            # fix https://discourse.nixos.org/t/non-interactive-bash-errors-from-flake-nix-mkshell/33310
-            bashInteractive
-            # fix `cc` replaced by clang, which causes nvim-treesitter compilation error
-            gcc
-            # Nix-related
-            alejandra
-            deadnix
-            statix
-            # spell checker
-            typos
-            # code formatter
-            nodePackages.prettier
-          ];
-          name = "dots";
-          shellHook = ''
-            ${self.checks.${system}.pre-commit-check.shellHook}
-          '';
-        };
-      }
-    )
-    // (import ../devshells (inputs
-      // {
-        inherit forAllSystems mylib self lib;
-      }));
+  devShells = import (mylib.relativeToRoot "devshells") (inputs
+    // {
+      inherit forAllSystems mylib self lib;
+    });
 
   # Format the nix code in this flake
   formatter = forAllSystems (
