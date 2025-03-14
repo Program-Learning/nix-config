@@ -64,7 +64,7 @@
     # It is broken and I do not need this now
     # nur-DataEraserC.packages.${pkgs.system}.dingtalk
 
-    pkgs-latest.feishu
+    feishu
 
     # c001apk-flutter
     nur-DataEraserC.packages.${pkgs.system}.c001apk-flutter

@@ -2900,6 +2900,24 @@
         "type": "github"
       }
     },
+    "flake-utils_58": {
+      "inputs": {
+        "systems": "systems_77"
+      },
+      "locked": {
+        "lastModified": 1731533236,
+        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
     "flake-utils_6": {
       "inputs": {
         "systems": "systems_10"
@@ -6920,6 +6938,22 @@
         "type": "github"
       }
     },
+    "nixpkgs_33": {
+      "locked": {
+        "lastModified": 1741851582,
+        "narHash": "sha256-cPfs8qMccim2RBgtKGF+x9IBCduRvd/N5F4nYpU0TVE=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "6607cf789e541e7873d40d3a8f7815ea92204f32",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs_4": {
       "locked": {
         "lastModified": 1691186842,
@@ -7149,11 +7183,11 @@
         "treefmt-nix": "treefmt-nix_8"
       },
       "locked": {
-        "lastModified": 1741762378,
-        "narHash": "sha256-3mIaJ+2JgZqXDAwkWJwBHlGUEpxATmAGgY+appIl1Kw=",
+        "lastModified": 1741975173,
+        "narHash": "sha256-i/oOiY4VxCsFiKJiap1MbrlQdk3L+lKYhR54JEm18bQ=",
         "owner": "DataEraserC",
         "repo": "nur-packages",
-        "rev": "47dd845bb7baf7affd4239000d7d35126478de32",
+        "rev": "82cfbaf2b63dadbb07034cc2ab140dc1d6fa116f",
         "type": "github"
       },
       "original": {
@@ -7209,11 +7243,11 @@
         "treefmt-nix": "treefmt-nix_16"
       },
       "locked": {
-        "lastModified": 1741762378,
-        "narHash": "sha256-3mIaJ+2JgZqXDAwkWJwBHlGUEpxATmAGgY+appIl1Kw=",
+        "lastModified": 1741975173,
+        "narHash": "sha256-i/oOiY4VxCsFiKJiap1MbrlQdk3L+lKYhR54JEm18bQ=",
         "owner": "DataEraserC",
         "repo": "nur-packages",
-        "rev": "47dd845bb7baf7affd4239000d7d35126478de32",
+        "rev": "82cfbaf2b63dadbb07034cc2ab140dc1d6fa116f",
         "type": "github"
       },
       "original": {
@@ -8373,11 +8407,11 @@
         "treefmt-nix": "treefmt-nix_24"
       },
       "locked": {
-        "lastModified": 1741762378,
-        "narHash": "sha256-3mIaJ+2JgZqXDAwkWJwBHlGUEpxATmAGgY+appIl1Kw=",
+        "lastModified": 1741975173,
+        "narHash": "sha256-i/oOiY4VxCsFiKJiap1MbrlQdk3L+lKYhR54JEm18bQ=",
         "owner": "DataEraserC",
         "repo": "nur-packages",
-        "rev": "47dd845bb7baf7affd4239000d7d35126478de32",
+        "rev": "82cfbaf2b63dadbb07034cc2ab140dc1d6fa116f",
         "type": "github"
       },
       "original": {
@@ -8469,7 +8503,8 @@
         "qqnt": "qqnt",
         "suyu": "suyu",
         "vscode-server": "vscode-server",
-        "wallpapers": "wallpapers"
+        "wallpapers": "wallpapers",
+        "wpsFonts": "wpsFonts"
       }
     },
     "rust-analyzer-src": {
@@ -9750,6 +9785,21 @@
         "type": "github"
       }
     },
+    "systems_77": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
     "systems_8": {
       "locked": {
         "lastModified": 1680978846,
@@ -10445,6 +10495,25 @@
         "repo": "wlroots",
         "rev": "0cb091f1a2d345f37d2ee445f4ffd04f7f4ec9e5",
         "type": "gitlab"
+      }
+    },
+    "wpsFonts": {
+      "inputs": {
+        "flake-utils": "flake-utils_58",
+        "nixpkgs": "nixpkgs_33"
+      },
+      "locked": {
+        "lastModified": 1726022768,
+        "narHash": "sha256-x0oRF3hIja6bGL/IjCpOqDcFKAB4VDmPf9DC258T0LA=",
+        "owner": "hypercrusher",
+        "repo": "wpsfonts",
+        "rev": "82bc57288852e8c467b00d72e68082109d82e61b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hypercrusher",
+        "repo": "wpsfonts",
+        "type": "github"
       }
     },
     "xdph": {

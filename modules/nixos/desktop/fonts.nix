@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  wpsFonts,
+  ...
+}: {
   # all fonts are linked to /nix/var/nix/profiles/system/sw/share/X11/fonts
   fonts = {
     # use fonts specified by user rather than default ones
@@ -6,6 +10,7 @@
     fontDir.enable = true;
 
     packages = with pkgs; [
+      wpsFonts.packages.${system}.default
       corefonts
       # icon fonts
       material-design-icons

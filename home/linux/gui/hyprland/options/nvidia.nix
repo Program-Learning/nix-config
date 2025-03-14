@@ -17,7 +17,7 @@ in {
       "XDG_SESSION_TYPE,wayland"
       "GBM_BACKEND,nvidia-drm"
       # ONLY SOME LATEST NIXPKGS REQUIRE THIS WORK AROUND
-      # "AQ_DRM_DEVICES,/dev/dri/card1"
+      "AQ_DRM_DEVICES,/dev/dri/card1"
       "__GLX_VENDOR_LIBRARY_NAME,nvidia"
       # fix https://github.com/hyprwm/Hyprland/issues/1520
       "WLR_NO_HARDWARE_CURSORS,1"

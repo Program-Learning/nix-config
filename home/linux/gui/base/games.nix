@@ -16,7 +16,7 @@
     minecraft # Official MineCraft Launcher
     # prismlauncher
 
-    pkgs-stable.mindustry-wayland
+    mindustry-wayland
     #mindustry-server
 
     # Wine related
@@ -34,7 +34,7 @@
     pkgs-unstable-yuzu.yuzu # Switch games
     # broken so I disable it
     suyu.packages.${pkgs.system}.suyu # Switch games
-    pkgs-stable.ryujinx # Switch games
+    ryujinx # Switch games
 
     # Steam related
     steamcmd # steam command line

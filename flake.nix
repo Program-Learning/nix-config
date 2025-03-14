@@ -168,6 +168,8 @@
     nur-ryan4yin.url = "github:ryan4yin/nur-packages";
     nur-ataraxiasjel.url = "github:AtaraxiaSjel/nur";
 
+    wpsFonts.url = "github:hypercrusher/wpsfonts";
+
     # for windows wsl
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
 

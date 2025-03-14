@@ -68,7 +68,7 @@
           libreoffice
           mdp
           slides
-          pkgs-latest.wpsoffice-cn # unfree
+          wpsoffice-cn # unfree
 
           # --note
           anytype
@@ -160,11 +160,12 @@
           # ninja
 
           ntfy-sh
+
+          OVMFFull.fd
         ])
     # nixpkgs-unstable
     ++ (with pkgs-unstable; [
-      OVMFFull.fd
-    ])
+      ])
     # nur packages here
     ++ (
       # with pkgs.nur.repos;
