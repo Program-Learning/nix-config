@@ -29,7 +29,7 @@ in rec {
   ];
 
   networking = {
-    hostName = "LAPTOP-UBERCOA";
+    hostName = "LAPTOP-UZERME";
     # inherit hostName;
     inherit (myvars.networking) defaultGateway nameservers;
     inherit (myvars.networking.hostsInterface.${hostName}) interfaces;

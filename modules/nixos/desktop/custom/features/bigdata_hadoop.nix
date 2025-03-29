@@ -34,9 +34,21 @@ in {
       HADOOP_HOME = "${cfg.package}";
       JAVA_HOME = "${pkgs.jdk11_headless}";
     };
-    networking.extraHosts = lib.mkForce "";
+    system.activationScripts.hadoop_init_mkdir = {
+      deps = ["var"];
+      text = ''
+        mkdir -p /tmp/hadoop/hadoop
+        chown hadoop:hadoop -R /tmp/hadoop/hadoop
+        mkdir -p /var/lib/hadoop/tmp/dfs/data
+        chown hadoop:hadoop -R /var/lib/hadoop/tmp/dfs/data
+        mkdir -p /var/lib/hadoop/tmp/dfs/name
+        chown hadoop:hadoop -R /var/lib/hadoop/tmp/dfs/name
+      '';
+    };
+    networking.extraHosts = lib.mkForce "127.0.0.1 localhost";
     users.users.hadoop = {
-      inherit (myvars) initialHashedPassword hashedPassword;
+      initialHashedPassword = "$7$CU..../....zmajtL8laTkw0keUfR4ZC1$lcF.YgINaXfQCDzOuR9dIZ9Hc6of2IqiNaJ3mRKn70B";
+      hashedPassword = "$7$CU..../....zmajtL8laTkw0keUfR4ZC1$lcF.YgINaXfQCDzOuR9dIZ9Hc6of2IqiNaJ3mRKn70B";
       isNormalUser = true;
       group = "hadoop";
       extraGroups = ["wheel"];
@@ -49,12 +61,15 @@ in {
       gatewayRole.enable = true;
       coreSite = {
         "fs.defaultFS" = "hdfs://localhost:9000";
-        "hadoop.tmp.dir" = "file:/var/lib/hadoop/tmp";
       };
       hdfsSite = {
         "dfs.replication" = "1";
-        "dfs.namenode.name.dir" = "file:/var/lib/hadoop/tmp/dfs/name";
-        "dfs.datanode.data.dir" = "file:/var/lib/hadoop/tmp/dfs/data";
+      };
+      mapredSite = {
+        "mapreduce.framework.name" = "yarn";
+      };
+      yarnSite = {
+        "yarn.nodemanager.aux-services" = "mapreduce_shuffle";
       };
     };
   };

@@ -128,8 +128,14 @@
   # clash tun mode fix
   programs.clash-verge = {
     enable = true;
-    autoStart = true;
+    autoStart = false;
     package = pkgs.clash-verge-rev;
+  };
+  features.mihomo-party = {
+    enable = true;
+    autoStart = true;
+    tunMode = true;
+    package = pkgs.mihomo-party;
   };
   features.clash-nyanpasu = {
     enable = false;

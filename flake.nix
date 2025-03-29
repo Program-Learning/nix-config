@@ -221,6 +221,7 @@
 
     suyu = {
       url = "git+https://git.suyu.dev/suyu/nix-flake";
+      # url = "github:Noodlez1232/suyu-flake";
     };
 
     # hyprwm

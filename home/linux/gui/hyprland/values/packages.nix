@@ -7,6 +7,7 @@
     xorg.xhost # to fix sudo graphical application
     brightnessctl # a tool to set screen brightness
     wev # debug which key is pressed
+    libinput # debug input subsystem
     cliphist # Wayland clipboard manager
     waybar # the status bar
     swaybg # the wallpaper

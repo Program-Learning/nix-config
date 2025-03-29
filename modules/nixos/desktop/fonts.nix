@@ -1,5 +1,6 @@
 {
   pkgs,
+  pkgs-latest,
   wpsFonts,
   ...
 }: {
@@ -40,15 +41,22 @@
 
       julia-mono
       dejavu_fonts
+      vistafonts-chs # ms yahei
+      # Maple Mono (Ligature TTF unhinted)
+      pkgs-latest.maple-mono.truetype
+      # Maple Mono NF (Ligature unhinted)
+      pkgs-latest.maple-mono.NF-unhinted
+      # Maple Mono NF CN (Ligature unhinted)
+      pkgs-latest.maple-mono.NF-CN-unhinted
     ];
 
     # user defined fonts
     # the reason there's Noto Color Emoji everywhere is to override DejaVu's
     # B&W emojis that would sometimes show instead of some Color emojis
     fontconfig.defaultFonts = {
-      serif = ["Source Han Serif SC" "Source Han Serif TC" "Noto Color Emoji"];
-      sansSerif = ["Source Han Sans SC" "Source Han Sans TC" "Noto Color Emoji"];
-      monospace = ["JetBrainsMono Nerd Font" "Noto Color Emoji"];
+      serif = ["Maple Mono NF CN" "Source Han Serif SC" "Source Han Serif TC" "Noto Color Emoji"];
+      sansSerif = ["Maple Mono NF CN" "Source Han Sans SC" "Source Han Sans TC" "Noto Color Emoji"];
+      monospace = ["Maple Mono NF CN" "Maple Mono" "Maple Mono NF" "JetBrainsMono Nerd Font" "Noto Color Emoji"];
       emoji = ["Noto Color Emoji"];
     };
   };

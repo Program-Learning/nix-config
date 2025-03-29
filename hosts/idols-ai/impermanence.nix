@@ -185,6 +185,7 @@
         ".config/clash"
         ".config/clash-verge"
         ".config/clash-nyanpasu"
+        ".config/mihomo-party"
         # v2ray
         ".config/qv2ray"
         ".config/nekoray"
