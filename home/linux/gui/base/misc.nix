@@ -74,6 +74,9 @@
 
     # OCR Tool
     tesseract
+
+    # piliplus
+    nur-DataEraserC.packages.${pkgs.system}.piliplus
   ];
 
   # GitHub CLI tool
