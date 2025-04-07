@@ -45,10 +45,17 @@
       # daed
       "/etc/daed/"
 
+      # ccache
+      "/var/cache/ccache"
+
       # created by modules/nixos/misc/fhs-fonts.nix
       # for flatpak apps
       # "/usr/share/fonts"
       # "/usr/share/icons"
+
+      # for android sign
+      # TODO: move to agenix/sop
+      "/etc/secrets/android-keys"
     ];
     files = [
       "/etc/machine-id"
