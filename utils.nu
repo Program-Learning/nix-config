@@ -10,8 +10,23 @@ export def nixos-switch [
         NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild switch --use-remote-sudo --flake $".#($name)" --show-trace --verbose --impure
     } else if "boot" == $mode {
         NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild boot --use-remote-sudo --flake $".#($name)" --impure
-    } else {
+    } else if "switch" == $mode {
         NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild switch --use-remote-sudo --flake $".#($name)" --impure
+    } else if "boot-notify" == $mode {
+        NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild build --flake $".#($name)" --impure
+        notify-send "NixOS boot image built successfully. sudo password is required now"
+        sudo ./result/bin/switch-to-configuration boot
+        rm result
+    } else if "switch-notify" == $mode {
+        NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild build --flake $".#($name)" --impure
+        notify-send "NixOS system configuration built successfully. sudo password is required now"
+        sudo ./result/bin/switch-to-configuration switch
+        rm result
+    } else {
+        NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild build --flake $".#($name)" --impure
+        notify-send "NixOS system configuration built successfully. sudo password is required now"
+        sudo ./result/bin/switch-to-configuration switch
+        rm result
     }
 }
 
