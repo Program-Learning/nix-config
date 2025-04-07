@@ -10,6 +10,8 @@
   home.packages = with pkgs; [
     # nur-DataEraserC.packages.${pkgs.system}.qtscrcpy_git
     nur-DataEraserC.packages.${pkgs.system}.escrcpy_deb
+    nur-DataEraserC.packages.${pkgs.system}.magiskboot
+    apksigner
     gnirehtet
     scrcpy
     libmtp
