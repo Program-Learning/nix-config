@@ -165,6 +165,9 @@
         ".config/google-chrome-unstable"
         ".config/microsoft-edge"
 
+        # email clients profiles
+        ".thunderbird"
+
         # neovim / remmina / flatpak / zed ...
         ".local/share"
         ".local/state"
