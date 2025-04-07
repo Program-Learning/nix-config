@@ -4,6 +4,7 @@ export def nixos-switch [
     name: string
     mode: string
 ] {
+    print $"mode: ($mode)"
     if "debug" == $mode {
         # show details via nix-output-monitor
         NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nom build $".#nixosConfigurations.($name).config.system.build.toplevel" --show-trace --verbose
@@ -13,20 +14,32 @@ export def nixos-switch [
     } else if "switch" == $mode {
         NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild switch --use-remote-sudo --flake $".#($name)" --impure
     } else if "boot-notify" == $mode {
+        let new_dir_name = $"result-(date now | format date "%Y-%m-%d_%H:%M:%S")"
         NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild build --flake $".#($name)" --impure
-        notify-send "NixOS boot image built successfully. sudo password is required now"
-        sudo ./result/bin/switch-to-configuration boot
-        rm result
+        mv result $new_dir_name
+        let msg = "NixOS boot image built successfully. sudo password is required now"
+        print $msg
+        notify-send $msg
+        sudo $"($new_dir_name)/bin/switch-to-configuration" boot
+        rm $new_dir_name
     } else if "switch-notify" == $mode {
+        let new_dir_name = $"result-(date now | format date "%Y-%m-%d_%H:%M:%S")"
         NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild build --flake $".#($name)" --impure
-        notify-send "NixOS system configuration built successfully. sudo password is required now"
-        sudo ./result/bin/switch-to-configuration switch
-        rm result
+        mv result $new_dir_name
+        let msg = "NixOS system configuration built successfully. sudo password is required now"
+        print $msg
+        notify-send $msg
+        sudo $"($new_dir_name)/bin/switch-to-configuration" switch
+        rm $new_dir_name
     } else {
+        let new_dir_name = $"result-(date now | format date "%Y-%m-%d_%H:%M:%S")"
         NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild build --flake $".#($name)" --impure
-        notify-send "NixOS system configuration built successfully. sudo password is required now"
-        sudo ./result/bin/switch-to-configuration switch
-        rm result
+        mv result $new_dir_name
+        let msg = "NixOS system configuration built successfully. sudo password is required now"
+        print $msg
+        notify-send $msg
+        sudo $"($new_dir_name)/bin/switch-to-configuration" switch
+        rm $new_dir_name
     }
 }
 
