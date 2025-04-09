@@ -18,10 +18,16 @@ in
     pkgs = import nixpkgs {
       system = "aarch64-linux";
 
-      overlays = [
-        nix-on-droid.overlays.default
-        # add other overlays
-      ];
+      overlays =
+        [
+          nix-on-droid.overlays.default
+          # add other overlays
+        ]
+        ++ (import ../../overlays (args
+          // {
+            # tell overlays to use the nix-on-droid specific overlay
+            feat."nix-on-droid" = true;
+          }));
     };
 
     modules =
