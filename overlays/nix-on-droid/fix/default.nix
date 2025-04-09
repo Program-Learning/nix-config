@@ -9,8 +9,8 @@ _: (
     ];
 
     disabled_packages_map = builtins.listToAttrs (map (pkg: {
-        name = pkg.pname;
-        value = pkgs.emptyDirectory;
+        name = pkg;
+        value = super.emptyDirectory;
       })
       disabled_packages);
   in
