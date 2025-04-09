@@ -6,6 +6,7 @@ _: (
       "python311.withPackages.pyclip"
       "nodePackages.typescript-language-server"
       "flutter"
+      "nickel"
     ];
 
     disabled_packages_map = builtins.listToAttrs (map (pkg: {
