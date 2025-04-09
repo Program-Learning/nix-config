@@ -6,5 +6,6 @@
     # ./proxychains.nix
     ./sshd.nix
     ./user.nix
+    ./nixpkgs.nix
   ];
 }
