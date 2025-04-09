@@ -8,7 +8,7 @@
   specialArgs ? (genSpecialArgs system),
   myvars,
   ...
-}: let
+} @ args: let
   inherit (inputs) nix-on-droid nixpkgs home-manager;
 in
   nix-on-droid.lib.nixOnDroidConfiguration {
