@@ -46,7 +46,7 @@
           # ytb video download
           yt-dlp
 
-          konsole
+          kdePackages.konsole
           # powerdevil
 
           calcurse
@@ -82,8 +82,8 @@
           nautilus
           nautilus-open-any-terminal
           file-roller
-          ark
-          dolphin
+          kdePackages.ark
+          kdePackages.dolphin
           ranger
 
           qrencode

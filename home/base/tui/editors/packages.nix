@@ -35,11 +35,7 @@
       jdt-language-server
 
       #-- flutter
-      (
-        if pkgs.stdenv.isAarch64 || pkgs.stdenv.isAarch32
-        then pkgs.emptyDirectory
-        else flutter
-      )
+      flutter
 
       #-- dart
       # dart
@@ -210,11 +206,7 @@
     ++ [
       nodePackages.nodejs
       nodePackages.typescript
-      (
-        if pkgs.stdenv.isAarch64 || pkgs.stdenv.isAarch32
-        then pkgs.emptyDirectory
-        else nodePackages.typescript-language-server
-      )
+      nodePackages.typescript-language-server
       # HTML/CSS/JSON/ESLint language servers extracted from vscode
       nodePackages.vscode-langservers-extracted
       nodePackages."@tailwindcss/language-server"
@@ -241,6 +233,7 @@
       nodePackages.prettier # common code formatter
       fzf
       gdu # disk usage analyzer, required by AstroNvim
+      bottom # graphical process/system monitor, required by AstroNvim
       (ripgrep.override {withPCRE2 = true;}) # recursively searches directories for a regex pattern
     ]
   );

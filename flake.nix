@@ -81,7 +81,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    impermanence.url = "github:nix-community/impermanence";
+    impermanence.url = "github:Apps-Used-By-Myself/impermanence";
 
     # community wayland nixpkgs
     # nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
@@ -152,8 +152,8 @@
     # my private secrets, it's a private repository, you need to replace it with your own.
     # use ssh protocol to authenticate via ssh-agent/ssh-key, and shallow clone to save time
     mysecrets = {
-      # url = "github:DataEraserC/nix-secrets";
-      url = "git+ssh://git@github.com/DataEraserC/nix-secrets.git?shallow=1";
+      url = "github:DataEraserC/nix-secrets";
+      # url = "git+ssh://git@github.com/DataEraserC/nix-secrets.git?shallow=1";
       # url = "git+file:////home/nixos/Documents/code/nix-config/secrets?shallow=1";
       flake = false;
     };
@@ -446,7 +446,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    fh.url = "https://flakehub.com/f/DeterminateSystems/fh/0.1.9.tar.gz";
+    fh.url = "https://flakehub.com/f/DeterminateSystems/fh/0.1.22.tar.gz";
 
     # riscv64 SBCs
     nixos-licheepi4a.url = "github:ryan4yin/nixos-licheepi4a";

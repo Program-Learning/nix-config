@@ -80,11 +80,11 @@
     };
     spiceUSBRedirection.enable = true;
     lxd = {
-      enable = true;
+      enable = false;
       ui.enable = true;
     };
     incus = {
-      enable = false;
+      enable = true;
       ui.enable = true;
     };
     virtualbox = {

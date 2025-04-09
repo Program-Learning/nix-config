@@ -10,9 +10,9 @@
   nixpkgs.overlays =
     [
     ]
-    ++ (import ../overlays args
+    ++ (import ../overlays (args
       // {
         # tell overlays to use the nix-on-droid specific overlay
-        "nix-on-droid" = true;
-      });
+        feat."nix-on-droid" = true;
+      }));
 }

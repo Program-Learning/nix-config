@@ -16,7 +16,7 @@
     # Since NVIDIA does not load kernel mode setting by default,
     # enabling it is required to make Wayland compositors function properly.
     # ONLY SOME LATEST NIXPKGS REQUIRE THIS WORK AROUND
-    "nvidia-drm.fbdev=1"
+    # "nvidia-drm.fbdev=1"
   ];
   services.xserver.videoDrivers = ["nvidia"]; # will install nvidia-vaapi-driver by default
   hardware.nvidia = {

@@ -57,7 +57,8 @@
     # live streaming
     obs-studio = {
       enable = true;
-      plugins = with pkgs.obs-studio-plugins; [
+      package = pkgs-stable.obs-studio;
+      plugins = with pkgs-stable.obs-studio-plugins; [
         # screen capture
         wlrobs
         # obs-ndi

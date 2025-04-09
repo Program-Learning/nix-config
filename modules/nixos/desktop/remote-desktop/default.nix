@@ -1,6 +1,7 @@
 {
   pkgs,
   mylib,
+  pkgs-stable,
   ...
 }: {
   imports = mylib.scanPaths ./.;
@@ -11,6 +12,6 @@
     moonlight-qt # moonlight client, for streaming games/desktop from a PC
     novnc # vnc client
     # parsec-bin
-    rustdesk # p2p remote desktop
+    pkgs-stable.rustdesk # p2p remote desktop
   ];
 }
