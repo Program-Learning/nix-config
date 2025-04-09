@@ -1,4 +1,4 @@
-use rand::Rng;
+use rand::random_range;
 use serde::{Deserialize, Serialize};
 use std::env;
 use std::{fs::File, io::BufReader, thread, time::Duration};
@@ -60,7 +60,7 @@ impl WallpaperSwitcher {
                 self.current_wallpaper_index = i;
                 self.save_state();
 
-                let wait_time = rand::thread_rng().gen_range(self.wait_min..=self.wait_max);
+                let wait_time = random_range(self.wait_min..=self.wait_max);
 
                 println!("Waiting {} seconds...", wait_time);
                 thread::sleep(Duration::from_secs(wait_time));
@@ -84,6 +84,7 @@ impl WallpaperSwitcher {
                 self.current_wallpaper_index = state.current_wallpaper_index;
                 return;
             }
+            eprintln!("Error reading state file: {}", self.state_file_path);
         }
 
         eprintln!("No state found, resetting...");
@@ -113,17 +114,20 @@ impl WallpaperSwitcher {
         self.current_wallpaper_index = 0;
     }
 
-    fn set_wallpaper(&mut self, wallpaper: String) -> u32 {
-        if os::getenv("WAYLAND_DISPLAY").is_ok() || os::getenv("XDG_SESSION_TYPE").eq("wayland") {
-            return self.set_wallpaper_wayland(wallpaper);
+    fn set_wallpaper(&mut self, wallpaper: &str) -> u32 {
+        // Check if the environment variable WAYLAND_DISPLAY is set or if the XDG_SESSION_TYPE is wayland
+        if env::var("WAYLAND_DISPLAY").is_ok()
+            || env::var("XDG_SESSION_TYPE").unwrap_or_default() == "wayland"
+        {
+            self.set_wallpaper_wayland(wallpaper)
         } else {
-            return self.set_wallpaper_x11(wallpaper);
+            self.set_wallpaper_x11(wallpaper)
         }
     }
     fn set_wallpaper_x11(&mut self, wallpaper: &str) -> u32 {
         // Implement the code to set wallpaper for x11 using feh
         let _output = std::process::Command::new("feh")
-            .args(&["--bg-fill",wallpaper]) // Adjust feh command as needed
+            .args(&["--bg-fill", wallpaper]) // Adjust feh command as needed
             .spawn()
             .expect("Error setting wallpaper with feh");
 
@@ -138,7 +142,7 @@ impl WallpaperSwitcher {
             .expect("Error setting wallpaper with swaybg");
 
         thread::sleep(Duration::from_secs(1)); // Wait for swaybg to start
-        return _output.id();
+        _output.id()
     }
 }
 
