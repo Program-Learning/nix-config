@@ -521,11 +521,11 @@
         "systems": "systems_8"
       },
       "locked": {
-        "lastModified": 1743794929,
-        "narHash": "sha256-GfAbcD7BFQlhAZycJtVzQLKg1YfAcvrx3hdbbDup29E=",
+        "lastModified": 1744226820,
+        "narHash": "sha256-fsQtczB5mwKXdf+droMDZIjwd52i9HMCyRIkSKWim8w=",
         "owner": "nix-community",
         "repo": "browser-previews",
-        "rev": "216dd22d2681c2ba1d9f15ab4e2b31cca57f2302",
+        "rev": "04874c861dd2770301fa4e1b527953194ca3a911",
         "type": "github"
       },
       "original": {

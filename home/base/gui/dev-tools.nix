@@ -9,6 +9,9 @@
     insomnia # REST client
     hoppscotch # Api Test Tool
     wireshark # network analyzer
+    # these is gns3, an alternative to packet tracer
+    # gns3-server
+    # gns3-gui
     linux-wifi-hotspot
     hostapd
 
