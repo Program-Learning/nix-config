@@ -19,7 +19,7 @@ export def nixos-switch [
         mv result $new_dir_name
         let msg = "NixOS boot image built successfully. sudo password is required now"
         print $msg
-        notify-send $msg
+        notify-send -u critical -a NIXOS_REBUILD $msg
         sudo $"($new_dir_name)/bin/switch-to-configuration" boot
         rm $new_dir_name
     } else if "switch-notify" == $mode {
@@ -28,7 +28,7 @@ export def nixos-switch [
         mv result $new_dir_name
         let msg = "NixOS system configuration built successfully. sudo password is required now"
         print $msg
-        notify-send $msg
+        notify-send -u critical -a NIXOS_REBUILD $msg
         sudo $"($new_dir_name)/bin/switch-to-configuration" switch
         rm $new_dir_name
     } else {
@@ -37,7 +37,7 @@ export def nixos-switch [
         mv result $new_dir_name
         let msg = "NixOS system configuration built successfully. sudo password is required now"
         print $msg
-        notify-send $msg
+        notify-send -u critical -a NIXOS_REBUILD $msg
         sudo $"($new_dir_name)/bin/switch-to-configuration" switch
         rm $new_dir_name
     }
