@@ -1,6 +1,7 @@
 {
   pkgs,
   pkgs-stable,
+  pkgs-latest,
   ...
 }: {
   services.open-webui = {
