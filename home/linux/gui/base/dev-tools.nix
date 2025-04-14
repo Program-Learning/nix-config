@@ -5,6 +5,7 @@
   pkgs-latest,
   fakedroid,
   pkgs-unstable,
+  Snowpkgs,
   ...
 }: {
   home.packages = with pkgs; [
@@ -19,6 +20,8 @@
     abootimg
     android-tools
     android-studio
+    # disable bcs can not be built
+    # Snowpkgs.packages.${pkgs.system}.android-translation-layer
     # genymotion
     # edl
     # --payload-dumper
