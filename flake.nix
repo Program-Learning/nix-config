@@ -26,6 +26,8 @@
       "https://nykma.cachix.org"
 
       "https://cache.garnix.io"
+
+      "https://snowy-cache.cachix.org"
     ];
     extra-trusted-public-keys = [
       "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
@@ -38,6 +40,8 @@
       "nykma.cachix.org-1:z04hZH9YnR1B2lpLperwiazdkaT5yczgOPa1p/NHqK4="
 
       "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
+
+      "snowy-cache.cachix.org-1:okWl5IF/yzdZ+p/eRhDFvcanQo/y0ta80dvfdGgy28U="
     ];
   };
 
@@ -296,6 +300,7 @@
     browser-previews = {
       url = "github:nix-community/browser-previews";
       # url = "github:Apps-Used-By-Myself/browser-previews";
+      # disable bcs this break some xdg-utils(?) like save file dialog but do not work
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -420,7 +425,6 @@
 
     Snowpkgs = {
       url = "github:Daru-san/Snowpkgs";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     android-nixpkgs = {
