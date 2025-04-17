@@ -15,6 +15,7 @@ export def nixos-switch [
         NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild switch --use-remote-sudo --flake $".#($name)" --impure
     } else if "boot-notify" == $mode {
         let new_dir_name = $"result-(date now | format date "%Y-%m-%d_%H:%M:%S")"
+        print "NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild build --flake $\".#($name)\" --impure"
         NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild build --flake $".#($name)" --impure
         mv result $new_dir_name
         let msg = "NixOS boot image built successfully. sudo password is required now"
@@ -24,6 +25,7 @@ export def nixos-switch [
         rm $new_dir_name
     } else if "switch-notify" == $mode {
         let new_dir_name = $"result-(date now | format date "%Y-%m-%d_%H:%M:%S")"
+        print "NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild build --flake $\".#($name)\" --impure"
         NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild build --flake $".#($name)" --impure
         mv result $new_dir_name
         let msg = "NixOS system configuration built successfully. sudo password is required now"
@@ -33,6 +35,7 @@ export def nixos-switch [
         rm $new_dir_name
     } else {
         let new_dir_name = $"result-(date now | format date "%Y-%m-%d_%H:%M:%S")"
+        print "NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild build --flake $\".#($name)\" --impure"
         NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild build --flake $".#($name)" --impure
         mv result $new_dir_name
         let msg = "NixOS system configuration built successfully. sudo password is required now"
