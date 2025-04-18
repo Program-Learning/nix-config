@@ -62,6 +62,7 @@
 
     # tool for quick package using
     comma
+    nix-index
 
     # git related
     pre-commit

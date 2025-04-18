@@ -116,6 +116,10 @@
         ".Genymobile"
         "AndroidStudioProjects"
         "IdeaProjects"
+        ".jdks"
+
+        # nix-index
+        ".cache/nix-index"
 
         # cloud native
         {
