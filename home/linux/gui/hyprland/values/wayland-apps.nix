@@ -23,10 +23,11 @@
     ''
     + (builtins.readFile "${nur-ryan4yin.packages.${pkgs.system}.catppuccin-foot}/catppuccin-mocha.conf");
 
-  home.packages = [
-    # pkgs.firefox-wayland
-    pkgs.nixpaks.firefox
-    pkgs.nixpaks.firefox-desktop-item
+  home.packages = with pkgs; [
+    # firefox-wayland
+    nixpaks.firefox
+    nixpaks.firefox-desktop-item
+    code-cursor # an AI code editor
   ];
 
   programs = {

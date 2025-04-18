@@ -112,7 +112,7 @@
     nix-gaming.url = "github:fufexan/nix-gaming";
 
     disko = {
-      url = "github:nix-community/disko/v1.9.0";
+      url = "github:nix-community/disko/v1.11.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -137,6 +137,8 @@
     ghostty = {
       url = "github:ghostty-org/ghostty";
     };
+
+    blender-bin.url = "github:edolstra/nix-warez?dir=blender";
 
     ########################  Some non-flake repositories  #########################################
 

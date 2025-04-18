@@ -4,11 +4,13 @@
   pkgs-stable,
   nur-ryan4yin,
   nur-DataEraserC,
+  blender-bin,
   ...
 }: {
   home.packages = with pkgs; [
     # creative
-    pkgs-stable.blender # 3d modeling
+    # https://github.com/edolstra/nix-warez/blob/master/blender/flake.nix
+    blender-bin.packages.${pkgs.system}.blender_4_2 # 3d modeling
     # gimp      # image editing, I prefer using figma in browser instead of this one
     (gimp-with-plugins.override {
       plugins = with gimpPlugins; [
@@ -63,7 +65,7 @@
         wlrobs
         # obs-ndi
         obs-vaapi
-        obs-nvfbc
+        # obs-nvfbc
         obs-teleport
         # obs-hyperion
         droidcam-obs
