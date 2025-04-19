@@ -12,6 +12,7 @@ require("lazy").setup({
   },
   { import = "community" },
   { import = "plugins" },
+  { import = "custom_plugins"},
 } --[[@as LazySpec]], {
   -- Configure any other `lazy.nvim` configuration options here
   -- https://github.com/folke/lazy.nvim?tab=readme-ov-file#%EF%B8%8F-configuration

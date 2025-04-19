@@ -49,6 +49,10 @@ in {
           executable = "${super.lib.getBin super.tdesktop}/bin/telegram-desktop";
           profile = "${super.firejail}/etc/firejail/telegram-desktop.profile";
         };
+        ayugram-desktop = firejailWrapper {
+          executable = "${super.lib.getBin super.ayugram-desktop}/bin/ayugram-desktop";
+          profile = "${super.firejail}/etc/firejail/ayugram-desktop.profile";
+        };
         brave = firejailWrapper {
           executable = "${super.lib.getBin super.brave}/bin/brave";
           profile = "${super.firejail}/etc/firejail/brave.profile";

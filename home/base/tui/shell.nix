@@ -43,6 +43,11 @@ in {
       use aliases/git/git-aliases.nu *
       use aliases/eza/eza-aliases.nu *
       use aliases/bat/bat-aliases.nu *
-    '';
+    ''+
+      ''
+      let REPO_URL = 'https://mirrors.tuna.tsinghua.edu.cn/git/git-repo/'
+      let QT_QPA_PLATFORM = 'xcb'
+      # let TLDR_AUTO_UPDATE_DISABLED = 1
+      '';
   };
 }

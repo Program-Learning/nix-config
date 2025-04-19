@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+if [[ $1 == "--file" ]]; then
+  INPUT_IMG=$2
+else
+  INPUT_IMG=$(mktemp /tmp/ocr-tmp.png)
+  hyprshot -m region -o $INPUT_IMG > /dev/null
+fi
+
+LANG_DETECT=$(tesseract $INPUT_IMG stdout -l eng+chi_sim --oem 1 2>/dev/null | grep -P '[\p{Han}]' > /dev/null && echo "chi_sim" || echo "eng")
+
+TEXT=$(tesseract $INPUT_IMG stdout -l $LANG_DETECT --oem 1 2>/dev/null | tr -d '\f')
+
+if [[ $1 == "--clipboard" ]]; then
+  echo "$TEXT" | wl-copy
+  notify-send "OCR 结果已复制" "内容已存入剪贴板" -t 3000
+else
+  echo "$TEXT"
+fi
+
+[[ $1 != "--file" ]] && rm $INPUT_IMG

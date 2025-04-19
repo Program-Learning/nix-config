@@ -42,27 +42,47 @@
       "/var/log"
       "/var/lib"
 
+      # daed
+      "/etc/daed/"
+
+      # ccache
+      "/var/cache/ccache"
+
       # created by modules/nixos/misc/fhs-fonts.nix
       # for flatpak apps
       # "/usr/share/fonts"
       # "/usr/share/icons"
+
+      # for android sign
+      # TODO: move to agenix/sop
+      "/etc/secrets/android-keys"
     ];
     files = [
       "/etc/machine-id"
     ];
 
+    # avoid build failure
+    users.root = {
+      home = "/root";
+      directories = [
+        ".cache"
+      ];
+    };
     # the following directories will be passed to /persistent/home/$USER
-    users.ryan = {
+    users.nixos = {
       directories = [
         "codes"
         "nix-config"
         "tmp"
 
+        "Desktop"
+        ".gnome"
         "Downloads"
         "Music"
         "Pictures"
         "Documents"
         "Videos"
+        "Templates"
 
         {
           directory = ".gnupg";
@@ -77,6 +97,29 @@
         ".config/pulse"
         ".pki"
         ".steam" # steam games
+        ".wine"
+        ".minecraft"
+        "GOG Games"
+
+        "Apps" # some apps temporarily store at here
+
+        ".config/Ryujinx"
+        ".config/yuzu"
+        ".config/suyu"
+        ".config/lutris"
+        ".config/gnome-boxes"
+        "Android"
+        ".android"
+        ".config/.android"
+        "workspace"
+        "eclipse-workspace"
+        ".Genymobile"
+        "AndroidStudioProjects"
+        "IdeaProjects"
+        ".jdks"
+
+        # nix-index
+        ".cache/nix-index"
 
         # cloud native
         {
@@ -97,6 +140,8 @@
           mode = "0700";
         }
 
+        ".tldr"
+
         # remote desktop
         ".config/remmina"
         ".config/freerdp"
@@ -108,8 +153,12 @@
         # vscode
         ".vscode"
         ".vscode-insiders"
-        ".config/Code/User"
-        ".config/Code - Insiders/User"
+        ".config/Code"
+        ".config/Code - Insiders"
+        ".config/vscode-sqltools"
+
+        # cisco packet tracer
+        "pt"
 
         # zed editor
         ".config/zed"
@@ -117,8 +166,13 @@
         # browsers
         ".mozilla"
         ".config/google-chrome"
+        ".config/google-chrome-unstable"
+        ".config/microsoft-edge"
 
-        # neovim / remmina / flatpak / ...
+        # email clients profiles
+        ".thunderbird"
+
+        # neovim / remmina / flatpak / zed ...
         ".local/share"
         ".local/state"
 
@@ -141,10 +195,84 @@
         # IM
         ".config/QQ"
         ".xwechat"
+        # clash
+        ".config/clash"
+        ".config/clash-verge"
+        ".config/clash-nyanpasu"
+        ".config/mihomo-party"
+        # v2ray
+        ".config/qv2ray"
+        ".config/nekoray"
+        # gg
+        ".config/gg"
+
+        # test niri
+        ".config/niri"
+
+        # ai related file dirs
+        "invokeai"
+        ".textgen"
+        ".config/LaphaeLaicmd"
+        ".config/aichat"
+        ".config/open-webui"
+        ".ollama"
+        ".cache/huggingface"
+        ".lingma"
+
+        ".vmware"
+        "VirtualBox VMs"
+        ".config/VirtualBox"
+        ".config/lxc"
+        ".config/libvirt"
+
+        ".config/.cpolar"
+        ".config/aDrive"
+        ".config/baidunetdisk"
+        ".config/wechat-devtools"
+        ".config/JetBrains"
+        ".config/io.hoppscotch.desktop"
+        ".config/ncmpcpp"
+        ".config/uGet"
+        ".config/Motrix"
+        ".config/sunshine"
+        ".config/icalingua"
+        ".config/MuseScore"
+        ".config/ghc"
+        ".config/Kingsoft"
+        ".config/libreoffice"
+        ".config/onlyoffice"
+        ".config/Genymobile"
+        ".config/gh"
+        ".config/go-musicfox"
+        ".config/GIMP"
+        ".config/anytype"
+        ".config/obs-studio"
+        ".config/kdeconnect"
+        ".config/DingTalk"
+        ".config/bilibili"
+        ".config/Google"
+        ".config/Moonlight Game Streaming Project"
+
+        # kde related
+        ".config/kdedefaults"
+
+        # Trash Bin(not work yet)
+        # https://github.com/nix-community/impermanence/issues/147
+        # we already have .local/share
+        # ".local/share/Trash"
+
+        ".cache/tlrc"
+
+        # nvfetcher
+        "_sources"
       ];
       files = [
         ".wakatime.cfg"
         ".config/nushell/history.txt"
+        ".condarc"
+
+        # nvfetcher
+        "nvfetcher.toml"
       ];
     };
   };

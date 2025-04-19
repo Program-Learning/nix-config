@@ -1,4 +1,9 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  pkgs-latest,
+  wpsFonts,
+  ...
+}: {
   # all fonts are linked to /nix/var/nix/profiles/system/sw/share/X11/fonts
   fonts = {
     # use fonts specified by user rather than default ones
@@ -6,6 +11,8 @@
     fontDir.enable = true;
 
     packages = with pkgs; [
+      wpsFonts.packages.${system}.default
+      corefonts
       # icon fonts
       material-design-icons
       font-awesome
@@ -14,7 +21,7 @@
       # Noto 系列字族名只支持英文，命名规则是 Noto + Sans 或 Serif + 文字名称。
       # 其中汉字部分叫 Noto Sans/Serif CJK SC/TC/HK/JP/KR，最后一个词是地区变种。
       # noto-fonts # 大部分文字的常见样式，不包含汉字
-      # noto-fonts-cjk # 汉字部分
+      # noto-fonts-cjk-sans # 汉字部分
       noto-fonts-emoji # 彩色的表情符号字体
       # noto-fonts-extra # 提供额外的字重和宽度变种
 
@@ -24,6 +31,7 @@
       source-han-sans # 思源黑体
       source-han-serif # 思源宋体
 
+      sarasa-gothic
       # nerdfonts
       # https://github.com/NixOS/nixpkgs/blob/nixos-unstable-small/pkgs/data/fonts/nerd-fonts/manifests/fonts.json
       nerd-fonts.symbols-only # symbols icon only
@@ -33,15 +41,22 @@
 
       julia-mono
       dejavu_fonts
+      vistafonts-chs # ms yahei
+      # Maple Mono (Ligature TTF unhinted)
+      pkgs-latest.maple-mono.truetype
+      # Maple Mono NF (Ligature unhinted)
+      pkgs-latest.maple-mono.NF-unhinted
+      # Maple Mono NF CN (Ligature unhinted)
+      pkgs-latest.maple-mono.NF-CN-unhinted
     ];
 
     # user defined fonts
     # the reason there's Noto Color Emoji everywhere is to override DejaVu's
     # B&W emojis that would sometimes show instead of some Color emojis
     fontconfig.defaultFonts = {
-      serif = ["Source Han Serif SC" "Source Han Serif TC" "Noto Color Emoji"];
-      sansSerif = ["Source Han Sans SC" "Source Han Sans TC" "Noto Color Emoji"];
-      monospace = ["JetBrainsMono Nerd Font" "Noto Color Emoji"];
+      serif = ["Maple Mono NF CN" "Source Han Serif SC" "Source Han Serif TC" "Noto Color Emoji"];
+      sansSerif = ["Maple Mono NF CN" "Source Han Sans SC" "Source Han Sans TC" "Noto Color Emoji"];
+      monospace = ["Maple Mono NF CN" "Maple Mono" "Maple Mono NF" "JetBrainsMono Nerd Font" "Noto Color Emoji"];
       emoji = ["Noto Color Emoji"];
     };
   };

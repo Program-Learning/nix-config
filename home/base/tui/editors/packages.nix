@@ -1,6 +1,10 @@
 {
   pkgs,
   pkgs-unstable,
+  pkgs-stable,
+  gomod2nix,
+  cargo2nix,
+  gradle2nix,
   ...
 }: {
   nixpkgs.config = {
@@ -12,13 +16,43 @@
   home.packages = with pkgs; (
     # -*- Data & Configuration Languages -*-#
     [
+      #-- golang
+      go
+      gomodifytags
+      gomod2nix.packages.${pkgs.system}.default
+      iferr # generate error handling code for go
+      impl # generate function implementation for go
+      gotools # contains tools like: godoc, goimports, etc.
+      gopls # go language server
+      delve # go debugger
+
+      # -- java
+      jdk17
+      tomcat9
+      gradle
+      maven
+      spring-boot-cli
+      jdt-language-server
+
+      #-- flutter
+      flutter
+
+      #-- dart
+      # dart
+
+      #-- haskell
+      ghc
+
       #-- nix
       nil
+      nurl
+      nvfetcher
       # rnix-lsp
       # nixd
       statix # Lints and suggestions for the nix programming language
       deadnix # Find and remove unused code in .nix source files
       alejandra # Nix Code Formatter
+      patchelf # Patch ELF for nixos
 
       #-- nickel lang
       nickel
@@ -40,7 +74,7 @@
       marksman # language server for markdown
       glow # markdown previewer
       pandoc # document converter
-      pkgs-unstable.hugo # static site generator
+      hugo # static site generator
 
       #-- sql
       sqlfluff
@@ -53,9 +87,11 @@
     [
       #-- c/c++
       cmake
+      xmake
       cmake-language-server
       gnumake
       checkmake
+      ccache
       # c/c++ compiler, required by nvim-treesitter!
       gcc
       gdb
@@ -68,6 +104,7 @@
 
       #-- python
       pyright # python language server
+      poetry
       (python311.withPackages (
         ps:
           with ps; [
@@ -92,6 +129,39 @@
             # setuptools
             # paramiko
             # rapidfuzz
+
+            # modules used by Mayuri
+            virtualenv
+            pip # use in venv "python -m venv .venv" "source .venv/bin/activate"
+            tkinter # The standard Python interface to the Tcl/Tk GUI toolkit
+
+            # AI/Digital Image
+            # matplotlib
+            # numpy
+            # opencv-python
+            # scipy
+            # pywavelets
+            # pillow
+
+            pycryptodome
+            ipykernel
+            jupyterlab
+            seaborn
+            networkx
+            beautifulsoup4
+            # selenium
+            urllib3
+            pyclip
+            pygobject3
+            pybluez
+            pymysql
+            redis
+            jieba
+            wordcloud
+            pandas-datareader
+            pyperclip
+            # disable due to build test failed
+            # fake-useragent
           ]
       ))
 
@@ -102,6 +172,7 @@
       pkgs-unstable.cargo # rust package manager
       pkgs-unstable.rustfmt
       pkgs-unstable.clippy # rust linter
+      cargo2nix.packages.${pkgs.system}.cargo2nix
 
       #-- golang
       go
@@ -147,7 +218,7 @@
       racket-minimal
       fnlfmt # fennel
       (
-        if pkgs.stdenv.isDarwin
+        if pkgs.stdenv.isDarwin || pkgs.stdenv.isAarch64 || pkgs.stdenv.isAarch32
         then pkgs.emptyDirectory
         else pkgs-unstable.akkuPackages.scheme-langserver
       )
@@ -162,6 +233,7 @@
       nodePackages.prettier # common code formatter
       fzf
       gdu # disk usage analyzer, required by AstroNvim
+      bottom # graphical process/system monitor, required by AstroNvim
       (ripgrep.override {withPCRE2 = true;}) # recursively searches directories for a regex pattern
     ]
   );

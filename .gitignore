@@ -1,5 +1,7 @@
 result
 result/
+result*
+result*/
 .direnv/
 .DS_Store
 .pre-commit-config.yaml
@@ -7,3 +9,9 @@ logs/
 core*
 !core/
 !core.nix
+tmp/
+secrets/
+!secrets/README.md
+!secrets/darwin.nix
+!secrets/nixos.nix
+mysql/

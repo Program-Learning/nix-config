@@ -23,14 +23,14 @@ in {
       # Hexadecimal key signature is recommended.
       # Multiple keys may be specified separated by spaces.
       PASSWORD_STORE_KEY = lib.strings.concatStringsSep " " [
-        "EF824EB73CFD6CC7" # E - Ryan Yin (For pass & ssh only) <ryan4yin@linux.com>
+        "C0CEBF41DF515DDD" # E - Ryan Yin (For pass & ssh only) <ryan4yin@linux.com>
       ];
       # all .gpg-id files and non-system extension files must be signed using a detached signature using the GPG key specified by
       #   the full 40 character upper-case fingerprint in this variable.
       # If multiple fingerprints are specified, each separated by a whitespace character, then signatures must match at least one.
       # The init command will keep signatures of .gpg-id files up to date.
       PASSWORD_STORE_SIGNING_KEY = lib.strings.concatStringsSep " " [
-        "C2A313F98166C942" # S - Ryan Yin (For pass & ssh only) <ryan4yin@linux.com>
+        "8A24187A88B7F2B4" # S - Ryan Yin (For pass & ssh only) <ryan4yin@linux.com>
       ];
       PASSWORD_STORE_CLIP_TIME = "60";
       PASSWORD_STORE_GENERATED_LENGTH = "12";

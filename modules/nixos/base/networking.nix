@@ -18,4 +18,6 @@
     "ntp.aliyun.com" # Aliyun NTP Server
     "ntp.tencent.com" # Tencent NTP Server
   ];
+
+  programs.wireshark.enable = true;
 }

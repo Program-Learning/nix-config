@@ -1,0 +1,90 @@
+#!/usr/bin/env bash
+
+encrypt() {
+    local password="$1"
+    local a="RDpbLfCPsJZ7fiv"
+    local c='yLwVl0zKqws7LgKPRQ84Mdt708T1qQ3Ha7xv3H7NyU84p21BriUWBU43odz3iP4rBL3cD02KZciXTysVXiV8ngg6vL48rPJyAUw0HurW20xqxv9aYb4M9wK1Ae0wlro510qXeU07kV57fQMc8L6aLgMLwygtc0F10a0Dg70TOoouyFhdysuRMO51yY5ZlOZZLEal1h0t9YQW0Ko7oBwmCAHoic4HYbUyVeU3sfQ1xtXcPcf1aT303wAQhv66qzW'
+    local e=''
+    local f g h k l n
+    local i
+    local char_a char_b char_c
+
+    f=g=h=k=l=187
+    g=${#a}
+    h=${#password}
+    k=${#c}
+
+    if (( g > h )); then
+        f=g
+    else
+        f=h
+    fi
+
+    for (( p=0; p<f; p++ )); do
+        n=l=187
+        if (( p >= g )); then
+            n=$(printf "%d" "'${password:$p:1}")
+        else
+            if (( p >= h )); then
+                l=$(printf "%d" "'${a:$p:1}")
+            else
+                l=$(printf "%d" "'${a:$p:1}")
+                n=$(printf "%d" "'${password:$p:1}")
+            fi
+        fi
+        char_c="${c:$((l^n % k)):1}"
+        e+="${char_c}"
+    done
+
+    echo "$e"
+}
+
+encrypt_password() {
+    local password="$1"
+    local encrypted_password=$(encrypt "$password")
+    echo "$encrypted_password"
+}
+
+login() {
+    local url=$1
+    local password=$2
+
+    stok=$(curl -s -X POST "$url" -d "{\"method\":\"do\",\"login\":{\"password\":\"$password\"}}" | jq -r '.stok')
+    echo "$stok"
+}
+
+set_down_speed() {
+    local url=$1
+    local stok=$2
+    local mac=$3
+    local name=$4
+    local down_limit=$5
+
+    curl -X POST "${url}/stok=${stok}/ds" -d "{\"hosts_info\":{\"set_flux_limit\":{\"mac\":\"$mac\",\"is_blocked\":\"0\",\"name\":\"$name\",\"down_limit\":$down_limit,\"up_limit\":\"0\",\"limit_time\":\"\",\"forbid_domain\":\"\"}},\"method\":\"do\"}"
+}
+
+if [ $# -lt 5 ]; then
+    echo "Usage: $0 <url> <password> <mac> <name> <downLimit>"
+    exit 1
+fi
+
+url=$1
+password=$2
+mac=$3
+mac=${mac//:/-}
+name=$4
+downLimit=$5
+
+# Encrypt the password before login
+encrypted_password=$(encrypt_password "$password")
+
+# invoke login function with encrypted password
+stok=$(login "$url" "$encrypted_password")
+if [ -z "$stok" ]; then
+    echo "Login failed."
+    exit 1
+fi
+
+# invoke set down_speed function
+set_down_speed "$url" "$stok" "$mac" "$name" "$downLimit"
+

@@ -26,6 +26,21 @@
         # To use chrome, we need to allow the installation of non-free software
         config.allowUnfree = true;
       };
+      pkgs-latest = import inputs.nixpkgs-latest {
+        inherit system; # refer the `system` parameter form outer scope recursively
+        # To use chrome, we need to allow the installation of non-free software
+        config.allowUnfree = true;
+      };
+      pkgs-unstable-yuzu = import inputs.nixpkgs-unstable-yuzu {
+        inherit system; # refer the `system` parameter form outer scope recursively
+        # To use chrome, we need to allow the installation of non-free software
+        config.allowUnfree = true;
+      };
+      pkgs-unstable-etcher = import inputs.nixpkgs-unstable-etcher {
+        inherit system; # refer the `system` parameter form outer scope recursively
+        # To use chrome, we need to allow the installation of non-free software
+        config.allowUnfree = true;
+      };
     };
 
   # This is the args for all the haumea modules in this folder.
@@ -37,25 +52,35 @@
     # aarch64-linux = import ./aarch64-linux (args // {system = "aarch64-linux";});
     # riscv64-linux = import ./riscv64-linux (args // {system = "riscv64-linux";});
   };
+  wslSystems = {
+    x86_64-linux = import ./x86_64-wsl (args // {system = "x86_64-linux";});
+    # aarch64-linux = import ./aarch64-wsl (args // {system = "aarch64-linux";});
+  };
   darwinSystems = {
     aarch64-darwin = import ./aarch64-darwin (args // {system = "aarch64-darwin";});
     x86_64-darwin = import ./x86_64-darwin (args // {system = "x86_64-darwin";});
   };
-  allSystems = nixosSystems // darwinSystems;
+  droidSystems = {
+    aarch64-linux = import ./aarch64-droid (args // {system = "aarch64-linux";});
+    # x86_64-linux = import ./x86_64-droid (args // {system = "x86_64-linux";});
+  };
+  allSystems = nixosSystems // darwinSystems // droidSystems // wslSystems;
   allSystemNames = builtins.attrNames allSystems;
   nixosSystemValues = builtins.attrValues nixosSystems;
   darwinSystemValues = builtins.attrValues darwinSystems;
-  allSystemValues = nixosSystemValues ++ darwinSystemValues;
+  droidSystemValues = builtins.attrValues droidSystems;
+  wslSystemValues = builtins.attrValues wslSystems;
+  allSystemValues = nixosSystemValues ++ darwinSystemValues ++ droidSystemValues ++ wslSystemValues;
 
   # Helper function to generate a set of attributes for each system
   forAllSystems = func: (nixpkgs.lib.genAttrs allSystemNames func);
-in {
+in rec {
   # Add attribute sets into outputs, for debugging
-  debugAttrs = {inherit nixosSystems darwinSystems allSystems allSystemNames;};
+  debugAttrs = {inherit nixosSystems darwinSystems droidSystems wslSystems allSystems allSystemNames;};
 
   # NixOS Hosts
   nixosConfigurations =
-    lib.attrsets.mergeAttrsList (map (it: it.nixosConfigurations or {}) nixosSystemValues);
+    lib.attrsets.mergeAttrsList (map (it: it.nixosConfigurations or {}) nixosSystemValues) // wslConfigurations;
 
   # Colmena - remote deployment via SSH
   colmena =
@@ -81,6 +106,14 @@ in {
   # macOS Hosts
   darwinConfigurations =
     lib.attrsets.mergeAttrsList (map (it: it.darwinConfigurations or {}) darwinSystemValues);
+
+  # droid Hosts
+  nixOnDroidConfigurations =
+    lib.attrsets.mergeAttrsList (map (it: it.nixOnDroidConfigurations or {}) droidSystemValues);
+
+  # WSL Hosts
+  wslConfigurations =
+    lib.attrsets.mergeAttrsList (map (it: it.nixosConfigurations or {}) wslSystemValues);
 
   # Packages
   packages = forAllSystems (
@@ -122,32 +155,10 @@ in {
   );
 
   # Development Shells
-  devShells = forAllSystems (
-    system: let
-      pkgs = nixpkgs.legacyPackages.${system};
-    in {
-      default = pkgs.mkShell {
-        packages = with pkgs; [
-          # fix https://discourse.nixos.org/t/non-interactive-bash-errors-from-flake-nix-mkshell/33310
-          bashInteractive
-          # fix `cc` replaced by clang, which causes nvim-treesitter compilation error
-          gcc
-          # Nix-related
-          alejandra
-          deadnix
-          statix
-          # spell checker
-          typos
-          # code formatter
-          nodePackages.prettier
-        ];
-        name = "dots";
-        shellHook = ''
-          ${self.checks.${system}.pre-commit-check.shellHook}
-        '';
-      };
-    }
-  );
+  devShells = import (mylib.relativeToRoot "devshells") (inputs
+    // {
+      inherit forAllSystems mylib self lib;
+    });
 
   # Format the nix code in this flake
   formatter = forAllSystems (

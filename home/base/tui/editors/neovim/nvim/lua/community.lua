@@ -18,6 +18,7 @@ return {
   { import = "astrocommunity.motion.flit-nvim" },
   { import = "astrocommunity.scrolling.nvim-scrollbar" },
   { import = "astrocommunity.editing-support.todo-comments-nvim" },
+  { import = "astrocommunity.editing-support.suda-vim" },
   -- Language Support
   ---- Frontend & NodeJS
   { import = "astrocommunity.pack.typescript-all-in-one" },

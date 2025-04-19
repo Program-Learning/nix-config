@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+if [[ $1 == "--clipboard" ]]; then
+  INPUT_TEXT=$(wl-paste)
+else
+  INPUT_TEXT=$@
+fi
+
+if echo "$INPUT_TEXT" | grep -Pq '[\p{Han}]'; then
+  TRANS_LANG="en"
+else
+  TRANS_LANG="zh-CN"
+fi
+
+TRANSLATED=$(trans -b -s auto -t $TRANS_LANG "$INPUT_TEXT")
+
+if [[ $2 == "--clipboard" ]]; then
+  echo "$TRANSLATED" | wl-copy
+  notify-send "翻译结果已复制" "内容已存入剪贴板" -t 3000
+else
+  echo "$TRANSLATED"
+fi

@@ -1,6 +1,7 @@
 {
   pkgs,
   pkgs-unstable,
+  nur-DataEraserC,
   ...
 }: {
   #############################################################
@@ -18,13 +19,17 @@
     colmena # nixos's remote deployment tool
 
     # db related
-    pkgs-unstable.mycli
-    pkgs-unstable.pgcli
+    mycli
+    pgcli
     mongosh
     sqlite
 
     # embedded development
     minicom
+    rkdeveloptool
+    rkflashtool
+    dtc
+    screen
 
     # ai related
     pkgs-unstable.python312Packages.huggingface-hub # huggingface-cli
@@ -47,6 +52,21 @@
     # need to run `conda-shell` before using command `conda`
     # conda is not available for MacOS
     conda
+
+    # manual
+    man-pages
+    man-pages-posix
+
+    # pin clang but do not add to env
+    nur-DataEraserC.packages.${pkgs.system}.clang_dev_env_fhs
+
+    # tool for quick package using
+    comma
+    nix-index
+
+    # git related
+    pre-commit
+    commitizen # Tool to create committing rules for projects, auto bump versions, and generate changelogs
   ];
 
   programs = {
