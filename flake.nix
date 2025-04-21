@@ -226,7 +226,8 @@
     };
 
     suyu = {
-      url = "git+https://git.suyu.dev/suyu/nix-flake";
+      # url = "git+https://git.suyu.dev/suyu/nix-flake";
+      url = "git+https://github.com/suyu-emu/nix-flake";
       # url = "github:Noodlez1232/suyu-flake";
     };
 

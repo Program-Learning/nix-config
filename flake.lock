@@ -9001,17 +9001,17 @@
         "systems": "systems_79"
       },
       "locked": {
-        "lastModified": 1714727263,
-        "narHash": "sha256-R+x0UZrBedeR6w+h44JaGwuQJrut5VVD2yjNgYNt9f4=",
+        "lastModified": 1743468709,
+        "narHash": "sha256-fBfgMduzwADxeVy3myqH0klYOnteh3Y0URTBn3haGRk=",
         "ref": "refs/heads/master",
-        "rev": "4013bb63ca2217eab5c4a25e266d68d908b96791",
-        "revCount": 15,
+        "rev": "80f8799c1bdec2affe571d04c234a5f30009bde9",
+        "revCount": 16,
         "type": "git",
-        "url": "https://git.suyu.dev/suyu/nix-flake"
+        "url": "https://github.com/suyu-emu/nix-flake"
       },
       "original": {
         "type": "git",
-        "url": "https://git.suyu.dev/suyu/nix-flake"
+        "url": "https://github.com/suyu-emu/nix-flake"
       }
     },
     "systems": {
