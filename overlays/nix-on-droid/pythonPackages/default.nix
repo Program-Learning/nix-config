@@ -13,7 +13,7 @@ in {
   pythonPackagesOverlays =
     (prev.pythonPackagesOverlays or [])
     ++ [
-      (python-final: python-prev: disabled_packages_map)
+      (python-final: python-prev: {} // disabled_packages_map)
     ];
 
   python313 = let

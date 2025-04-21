@@ -158,7 +158,8 @@
             redis
             jieba
             wordcloud
-            pandas-datareader
+            # NOTE: not supported by python313 yet
+            # pandas-datareader
             pyperclip
             # disable due to build test failed
             # fake-useragent
