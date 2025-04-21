@@ -105,7 +105,7 @@
       #-- python
       pyright # python language server
       poetry
-      (python311.withPackages (
+      (python313.withPackages (
         ps:
           with ps; [
             ruff

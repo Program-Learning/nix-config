@@ -16,13 +16,13 @@ in {
       (python-final: python-prev: disabled_packages_map)
     ];
 
-  python311 = let
-    self = prev.python311.override {
+  python313 = let
+    self = prev.python313.override {
       inherit self;
       packageOverrides = prev.lib.composeManyExtensions final.pythonPackagesOverlays;
     };
   in
     self;
 
-  python311Packages = final.python311.pkgs;
+  python313Packages = final.python313.pkgs;
 }

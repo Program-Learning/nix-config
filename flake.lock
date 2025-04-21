@@ -1080,22 +1080,6 @@
         "type": "github"
       }
     },
-    "doomemacs": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1744400981,
-        "narHash": "sha256-8bBhEmytBSPksB04vhcx0XUTW0wES0A5RATcvluTveg=",
-        "owner": "doomemacs",
-        "repo": "doomemacs",
-        "rev": "c6f749e67c13342007f6aeaa4a81e6fdb00f529f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "doomemacs",
-        "repo": "doomemacs",
-        "type": "github"
-      }
-    },
     "drpc": {
       "inputs": {
         "flake-utils": [
@@ -8773,7 +8757,6 @@
         "coder": "coder",
         "daeuniverse": "daeuniverse",
         "disko": "disko",
-        "doomemacs": "doomemacs",
         "fakedroid": "fakedroid",
         "fh": "fh",
         "firefox-nightly": "firefox-nightly",

@@ -142,12 +142,6 @@
 
     ########################  Some non-flake repositories  #########################################
 
-    # doom-emacs is a configuration framework for GNU Emacs.
-    doomemacs = {
-      url = "github:doomemacs/doomemacs";
-      flake = false;
-    };
-
     polybar-themes = {
       url = "github:adi1090x/polybar-themes";
       flake = false;
