@@ -52,6 +52,7 @@ export def nod-switch [
     name: string
     mode: string
 ] {
+    print $"mode: ($mode)"
     if "debug" == $mode {
         # show details via nix-output-monitor
         NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nom build $"nixOnDroidConfigurations.#.($name).config.system.build.toplevel" --show-trace --verbose
