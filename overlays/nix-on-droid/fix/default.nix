@@ -1,9 +1,9 @@
 _: (
   _: super: let
     disabled_packages = [
-      "python311.withPackages.jupyter"
-      "python311.withPackages.jupyterlab"
-      "python311.withPackages.pyclip"
+      "python311Packages.jupyter"
+      "python311Packages.jupyterlab"
+      "python311Packages.pyclip"
       "nodePackages.typescript-language-server"
       "flutter"
       "nickel"

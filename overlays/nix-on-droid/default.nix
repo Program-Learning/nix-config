@@ -7,24 +7,31 @@
 if feat."nix-on-droid" or false
 then
   (
-    lib.concatMap
+    lib.warn "nix-on-droid is enabled"
     (
-      f: let
-        overlay = import (./. + "/${f}") args;
-      in
-        if lib.isList overlay
-        then overlay
-        else [overlay]
-    ) # execute and import the overlay file
-    
-    (builtins.filter # find all overlay files in the current directory
-      
+      lib.concatMap
       (
-        f:
-          f
-          != "default.nix" # ignore default.nix
-          && f != "README.md" # ignore README.md
-      )
-      (builtins.attrNames (builtins.readDir ./.)))
+        f: let
+          overlay = import (./. + "/${f}") args;
+        in
+          if lib.isList overlay
+          then overlay
+          else [overlay]
+      ) # execute and import the overlay file
+      
+      (builtins.filter # find all overlay files in the current directory
+        
+        (
+          f:
+            f
+            != "default.nix" # ignore default.nix
+            && f != "README.md" # ignore README.md
+        )
+        (builtins.attrNames (builtins.readDir ./.)))
+    )
   )
-else []
+else
+  (
+    lib.warn "nix-on-droid is disabled"
+    []
+  )
