@@ -7,7 +7,7 @@
 if feat."nix-on-droid" or false
 then
   (
-    lib.warn "nix-on-droid is enabled"
+    lib.warn "[nixpkg-overlay] nix-on-droid is enabled"
     (
       lib.concatMap
       (
@@ -32,6 +32,6 @@ then
   )
 else
   (
-    lib.warn "nix-on-droid is disabled"
+    lib.warn "[nixpkg-overlay] nix-on-droid is disabled"
     []
   )
