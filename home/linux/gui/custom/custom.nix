@@ -107,7 +107,6 @@
           # libsForQt5.qt5.qtwayland
           # hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland
           libsForQt5.qt5ct
-          linuxKernel.packages.linux_6_1.v4l2loopback
           # kitty-themes
 
           adwaita-qt

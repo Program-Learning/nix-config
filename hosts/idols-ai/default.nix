@@ -29,7 +29,7 @@ in rec {
   ];
 
   networking = {
-    hostName = "STK-AL00";
+    hostName = "Desktop-UBERCOA";
     # inherit hostName;
     inherit (myvars.networking) defaultGateway nameservers;
     inherit (myvars.networking.hostsInterface.${hostName}) interfaces;
@@ -43,14 +43,16 @@ in rec {
         source = pkgs.writeText "upHook" ''
           INTERFACE=$1
           STATUS=$2
-          notify_online(){
+          notify_status(){
             alias_for_work=/etc/agenix/alias-for-work.bash
             if [ -f $alias_for_work ]; then
               . $alias_for_work
             else
               echo "No alias file found for work"
             fi
-            ${pkgs.ntfy-sh}/bin/ntfy publish $ntfy_topic "PC[y9000k2021h][nixos] online(Device Interface: $DEVICE_IFACE, Connection: $CONNECTION_ID($CONNECTION_UUID), Time: $(date +%Y-%m-%dT%H:%M:%S%Z))"
+            MSG="PC[y9000k2021h][nixos] online(Device Interface: $DEVICE_IFACE, Connection: $CONNECTION_ID($CONNECTION_UUID), Status: $STATUS, Time: $(date +%Y-%m-%dT%H:%M:%S%Z))"
+            notify-send $MSG
+            ${pkgs.ntfy-sh}/bin/ntfy publish $ntfy_topic $MSG
           }
           anonymous(){
             ~/.config/hypr/scripts/tp_link_script http://192.168.0.1 111111 "$(cat /sys/class/net/wlp0s20f3/address)" "匿名主机" 0
@@ -58,16 +60,18 @@ in rec {
 
           case "$STATUS" in
             up)
-              notify_online
+              notify_status
               anonymous
             ;;
             vpn-up)
-              notify_online
+              notify_status
               anonymous
             ;;
             down)
+              notify_status
             ;;
             vpn-down)
+              notify_status
             ;;
           esac
         '';

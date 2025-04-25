@@ -19,9 +19,9 @@
   boot.loader.systemd-boot.enable = true;
 
   # boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
-  # boot.kernelPackages = pkgs.linuxPackages_cachyos;
-  # chaotic.scx.enable = true;
+  # boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
+  boot.kernelPackages = pkgs.linuxPackages_cachyos;
+  services.scx.enable = true;
   # boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_xanmod.override {
   #   structuredExtraConfig = with lib.kernel; {
   #     DMABUF_HEAPS = yes;
