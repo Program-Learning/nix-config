@@ -53,6 +53,4 @@ return {
 
   -- Lua implementation of CamelCaseMotion, with extra consideration of punctuation.
   { import = "astrocommunity.motion.nvim-spider" },
-  -- AI Assistant
-  { import = "astrocommunity.completion.avante-nvim" },
 }
