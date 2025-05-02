@@ -13,7 +13,7 @@
     gamescope # SteamOS session compositing window manager
     # prismlauncher # A free, open source launcher for Minecraft
     hmcl # MineCraft Launcher
-    minecraft # Official MineCraft Launcher
+    # minecraft # Official MineCraft Launcher
     # prismlauncher
 
     mindustry-wayland
