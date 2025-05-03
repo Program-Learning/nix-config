@@ -18,6 +18,12 @@
       # root user is used for remote deployment, so we need to allow it
       PermitRootLogin = "prohibit-password";
       PasswordAuthentication = false; # disable password login
+      Macs = [
+        "hmac-sha2-512" # Required for ServerBox
+        "hmac-sha2-512-etm@openssh.com"
+        "hmac-sha2-256-etm@openssh.com"
+        "umac-128-etm@openssh.com"
+      ];
     };
     openFirewall = true;
   };

@@ -9,6 +9,7 @@
   ...
 }: {
   home.packages = with pkgs; [
+    # -- android related
     # nur-DataEraserC.packages.${pkgs.system}.qtscrcpy_git
     nur-DataEraserC.packages.${pkgs.system}.escrcpy_deb
     nur-DataEraserC.packages.${pkgs.system}.magiskboot
@@ -29,5 +30,6 @@
     # fakedroid.packages.${pkgs.system}.fakedroid
 
     win2xcur
+    nur-DataEraserC.packages.${pkgs.system}.flutter_server_box
   ];
 }
