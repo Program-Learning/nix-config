@@ -81,4 +81,4 @@ exec swayidle -w timeout 120 'hyprctl dispatch dpms off' resume 'hyprctl dispatc
 exec sway-audio-idle-inhibit &
 
 # Start alist
-exec podman container restart alist &
+# exec podman container restart alist &

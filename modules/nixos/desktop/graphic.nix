@@ -30,6 +30,7 @@
     xdgOpenUsePortal = false;
     extraPortals = with pkgs; [
       xdg-desktop-portal-gtk # for gtk
+      xdg-desktop-portal-gnome # for gnome
       # xdg-desktop-portal-kde  # for kde
     ];
   };

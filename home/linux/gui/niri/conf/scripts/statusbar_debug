@@ -2,8 +2,8 @@
 
 ## launch waybar with alt config
 
-CONFIG="$HOME/.config/hypr/waybar/config.jsonc"
-STYLE="$HOME/.config/hypr/waybar/style.css"
+CONFIG="$HOME/.config/niri/waybar/config.jsonc"
+STYLE="$HOME/.config/niri/waybar/style.css"
 
 kill $(pgrep waybar)
 while true; do

@@ -32,7 +32,7 @@ with lib; let
   };
   MkPermAttr = username: mode: {
     mode = mode;
-    owner = myvars.username;
+    owner = username;
   };
 in {
   imports = [
@@ -169,6 +169,11 @@ in {
             file = "${mysecrets}/cpolar.yml.age";
           }
           // (MkPermAttr "cpolar" "0700");
+        "alist-jwt" =
+          {
+            file = "${mysecrets}/alist-jwt.age";
+          }
+          // (MkPermAttr "alist" "0700");
       };
 
       # place secrets in /etc/

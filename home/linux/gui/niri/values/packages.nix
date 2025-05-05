@@ -4,6 +4,7 @@
   ...
 }: {
   home.packages = with pkgs; [
+    xwayland-satellite # for xwayland support
     xorg.xhost # to fix sudo graphical application
     brightnessctl # a tool to set screen brightness
     wev # debug which key is pressed

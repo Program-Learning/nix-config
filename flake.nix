@@ -398,6 +398,11 @@
 
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 
+    nur-Moraxyc = {
+      url = "github:Moraxyc/nur-packages";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nur-linyinfeng = {
       url = "github:linyinfeng/nur-packages";
       inputs.nixpkgs.follows = "nixpkgs";

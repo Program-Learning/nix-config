@@ -198,6 +198,15 @@ layout {
 // spawn-at-startup "alacritty" "-e" "fish"
 spawn-at-startup "sh" "-c" "~/.config/niri/scripts/startup"
 
+// xwayland support
+spawn-at-startup "xwayland-satellite"
+// Or, if you built it by hand:
+// spawn-at-startup "~/path/to/code/target/release/xwayland-satellite"
+
+environment {
+    DISPLAY ":0"
+}
+
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
 // If the client will specifically ask for CSD, the request will be honored.
 // Additionally, clients will be informed that they are tiled, removing some rounded corners.
@@ -264,11 +273,12 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+D { spawn "fuzzel"; }
+    Mod+D { spawn "~/.config/niri/scripts/menu"; }
     // Mod+D { spawn "anyrun"; }
     Super+Alt+L { spawn "swaylock"; }
     // Mod+T { spawn "kitty"; }
     Mod+T { spawn "foot"; }
+    Mod+Enter { spawn "foot"; }
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument in the end.
