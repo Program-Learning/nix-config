@@ -8,7 +8,7 @@
     "custom/cloudflare_warp",
     // "temperature",
     "backlight",
-    "custom/niri_workspaces",
+    "niri/workspaces",
   ],
   "modules-center": ["custom/playerctl"],
   "modules-right": [
@@ -24,15 +24,18 @@
     "custom/powermenu",
     "tray",
   ],
-  "custom/niri_workspaces": {
-    "format": "{}",
-    "interval": 2,
-    "return-type": "json",
-    "exec": "$HOME/.config/niri/scripts/niri-workspaces \"$WAYBAR_OUTPUT_NAME\"",
-    "on-click": "fuzzel",
-    "on-scroll-up": "$HOME/.config/niri/scripts/niri-workspaces up",
-    "on-scroll-down": "$HOME/.config/niri/scripts/niri-workspaces down",
-    "signal": 8,
+  "niri/workspaces": {
+	  "format": "{icon}",
+	  "format-icons": {
+		  // Named workspaces
+		  // (you need to configure them in niri)
+		  // "browser": "",
+		  // "discord": "",
+		  // "chat": "<b></b>",
+		  // Icons by state
+		  "active": "",
+		  "default": ""
+	  }
   },
   "clock": {
     "interval": 60,
