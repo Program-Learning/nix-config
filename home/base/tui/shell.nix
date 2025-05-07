@@ -46,7 +46,7 @@ in {
     ''+
       ''
       let REPO_URL = 'https://mirrors.tuna.tsinghua.edu.cn/git/git-repo/'
-      let QT_QPA_PLATFORM = 'xcb'
+      let QT_QPA_PLATFORM = 'wayland;xcb'
       # let TLDR_AUTO_UPDATE_DISABLED = 1
       '';
   };

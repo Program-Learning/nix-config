@@ -51,7 +51,7 @@ in rec {
             ${pkgs.ntfy-sh}/bin/ntfy publish $ntfy_topic "PC[${hostName}][nixos] online(Device Interface: $DEVICE_IFACE, Connection: $CONNECTION_ID($CONNECTION_UUID), Time: $(date +%Y-%m-%dT%H:%M:%S%Z))"
           }
           anonymous(){
-            ~/.config/hypr/scripts/tp_link_script http://192.168.0.1 111111 "$(cat /sys/class/net/wlp0s20f3/address)" "匿名主机" 0
+            ~/.config/*/scripts/tp_link_script http://192.168.0.1 111111 "$(cat /sys/class/net/wlp0s20f3/address)" "匿名主机" 0
           }
 
           case "$STATUS" in

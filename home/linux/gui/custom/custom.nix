@@ -93,7 +93,7 @@
 
           # dunst
           # pipewire
-          wireplumber
+          # wireplumber
           # tofi
           # eww
           # rofi-wayland
@@ -190,5 +190,6 @@
   services = {
     kdeconnect.enable = true;
     kdeconnect.indicator = true;
+    # kdeconnect.package = pkgs.kdePackages.kdeconnect-kde;
   };
 }

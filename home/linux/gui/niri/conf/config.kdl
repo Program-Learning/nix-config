@@ -190,6 +190,25 @@ layout {
         // top 64
         // bottom 64
     }
+    /-tab-indicator {
+        active-color "#80c8ff"
+        inactive-color "#808080"
+    }
+}
+
+environment {
+    // xwayland support
+    DISPLAY ":0"
+
+    NIXOS_OZONE_WL "1" // for any ozone-based browser & electron apps to run on wayland
+    MOZ_ENABLE_WAYLAND "1" // for firefox to run on wayland
+    MOZ_WEBRENDER "1"
+    // misc
+    _JAVA_AWT_WM_NONREPARENTING "1"
+    QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+    QT_QPA_PLATFORM "wayland;xcb"
+    SDL_VIDEODRIVER "wayland"
+    GDK_BACKEND "wayland,x11"
 }
 
 // Add lines like this to spawn processes at startup.
@@ -197,16 +216,13 @@ layout {
 // which may be more convenient to use.
 // See the binds section below for more spawn examples.
 // spawn-at-startup "alacritty" "-e" "fish"
-spawn-at-startup "sh" "-c" "~/.config/niri/scripts/startup"
 
 // xwayland support
 spawn-at-startup "xwayland-satellite"
 // Or, if you built it by hand:
 // spawn-at-startup "~/path/to/code/target/release/xwayland-satellite"
 
-environment {
-    DISPLAY ":0"
-}
+spawn-at-startup "sh" "-c" "~/.config/niri/scripts/startup"
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
 // If the client will specifically ask for CSD, the request will be honored.
@@ -216,7 +232,7 @@ environment {
 // You can change the path where screenshots are saved.
 // A ~ at the front will be expanded to the home directory.
 // The path is formatted with strftime(3) to give you the screenshot date and time.
-screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+screenshot-path "~/Pictures/Screenshots/Screenshot_niri_from_%Y-%m-%d_%H-%M-%S.png"
 
 // You can also set this to null to disable saving screenshots to disk.
 // screenshot-path null
@@ -236,6 +252,10 @@ animations {
 // Find more information on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Window-Rules
 
+window-rule {
+    open-maximized true
+}
+
 // Work around WezTerm's initial configure bug
 // by setting an empty default-column-width.
 window-rule {
@@ -245,6 +265,41 @@ window-rule {
     match app-id=r#"^org\.wezfurlong\.wezterm$"#
     default-column-width {}
 }
+
+window-rule {
+    match app-id="^steam$" title="^Steam 大屏幕模式$"
+    match app-id=".*Minecraft.*"
+    open-fullscreen true
+}
+
+window-rule {
+    match app-id=".*scrcpy.*"
+    open-floating true
+}
+
+window-rule {
+    geometry-corner-radius 12
+    clip-to-geometry true
+}
+
+window-rule {
+    // Match by "dropdown" app ID.
+    // You need to set this app ID when running your terminal, e.g.:
+    // spawn "alacritty" "--class" "dropdown"
+    match app-id="^dropdown$"
+
+    // Open it as floating.
+    open-floating true
+    // Anchor to the top edge of the screen.
+    default-floating-position x=0 y=0 relative-to="top-left"
+    // Half of the screen high.
+    default-window-height { proportion 0.5; }
+    // 80% of the screen wide.
+    default-column-width { proportion 1.0; }
+}
+
+workspace "ndrop"
+spawn-at-startup "niri" "msg" "action" "focus-workspace-down"
 
 // Example: block out two password managers from screen capture.
 // (This example rule is commented out with a "/-" in front.)
@@ -278,8 +333,15 @@ binds {
     // Mod+D { spawn "anyrun"; }
     Super+Alt+L { spawn "~/.config/niri/scripts/lockscreen"; }
     // Mod+T { spawn "kitty"; }
-    Mod+T { spawn "foot"; }
+    Mod+T { spawn "ghostty"; }
     Mod+Return { spawn "foot"; }
+    Mod+E { spawn "nautilus"; }
+    Ctrl+Shift+Escape { spawn "missioncenter"; }
+    Mod+P { spawn "~/.config/niri/scripts/colorpicker"; }
+    Mod+F12 { spawn "ndrop" "foot" "-a" "dropdown"; }
+
+    // tun off screen
+    XF86PowerOff { spawn "niri" "msg" "action" "power-off-monitors";}
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument in the end.
@@ -291,6 +353,17 @@ binds {
     XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
     XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
     XF86AudioMicMute     allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
+
+    XF86MonBrightnessUp allow-when-locked=true { spawn "~/.config/niri/scripts/brightness" "--inc"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "~/.config/niri/scripts/brightness" "--dec"; }
+    XF86AudioNext allow-when-locked=true { spawn "playerctl" "next"; }
+    XF86AudioPrev allow-when-locked=true { spawn "playerctl" "previous"; }
+    // the play-pause button beside delete button
+    XF86AudioPlay allow-when-locked=true { spawn "playerctl" "play-pause"; }
+    // the stop button beside play-pause button
+    XF86AudioStop allow-when-locked=true { spawn "playerctl" "stop"; }
+    // From my bluetooth device
+    XF86AudioPause allow-when-locked=true { spawn "playerctl" "play-pause"; }
 
     Mod+Q { close-window; }
 

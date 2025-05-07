@@ -2,7 +2,7 @@
 
 ## Script To Manage Speaker Volume(in Wayland).
 
-iDIR="$HOME/.config/hypr/mako/icons"
+iDIR="$HOME/.config/niri/mako/icons"
 
 # Get Volume
 get_volume() {

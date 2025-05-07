@@ -25,7 +25,7 @@ for _prs in "${_ps[@]}"; do
 done
 
 # Custom hook(remove this)
-# exec ~/.config/niri/scripts/tp_link_script http://192.168.0.1 111111 "$(cat /sys/class/net/wlp0s20f3/address)" "匿名主机" 0 &
+# exec ~/.config/*/scripts/tp_link_script http://192.168.0.1 111111 "$(cat /sys/class/net/wlp0s20f3/address)" "匿名主机" 0 &
 
 exec ntfy publish $ntfy_topic "PC[y9000k2021h][nixos] startup at $(date +%Y-%m-%dT%H:%M:%S%Z)" &
 
@@ -62,10 +62,11 @@ systemctl --user restart wallpaper.service &
 # Start mpd
 exec mpd &
 
-# Start clash-verge
+# Start clash
 # will try to replace clash by dae
 # exec clash-verge &
 # exec clash-nyanpasu &
+exec mihomo-party &
 
 # Start polkit authentication agent
 # exec lxpolkit &
@@ -74,12 +75,14 @@ exec polkit-gnome-authentication-agent-1 &
 # set default file-manager to thunar
 # Try with command
 #  dbus-send --session --print-reply --dest=org.freedesktop.FileManager1 /org/freedesktop/FileManager1 org.freedesktop.FileManager1.ShowFolders array:string:"file:/" string:""
-exec thunar --daemon &
+#  NOTE: Disable for test
+# exec thunar --daemon &
 
 # Start swayidle
 # exec swayidle -w timeout 1800 'systemctl suspend' resume 'hyprctl dispatch dpms on' timeout 120 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on' before-sleep 'swaylock'
-exec swayidle -w timeout 120 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on' before-sleep 'swaylock' &
+exec swayidle -w timeout 120 'niri msg action power-off-monitors' timeout 600 "$HOME/.config/niri/scripts/lockscreen" before-sleep "$HOME/.config/niri/scripts/lockscreen" &
 
+# do not idle when audio
 exec sway-audio-idle-inhibit &
 
 # Start alist

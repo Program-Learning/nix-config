@@ -55,7 +55,7 @@ in rec {
             ${pkgs.ntfy-sh}/bin/ntfy publish $ntfy_topic $MSG
           }
           anonymous(){
-            ~/.config/hypr/scripts/tp_link_script http://192.168.0.1 111111 "$(cat /sys/class/net/wlp0s20f3/address)" "匿名主机" 0
+            ~/.config/*/scripts/tp_link_script http://192.168.0.1 111111 "$(cat /sys/class/net/wlp0s20f3/address)" "匿名主机" 0
           }
 
           case "$STATUS" in
@@ -93,7 +93,7 @@ in rec {
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.11"; # Did you read the comment?
   features.bigdata_hadoop = {
-    enable = true;
+    enable = false;
     package = pkgs.hadoop_3_3;
   };
 }

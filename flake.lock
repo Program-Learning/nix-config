@@ -263,15 +263,15 @@
         "nixpkgs-with-go_1_20": "nixpkgs-with-go_1_20"
       },
       "locked": {
-        "lastModified": 1745604737,
-        "narHash": "sha256-ZJwYXSvP7PsJXbcML1wyAJZmT7vMmCvhoBT3uoobY3s=",
-        "owner": "Nobooooody",
+        "lastModified": 1746522761,
+        "narHash": "sha256-lH3akrWhH5fG8b1cRaVn1CAjKNEHGxK0eB1RckCUlC8=",
+        "owner": "FloatTech",
         "repo": "ZeroBot-Plugin",
-        "rev": "579a7eb2c51501cd3bfecde50a516655de1cd256",
+        "rev": "39e1f56955f7c99fc6941f27202eb5160f2d227f",
         "type": "github"
       },
       "original": {
-        "owner": "Nobooooody",
+        "owner": "FloatTech",
         "ref": "master",
         "repo": "ZeroBot-Plugin",
         "type": "github"
@@ -305,15 +305,15 @@
         "nixpkgs-with-go_1_20": "nixpkgs-with-go_1_20_2"
       },
       "locked": {
-        "lastModified": 1745604737,
-        "narHash": "sha256-ZJwYXSvP7PsJXbcML1wyAJZmT7vMmCvhoBT3uoobY3s=",
-        "owner": "Nobooooody",
+        "lastModified": 1746522761,
+        "narHash": "sha256-lH3akrWhH5fG8b1cRaVn1CAjKNEHGxK0eB1RckCUlC8=",
+        "owner": "FloatTech",
         "repo": "ZeroBot-Plugin",
-        "rev": "579a7eb2c51501cd3bfecde50a516655de1cd256",
+        "rev": "39e1f56955f7c99fc6941f27202eb5160f2d227f",
         "type": "github"
       },
       "original": {
-        "owner": "Nobooooody",
+        "owner": "FloatTech",
         "ref": "master",
         "repo": "ZeroBot-Plugin",
         "type": "github"
@@ -327,15 +327,15 @@
         "nixpkgs-with-go_1_20": "nixpkgs-with-go_1_20_3"
       },
       "locked": {
-        "lastModified": 1745604737,
-        "narHash": "sha256-ZJwYXSvP7PsJXbcML1wyAJZmT7vMmCvhoBT3uoobY3s=",
-        "owner": "Nobooooody",
+        "lastModified": 1746522761,
+        "narHash": "sha256-lH3akrWhH5fG8b1cRaVn1CAjKNEHGxK0eB1RckCUlC8=",
+        "owner": "FloatTech",
         "repo": "ZeroBot-Plugin",
-        "rev": "579a7eb2c51501cd3bfecde50a516655de1cd256",
+        "rev": "39e1f56955f7c99fc6941f27202eb5160f2d227f",
         "type": "github"
       },
       "original": {
-        "owner": "Nobooooody",
+        "owner": "FloatTech",
         "ref": "master",
         "repo": "ZeroBot-Plugin",
         "type": "github"
@@ -638,11 +638,11 @@
         "systems": "systems_9"
       },
       "locked": {
-        "lastModified": 1746214042,
-        "narHash": "sha256-8ZG40Tv/saQeoxASB+l179XTDP2UihMRFmZngfogsx0=",
+        "lastModified": 1746646118,
+        "narHash": "sha256-uxepYGf2gA0pGSnZ3x20+8e/uRULAwMFkh5C3In36as=",
         "owner": "nix-community",
         "repo": "browser-previews",
-        "rev": "084f40e793d7fc9ec0ce6c78ba47ef76d6d20d36",
+        "rev": "c20dcf1c04271f05619c5a291cc25c1a1b45fe5c",
         "type": "github"
       },
       "original": {
@@ -5148,11 +5148,11 @@
     "mysecrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1746443210,
-        "narHash": "sha256-BvkhpxIpufrlMtmVp4lvCq0YuHY5QCh11hW3pXGS7ys=",
+        "lastModified": 1746643553,
+        "narHash": "sha256-Y87XPqI1BsUVoqPToZ+2MK4GhMU+OgrQIdPbMOY6c+M=",
         "owner": "DataEraserC",
         "repo": "nix-secrets",
-        "rev": "eb7f489d9272f1468c3230b7befa93d54f58b40e",
+        "rev": "52a3c69866ae04ae11ffc8d77114ed91d986dda9",
         "type": "github"
       },
       "original": {
@@ -7648,11 +7648,11 @@
         "treefmt-nix": "treefmt-nix_8"
       },
       "locked": {
-        "lastModified": 1746474868,
-        "narHash": "sha256-pXNnqPbZaTS6rVds1FQrb+mbcf1ILFtH8c5XxbRVjwc=",
+        "lastModified": 1746617216,
+        "narHash": "sha256-c1EBgq/ugjzTUiOCfm79LclQH8keDQLB3A2B+cFWrTs=",
         "owner": "DataEraserC",
         "repo": "nur-packages",
-        "rev": "0cdb3df3e06eb66c30782907b5668ff31209c70a",
+        "rev": "6508dadeb184ae0d23fefce8c44b407ddd21ac68",
         "type": "github"
       },
       "original": {
@@ -7710,11 +7710,11 @@
         "treefmt-nix": "treefmt-nix_16"
       },
       "locked": {
-        "lastModified": 1746474868,
-        "narHash": "sha256-pXNnqPbZaTS6rVds1FQrb+mbcf1ILFtH8c5XxbRVjwc=",
+        "lastModified": 1746617216,
+        "narHash": "sha256-c1EBgq/ugjzTUiOCfm79LclQH8keDQLB3A2B+cFWrTs=",
         "owner": "DataEraserC",
         "repo": "nur-packages",
-        "rev": "0cdb3df3e06eb66c30782907b5668ff31209c70a",
+        "rev": "6508dadeb184ae0d23fefce8c44b407ddd21ac68",
         "type": "github"
       },
       "original": {
@@ -8922,11 +8922,11 @@
         "treefmt-nix": "treefmt-nix_24"
       },
       "locked": {
-        "lastModified": 1746474868,
-        "narHash": "sha256-pXNnqPbZaTS6rVds1FQrb+mbcf1ILFtH8c5XxbRVjwc=",
+        "lastModified": 1746617216,
+        "narHash": "sha256-c1EBgq/ugjzTUiOCfm79LclQH8keDQLB3A2B+cFWrTs=",
         "owner": "DataEraserC",
         "repo": "nur-packages",
-        "rev": "0cdb3df3e06eb66c30782907b5668ff31209c70a",
+        "rev": "6508dadeb184ae0d23fefce8c44b407ddd21ac68",
         "type": "github"
       },
       "original": {

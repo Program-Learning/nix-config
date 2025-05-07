@@ -1,6 +1,7 @@
 {
   pkgs,
   pkgs-unstable,
+  nur-DataEraserC,
   ...
 }: {
   home.packages = with pkgs; [
@@ -24,7 +25,7 @@
     hyprpicker # color picker
     wshowkeys # Show which key is triggered
 
-    hdrop # a tool to switch windows status (foreground/background)
+    nur-DataEraserC.packages.${pkgs.system}.ndrop # a tool to switch windows status (foreground/background)
 
     hyprshot # screen shot
     grim # taking screenshots

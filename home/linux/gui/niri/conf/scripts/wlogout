@@ -2,8 +2,8 @@
 
 ## wlogout with alt layout and style file
 
-LAYOUT="$HOME/.config/hypr/wlogout/layout"
-STYLE="$HOME/.config/hypr/wlogout/style.css"
+LAYOUT="$HOME/.config/niri/wlogout/layout"
+STYLE="$HOME/.config/niri/wlogout/style.css"
 
 if [[ ! $(pidof wlogout) ]]; then
 	wlogout --layout ${LAYOUT} --css ${STYLE} \

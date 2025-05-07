@@ -2,7 +2,7 @@
 
 ## Script To Manage Brightness (in Wayland).
 
-iDIR="$HOME/.config/hypr/mako/icons"
+iDIR="$HOME/.config/niri/mako/icons"
 
 # Get brightness
 get_backlight() {
