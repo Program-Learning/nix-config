@@ -4,22 +4,25 @@
   config,
   ...
 }: {
-  # NOTE: gnome-wayland's config has confilcted with this
-  # and niri has its spec conf from official
-  # TODO: maybe hyprland should separate from this bcs official hypr provide this:
-  # https://github.com/hyprwm/Hyprland/blob/main/assets/hyprland-portals.conf
-  xdg.portal = lib.mkIf (!config.modules.desktop.gnome-wayland.enable && !config.modules.desktop.niri.enable) {
+  # NOTE: this niri spec conf from
+  # https://github.com/YaLTeR/niri/blob/main/resources/niri-portals.conf
+  xdg.portal = lib.mkIf config.modules.desktop.niri.enable {
     enable = true;
 
     config = {
       common = {
-        # Use xdg-desktop-portal-gtk for every portal interface...
         default = [
+          "gnome"
           "gtk"
         ];
-        # except for the secret portal, which is handled by gnome-keyring
         "org.freedesktop.impl.portal.Secret" = [
           "gnome-keyring"
+        ];
+        "org.freedesktop.impl.portal.Notification" = [
+          "gtk"
+        ];
+        "org.freedesktop.impl.portal.Access" = [
+          "gtk"
         ];
       };
     };

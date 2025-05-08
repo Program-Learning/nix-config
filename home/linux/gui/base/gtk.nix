@@ -2,6 +2,7 @@
   pkgs,
   nur-DataEraserC,
   config,
+  myvars,
   ...
 }: {
   # If your themes for mouse cursor, icons or windows don’t load correctly,
@@ -40,6 +41,18 @@
     };
 
     gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
+
+    gtk3 = {
+      bookmarks = [
+        "file:///home/${myvars.username}/Documents"
+        "file:///home/${myvars.username}/Downloads"
+        "file:///home/${myvars.username}/Videos"
+        "file:///home/${myvars.username}/Pictures"
+        "file:///home/${myvars.username}/Music"
+        "file:///home/${myvars.username}/Apps"
+        "file:///home/${myvars.username}/nix-config"
+      ];
+    };
 
     iconTheme = {
       name = "Papirus-Dark";
