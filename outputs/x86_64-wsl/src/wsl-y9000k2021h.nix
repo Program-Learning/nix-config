@@ -20,7 +20,7 @@
       (map mylib.relativeToRoot [
         # common
         "secrets/nixos_agenix.nix"
-        "secrets/nixos_sopsnix.nix"
+        # "secrets/nixos_sopsnix.nix"
         "modules/nixos/server/server.nix"
         # host specific
         "hosts/wsl-${name}"
