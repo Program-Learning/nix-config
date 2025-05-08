@@ -63,6 +63,9 @@ in {
         };
       };
 
+      # Without autologin it may work
+      security.pam.services.greetd.enableGnomeKeyring = true;
+
       # fix https://github.com/ryan4yin/nix-config/issues/10
       security.pam.services.swaylock = {};
     })

@@ -6,6 +6,7 @@
 }: {
   # NOTE: this niri spec conf from
   # https://github.com/YaLTeR/niri/blob/main/resources/niri-portals.conf
+  # https://github.com/YaLTeR/niri/wiki/Important-Software
   xdg.portal = lib.mkIf config.modules.desktop.niri.enable {
     enable = true;
 
