@@ -1,5 +1,7 @@
 {mysecrets, ...}: {
   home.file.".ssh/romantic.pub".source = "${mysecrets}/public/romantic.pub";
+  home.file.".ssh/gluttony.pub".source = "${mysecrets}/public/gluttony.pub";
+  home.file.".ssh/juliet-age.pub".source = "${mysecrets}/public/juliet-age.pub";
   home.file.".ssh/y9000k2021h_id_rsa.pub".source = "${mysecrets}/public/y9000k2021h_id_rsa.pub";
   home.file.".ssh/y9000k2021h_id_ed25519.pub".source = "${mysecrets}/public/y9000k2021h_id_ed25519.pub";
 
@@ -22,7 +24,7 @@
         # It has the same effect as adding cli option `ssh -A user@host`
         ForwardAgent yes
         # romantic holds my homelab~
-        IdentityFile /etc/agenix/ssh-key-romantic
+        IdentityFile /etc/agenix/y9000k2021h_id_ed25519
         # Specifies that ssh should only use the identity file explicitly configured above
         # required to prevent sending default identity files first.
         IdentitiesOnly yes

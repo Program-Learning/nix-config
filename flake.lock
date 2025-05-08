@@ -5148,11 +5148,11 @@
     "mysecrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1746733044,
-        "narHash": "sha256-txp4lI32whwzF/hSX1XwjuLJTNA0MQtYCAhRbd22Tgk=",
+        "lastModified": 1746734590,
+        "narHash": "sha256-ejvsEz9Zwc5idi1G/GgY61HGDVxzmr4eMF1HZG6GbXE=",
         "owner": "DataEraserC",
         "repo": "nix-secrets",
-        "rev": "7fc1149b8e0c3def26756b5df90868e74ebd9496",
+        "rev": "5b7a8b3c26a1ee49e9f20b5c27777fe568cb1b65",
         "type": "github"
       },
       "original": {

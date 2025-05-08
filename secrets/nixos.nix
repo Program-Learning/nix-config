@@ -136,6 +136,18 @@ in {
           }
           // user_readable;
 
+        "gluttony" =
+          {
+            file = "${mysecrets}/gluttony.age";
+          }
+          // user_readable;
+
+        "juliet-age" =
+          {
+            file = "${mysecrets}/juliet-age.age";
+          }
+          // user_readable;
+
         "y9000k2021h_id_rsa" =
           {
             file = "${mysecrets}/y9000k2021h_id_rsa.age";
@@ -201,6 +213,18 @@ in {
 
         "agenix/ssh-key-romantic" = {
           source = config.age.secrets."ssh-key-romantic".path;
+          mode = "0600";
+          user = myvars.username;
+        };
+
+        "agenix/gluttony" = {
+          source = config.age.secrets."gluttony".path;
+          mode = "0600";
+          user = myvars.username;
+        };
+
+        "agenix/juliet-age" = {
+          source = config.age.secrets."juliet-age".path;
           mode = "0600";
           user = myvars.username;
         };
