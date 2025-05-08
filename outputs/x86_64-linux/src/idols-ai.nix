@@ -16,7 +16,8 @@
     nixos-modules =
       map mylib.relativeToRoot [
         # common
-        "secrets/nixos.nix"
+        "secrets/nixos_agenix.nix"
+        "secrets/nixos_sopsnix.nix"
         "modules/nixos/desktop.nix"
         # host specific
         "hosts/idols-${name}"

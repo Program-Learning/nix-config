@@ -1,5 +1,4 @@
-# WARN: do not use this file
-# Use nixos_agenix.nix or nixos_sopsnix.nix
+# NOTE: this file is for agenix
 {
   lib,
   config,

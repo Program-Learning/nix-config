@@ -5148,11 +5148,11 @@
     "mysecrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1746734590,
-        "narHash": "sha256-ejvsEz9Zwc5idi1G/GgY61HGDVxzmr4eMF1HZG6GbXE=",
+        "lastModified": 1746739911,
+        "narHash": "sha256-KAWUOyyEgi4M2L0yOYCsHVMgzlNafu2UumHMVSHy0oo=",
         "owner": "DataEraserC",
         "repo": "nix-secrets",
-        "rev": "5b7a8b3c26a1ee49e9f20b5c27777fe568cb1b65",
+        "rev": "b52dbc12390882d6af6e9c4049ca4b2af86d53fd",
         "type": "github"
       },
       "original": {
@@ -9018,6 +9018,7 @@
         "polybar-themes": "polybar-themes",
         "pre-commit-hooks": "pre-commit-hooks_5",
         "qqnt": "qqnt",
+        "sops-nix": "sops-nix",
         "suyu": "suyu",
         "vscode-server": "vscode-server",
         "wallpapers": "wallpapers",
@@ -9176,6 +9177,26 @@
       "original": {
         "owner": "andreymatin",
         "repo": "scss-reset",
+        "type": "github"
+      }
+    },
+    "sops-nix": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1746485181,
+        "narHash": "sha256-PxrrSFLaC7YuItShxmYbMgSuFFuwxBB+qsl9BZUnRvg=",
+        "owner": "Mic92",
+        "repo": "sops-nix",
+        "rev": "e93ee1d900ad264d65e9701a5c6f895683433386",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Mic92",
+        "repo": "sops-nix",
         "type": "github"
       }
     },

@@ -1,10 +1,9 @@
-# WARN: do not use this file
-# Use nixos_agenix.nix or nixos_sopsnix.nix
+# NOTE: this file is for sops-nix
 {
   lib,
   config,
   pkgs,
-  agenix,
+  sops-nix,
   mysecrets,
   myvars,
   ...
@@ -38,7 +37,7 @@ with lib; let
   };
 in {
   imports = [
-    agenix.nixosModules.default
+    sops-nix.nixosModules.sops
   ];
 
   options.modules.secrets = {
@@ -57,7 +56,7 @@ in {
   config = mkIf (cfg.desktop.enable || enabledServerSecrets) (mkMerge [
     {
       environment.systemPackages = [
-        agenix.packages."${pkgs.system}".default
+        pkgs.sops
       ];
 
       # if you changed this key, you need to regenerate all encrypt files from the decrypt contents!
