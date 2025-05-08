@@ -45,10 +45,17 @@
       # daed
       "/etc/daed/"
 
+      # ccache
+      "/var/cache/ccache"
+
       # created by modules/nixos/misc/fhs-fonts.nix
       # for flatpak apps
       # "/usr/share/fonts"
       # "/usr/share/icons"
+
+      # for android sign
+      # TODO: move to agenix/sop
+      "/etc/secrets/android-keys"
     ];
     files = [
       "/etc/machine-id"
@@ -109,6 +116,10 @@
         ".Genymobile"
         "AndroidStudioProjects"
         "IdeaProjects"
+        ".jdks"
+
+        # nix-index
+        ".cache/nix-index"
 
         # cloud native
         {
@@ -146,6 +157,9 @@
         ".config/Code - Insiders"
         ".config/vscode-sqltools"
 
+        # cisco packet tracer
+        "pt"
+
         # zed editor
         ".config/zed"
 
@@ -154,6 +168,12 @@
         ".config/google-chrome"
         ".config/google-chrome-unstable"
         ".config/microsoft-edge"
+
+        # email clients profiles
+        ".thunderbird"
+
+        # ServerBox
+        ".config/ServerBox"
 
         # neovim / remmina / flatpak / zed ...
         ".local/share"
@@ -182,9 +202,12 @@
         ".config/clash"
         ".config/clash-verge"
         ".config/clash-nyanpasu"
+        ".config/mihomo-party"
         # v2ray
         ".config/qv2ray"
         ".config/nekoray"
+        # gg
+        ".config/gg"
 
         # test niri
         ".config/niri"

@@ -172,6 +172,9 @@
         # email clients profiles
         ".thunderbird"
 
+        # ServerBox
+        ".config/ServerBox"
+
         # neovim / remmina / flatpak / zed ...
         ".local/share"
         ".local/state"
