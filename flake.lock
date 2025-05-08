@@ -638,11 +638,11 @@
         "systems": "systems_9"
       },
       "locked": {
-        "lastModified": 1746646118,
-        "narHash": "sha256-uxepYGf2gA0pGSnZ3x20+8e/uRULAwMFkh5C3In36as=",
+        "lastModified": 1746732537,
+        "narHash": "sha256-1uu4quRFxJTAFitXV74XDvKVXg8XL+HhNjYVo143Zac=",
         "owner": "nix-community",
         "repo": "browser-previews",
-        "rev": "c20dcf1c04271f05619c5a291cc25c1a1b45fe5c",
+        "rev": "6890e72d04b6d44cec308d8970f581f38eace5d7",
         "type": "github"
       },
       "original": {
@@ -5148,11 +5148,11 @@
     "mysecrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1746643553,
-        "narHash": "sha256-Y87XPqI1BsUVoqPToZ+2MK4GhMU+OgrQIdPbMOY6c+M=",
+        "lastModified": 1746733044,
+        "narHash": "sha256-txp4lI32whwzF/hSX1XwjuLJTNA0MQtYCAhRbd22Tgk=",
         "owner": "DataEraserC",
         "repo": "nix-secrets",
-        "rev": "52a3c69866ae04ae11ffc8d77114ed91d986dda9",
+        "rev": "7fc1149b8e0c3def26756b5df90868e74ebd9496",
         "type": "github"
       },
       "original": {

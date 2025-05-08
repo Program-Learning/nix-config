@@ -51,6 +51,7 @@
         "file:///home/${myvars.username}/Music"
         "file:///home/${myvars.username}/Apps"
         "file:///home/${myvars.username}/nix-config"
+        "file:///persistent"
       ];
     };
 

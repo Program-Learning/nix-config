@@ -136,6 +136,18 @@ in {
           }
           // user_readable;
 
+        "y9000k2021h_id_rsa" =
+          {
+            file = "${mysecrets}/y9000k2021h_id_rsa.age";
+          }
+          // user_readable;
+
+        "y9000k2021h_id_ed25519" =
+          {
+            file = "${mysecrets}/y9000k2021h_id_ed25519.age";
+          }
+          // user_readable;
+
         # alias-for-work
         "alias-for-work.nushell" =
           {
@@ -189,6 +201,18 @@ in {
 
         "agenix/ssh-key-romantic" = {
           source = config.age.secrets."ssh-key-romantic".path;
+          mode = "0600";
+          user = myvars.username;
+        };
+
+        "agenix/y9000k2021h_id_rsa" = {
+          source = config.age.secrets."y9000k2021h_id_rsa".path;
+          mode = "0600";
+          user = myvars.username;
+        };
+
+        "agenix/y9000k2021h_id_ed25519" = {
+          source = config.age.secrets."y9000k2021h_id_ed25519".path;
           mode = "0600";
           user = myvars.username;
         };

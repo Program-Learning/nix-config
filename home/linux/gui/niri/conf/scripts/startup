@@ -43,9 +43,9 @@ exec novnc &
 # Start sunshine(moonlight) (PORT:47990)
 # exec systemctl --user start sunshine &
 
-LOCK_AFTER_BOOT=true
+LOCK_AFTER_BOOT=false
 
-if [[ $LOCK_AFTER_BOOT == false ]]; then
+if [[ $LOCK_AFTER_BOOT == true ]]; then
 	systemctl --user stop wallpaper.service &
 
 	# swaylock -e -f -F -c 12121B
