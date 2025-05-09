@@ -33,13 +33,24 @@
         inputs.chaotic.nixosModules.default
         # NOTE: THIS BROKEN BUILD
         # inputs.catppuccin.homeManagerModules.catppuccin
+        {
+          modules.mkOutOfStoreSymlink.enable = true;
+          modules.mkOutOfStoreSymlink.configPath = "/home/nixos/nix-config";
+        }
       ];
-    home-modules = map mylib.relativeToRoot [
-      # common
-      "home/linux/gui.nix"
-      # host specific
-      "hosts/idols-${name}/home.nix"
-    ];
+    home-modules =
+      map mylib.relativeToRoot [
+        # common
+        "home/linux/gui.nix"
+        # host specific
+        "hosts/idols-${name}/home.nix"
+      ]
+      ++ [
+        {
+          modules.mkOutOfStoreSymlink.enable = true;
+          modules.mkOutOfStoreSymlink.configPath = "/home/nixos/nix-config";
+        }
+      ];
   };
 
   modules-gnome-wayland = {
