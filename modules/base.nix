@@ -14,6 +14,7 @@
 
     # nur-DataEraserC.nixosModules.setupOverlay
     nur-DataEraserC.nixosModules.nix-cache-cachix
+    ./base
   ];
   nixpkgs.overlays =
     [
