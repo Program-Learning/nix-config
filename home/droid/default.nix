@@ -24,5 +24,6 @@
     ../base/tui/dev-tools.nix
     ../base/tui/shell.nix
     ./fhs.nix
+    ../base/home.nix
   ];
 }
