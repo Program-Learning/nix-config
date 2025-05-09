@@ -34,10 +34,12 @@
       enable = true;
       associations.added = let
         browser = ["google-chrome-unstable.desktop" "google-chrome.desktop" "firefox.desktop"];
-        editor = ["code-insiders.desktop" "code.desktop" "nvim.desktop" "Helix.desktop"];
+        editor = ["dev.zed.Zed.desktop" "nvim.desktop" "code-insiders.desktop" "code.desktop" "Helix.desktop"];
         picture = ["imv-dir.desktop"];
+        video = ["mpv.desktop"];
+        audio = ["mpv.desktop"];
         office = ["onlyoffice-desktopeditors.desktop" "writer.desktop"];
-        code = ["code-insiders.desktop" "code.desktop" "nvim.desktop"];
+        code = ["dev.zed.Zed.desktop" "nvim.desktop" "code-insiders.desktop" "code.desktop" "Helix.desktop"];
         file-manager = ["org.gnome.Nautilus.desktop"];
       in {
         "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = office;
@@ -50,10 +52,12 @@
       # let `xdg-open` to open the url with the correct application.
       defaultApplications = let
         browser = ["google-chrome-unstable.desktop" "google-chrome.desktop" "firefox.desktop"];
-        editor = ["code-insiders.desktop" "code.desktop" "nvim.desktop" "Helix.desktop"];
+        editor = ["dev.zed.Zed.desktop" "nvim.desktop" "code-insiders.desktop" "code.desktop" "Helix.desktop"];
         picture = ["imv-dir.desktop"];
+        video = ["mpv.desktop"];
+        audio = ["mpv.desktop"];
         office = ["onlyoffice-desktopeditors.desktop" "writer.desktop"];
-        code = ["code-insiders.desktop" "code.desktop" "nvim.desktop"];
+        code = ["dev.zed.Zed.desktop" "nvim.desktop" "code-insiders.desktop" "code.desktop" "Helix.desktop"];
         file-manager = ["org.gnome.Nautilus.desktop"];
       in {
         "application/json" = browser;
@@ -89,15 +93,15 @@
 
         "x-scheme-handler/tg" = ["org.telegram.desktop.desktop "];
 
-        "audio/*" = ["mpv.desktop"];
-        "video/*" = ["mpv.desktop"];
-        "image/*" = ["imv-dir.desktop"];
-        "image/gif" = ["imv-dir.desktop"];
-        "image/jpeg" = ["imv-dir.desktop"];
-        "image/png" = ["imv-dir.desktop"];
-        "image/webp" = ["imv-dir.desktop"];
-        "image/bmp" = ["imv-dir.desktop"];
-        "image/tiff" = ["imv-dir.desktop"];
+        "audio/*" = audio;
+        "video/*" = video;
+        "image/*" = picture;
+        "image/gif" = picture;
+        "image/jpeg" = picture;
+        "image/png" = picture;
+        "image/webp" = picture;
+        "image/bmp" = picture;
+        "image/tiff" = picture;
         "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = office;
         "application/wps-office.docx" = office;
 
