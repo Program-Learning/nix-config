@@ -85,7 +85,8 @@ in {
       assertions = [
         {
           # This expression should be true to pass the assertion
-          assertion = !(cfg.desktop.enable && enabledServerSecrets);
+          # WARNING: we bypass this on my secret bcs we only have a computer without surrounding facilities
+          assertion = !(cfg.desktop.enable && enabledServerSecrets) || true;
           message = "Enable either desktop or server's secrets, not both!";
         }
       ];

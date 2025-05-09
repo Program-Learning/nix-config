@@ -71,10 +71,19 @@ in {
       assertions = [
         {
           # This expression should be true to pass the assertion
-          assertion = !(cfg.desktop.enable && enabledServerSecrets);
+          # WARNING: we bypass this on my secret bcs we only have a computer without surrounding facilities
+          assertion = !(cfg.desktop.enable && enabledServerSecrets) || true;
           message = "Enable either desktop or server's secrets, not both!";
         }
       ];
+      warnings =
+        if cfg.desktop.enable && enabledServerSecrets
+        then [
+          ''
+            Enable either desktop or server's secrets, not both!
+          ''
+        ]
+        else [];
     }
 
     (mkIf cfg.desktop.enable {
@@ -322,6 +331,16 @@ in {
           mode = "0400";
           owner = "postgres";
         };
+        "cpolar.yml" =
+          {
+            file = "${mysecrets}/cpolar.yml.age";
+          }
+          // (MkPermAttr "cpolar" "0700");
+        "alist-jwt" =
+          {
+            file = "${mysecrets}/alist-jwt.age";
+          }
+          // (MkPermAttr "alist" "0700");
       };
     })
 
