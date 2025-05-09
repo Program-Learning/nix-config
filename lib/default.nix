@@ -1,4 +1,4 @@
-{lib, ...}: {
+{lib, ...}: rec {
   colmenaSystem = import ./colmenaSystem.nix;
   macosSystem = import ./macosSystem.nix;
   nixosSystem = import ./nixosSystem.nix;
@@ -13,6 +13,15 @@
 
   # use path relative to the root of the project
   relativeToRoot = lib.path.append ../.;
+  mklink = config: FilePath:
+    if config.modules.mkOutOfStoreSymlink.enable
+    then
+      (lib.warn "mkOutOfStoreSymlink ${config.modules.mkOutOfStoreSymlink.configPath}/${FilePath}"
+        config.lib.file.mkOutOfStoreSymlink
+        "${config.modules.mkOutOfStoreSymlink.configPath}/${FilePath}")
+    else
+      (lib.warn "direct use ${relativeToRoot FilePath}"
+        "${relativeToRoot FilePath}");
   scanPaths = path:
     builtins.map
     (f: (path + "/${f}"))

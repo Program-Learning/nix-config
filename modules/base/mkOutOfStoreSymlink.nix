@@ -27,5 +27,13 @@ in {
         message = "configPath is required when `modules.mkOutOfStoreSymlink.enable == true`";
       }
     ];
+    warnings =
+      if cfg.enable && lib.isPath cfg.configPath
+      then [
+        ''
+          if configPath is a path, mkOutOfStoreSymlink may not work
+        ''
+      ]
+      else [];
   };
 }
