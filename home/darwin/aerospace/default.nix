@@ -1,5 +1,7 @@
-{config, ...}: {
-  home.file.".aerospace.toml".source =
-    config.lib.file.mkOutOfStoreSymlink
-    "${config.home.homeDirectory}/nix-config/home/darwin/aerospace/aerospace.toml";
+{
+  config,
+  mylib,
+  ...
+}: {
+  home.file.".aerospace.toml".source = mylib.mklink config "home/darwin/aerospace/aerospace.toml";
 }

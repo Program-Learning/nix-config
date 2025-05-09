@@ -1,4 +1,6 @@
 {
+  mylib,
+  config,
   pkgs,
   pkgs-latest,
   lib,
@@ -14,17 +16,16 @@ in {
     executable = true;
   };
 
-  # hyprland configs, based on https://github.com/notwidow/hyprland
   xdg.configFile = {
     "niri/config.kdl" = {
-      source = ../conf/config.kdl;
+      source = mylib.mklink config "home/linux/gui/niri/conf/config.kdl";
     };
     "niri/mako" = {
       source = ../conf/mako;
       recursive = true;
     };
     "niri/scripts" = {
-      source = ../conf/scripts;
+      source = mylib.mklink config "home/linux/gui/niri/conf/scripts";
       recursive = true;
     };
     "niri/waybar" = {

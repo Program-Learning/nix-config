@@ -1,4 +1,6 @@
 {
+  mylib,
+  config,
   pkgs,
   pkgs-latest,
   lib,
@@ -68,7 +70,7 @@ in {
       recursive = true;
     };
     "hypr/scripts" = {
-      source = ../conf/scripts;
+      source = mylib.mklink config "home/linux/gui/hypr/conf/scripts";
       recursive = true;
     };
     "hypr/waybar" = {

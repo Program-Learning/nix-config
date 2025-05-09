@@ -1,5 +1,6 @@
 {
   config,
+  mylib,
   pkgs,
   ...
 }: {
@@ -7,7 +8,5 @@
     clash-meta
   ];
 
-  home.file.".proxychains/proxychains.conf".source =
-    config.lib.file.mkOutOfStoreSymlink
-    "${config.home.homeDirectory}/nix-config/home/darwin/proxy/proxychains.conf";
+  home.file.".proxychains/proxychains.conf".source = mylib.mklink config "home/darwin/proxy/proxychains.conf";
 }

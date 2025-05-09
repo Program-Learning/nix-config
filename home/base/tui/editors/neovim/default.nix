@@ -1,5 +1,6 @@
 {
   config,
+  mylib,
   lib,
   pkgs,
   pkgs-unstable,
@@ -16,10 +17,10 @@ let
     vdiff = "nvim -d";
   };
   # the path to nvim directory
-  # to make this symlink work, we need to git clone this repo to your home directory.
-  configPath = "${config.home.homeDirectory}/nix-config/home/base/tui/editors/neovim/nvim";
+  # NOTE: to make this symlink work, we need to git clone this repo to your home directory which is writable (any other method may first cp to nix store then eval).
+  configPath = mylib.mklink config "home/base/tui/editors/neovim/nvim";
 in {
-  xdg.configFile."nvim".source = config.lib.file.mkOutOfStoreSymlink configPath;
+  xdg.configFile."nvim".source = configPath;
 
   home.shellAliases = shellAliases;
   programs.nushell.shellAliases = shellAliases;
