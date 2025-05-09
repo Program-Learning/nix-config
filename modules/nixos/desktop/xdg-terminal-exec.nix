@@ -10,6 +10,13 @@
     "com.mitchellh.ghostty.desktop"
   ];
 in {
+  environment.packages = with pkgs; [
+    # NOTE: We have these in home config
+    # foot
+    # Alacritty
+    # kitty
+    # ghostty
+  ];
   xdg.terminal-exec = {
     enable = true;
     package = pkgs.xdg-terminal-exec-mkhl;
