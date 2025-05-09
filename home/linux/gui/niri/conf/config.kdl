@@ -298,6 +298,11 @@ window-rule {
     default-column-width { proportion 1.0; }
 }
 
+window-rule {
+    // Match by "dropdown" app ID.
+    match app-id="^dropdown$" is-focused=false
+    opacity 0.5
+}
 workspace "ndrop"
 spawn-at-startup "niri" "msg" "action" "focus-workspace-down"
 
