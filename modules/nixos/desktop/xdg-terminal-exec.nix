@@ -10,7 +10,7 @@
     "com.mitchellh.ghostty.desktop"
   ];
 in {
-  environment.packages = with pkgs; [
+  environment.systemPackages = with pkgs; [
     # NOTE: We have these in home config
     # foot
     # Alacritty
