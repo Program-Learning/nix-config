@@ -12,13 +12,14 @@ in {
     features.bigdata_hadoop = {
       enable = mkEnableOption (lib.mdDoc "hadoop instance required by bigdata lesson");
       package = lib.mkPackageOption pkgs "hadoop" {};
+      impermanence.enable = mkEnableOption "whether use impermanence and ephemeral root file system";
     };
   };
 
   # IDK why config.environment.persistence != null do not work
   config =
     mkIf (cfg.enable
-      || (config.environment.persistence != null || true)) {
+      && cfg.impermanence.enable) {
       environment.persistence."/persistent" = {
         users.hadoop = {
           directories = [

@@ -120,8 +120,12 @@ impl WallpaperSwitcher {
             || env::var("XDG_SESSION_TYPE").unwrap_or_default() == "wayland"
         {
             self.set_wallpaper_wayland(wallpaper)
-        } else {
+        } else if env::var("DISPLAY").is_ok()
+            || env::var("XDG_SESSION_TYPE").unwrap_or_default() == "x11"
+        {
             self.set_wallpaper_x11(wallpaper)
+        } else {
+            self.set_wallpaper_wayland(wallpaper)
         }
     }
     fn set_wallpaper_x11(&mut self, wallpaper: &str) -> u32 {

@@ -164,7 +164,7 @@ class WallpaperSwitcher:
             self.current_wallpaper_index = state["current_wallpaper_index"]
             self.current_wallpaper_index = 0
             self.reset_state()
-            logger.info(f"Wallpaper class changed from {wallpaper_class_old} to {wallpaper_class}")
+            logger.info(f"Wallpaper class changed from <{wallpaper_class_old}> to <{wallpaper_class}>")
             return 1
         return 0
 

@@ -95,5 +95,6 @@ in rec {
   features.bigdata_hadoop = {
     enable = false;
     package = pkgs.hadoop_3_3;
+    impermanence.enable = true;
   };
 }
