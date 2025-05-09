@@ -121,8 +121,13 @@ class WallpaperSwitcher:
             or os.environ.get("XDG_SESSION_TYPE") == "wayland"
         ):
             self.set_wallpaper_wayland(path)
-        else:
+        elif (
+            "DISPLAY" in os.environ
+            or os.environ.get("XDG_SESSION_TYPE") == "x11"
+        ):
             self.set_wallpaper_x11(path)
+        else:
+            self.set_wallpaper_wayland(path)
 
     def set_wallpaper_x11(self, path: Path):
         subprocess.run(["feh", "--bg-fill", path])
@@ -148,6 +153,7 @@ class WallpaperSwitcher:
                 pass
     def set_class(self, wallpaper_class: str):
         if wallpaper_class != self.wallpaper_class:
+            wallpaper_class_old = self.wallpaper_class
             self.wallpaper_class = wallpaper_class
             self.wallpapers_dir = self.wallpapers_base_dir / self.wallpaper_class
             self.current_state.seek(0)
@@ -158,7 +164,7 @@ class WallpaperSwitcher:
             self.current_wallpaper_index = state["current_wallpaper_index"]
             self.current_wallpaper_index = 0
             self.reset_state()
-            logger.info(f"Wallpaper class changed to {wallpaper_class}")
+            logger.info(f"Wallpaper class changed from {wallpaper_class_old} to {wallpaper_class}")
             return 1
         return 0
 
