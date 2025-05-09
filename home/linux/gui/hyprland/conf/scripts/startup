@@ -49,10 +49,11 @@ if [[ $LOCK_AFTER_BOOT == true ]]; then
 	# swaylock -e -f -F -c 12121B
 	# disable bcs my laptop keyboard is broken
 	swaylock -e -F --screenshots  --clock --timestr=%H:%M:%S --datestr=%Y-%m-%d  --indicator  --indicator-radius 100  --indicator-thickness 7  --effect-blur 7x5  --effect-vignette 0.5:0.5  --ring-color b5b5b5  --key-hl-color 3cdec3  --line-color 00000000  --inside-color 00000088  --separator-color 00000000  --grace 0  --fade-in 0.5 &
-	# Set wallpaper via a wallpaper.service
-	# it will by start by home-manager automatically, do not need to restart it here.
-	systemctl --user restart wallpaper.service &
 fi
+
+# Set wallpaper via a wallpaper.service
+# it will by start by home-manager automatically, do not need to restart it here.
+systemctl --user restart wallpaper.service &
 
 # Launch notification daemon (mako)
 ~/.config/hypr/scripts/notifications &

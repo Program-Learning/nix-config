@@ -62,7 +62,7 @@ in {
       age.secrets = {
         "nix-access-tokens" =
           {
-            file = "${mysecrets}/nix-access-tokens.age";
+            file = "${mysecrets}/agenix/nix-access-tokens.age";
           }
           # access-token needs to be readable by the user running the `nix` command
           // user_readable;
@@ -95,7 +95,7 @@ in {
         # .age means the decrypted file is still encrypted by age(via a passphrase)
         "nix-gpg-subkeys.priv.age" =
           {
-            file = "${mysecrets}/nix-gpg-subkeys-2024-01-27.priv.age.age";
+            file = "${mysecrets}/agenix/nix-gpg-subkeys-2024-01-27.priv.age.age";
           }
           // noaccess;
 
@@ -105,7 +105,7 @@ in {
 
         "wg-business.conf" =
           {
-            file = "${mysecrets}/wg-business.conf.age";
+            file = "${mysecrets}/agenix/wg-business.conf.age";
           }
           // high_security;
 
@@ -113,13 +113,13 @@ in {
         # smb-credentials is referenced in /etc/fstab, by ../hosts/ai/cifs-mount.nix
         "smb-credentials" =
           {
-            file = "${mysecrets}/smb-credentials.age";
+            file = "${mysecrets}/agenix/smb-credentials.age";
           }
           // high_security;
 
         "rclone.conf" =
           {
-            file = "${mysecrets}/rclone.conf.age";
+            file = "${mysecrets}/agenix/rclone.conf.age";
           }
           // high_security;
 
@@ -129,70 +129,70 @@ in {
 
         "ssh-key-romantic" =
           {
-            file = "${mysecrets}/ssh-key-romantic.age";
+            file = "${mysecrets}/agenix/ssh-key-romantic.age";
           }
           // user_readable;
 
         "gluttony" =
           {
-            file = "${mysecrets}/gluttony.age";
+            file = "${mysecrets}/agenix/gluttony.age";
           }
           // user_readable;
 
         "juliet-age" =
           {
-            file = "${mysecrets}/juliet-age.age";
+            file = "${mysecrets}/agenix/juliet-age.age";
           }
           // user_readable;
 
         "y9000k2021h_id_rsa" =
           {
-            file = "${mysecrets}/y9000k2021h_id_rsa.age";
+            file = "${mysecrets}/agenix/y9000k2021h_id_rsa.age";
           }
           // user_readable;
 
         "y9000k2021h_id_ed25519" =
           {
-            file = "${mysecrets}/y9000k2021h_id_ed25519.age";
+            file = "${mysecrets}/agenix/y9000k2021h_id_ed25519.age";
           }
           // user_readable;
 
         # alias-for-work
         "alias-for-work.nushell" =
           {
-            file = "${mysecrets}/alias-for-work.nushell.age";
+            file = "${mysecrets}/agenix/alias-for-work.nushell.age";
           }
           // user_readable;
 
         "alias-for-work.bash" =
           {
-            file = "${mysecrets}/alias-for-work.bash.age";
+            file = "${mysecrets}/agenix/alias-for-work.bash.age";
           }
           // user_readable;
         # I do not have server for router request so I use dae locally
         "clash.dae" =
           {
-            file = "${mysecrets}/clash.dae.age";
+            file = "${mysecrets}/agenix/clash.dae.age";
           }
           // high_security;
         "dae.dae" =
           {
-            file = "${mysecrets}/dae.dae.age";
+            file = "${mysecrets}/agenix/dae.dae.age";
           }
           // high_security;
         "dae-subscription.dae" =
           {
-            file = "${mysecrets}/server/dae-subscription.dae.age";
+            file = "${mysecrets}/agenix/server/dae-subscription.dae.age";
           }
           // high_security;
         "cpolar.yml" =
           {
-            file = "${mysecrets}/cpolar.yml.age";
+            file = "${mysecrets}/agenix/cpolar.yml.age";
           }
           // (MkPermAttr "cpolar" "0700");
         "alist-jwt" =
           {
-            file = "${mysecrets}/alist-jwt.age";
+            file = "${mysecrets}/agenix/alist-jwt.age";
           }
           // (MkPermAttr "alist" "0700");
       };
@@ -260,7 +260,7 @@ in {
       age.secrets = {
         "dae-subscription.dae" =
           {
-            file = "${mysecrets}/server/dae-subscription.dae.age";
+            file = "${mysecrets}/agenix/server/dae-subscription.dae.age";
           }
           // high_security;
       };
@@ -270,17 +270,17 @@ in {
       age.secrets = {
         "transmission-credentials.json" =
           {
-            file = "${mysecrets}/server/transmission-credentials.json.age";
+            file = "${mysecrets}/agenix/server/transmission-credentials.json.age";
           }
           // high_security;
 
         "sftpgo.env" = {
-          file = "${mysecrets}/server/sftpgo.env.age";
+          file = "${mysecrets}/agenix/server/sftpgo.env.age";
           mode = "0400";
           owner = "sftpgo";
         };
         "minio.env" = {
-          file = "${mysecrets}/server/minio.env.age";
+          file = "${mysecrets}/agenix/server/minio.env.age";
           mode = "0400";
           owner = "minio";
         };
@@ -290,14 +290,14 @@ in {
     (mkIf cfg.server.operation.enable {
       age.secrets = {
         "grafana-admin-password" = {
-          file = "${mysecrets}/server/grafana-admin-password.age";
+          file = "${mysecrets}/agenix/server/grafana-admin-password.age";
           mode = "0400";
           owner = "grafana";
         };
 
         "alertmanager.env" =
           {
-            file = "${mysecrets}/server/alertmanager.env.age";
+            file = "${mysecrets}/agenix/server/alertmanager.env.age";
           }
           // high_security;
       };
@@ -307,13 +307,13 @@ in {
       age.secrets = {
         "k3s-prod-1-token" =
           {
-            file = "${mysecrets}/server/k3s-prod-1-token.age";
+            file = "${mysecrets}/agenix/server/k3s-prod-1-token.age";
           }
           // high_security;
 
         "k3s-test-1-token" =
           {
-            file = "${mysecrets}/server/k3s-test-1-token.age";
+            file = "${mysecrets}/agenix/server/k3s-test-1-token.age";
           }
           // high_security;
       };
@@ -322,23 +322,23 @@ in {
     (mkIf cfg.server.webserver.enable {
       age.secrets = {
         "caddy-ecc-server.key" = {
-          file = "${mysecrets}/certs/ecc-server.key.age";
+          file = "${mysecrets}/agenix/certs/ecc-server.key.age";
           mode = "0400";
           owner = "caddy";
         };
         "postgres-ecc-server.key" = {
-          file = "${mysecrets}/certs/ecc-server.key.age";
+          file = "${mysecrets}/agenix/certs/ecc-server.key.age";
           mode = "0400";
           owner = "postgres";
         };
         "cpolar.yml" =
           {
-            file = "${mysecrets}/cpolar.yml.age";
+            file = "${mysecrets}/agenix/cpolar.yml.age";
           }
           // (MkPermAttr "cpolar" "0700");
         "alist-jwt" =
           {
-            file = "${mysecrets}/alist-jwt.age";
+            file = "${mysecrets}/agenix/alist-jwt.age";
           }
           // (MkPermAttr "alist" "0700");
       };
@@ -347,7 +347,7 @@ in {
     (mkIf cfg.server.storage.enable {
       age.secrets = {
         "hdd-luks-crypt-key" = {
-          file = "${mysecrets}/hdd-luks-crypt-key.age";
+          file = "${mysecrets}/agenix/hdd-luks-crypt-key.age";
           mode = "0400";
           owner = "root";
         };

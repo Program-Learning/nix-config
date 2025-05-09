@@ -10,7 +10,8 @@
   home.packages = with pkgs; [
     xdg-utils # provides cli tools such as `xdg-mime` `xdg-open`
     xdg-user-dirs
-    xdg-terminal-exec
+    # NOTE: We move this to nixos module for convenience
+    # xdg-terminal-exec
   ];
 
   xdg.configFile."mimeapps.list".force = true;

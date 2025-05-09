@@ -44,6 +44,8 @@ in {
     {
       environment.systemPackages = [
         pkgs.sops
+        sops-nix.packages.${pkgs.system}.sops-init-gpg-key
+        sops-nix.packages.${pkgs.system}.ssh-to-pgp
       ];
 
       assertions = [

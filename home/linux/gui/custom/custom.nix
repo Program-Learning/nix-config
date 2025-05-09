@@ -46,7 +46,7 @@
           # ytb video download
           yt-dlp
 
-          kdePackages.konsole
+          # kdePackages.konsole
           # powerdevil
 
           calcurse
