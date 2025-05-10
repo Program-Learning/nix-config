@@ -195,6 +195,11 @@ in {
             file = "${mysecrets}/agenix/alist-jwt.age";
           }
           // (MkPermAttr "alist" "0700");
+        "frp_aliyun2025.toml" =
+            {
+              file = "${mysecrets}/agenix/frp_aliyun2025.toml.age";
+            }
+            // high_security;
       };
 
       # place secrets in /etc/

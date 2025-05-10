@@ -56,6 +56,11 @@ in
                   serverPort = 7000;
                 };
               };
+              configFile = lib.mkOption {
+                type = lib.types.nullOr (lib.types.either lib.types.str lib.types.path);
+                default = null;
+                description = "Frp configuration file";
+              };
             };
           }
         );
@@ -70,11 +75,18 @@ in
   };
 
   config = lib.mkIf (enabledInstances != { }) {
+    assertions = lib.mapAttrsToList
+    (instance: options:
+      {
+        assertion = !(options.enable && options.configFile != "" && options.configFile != null && options.settings != {});
+        message = "when setting ${instance}, the value of configFile is ${options.configFile}, however the value of settings is ${lib.generators.toJSON {} options.settings}, and cause a conflict";
+      }) enabledInstances
+    ;
     systemd.services = lib.mapAttrs' (
       instance: options:
       let
         serviceName = "frp" + lib.optionalString (instance != "") ("-" + instance);
-        configFile = settingsFormat.generate "${serviceName}.toml" options.settings;
+        configFile = if options.configFile != null then options.configFile else settingsFormat.generate "${serviceName}.toml" options.settings;
         isClient = (options.role == "client");
         isServer = (options.role == "server");
         serviceCapability = lib.optionals isServer [ "CAP_NET_BIND_SERVICE" ];
@@ -89,7 +101,8 @@ in
           Type = "simple";
           Restart = "on-failure";
           RestartSec = 15;
-          ExecStart = "${cfg.package}/bin/${executableFile} --strict_config -c ${configFile}";
+          LoadCredential = [ ("frpc_${instance}.toml:" + configFile) ];
+          ExecStart = "${cfg.package}/bin/${executableFile} --strict_config -c $\{CREDENTIALS_DIRECTORY}/frpc_${instance}.toml";
           StateDirectoryMode = lib.optionalString isServer "0700";
           DynamicUser = true;
           # Hardening
