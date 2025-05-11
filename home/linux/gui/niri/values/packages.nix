@@ -22,12 +22,12 @@
     # hyprlock # locking the screen
     wlogout # logout menu
     wl-clipboard # copying and pasting
-    hyprpicker # color picker
+    # hyprpicker # color picker
     wshowkeys # Show which key is triggered
 
     nur-DataEraserC.packages.${pkgs.system}.ndrop # a tool to switch windows status (foreground/background)
 
-    hyprshot # screen shot
+    # hyprshot # screen shot
     grim # taking screenshots
     grimblast # taking screenshots
     slurp # selecting a region to screenshot
