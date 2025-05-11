@@ -1,6 +1,8 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     dbeaver-bin # database manager
+    # TODO: move tui network tools to a better place
+    traceroute # trace route
     gg # proxy agent in terminal
     mitmproxy # http/https proxy tool
     bettercap # mitm proxy tool
