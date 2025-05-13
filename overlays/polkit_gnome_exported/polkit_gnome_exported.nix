@@ -12,7 +12,7 @@ stdenvNoCC.mkDerivation {
   dontUnpack = true;
 
   postInstall = ''
-    source ${./link_file_in_source_dir_to_target_dir_rec.bash}
+    source ${../utils/link_file_in_source_dir_to_target_dir_rec.bash}
 
     mkdir -p $out
 
