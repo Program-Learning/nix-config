@@ -286,7 +286,7 @@ window-rule {
     // Match by "dropdown" app ID.
     // You need to set this app ID when running your terminal, e.g.:
     // spawn "alacritty" "--class" "dropdown"
-    match app-id="^dropdown$"
+    match app-id="^dropdown.*$"
 
     // Open it as floating.
     open-floating true
@@ -300,7 +300,7 @@ window-rule {
 
 window-rule {
     // Match by "dropdown" app ID.
-    match app-id="^dropdown$" is-focused=false
+    match app-id="^dropdown.*$" is-focused=false
     opacity 0.5
 }
 workspace "ndrop"
@@ -343,7 +343,7 @@ binds {
     Mod+E { spawn "nautilus"; }
     Ctrl+Shift+Escape { spawn "missioncenter"; }
     Mod+P { spawn "~/.config/niri/scripts/colorpicker"; }
-    Mod+F12 { spawn "ndrop" "foot" "-a" "dropdown"; }
+    Mod+F12 { spawn "~/.config/niri/scripts/dropdown_terminal"; }
 
     // tun off screen
     XF86PowerOff { spawn "niri" "msg" "action" "power-off-monitors";}
