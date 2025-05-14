@@ -11050,11 +11050,11 @@
     "wallpapers": {
       "flake": false,
       "locked": {
-        "lastModified": 1732730771,
-        "narHash": "sha256-UunO4sjkdKs6gO8mUjtEUPZi27aKQmPGl68KNPYFf5k=",
+        "lastModified": 1747222697,
+        "narHash": "sha256-4OlZcOr0bIif9oNaAUHQ7GTmloiJgyTxeSdZOBkL0AA=",
         "owner": "Program-Learning",
         "repo": "wallpapers",
-        "rev": "3e9a0006af6d24d8215885d2c5d2eefab4daad0d",
+        "rev": "dfbbf04e21b216ca5046bfb99146ffa5cd8a39d2",
         "type": "github"
       },
       "original": {
