@@ -127,7 +127,7 @@ class WallpaperSwitcher:
         ):
             self.set_wallpaper_x11(path)
         else:
-            self.set_wallpaper_wayland(path)
+            exit(1)
 
     def set_wallpaper_x11(self, path: Path):
         subprocess.run(["feh", "--bg-fill", path])

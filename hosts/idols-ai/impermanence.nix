@@ -217,8 +217,11 @@
         ".textgen"
         ".config/LaphaeLaicmd"
         ".config/aichat"
-        ".config/open-webui"
+        # NOTE: this can be remove bcs we use `services.ollama` which place files in `/var/lib/ollama` by default
         ".ollama"
+        # NOTE: this can be remove bcs we use `services.open-webui` which place state files in `/var/lib/open-webui` by default
+        ".config/open-webui"
+        ".config/CherryStudio"
         ".cache/huggingface"
         ".lingma"
 
@@ -266,8 +269,11 @@
 
         ".cache/tlrc"
 
-        # nvfetcher
+        # nvfetcher cache
         "_sources"
+
+        # Trash Bin
+        ".Trash-1000"
       ];
       files = [
         ".wakatime.cfg"
