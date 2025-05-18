@@ -86,7 +86,7 @@ exec mihomo-party &
 
 # Start swayidle
 # exec swayidle -w timeout 1800 'systemctl suspend' resume 'hyprctl dispatch dpms on' timeout 120 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on' before-sleep 'swaylock'
-exec swayidle -w timeout 120 'niri msg action power-off-monitors' timeout 600 "$HOME/.config/niri/scripts/lockscreen" before-sleep "$HOME/.config/niri/scripts/lockscreen" &
+exec swayidle -w timeout 120 'niri msg action power-off-monitors' timeout 600 "$HOME/.config/niri/scripts/lockscreen" before-sleep "$HOME/.config/niri/scripts/lockscreen -f" &
 
 # do not idle when audio
 exec sway-audio-idle-inhibit &

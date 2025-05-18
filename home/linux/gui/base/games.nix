@@ -21,8 +21,9 @@
 
     # Wine related
     protonup-qt
+    wineWow64Packages.waylandFull
     # wine-staging
-    wine64Packages.stagingFull
+    # wine64Packages.stagingFull
     # winePackages.stagingFull
     winetricks # A script to install DLLs needed to work around problems in Wine
     # proton-ge-bin should not be installed into environments. Please use programs.steam.extraCompatPackages instead.

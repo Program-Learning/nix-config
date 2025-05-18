@@ -8,5 +8,5 @@
     clash-meta
   ];
 
-  home.file.".proxychains/proxychains.conf".source = mylib.mklink config "home/darwin/proxy/proxychains.conf";
+  home.file.".proxychains/proxychains.conf".source = mylib.mklinkRelativeToRoot config "home/darwin/proxy/proxychains.conf";
 }

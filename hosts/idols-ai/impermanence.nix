@@ -197,6 +197,7 @@
 
         # IM
         ".config/QQ"
+        "BetterUniverse"
         ".xwechat"
         # clash
         ".config/clash"

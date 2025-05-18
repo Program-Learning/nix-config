@@ -18,28 +18,28 @@ in {
 
   xdg.configFile = {
     "niri/config.kdl" = {
-      source = mylib.mklink config "home/linux/gui/niri/conf/config.kdl";
+      source = mylib.mklinkRelativeToRoot config "home/linux/gui/niri/conf/config.kdl";
     };
     "niri/mako" = {
-      source = ../conf/mako;
+      source = mylib.mklinkRelativeToRoot config "home/linux/gui/niri/conf/mako";
       recursive = true;
     };
     "niri/scripts" = {
-      source = mylib.mklink config "home/linux/gui/niri/conf/scripts";
+      source = mylib.mklinkRelativeToRoot config "home/linux/gui/niri/conf/scripts";
       recursive = true;
     };
     "niri/waybar" = {
-      source = ../conf/waybar;
+      source = mylib.mklinkRelativeToRoot config "home/linux/gui/niri/conf/waybar";
       recursive = true;
     };
     "niri/wlogout" = {
-      source = ../conf/wlogout;
+      source = mylib.mklinkRelativeToRoot config "home/linux/gui/niri/conf/wlogout";
       recursive = true;
     };
 
     # music player - mpd
     "mpd" = {
-      source = ../conf/mpd;
+      source = mylib.mklinkRelativeToRoot config "home/linux/gui/niri/conf/mpd";
       recursive = true;
     };
   };

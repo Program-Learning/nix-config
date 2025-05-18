@@ -7,7 +7,14 @@
   boot.supportedFilesystems = [
     # "cifs"
     "davfs"
+    "ntfs"
   ];
+
+  # mount windows disk
+  fileSystems."/run/media/${myvars.username}/windows" = {
+    device = "/dev/disk/by-uuid/7A66017F66013D7F";
+    fsType = "ntfs";
+  };
 
   # mount a smb/cifs share
   # fileSystems."/home/${myvars.username}/SMB-Downloads" = {

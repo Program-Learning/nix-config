@@ -66,25 +66,25 @@ in {
   # hyprland configs, based on https://github.com/notwidow/hyprland
   xdg.configFile = {
     "hypr/mako" = {
-      source = ../conf/mako;
+      source = mylib.mklinkRelativeToRoot config "home/linux/gui/hypr/conf/mako";
       recursive = true;
     };
     "hypr/scripts" = {
-      source = mylib.mklink config "home/linux/gui/hypr/conf/scripts";
+      source = mylib.mklinkRelativeToRoot config "home/linux/gui/hypr/conf/scripts";
       recursive = true;
     };
     "hypr/waybar" = {
-      source = ../conf/waybar;
+      source = mylib.mklinkRelativeToRoot config "home/linux/gui/hypr/conf/waybar";
       recursive = true;
     };
     "hypr/wlogout" = {
-      source = ../conf/wlogout;
+      source = mylib.mklinkRelativeToRoot config "home/linux/gui/hypr/conf/wlogout";
       recursive = true;
     };
 
     # music player - mpd
     "mpd" = {
-      source = ../conf/mpd;
+      source = mylib.mklinkRelativeToRoot config "home/linux/gui/hypr/conf/mpd";
       recursive = true;
     };
   };

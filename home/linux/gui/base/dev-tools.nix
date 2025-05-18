@@ -6,6 +6,7 @@
   fakedroid,
   pkgs-unstable,
   Snowpkgs,
+  atl-nix,
   ...
 }: {
   home.packages = with pkgs; [
@@ -23,6 +24,7 @@
     android-studio
     # disable bcs can not be built
     # Snowpkgs.packages.${pkgs.system}.android-translation-layer
+    atl-nix.packages.${pkgs.system}.default
     # genymotion
     # edl
     # --payload-dumper

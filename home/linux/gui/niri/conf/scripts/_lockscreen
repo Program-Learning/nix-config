@@ -3,6 +3,7 @@
 if [[ ! $(pidof swaylock) ]]; then
     swaylock \
         -e \
+        -f \
         -F \
         --screenshots \
         --clock \
@@ -19,5 +20,6 @@ if [[ ! $(pidof swaylock) ]]; then
         --inside-color 00000088 \
         --separator-color 00000000 \
         --grace 0 \
-        --fade-in 0.5
+        --fade-in 0.5a \
+        "$@"
 fi

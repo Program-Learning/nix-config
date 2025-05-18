@@ -436,6 +436,10 @@
       url = "github:Daru-san/Snowpkgs";
     };
 
+    atl-nix = {
+      url = "github:Daru-san/atl-nix";
+    };
+
     android-nixpkgs = {
       url = "github:tadfisher/android-nixpkgs";
 

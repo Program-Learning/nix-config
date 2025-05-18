@@ -36,6 +36,7 @@
         {
           modules.mkOutOfStoreSymlink.enable = true;
           modules.mkOutOfStoreSymlink.configPath = "/home/nixos/nix-config";
+          modules.mkOutOfStoreSymlink.wallpaperPath = "/home/nixos/Documents/code/wallpapers";
         }
       ];
     home-modules =
@@ -49,6 +50,7 @@
         {
           modules.mkOutOfStoreSymlink.enable = true;
           modules.mkOutOfStoreSymlink.configPath = "/home/nixos/nix-config";
+          modules.mkOutOfStoreSymlink.wallpaperPath = "/home/nixos/Documents/code/wallpapers";
         }
       ];
   };

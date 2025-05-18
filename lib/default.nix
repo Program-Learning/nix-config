@@ -13,7 +13,7 @@
 
   # use path relative to the root of the project
   relativeToRoot = lib.path.append ../.;
-  mklink = config: FilePath:
+  mklinkRelativeToRoot = config: FilePath:
     if config.modules.mkOutOfStoreSymlink.enable
     then
       (lib.warn "mkOutOfStoreSymlink ${config.modules.mkOutOfStoreSymlink.configPath}/${FilePath}"

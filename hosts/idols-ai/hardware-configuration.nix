@@ -215,11 +215,6 @@
     }
   ];
 
-  fileSystems."/run/media/nixos/windows" = {
-    device = "/dev/disk/by-uuid/7A66017F66013D7F";
-    fsType = "ntfs";
-  };
-
   features.lenovo-legion = {
     enable = true;
     enhanceMode = true;
