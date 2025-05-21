@@ -57,10 +57,11 @@
     };
   };
 
-  programs.darling = {
-    enable = false;
-    package = pkgs-stable.darling;
-  };
+  # NOTE: this is dropped bcs vendoring python2
+  # programs.darling = {
+  #   enable = false;
+  #   package = pkgs-stable.darling;
+  # };
 
   # environment.variables = {
   #   QT_AUTO_SCREEN_SCALE_FACTOR = "1";

@@ -37,6 +37,7 @@
 
   environment.systemPackages = with pkgs; [
     # core tools
+    tealdeer # a very fast version of tldr
     fastfetch
     neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     just # justfile
@@ -96,8 +97,10 @@
     #      ```
     #    2. Never leave the device and never sent over the network.
     # 2. Or just use hardware security keys like Yubikey/CanoKey.
-    openssh.authorizedKeys.keys = myvars.sshAuthorizedKeys;
+    openssh.authorizedKeys.keys = myvars.mainSshAuthorizedKeys;
   };
+
+  programs.ssh = myvars.networking.ssh;
 
   nix.settings = {
     # enable flakes globally

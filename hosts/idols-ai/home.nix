@@ -1,4 +1,4 @@
-{
+{config, ...}: {
   modules.desktop = {
     hyprland = {
       nvidia = true;
@@ -18,23 +18,5 @@
     };
   };
 
-  programs.ssh = {
-    enable = true;
-    extraConfig = ''
-      Host *
-          ForwardAgent yes
-          IdentityFile ~/.ssh/y9000k2021h_id_ed25519
-          IdentitiesOnly yes
-
-      Host github.com
-          IdentityFile ~/.ssh/y9000k2021h_id_ed25519
-          # Specifies that ssh should only use the identity file explicitly configured above
-          # required to prevent sending default identity files first.
-          IdentitiesOnly yes
-
-      Host zerotier_devices
-        HostName 10.147.20.*
-        MACs hmac-sha1,hmac-sha1-96,hmac-sha2-256,hmac-sha2-512,hmac-md5
-    '';
-  };
+  programs.ssh.matchBlocks."github.com".identityFile = "${config.home.homeDirectory}/.ssh/y9000k2021h_id_ed25519";
 }

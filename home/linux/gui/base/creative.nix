@@ -21,8 +21,8 @@
       ];
     })
     shotcut # video editor
-    inkscape # vector graphics
-    krita # digital painting
+    # inkscape # vector graphics
+    # krita # digital painting
     # pkgs-stable.musescore # music notation
     # reaper # audio production
     # sonic-pi # music programming

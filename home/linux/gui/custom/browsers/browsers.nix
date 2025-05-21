@@ -5,7 +5,8 @@
 }: {
   home.packages = with pkgs; [
     tor-browser
-    microsoft-edge
+    # NOTE: microsoft-edge has been removed due to lack of maintenance in nixpkgs
+    # microsoft-edge
     # google-chrome
   ];
 }
