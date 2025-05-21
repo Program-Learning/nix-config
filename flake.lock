@@ -656,11 +656,11 @@
         "systems": "systems_9"
       },
       "locked": {
-        "lastModified": 1747337305,
-        "narHash": "sha256-vUFzpAH/fArk1v4h+Jko9obfiXYxLjDB70RGCbb2fbQ=",
+        "lastModified": 1747510091,
+        "narHash": "sha256-iWqNfTM3D72T2LhcdW7F42RsSFaTt+BXgqyCe72xK+E=",
         "owner": "nix-community",
         "repo": "browser-previews",
-        "rev": "32463575d774ba558e02c4f43ccb086b26efbdf2",
+        "rev": "ba920fa51eddfb5277e2c38750c7a4a57fbec917",
         "type": "github"
       },
       "original": {
@@ -7682,11 +7682,11 @@
         "treefmt-nix": "treefmt-nix_8"
       },
       "locked": {
-        "lastModified": 1747483646,
-        "narHash": "sha256-RAFBRLoSTxvm95ZA0UqQp1NpyDYMY+KA/qOKNK/yIkQ=",
+        "lastModified": 1747737816,
+        "narHash": "sha256-cEJ/n1CNbVsUW0CfPEdljlnHaH/gCrZMEYIDDoC2cTI=",
         "owner": "DataEraserC",
         "repo": "nur-packages",
-        "rev": "b0fe14363049682fe729d04ed94a7fc1c47eab3c",
+        "rev": "202de76f73a060a9db174c5f76cc4f8ff12ae5c1",
         "type": "github"
       },
       "original": {
@@ -7744,11 +7744,11 @@
         "treefmt-nix": "treefmt-nix_16"
       },
       "locked": {
-        "lastModified": 1747483646,
-        "narHash": "sha256-RAFBRLoSTxvm95ZA0UqQp1NpyDYMY+KA/qOKNK/yIkQ=",
+        "lastModified": 1747737816,
+        "narHash": "sha256-cEJ/n1CNbVsUW0CfPEdljlnHaH/gCrZMEYIDDoC2cTI=",
         "owner": "DataEraserC",
         "repo": "nur-packages",
-        "rev": "b0fe14363049682fe729d04ed94a7fc1c47eab3c",
+        "rev": "202de76f73a060a9db174c5f76cc4f8ff12ae5c1",
         "type": "github"
       },
       "original": {
@@ -8956,11 +8956,11 @@
         "treefmt-nix": "treefmt-nix_24"
       },
       "locked": {
-        "lastModified": 1747483646,
-        "narHash": "sha256-RAFBRLoSTxvm95ZA0UqQp1NpyDYMY+KA/qOKNK/yIkQ=",
+        "lastModified": 1747737816,
+        "narHash": "sha256-cEJ/n1CNbVsUW0CfPEdljlnHaH/gCrZMEYIDDoC2cTI=",
         "owner": "DataEraserC",
         "repo": "nur-packages",
-        "rev": "b0fe14363049682fe729d04ed94a7fc1c47eab3c",
+        "rev": "202de76f73a060a9db174c5f76cc4f8ff12ae5c1",
         "type": "github"
       },
       "original": {
