@@ -5,6 +5,8 @@
 }: let
   domain = "ca.r";
 in {
+  # NOTE: local ca server for pki
+  # https://localhost
   services.step-ca = {
     enable = false;
     intermediatePasswordFile = "/dev/null";
