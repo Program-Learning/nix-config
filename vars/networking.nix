@@ -1,11 +1,17 @@
 {lib}: rec {
   mainGateway = "192.168.0.1"; # main router
+  mainGateway6 = "fe80::5"; # main router's link-local address
   # use suzi as the default gateway
   # it's a subrouter with a transparent proxy
   defaultGateway = "192.168.0.1";
+  defaultGateway6 = "fe80::8";
   nameservers = [
+    # IPv4
     "119.29.29.29" # DNSPod
     "223.5.5.5" # AliDNS
+    # IPv6
+    "2400:3200::1" # Alidns
+    "2606:4700:4700::1111" # Cloudflare
   ];
   prefixLength = 24;
 
@@ -33,26 +39,31 @@
     #   # Desktop PC
     #   iface = "enp5s0";
     #   ipv4 = "192.168.5.100";
+    #   ipv6 = "fe80::10"; # Link-local Address
     # };
     y9000k2021h_1_home = {
       # Laptop
       iface = "wlp0s20f3";
       ipv4 = "192.168.2.150";
+      ipv6 = "fe80::150"; # Link-local Address
     };
     y9000k2021h_1_school = {
       # Laptop
       iface = "wlp0s20f3";
       ipv4 = "192.168.0.150";
+      ipv6 = "fe80::150"; # Link-local Address
     };
     y9000k2021h_1_zerotier = {
       # Laptop
       iface = "zt5u4z6wb4";
       ipv4 = "10.147.20.150";
+      ipv6 = "fe80::150"; # Link-local Address
     };
     y9000k2021h_1_tailscale = {
       # Laptop
       iface = "tailscale0";
       ipv4 = "100.95.92.150";
+      ipv6 = "fe80::150"; # Link-local Address
     };
     y9000k2021h = y9000k2021h_1_school;
     ai = y9000k2021h;
@@ -102,6 +113,7 @@
     suzi = {
       iface = "enp2s0"; # fake iface, it's not used by the host
       ipv4 = "192.168.5.178";
+      ipv6 = "fe80::8"; # Link-local Address, can be used as default gateway
     };
     mitsuha = {
       iface = "enp2s0"; # fake iface, it's not used by the host

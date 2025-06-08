@@ -7,12 +7,6 @@
   gradle2nix,
   ...
 }: {
-  nixpkgs.config = {
-    programs.npm.npmrc = ''
-      prefix = ''${HOME}/.npm-global
-    '';
-  };
-
   home.packages = with pkgs; (
     # -*- Data & Configuration Languages -*-#
     [
@@ -214,16 +208,16 @@
       emmet-ls
     ]
     # -*- Lisp like Languages -*-#
-    ++ [
-      guile
-      racket-minimal
-      fnlfmt # fennel
-      (
-        if pkgs.stdenv.isDarwin || pkgs.stdenv.isAarch64 || pkgs.stdenv.isAarch32
-        then pkgs.emptyDirectory
-        else pkgs-unstable.akkuPackages.scheme-langserver
-      )
-    ]
+    # ++ [
+    #   guile
+    #   racket-minimal
+    #   fnlfmt # fennel
+    #   (
+    #     if pkgs.stdenv.isLinux && pkgs.stdenv.isx86
+    #     then pkgs-unstable.akkuPackages.scheme-langserver
+    #     else pkgs.emptyDirectory
+    #   )
+    # ]
     ++ [
       proselint # English prose linter
 

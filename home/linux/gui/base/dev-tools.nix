@@ -2,6 +2,7 @@
   pkgs,
   pkgs-stable,
   nur-DataEraserC,
+  nur-DataEraserC-not-follow,
   pkgs-latest,
   fakedroid,
   pkgs-unstable,
@@ -32,6 +33,6 @@
     # fakedroid.packages.${pkgs.system}.fakedroid
 
     win2xcur
-    nur-DataEraserC.packages.${pkgs.system}.flutter_server_box
+    # nur-DataEraserC.packages.${pkgs.system}.flutter_server_box
   ];
 }

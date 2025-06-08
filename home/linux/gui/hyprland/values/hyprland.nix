@@ -1,8 +1,8 @@
 {
   mylib,
-  config,
   pkgs,
   pkgs-latest,
+  config,
   lib,
   hyprland,
   hyprland-plugins,
@@ -17,6 +17,34 @@
   # package = pkgs-latest.hyprland;
   # package = hyprland.packages.${pkgs.system}.hyprland;
 in {
+  xdg.configFile = let
+    hyprPath = "home/linux/gui/hyprland/conf";
+  in {
+    "mako".source = mylib.mklinkRelativeToRoot config "${hyprPath}/mako";
+    "waybar".source = mylib.mklinkRelativeToRoot config "${hyprPath}/waybar";
+    "wlogout".source = mylib.mklinkRelativeToRoot config "${hyprPath}/wlogout";
+    "hypr/hypridle.conf".source = mylib.mklinkRelativeToRoot config "${hyprPath}/hypridle.conf";
+    "hypr/configs".source = mylib.mklinkRelativeToRoot config "${hyprPath}/configs";
+  };
+
+  # status bar
+  programs.waybar = {
+    enable = true;
+    systemd.enable = true;
+  };
+
+  # screen locker
+  programs.hyprlock.enable = true;
+
+  # Logout Menu
+  programs.wlogout.enable = true;
+
+  # Hyprland idle daemon
+  services.hypridle.enable = true;
+
+  # notification daemon, the same as dunst
+  services.mako.enable = true;
+
   # NOTE:
   # We have to enable hyprland/i3's systemd user service in home-manager,
   # so that gammastep/wallpaper-switcher's user service can be start correctly!
@@ -25,7 +53,16 @@ in {
     inherit package;
     enable = true;
     settings = {
-      source = "${nur-ryan4yin.packages.${pkgs.system}.catppuccin-hyprland}/themes/mocha.conf";
+      source = let
+        configPath = "${config.home.homeDirectory}/.config/hypr/configs";
+      in [
+        "${nur-ryan4yin.packages.${pkgs.system}.catppuccin-hyprland}/themes/mocha.conf"
+        "${configPath}/exec.conf"
+        "${configPath}/fcitx5.conf"
+        "${configPath}/keybindings.conf"
+        "${configPath}/settings.conf"
+        "${configPath}/windowrules.conf"
+      ];
       env = [
         "NIXOS_OZONE_WL,1" # for any ozone-based browser & electron apps to run on wayland
         "MOZ_ENABLE_WAYLAND,1" # for firefox to run on wayland
@@ -36,9 +73,9 @@ in {
         "QT_QPA_PLATFORM,wayland;xcb"
         "SDL_VIDEODRIVER,wayland"
         "GDK_BACKEND,wayland,x11"
+        "XDG_SESSION_TYPE,wayland"
       ];
     };
-    extraConfig = builtins.readFile ../conf/hyprland.conf;
     plugins = [
       # hyprland-plugins.packages.${pkgs.system}.hyprbars # windows bar
       # hyprland-plugins.packages.${pkgs.system}.hyprexpo
@@ -61,31 +98,5 @@ in {
   home.file.".wayland-session" = {
     source = "${package}/bin/Hyprland";
     executable = true;
-  };
-
-  # hyprland configs, based on https://github.com/notwidow/hyprland
-  xdg.configFile = {
-    "hypr/mako" = {
-      source = mylib.mklinkRelativeToRoot config "home/linux/gui/hypr/conf/mako";
-      recursive = true;
-    };
-    "hypr/scripts" = {
-      source = mylib.mklinkRelativeToRoot config "home/linux/gui/hypr/conf/scripts";
-      recursive = true;
-    };
-    "hypr/waybar" = {
-      source = mylib.mklinkRelativeToRoot config "home/linux/gui/hypr/conf/waybar";
-      recursive = true;
-    };
-    "hypr/wlogout" = {
-      source = mylib.mklinkRelativeToRoot config "home/linux/gui/hypr/conf/wlogout";
-      recursive = true;
-    };
-
-    # music player - mpd
-    "mpd" = {
-      source = mylib.mklinkRelativeToRoot config "home/linux/gui/hypr/conf/mpd";
-      recursive = true;
-    };
   };
 }

@@ -6,6 +6,7 @@
   qqnt,
   nur-linyinfeng,
   nur-DataEraserC,
+  nur-DataEraserC-not-follow,
   ...
 }: {
   home.packages = with pkgs; [
@@ -47,6 +48,8 @@
     # my custom hardened packages
     # pkgs.nixpaks.qq
     # pkgs.nixpaks.qq-desktop-item
+    # qqmusic
+    # wechat-uos
 
     wechat-uos
     # pkgs.nixpaks.wechat-uos
@@ -67,7 +70,7 @@
     feishu
 
     # c001apk-flutter
-    nur-DataEraserC.packages.${pkgs.system}.c001apk-flutter
+    nur-DataEraserC-not-follow.packages.${pkgs.system}.c001apk-flutter
 
     # Translate tool
     translate-shell

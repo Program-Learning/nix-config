@@ -71,7 +71,8 @@
     # the following directories will be passed to /persistent/home/$USER
     users.nixos = {
       directories = [
-        "codes"
+        "codes" # for personal code
+        "work" # for work, contains a .gitconfig with my work email.
         "nix-config"
         "tmp"
 
@@ -97,6 +98,7 @@
         ".config/pulse"
         ".pki"
         ".steam" # steam games
+        ".var" # flatpak app's data
         ".wine"
         ".minecraft"
         "GOG Games"
@@ -132,6 +134,10 @@
           mode = "0700";
         }
         {
+          directory = ".config/gcloud";
+          mode = "0700";
+        }
+        {
           directory = ".docker";
           mode = "0700";
         }
@@ -145,6 +151,7 @@
         # remote desktop
         ".config/remmina"
         ".config/freerdp"
+        ".zoom"
 
         # doom-emacs
         ".config/emacs"
@@ -156,6 +163,10 @@
         ".config/Code"
         ".config/Code - Insiders"
         ".config/vscode-sqltools"
+
+        # cursor ai editor
+        ".cursor"
+        ".config/Cursor"
 
         # cisco packet tracer
         "pt"
@@ -169,6 +180,10 @@
         ".config/google-chrome-unstable"
         ".config/microsoft-edge"
 
+        # Joplin
+        ".config/joplin" # tui client
+        ".config/Joplin" # joplin-desktop
+
         # email clients profiles
         ".thunderbird"
 
@@ -176,6 +191,7 @@
         ".config/ServerBox"
 
         # neovim / remmina / flatpak / zed ...
+        # neovim / remmina / flatpak / ...
         ".local/share"
         ".local/state"
 
@@ -279,6 +295,8 @@
       files = [
         ".wakatime.cfg"
         ".config/nushell/history.txt"
+        ".config/zoomus.conf"
+        ".config/zoom.conf"
         ".condarc"
 
         # nvfetcher

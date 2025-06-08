@@ -4,26 +4,23 @@
   config,
   ...
 }: {
-  # NOTE: this niri spec conf from
-  # https://github.com/YaLTeR/niri/blob/main/resources/niri-portals.conf
-  # https://github.com/YaLTeR/niri/wiki/Important-Software
-  xdg.portal = lib.mkIf config.modules.desktop.niri.enable {
+  # NOTE: gnome-wayland's config has confilcted with this
+  # and niri has its spec conf from official
+  # TODO: maybe hyprland should separate from this bcs official hypr provide this:
+  # https://github.com/hyprwm/Hyprland/blob/main/assets/hyprland-portals.conf
+  xdg.portal = lib.mkIf (!config.modules.desktop.gnome-wayland.enable && !config.modules.desktop.niri.enable) {
     enable = true;
 
     config = {
       common = {
+        # Use xdg-desktop-portal-gtk for every portal interface...
         default = [
-          "gnome"
           "gtk"
+          "hyprland"
         ];
+        # except for the secret portal, which is handled by gnome-keyring
         "org.freedesktop.impl.portal.Secret" = [
           "gnome-keyring"
-        ];
-        "org.freedesktop.impl.portal.Notification" = [
-          "gtk"
-        ];
-        "org.freedesktop.impl.portal.Access" = [
-          "gtk"
         ];
       };
     };
@@ -35,10 +32,11 @@
     # alacritty as an example, it use xdg-open as default, but you can also custom this behavior
     # and vscode has open like `External Uri Openers`
     xdgOpenUsePortal = true;
+    # ls /etc/profiles/per-user/ryan/share/xdg-desktop-portal/portals
     extraPortals = with pkgs; [
-      xdg-desktop-portal-gtk # for gtk
-      xdg-desktop-portal-gnome # for gnome
-      # xdg-desktop-portal-kde  # for kde
+      xdg-desktop-portal-gtk # for provides file picker / OpenURI
+      # xdg-desktop-portal-wlr
+      xdg-desktop-portal-hyprland # for Hyprland
     ];
   };
 }

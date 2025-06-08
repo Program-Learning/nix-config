@@ -7,12 +7,10 @@
   home.packages = with pkgs; [
     xwayland-satellite # for xwayland support
     xorg.xhost # to fix sudo graphical application
-    brightnessctl # a tool to set screen brightness
     wev # debug which key is pressed
     libinput # debug input subsystem
     cliphist # Wayland clipboard manager
     waybar # the status bar
-    swaybg # the wallpaper
     waypaper # GUI wallpaper setter for Wayland-based window managers
     mpvpaper # A video wallpaper program for wlroots based wayland compositors.
     swayidle # the idle timeout
@@ -21,21 +19,25 @@
     swaylock # locking the screen
     # hyprlock # locking the screen
     wlogout # logout menu
-    wl-clipboard # copying and pasting
-    # hyprpicker # color picker
     wshowkeys # Show which key is triggered
 
     nur-DataEraserC.packages.${pkgs.system}.ndrop # a tool to switch windows status (foreground/background)
 
-    # hyprshot # screen shot
     grim # taking screenshots
     grimblast # taking screenshots
     slurp # selecting a region to screenshot
-    wf-recorder # screen recording
 
     mako # the notification daemon, the same as dunst
 
     yad # a fork of zenity, for creating dialogs
+
+    swaybg # the wallpaper
+    wl-clipboard # copying and pasting
+    # hyprpicker # color picker
+    brightnessctl
+
+    # hyprshot # screen shot
+    wf-recorder # screen recording
 
     # audio
     alsa-utils # provides amixer/alsamixer/...

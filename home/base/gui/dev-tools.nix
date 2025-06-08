@@ -19,6 +19,7 @@
     hostapd
 
     # IDEs
+    # jetbrains.idea-community
     jetbrains.idea-community
     # jetbrains.idea-ultimate
     # eclipses.eclipse-sdk

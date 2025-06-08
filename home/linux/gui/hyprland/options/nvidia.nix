@@ -14,13 +14,15 @@ in {
     wayland.windowManager.hyprland.settings.env = [
       # for hyprland with nvidia gpu, ref https://wiki.hyprland.org/Nvidia/
       "LIBVA_DRIVER_NAME,nvidia"
-      "XDG_SESSION_TYPE,wayland"
+      "__GLX_VENDOR_LIBRARY_NAME,nvidia"
+      # enable native Wayland support for most Electron apps
+      "ELECTRON_OZONE_PLATFORM_HINT,auto"
+      # VA-API hardware video acceleration
+      "NVD_BACKEND,direct"
+
       "GBM_BACKEND,nvidia-drm"
       # ONLY SOME LATEST NIXPKGS REQUIRE THIS WORK AROUND
       # "AQ_DRM_DEVICES,/dev/dri/card1"
-      "__GLX_VENDOR_LIBRARY_NAME,nvidia"
-      # fix https://github.com/hyprwm/Hyprland/issues/1520
-      "WLR_NO_HARDWARE_CURSORS,1"
     ];
   };
 }

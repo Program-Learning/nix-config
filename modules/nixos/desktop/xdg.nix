@@ -1,17 +1,35 @@
 {
   pkgs,
   lib,
-  config,
   ...
 }: {
-  # NOTE: gnome-wayland's config has confilcted with this
-  # and niri has its spec conf from official
-  # TODO: maybe hyprland should separate from this bcs official hypr provide this:
-  # https://github.com/hyprwm/Hyprland/blob/main/assets/hyprland-portals.conf
-  xdg.portal = lib.mkIf (!config.modules.desktop.gnome-wayland.enable && !config.modules.desktop.niri.enable) {
+  xdg.terminal-exec = {
+    enable = true;
+    package = pkgs.xdg-terminal-exec-mkhl;
+    settings = let
+      my_terminal_desktop = [
+        # NOTE: We have add these packages at user level
+        "Alacritty.desktop"
+        "kitty.desktop"
+        "foot.desktop"
+        "com.mitchellh.ghostty.desktop"
+      ];
+    in {
+      GNOME =
+        my_terminal_desktop
+        ++ [
+          "com.raggesilver.BlackBox.desktop"
+          "org.gnome.Terminal.desktop"
+        ];
+      niri = my_terminal_desktop;
+      default = my_terminal_desktop;
+    };
+  };
+
+  xdg.portal = {
     enable = true;
 
-    config = {
+    config = lib.mkDefault {
       common = {
         # Use xdg-desktop-portal-gtk for every portal interface...
         default = [
@@ -30,11 +48,11 @@
     # xdg-open is used by almost all programs to open a unknown file/uri
     # alacritty as an example, it use xdg-open as default, but you can also custom this behavior
     # and vscode has open like `External Uri Openers`
-    xdgOpenUsePortal = false;
+    xdgOpenUsePortal = lib.mkDefault true;
+
+    # ls /run/current-system/sw/share/xdg-desktop-portal/portals/
     extraPortals = with pkgs; [
-      xdg-desktop-portal-gtk # for gtk
-      xdg-desktop-portal-gnome # for gnome
-      # xdg-desktop-portal-kde  # for kde
+      xdg-desktop-portal-gtk # for provides file picker / OpenURI
     ];
   };
 }

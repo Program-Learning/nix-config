@@ -1,9 +1,8 @@
 {
   pkgs,
-  pkgs-stable,
   pkgs-unstable,
-  nur-program-learning,
   nur-ataraxiasjel,
+  # nur-ataraxiasjel,
   ...
 }: {
   ###################################################################################
