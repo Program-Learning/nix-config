@@ -109,7 +109,12 @@
   #   };
   # };
 
-  nixpkgs.config.permittedInsecurePackages = ["openssl-1.1.1v" "electron-19.0.7" "electron-19.1.9"];
+  nixpkgs.config.permittedInsecurePackages = [
+    "openssl-1.1.1v"
+    "electron-19.1.9"
+    "alist-3.45.0"
+    "ventoy-1.1.05"
+  ];
 
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (lib.getName pkg) [

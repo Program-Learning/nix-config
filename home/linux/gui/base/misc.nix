@@ -56,7 +56,7 @@
     # pkgs.nixpaks.wechat-uos-desktop-item
     # nur-linyinfeng.packages.${pkgs.system}.icalingua-plus-plus
 
-    nur-linyinfeng.packages.${pkgs.system}.wemeet
+    wemeet
 
     # wechat-uos
     # nur-DataEraserC.packages.${pkgs.system}.wechat-uos
