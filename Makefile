@@ -12,34 +12,34 @@
 ############################################################################
 
 ai-i3:
-	nixos-rebuild switch --flake .#ai-i3 --use-remote-sudo
+	nixos-rebuild switch --flake .#ai-i3 --sudo
 
 i3:
-	nixos-rebuild switch --flake .#y9000k2021h-i3 --use-remote-sudo
+	nixos-rebuild switch --flake .#y9000k2021h-i3 --sudo
 
 s-i3:
-	nixos-rebuild switch --flake .#shoukei-i3 --use-remote-sudo
+	nixos-rebuild switch --flake .#shoukei-i3 --sudo
 
 ai-hyprland:
-	nixos-rebuild switch --flake .#ai-hyprland --use-remote-sudo
+	nixos-rebuild switch --flake .#ai-hyprland --sudo
 
 hypr:
-	nixos-rebuild switch --flake .#y9000k2021h-hyprland --use-remote-sudo
+	nixos-rebuild switch --flake .#y9000k2021h-hyprland --sudo
 
 s-hypr:
-	nixos-rebuild switch --flake .#shoukei-hyprland --use-remote-sudo
+	nixos-rebuild switch --flake .#shoukei-hyprland --sudo
 
 ai-i3-debug:
-	nixos-rebuild switch --flake .#ai-i3 --use-remote-sudo --show-trace --verbose
+	nixos-rebuild switch --flake .#ai-i3 --sudo --show-trace --verbose
 
 i3-debug:
-	nixos-rebuild switch --flake .#y9000k2021h-hyprland --use-remote-sudo --show-trace --verbose
+	nixos-rebuild switch --flake .#y9000k2021h-hyprland --sudo --show-trace --verbose
 
 ai-hyprland-debug:
-	nixos-rebuild switch --flake .#ai-hyprland --use-remote-sudo --show-trace --verbose
+	nixos-rebuild switch --flake .#ai-hyprland --sudo --show-trace --verbose
 
 hypr-debug:
-	nixos-rebuild switch --flake .#y9000k2021h-hyprland --use-remote-sudo --show-trace --verbose
+	nixos-rebuild switch --flake .#y9000k2021h-hyprland --sudo --show-trace --verbose
 
 up:
 	nix flake update
@@ -195,4 +195,3 @@ suzu-debug:
 fmt:
 	# format the nix files in this repo
 	nix fmt
-
