@@ -88,7 +88,7 @@
     };
     virtualbox = {
       host = {
-        enable = true;
+        enable = false;
         enableExtensionPack = true;
         enableKvm = true;
         addNetworkInterface = false;
