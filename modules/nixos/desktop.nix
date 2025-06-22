@@ -24,7 +24,8 @@ in {
   };
 
   config = mkMerge [
-    (mkIf cfgWayland.enable {
+    (
+      mkIf cfgWayland.enable {
         ####################################################################
         #  NixOS's Configuration for Wayland based Window Manager
         ####################################################################
@@ -55,12 +56,19 @@ in {
         # Without autologin it may work
         security.pam.services.greetd.enableGnomeKeyring = true;
       }
-      // (mkIf cfgHyprland.enable {
+    )
+    (
+      mkIf (cfgHyprland.enable
+        && cfgWayland.enable) {
         # fix https://github.com/ryan4yin/nix-config/issues/10
         security.pam.services.hyprlock = {};
-      })
-      // (mkIf cfgNiri.enable) {
+      }
+    )
+    (
+      mkIf (cfgNiri.enable && cfgWayland.enable)
+      {
         security.pam.services.swaylock = {};
-      })
+      }
+    )
   ];
 }
