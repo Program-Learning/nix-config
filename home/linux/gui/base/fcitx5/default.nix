@@ -19,8 +19,7 @@
   i18n.inputMethod = {
     enable = true;
     type = "fcitx5";
-    # home manager do not have this option
-    # fcitx5.waylandFrontend = true;
+    fcitx5.waylandFrontend = true;
     fcitx5.addons = with pkgs; [
       # for flypy chinese input method
       fcitx5-rime

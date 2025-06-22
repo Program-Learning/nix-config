@@ -35,6 +35,15 @@ mkNixPak {
       "org.mozilla.firefox_beta.*" = "own"; # firefox beta
       "org.mpris.MediaPlayer2.firefox.*" = "own";
       "org.freedesktop.NetworkManager" = "talk";
+
+      "org.gnome.Shell.Screencast" = "talk";
+      # System tray icon
+      "org.freedesktop.Notifications" = "talk";
+      "org.kde.StatusNotifierWatcher" = "talk";
+      # File Manager
+      "org.freedesktop.FileManager1" = "talk";
+      # Uses legacy StatusNotifier implementation
+      "org.kde.*" = "own";
     };
 
     bubblewrap = {
@@ -46,16 +55,21 @@ mkNixPak {
         # NOTE: sloth.mkdir is used to create the directory if it does not exist!
         (sloth.mkdir (sloth.concat' sloth.homeDir "/.mozilla"))
 
-        # ================ for externsions ===============================
-        # required by https://github.com/browserpass/browserpass-extension
-        (sloth.concat' sloth.homeDir "/.local/share/password-store") # pass
-        sloth.xdgDownloadDir
         sloth.xdgDocumentsDir
+        sloth.xdgDownloadDir
+        sloth.xdgMusicDir
+        sloth.xdgVideosDir
       ];
       bind.ro = [
         # To actually make Firefox run
         "/sys/bus/pci"
         ["${config.app.package}/lib/firefox" "/app/etc/firefox"]
+
+        # ================ for browserpass extension ===============================
+        "/etc/gnupg"
+        (sloth.concat' sloth.homeDir "/.gnupg") # gpg's config
+        (sloth.concat' sloth.homeDir "/.local/share/password-store") # my secrets
+        (sloth.concat' sloth.runtimeDir "/gnupg") # for access gpg-agent socket
 
         # Unsure
         (sloth.concat' sloth.xdgConfigHome "/dconf")
@@ -66,12 +80,6 @@ mkNixPak {
         wayland = true;
         pipewire = true;
       };
-      bind.dev = [
-        "/dev/shm" # Shared Memory
-      ];
-      tmpfs = [
-        "/tmp"
-      ];
     };
   };
 }
