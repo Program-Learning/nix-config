@@ -7,11 +7,15 @@ export def nixos-switch [
     print $"mode: ($mode)"
     if "debug" == $mode {
         # show details via nix-output-monitor
+        print "NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nom build $\".#nixosConfigurations.($name).config.system.build.toplevel\" --show-trace --verbose"
+        print "NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild switch --use-remote-sudo --flake $\".#($name)\" --show-trace --verbose --impure"
         NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nom build $".#nixosConfigurations.($name).config.system.build.toplevel" --show-trace --verbose
         NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild switch --use-remote-sudo --flake $".#($name)" --show-trace --verbose --impure
     } else if "boot" == $mode {
+        print "NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild boot --use-remote-sudo --flake $\".#($name)\" --impure"
         NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild boot --use-remote-sudo --flake $".#($name)" --impure
     } else if "switch" == $mode {
+        print "NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild switch --use-remote-sudo --flake $\".#($name)\" --impure"
         NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild switch --use-remote-sudo --flake $".#($name)" --impure
     } else if "boot-notify" == $mode {
         let new_dir_name = $"result-(date now | format date "%Y-%m-%d_%H:%M:%S")"
