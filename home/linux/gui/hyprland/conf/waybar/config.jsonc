@@ -192,7 +192,7 @@
     "tooltip-format-linked": " {ifname} (No IP) ({ifname} via {gwaddr})",
     "tooltip-format-disconnected": "Disconnected",
     "tooltip-format-disabled": "Disabled",
-    "max-length": 50,
+    "max-length": 100,
     "on-click-middle": "nm-connection-editor",
     "on-click-right": "foot nmtui",
   },
