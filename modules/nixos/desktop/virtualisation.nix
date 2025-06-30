@@ -74,7 +74,12 @@
         runAsRoot = true;
         swtpm.enable = true;
         ovmf.enable = true;
-        ovmf.packages = [pkgs-unstable.OVMFFull.fd];
+        ovmf.packages = [
+          (pkgs-unstable.OVMFFull.override {
+            secureBoot = true;
+            tpmSupport = true;
+          }).fd
+        ];
       };
     };
     spiceUSBRedirection.enable = true;
@@ -88,7 +93,7 @@
     };
     virtualbox = {
       host = {
-        enable = false;
+        enable = true;
         enableExtensionPack = true;
         enableKvm = true;
         addNetworkInterface = false;

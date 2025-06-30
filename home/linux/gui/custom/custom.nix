@@ -160,8 +160,6 @@
           # ninja
 
           ntfy-sh
-
-          OVMFFull.fd
         ])
     # nixpkgs-unstable
     ++ (with pkgs-unstable; [

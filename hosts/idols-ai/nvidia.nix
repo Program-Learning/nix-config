@@ -18,7 +18,7 @@
     # ONLY SOME LATEST NIXPKGS REQUIRE THIS WORK AROUND
     # "nvidia-drm.fbdev=1"
   ];
-  services.xserver.videoDrivers = ["nvidia"]; # will install nvidia-vaapi-driver by default
+  services.xserver.videoDrivers = ["amdgpu" "nvidia"]; # will install nvidia-vaapi-driver by default
   hardware.nvidia = {
     # Open-source kernel modules are preferred over and planned to steadily replace proprietary modules
     open = true;
@@ -39,7 +39,7 @@
         enableOffloadCmd = true;
       };
       # Make sure to use the correct Bus ID values for your system!
-      intelBusId = "PCI:0:2:0";
+      amdgpuBusId = "PCI:6:0:0";
       nvidiaBusId = "PCI:1:0:0";
     };
     # # Enable the Nvidia settings menu,
