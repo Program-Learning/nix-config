@@ -2,7 +2,7 @@
 
 # Use nushell for shell commands
 # To use this justfile, you need to enter a shell with just & nushell installed:
-# 
+#
 #   nix shell nixpkgs#just nixpkgs#nushell
 set shell := ["nu", "-c"]
 
@@ -103,13 +103,21 @@ up-nix:
 #
 #  NixOS WSL related commands
 #
+#  WARNING: current do not work bcs https://github.com/casey/just/pull/2798
+#
 ############################################################################
 
 [linux]
 wsl-hypr mode="default":
   #!/usr/bin/env nu
   use {{utils_nu}} *;
-  nixos-switch wsl-y9000k2021h-hyprland {{mode}}
+  nixos-switch wsl-r9000p2025-hyprland {{mode}}
+
+[linux]
+wsl mode="default":
+  #!/usr/bin/env nu
+  use {{utils_nu}} *;
+  nixos-switch wsl-r9000p2025-hyprland {{mode}}
 
 ############################################################################
 #
@@ -191,7 +199,7 @@ ha mode="default":
 # Depoly to fern(macOS host)
 [macos]
 [group('desktop')]
-fe mode="default": 
+fe mode="default":
   #!/usr/bin/env nu
   use {{utils_nu}} *;
   darwin-build "fern" {{mode}};
@@ -200,7 +208,7 @@ fe mode="default":
 # Depoly to frieren(macOS host)
 [macos]
 [group('desktop')]
-fr mode="default": 
+fr mode="default":
   #!/usr/bin/env nu
   use {{utils_nu}} *;
   darwin-build "frieren" {{mode}};
@@ -255,7 +263,7 @@ shoryu:
 [group('homelab')]
 shoryu-local mode="default":
   #!/usr/bin/env nu
-  use {{utils_nu}} *; 
+  use {{utils_nu}} *;
   nixos-switch kubevirt-shoryu {{mode}}
 
 [linux]
@@ -267,7 +275,7 @@ shushou:
 [group('homelab')]
 shushou-local mode="default":
   #!/usr/bin/env nu
-  use {{utils_nu}} *; 
+  use {{utils_nu}} *;
   nixos-switch kubevirt-shushou {{mode}}
 
 [linux]
@@ -279,7 +287,7 @@ youko:
 [group('homelab')]
 youko-local mode="default":
   #!/usr/bin/env nu
-  use {{utils_nu}} *; 
+  use {{utils_nu}} *;
   nixos-switch kubevirt-youko {{mode}}
 
 ############################################################################
@@ -293,7 +301,7 @@ youko-local mode="default":
 [group('homelab')]
 upload-idols mode="default":
   #!/usr/bin/env nu
-  use {{utils_nu}} *; 
+  use {{utils_nu}} *;
   upload-vm aquamarine {{mode}}
   upload-vm ruby {{mode}}
   upload-vm kana {{mode}}
@@ -307,7 +315,7 @@ aqua:
 [group('homelab')]
 aqua-local mode="default":
   #!/usr/bin/env nu
-  use {{utils_nu}} *; 
+  use {{utils_nu}} *;
   nixos-switch aquamarine {{mode}}
 
 [linux]
@@ -319,7 +327,7 @@ ruby:
 [group('homelab')]
 ruby-local mode="default":
   #!/usr/bin/env nu
-  use {{utils_nu}} *; 
+  use {{utils_nu}} *;
   nixos-switch ruby {{mode}}
 
 [linux]
@@ -331,7 +339,7 @@ kana:
 [group('homelab')]
 kana-local mode="default":
   #!/usr/bin/env nu
-  use {{utils_nu}} *; 
+  use {{utils_nu}} *;
   nixos-switch kana {{mode}}
 
 ############################################################################
@@ -345,21 +353,21 @@ kana-local mode="default":
 [group('homelab')]
 upload-k3s-prod mode="default":
   #!/usr/bin/env nu
-  use {{utils_nu}} *; 
-  upload-vm k3s-prod-1-master-1 {{mode}}; 
-  upload-vm k3s-prod-1-master-2 {{mode}}; 
-  upload-vm k3s-prod-1-master-3 {{mode}}; 
-  upload-vm k3s-prod-1-worker-1 {{mode}}; 
-  upload-vm k3s-prod-1-worker-2 {{mode}}; 
+  use {{utils_nu}} *;
+  upload-vm k3s-prod-1-master-1 {{mode}};
+  upload-vm k3s-prod-1-master-2 {{mode}};
+  upload-vm k3s-prod-1-master-3 {{mode}};
+  upload-vm k3s-prod-1-worker-1 {{mode}};
+  upload-vm k3s-prod-1-worker-2 {{mode}};
   upload-vm k3s-prod-1-worker-3 {{mode}};
 
 [linux]
 [group('homelab')]
 upload-k3s-test mode="default":
   #!/usr/bin/env nu
-  use {{utils_nu}} *; 
-  upload-vm k3s-test-1-master-1 {{mode}}; 
-  upload-vm k3s-test-1-master-2 {{mode}}; 
+  use {{utils_nu}} *;
+  upload-vm k3s-test-1-master-1 {{mode}};
+  upload-vm k3s-test-1-master-2 {{mode}};
   upload-vm k3s-test-1-master-3 {{mode}};
 
 [linux]

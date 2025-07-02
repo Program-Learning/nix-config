@@ -39,6 +39,8 @@
       "vboxusers"
       "kvm"
       "warp"
+      "ollama"
+      "open-webui"
     ];
   };
 

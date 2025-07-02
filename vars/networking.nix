@@ -66,8 +66,10 @@
       ipv6 = "fe80::150"; # Link-local Address
     };
     y9000k2021h = y9000k2021h_1_school;
-    ai = y9000k2021h;
+    r9000p2025 = y9000k2021h;
+    ai = r9000p2025;
     wsl-y9000k2021h = y9000k2021h;
+    wsl-r9000p2025 = r9000p2025;
     aquamarine = {
       # VM
       iface = "enp2s0";

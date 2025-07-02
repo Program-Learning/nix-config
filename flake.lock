@@ -5046,15 +5046,16 @@
       "locked": {
         "lastModified": 1749373882,
         "narHash": "sha256-CXJLzIa4jjcjQHgVzcTP/k3tk/BM5QZmhBZ6AqqN3mc=",
-        "owner": "DataEraserC",
-        "repo": "nix-secrets",
+        "ref": "refs/heads/master",
         "rev": "3ba4381621878fb7fbf0996ab03f18730699d43c",
-        "type": "github"
+        "shallow": true,
+        "type": "git",
+        "url": "ssh://git@github.com/DataEraserC/nix-secrets.git"
       },
       "original": {
-        "owner": "DataEraserC",
-        "repo": "nix-secrets",
-        "type": "github"
+        "shallow": true,
+        "type": "git",
+        "url": "ssh://git@github.com/DataEraserC/nix-secrets.git"
       }
     },
     "naersk": {

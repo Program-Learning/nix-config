@@ -10,8 +10,8 @@
   genSpecialArgs,
   ...
 } @ args: let
-  # y9000k2021h
-  name = "y9000k2021h";
+  # r9000p2025
+  name = "r9000p2025";
   wsl-modules = [
     inputs.nixos-wsl.nixosModules.default
   ];
@@ -35,13 +35,26 @@
         }: {
           services.vscode-server.enable = true;
         })
+        {
+          modules.mkOutOfStoreSymlink.enable = true;
+          modules.mkOutOfStoreSymlink.configPath = "/home/nixos/nix-config";
+          modules.mkOutOfStoreSymlink.wallpaperPath = "/home/nixos/Documents/code/wallpapers";
+        }
       ];
-    home-modules = map mylib.relativeToRoot [
-      # common
-      "home/linux/tui.nix"
-      # host specific
-      "hosts/wsl-${name}/home.nix"
-    ];
+    home-modules =
+      map mylib.relativeToRoot [
+        # common
+        "home/linux/tui.nix"
+        # host specific
+        "hosts/wsl-${name}/home.nix"
+      ]
+      ++ [
+        {
+          modules.mkOutOfStoreSymlink.enable = true;
+          modules.mkOutOfStoreSymlink.configPath = "/home/nixos/nix-config";
+          modules.mkOutOfStoreSymlink.wallpaperPath = "/home/nixos/Documents/code/wallpapers";
+        }
+      ];
   };
 
   modules-hyprland = {
