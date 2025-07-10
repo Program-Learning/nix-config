@@ -87,7 +87,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    impermanence.url = "github:Apps-Used-By-Myself/impermanence";
+    preservation.url = "github:nix-community/preservation";
 
     # community wayland nixpkgs
     # nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
@@ -172,7 +172,10 @@
       flake = false;
     };
 
-    nur-ryan4yin.url = "github:ryan4yin/nur-packages";
+    nur-ryan4yin = {
+      url = "github:ryan4yin/nur-packages";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # for waydroid
     nur-ataraxiasjel.url = "github:AtaraxiaSjel/nur";

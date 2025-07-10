@@ -27,7 +27,7 @@ in rec {
     ./hardware-configuration.nix
     ./nvidia.nix
 
-    ./impermanence.nix
+    ./preservation.nix
     ./impermanence_addon.nix
     ./secureboot.nix
     ./dae.nix

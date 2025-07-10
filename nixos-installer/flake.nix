@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
-    impermanence.url = "github:nix-community/impermanence";
+    preservation.url = "github:nix-community/preservation";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nuenv.url = "github:DeterminateSystems/nuenv";
   };
@@ -28,13 +28,13 @@
 
           ./configuration.nix
 
-          ../modules/base.nix
+          ../modules/base
           ../modules/nixos/base/i18n.nix
           ../modules/nixos/base/user-group.nix
           ../modules/nixos/base/networking.nix
 
           ../hosts/idols-ai/hardware-configuration.nix
-          ../hosts/idols-ai/impermanence.nix
+          ../hosts/idols-ai/preservation.nix
         ];
       };
 
@@ -58,13 +58,13 @@
 
           ./configuration.nix
 
-          ../modules/base.nix
+          ../modules/base
           ../modules/nixos/base/i18n.nix
           ../modules/nixos/base/user-group.nix
           ../modules/nixos/base/networking.nix
 
           ../hosts/12kingdoms-shoukei/hardware-configuration.nix
-          ../hosts/idols-ai/impermanence.nix
+          ../hosts/idols-ai/preservation.nix
         ];
       };
     };

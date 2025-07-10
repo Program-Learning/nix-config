@@ -25,31 +25,6 @@
   boot.kernelModules = ["vfio-pci"];
 
   virtualisation = {
-    # Do not use "--restart=always" to create container, or shutdown/reboot will be slow
-    # https://github.com/containers/podman/issues/15284
-    podman = {
-      enable = true;
-
-      # Create a `docker` alias for podman, to use it as a drop-in replacement
-      dockerCompat = false;
-
-      # Enable use of NVidia GPUs from within podman containers.
-      # enableNvidia = true;
-
-      # Required for containers under podman-compose to be able to talk to each other.
-      defaultNetwork.settings.dns_enabled = true;
-    };
-
-    # podman containers as systemd services(will break nixos's declare feat)
-    # oci-containers.backend = "podman";
-    # oci-containers.containers = {
-    #   container-name = {
-    #     image = "container-image";
-    #     autoStart = true;
-    #     ports = [ "127.0.0.1:1234:1234" ];
-    #   };
-    # };
-
     docker = {
       enable = true;
       daemon.settings = {
@@ -61,6 +36,34 @@
       # start dockerd on boot.
       # This is required for containers which are created with the `--restart=always` flag to work.
       enableOnBoot = true;
+    };
+
+    # Do not use "--restart=always" to create container, or shutdown/reboot will be slow
+    # https://github.com/containers/podman/issues/15284
+    podman = {
+      enable = true;
+      # Create a `docker` alias for podman, to use it as a drop-in replacement
+      dockerCompat = true;
+      # Required for containers under podman-compose to be able to talk to each other.
+      defaultNetwork.settings.dns_enabled = true;
+      # Periodically prune Podman resources
+      autoPrune = {
+        enable = true;
+        dates = "weekly";
+        flags = ["--all"];
+      };
+    };
+
+    # podman containers as systemd services(will break nixos's declare feat)
+    oci-containers = {
+      backend = "podman";
+      # containers = {
+      #   container-name = {
+      #     image = "container-image";
+      #     autoStart = true;
+      #     ports = [ "127.0.0.1:1234:1234" ];
+      #   };
+      # };
     };
 
     # Usage: https://wiki.nixos.org/wiki/Waydroid
@@ -123,6 +126,24 @@
 
     # Need to add [File (in the menu bar) -> Add connection] when start for the first time
     virt-manager
+
+    # QEMU/KVM(HostCpuOnly), provides:
+    #   qemu-storage-daemon qemu-edid qemu-ga
+    #   qemu-pr-helper qemu-nbd elf2dmp qemu-img qemu-io
+    #   qemu-kvm qemu-system-x86_64 qemu-system-aarch64 qemu-system-i386
+    qemu_kvm
+
+    # Install QEMU(other architectures), provides:
+    #   ......
+    #   qemu-loongarch64 qemu-system-loongarch64
+    #   qemu-riscv64 qemu-system-riscv64 qemu-riscv32  qemu-system-riscv32
+    #   qemu-system-arm qemu-arm qemu-armeb qemu-system-aarch64 qemu-aarch64 qemu-aarch64_be
+    #   qemu-system-xtensa qemu-xtensa qemu-system-xtensaeb qemu-xtensaeb
+    #   ......
+    qemu
+
+    # Mayuri Spec
+    nixos-shell
     # virt-manager-qt
     virt-viewer
 
@@ -145,21 +166,5 @@
     virtiofsd
 
     dmg2img
-
-    # QEMU/KVM(HostCpuOnly), provides:
-    #   qemu-storage-daemon qemu-edid qemu-ga
-    #   qemu-pr-helper qemu-nbd elf2dmp qemu-img qemu-io
-    #   qemu-kvm qemu-system-x86_64 qemu-system-aarch64 qemu-system-i386
-    qemu_kvm
-
-    # Install QEMU(other architectures), provides:
-    #   ......
-    #   qemu-loongarch64 qemu-system-loongarch64
-    #   qemu-riscv64 qemu-system-riscv64 qemu-riscv32  qemu-system-riscv32
-    #   qemu-system-arm qemu-arm qemu-armeb qemu-system-aarch64 qemu-aarch64 qemu-aarch64_be
-    #   qemu-system-xtensa qemu-xtensa qemu-system-xtensaeb qemu-xtensaeb
-    #   ......
-    qemu
-    nixos-shell
   ];
 }

@@ -40,7 +40,6 @@ let
     HOMEBREW_CORE_GIT_REMOTE = "https://mirrors.bfsu.edu.cn/git/homebrew/homebrew-core.git";
     HOMEBREW_PIP_INDEX_URL = "https://pypi.tuna.tsinghua.edu.cn/simple";
 
-
     # nju mirror
     # HOMEBREW_API_DOMAIN = "https://mirror.nju.edu.cn/homebrew-bottles/api";
     # HOMEBREW_BOTTLE_DOMAIN = "https://mirror.nju.edu.cn/homebrew-bottles";
@@ -155,10 +154,10 @@ in {
 
     # `brew install --cask`
     casks = [
-      "squirrel" # input method for Chinese, rime-squirrel
+      "squirrel-app" # input method for Chinese, rime-squirrel
       "firefox"
       "google-chrome"
-      
+
       # code editor
       "visual-studio-code"
       # "zed"
@@ -170,7 +169,7 @@ in {
       # https://joplinapp.org/help/
       "joplin" # note taking app
 
-      "tailscale" # tailscale macos app (with gui)
+      "tailscale-app" # tailscale macos app (with gui)
 
       # AI
       "lm-studio"
@@ -199,11 +198,12 @@ in {
       "neteasemusic" # music
       "blender@lts" # 3D creation suite
       "mihomo-party" # transparent proxy tool
+      "clash-verge-rev" # the same as mihomo-party
 
       # Development
       "mitmproxy" # HTTP/HTTPS traffic inspector
       "insomnia" # REST client
-      "wireshark" # network analyzer
+      "wireshark-app" # network analyzer
       # "jdk-mission-control" # Java Mission Control
       # "google-cloud-sdk" # Google Cloud SDK
       "miniforge" # Miniconda's community-driven distribution

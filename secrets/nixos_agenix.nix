@@ -48,10 +48,10 @@ in {
 
       # if you changed this key, you need to regenerate all encrypt files from the decrypt contents!
       age.identityPaths =
-        if cfg.impermanence.enable
+        if cfg.preservation.enable
         then [
           # To decrypt secrets on boot, this key should exists when the system is booting,
-          # so we should use the real key file path(prefixed by `/persistent/`) here, instead of the path mounted by impermanence.
+          # so we should use the real key file path(prefixed by `/persistent/`) here, instead of the path mounted by preservation.
           "/persistent/etc/ssh/ssh_host_ed25519_key" # Linux
         ]
         else [
@@ -72,7 +72,7 @@ in {
         {
           # This expression should be true to pass the assertion
           # WARNING: we bypass this on my secret bcs we only have a computer without surrounding facilities
-          assertion = !(cfg.desktop.enable && enabledServerSecrets) || true;
+          assertion = !(cfg.desktop.enable && enabledServerSecrets);
           message = "Enable either desktop or server's secrets, not both!";
         }
       ];
@@ -196,10 +196,10 @@ in {
           }
           // (MkPermAttr "alist" "0700");
         "frp_aliyun2025.toml" =
-            {
-              file = "${mysecrets}/agenix/frp_aliyun2025.toml.age";
-            }
-            // high_security;
+          {
+            file = "${mysecrets}/agenix/frp_aliyun2025.toml.age";
+          }
+          // high_security;
       };
 
       # place secrets in /etc/

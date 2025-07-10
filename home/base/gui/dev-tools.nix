@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  nur-ryan4yin,
+  ...
+}: {
   home.packages = with pkgs; [
     dbeaver-bin # database manager
     # TODO: move tui network tools to a better place
@@ -20,6 +24,12 @@
 
     # IDEs
     # jetbrains.idea-community
+
+    # AI cli tools
+    nur-ryan4yin.packages.${pkgs.system}.gemini-cli
+    k8sgpt
+    kubectl-ai # an ai helper opensourced by google
+
     jetbrains.idea-community
     # jetbrains.idea-ultimate
     # eclipses.eclipse-sdk

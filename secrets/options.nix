@@ -10,6 +10,6 @@ with lib; {
     server.webserver.enable = mkEnableOption "NixOS Secrets for Web Servers(contains tls cert keys)";
     server.storage.enable = mkEnableOption "NixOS Secrets for HDD Data's LUKS Encryption";
 
-    impermanence.enable = mkEnableOption "whether use impermanence and ephemeral root file system";
+    preservation.enable = mkEnableOption "whether use preservation and ephemeral root file system";
   };
 }

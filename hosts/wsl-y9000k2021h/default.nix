@@ -13,8 +13,12 @@
 #
 #############################################################
 let
-  hostName = "y9000k2021h"; # Define your hostname.
+  hostName = "r9000p2025"; # Define your hostname.
   macAddress = "random";
+  inherit (myvars.networking) defaultGateway defaultGateway6 nameservers;
+  inherit (myvars.networking.hostsAddr.${hostName}) iface ipv4 ipv6;
+  ipv4WithMask = "${ipv4}/24";
+  ipv6WithMask = "${ipv6}/64";
 in rec {
   imports = [
     ./netdev-mount.nix
@@ -22,7 +26,7 @@ in rec {
     ./hardware-configuration.nix
     ./nvidia.nix
 
-    ./impermanence.nix
+    ./preservation.nix
     ./impermanence_addon.nix
     # ./secureboot.nix
     # ./dae.nix
@@ -74,6 +78,32 @@ in rec {
     enableIPv6 = true; # disable ipv6
     extraHosts = myvars.networking.genericHosts;
   };
+
+  # networking.useNetworkd = true;
+  # systemd.network.enable = true;
+
+  # systemd.network.networks."10-${iface}" = {
+  #   matchConfig.Name = [iface];
+  #   networkConfig = {
+  #     Address = [ipv4WithMask ipv6WithMask];
+  #     DNS = nameservers;
+  #     DHCP = "ipv6"; # enable DHCPv6 only, so we can get a GUA.
+  #     IPv6AcceptRA = true; # for Stateless IPv6 Autoconfiguraton (SLAAC)
+  #     LinkLocalAddressing = "ipv6";
+  #   };
+  #   routes = [
+  #     {
+  #       Destination = "0.0.0.0/0";
+  #       Gateway = defaultGateway;
+  #     }
+  #     {
+  #       Destination = "::/0";
+  #       Gateway = defaultGateway6;
+  #       GatewayOnLink = true; # it's a gateway on local link.
+  #     }
+  #   ];
+  #   linkConfig.RequiredForOnline = "routable";
+  # };
 
   # conflict with feature: containerd-snapshotter
   # virtualisation.docker.storageDriver = "btrfs";
