@@ -41,6 +41,7 @@
       "warp"
       "ollama"
       "open-webui"
+      "video"
     ];
   };
 

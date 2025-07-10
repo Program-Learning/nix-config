@@ -8,6 +8,6 @@
   home.packages = [
     pkgs.tgpt
     pkgs.aichat # A ai cli interface
-    LaphaeL-aicmd.packages.${pkgs.system}.laphael_aicmd
+    # LaphaeL-aicmd.packages.${pkgs.system}.laphael_aicmd
   ];
 }

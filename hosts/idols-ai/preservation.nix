@@ -5,6 +5,10 @@
   ...
 }: let
   inherit (myvars) username;
+  makeDirRW = dir: {
+    directory = dir;
+    configureParent = true;
+  };
 in {
   imports = [
     preservation.nixosModules.default
@@ -102,14 +106,14 @@ in {
         # XDG Directories
         # ======================================
 
-        "Desktop"
-        ".gnome"
-        "Downloads"
-        "Music"
-        "Pictures"
-        "Documents"
-        "Videos"
-        "Templates"
+        (makeDirRW "Desktop")
+        (makeDirRW ".gnome")
+        (makeDirRW "Downloads")
+        (makeDirRW "Music")
+        (makeDirRW "Pictures")
+        (makeDirRW "Documents")
+        (makeDirRW "Videos")
+        (makeDirRW "Templates")
 
         # ======================================
         # Codes / Work / Playground
@@ -297,42 +301,42 @@ in {
 
         # Mayuri Spec
 
-        ".wine"
-        ".minecraft"
-        "GOG Games"
+        (makeDirRW ".wine")
+        (makeDirRW ".minecraft")
+        (makeDirRW "GOG Games")
 
-        "Apps" # some apps temporarily store at here
+        (makeDirRW "Apps") # some apps temporarily store at here
 
-        ".config/Ryujinx"
-        ".config/yuzu"
-        ".config/suyu"
-        ".config/lutris"
-        ".config/gnome-boxes"
-        "Android"
-        ".android"
+        (makeDirRW ".config/Ryujinx")
+        (makeDirRW ".config/yuzu")
+        (makeDirRW ".config/suyu")
+        (makeDirRW ".config/lutris")
+        (makeDirRW ".config/gnome-boxes")
+        (makeDirRW "Android")
+        (makeDirRW ".android")
         ".config/.android"
-        "workspace"
-        "eclipse-workspace"
-        ".Genymobile"
-        "AndroidStudioProjects"
-        "IdeaProjects"
-        ".jdks"
+        (makeDirRW "workspace")
+        (makeDirRW "eclipse-workspace")
+        (makeDirRW ".Genymobile")
+        (makeDirRW "AndroidStudioProjects")
+        (makeDirRW "IdeaProjects")
+        (makeDirRW ".jdks")
 
         # nix-index
         ".cache/nix-index"
 
-        ".tldr"
+        (makeDirRW ".tldr")
 
         # cisco packet tracer
-        "pt"
+        (makeDirRW "pt")
 
         # email clients profiles
-        ".thunderbird"
+        (makeDirRW ".thunderbird")
 
         # ServerBox
         ".config/ServerBox"
 
-        "BetterUniverse"
+        (makeDirRW "BetterUniverse")
 
         # clash
         ".config/clash"
@@ -349,8 +353,8 @@ in {
         ".config/niri"
 
         # ai related file dirs
-        "invokeai"
-        ".textgen"
+        (makeDirRW "invokeai")
+        (makeDirRW ".textgen")
         ".config/LaphaeLaicmd"
         ".config/aichat"
         # NOTE: this can be remove bcs we use `services.ollama` which place files in `/var/lib/ollama` by default
@@ -406,10 +410,10 @@ in {
         ".cache/tlrc"
 
         # nvfetcher cache
-        "_sources"
+        (makeDirRW "_sources")
 
         # Trash Bin
-        ".Trash-1000"
+        (makeDirRW ".Trash-1000")
       ];
       files = [
         {
@@ -463,6 +467,7 @@ in {
     };
   in {
     "/home/${username}/.config".d = permission;
+    "/home/${username}/.cache".d = permission;
     "/home/${username}/.local".d = permission;
     "/home/${username}/.local/share".d = permission;
     "/home/${username}/.local/state".d = permission;
