@@ -36,8 +36,7 @@ in rec {
   ];
 
   networking = {
-    hostName = "DESKTOP-GM6XG0X";
-    # inherit hostName;
+    inherit hostName;
 
     # we use networkd instead
     # networkmanager.enable = false; # provides nmcli/nmtui for wifi adjustment

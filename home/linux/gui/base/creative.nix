@@ -11,7 +11,7 @@
     # creative
     # https://github.com/edolstra/nix-warez/blob/master/blender/flake.nix
     blender-bin.packages.${pkgs.system}.blender_4_2 # 3d modeling
-    # gimp      # image editing, I prefer using figma in browser instead of this one
+    shotcut # video editor
     (gimp-with-plugins.override {
       plugins = with gimpPlugins; [
         fourier
@@ -20,7 +20,7 @@
         bimp
       ];
     })
-    shotcut # video editor
+    # gimp      # image editing, I prefer using figma in browser instead of this one
     # inkscape # vector graphics
     # krita # digital painting
     # pkgs-stable.musescore # music notation

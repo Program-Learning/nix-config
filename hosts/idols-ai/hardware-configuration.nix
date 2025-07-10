@@ -64,15 +64,15 @@
   ];
 
   boot.initrd = {
-    postDeviceCommands = let
-      PRIMARYUSBID = "D7AB-22CE";
-      BACKUPUSBID = "12CE-A600";
-    in
-      pkgs.lib.mkBefore ''
-        mkdir -m 0755 -p /key
-        sleep 2 # To make sure the usb key has been loaded
-        mount -n -t vfat -o ro `findfs UUID=${PRIMARYUSBID}` /key || mount -n -t vfat -o ro `findfs UUID=${BACKUPUSBID}` /key
-      '';
+    # postDeviceCommands = let
+    #   PRIMARYUSBID = "D7AB-22CE";
+    #   BACKUPUSBID = "12CE-A600";
+    # in
+    #   pkgs.lib.mkBefore ''
+    #     mkdir -m 0755 -p /key
+    #     sleep 2 # To make sure the usb key has been loaded
+    #     mount -n -t vfat -o ro `findfs UUID=${PRIMARYUSBID}` /key || mount -n -t vfat -o ro `findfs UUID=${BACKUPUSBID}` /key
+    #   '';
     # unlocked luks devices via a keyfile or prompt a passphrase.
     luks.devices."crypted-nixos" = {
       # NOTE: DO NOT use device name here(like /dev/sda, /dev/nvme0n1p2, etc), use UUID instead.
@@ -81,7 +81,7 @@
       # the keyfile(or device partition) that should be used as the decryption key for the encrypted device.
       # if not specified, you will be prompted for a passphrase instead.
       keyFile = "/key/luks/root-part.key";
-      preLVM = false; # If this is true the decryption is attempted before the postDeviceCommands can run
+      # preLVM = false; # If this is true the decryption is attempted before the postDeviceCommands can run
 
       # whether to allow TRIM requests to the underlying device.
       # it's less secure, but faster.
@@ -90,7 +90,8 @@
       # Enabling this should improve performance on SSDs;
       # https://wiki.archlinux.org/index.php/Dm-crypt/Specialties#Disable_workqueue_for_increased_solid_state_drive_(SSD)_performance
       bypassWorkqueues = true;
-      fallbackToPassword = true;
+      # fallbackToPassword = true;
+      keyFileTimeout = 5;
       tryEmptyPassphrase = true;
     };
   };
@@ -103,12 +104,12 @@
     options = ["subvolid=5"];
   };
 
-  modules.desktop.rootfs.fsType = "btrfs";
-  modules.desktop.rootfs.btrfsBlockDevice = "/dev/disk/by-uuid/17df699e-6502-4205-955f-c456eb378d48";
-  modules.desktop.rootfs.retentionPeriod = 7;
-  modules.desktop.rootfs.PreBackupCommand = ''
-    rm -rf /btrfs_tmp/root/etc/agenix
-  '';
+  modules.desktop.rootfs.fsType = "tmpfs";
+  # modules.desktop.rootfs.btrfsBlockDevice = "/dev/disk/by-uuid/17df699e-6502-4205-955f-c456eb378d48";
+  # modules.desktop.rootfs.retentionPeriod = 7;
+  # modules.desktop.rootfs.PreBackupCommand = ''
+  #   rm -rf /btrfs_tmp/root/etc/agenix
+  # '';
 
   # disable here because it will become a cfg in my config
   # equal to `mount -t tmpfs tmpfs /`
@@ -150,6 +151,12 @@
   #   btrfs subvolume create /btrfs_tmp/root
   #   umount /btrfs_tmp
   # '';
+
+  fileSystems."/key" = {
+    device = "/dev/disk/by-uuid/D7AB-22CE";
+    fsType = "vfat";
+    neededForBoot = false;
+  };
 
   fileSystems."/nix" = {
     device = "/dev/disk/by-uuid/17df699e-6502-4205-955f-c456eb378d48";

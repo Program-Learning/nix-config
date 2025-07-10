@@ -8,8 +8,8 @@
   ...
 }: {
   home.packages = with pkgs; [
-    # nix-gaming.packages.${pkgs.system}.osu-stable
     nix-gaming.packages.${pkgs.system}.osu-lazer-bin
+    # nix-gaming.packages.${pkgs.system}.osu-stable
     gamescope # SteamOS session compositing window manager
     # prismlauncher # A free, open source launcher for Minecraft
     hmcl # MineCraft Launcher
