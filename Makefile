@@ -80,11 +80,15 @@ nur_all := nur-program-learning nur-ryan4yin nur-linyinfeng nur-xddxdd nur-atara
 update_nur:
 	nix flake update $(nur_all)
 
-upgrade_switch_system:
-	sudo NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 http_proxy='http://localhost:7890' https_proxy='http://localhost:7890' nixos-rebuild switch --flake /home/nixos/Documents/code/nix-config/#y9000k2021h-hyprland --upgrade --impure --show-trace
+niri:
+	NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild switch --use-remote-sudo --flake .#ai-niri --show-trace --verbose --impure
 
-upgrade_system:
-	sudo NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 http_proxy='http://localhost:7890' https_proxy='http://localhost:7890' nixos-rebuild boot --flake /home/nixos/Documents/code/nix-config/#y9000k2021h-hyprland --upgrade --impure --show-trace
+hypr:
+	NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild switch --use-remote-sudo --flake .#ai-hyprland --show-trace --verbose --impure
+
+wsl:
+	NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild switch --use-remote-sudo --flake .#wsl-r9000p2025-hyprland --show-trace --verbose --impure
+
 
 ############################################################################
 #

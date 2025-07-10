@@ -13,8 +13,7 @@
 #
 #############################################################
 let
-  hostName = "ai"; # Define your hostname.
-
+  hostName = "r9000p2025"; # Define your hostname.
   macAddress = "random";
   inherit (myvars.networking) defaultGateway defaultGateway6 nameservers;
   inherit (myvars.networking.hostsAddr.${hostName}) iface ipv4 ipv6;
@@ -29,8 +28,11 @@ in rec {
 
     ./preservation.nix
     ./impermanence_addon.nix
-    ./secureboot.nix
-    ./dae.nix
+    # ./secureboot.nix
+    # ./dae.nix
+
+    # wsl related
+    ./ollama.nix
   ];
 
   networking = {
@@ -124,7 +126,7 @@ in rec {
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "25.05"; # Did you read the comment?
+  system.stateVersion = "24.11"; # Did you read the comment?
   features.bigdata_hadoop = {
     enable = false;
     package = pkgs.hadoop_3_3;

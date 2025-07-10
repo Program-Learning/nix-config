@@ -5036,9 +5036,9 @@
         "type": "github"
       },
       "original": {
-        "owner": "DataEraserC",
-        "repo": "nix-secrets",
-        "type": "github"
+        "shallow": true,
+        "type": "git",
+        "url": "ssh://git@github.com/DataEraserC/nix-secrets.git"
       }
     },
     "naersk": {
