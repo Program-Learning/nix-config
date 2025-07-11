@@ -155,6 +155,7 @@
   fileSystems."/key" = {
     device = "/dev/disk/by-uuid/D7AB-22CE";
     fsType = "vfat";
+    neededForBoot = true;
   };
 
   fileSystems."/nix" = {

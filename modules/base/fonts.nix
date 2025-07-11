@@ -40,6 +40,7 @@ in {
       #
       # Noto 系列字族只支持西文，命名规则是 Noto + Sans 或 Serif + 文字名称。
       noto-fonts # 大部分文字的常见样式，不包含汉字
+      noto-fonts-emoji # 表情符号字体
       noto-fonts-color-emoji # 彩色的表情符号字体
       # Noto CJK 为「思源」系列汉字字体，由 Adobe + Google 共同开发
       # Google 以 Noto Sans/Serif CJK SC/TC/HK/JP/KR 的名称发布该系列字体。
