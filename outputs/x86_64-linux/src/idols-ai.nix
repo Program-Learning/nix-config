@@ -31,8 +31,6 @@
         inputs.daeuniverse.nixosModules.dae
         inputs.daeuniverse.nixosModules.daed
         inputs.chaotic.nixosModules.default
-        # NOTE: THIS BROKEN BUILD
-        # inputs.catppuccin.homeManagerModules.catppuccin
         {
           modules.mkOutOfStoreSymlink.enable = true;
           modules.mkOutOfStoreSymlink.configPath = "/home/nixos/nix-config";
