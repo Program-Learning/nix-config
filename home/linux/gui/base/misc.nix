@@ -49,9 +49,9 @@
     # pkgs.nixpaks.qq
     # pkgs.nixpaks.qq-desktop-item
     # qqmusic
-    # wechat-uos
 
-    wechat-uos
+    pkgs.bwraps.wechat
+    # wechat-uos
     # pkgs.nixpaks.wechat-uos
     # pkgs.nixpaks.wechat-uos-desktop-item
     # nur-linyinfeng.packages.${pkgs.system}.icalingua-plus-plus

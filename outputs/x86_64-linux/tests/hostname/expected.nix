@@ -7,7 +7,6 @@
     "ai-kde-wayland" = "ai";
     "ai-niri" = "ai";
     "ai-hyprland" = "ai";
-    "shoukei-hyprland" = "shoukei";
   };
   specialHostNames = builtins.attrNames specialExpected;
 

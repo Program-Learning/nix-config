@@ -1,6 +1,6 @@
 {
+  config,
   lib,
-  nixpkgs,
   ...
 }: {
   # to install chrome, you need to enable unfree packages
@@ -18,6 +18,10 @@
   nix.settings.auto-optimise-store = true;
 
   nix.channel.enable = false; # remove nix-channel related tools & configs, we use flakes instead.
+
+  nix.extraOptions = ''
+    !include ${config.age.secrets.nix-access-tokens.path}
+  '';
 
   # but NIX_PATH is still used by many useful tools, so we set it to the same value as the one used by this flake.
   # Make `nix repl '<nixpkgs>'` use the same nixpkgs as the one used by this flake.

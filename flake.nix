@@ -69,7 +69,6 @@
       url = "github:lnl7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs-darwin";
     };
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     # home-manager, used for managing user configuration
     home-manager = {
@@ -82,12 +81,20 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # https://github.com/catppuccin/nix
+    catppuccin = {
+      url = "github:catppuccin/nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.2";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    preservation.url = "github:nix-community/preservation";
+    preservation = {
+      url = "github:nix-community/preservation";
+    };
 
     # community wayland nixpkgs
     # nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
@@ -116,7 +123,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-gaming.url = "github:fufexan/nix-gaming";
+    nix-gaming = {
+      url = "github:fufexan/nix-gaming";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     disko = {
       url = "github:nix-community/disko/v1.11.0";
@@ -129,7 +139,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nuenv.url = "github:DeterminateSystems/nuenv";
+    nuenv = {
+      url = "github:DeterminateSystems/nuenv";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     haumea = {
       url = "github:nix-community/haumea/v0.2.2";
@@ -145,7 +158,16 @@
       url = "github:ghostty-org/ghostty";
     };
 
-    blender-bin.url = "github:edolstra/nix-warez?dir=blender";
+    blender-bin = {
+      url = "github:edolstra/nix-warez?dir=blender";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixos-apple-silicon = {
+      # 2025-07-04
+      url = "github:nix-community/nixos-apple-silicon/eba4b40c816e5aff8951ae231ac237e8aab8ec1d";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     ########################  Some non-flake repositories  #########################################
 
@@ -162,6 +184,11 @@
       # url = "github:DataEraserC/nix-secrets";
       url = "git+ssh://git@github.com/DataEraserC/nix-secrets.git?shallow=1";
       # url = "git+file:////home/nixos/Documents/code/nix-config/secrets?shallow=1";
+      flake = false;
+    };
+
+    my-asahi-firmware = {
+      url = "git+ssh://git@github.com/ryan4yin/asahi-firmware.git?shallow=1";
       flake = false;
     };
 
@@ -357,8 +384,6 @@
       url = "github:daeuniverse/flake.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    catppuccin.url = "github:catppuccin/nix";
 
     # NUR package source
 

@@ -4,8 +4,6 @@
   nur-DataEraserC,
   ...
 }: {
-  home.file.".local/share/fcitx5/themes".source = "${nur-ryan4yin.packages.${pkgs.system}.catppuccin-fcitx5}/src";
-
   xdg.configFile = {
     "fcitx5/profile" = {
       source = ./profile;
@@ -13,7 +11,6 @@
       # so we need to force replace it in every rebuild to avoid file conflict.
       force = true;
     };
-    "fcitx5/conf/classicui.conf".source = ./classicui.conf;
   };
 
   i18n.inputMethod = {

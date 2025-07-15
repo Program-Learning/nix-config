@@ -13,6 +13,5 @@
     # parsec-bin
     waypipe
     moonlight-qt # moonlight client, for streaming games/desktop from a PC
-    pkgs-stable.rustdesk # p2p remote desktop
   ];
 }

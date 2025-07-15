@@ -13,7 +13,7 @@
   programs = {
     # source code: https://github.com/nix-community/home-manager/blob/master/modules/programs/chromium.nix
     google-chrome = {
-      enable = true;
+      enable = pkgs.stdenv.isx86_64;
       package = browser-previews.packages.${pkgs.system}.google-chrome-dev;
 
       # https://wiki.archlinux.org/title/Chromium#Native_Wayland_support

@@ -25,7 +25,7 @@
         # nixos hardening
         # "hardening/profiles/default.nix"
         "hardening/nixpaks"
-        # "hardening/apparmor"
+        "hardening/bwraps"
       ]
       ++ [
         inputs.daeuniverse.nixosModules.dae
@@ -53,6 +53,25 @@
           modules.mkOutOfStoreSymlink.wallpaperPath = "/home/nixos/Documents/code/wallpapers";
         }
       ];
+  };
+
+  modules-hyprland = {
+    nixos-modules =
+      [
+        {
+          modules.desktop.fonts.enable = true;
+          modules.desktop.wayland.enable = true;
+          modules.secrets.desktop.enable = true;
+          modules.secrets.preservation.enable = true;
+          modules.desktop.hyprland.enable = true;
+        }
+      ]
+      ++ base-modules.nixos-modules;
+    home-modules =
+      [
+        {modules.desktop.hyprland.enable = true;}
+      ]
+      ++ base-modules.home-modules;
   };
 
   modules-gnome-wayland = {
@@ -101,25 +120,6 @@
     home-modules =
       [
         {modules.desktop.niri.enable = true;}
-      ]
-      ++ base-modules.home-modules;
-  };
-
-  modules-hyprland = {
-    nixos-modules =
-      [
-        {
-          modules.desktop.fonts.enable = true;
-          modules.desktop.wayland.enable = true;
-          modules.secrets.desktop.enable = true;
-          modules.secrets.preservation.enable = true;
-          modules.desktop.hyprland.enable = true;
-        }
-      ]
-      ++ base-modules.nixos-modules;
-    home-modules =
-      [
-        {modules.desktop.hyprland.enable = true;}
       ]
       ++ base-modules.home-modules;
   };

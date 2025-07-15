@@ -76,6 +76,7 @@ in {
       "/var/lib/tailscale"
       "/var/lib/bluetooth"
       "/var/lib/NetworkManager"
+      "/var/lib/iwd"
 
       # Mayuri spec
       # daed
@@ -251,7 +252,6 @@ in {
         # Instant Messaging
         # ======================================
         ".config/QQ"
-        ".xwechat"
 
         ".local/share/TelegramDesktop"
 

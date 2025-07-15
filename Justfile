@@ -26,13 +26,13 @@ test:
 # Update all the flake inputs
 [group('nix')]
 up:
-  nix flake update
+  nix flake update --commit-lock-file
 
 # Update specific input
 # Usage: just upp nixpkgs
 [group('nix')]
 upp input:
-  nix flake update {{input}}
+  nix flake update {{input}} --commit-lock-file
 
 # List all generations of the system profile
 [group('nix')]
@@ -173,7 +173,7 @@ s-hypr mode="default":
 
 ############################################################################
 #
-#  Darwin related commands, harmonica is my macbook pro's hostname
+#  Darwin related commands
 #
 ############################################################################
 
@@ -189,15 +189,6 @@ darwin-rollback:
   #!/usr/bin/env nu
   use {{utils_nu}} *;
   darwin-rollback
-
-# Deploy to harmonica(macOS host)
-[macos]
-[group('desktop')]
-ha mode="default":
-  #!/usr/bin/env nu
-  use {{utils_nu}} *;
-  darwin-build "harmonica" {{mode}};
-  darwin-switch "harmonica" {{mode}}
 
 # Depoly to fern(macOS host)
 [macos]
