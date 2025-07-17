@@ -11,7 +11,7 @@
   ...
 } @ args: let
   # 星野 アイ, Hoshino Ai
-  name = "ai";
+  name = "ai-old";
   base-modules = {
     nixos-modules =
       map mylib.relativeToRoot [

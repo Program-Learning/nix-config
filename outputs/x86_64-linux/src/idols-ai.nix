@@ -138,5 +138,6 @@ in {
     "${name}-gnome-wayland" = inputs.self.nixosConfigurations."${name}-gnome-wayland".config.formats.iso;
     "${name}-kde-wayland" = inputs.self.nixosConfigurations."${name}-kde-wayland".config.formats.iso;
     "${name}-hyprland" = inputs.self.nixosConfigurations."${name}-hyprland".config.formats.iso;
+    "${name}-niri" = inputs.self.nixosConfigurations."${name}-niri".config.formats.iso;
   };
 }
