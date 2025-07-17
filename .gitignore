@@ -17,3 +17,4 @@ secrets/
 !secrets/nixos.nix
 mysql/
 .Trash-*/
+./*.patch
