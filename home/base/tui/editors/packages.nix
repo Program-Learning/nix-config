@@ -97,6 +97,8 @@
       vscode-extensions.vadimcn.vscode-lldb.adapter # codelldb - debugger
 
       #-- python
+      pipx # Install and Run Python Applications in Isolated Environments
+      uv # python project package manager
       pyright # python language server
       poetry
       (python313.withPackages (

@@ -1,8 +1,4 @@
-{
-  pkgs,
-  nur-ryan4yin,
-  ...
-}: {
+{pkgs, ...}: {
   home.packages = with pkgs;
     [
       dbeaver-bin # database manager
@@ -27,7 +23,6 @@
       # jetbrains.idea-community
 
       # AI cli tools
-      nur-ryan4yin.packages.${pkgs.system}.gemini-cli
       k8sgpt
       kubectl-ai # an ai helper opensourced by google
     ]
