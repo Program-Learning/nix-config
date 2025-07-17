@@ -346,7 +346,7 @@ binds {
     Mod+F12 { spawn "~/.config/niri/scripts/dropdown_terminal"; }
 
     // tun off screen
-    XF86PowerOff { spawn "niri" "msg" "action" "power-off-monitors";}
+    Mod+XF86PowerOff { spawn "niri" "msg" "action" "power-off-monitors";}
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument in the end.

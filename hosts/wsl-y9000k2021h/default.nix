@@ -13,7 +13,7 @@
 #
 #############################################################
 let
-  hostName = "r9000p2025"; # Define your hostname.
+  hostName = "y9000k2021h"; # Define your hostname.
   macAddress = "random";
   inherit (myvars.networking) defaultGateway defaultGateway6 nameservers;
   inherit (myvars.networking.hostsAddr.${hostName}) iface ipv4 ipv6;
@@ -26,7 +26,7 @@ in rec {
     ./hardware-configuration.nix
     ./nvidia.nix
 
-    ./preservation.nix
+    # ./preservation.nix
     ./impermanence_addon.nix
     # ./secureboot.nix
     # ./dae.nix

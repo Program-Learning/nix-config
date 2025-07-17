@@ -61,7 +61,7 @@
     nixos-modules =
       [
         {
-          # modules.desktop.wayland.enable = true;
+          # modules.desktop.wayland.enable = false;
           modules.secrets.desktop.enable = true;
           modules.secrets.preservation.enable = true;
         }
@@ -70,18 +70,18 @@
       ++ wsl-modules;
     home-modules =
       [
-        # {modules.desktop.hyprland.enable = true;}
+        # {modules.desktop.hyprland.enable = false;}
       ]
       ++ base-modules.home-modules;
   };
 in {
   nixosConfigurations = {
     # host with hyprland compositor
-    "wsl-${name}-hyprland" = mylib.nixosSystem (modules-hyprland // args);
+    "wsl-${name}" = mylib.nixosSystem (modules-hyprland // args);
   };
 
   # generate iso image for hosts with desktop environment
   packages = {
-    "wsl-${name}-hyprland" = inputs.self.nixosConfigurations."wsl-${name}-hyprland".config.formats.iso;
+    "wsl-${name}" = inputs.self.nixosConfigurations."wsl-${name}".config.formats.iso;
   };
 }
