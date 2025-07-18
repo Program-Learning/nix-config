@@ -12,34 +12,34 @@
 ############################################################################
 
 ai-i3:
-	nixos-rebuild switch --flake .#ai-i3 --use-remote-sudo
+	nixos-rebuild switch --flake .#ai-i3 --sudo
 
 i3:
-	nixos-rebuild switch --flake .#y9000k2021h-i3 --use-remote-sudo
+	nixos-rebuild switch --flake .#y9000k2021h-i3 --sudo
 
 s-i3:
-	nixos-rebuild switch --flake .#shoukei-i3 --use-remote-sudo
+	nixos-rebuild switch --flake .#shoukei-i3 --sudo
 
 ai-hyprland:
-	nixos-rebuild switch --flake .#ai-hyprland --use-remote-sudo
+	nixos-rebuild switch --flake .#ai-hyprland --sudo
 
 hypr:
-	nixos-rebuild switch --flake .#y9000k2021h-hyprland --use-remote-sudo
+	nixos-rebuild switch --flake .#y9000k2021h-hyprland --sudo
 
 s-hypr:
-	nixos-rebuild switch --flake .#shoukei-hyprland --use-remote-sudo
+	nixos-rebuild switch --flake .#shoukei-hyprland --sudo
 
 ai-i3-debug:
-	nixos-rebuild switch --flake .#ai-i3 --use-remote-sudo --show-trace --verbose
+	nixos-rebuild switch --flake .#ai-i3 --sudo --show-trace --verbose
 
 i3-debug:
-	nixos-rebuild switch --flake .#y9000k2021h-hyprland --use-remote-sudo --show-trace --verbose
+	nixos-rebuild switch --flake .#y9000k2021h-hyprland --sudo --show-trace --verbose
 
 ai-hyprland-debug:
-	nixos-rebuild switch --flake .#ai-hyprland --use-remote-sudo --show-trace --verbose
+	nixos-rebuild switch --flake .#ai-hyprland --sudo --show-trace --verbose
 
 hypr-debug:
-	nixos-rebuild switch --flake .#y9000k2021h-hyprland --use-remote-sudo --show-trace --verbose
+	nixos-rebuild switch --flake .#y9000k2021h-hyprland --sudo --show-trace --verbose
 
 up:
 	nix flake update
@@ -81,13 +81,13 @@ update_nur:
 	nix flake update $(nur_all)
 
 niri:
-	NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild switch --use-remote-sudo --flake .#ai-niri --show-trace --verbose --impure
+	NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild switch --sudo --flake .#ai-niri --show-trace --verbose --impure
 
 hypr:
-	NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild switch --use-remote-sudo --flake .#ai-hyprland --show-trace --verbose --impure
+	NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild switch --sudo --flake .#ai-hyprland --show-trace --verbose --impure
 
 wsl:
-	NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild switch --use-remote-sudo --flake .#wsl-r9000p2025 --show-trace --verbose --impure
+	NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild switch --sudo --flake .#wsl-r9000p2025 --show-trace --verbose --impure
 
 
 ############################################################################
