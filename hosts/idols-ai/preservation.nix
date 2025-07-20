@@ -131,6 +131,8 @@ in {
         ".local/state/home-manager"
         ".local/state/nix/profiles"
         ".local/share/nix"
+        ".cache/nix"
+        ".cache/nixpkgs-review"
 
         # ======================================
         # IDE / Editors
@@ -310,6 +312,8 @@ in {
 
         # Digital Painting
         ".local/share/krita"
+
+        ".config/nushell"
 
         # Mayuri Spec
 
