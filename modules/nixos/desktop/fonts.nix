@@ -16,7 +16,7 @@
     fontconfig = {
       # User defined default fonts
       # https://catcat.cc/post/2021-03-07/
-      defaultFonts = {
+      defaultFonts = rec {
         serif = [
           # 西文: 衬线字体（笔画末端有修饰(衬线)的字体，通常用于印刷。）
           "Source Sans 3"
@@ -42,7 +42,7 @@
           # 西文
           "JetBrainsMono Nerd Font"
         ];
-        emoji = ["Noto Color Emoji"];
+        emoji = ["Noto Color Emoji" "Noto Emoji" "Symbols Nerd Font" "Twemoji"];
       };
       antialias = true; # 抗锯齿
       hinting.enable = false; # 禁止字体微调 - 高分辨率下没这必要
