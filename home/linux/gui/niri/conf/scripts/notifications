@@ -2,7 +2,7 @@
 
 ## launch mako with alt config
 
-CONFIG="$HOME/.config/niri/mako/config"
+CONFIG="$HOME/.config/mako/config"
 
 if [[ ! $(pidof mako) ]]; then
 	mako --config ${CONFIG}

@@ -14,10 +14,14 @@
     x11.enable = true;
     # package = pkgs.bibata-cursors;
     # name = "Bibata-Modern-Ice";
-    package = nur-DataEraserC.packages.${pkgs.system}.xcursor-genshin-nahida;
-    name = "xcursor-genshin-nahida";
+    # NOTE: use catppuccin cursors for test
+    # package = nur-DataEraserC.packages.${pkgs.system}.xcursor-genshin-nahida;
+    # name = "xcursor-genshin-nahida";
     size = 24;
   };
+
+  catppuccin.cursors.enable = true;
+  catppuccin.cursors.accent = "dark";
 
   # set dpi for 4k monitor
   xresources.properties = {

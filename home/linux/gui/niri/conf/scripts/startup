@@ -56,11 +56,13 @@ fi
 # it will by start by home-manager automatically, do not need to restart it here.
 systemctl --user restart wallpaper.service &
 
+# NOTE: we move this to nix
 # Launch notification daemon (mako)
-~/.config/niri/scripts/notifications &
+# ~/.config/niri/scripts/notifications &
 
+# NOTE: we move this to nix
 # Launch statusbar (waybar)
-~/.config/niri/scripts/statusbar &
+# ~/.config/niri/scripts/statusbar &
 # ~/.config/niri/scripts/statusbar_debug &
 
 # Start mpd

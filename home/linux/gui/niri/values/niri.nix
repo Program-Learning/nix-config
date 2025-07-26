@@ -20,7 +20,7 @@ in {
     "niri/config.kdl" = {
       source = mylib.mklinkRelativeToRoot config "home/linux/gui/niri/conf/config.kdl";
     };
-    "niri/mako" = {
+    "mako" = {
       source = mylib.mklinkRelativeToRoot config "home/linux/gui/niri/conf/mako";
       recursive = true;
     };
@@ -28,11 +28,11 @@ in {
       source = mylib.mklinkRelativeToRoot config "home/linux/gui/niri/conf/scripts";
       recursive = true;
     };
-    "niri/waybar" = {
+    "waybar" = {
       source = mylib.mklinkRelativeToRoot config "home/linux/gui/niri/conf/waybar";
       recursive = true;
     };
-    "niri/wlogout" = {
+    "wlogout" = {
       source = mylib.mklinkRelativeToRoot config "home/linux/gui/niri/conf/wlogout";
       recursive = true;
     };
@@ -60,10 +60,22 @@ in {
   programs.wlogout.enable = true;
   catppuccin.wlogout.enable = false;
 
-  # Hyprland idle daemon
-  services.hypridle.enable = true;
-
   # notification daemon, the same as dunst
   services.mako.enable = true;
   catppuccin.mako.enable = false;
+
+  # chromium
+  catppuccin.chromium.enable = true;
+
+  # zed
+  catppuccin.zed.enable = true;
+
+  # foot
+  catppuccin.foot.enable = true;
+
+  # fuzzel
+  catppuccin.fuzzel.enable = true;
+
+  # ghostty
+  catppuccin.ghostty.enable = true;
 }
