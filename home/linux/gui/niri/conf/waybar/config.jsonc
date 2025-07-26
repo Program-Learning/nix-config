@@ -220,8 +220,8 @@
     },
     "scroll-step": 5.0,
     // Commands to execute on events
-    "on-click-right": "amixer set Master toggle",
-    "on-click": "pavucontrol",
+    "on-click": "amixer set Master toggle",
+    "on-click-right": "GSK_RENDERER=opengl pavucontrol",
     "smooth-scrolling-threshold": 1,
   },
   "temperature": {

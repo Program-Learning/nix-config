@@ -282,6 +282,8 @@ in {
         ".mozilla"
         ".config/google-chrome"
         ".cache/google-chrome"
+        ".config/chromium"
+        ".cache/chromium"
         ".config/google-chrome-unstable"
         ".config/microsoft-edge"
 
