@@ -493,7 +493,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    fh.url = "https://flakehub.com/f/DeterminateSystems/fh/0.1.22.tar.gz";
+    fh.url = "https://flakehub.com/f/DeterminateSystems/fh/0.1.24";
 
     # riscv64 SBCs
     nixos-licheepi4a.url = "github:ryan4yin/nixos-licheepi4a";
