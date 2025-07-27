@@ -17,6 +17,15 @@
   # depending on how you configured your disk mounts, change this to /boot or /boot/efi.
   boot.loader.efi.efiSysMountPoint = "/boot";
   boot.loader.systemd-boot.enable = true;
+  # TODO: add boot entity for windows
+  boot.loader.systemd-boot.edk2-uefi-shell.enable = true;
+  boot.loader.systemd-boot.edk2-uefi-shell.sortKey = "z1";
+  boot.loader.systemd-boot.windows = {
+    "nvme1n1p1" = {
+      title = "Windows 11";
+      efiDeviceHandle = "FS0";
+    };
+  };
 
   # boot.kernelPackages = pkgs.linuxPackages_latest;
   # boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
