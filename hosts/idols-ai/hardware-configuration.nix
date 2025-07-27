@@ -80,7 +80,7 @@
       device = "/dev/disk/by-uuid/979348b2-fcc5-4db0-85df-69819a218470";
       # the keyfile(or device partition) that should be used as the decryption key for the encrypted device.
       # if not specified, you will be prompted for a passphrase instead.
-      keyFile = "/key/luks/root-part.key";
+      keyFile = "/sysroot/key/luks/root-part.key";
       # preLVM = false; # If this is true the decryption is attempted before the postDeviceCommands can run
 
       # whether to allow TRIM requests to the underlying device.
