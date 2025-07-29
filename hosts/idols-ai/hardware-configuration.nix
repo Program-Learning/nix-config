@@ -18,6 +18,7 @@
   boot.loader.efi.efiSysMountPoint = "/boot";
   boot.loader.systemd-boot.enable = true;
   # TODO: add boot entity for windows
+  # NOTE: https://github.com/nix-community/lanzaboote/issues/427#issuecomment-2629899407
   boot.loader.systemd-boot.edk2-uefi-shell.enable = true;
   boot.loader.systemd-boot.edk2-uefi-shell.sortKey = "z1";
   boot.loader.systemd-boot.windows = {
@@ -26,6 +27,18 @@
       efiDeviceHandle = "FS0";
     };
   };
+  boot.loader.systemd-boot.extraEntries."windows.conf" = ''
+        title     Windows
+        sort-key  0
+        efi       /EFI/edk2-shell/shellx64.efi
+        options   -nointerrupt -nomap -noversion windows.nsh
+      '';
+
+  boot.loader.systemd-boot.extraFiles."windows.nsh" = (
+    pkgs.writeText "windows.nsh" ''
+      FS0:EFI\Microsoft\Boot\Bootmgfw.efi
+    ''
+  );
 
   # boot.kernelPackages = pkgs.linuxPackages_latest;
   # boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
