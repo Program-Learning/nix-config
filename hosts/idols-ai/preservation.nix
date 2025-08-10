@@ -88,6 +88,9 @@ in {
       # for android sign
       # TODO: move to agenix/sop
       "/etc/secrets/android-keys"
+
+      # for pve-nixos
+      "/var/lib/pve-cluster"
     ];
     files = [
       # auto-generated machine ID

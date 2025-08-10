@@ -462,6 +462,9 @@
       url = "github:DataEraserC/nur-packages";
     };
 
+    # pve-nixos
+    proxmox-nixos.url = "github:SaumonNet/proxmox-nixos";
+
     Snowpkgs = {
       url = "github:Daru-san/Snowpkgs";
     };

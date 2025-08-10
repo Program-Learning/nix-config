@@ -28,6 +28,23 @@
         "hardening/bwraps"
       ]
       ++ [
+        inputs.proxmox-nixos.nixosModules.proxmox-ve
+        ({
+          pkgs,
+          lib,
+          ...
+        }: {
+          services.proxmox-ve = {
+            enable = true;
+            ipAddress = "192.168.0.1";
+          };
+
+          nixpkgs.overlays = [
+            inputs.proxmox-nixos.overlays.${system}
+          ];
+
+          # The rest of your configuration...
+        })
         inputs.daeuniverse.nixosModules.dae
         inputs.daeuniverse.nixosModules.daed
         inputs.chaotic.nixosModules.default
