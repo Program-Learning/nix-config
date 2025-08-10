@@ -26,6 +26,7 @@ in rec {
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./nvidia.nix
+    ./ai
 
     ./preservation.nix
     ./impermanence_addon.nix

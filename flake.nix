@@ -135,7 +135,7 @@
 
     # add git hooks to format nix code before commit
     pre-commit-hooks = {
-      url = "github:cachix/pre-commit-hooks.nix";
+      url = "github:cachix/git-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -194,7 +194,8 @@
 
     # my wallpapers
     wallpapers = {
-      url = "github:Program-Learning/wallpapers/dark_wallpapers";
+      url = "github:ryan4yin/wallpapers";
+      # url = "github:Program-Learning/wallpapers/dark_wallpapers";
       # url = "git+file:////home/nixos/Documents/code/wallpapers?shallow=1";
       flake = false;
     };

@@ -41,6 +41,13 @@
         # To use chrome, we need to allow the installation of non-free software
         config.allowUnfree = true;
       };
+
+      pkgs-x64 = import nixpkgs {
+        system = "x86_64-linux";
+
+        # To use chrome, we need to allow the installation of non-free software
+        config.allowUnfree = true;
+      };
     };
 
   # This is the args for all the haumea modules in this folder.
@@ -130,7 +137,10 @@ in rec {
       pre-commit-check = pre-commit-hooks.lib.${system}.run {
         src = mylib.relativeToRoot ".";
         hooks = {
-          alejandra.enable = true; # formatter
+          nixfmt-rfc-style = {
+            enable = true;
+            settings.width = 100;
+          };
           # Source code spell checker
           typos = {
             enable = true;
@@ -161,7 +171,6 @@ in rec {
 
   # Format the nix code in this flake
   formatter = forAllSystems (
-    # alejandra is a nix formatter with a beautiful output
-    system: nixpkgs.legacyPackages.${system}.alejandra
+    system: nixpkgs.legacyPackages.${system}.nixfmt
   );
 }

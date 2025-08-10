@@ -15,7 +15,7 @@ forAllSystems (
         # fix `cc` replaced by clang, which causes nvim-treesitter compilation error
         gcc
         # Nix-related
-        alejandra
+        nixfmt
         deadnix
         statix
         # spell checker
