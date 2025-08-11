@@ -1,7 +1,8 @@
 {
   lib,
   outputs,
-}: let
+}:
+let
   specialExpected = {
     "ai-gnome-wayland" = "ai";
     "ai-kde-wayland" = "ai";
@@ -14,4 +15,5 @@
   otherHostsNames = builtins.attrNames otherHosts;
   # other hosts's hostName is the same as the nixosConfigurations name
   otherExpected = lib.genAttrs otherHostsNames (name: name);
-in (specialExpected // otherExpected)
+in
+(specialExpected // otherExpected)

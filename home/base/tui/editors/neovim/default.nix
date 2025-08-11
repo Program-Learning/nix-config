@@ -24,6 +24,8 @@ let
 in
 {
   xdg.configFile."nvim".source = configPath;
+  # Disable catppuccin to avoid conflict with my non-nix config.
+  catppuccin.nvim.enable = false;
 
   home.shellAliases = shellAliases;
   programs.nushell.shellAliases = shellAliases;

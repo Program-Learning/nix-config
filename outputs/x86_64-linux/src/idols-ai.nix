@@ -9,7 +9,8 @@
   system,
   genSpecialArgs,
   ...
-} @ args: let
+}@args:
+let
   # 星野 アイ, Hoshino Ai
   name = "ai";
   base-modules = {
@@ -71,74 +72,67 @@
   };
 
   modules-hyprland = {
-    nixos-modules =
-      [
-        {
-          modules.desktop.fonts.enable = true;
-          modules.desktop.wayland.enable = true;
-          modules.secrets.desktop.enable = true;
-          modules.secrets.preservation.enable = true;
-          modules.desktop.hyprland.enable = true;
-        }
-      ]
-      ++ base-modules.nixos-modules;
-    home-modules =
-      [
-        {modules.desktop.hyprland.enable = true;}
-      ]
-      ++ base-modules.home-modules;
+    nixos-modules = [
+      {
+        modules.desktop.fonts.enable = true;
+        modules.desktop.wayland.enable = true;
+        modules.secrets.desktop.enable = true;
+        modules.secrets.preservation.enable = true;
+        modules.desktop.hyprland.enable = true;
+      }
+    ]
+    ++ base-modules.nixos-modules;
+    home-modules = [
+      { modules.desktop.hyprland.enable = true; }
+    ]
+    ++ base-modules.home-modules;
   };
 
   modules-gnome-wayland = {
-    nixos-modules =
-      [
-        {
-          modules.desktop.gnome-wayland.enable = true;
-          modules.secrets.desktop.enable = true;
-          modules.secrets.preservation.enable = true;
-        }
-      ]
-      ++ base-modules.nixos-modules;
-    home-modules =
-      [
-        {modules.desktop.gnome-wayland.enable = true;}
-      ]
-      ++ base-modules.home-modules;
+    nixos-modules = [
+      {
+        modules.desktop.gnome-wayland.enable = true;
+        modules.secrets.desktop.enable = true;
+        modules.secrets.preservation.enable = true;
+      }
+    ]
+    ++ base-modules.nixos-modules;
+    home-modules = [
+      { modules.desktop.gnome-wayland.enable = true; }
+    ]
+    ++ base-modules.home-modules;
   };
   modules-kde-wayland = {
-    nixos-modules =
-      [
-        {
-          modules.desktop.kde-wayland.enable = true;
-          modules.secrets.desktop.enable = true;
-          modules.secrets.preservation.enable = true;
-        }
-      ]
-      ++ base-modules.nixos-modules;
-    home-modules =
-      [
-        {modules.desktop.kde-wayland.enable = true;}
-      ]
-      ++ base-modules.home-modules;
+    nixos-modules = [
+      {
+        modules.desktop.kde-wayland.enable = true;
+        modules.secrets.desktop.enable = true;
+        modules.secrets.preservation.enable = true;
+      }
+    ]
+    ++ base-modules.nixos-modules;
+    home-modules = [
+      { modules.desktop.kde-wayland.enable = true; }
+    ]
+    ++ base-modules.home-modules;
   };
   modules-niri = {
-    nixos-modules =
-      [
-        {
-          modules.desktop.niri.enable = true;
-          modules.desktop.wayland.enable = true;
-          modules.secrets.desktop.enable = true;
-          modules.secrets.preservation.enable = true;
-        }
-      ]
-      ++ base-modules.nixos-modules;
-    home-modules =
-      [
-        {modules.desktop.niri.enable = true;}
-      ]
-      ++ base-modules.home-modules;
+    nixos-modules = [
+      {
+        modules.desktop.niri.enable = true;
+        modules.desktop.wayland.enable = true;
+        modules.secrets.desktop.enable = true;
+        modules.secrets.preservation.enable = true;
+      }
+    ]
+    ++ base-modules.nixos-modules;
+    home-modules = [
+      { modules.desktop.niri.enable = true; }
+    ]
+    ++ base-modules.home-modules;
   };
-in {
+in
+{
   nixosConfigurations = {
     # with gnome-wayland window manager
     "${name}-gnome-wayland" = mylib.nixosSystem (modules-gnome-wayland // args);
@@ -152,7 +146,8 @@ in {
 
   # generate iso image for hosts with desktop environment
   packages = {
-    "${name}-gnome-wayland" = inputs.self.nixosConfigurations."${name}-gnome-wayland".config.formats.iso;
+    "${name}-gnome-wayland" =
+      inputs.self.nixosConfigurations."${name}-gnome-wayland".config.formats.iso;
     "${name}-kde-wayland" = inputs.self.nixosConfigurations."${name}-kde-wayland".config.formats.iso;
     "${name}-hyprland" = inputs.self.nixosConfigurations."${name}-hyprland".config.formats.iso;
     "${name}-niri" = inputs.self.nixosConfigurations."${name}-niri".config.formats.iso;

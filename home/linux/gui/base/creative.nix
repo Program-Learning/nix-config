@@ -67,6 +67,7 @@
   programs = {
     # live streaming
     obs-studio = {
+      enable = pkgs.stdenv.isx86_64;
       plugins =
         with pkgs.obs-studio-plugins;
         [

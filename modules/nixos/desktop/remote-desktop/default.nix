@@ -3,7 +3,8 @@
   mylib,
   pkgs-stable,
   ...
-}: {
+}:
+{
   imports = mylib.scanPaths ./.;
 
   environment.systemPackages = with pkgs; [

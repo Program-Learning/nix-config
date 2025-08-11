@@ -1,7 +1,8 @@
 {
   myvars,
   lib,
-}: let
+}:
+let
   username = myvars.username;
   hosts = [
     "ai-gnome-wayland"
@@ -12,4 +13,4 @@
     "k3s-prod-1-master-1"
   ];
 in
-  lib.genAttrs hosts (_: "/home/${username}")
+lib.genAttrs hosts (_: "/home/${username}")

@@ -1,5 +1,9 @@
-{ pkgs, ... }:
 {
+  pkgs,
+  ...
+}:
+{
+
   home.packages = with pkgs; [
     xorg.xhost # to fix sudo graphical application
     wev # debug which key is pressed

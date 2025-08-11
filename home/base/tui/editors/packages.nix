@@ -13,16 +13,6 @@
     (
       # -*- Data & Configuration Languages -*-#
       [
-        #-- golang
-        go
-        gomodifytags
-        gomod2nix.packages.${pkgs.system}.default
-        iferr # generate error handling code for go
-        impl # generate function implementation for go
-        gotools # contains tools like: godoc, goimports, etc.
-        gopls # go language server
-        delve # go debugger
-
         # -- java
         jdk17
         tomcat9
@@ -42,12 +32,14 @@
 
         #-- nix
         nil
-        nurl
-        nvfetcher
         nixd
         statix # Lints and suggestions for the nix programming language
         deadnix # Find and remove unused code in .nix source files
         nixfmt # Nix Code Formatter
+
+        #-- nix other things
+        nurl
+        nvfetcher
         patchelf # Patch ELF for nixos
 
         #-- nickel lang
@@ -70,7 +62,7 @@
         marksman # language server for markdown
         glow # markdown previewer
         pandoc # document converter
-        hugo # static site generator
+        pkgs-unstable.hugo # static site generator
 
         #-- sql
         sqlfluff
@@ -87,7 +79,6 @@
           cmake-language-server
           gnumake
           checkmake
-          ccache
           # c/c++ compiler, required by nvim-treesitter!
           gcc
           gdb
@@ -102,7 +93,6 @@
           pipx # Install and Run Python Applications in Isolated Environments
           uv # python project package manager
           pyright # python language server
-          poetry
           (python313.withPackages (
             ps: with ps; [
               ruff
@@ -117,15 +107,6 @@
               pyquery
               pyyaml
               boto3
-
-              ## emacs's lsp-bridge dependenciesge
-              # epc
-              # orjson
-              # sexpdata
-              # six
-              # setuptools
-              # paramiko
-              # rapidfuzz
 
               # modules used by Mayuri
               virtualenv
@@ -180,6 +161,7 @@
           gotools # contains tools like: godoc, goimports, etc.
           gopls # go language server
           delve # go debugger
+          gomod2nix.packages.${pkgs.system}.default
 
           # -- java
           jdk17

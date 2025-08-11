@@ -15,17 +15,6 @@ in
   config.fonts.packages =
     with pkgs;
     lib.mkIf cfg.fonts.enable [
-      julia-mono
-      dejavu_fonts
-      vistafonts-chs # ms yahei
-      # Maple Mono (Ligature TTF unhinted)
-      pkgs-latest.maple-mono.truetype
-      # Maple Mono NF (Ligature unhinted)
-      pkgs-latest.maple-mono.NF-unhinted
-      sarasa-gothic
-      wpsFonts.packages.${system}.default
-      corefonts
-
       # icon fonts
       material-design-icons
       font-awesome
@@ -66,5 +55,19 @@ in
       # Full version, embed with nerdfonts icons, Chinese and Japanese glyphs
       # https://github.com/subframe7536/maple-font
       maple-mono.NF-CN-unhinted
+
+      # Mayuri spec
+
+      julia-mono
+      dejavu_fonts
+      vistafonts-chs # ms yahei
+      # Maple Mono (Ligature TTF unhinted)
+      pkgs-latest.maple-mono.truetype
+      # Maple Mono NF (Ligature unhinted)
+      pkgs-latest.maple-mono.NF-unhinted
+      sarasa-gothic
+      wpsFonts.packages.${system}.default
+      corefonts
+
     ];
 }

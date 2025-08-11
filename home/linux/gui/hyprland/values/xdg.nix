@@ -4,42 +4,46 @@
   config,
   ...
 }:
+let
+  cfgWayland = config.modules.desktop.wayland;
+  cfgHyprland = config.modules.desktop.hyprland;
+  cfgNiri = config.modules.desktop.niri;
+  cfgGnomeWayland = config.modules.desktop.gnome-wayland;
+in
 {
   # NOTE: gnome-wayland's config has confilcted with this
   # and niri has its spec conf from official
   # TODO: maybe hyprland should separate from this bcs official hypr provide this:
   # https://github.com/hyprwm/Hyprland/blob/main/assets/hyprland-portals.conf
-  xdg.portal =
-    lib.mkIf (!config.modules.desktop.gnome-wayland.enable && !config.modules.desktop.niri.enable)
-      {
-        enable = true;
+  xdg.portal = lib.mkIf (!cfgGnomeWayland.enable && !cfgNiri.enable || cfgHyprland.enable) {
+    enable = true;
 
-        config = {
-          common = {
-            # Use xdg-desktop-portal-gtk for every portal interface...
-            default = [
-              "gtk"
-              "hyprland"
-            ];
-            # except for the secret portal, which is handled by gnome-keyring
-            "org.freedesktop.impl.portal.Secret" = [
-              "gnome-keyring"
-            ];
-          };
-        };
-
-        # Sets environment variable NIXOS_XDG_OPEN_USE_PORTAL to 1
-        # This will make xdg-open use the portal to open programs,
-        # which resolves bugs involving programs opening inside FHS envs or with unexpected env vars set from wrappers.
-        # xdg-open is used by almost all programs to open a unknown file/uri
-        # alacritty as an example, it use xdg-open as default, but you can also custom this behavior
-        # and vscode has open like `External Uri Openers`
-        xdgOpenUsePortal = true;
-        # ls /etc/profiles/per-user/ryan/share/xdg-desktop-portal/portals
-        extraPortals = with pkgs; [
-          xdg-desktop-portal-gtk # for provides file picker / OpenURI
-          # xdg-desktop-portal-wlr
-          xdg-desktop-portal-hyprland # for Hyprland
+    config = {
+      common = {
+        # Use xdg-desktop-portal-gtk for every portal interface...
+        default = [
+          "gtk"
+          "hyprland"
+        ];
+        # except for the secret portal, which is handled by gnome-keyring
+        "org.freedesktop.impl.portal.Secret" = [
+          "gnome-keyring"
         ];
       };
+    };
+
+    # Sets environment variable NIXOS_XDG_OPEN_USE_PORTAL to 1
+    # This will make xdg-open use the portal to open programs,
+    # which resolves bugs involving programs opening inside FHS envs or with unexpected env vars set from wrappers.
+    # xdg-open is used by almost all programs to open a unknown file/uri
+    # alacritty as an example, it use xdg-open as default, but you can also custom this behavior
+    # and vscode has open like `External Uri Openers`
+    xdgOpenUsePortal = true;
+    # ls /etc/profiles/per-user/ryan/share/xdg-desktop-portal/portals
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk # for provides file picker / OpenURI
+      # xdg-desktop-portal-wlr
+      xdg-desktop-portal-hyprland # for Hyprland
+    ];
+  };
 }

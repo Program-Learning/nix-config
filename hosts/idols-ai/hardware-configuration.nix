@@ -192,12 +192,6 @@
   #   umount /btrfs_tmp
   # '';
 
-  fileSystems."/key" = {
-    device = "/dev/disk/by-uuid/D7AB-22CE";
-    fsType = "vfat";
-    neededForBoot = true;
-  };
-
   fileSystems."/nix" = {
     device = "/dev/disk/by-uuid/17df699e-6502-4205-955f-c456eb378d48";
     fsType = "btrfs";
@@ -274,6 +268,12 @@
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/F91B-B32A";
     fsType = "vfat";
+  };
+
+  fileSystems."/key" = {
+    device = "/dev/disk/by-uuid/D7AB-22CE";
+    fsType = "vfat";
+    neededForBoot = true;
   };
 
   swapDevices = [
