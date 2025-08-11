@@ -6,5 +6,6 @@
   nur-xddxdd,
   nur-DataEraserC,
   ...
-} @ args: {
+}@args:
+{
 }

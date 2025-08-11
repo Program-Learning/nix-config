@@ -3,10 +3,12 @@
   config,
   lib,
   ...
-} @ args:
-with lib; let
+}@args:
+with lib;
+let
   cfg = config.modules.desktop.hyprland;
-in {
+in
+{
   imports = [
     ./options
   ];
@@ -15,7 +17,5 @@ in {
     enable = mkEnableOption "hyprland";
   };
 
-  config = mkIf cfg.enable (
-    mkMerge (import ./values args)
-  );
+  config = mkIf cfg.enable (mkMerge (import ./values args));
 }

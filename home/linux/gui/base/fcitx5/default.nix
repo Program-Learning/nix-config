@@ -3,7 +3,8 @@
   nur-ryan4yin,
   nur-DataEraserC,
   ...
-}: {
+}:
+{
   xdg.configFile = {
     "fcitx5/profile" = {
       source = ./profile;

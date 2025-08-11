@@ -3,11 +3,13 @@
   forAllSystems,
   nixpkgs,
   ...
-} @ inputs:
+}@inputs:
 forAllSystems (
-  system: let
+  system:
+  let
     pkgs = nixpkgs.legacyPackages.${system};
-  in {
+  in
+  {
     development = pkgs.mkShell {
       packages = with pkgs; [
         # fix https://discourse.nixos.org/t/non-interactive-bash-errors-from-flake-nix-mkshell/33310

@@ -8,7 +8,8 @@
   clash-nyanpasu,
   lib,
   ...
-}: {
+}:
+{
   imports = [
     nur-DataEraserC.nixosModules.cpolar
   ];
@@ -85,8 +86,7 @@
     lidSwitchExternalPower = "ignore";
     powerKey = "ignore";
     # rebootKey = "ignore";
-    extraConfig = ''
-    '';
+    extraConfig = '''';
   };
 
   # services.tlp = {
@@ -116,14 +116,15 @@
     "ventoy-1.1.05"
   ];
 
-  nixpkgs.config.allowUnfreePredicate = pkg:
+  nixpkgs.config.allowUnfreePredicate =
+    pkg:
     builtins.elem (lib.getName pkg) [
       "wechat_dev_tools"
       "qq"
     ];
   documentation.dev.enable = true;
 
-  environment.extraOutputsToInstall = ["dev"];
+  environment.extraOutputsToInstall = [ "dev" ];
 
   services.cloudflared = {
     enable = false;

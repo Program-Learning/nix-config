@@ -3,7 +3,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   # user.userName = "mondrian";
 
   # Simply install just the packages

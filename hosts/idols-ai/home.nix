@@ -1,4 +1,5 @@
-{config, ...}: {
+{ config, ... }:
+{
   modules.desktop = {
     hyprland = {
       nvidia = true;
@@ -8,5 +9,6 @@
     };
   };
 
-  programs.ssh.matchBlocks."github.com".identityFile = "${config.home.homeDirectory}/.ssh/y9000k2021h_id_ed25519";
+  programs.ssh.matchBlocks."github.com".identityFile =
+    "${config.home.homeDirectory}/.ssh/y9000k2021h_id_ed25519";
 }

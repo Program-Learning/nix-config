@@ -3,10 +3,12 @@
   config,
   lib,
   ...
-} @ args:
-with lib; let
+}@args:
+with lib;
+let
   cfg = config.modules.desktop.gnome-wayland;
-in {
+in
+{
   imports = [
     ./options
   ];
@@ -15,7 +17,5 @@ in {
     enable = mkEnableOption "gnome wayland window manager";
   };
 
-  config = mkIf cfg.enable (
-    mkMerge (import ./values args)
-  );
+  config = mkIf cfg.enable (mkMerge (import ./values args));
 }

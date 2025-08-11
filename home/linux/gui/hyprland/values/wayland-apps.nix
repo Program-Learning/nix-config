@@ -3,7 +3,8 @@
   pkgs-stable,
   browser-previews,
   ...
-}: {
+}:
+{
   home.packages = with pkgs; [
     # firefox-wayland
     nixpaks.firefox
@@ -15,9 +16,10 @@
     google-chrome = {
       enable = true;
       package =
-        if pkgs.stdenv.isAarch64
-        then pkgs.chromium
-        else browser-previews.packages.${pkgs.system}.google-chrome-dev;
+        if pkgs.stdenv.isAarch64 then
+          pkgs.chromium
+        else
+          browser-previews.packages.${pkgs.system}.google-chrome-dev;
 
       # https://wiki.archlinux.org/title/Chromium#Native_Wayland_support
       commandLineArgs = [

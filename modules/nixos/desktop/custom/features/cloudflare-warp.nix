@@ -5,14 +5,18 @@
   pkgs,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.features.cloudflare-warp;
-in {
-  meta.maintainers = with maintainers; [wolfangaukang];
+in
+{
+  meta.maintainers = with maintainers; [ wolfangaukang ];
 
   options = {
     features.cloudflare-warp = {
-      enable = mkEnableOption (lib.mdDoc "cloudflare-warp, a service that replaces the connection between your device and the Internet with a modern, optimized, protocol");
+      enable = mkEnableOption (
+        lib.mdDoc "cloudflare-warp, a service that replaces the connection between your device and the Internet with a modern, optimized, protocol"
+      );
 
       package = mkOption {
         type = types.package;
@@ -60,14 +64,14 @@ in {
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [cfg.package];
+    environment.systemPackages = with pkgs; [ cfg.package ];
 
     security.pki = mkIf (cfg.certificate != null) {
-      certificateFiles = [cfg.certificate];
+      certificateFiles = [ cfg.certificate ];
     };
 
     networking.firewall = mkIf cfg.openFirewall {
-      allowedUDPPorts = [cfg.udpPort];
+      allowedUDPPorts = [ cfg.udpPort ];
     };
 
     users.users = mkIf (cfg.user == "warp") {
@@ -88,7 +92,7 @@ in {
     };
 
     users.groups = mkIf (cfg.group == "warp") {
-      warp = {};
+      warp = { };
     };
 
     systemd = {
@@ -98,7 +102,7 @@ in {
         # users can manually exec "warp-svc" wrapper
         enable = false;
         description = "Cloudflare Zero Trust Client Daemon";
-        after = ["pre-network.target"];
+        after = [ "pre-network.target" ];
         serviceConfig = {
           Type = "simple";
           DynamicUser = "no";

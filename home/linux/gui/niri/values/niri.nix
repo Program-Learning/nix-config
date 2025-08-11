@@ -6,9 +6,11 @@
   lib,
   nur-ryan4yin,
   ...
-}: let
+}:
+let
   package = pkgs.niri;
-in {
+in
+{
   # NOTE: this executable is used by greetd to start a wayland session when system boot up
   # with such a vendor-no-locking script, we can switch to another wayland compositor without modifying greetd's config in NixOS module
   home.file.".wayland-session" = {

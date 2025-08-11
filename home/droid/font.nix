@@ -4,7 +4,8 @@
   wpsFonts,
   config,
   ...
-}: {
+}:
+{
   home.packages = with pkgs; [
     # wpsFonts.packages.${system}.default
     corefonts

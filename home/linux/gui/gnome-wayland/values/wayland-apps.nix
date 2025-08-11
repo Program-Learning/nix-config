@@ -4,24 +4,26 @@
   firefox-nightly,
   browser-previews,
   ...
-}: {
+}:
+{
   # refer to https://codeberg.org/dnkl/foot/src/branch/master/foot.ini
-  xdg.configFile."foot/foot.ini".text =
-    ''
-      [main]
-      dpi-aware=yes
-      font=JetBrainsMono Nerd Font:size=13
-      shell=${pkgs.bash}/bin/bash --login -c 'nu --login --interactive'
-      term=foot
-      initial-window-size-pixels=2560x1600
-      initial-window-mode=windowed
-      pad=0x0                             # optionally append 'center'
-      resize-delay-ms=10
+  xdg.configFile."foot/foot.ini".text = ''
+    [main]
+    dpi-aware=yes
+    font=JetBrainsMono Nerd Font:size=13
+    shell=${pkgs.bash}/bin/bash --login -c 'nu --login --interactive'
+    term=foot
+    initial-window-size-pixels=2560x1600
+    initial-window-mode=windowed
+    pad=0x0                             # optionally append 'center'
+    resize-delay-ms=10
 
-      [mouse]
-      hide-when-typing=yes
-    ''
-    + (builtins.readFile "${nur-ryan4yin.packages.${pkgs.system}.catppuccin-foot}/catppuccin-mocha.conf");
+    [mouse]
+    hide-when-typing=yes
+  ''
+  + (builtins.readFile "${
+    nur-ryan4yin.packages.${pkgs.system}.catppuccin-foot
+  }/catppuccin-mocha.conf");
 
   home.packages = [
     # pkgs.firefox-wayland
@@ -68,7 +70,7 @@
     vscode = {
       enable = true;
       # let vscode sync and update its configuration & extensions across devices, using github account.
-      userSettings = {};
+      userSettings = { };
       package = pkgs.overridden_vscode;
     };
   };

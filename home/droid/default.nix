@@ -2,7 +2,8 @@
   config,
   catppuccin-urxvt,
   ...
-} @ args: {
+}@args:
+{
   imports = [
     ./font.nix
     ./development.nix

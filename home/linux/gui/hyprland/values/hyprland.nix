@@ -12,20 +12,24 @@
   hycov,
   nur-ryan4yin,
   ...
-}: let
+}:
+let
   package = pkgs.hyprland;
   # package = pkgs-latest.hyprland;
   # package = hyprland.packages.${pkgs.system}.hyprland;
-in {
-  xdg.configFile = let
-    hyprPath = "home/linux/gui/hyprland/conf";
-  in {
-    "mako".source = mylib.mklinkRelativeToRoot config "${hyprPath}/mako";
-    "waybar".source = mylib.mklinkRelativeToRoot config "${hyprPath}/waybar";
-    "wlogout".source = mylib.mklinkRelativeToRoot config "${hyprPath}/wlogout";
-    "hypr/hypridle.conf".source = mylib.mklinkRelativeToRoot config "${hyprPath}/hypridle.conf";
-    "hypr/configs".source = mylib.mklinkRelativeToRoot config "${hyprPath}/configs";
-  };
+in
+{
+  xdg.configFile =
+    let
+      hyprPath = "home/linux/gui/hyprland/conf";
+    in
+    {
+      "mako".source = mylib.mklinkRelativeToRoot config "${hyprPath}/mako";
+      "waybar".source = mylib.mklinkRelativeToRoot config "${hyprPath}/waybar";
+      "wlogout".source = mylib.mklinkRelativeToRoot config "${hyprPath}/wlogout";
+      "hypr/hypridle.conf".source = mylib.mklinkRelativeToRoot config "${hyprPath}/hypridle.conf";
+      "hypr/configs".source = mylib.mklinkRelativeToRoot config "${hyprPath}/configs";
+    };
 
   # status bar
   programs.waybar = {
@@ -58,15 +62,17 @@ in {
     inherit package;
     enable = true;
     settings = {
-      source = let
-        configPath = "${config.home.homeDirectory}/.config/hypr/configs";
-      in [
-        "${configPath}/exec.conf"
-        "${configPath}/fcitx5.conf"
-        "${configPath}/keybindings.conf"
-        "${configPath}/settings.conf"
-        "${configPath}/windowrules.conf"
-      ];
+      source =
+        let
+          configPath = "${config.home.homeDirectory}/.config/hypr/configs";
+        in
+        [
+          "${configPath}/exec.conf"
+          "${configPath}/fcitx5.conf"
+          "${configPath}/keybindings.conf"
+          "${configPath}/settings.conf"
+          "${configPath}/windowrules.conf"
+        ];
       env = [
         "NIXOS_OZONE_WL,1" # for any ozone-based browser & electron apps to run on wayland
         "MOZ_ENABLE_WAYLAND,1" # for firefox to run on wayland
@@ -93,7 +99,7 @@ in {
     # gammastep/wallpaper-switcher need this to be enabled.
     systemd = {
       enable = true;
-      variables = ["--all"];
+      variables = [ "--all" ];
     };
   };
 

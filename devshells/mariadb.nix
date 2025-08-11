@@ -2,13 +2,15 @@
   forAllSystems,
   nixpkgs,
   ...
-} @ inputs:
+}@inputs:
 forAllSystems (
-  system: let
+  system:
+  let
     pkgs = nixpkgs.legacyPackages.${system};
-  in {
+  in
+  {
     mariadb = pkgs.mkShell {
-      buildInputs = [pkgs.mariadb];
+      buildInputs = [ pkgs.mariadb ];
       shellHook = ''
         MYSQL_BASEDIR=${pkgs.mariadb}
         MYSQL_HOME=$PWD/mysql

@@ -7,8 +7,10 @@
   nur-DataEraserC,
   blender-bin,
   ...
-}: {
-  home.packages = with pkgs;
+}:
+{
+  home.packages =
+    with pkgs;
     [
       # creative
       # gimp      # image editing, I prefer using figma in browser instead of this one
@@ -65,7 +67,8 @@
   programs = {
     # live streaming
     obs-studio = {
-      plugins = with pkgs.obs-studio-plugins;
+      plugins =
+        with pkgs.obs-studio-plugins;
         [
           # screen capture
           wlrobs

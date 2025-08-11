@@ -1,4 +1,5 @@
-{config, ...} @ args: {
+{ config, ... }@args:
+{
   imports = [
     ./development_manual.nix
     ./extra_keys.nix

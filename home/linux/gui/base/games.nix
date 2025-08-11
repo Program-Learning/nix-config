@@ -6,7 +6,8 @@
   pkgs-unstable-yuzu,
   suyu,
   ...
-}: {
+}:
+{
   home.packages = with pkgs; [
     nix-gaming.packages.${pkgs.system}.osu-lazer-bin
     # nix-gaming.packages.${pkgs.system}.osu-stable

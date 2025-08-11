@@ -3,27 +3,32 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   pkg_name = "lenovo-legion";
-in {
+in
+{
   options.features."${pkg_name}" = {
     enable = lib.mkEnableOption (lib.mdDoc "${pkg_name}");
-    package = lib.mkPackageOption pkgs "${pkg_name}" {};
+    package = lib.mkPackageOption pkgs "${pkg_name}" { };
     autoStart = lib.mkEnableOption (lib.mdDoc "${pkg_name} auto launch");
     enhanceMode = lib.mkEnableOption (lib.mdDoc "${pkg_name} enhanceMode mode");
     installKernelModule = lib.mkEnableOption (lib.mdDoc "${pkg_name} installKernelModule");
   };
 
-  config = let
-    cfg = config.features."${pkg_name}";
-  in
+  config =
+    let
+      cfg = config.features."${pkg_name}";
+    in
     lib.mkIf cfg.enable {
       environment.systemPackages = [
         cfg.package
-        (lib.mkIf cfg.autoStart (pkgs.makeAutostartItem {
-          name = cfg.package.pname;
-          package = cfg.package;
-        }))
+        (lib.mkIf cfg.autoStart (
+          pkgs.makeAutostartItem {
+            name = cfg.package.pname;
+            package = cfg.package;
+          }
+        ))
       ];
 
       security.wrappers = lib.mkIf cfg.enhanceMode {
@@ -40,5 +45,5 @@ in {
       ];
     };
 
-  meta.maintainers = with lib.maintainers; [zendo];
+  meta.maintainers = with lib.maintainers; [ zendo ];
 }

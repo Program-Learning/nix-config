@@ -5,7 +5,8 @@
   nur-DataEraserC,
   nixGL,
   ...
-}: {
+}:
+{
   # ===============================================================================================
   # for Nvidia GPU
   # ===============================================================================================
@@ -18,7 +19,7 @@
     # ONLY SOME LATEST NIXPKGS REQUIRE THIS WORK AROUND
     # "nvidia-drm.fbdev=1"
   ];
-  services.xserver.videoDrivers = ["nvidia"]; # will install nvidia-vaapi-driver by default
+  services.xserver.videoDrivers = [ "nvidia" ]; # will install nvidia-vaapi-driver by default
   hardware.nvidia = {
     open = true;
     # Optionally, you may need to select the appropriate driver version for your specific GPU.

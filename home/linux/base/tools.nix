@@ -2,7 +2,8 @@
   pkgs,
   pkgs-unstable-etcher,
   ...
-}: {
+}:
+{
   # Linux Only Packages, not available on Darwin
   home.packages = with pkgs; [
     # misc

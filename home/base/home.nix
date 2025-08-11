@@ -1,4 +1,5 @@
-{myvars, ...}: {
+{ myvars, ... }:
+{
   imports = [
     ./mkOutOfStoreSymlink.nix
   ];

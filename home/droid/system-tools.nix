@@ -2,7 +2,8 @@
   pkgs,
   pkgs-unstable,
   ...
-}: {
+}:
+{
   # Linux Only Packages, not available on Darwin
   home.packages = with pkgs; [
     nmon
@@ -63,7 +64,7 @@
     gnugrep # GNU grep, provides `grep`/`egrep`/`fgrep`
     gnused # GNU sed, very powerful(mainly for replacing text in files)
     gawk # GNU awk, a pattern scanning and processing language
-    (ripgrep.override {withPCRE2 = true;}) # recursively searches directories for a regex pattern
+    (ripgrep.override { withPCRE2 = true; }) # recursively searches directories for a regex pattern
     sad # CLI search and replace, with diff preview, really useful!!!
     delta # A viewer for git and diff output
     # A fast and polyglot tool for code searching, linting, rewriting at large scale

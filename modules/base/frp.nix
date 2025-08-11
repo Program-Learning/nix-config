@@ -76,18 +76,24 @@ in
   };
 
   config = lib.mkIf (enabledInstances != { }) {
-    assertions = lib.mapAttrsToList
-    (instance: options:
-      {
-        assertion = !(options.enable && options.configFile != "" && options.configFile != null && options.settings != {});
-        message = "when setting ${instance}, the value of configFile is ${options.configFile}, however the value of settings is ${lib.generators.toJSON {} options.settings}, and cause a conflict";
-      }) enabledInstances
-    ;
+    assertions = lib.mapAttrsToList (instance: options: {
+      assertion =
+        !(
+          options.enable && options.configFile != "" && options.configFile != null && options.settings != { }
+        );
+      message = "when setting ${instance}, the value of configFile is ${options.configFile}, however the value of settings is ${
+        lib.generators.toJSON { } options.settings
+      }, and cause a conflict";
+    }) enabledInstances;
     systemd.services = lib.mapAttrs' (
       instance: options:
       let
         serviceName = "frp" + lib.optionalString (instance != "") ("-" + instance);
-        configFile = if options.configFile != null then options.configFile else settingsFormat.generate "${serviceName}.toml" options.settings;
+        configFile =
+          if options.configFile != null then
+            options.configFile
+          else
+            settingsFormat.generate "${serviceName}.toml" options.settings;
         isClient = (options.role == "client");
         isServer = (options.role == "server");
         serviceCapability = lib.optionals isServer [ "CAP_NET_BIND_SERVICE" ];
@@ -120,7 +126,8 @@ in
           RestrictAddressFamilies = [
             "AF_INET"
             "AF_INET6"
-          ] ++ lib.optionals isClient [ "AF_UNIX" ];
+          ]
+          ++ lib.optionals isClient [ "AF_UNIX" ];
           LockPersonality = true;
           MemoryDenyWriteExecute = true;
           RestrictRealtime = true;

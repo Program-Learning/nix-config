@@ -21,7 +21,8 @@ let
   configPath = "${config.home.homeDirectory}/nix-config/home/base/tui/editors/neovim/nvim";
   # NOTE: to make this symlink work, we need to git clone this repo to your home directory which is writable (any other method may first cp to nix store then eval).
   # configPath = mylib.mklinkRelativeToRoot config "home/base/tui/editors/neovim/nvim";
-in {
+in
+{
   xdg.configFile."nvim".source = configPath;
 
   home.shellAliases = shellAliases;

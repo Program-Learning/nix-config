@@ -3,7 +3,8 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   programs.proxychains = {
     enable = true;
     proxies = {

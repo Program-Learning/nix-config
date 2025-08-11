@@ -3,8 +3,10 @@
   lib,
   nur-ryan4yin,
   ...
-}: let
-in {
+}:
+let
+in
+{
   dconf = {
     enable = true;
     settings."org/gnome/shell" = {

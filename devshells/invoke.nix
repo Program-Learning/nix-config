@@ -3,11 +3,13 @@
   forAllSystems,
   nixpkgs,
   ...
-} @ inputs:
+}@inputs:
 forAllSystems (
-  system: let
+  system:
+  let
     pkgs = nixpkgs.legacyPackages.${system};
-  in {
+  in
+  {
     invoke = pkgs.mkShellNoCC {
       buildInputs = [
         pkgs.ipmitool
@@ -33,8 +35,8 @@ forAllSystems (
         pkgs.sops
         pkgs.yq-go
         pkgs.cpio
-      ] ++ pkgs.lib.optional (pkgs.stdenv.isLinux) pkgs.mkpasswd;
+      ]
+      ++ pkgs.lib.optional (pkgs.stdenv.isLinux) pkgs.mkpasswd;
     };
   }
 )
-

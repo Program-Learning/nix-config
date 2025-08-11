@@ -2,7 +2,8 @@
   nur-xddxdd,
   nur-DataEraserC,
   ...
-}: {
+}:
+{
   imports = [
     # nur-xddxdd.nixosModules.setupOverlay
     nur-xddxdd.nixosModules.nix-cache-garnix

@@ -2,12 +2,14 @@
   config,
   pkgs,
   ...
-}: let
+}:
+let
   sshdTmpDirectory = "${config.user.home}/sshd-tmp";
   sshdDirectory = "${config.user.home}/sshd";
   # pathToAuthorized_keys = "./authorized_keys";
   port = 10022;
-in {
+in
+{
   build.activation.sshd = ''
     $DRY_RUN_CMD mkdir $VERBOSE_ARG --parents "${config.user.home}/.ssh"
     $DRY_RUN_CMD cat ${config.build.installationDir}/${./authorized_keys} > "${config.user.home}/.ssh/authorized_keys"

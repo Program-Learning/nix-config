@@ -7,7 +7,8 @@
   nur-Moraxyc,
   lib,
   ...
-}: {
+}:
+{
   imports = [
     nur-Moraxyc.nixosModules.alist
   ];

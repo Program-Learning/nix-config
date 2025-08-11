@@ -7,7 +7,8 @@
   pkgs,
   modulesPath,
   ...
-}: {
+}:
+{
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
@@ -28,11 +29,11 @@
     };
   };
   boot.loader.systemd-boot.extraEntries."windows.conf" = ''
-        title     Windows
-        sort-key  0
-        efi       /EFI/edk2-shell/shellx64.efi
-        options   -nointerrupt -nomap -noversion windows.nsh
-      '';
+    title     Windows
+    sort-key  0
+    efi       /EFI/edk2-shell/shellx64.efi
+    options   -nointerrupt -nomap -noversion windows.nsh
+  '';
 
   boot.loader.systemd-boot.extraFiles."windows.nsh" = (
     pkgs.writeText "windows.nsh" ''
@@ -51,8 +52,22 @@
   #   };
   # });
 
-  boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod"];
-  boot.initrd.kernelModules = ["uas" "usbcore" "usb_storage" "vfat" "nls_cp437" "nls_iso8859_1"];
+  boot.initrd.availableKernelModules = [
+    "xhci_pci"
+    "ahci"
+    "nvme"
+    "usbhid"
+    "usb_storage"
+    "sd_mod"
+  ];
+  boot.initrd.kernelModules = [
+    "uas"
+    "usbcore"
+    "usb_storage"
+    "vfat"
+    "nls_cp437"
+    "nls_iso8859_1"
+  ];
   boot.kernelModules = [
     # kvm
     "kvm-amd" # kvm virtualization support
@@ -73,7 +88,10 @@
   boot.tmp.cleanOnBoot = true;
 
   # Enable binfmt emulation of aarch64-linux, this is required for cross compilation.
-  boot.binfmt.emulatedSystems = ["aarch64-linux" "riscv64-linux"];
+  boot.binfmt.emulatedSystems = [
+    "aarch64-linux"
+    "riscv64-linux"
+  ];
   # supported file systems, so we can mount any removable disks with these filesystems
   boot.supportedFilesystems = [
     "ext4"
@@ -123,7 +141,7 @@
     fsType = "btrfs";
     # btrfs's top-level subvolume, internally has an id 5
     # we can access all other subvolumes from this subvolume.
-    options = ["subvolid=5"];
+    options = [ "subvolid=5" ];
   };
 
   modules.desktop.rootfs.fsType = "tmpfs";
@@ -183,20 +201,31 @@
   fileSystems."/nix" = {
     device = "/dev/disk/by-uuid/17df699e-6502-4205-955f-c456eb378d48";
     fsType = "btrfs";
-    options = ["subvol=@nix" "noatime" "compress-force=zstd:1"];
+    options = [
+      "subvol=@nix"
+      "noatime"
+      "compress-force=zstd:1"
+    ];
   };
 
   # for guix store, which use `/gnu/store` as its store directory.
   fileSystems."/gnu" = {
     device = "/dev/disk/by-uuid/17df699e-6502-4205-955f-c456eb378d48";
     fsType = "btrfs";
-    options = ["subvol=@guix" "noatime" "compress-force=zstd:1"];
+    options = [
+      "subvol=@guix"
+      "noatime"
+      "compress-force=zstd:1"
+    ];
   };
 
   fileSystems."/persistent" = {
     device = "/dev/disk/by-uuid/17df699e-6502-4205-955f-c456eb378d48";
     fsType = "btrfs";
-    options = ["subvol=@persistent" "compress-force=zstd:1"];
+    options = [
+      "subvol=@persistent"
+      "compress-force=zstd:1"
+    ];
     # preservation's data is required for booting.
     neededForBoot = true;
   };
@@ -204,30 +233,42 @@
   fileSystems."/snapshots" = {
     device = "/dev/disk/by-uuid/17df699e-6502-4205-955f-c456eb378d48";
     fsType = "btrfs";
-    options = ["subvol=@snapshots" "compress-force=zstd:1"];
+    options = [
+      "subvol=@snapshots"
+      "compress-force=zstd:1"
+    ];
   };
 
   fileSystems."/tmp" = {
     device = "/dev/disk/by-uuid/17df699e-6502-4205-955f-c456eb378d48";
     fsType = "btrfs";
-    options = ["subvol=@tmp" "compress-force=zstd:1"];
+    options = [
+      "subvol=@tmp"
+      "compress-force=zstd:1"
+    ];
   };
 
   # mount swap subvolume in readonly mode.
   fileSystems."/swap" = {
     device = "/dev/disk/by-uuid/17df699e-6502-4205-955f-c456eb378d48";
     fsType = "btrfs";
-    options = ["subvol=@swap" "ro"];
+    options = [
+      "subvol=@swap"
+      "ro"
+    ];
   };
 
   # remount swapfile in read-write mode
   fileSystems."/swap/swapfile" = {
     # the swapfile is located in /swap subvolume, so we need to mount /swap first.
-    depends = ["/swap"];
+    depends = [ "/swap" ];
 
     device = "/swap/swapfile";
     fsType = "none";
-    options = ["bind" "rw"];
+    options = [
+      "bind"
+      "rw"
+    ];
   };
 
   fileSystems."/boot" = {

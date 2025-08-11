@@ -3,13 +3,15 @@
   pkgs,
   myvars,
   ...
-}: let
+}:
+let
   inherit (myvars) username;
   makeDirRW = dir: {
     directory = dir;
     configureParent = true;
   };
-in {
+in
+{
   imports = [
     preservation.nixosModules.default
   ];
@@ -469,27 +471,29 @@ in {
   # Note that immediate parent directories of persisted files can also be
   # configured with ownership and permissions from the `parent` settings if
   # `configureParent = true` is set for the file.
-  systemd.tmpfiles.settings.preservation = let
-    permission = {
-      user = username;
-      group = "users";
-      mode = "0755";
+  systemd.tmpfiles.settings.preservation =
+    let
+      permission = {
+        user = username;
+        group = "users";
+        mode = "0755";
+      };
+    in
+    {
+      "/home/${username}/.config".d = permission;
+      "/home/${username}/.cache".d = permission;
+      "/home/${username}/.local".d = permission;
+      "/home/${username}/.local/share".d = permission;
+      "/home/${username}/.local/state".d = permission;
+      "/home/${username}/.local/state/nix".d = permission;
+      "/home/${username}/.terraform.d".d = permission;
     };
-  in {
-    "/home/${username}/.config".d = permission;
-    "/home/${username}/.cache".d = permission;
-    "/home/${username}/.local".d = permission;
-    "/home/${username}/.local/share".d = permission;
-    "/home/${username}/.local/state".d = permission;
-    "/home/${username}/.local/state/nix".d = permission;
-    "/home/${username}/.terraform.d".d = permission;
-  };
 
   # systemd-machine-id-commit.service would fail but it is not relevant
   # in this specific setup for a persistent machine-id so we disable it
   #
   # see the firstboot example below for an alternative approach
-  systemd.suppressedSystemUnits = ["systemd-machine-id-commit.service"];
+  systemd.suppressedSystemUnits = [ "systemd-machine-id-commit.service" ];
 
   # let the service commit the transient ID to the persistent volume
   systemd.services.systemd-machine-id-commit = {

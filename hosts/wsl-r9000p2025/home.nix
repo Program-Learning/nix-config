@@ -3,7 +3,8 @@
   nur-DataEraserC,
   qqnt,
   ...
-}: {
+}:
+{
   # modules.desktop = {
   #   hyprland = {
   #     nvidia = true;

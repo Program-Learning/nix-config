@@ -2,9 +2,11 @@
   pkgs,
   config,
   ...
-}: let
+}:
+let
   domain = "ca.r";
-in {
+in
+{
   # NOTE: local ca server for pki
   # https://localhost
   services.step-ca = {
@@ -16,7 +18,7 @@ in {
       root = "${config.age.secrets.rootCAcrt.path}";
       crt = "${config.age.secrets.intermediateCAcrt.path}";
       key = "${config.age.secrets.intermediateCAkey.path}";
-      dnsNames = [domain];
+      dnsNames = [ domain ];
       logger.format = "text";
       db = {
         type = "badger";

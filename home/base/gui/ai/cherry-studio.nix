@@ -4,7 +4,8 @@
   pkgs-latest,
   LaphaeL-aicmd,
   ...
-}: {
+}:
+{
   home.packages = [
     pkgs-latest.cherry-studio
   ];

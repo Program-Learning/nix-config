@@ -1,4 +1,5 @@
-{config, ...}: let
+{ config, ... }:
+let
   shellAliases = {
     k = "kubectl";
 
@@ -11,7 +12,8 @@
   goBin = "${config.home.homeDirectory}/go/bin";
   rustBin = "${config.home.homeDirectory}/.cargo/bin";
   npmBin = "${config.home.homeDirectory}/.npm/bin";
-in {
+in
+{
   programs.bash = {
     enable = true;
     enableCompletion = true;

@@ -9,7 +9,8 @@
   Snowpkgs,
   atl-nix,
   ...
-}: {
+}:
+{
   home.packages = with pkgs; [
     # -- android related
     # nur-DataEraserC.packages.${pkgs.system}.qtscrcpy_git

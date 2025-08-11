@@ -5,7 +5,8 @@
   nur-DataEraserC,
   nixGL,
   ...
-}: {
+}:
+{
   # ===============================================================================================
   # for Nvidia GPU
   # https://wiki.nixos.org/wiki/NVIDIA
@@ -18,7 +19,10 @@
     # ONLY SOME LATEST NIXPKGS REQUIRE THIS WORK AROUND
     # "nvidia-drm.fbdev=1"
   ];
-  services.xserver.videoDrivers = ["amdgpu" "nvidia"]; # will install nvidia-vaapi-driver by default
+  services.xserver.videoDrivers = [
+    "amdgpu"
+    "nvidia"
+  ]; # will install nvidia-vaapi-driver by default
   hardware.nvidia = {
     # Open-source kernel modules are preferred over and planned to steadily replace proprietary modules
     open = true;

@@ -3,7 +3,8 @@
   pkgs-unstable,
   nur-DataEraserC,
   ...
-}: {
+}:
+{
   #############################################################
   #
   #  Basic settings for development environment

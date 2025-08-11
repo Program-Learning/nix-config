@@ -4,7 +4,8 @@
   pkgs-latest,
   LaphaeL-aicmd,
   ...
-}: {
+}:
+{
   home.packages = [
     pkgs.tgpt
     pkgs.aichat # A ai cli interface

@@ -5,21 +5,22 @@
   myvars,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.features.bigdata_hadoop;
-in {
+in
+{
   options = {
     features.bigdata_hadoop = {
       enable = mkEnableOption (lib.mdDoc "hadoop instance required by bigdata lesson");
-      package = lib.mkPackageOption pkgs "hadoop" {};
+      package = lib.mkPackageOption pkgs "hadoop" { };
       impermanence.enable = mkEnableOption "whether use impermanence and ephemeral root file system";
     };
   };
 
   # IDK why config.environment.persistence != null do not work
   config =
-    mkIf (cfg.enable
-      && cfg.impermanence.enable) {
+    mkIf (cfg.enable && cfg.impermanence.enable) {
       environment.persistence."/persistent" = {
         users.hadoop = {
           directories = [
@@ -41,7 +42,7 @@ in {
         JAVA_HOME = "${pkgs.jdk11_headless}";
       };
       system.activationScripts.hadoop_init_mkdir = {
-        deps = ["var"];
+        deps = [ "var" ];
         text = ''
           mkdir -p /tmp/hadoop/hadoop
           chown hadoop:hadoop -R /tmp/hadoop/hadoop
@@ -57,7 +58,7 @@ in {
         hashedPassword = "$7$CU..../....zmajtL8laTkw0keUfR4ZC1$lcF.YgINaXfQCDzOuR9dIZ9Hc6of2IqiNaJ3mRKn70B";
         isNormalUser = true;
         group = "hadoop";
-        extraGroups = ["wheel"];
+        extraGroups = [ "wheel" ];
         packages = [
           pkgs.jdk11_headless
         ];

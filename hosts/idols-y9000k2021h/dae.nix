@@ -3,10 +3,12 @@
   pkgs,
   nur-DataEraserC,
   ...
-}: let
+}:
+let
   daeConfigPath = "/etc/dae/config.dae";
   subscriptionConfigPath = "/etc/dae/config.d/subscription.dae";
-in {
+in
+{
   services.dae = {
     enable = false;
     configFile = daeConfigPath;
@@ -29,12 +31,11 @@ in {
     };
 
     /*
-       default options
+         default options
 
-    package = inputs.daeuniverse.packages.x86_64-linux.daed;
-    configDir = "/etc/daed";
-    listen = "127.0.0.1:2023";
-
+      package = inputs.daeuniverse.packages.x86_64-linux.daed;
+      configDir = "/etc/daed";
+      listen = "127.0.0.1:2023";
     */
   };
 }

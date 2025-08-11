@@ -7,12 +7,14 @@
   pkgs-unstable-yuzu,
   suyu,
   ...
-}: let
+}:
+let
   # Mihoyo Game Launcher
-  aagl-gtk-on-nix =
-    import (builtins.fetchTarball
-      "https://github.com/ezKEa/aagl-gtk-on-nix/archive/main.tar.gz");
-in {
+  aagl-gtk-on-nix = import (
+    builtins.fetchTarball "https://github.com/ezKEa/aagl-gtk-on-nix/archive/main.tar.gz"
+  );
+in
+{
   home.packages = with pkgs-unstable; [
     # Mihoyo Game Launcher
     # aagl-gtk-on-nix.anime-game-launcher

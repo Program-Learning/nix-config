@@ -6,7 +6,7 @@
   nur-DataEraserC,
   nixGL,
   ...
-} @ args:
+}@args:
 #############################################################
 #
 #  Ai - my main computer, with NixOS + i7-11800H + RTX 3060 Mobile / Max-Q GPU, for gaming & daily use.
@@ -20,7 +20,8 @@ let
   inherit (myvars.networking.hostsAddr.${hostName}) iface ipv4 ipv6;
   ipv4WithMask = "${ipv4}/24";
   ipv6WithMask = "${ipv6}/64";
-in rec {
+in
+rec {
   imports = [
     ./netdev-mount.nix
     # Include the results of the hardware scan.

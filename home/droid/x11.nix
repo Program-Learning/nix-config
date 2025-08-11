@@ -3,7 +3,8 @@
   pkgs-unstable,
   ...
 }:
-with pkgs; let
+with pkgs;
+let
   id_c = writeText "id.c" ''
     #include <sys/types.h>
     #include <stdio.h>
@@ -12,7 +13,7 @@ with pkgs; let
     int setuid(uid_t uid){ printf("WARNING: setuid stubbed"); return 0; }
   '';
 
-  id_so = runCommand "id.so" {buildInputs = [gcc];} ''
+  id_so = runCommand "id.so" { buildInputs = [ gcc ]; } ''
     mkdir -p $out
     gcc -std=c99 -shared -fPIC ${id_c} -o $out/id.so
   '';
@@ -25,7 +26,8 @@ with pkgs; let
     awesome &
     urxvt -e env TERM=xterm tmux & #TODO probably wrong
   '';
-in {
+in
+{
   home.packages = with pkgs; [
     myx
     awesome

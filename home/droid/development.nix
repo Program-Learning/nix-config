@@ -2,8 +2,10 @@
   pkgs,
   pkgs-unstable,
   ...
-}: let
-in {
+}:
+let
+in
+{
   home.packages = with pkgs; [
     rsync # File Copy/Snyc
     ranger # Terminal FileManager

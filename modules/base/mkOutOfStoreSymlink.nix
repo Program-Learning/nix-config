@@ -3,9 +3,11 @@
   config,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.modules.mkOutOfStoreSymlink;
-in {
+in
+{
   options = {
     modules.mkOutOfStoreSymlink = {
       enable = mkOption {
@@ -37,22 +39,23 @@ in {
       }
     ];
     warnings =
-      if cfg.enable && lib.isPath cfg.configPath
-      then [
-        ''
-          if configPath is a path, mkOutOfStoreSymlink may not work
-        ''
-      ]
+      if cfg.enable && lib.isPath cfg.configPath then
+        [
+          ''
+            if configPath is a path, mkOutOfStoreSymlink may not work
+          ''
+        ]
       else
-        []
+        [ ]
         ++ (
-          if cfg.enable && lib.isPath cfg.wallpaperPath
-          then [
-            ''
-              if wallpaperPath is a path, mkOutOfStoreSymlink may not work
-            ''
-          ]
-          else []
+          if cfg.enable && lib.isPath cfg.wallpaperPath then
+            [
+              ''
+                if wallpaperPath is a path, mkOutOfStoreSymlink may not work
+              ''
+            ]
+          else
+            [ ]
         );
   };
 }

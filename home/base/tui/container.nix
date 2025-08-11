@@ -3,7 +3,8 @@
   pkgs-unstable,
   nur-ryan4yin,
   ...
-}: {
+}:
+{
   home.packages = with pkgs; [
     docker-compose
     podman-compose
