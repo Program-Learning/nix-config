@@ -151,7 +151,7 @@
           pkgs-unstable.cargo # rust package manager
           pkgs-unstable.rustfmt
           pkgs-unstable.clippy # rust linter
-          cargo2nix.packages.${pkgs.system}.cargo2nix
+          # cargo2nix.packages.${pkgs.system}.cargo2nix
 
           #-- golang
           go
