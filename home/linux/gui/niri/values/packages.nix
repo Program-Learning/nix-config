@@ -46,7 +46,7 @@
     vimpc # A curses mpd client with vi-like key bindings.
     mpd # for playing system sounds
     mpc-cli # command-line mpd client
-    # ncmpcpp # a mpd client with a UI
+    ncmpcpp # a mpd client with a UI
     networkmanagerapplet # provide GUI app: nm-connection-editor
   ];
 }

@@ -51,7 +51,7 @@
     # pkgs.nixpaks.qq-desktop-item
     # qqmusic
 
-    # pkgs.bwraps.wechat
+    pkgs.bwraps.wechat
     # wechat-uos
     # pkgs.nixpaks.wechat-uos
     # pkgs.nixpaks.wechat-uos-desktop-item
@@ -71,7 +71,7 @@
     feishu
 
     # c001apk-flutter
-    # nur-DataEraserC-not-follow.packages.${pkgs.system}.c001apk-flutter
+    nur-DataEraserC-not-follow.packages.${pkgs.system}.c001apk-flutter
 
     # Translate tool
     translate-shell
