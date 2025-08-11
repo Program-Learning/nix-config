@@ -12,158 +12,160 @@
   hyprland-plugins,
   hyprland,
   ...
-}: {
+}:
+{
   home.packages =
-    (with pkgs;
+    (
+      with pkgs;
       # nixpkgs here
-        [
-          # test only
-          niri
-          mount-zip
-          # AutoClick tool
-          xdotool
-          dotool
-          ydotool
-          wlrctl
-          wtype
+      [
+        # test only
+        niri
+        mount-zip
+        # AutoClick tool
+        xdotool
+        dotool
+        ydotool
+        wlrctl
+        wtype
 
-          # trickle
-          # use this to pop a input window
-          zenity
-          jansson
-          nftables
-          cachix
-          weston
-          libsForQt5.qtstyleplugin-kvantum
-          adwaita-icon-theme
+        # trickle
+        # use this to pop a input window
+        zenity
+        jansson
+        nftables
+        cachix
+        weston
+        libsForQt5.qtstyleplugin-kvantum
+        adwaita-icon-theme
 
-          # --nvidia cuda
-          # cudatoolkit
+        # --nvidia cuda
+        # cudatoolkit
 
-          # Bilibili video download
-          yutto
+        # Bilibili video download
+        yutto
 
-          # ytb video download
-          yt-dlp
+        # ytb video download
+        yt-dlp
 
-          # kdePackages.konsole
-          # powerdevil
+        # kdePackages.konsole
+        # powerdevil
 
-          calcurse
+        calcurse
 
-          # --vim-like browser
-          # vimb
+        # --vim-like browser
+        # vimb
 
-          # --agent
-          protonvpn-cli_2
-          # pkgs-unstable.clash-nyanpasu
-          # nekoray_patched
-          nekoray
-          sing-box
-          cloudflare-warp
-          wgcf
+        # --agent
+        protonvpn-cli_2
+        # pkgs-unstable.clash-nyanpasu
+        # nekoray_patched
+        nekoray
+        sing-box
+        cloudflare-warp
+        wgcf
 
-          # --Office
-          onlyoffice-bin
-          libreoffice
-          mdp
-          slides
-          wpsoffice-cn # unfree
-          stirling-pdf
+        # --Office
+        onlyoffice-bin
+        libreoffice
+        mdp
+        slides
+        wpsoffice-cn # unfree
+        stirling-pdf
 
-          # --note
-          anytype
+        # --note
+        anytype
 
-          # --math software
-          # geogebra6
+        # --math software
+        # geogebra6
 
-          # --achieve/file managers
-          xarchiver
-          mate.engrampa
-          nautilus
-          nautilus-open-any-terminal
-          file-roller
-          kdePackages.ark
-          kdePackages.dolphin
-          ranger
+        # --achieve/file managers
+        xarchiver
+        mate.engrampa
+        nautilus
+        nautilus-open-any-terminal
+        file-roller
+        kdePackages.ark
+        kdePackages.dolphin
+        ranger
 
-          qrencode
+        qrencode
 
-          gnome-clocks
+        gnome-clocks
 
-          # dunst
-          # pipewire
-          # wireplumber
-          # tofi
-          # eww
-          # rofi-wayland
-          # qt6.qtwayland
-          # wayland
-          # wayland-scanner
-          # wayland-utils
-          # egl-wayland
-          # wayland-protocols
-          # glfw-wayland
-          # libsForQt5.qt5.qtwayland
-          # hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland
-          libsForQt5.qt5ct
-          # kitty-themes
+        # dunst
+        # pipewire
+        # wireplumber
+        # tofi
+        # eww
+        # rofi-wayland
+        # qt6.qtwayland
+        # wayland
+        # wayland-scanner
+        # wayland-utils
+        # egl-wayland
+        # wayland-protocols
+        # glfw-wayland
+        # libsForQt5.qt5.qtwayland
+        # hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland
+        libsForQt5.qt5ct
+        # kitty-themes
 
-          adwaita-qt
-          adwaita-qt6
-          # lxde.lxsession # lxpolkit
-          polkit_gnome_exported
-          swappy
-          bluez
-          sysfsutils
-          # jq
-          # wlroots
-          # catppuccin-kvantum
-          # htop
-          vim # file editor
-          # postman
-          artha
-          iw
-          # coreutils
-          # openssl
-          gitRepo
-          fuse
-          ntfs3g
-          jadx
-          meld
-          # dash
-          inotify-tools
-          # vmware-workstation
+        adwaita-qt
+        adwaita-qt6
+        # lxde.lxsession # lxpolkit
+        polkit_gnome_exported
+        swappy
+        bluez
+        sysfsutils
+        # jq
+        # wlroots
+        # catppuccin-kvantum
+        # htop
+        vim # file editor
+        # postman
+        artha
+        iw
+        # coreutils
+        # openssl
+        gitRepo
+        fuse
+        ntfs3g
+        jadx
+        meld
+        # dash
+        inotify-tools
+        # vmware-workstation
 
-          # vaapi
-          gst_all_1.gst-vaapi
-          # sshfs
-          sftpman
-          # edge browser
-          # microsoft-edge
-          # sql
-          # mysql80
+        # vaapi
+        gst_all_1.gst-vaapi
+        # sshfs
+        sftpman
+        # edge browser
+        # microsoft-edge
+        # sql
+        # mysql80
 
-          # pkg required by nix-shell
-          pkg-config
-          ncurses
-          # ncurses6
-          # ncurses5
-          # pkgsCross.aarch64-multiplatform.stdenv.cc
-          # pkgsCross.arm-embedded.stdenv.cc
-          #clang15Stdenv
-          #pkgsLLVM.crossLibcStdenv
-          # clang-tools
-          # glibc
-          # libcxx
-          # zlib
-          # ninja
+        # pkg required by nix-shell
+        pkg-config
+        ncurses
+        # ncurses6
+        # ncurses5
+        # pkgsCross.aarch64-multiplatform.stdenv.cc
+        # pkgsCross.arm-embedded.stdenv.cc
+        #clang15Stdenv
+        #pkgsLLVM.crossLibcStdenv
+        # clang-tools
+        # glibc
+        # libcxx
+        # zlib
+        # ninja
 
-          ntfy-sh
-        ])
+        ntfy-sh
+      ])
     # nixpkgs-unstable
     ++ (with pkgs-unstable; [
-      ])
+    ])
     # nur packages here
     ++ (
       # with pkgs.nur.repos;
@@ -178,12 +180,11 @@
         nur-DataEraserC.packages.${pkgs.system}.watt-toolkit_bin
         # nur-DataEraserC.packages.${pkgs.system}.cisco-packet-tracer # network learning
         nur-DataEraserC.packages.${pkgs.system}.AppimageLauncher_deb
-        nur-DataEraserC-not-follow.packages.${pkgs.system}.XiaoMiToolV2
+        # nur-DataEraserC-not-follow.packages.${pkgs.system}.XiaoMiToolV2
         # nur-DataEraserC.packages.${pkgs.system}.CrossOver
         # nur-DataEraserC.packages.${pkgs.system}.waybar-bluetooth_battery_parse
         # alexnortung.pkgs.papermc-1_18_x
-      ]
-    );
+      ]);
 
   services = {
     kdeconnect.enable = true;
