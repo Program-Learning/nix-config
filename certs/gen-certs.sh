@@ -3,7 +3,7 @@ openssl ecparam -genkey -name secp384r1 -out ecc-ca.key
 # 2. Generate the certificate for Root CA with the validity period of 10 years
 # using the private key and some basic information
 # NOTE: we specify sha512 as the signature algorithm, which is the key point
-openssl req -x509 -new -SHA512 -key ecc-ca.key -subj "/CN=Ryan4Yin's Root CA 1" -days 3650 -out ecc-ca.crt
+openssl req -x509 -new -SHA512 -key ecc-ca.key -subj "/CN=Mayuri's Root CA 1" -days 3650 -out ecc-ca.crt
 
 # 3. Generate the private key for web server
 openssl ecparam -genkey -name secp384r1 -out ecc-server.key
