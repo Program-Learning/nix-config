@@ -51,7 +51,7 @@
     # pkgs.nixpaks.qq-desktop-item
     # qqmusic
 
-    # pkgs.bwraps.wechat
+    pkgs.bwraps.wechat
     # wechat-uos
     # pkgs.nixpaks.wechat-uos
     # pkgs.nixpaks.wechat-uos-desktop-item
