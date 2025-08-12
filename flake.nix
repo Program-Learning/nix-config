@@ -28,6 +28,8 @@
       "https://cache.garnix.io"
 
       "https://snowy-cache.cachix.org"
+
+      "https://cache.saumon.network/proxmox-nixos"
     ];
     extra-trusted-public-keys = [
       "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
@@ -42,6 +44,8 @@
       "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
 
       "snowy-cache.cachix.org-1:okWl5IF/yzdZ+p/eRhDFvcanQo/y0ta80dvfdGgy28U="
+
+      "proxmox-nixos:D9RYSWpQQC/msZUWphOY2I5RLH5Dd6yQcaHIuug7dWM="
     ];
   };
 
@@ -464,7 +468,9 @@
     };
 
     # pve-nixos
-    proxmox-nixos.url = "github:SaumonNet/proxmox-nixos";
+    proxmox-nixos = {
+      url = "github:SaumonNet/proxmox-nixos";
+    };
 
     Snowpkgs = {
       url = "github:Daru-san/Snowpkgs";
