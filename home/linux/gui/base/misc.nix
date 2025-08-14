@@ -5,6 +5,7 @@
   pkgs-unstable-etcher,
   qqnt,
   nur-linyinfeng,
+  nur-xddxdd,
   nur-DataEraserC,
   nur-DataEraserC-not-follow,
   ...
@@ -58,6 +59,8 @@
     # nur-linyinfeng.packages.${pkgs.system}.icalingua-plus-plus
 
     wemeet
+
+    nur-xddxdd.packages.${pkgs.system}.dingtalk
 
     # wechat-uos
     # nur-DataEraserC.packages.${pkgs.system}.wechat-uos
