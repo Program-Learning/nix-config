@@ -36,8 +36,8 @@ rec {
   ];
 
   networking = {
-    hostName = "DESKTOP-GM6XG0X";
     # inherit hostName;
+    hostName = "DESKTOP-GM6XG0X";
 
     # we use networkd instead
     # networkmanager.enable = false; # provides nmcli/nmtui for wifi adjustment
@@ -88,6 +88,10 @@ rec {
       }
     ];
   };
+
+  # networking.useNetworkd = true;
+  # systemd.network.enable = true;
+
   # systemd.network.networks."10-${iface}" = {
   #   matchConfig.Name = [iface];
   #   networkConfig = {
@@ -114,9 +118,6 @@ rec {
   #   enableIPv6 = true; # disable ipv6
   #   extraHosts = myvars.networking.genericHosts;
   # };
-
-  # networking.useNetworkd = true;
-  # systemd.network.enable = true;
 
   # conflict with feature: containerd-snapshotter
   # virtualisation.docker.storageDriver = "btrfs";
