@@ -90,6 +90,9 @@ in
       # for android sign
       # TODO: move to agenix/sop
       "/etc/secrets/android-keys"
+
+      # for pve-nixos
+      "/var/lib/pve-cluster"
     ];
     files = [
       # auto-generated machine ID
@@ -133,6 +136,8 @@ in
         ".local/state/home-manager"
         ".local/state/nix/profiles"
         ".local/share/nix"
+        ".cache/nix"
+        ".cache/nixpkgs-review"
 
         # ======================================
         # IDE / Editors
@@ -282,6 +287,8 @@ in
         ".mozilla"
         ".config/google-chrome"
         ".cache/google-chrome"
+        ".config/chromium"
+        ".cache/chromium"
         ".config/google-chrome-unstable"
         ".config/microsoft-edge"
 
@@ -312,6 +319,8 @@ in
 
         # Digital Painting
         ".local/share/krita"
+
+        ".config/nushell"
 
         # Mayuri Spec
 

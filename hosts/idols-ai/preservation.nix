@@ -324,6 +324,12 @@ in
 
         # Mayuri Spec
 
+        # ======================================
+        # Apps
+        # ======================================
+
+        ".local/share/DBeaverData/"
+
         (makeDirRW ".wine")
         (makeDirRW ".minecraft")
         (makeDirRW "GOG Games")
