@@ -2,6 +2,7 @@
   mylib,
   pkgs,
   pkgs-latest,
+  pkgs-stable,
   config,
   lib,
   hyprland,
@@ -41,7 +42,7 @@ in
   catppuccin.waybar.enable = false;
 
   # screen locker
-  programs.hyprlock.enable = true;
+  programs.swaylock.enable = true;
 
   # Logout Menu
   programs.wlogout.enable = true;

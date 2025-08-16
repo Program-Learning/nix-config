@@ -1,4 +1,8 @@
-{ myvars, ... }:
+{
+  lib,
+  myvars,
+  ...
+}:
 #############################################################
 #
 #  Shoukei - NixOS running on Macbook Pro 2022 M2 16G
@@ -6,12 +10,13 @@
 #############################################################
 let
   hostName = "shoukei"; # Define your hostname.
-in
-{
+in {
   imports = [
     ./hardware-configuration.nix
     ../idols-ai/preservation.nix
   ];
+
+  services.sunshine.enable = lib.mkForce false;
 
   networking = {
     inherit hostName;

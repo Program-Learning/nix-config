@@ -16,7 +16,7 @@ let
   hostName = "ai"; # Define your hostname.
 
   macAddress = "random";
-  inherit (myvars.networking) defaultGateway defaultGateway6 nameservers;
+  inherit (myvars.networking) mainGateway mainGateway6 nameservers;
   inherit (myvars.networking.hostsAddr.${hostName}) iface ipv4 ipv6;
   ipv4WithMask = "${ipv4}/24";
   ipv6WithMask = "${ipv6}/64";
@@ -87,17 +87,14 @@ rec {
         type = "basic";
       }
     ];
-    enableIPv6 = true; # disable ipv6
-    extraHosts = myvars.networking.genericHosts;
   };
-
-  # networking.useNetworkd = true;
-  # systemd.network.enable = true;
-
   # systemd.network.networks."10-${iface}" = {
   #   matchConfig.Name = [iface];
   #   networkConfig = {
-  #     Address = [ipv4WithMask ipv6WithMask];
+  #     Address = [
+  #       ipv4WithMask
+  #       ipv6WithMask
+  #     ];
   #     DNS = nameservers;
   #     DHCP = "ipv6"; # enable DHCPv6 only, so we can get a GUA.
   #     IPv6AcceptRA = true; # for Stateless IPv6 Autoconfiguraton (SLAAC)
@@ -106,16 +103,20 @@ rec {
   #   routes = [
   #     {
   #       Destination = "0.0.0.0/0";
-  #       Gateway = defaultGateway;
+  #       Gateway = mainGateway;
   #     }
   #     {
   #       Destination = "::/0";
-  #       Gateway = defaultGateway6;
+  #       Gateway = mainGateway6;
   #       GatewayOnLink = true; # it's a gateway on local link.
   #     }
   #   ];
-  #   linkConfig.RequiredForOnline = "routable";
+  #   enableIPv6 = true; # disable ipv6
+  #   extraHosts = myvars.networking.genericHosts;
   # };
+
+  # networking.useNetworkd = true;
+  # systemd.network.enable = true;
 
   # conflict with feature: containerd-snapshotter
   # virtualisation.docker.storageDriver = "btrfs";

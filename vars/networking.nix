@@ -4,8 +4,8 @@ rec {
   mainGateway6 = "fe80::5"; # main router's link-local address
   # use suzi as the default gateway
   # it's a subrouter with a transparent proxy
-  defaultGateway = "192.168.0.1";
-  defaultGateway6 = "fe80::8";
+  proxyGateway = "192.168.0.178";
+  proxyGateway6 = "fe80::8";
   nameservers = [
     # IPv4
     "119.29.29.29" # DNSPod

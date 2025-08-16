@@ -60,7 +60,7 @@ in
     })
     (mkIf (cfgHyprland.enable && cfgWayland.enable) {
       # fix https://github.com/ryan4yin/nix-config/issues/10
-      security.pam.services.hyprlock = { };
+      security.pam.services.swaylock = { };
     })
     (mkIf (cfgNiri.enable && cfgWayland.enable) {
       security.pam.services.swaylock = { };
