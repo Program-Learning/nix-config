@@ -11,7 +11,7 @@
   "astroui": { "branch": "main", "commit": "e923a84c488d879a260fc9cfb2dc27dd870fb6ac" },
   "autosave.nvim": { "branch": "main", "commit": "348f72cf0241e3e736e3396c4834def2f8ef8d10" },
   "avante.nvim": { "branch": "main", "commit": "fed6902c9a9a3c4473238e924cddc1ba19f3195b" },
-  "catppuccin": { "branch": "main", "commit": "3aaf3ab60221bca8edb1354e41bd514a22c89de2" },
+  "catppuccin": { "branch": "main", "commit": "211dc3649f775c5a390e9fae07bf20d985f8dcf2" },
   "clangd_extensions.nvim": {
     "branch": "main",
     "commit": "b67cc417d9020fb4b83d46662351b4d16894905e"
@@ -30,7 +30,7 @@
   "flash.nvim": { "branch": "main", "commit": "3c942666f115e2811e959eabbdd361a025db8b63" },
   "flit.nvim": { "branch": "main", "commit": "513e38abe61237c53a9e983e45595b1d2e7d5391" },
   "friendly-snippets": { "branch": "main", "commit": "efff286dd74c22f731cdec26a70b46e5b203c619" },
-  "fzf-lua": { "branch": "main", "commit": "71fe5c16a2fc2897fc41d916b30b96d8a3a9811a" },
+  "fzf-lua": { "branch": "main", "commit": "f579824e744aad6a747e8e6ff674dd92cd10d521" },
   "gitsigns.nvim": { "branch": "main", "commit": "7010000889bfb6c26065e0b0f7f1e6aa9163edd9" },
   "gopher.nvim": { "branch": "main", "commit": "de585144ebde9f0516fb9b542dd42e90c7835b59" },
   "goto-preview": { "branch": "main", "commit": "d1faf6ea992b5bcaaaf2c682e1aba3131a01143e" },
