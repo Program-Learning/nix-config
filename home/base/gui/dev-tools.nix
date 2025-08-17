@@ -15,7 +15,9 @@ let
   };
 
   vmoptions = ''
+    -Dawt.toolkit.name=WLToolkit
     --add-opens=java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED
+
     --add-opens=java.base/jdk.internal.org.objectweb.asm.tree=ALL-UNNAMED
 
     -javaagent:${nur-DataEraserC.packages.${pkgs.system}.ja-netfilter}/ja-netfilter.jar=jetbrains
