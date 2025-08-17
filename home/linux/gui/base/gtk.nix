@@ -5,6 +5,17 @@
   myvars,
   ...
 }:
+let
+  catppuccinVariant = "mocha";
+  catppuccinAccent = "pink";
+  catppuccinSize = "standard";
+
+  catppuccinGtk = pkgs.catppuccin-gtk.override {
+    variant = catppuccinVariant;
+    accents = [ catppuccinAccent ];
+    size = catppuccinSize;
+  };
+in
 {
   # If your themes for mouse cursor, icons or windows don’t load correctly,
   # try setting them with home.pointerCursor and gtk.theme,
@@ -63,6 +74,18 @@
     iconTheme = {
       name = "Papirus-Dark";
       package = pkgs.papirus-icon-theme;
+    };
+
+    theme = {
+      name = "catppuccin-${catppuccinVariant}-${catppuccinAccent}-${catppuccinSize}";
+      package = catppuccinGtk;
+    };
+
+    gtk3.extraConfig = {
+      "gtk-application-prefer-dark-theme" = "1";
+    };
+    gtk4.extraConfig = {
+      "gtk-application-prefer-dark-theme" = "1";
     };
   };
 }
