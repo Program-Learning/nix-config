@@ -21,6 +21,7 @@
   #    2. Never leave the device and never sent over the network.
   # 2. Or just use hardware security keys like Yubikey/CanoKey.
   mainSshAuthorizedKeys = [
+    # The main ssh keys for daily usage
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBiYaQw5Zd3zph4ESSmzTeThQs4mUvQl6VmAgwhFQeIj nix-on-droid@pstar"
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIESZxsPpUfvzrLVVu7O1QYnUvSKWG4U6Fcv3kdxiLQTg termux@pstar"
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMKycQztUbwaCQnvF6wiQz+WukpAXbkubMMMp4VUtwt/ nix-on-droid@mondrian"
@@ -31,5 +32,6 @@
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFak7BMP5b8HDe63AfaR2FmwVUgrQyg5+Uqiqd+/Jj3q openpgp:0x8B7537BE"
   ];
   secondaryAuthorizedKeys = [
+    # the backup ssh keys for disaster recovery
   ];
 }
