@@ -14,7 +14,7 @@
 # Maybe I'll give netbird/netmaker a try when they are more mature, but for now, I'm sticking with Zerotier.
 {
   # make the zerotier command usable to users
-  environment.systemPackages = [pkgs.zerotierone];
+  environment.systemPackages = [ pkgs.zerotierone ];
 
   # enable the zerotierone service
   services.zerotierone = {

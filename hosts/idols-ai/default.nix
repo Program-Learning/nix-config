@@ -35,6 +35,8 @@ rec {
     ./dae.nix
   ];
 
+  services.sunshine.enable = lib.mkForce true;
+
   networking = {
     # inherit hostName;
     hostName = "DESKTOP-GM6XG0X";
@@ -88,12 +90,8 @@ rec {
       }
     ];
   };
-
-  # networking.useNetworkd = true;
-  # systemd.network.enable = true;
-
   # systemd.network.networks."10-${iface}" = {
-  #   matchConfig.Name = [iface];
+  #   matchConfig.Name = [ iface ];
   #   networkConfig = {
   #     Address = [
   #       ipv4WithMask
@@ -115,9 +113,10 @@ rec {
   #       GatewayOnLink = true; # it's a gateway on local link.
   #     }
   #   ];
-  #   enableIPv6 = true; # disable ipv6
-  #   extraHosts = myvars.networking.genericHosts;
   # };
+
+  # networking.useNetworkd = true;
+  # systemd.network.enable = true;
 
   # conflict with feature: containerd-snapshotter
   # virtualisation.docker.storageDriver = "btrfs";
