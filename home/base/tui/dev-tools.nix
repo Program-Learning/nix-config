@@ -19,6 +19,8 @@
   home.packages = with pkgs; [
     colmena # nixos's remote deployment tool
 
+    tokei # count lines of code, alternative to cloc
+
     # db related
     mycli
     pgcli
