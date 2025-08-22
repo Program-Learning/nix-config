@@ -28,7 +28,7 @@ rec {
     ./hardware-configuration.nix
     ./nvidia.nix
     ./ai
-    ./game
+    ./gaming.nix
 
     ./preservation.nix
     ./impermanence_addon.nix
