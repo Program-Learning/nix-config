@@ -9,7 +9,8 @@
   system,
   genSpecialArgs,
   ...
-} @ args: let
+}@args:
+let
   # r9000p2025
   name = "r9000p2025";
   wsl-modules = [
@@ -22,19 +23,22 @@
         "secrets/options.nix"
         "secrets/nixos_agenix.nix"
         "secrets/nixos_sopsnix.nix"
-        "modules/nixos/server/wsl.nix"
+        "modules/nixos/wsl"
         # host specific
         "hosts/wsl-${name}"
       ])
       ++ [
         inputs.vscode-server.nixosModules.default
-        ({
-          config,
-          pkgs,
-          ...
-        }: {
-          services.vscode-server.enable = true;
-        })
+        (
+          {
+            config,
+            pkgs,
+            ...
+          }:
+          {
+            services.vscode-server.enable = true;
+          }
+        )
         {
           modules.mkOutOfStoreSymlink.enable = true;
           modules.mkOutOfStoreSymlink.configPath = "/home/nixos/nix-config";
@@ -44,7 +48,7 @@
     home-modules =
       map mylib.relativeToRoot [
         # common
-        "home/linux/tui.nix"
+        "home/linux/wsl.nix"
         # host specific
         "hosts/wsl-${name}/home.nix"
       ]
@@ -58,23 +62,22 @@
   };
 
   modules-hyprland = {
-    nixos-modules =
-      [
-        {
-          # modules.desktop.wayland.enable = false;
-          modules.secrets.desktop.enable = true;
-          modules.secrets.preservation.enable = true;
-        }
-      ]
-      ++ base-modules.nixos-modules
-      ++ wsl-modules;
-    home-modules =
-      [
-        # {modules.desktop.hyprland.enable = false;}
-      ]
-      ++ base-modules.home-modules;
+    nixos-modules = [
+      {
+        # modules.desktop.wayland.enable = false;
+        modules.secrets.desktop.enable = true;
+        modules.secrets.preservation.enable = true;
+      }
+    ]
+    ++ base-modules.nixos-modules
+    ++ wsl-modules;
+    home-modules = [
+      # {modules.desktop.hyprland.enable = false;}
+    ]
+    ++ base-modules.home-modules;
   };
-in {
+in
+{
   nixosConfigurations = {
     # host with hyprland compositor
     "wsl-${name}" = mylib.nixosSystem (modules-hyprland // args);

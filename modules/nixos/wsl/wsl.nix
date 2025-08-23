@@ -1,6 +1,7 @@
-{lib, ...}: {
+{ lib, ... }:
+{
   imports = [
-    ./server.nix
+    ../server/server.nix
     ../desktop/fonts.nix
   ];
 }
