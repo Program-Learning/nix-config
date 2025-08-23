@@ -41,9 +41,10 @@
     ''
   );
 
-  # boot.kernelPackages = pkgs.linuxPackages_latest;
+  # https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/top-level/linux-kernels.nix
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   # boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
-  boot.kernelPackages = pkgs.linuxPackages_cachyos;
+  # boot.kernelPackages = pkgs.linuxPackages_cachyos;
   services.scx.enable = true;
   # boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_xanmod.override {
   #   structuredExtraConfig = with lib.kernel; {

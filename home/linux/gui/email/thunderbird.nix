@@ -1,7 +1,12 @@
 { ... }:
 {
   programs.thunderbird = {
-    profiles = { };
+    profiles = {
+      default = {
+        # name = "default";
+        isDefault = true;
+      };
+    };
     enable = true;
   };
 }

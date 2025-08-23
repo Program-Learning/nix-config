@@ -139,30 +139,40 @@ droid mode="default":
 #
 ############################################################################
 
+# Deploy the nixosConfiguration by hostname match
+[linux]
+[group('homelab')]
+local mode="default":
+  #!/usr/bin/env nu
+  use {{utils_nu}} *;
+  nixos-switch (hostname) {{mode}}
+
+# Deploy the hyprland nixosConfiguration by hostname match
 [linux]
 [group('desktop')]
 hypr mode="default":
   #!/usr/bin/env nu
   use {{utils_nu}} *;
-  nixos-switch ai-hyprland {{mode}}
+  nixos-switch $"(hostname)-hyprland" {{mode}}
 
 [linux]
 niri mode="default":
   #!/usr/bin/env nu
   use {{utils_nu}} *;
-  nixos-switch ai-niri {{mode}}
+  nixos-switch "ai-niri" {{mode}}
+  # nixos-switch $"(hostname)-niri" {{mode}}
 
 [linux]
 gnome-wayland mode="default":
   #!/usr/bin/env nu
   use {{utils_nu}} *;
-  nixos-switch ai-gnome-wayland {{mode}}
+  nixos-switch $"(hostname)-gnome-wayland" {{mode}}
 
 [linux]
 kde-wayland mode="default":
   #!/usr/bin/env nu
   use {{utils_nu}} *;
-  nixos-switch ai-kde-wayland {{mode}}
+  nixos-switch $"(hostname)-kde-wayland" {{mode}}
 
 [linux]
 [group('desktop')]
@@ -190,23 +200,15 @@ darwin-rollback:
   use {{utils_nu}} *;
   darwin-rollback
 
-# Depoly to fern(macOS host)
+# Deploy the darwinConfiguration by hostname match
 [macos]
 [group('desktop')]
-fe mode="default":
+local mode="default": 
   #!/usr/bin/env nu
   use {{utils_nu}} *;
-  darwin-build "fern" {{mode}};
-  darwin-switch "fern" {{mode}}
+  darwin-build (hostname) {{mode}};
+  darwin-switch (hostname) {{mode}}
 
-# Depoly to frieren(macOS host)
-[macos]
-[group('desktop')]
-fr mode="default":
-  #!/usr/bin/env nu
-  use {{utils_nu}} *;
-  darwin-build "frieren" {{mode}};
-  darwin-switch "frieren" {{mode}}
 
 # Reset launchpad to force it to reindex Applications
 [macos]
@@ -226,13 +228,6 @@ reset-launchpad:
 [group('homelab')]
 col tag:
   colmena apply --on '@{{tag}}' --verbose --show-trace
-
-[linux]
-[group('homelab')]
-local name mode="default":
-  #!/usr/bin/env nu
-  use {{utils_nu}} *;
-  nixos-switch {{name}} {{mode}}
 
 # Build and upload a vm image
 [linux]
@@ -255,34 +250,13 @@ shoryu:
 
 [linux]
 [group('homelab')]
-shoryu-local mode="default":
-  #!/usr/bin/env nu
-  use {{utils_nu}} *;
-  nixos-switch kubevirt-shoryu {{mode}}
-
-[linux]
-[group('homelab')]
 shushou:
   colmena apply --on '@kubevirt-shushou' --verbose --show-trace
 
 [linux]
 [group('homelab')]
-shushou-local mode="default":
-  #!/usr/bin/env nu
-  use {{utils_nu}} *;
-  nixos-switch kubevirt-shushou {{mode}}
-
-[linux]
-[group('homelab')]
 youko:
   colmena apply --on '@kubevirt-youko' --verbose --show-trace
-
-[linux]
-[group('homelab')]
-youko-local mode="default":
-  #!/usr/bin/env nu
-  use {{utils_nu}} *;
-  nixos-switch kubevirt-youko {{mode}}
 
 ############################################################################
 #
@@ -307,34 +281,13 @@ aqua:
 
 [linux]
 [group('homelab')]
-aqua-local mode="default":
-  #!/usr/bin/env nu
-  use {{utils_nu}} *;
-  nixos-switch aquamarine {{mode}}
-
-[linux]
-[group('homelab')]
 ruby:
   colmena apply --on '@ruby' --verbose --show-trace
 
 [linux]
 [group('homelab')]
-ruby-local mode="default":
-  #!/usr/bin/env nu
-  use {{utils_nu}} *;
-  nixos-switch ruby {{mode}}
-
-[linux]
-[group('homelab')]
 kana:
   colmena apply --on '@kana' --verbose --show-trace
-
-[linux]
-[group('homelab')]
-kana-local mode="default":
-  #!/usr/bin/env nu
-  use {{utils_nu}} *;
-  nixos-switch kana {{mode}}
 
 ############################################################################
 #

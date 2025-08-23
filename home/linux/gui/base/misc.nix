@@ -23,7 +23,8 @@
 
     # matrix
     # element-desktop
-    cinny-desktop
+    # this break building
+    # cinny-desktop
 
     # instant messaging
     # telegram-desktop

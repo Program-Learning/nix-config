@@ -36,7 +36,7 @@
     pkgs-unstable-yuzu.yuzu # Switch games
     # broken so I disable it
     suyu.packages.${pkgs.system}.suyu # Switch games
-    ryujinx # Switch games
+    ryubing # Switch games
 
     # Steam related
     steamcmd # steam command line

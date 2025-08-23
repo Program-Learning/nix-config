@@ -71,11 +71,6 @@ in
       ];
     };
 
-    iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.papirus-icon-theme;
-    };
-
     theme = {
       name = "catppuccin-${catppuccinVariant}-${catppuccinAccent}-${catppuccinSize}";
       package = catppuccinGtk;
