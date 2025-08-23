@@ -11,6 +11,7 @@ let
   cfgHyprland = config.modules.desktop.hyprland;
   cfgNiri = config.modules.desktop.niri;
   cfgGnomeWayland = config.modules.desktop.gnome-wayland;
+  cfgKdeWayland = config.modules.desktop.kde-wayland;
 in
 {
   imports = [
@@ -27,7 +28,7 @@ in
   };
 
   config = mkMerge [
-    (mkIf cfgWayland.enable {
+    (mkIf (cfgWayland.enable && !cfgKdeWayland.enable && !cfgGnomeWayland.enable) {
       ####################################################################
       #  NixOS's Configuration for Wayland based Window Manager
       ####################################################################

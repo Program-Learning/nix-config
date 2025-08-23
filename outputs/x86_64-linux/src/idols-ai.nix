@@ -94,9 +94,11 @@ let
   modules-gnome-wayland = {
     nixos-modules = [
       {
-        modules.desktop.gnome-wayland.enable = true;
+        # modules.desktop.fonts.enable = true;
+        modules.desktop.wayland.enable = true;
         modules.secrets.desktop.enable = true;
         modules.secrets.preservation.enable = true;
+        modules.desktop.gnome-wayland.enable = true;
       }
     ]
     ++ base-modules.nixos-modules;
@@ -108,9 +110,11 @@ let
   modules-kde-wayland = {
     nixos-modules = [
       {
-        modules.desktop.kde-wayland.enable = true;
+        # modules.desktop.fonts.enable = true;
+        modules.desktop.wayland.enable = true;
         modules.secrets.desktop.enable = true;
         modules.secrets.preservation.enable = true;
+        modules.desktop.kde-wayland.enable = true;
       }
     ]
     ++ base-modules.nixos-modules;
@@ -122,10 +126,11 @@ let
   modules-niri = {
     nixos-modules = [
       {
-        modules.desktop.niri.enable = true;
+        modules.desktop.fonts.enable = true;
         modules.desktop.wayland.enable = true;
         modules.secrets.desktop.enable = true;
         modules.secrets.preservation.enable = true;
+        modules.desktop.niri.enable = true;
       }
     ]
     ++ base-modules.nixos-modules;

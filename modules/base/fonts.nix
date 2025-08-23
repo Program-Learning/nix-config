@@ -1,5 +1,7 @@
 {
   pkgs,
+  pkgs-latest,
+  wpsFonts,
   config,
   lib,
   ...
