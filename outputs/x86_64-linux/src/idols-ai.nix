@@ -94,7 +94,7 @@ let
   modules-gnome-wayland = {
     nixos-modules = [
       {
-        # modules.desktop.fonts.enable = true;
+        modules.desktop.fonts.enable = true;
         modules.desktop.wayland.enable = true;
         modules.secrets.desktop.enable = true;
         modules.secrets.preservation.enable = true;
@@ -110,7 +110,7 @@ let
   modules-kde-wayland = {
     nixos-modules = [
       {
-        # modules.desktop.fonts.enable = true;
+        modules.desktop.fonts.enable = true;
         modules.desktop.wayland.enable = true;
         modules.secrets.desktop.enable = true;
         modules.secrets.preservation.enable = true;

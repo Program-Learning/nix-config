@@ -48,7 +48,8 @@
     # source code: https://github.com/nix-community/home-manager/blob/master/modules/programs/chromium.nix
     google-chrome = {
       enable = true;
-      package = browser-previews.packages.${pkgs.system}.google-chrome-dev;
+      package = if pkgs.stdenv.isAarch64 then pkgs.chromium else pkgs.google-chrome;
+      # browser-previews.packages.${pkgs.system}.google-chrome-dev;
 
       # https://wiki.archlinux.org/title/Chromium#Native_Wayland_support
       commandLineArgs = [
