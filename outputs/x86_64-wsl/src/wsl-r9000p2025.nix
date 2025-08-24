@@ -13,9 +13,9 @@
 let
   # r9000p2025
   name = "r9000p2025";
-  wsl-modules = [
-    inputs.nixos-wsl.nixosModules.default
-  ];
+  wsl-modules = {
+    nixos-modules = [ inputs.nixos-wsl.nixosModules.default ];
+  };
   base-modules = {
     nixos-modules =
       (map mylib.relativeToRoot [
@@ -26,6 +26,10 @@ let
         "modules/nixos/wsl"
         # host specific
         "hosts/wsl-${name}"
+        # nixos hardening
+        # "hardening/profiles/default.nix"
+        "hardening/nixpaks"
+        "hardening/bwraps"
       ])
       ++ [
         inputs.vscode-server.nixosModules.default
@@ -61,18 +65,20 @@ let
       ];
   };
 
-  modules-hyprland = {
+  modules = {
     nixos-modules = [
       {
-        # modules.desktop.wayland.enable = false;
+        modules.desktop.fonts.enable = true;
+        # modules.desktop.wayland.enable = true;
         modules.secrets.desktop.enable = true;
         modules.secrets.preservation.enable = true;
+        # modules.desktop.niri.enable = true;
       }
     ]
     ++ base-modules.nixos-modules
-    ++ wsl-modules;
+    ++ wsl-modules.nixos-modules;
     home-modules = [
-      # {modules.desktop.hyprland.enable = false;}
+      # { modules.desktop.niri.enable = true; }
     ]
     ++ base-modules.home-modules;
   };
@@ -80,7 +86,7 @@ in
 {
   nixosConfigurations = {
     # host with hyprland compositor
-    "wsl-${name}" = mylib.nixosSystem (modules-hyprland // args);
+    "wsl-${name}" = mylib.nixosSystem (modules // args);
   };
 
   # generate iso image for hosts with desktop environment
