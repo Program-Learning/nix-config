@@ -21,6 +21,10 @@ in
   systemd.user.services.wallpaper = {
     Unit = {
       Description = "Wallpaper Switcher daemon";
+      After = [
+        "graphical-session.target"
+      ];
+      Wants = [ "graphical-session-pre.target" ];
     };
     Install.WantedBy = [ "graphical-session.target" ];
     Service = {
