@@ -14,14 +14,13 @@ let
     sha256 = "sha256-9jeiF9QS4MCogIowu43l7Bqf7dhs40+7KKZML/k1oWo=";
   };
 
-  vmoptions = ''
-    -Dawt.toolkit.name=WLToolkit
-    --add-opens=java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED
-
-    --add-opens=java.base/jdk.internal.org.objectweb.asm.tree=ALL-UNNAMED
-
-    -javaagent:${nur-DataEraserC.packages.${pkgs.system}.ja-netfilter}/ja-netfilter.jar=jetbrains
-  '';
+  vmoptions = builtins.concatStringsSep "\n" [
+    # NOTE: disable Wayland bcs ime not support well
+    # "-Dawt.toolkit.name=WLToolkit"
+    "--add-opens=java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED"
+    "--add-opens=java.base/jdk.internal.org.objectweb.asm.tree=ALL-UNNAMED"
+    "-javaagent:${nur-DataEraserC.packages.${pkgs.system}.ja-netfilter}/ja-netfilter.jar=jetbrains"
+  ];
   # -javaagent:${jetbra}/ja-netfilter.jar=jetbrains
   # -javaagent:/home/nixos/Documents/.jetbra-free/static/ja-netfilter/ja-netfilter.jar=jetbrains
   postFixUpPatchFunction =
