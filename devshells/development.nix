@@ -26,9 +26,7 @@ forAllSystems (
         nodePackages.prettier
       ];
       name = "dots";
-      shellHook = ''
-        ${self.checks.${system}.pre-commit-check.shellHook}
-      '';
+      inherit (self.checks.${system}.pre-commit-check) shellHook;
     };
   }
 )
