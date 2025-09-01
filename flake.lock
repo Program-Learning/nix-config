@@ -6602,6 +6602,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-patched": {
+      "locked": {
+        "lastModified": 1756707443,
+        "narHash": "sha256-1PZ8MF+VoG8jRrUF6+s5nArlytsGrOq54Tz5NAi2oM0=",
+        "owner": "ryan4yin",
+        "repo": "nixpkgs",
+        "rev": "361887dbb55312dd449193578200beedb6688fcf",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ryan4yin",
+        "ref": "nixos-unstable-patched",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-pinned": {
       "locked": {
         "lastModified": 1699526406,
@@ -8832,6 +8848,7 @@
         "nixpkgs-latest": "nixpkgs-latest",
         "nixpkgs-nod": "nixpkgs-nod",
         "nixpkgs-ollama": "nixpkgs-ollama",
+        "nixpkgs-patched": "nixpkgs-patched",
         "nixpkgs-stable": "nixpkgs-stable_3",
         "nixpkgs-unstable": "nixpkgs-unstable_2",
         "nixpkgs-unstable-etcher": "nixpkgs-unstable-etcher",
