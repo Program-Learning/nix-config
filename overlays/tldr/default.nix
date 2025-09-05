@@ -1,3 +1,4 @@
-_: (_: super: {
-  tldr = super.tlrc;
+_:
+(_: super: {
+  tldr = super.tealdeer;
 })
