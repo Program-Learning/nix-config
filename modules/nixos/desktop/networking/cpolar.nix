@@ -15,6 +15,9 @@
   ...
 }:
 {
+  imports = [
+    nur-DataEraserC.nixosModules.cpolar
+  ];
   services.cpolar = {
     enable = true;
     package = nur-DataEraserC.packages.${pkgs.system}.cpolar;

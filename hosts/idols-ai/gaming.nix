@@ -1,4 +1,10 @@
-{ pkgs, nix-gaming, ... }:
+{
+  pkgs,
+  nix-gaming,
+  pkgs-unstable-yuzu,
+  suyu,
+  ...
+}:
 {
   # https://wiki.archlinux.org/title/steam
   # Games installed by Steam works fine on NixOS, no other configuration needed.

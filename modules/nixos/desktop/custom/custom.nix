@@ -10,9 +10,6 @@
   ...
 }:
 {
-  imports = [
-    nur-DataEraserC.nixosModules.cpolar
-  ];
   programs.wshowkeys.enable = true;
 
   programs.proxychains = {
@@ -86,7 +83,6 @@
     lidSwitchExternalPower = "ignore";
     powerKey = "ignore";
     # rebootKey = "ignore";
-    extraConfig = '''';
   };
 
   # services.tlp = {
@@ -132,37 +128,7 @@
 
   # recording tool
   features.wf-recorder.enable = true;
-  # clash tun mode fix
-  programs.clash-verge = {
-    enable = true;
-    autoStart = false;
-    package = pkgs.clash-verge-rev;
-  };
-  features.mihomo-party = {
-    enable = true;
-    autoStart = true;
-    tunMode = true;
-    package = pkgs.mihomo-party;
-  };
-  features.clash-nyanpasu = {
-    enable = false;
-    package = pkgs.clash-nyanpasu;
-    tunMode = true;
-  };
-  services.sing-box = {
-    enable = true;
-    settings = {
-      experimental = {
-        cache_file = {
-          enabled = true;
-        };
-        clash_api = {
-          external_controller = "0.0.0.0:9090";
-          external_ui = "@yacd@";
-        };
-      };
-    };
-  };
+
   # useless
   features.nekoray = {
     enable = false;
