@@ -271,6 +271,7 @@ in
         ".config/QQ"
 
         ".local/share/TelegramDesktop"
+        ".local/share/AyuGramDesktop"
 
         # ======================================
         # Meeting / Remote Desktop / Recording

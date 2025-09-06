@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
+    todesk # todesk
     moonlight-qt # moonlight client, for streaming games/desktop from a PC
   ];
 
