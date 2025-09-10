@@ -104,9 +104,10 @@
 
     # community wayland nixpkgs
     # nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
+
     # anyrun - a wayland launcher
     anyrun = {
-      url = "github:Kirottu/anyrun";
+      url = "github:/anyrun-org/anyrun/af1ffe4f17921825ff2a773995604dce2b2df3cd";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
