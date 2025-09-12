@@ -4,6 +4,6 @@
     enable = false;
     autoStart = true;
     tunMode = true;
-    package = pkgs.mihomo-party;
+    # package = pkgs.mihomo-party;
   };
 }

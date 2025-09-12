@@ -36,7 +36,7 @@ rec {
     ./dae.nix
   ];
 
-  services.sunshine.enable = lib.mkForce true;
+  services.sunshine.enable = true;
 
   networking = {
     # inherit hostName;

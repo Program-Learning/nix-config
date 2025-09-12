@@ -1,6 +1,6 @@
 {
   services.sing-box = {
-    enable = true;
+    enable = false;
     settings = {
       experimental = {
         cache_file = {

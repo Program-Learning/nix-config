@@ -46,7 +46,6 @@ let
               inputs.proxmox-nixos.overlays.${system}
             ];
 
-            # The rest of your configuration...
           }
         )
         inputs.daeuniverse.nixosModules.dae

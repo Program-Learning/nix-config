@@ -1,7 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   environment.systemPackages = with pkgs; [
-    todesk # todesk
+    novnc # vnc client webui
+    wayvnc # vnc server for wayland
     moonlight-qt # moonlight client, for streaming games/desktop from a PC
   ];
 
@@ -27,17 +28,18 @@
   #
   # ===============================================================================
   services.sunshine = {
-    enable = false; # default to false, for security reasons.
+    enable = lib.mkDefault false; # default to false, for security reasons.
     autoStart = true;
     capSysAdmin = true; # only needed for Wayland -- omit this when using with Xorg
     openFirewall = true;
     settings = {
       # pc  - Only localhost may access the web ui
       # lan - Only LAN devices may access the web ui
-      origin_web_ui_allowed = "pc";
+      origin_web_ui_allowed = "any";
       # 2   -	encryption is mandatory and unencrypted connections are rejected
       lan_encryption_mode = 2;
       wan_encryption_mode = 2;
     };
   };
+  services.todesk.enable = true;
 }

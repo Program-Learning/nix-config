@@ -75,6 +75,7 @@ in
       # "/var/lib/waydroid"
 
       # network
+      "/var/lib/zerotier-one"
       "/var/lib/tailscale"
       "/var/lib/bluetooth"
       "/var/lib/NetworkManager"

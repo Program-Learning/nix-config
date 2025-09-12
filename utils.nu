@@ -30,7 +30,7 @@ export def nixos-switch [
         let msg = "NixOS boot image built successfully. sudo password is required now"
         print $msg
         notify-send -u critical -a NIXOS_REBUILD $msg
-        sudo nix-env -p /nix/var/nix/profiles/system --set $"($new_dir_name)"
+        sudo nix-env -p /nix/var/nix/profiles/system --set $"./($new_dir_name)"
         rm $new_dir_name
     } else if "switch-notify" == $mode {
         let new_dir_name = $"result-(date now | format date "%Y-%m-%d_%H:%M:%S")"
@@ -40,7 +40,7 @@ export def nixos-switch [
         let msg = "NixOS system configuration built successfully. sudo password is required now"
         print $msg
         notify-send -u critical -a NIXOS_REBUILD $msg
-        sudo nix-env -p /nix/var/nix/profiles/system --set $"($new_dir_name)"
+        sudo nix-env -p /nix/var/nix/profiles/system --set $"./($new_dir_name)"
         sudo systemd-run -E LOCALE_ARCHIVE -E NIXOS_INSTALL_BOOTLOADER --collect --no-ask-password --pipe --quiet --service-type=exec --unit=nixos-rebuild-switch-to-configuration $"($new_dir_name)/bin/switch-to-configuration" switch
         rm $new_dir_name
     } else {
@@ -51,7 +51,7 @@ export def nixos-switch [
         let msg = "NixOS system configuration built successfully. sudo password is required now"
         print $msg
         notify-send -u critical -a NIXOS_REBUILD $msg
-        sudo nix-env -p /nix/var/nix/profiles/system --set $"($new_dir_name)"
+        sudo nix-env -p /nix/var/nix/profiles/system --set $"./($new_dir_name)"
         sudo systemd-run -E LOCALE_ARCHIVE -E NIXOS_INSTALL_BOOTLOADER --collect --no-ask-password --pipe --quiet --service-type=exec --unit=nixos-rebuild-switch-to-configuration $"($new_dir_name)/bin/switch-to-configuration" switch
         rm $new_dir_name
     }
