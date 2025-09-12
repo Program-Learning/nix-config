@@ -122,19 +122,19 @@ let
     ]
     ++ base-modules.home-modules;
   };
-  modules-niri = {
+  modules-myniri = {
     nixos-modules = [
       {
         modules.desktop.fonts.enable = true;
         modules.desktop.wayland.enable = true;
         modules.secrets.desktop.enable = true;
         modules.secrets.preservation.enable = true;
-        modules.desktop.niri.enable = true;
+        modules.desktop.myniri.enable = true;
       }
     ]
     ++ base-modules.nixos-modules;
     home-modules = [
-      { modules.desktop.niri.enable = true; }
+      { modules.desktop.myniri.enable = true; }
     ]
     ++ base-modules.home-modules;
   };
@@ -145,8 +145,8 @@ in
     "${name}-gnome-wayland" = mylib.nixosSystem (modules-gnome-wayland // args);
     # with kde-wayland window manager
     "${name}-kde-wayland" = mylib.nixosSystem (modules-kde-wayland // args);
-    # host with niri compositor
-    "${name}-niri" = mylib.nixosSystem (modules-niri // args);
+    # host with myniri compositor
+    "${name}-myniri" = mylib.nixosSystem (modules-myniri // args);
     # host with hyprland compositor
     "${name}-hyprland" = mylib.nixosSystem (modules-hyprland // args);
   };
@@ -157,6 +157,6 @@ in
       inputs.self.nixosConfigurations."${name}-gnome-wayland".config.formats.iso;
     "${name}-kde-wayland" = inputs.self.nixosConfigurations."${name}-kde-wayland".config.formats.iso;
     "${name}-hyprland" = inputs.self.nixosConfigurations."${name}-hyprland".config.formats.iso;
-    "${name}-niri" = inputs.self.nixosConfigurations."${name}-niri".config.formats.iso;
+    "${name}-myniri" = inputs.self.nixosConfigurations."${name}-myniri".config.formats.iso;
   };
 }

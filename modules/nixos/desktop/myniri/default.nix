@@ -5,13 +5,13 @@
   ...
 } @ args:
 with lib; let
-  cfg = config.modules.desktop.niri;
+  cfg = config.modules.desktop.myniri;
 in {
   imports = [
     ./options
   ];
 
-  options.modules.desktop.niri = {
+  options.modules.desktop.myniri = {
     enable = mkEnableOption "niri";
   };
 

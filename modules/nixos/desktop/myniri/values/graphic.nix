@@ -3,11 +3,19 @@
   lib,
   config,
   ...
-}: {
+}: 
+let
+  cfgWayland = config.modules.desktop.wayland;
+  cfgHyprland = config.modules.desktop.hyprland;
+  cfgNiri = config.modules.desktop.myniri;
+  cfgGnomeWayland = config.modules.desktop.gnome-wayland;
+  cfgKdeWayland = config.modules.desktop.kde-wayland;
+in
+{
   # NOTE: this niri spec conf from
   # https://github.com/YaLTeR/niri/blob/main/resources/niri-portals.conf
   # https://github.com/YaLTeR/niri/wiki/Important-Software
-  xdg.portal = lib.mkIf config.modules.desktop.niri.enable {
+  xdg.portal = lib.mkIf cfgNiri.enable {
     enable = true;
 
     config = {

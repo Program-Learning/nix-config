@@ -157,11 +157,11 @@ hypr mode="default":
   # nixos-switch $"(hostname)-hyprland" {{mode}}
 
 [linux]
-niri mode="default":
+myniri mode="default":
   #!/usr/bin/env nu
   use {{utils_nu}} *;
-  nixos-switch "ai-niri" {{mode}}
-  # nixos-switch $"(hostname)-niri" {{mode}}
+  nixos-switch "ai-myniri" {{mode}}
+  # nixos-switch $"(hostname)-myniri" {{mode}}
 
 [linux]
 gnome-wayland mode="default":

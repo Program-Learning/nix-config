@@ -7,7 +7,7 @@
 let
   cfgWayland = config.modules.desktop.wayland;
   cfgHyprland = config.modules.desktop.hyprland;
-  cfgNiri = config.modules.desktop.niri;
+  cfgNiri = config.modules.desktop.myniri;
   cfgGnomeWayland = config.modules.desktop.gnome-wayland;
 in
 {
