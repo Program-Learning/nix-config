@@ -3,6 +3,7 @@
   config,
   lib,
   niri,
+  nur-DataEraserC,
   ...
 }@args:
 let
@@ -40,6 +41,7 @@ in
         home.packages = with pkgs; [
           # Niri v25.08 will create X11 sockets on disk, export $DISPLAY, and spawn `xwayland-satellite` on-demand when an X11 client connects
           xwayland-satellite
+          nur-DataEraserC.packages.${pkgs.system}.ndrop # a tool to switch windows status (foreground/background)
         ];
 
         programs.niri.config = cfg.settings;

@@ -13,16 +13,16 @@ niri: {
       # Note that running niri as a session supports xdg-desktop-autostart,
       # which may be more convenient to use.
       # --------------- Terminal ---------------
-      (leaf "spawn-at-startup" [ "foot" ])
-      (leaf "spawn-at-startup" [ "alacritty" ])
-      (leaf "spawn-at-startup" [ "ghostty" ])
+      # (leaf "spawn-at-startup" [ "foot" ])
+      # (leaf "spawn-at-startup" [ "alacritty" ])
+      # (leaf "spawn-at-startup" [ "ghostty" ])
       # --------------- Networking ---------------
       (leaf "spawn-at-startup" [ "clash-verge" ])
       # --------------- Browser ---------------
-      (leaf "spawn-at-startup" [ "firefox" ])
-      (leaf "spawn-at-startup" [ "google-chrome-stable" ])
-      (leaf "spawn-at-startup" [ "chromium-browser" ])
+      # (leaf "spawn-at-startup" [ "firefox" ])
+      # (leaf "spawn-at-startup" [ "google-chrome-stable" ])
+      # (leaf "spawn-at-startup" [ "chromium-browser" ])
       # --------------- Chatting ---------------
-      (leaf "spawn-at-startup" [ "Telegram" ])
+      # (leaf "spawn-at-startup" [ "Telegram" ])
     ];
 }

@@ -135,26 +135,26 @@ niri: {
         #
         # For example, with 2 workspaces + 1 empty, indices 3, 4, 5 and so on
         # will all refer to the 3rd workspace.
-        (plain "Mod+1" [ (leaf "focus-workspace" "1terminal") ])
-        (plain "Mod+2" [ (leaf "focus-workspace" "2browser") ])
-        (plain "Mod+3" [ (leaf "focus-workspace" "3chat") ])
-        (plain "Mod+4" [ (leaf "focus-workspace" "4music") ])
-        (plain "Mod+5" [ (leaf "focus-workspace" "5mail") ])
-        (plain "Mod+6" [ (leaf "focus-workspace" "6file") ])
+        (plain "Mod+1" [ (leaf "focus-workspace" 1) ])
+        (plain "Mod+2" [ (leaf "focus-workspace" 2) ])
+        (plain "Mod+3" [ (leaf "focus-workspace" 3) ])
+        (plain "Mod+4" [ (leaf "focus-workspace" 4) ])
+        (plain "Mod+5" [ (leaf "focus-workspace" 5) ])
+        (plain "Mod+6" [ (leaf "focus-workspace" 6) ])
         (plain "Mod+7" [ (leaf "focus-workspace" 7) ])
         (plain "Mod+8" [ (leaf "focus-workspace" 8) ])
         (plain "Mod+9" [ (leaf "focus-workspace" 9) ])
-        (plain "Mod+0" [ (leaf "focus-workspace" "0other") ])
-        (plain "Mod+Ctrl+1" [ (leaf "move-column-to-workspace" "1terminal") ])
-        (plain "Mod+Ctrl+2" [ (leaf "move-column-to-workspace" "2browser") ])
-        (plain "Mod+Ctrl+3" [ (leaf "move-column-to-workspace" "3chat") ])
-        (plain "Mod+Ctrl+4" [ (leaf "move-column-to-workspace" "4music") ])
-        (plain "Mod+Ctrl+5" [ (leaf "move-column-to-workspace" "5mail") ])
-        (plain "Mod+Ctrl+6" [ (leaf "move-column-to-workspace" "6file") ])
+        (plain "Mod+0" [ (leaf "focus-workspace" 0) ])
+        (plain "Mod+Ctrl+1" [ (leaf "move-column-to-workspace" 1) ])
+        (plain "Mod+Ctrl+2" [ (leaf "move-column-to-workspace" 2) ])
+        (plain "Mod+Ctrl+3" [ (leaf "move-column-to-workspace" 3) ])
+        (plain "Mod+Ctrl+4" [ (leaf "move-column-to-workspace" 4) ])
+        (plain "Mod+Ctrl+5" [ (leaf "move-column-to-workspace" 5) ])
+        (plain "Mod+Ctrl+6" [ (leaf "move-column-to-workspace" 6) ])
         (plain "Mod+Ctrl+7" [ (leaf "move-column-to-workspace" 7) ])
         (plain "Mod+Ctrl+8" [ (leaf "move-column-to-workspace" 8) ])
         (plain "Mod+Ctrl+9" [ (leaf "move-column-to-workspace" 9) ])
-        (plain "Mod+Ctrl+0" [ (leaf "move-column-to-workspace" "0other") ])
+        (plain "Mod+Ctrl+0" [ (leaf "move-column-to-workspace" 0) ])
 
         # Alternatively, there are commands to move just a single window:
         # (plain "Mod+Ctrl+1" [(leaf "move-window-to-workspace" 1)])
@@ -167,9 +167,14 @@ niri: {
         # (plain "Mod+BracketRight" [(flag "consume-or-expel-window-right")])
 
         (plain "Mod+R" [ (flag "switch-preset-column-width") ])
-        (plain "Mod+F" [ (flag "maximize-column") ])
-        (plain "Mod+Shift+F" [ (flag "fullscreen-window") ])
+        (plain "Mod+Shift+F" [ (flag "maximize-column") ])
+        (plain "Mod+F" [ (flag "fullscreen-window") ])
         (plain "Mod+C" [ (flag "center-column") ])
+        (plain "Mod+space" [ (flag "toggle-window-floating") ])
+        (plain "Mod+F12" [ (leaf "spawn" [ "~/.config/scripts/dropdown_terminal" ]) ])
+        (plain "Mod+E" [ (leaf "spawn" [ "nautilus" ]) ])
+        (plain "Ctrl+Shift+Escape" [ (leaf "spawn" [ "missioncenter" ]) ])
+        (plain "Mod+P" [ (leaf "spawn" [ "~/.config/scripts/colorpicker" ]) ])
 
         # Finer width adjustments.
         # This command can also:
