@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+if [ "$1" == "status" ];
+then
+    if [[ $(pidof warp-svc) ]];
+  then
+    echo "{\"text\":\"🌏\", \"tooltip\":\"cloudflare_warp/warp-svc is Started\"}"
+  else
+    echo "{\"text\":\"🔓\", \"tooltip\":\"cloudflare_warp/warp-svc is Stopped\"}"
+  fi
+elif [ "$1" == "toggle" ];
+then
+  if [[ $(pidof warp-svc) ]];
+  then
+    pkill warp-svc &
+  else
+    warp-svc &
+  fi
+else
+  echo "usage:
+  - cloudflare_warp status
+  - cloudflare_warp toggle"
+fi

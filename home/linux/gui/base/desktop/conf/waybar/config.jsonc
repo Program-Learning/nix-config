@@ -9,6 +9,7 @@
     // "temperature",
     "backlight",
     "hyprland/workspaces",
+    "workspaces",
   ],
   "modules-center": ["custom/playerctl"],
   "modules-right": [
@@ -25,11 +26,24 @@
     "tray",
   ],
   "hyprland/workspaces": {
-    "disable-scroll": false,
+"disable-scroll": false,
     "format": "{icon}",
-    "on-click": "activate",
+"on-click": "activate",
     "format-icons": {
       "focused": "",
+          },
+  },
+  "workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      // Named workspaces
+      // (you need to configure them in niri)
+      // "browser": "",
+      // "discord": "",
+      // "chat": "<b></b>",
+      // Icons by state
+      "active": "",
+      "default": "",
     },
   },
   "clock": {
@@ -57,32 +71,32 @@
   },
   "custom/launcher": {
     "format": "\uf313 ",
-    "on-click": "anyrun",
+    "on-click": "$HOME/.config/scripts/menu",
     "on-click-middle": "exec default_wall",
     "on-click-right": "exec wallpaper_random",
     "tooltip": false,
   },
   "custom/recording": {
-    "exec": "$HOME/.config/hypr/scripts/recording status",
+    "exec": "$HOME/.config/scripts/recording status",
     "format": "{}",
-    "on-click": "$HOME/.config/hypr/scripts/recording toggle fullscreen",
-    "on-click-right": "$HOME/.config/hypr/scripts/recording toggle region",
+    "on-click": "$HOME/.config/scripts/recording toggle fullscreen",
+    "on-click-right": "$HOME/.config/scripts/recording toggle region",
     "restart-interval": 1,
     "return-type": "json",
     "tooltip": true,
   },
   "custom/showkey": {
-    "exec": "$HOME/.config/hypr/scripts/showkey status",
+    "exec": "$HOME/.config/scripts/showkey status",
     "format": "{}",
-    "on-click": "$HOME/.config/hypr/scripts/showkey toggle",
+    "on-click": "$HOME/.config/scripts/showkey toggle",
     "restart-interval": 1,
     "return-type": "json",
     "tooltip": true,
   },
   "custom/cloudflare_warp": {
-    "exec": "$HOME/.config/hypr/scripts/cloudflare_warp status",
+    "exec": "$HOME/.config/scripts/cloudflare_warp status",
     "format": "{}",
-    "on-click": "$HOME/.config/hypr/scripts/cloudflare_warp toggle",
+    "on-click": "$HOME/.config/scripts/cloudflare_warp toggle",
     "restart-interval": 1,
     "return-type": "json",
     "tooltip": true,
@@ -122,7 +136,7 @@
   },
   "custom/powermenu": {
     "format": "\uf011",
-    "on-click": "wlogout",
+    "on-click": "$HOME/.config/scripts/wlogout",
     "tooltip": false,
   },
   "idle_inhibitor": {
@@ -180,8 +194,8 @@
   "network": {
     "interval": 5,
     "format": "{ifname}",
-    "format-wifi": "  {signalStrength}% Down: {bandwidthDownBytes} Up: {bandwidthUpBytes} {essid}",
-    "format-ethernet": "  {ifname} Down: {bandwidthDownBytes} Up: {bandwidthUpBytes}",
+    "format-wifi": "  {signalStrength}%",
+    "format-ethernet": "  {ifname}",
     "format-disconnected": "Disconnected ⚠",
     "format-disabled": "Disabled ⚠",
     "format-alt": " {bandwidthUpBytes} |  {bandwidthDownBytes}",
@@ -191,7 +205,6 @@
     "tooltip-format-linked": " {ifname} (No IP) ({ifname} via {gwaddr})",
     "tooltip-format-disconnected": "Disconnected",
     "tooltip-format-disabled": "Disabled",
-    "max-length": 100,
     "on-click-middle": "nm-connection-editor",
     "on-click-right": "foot nmtui",
   },

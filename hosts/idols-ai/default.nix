@@ -39,8 +39,8 @@ rec {
   services.sunshine.enable = true;
 
   networking = {
-    # inherit hostName;
-    hostName = "DESKTOP-GM6XG0X";
+    inherit hostName;
+    # hostName = "DESKTOP-GM6XG0X";
 
     # we use networkd instead
     # networkmanager.enable = false; # provides nmcli/nmtui for wifi adjustment

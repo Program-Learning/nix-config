@@ -6,10 +6,11 @@
 }:
 let
   inherit (myvars) username;
-  makeDirRW = dir: {
-    directory = dir;
-    configureParent = true;
-  };
+  makeDirRW = dir: dir;
+  # makeDirRW = dir: {
+  #   directory = dir;
+  #   configureParent = true;
+  # };
 in
 {
   imports = [

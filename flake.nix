@@ -107,7 +107,7 @@
 
     # anyrun - a wayland launcher
     anyrun = {
-      url = "github:/anyrun-org/anyrun/af1ffe4f17921825ff2a773995604dce2b2df3cd";
+      url = "github:/anyrun-org/anyrun/v25.9.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -175,6 +175,8 @@
       url = "github:nix-community/nixos-apple-silicon/b99bf9bf7445416fe55da09034fc4a6cd733805c";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    niri.url = "github:sodiboo/niri-flake";
 
     ########################  Some non-flake repositories  #########################################
 

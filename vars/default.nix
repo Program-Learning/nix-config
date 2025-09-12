@@ -33,5 +33,6 @@
   ];
   secondaryAuthorizedKeys = [
     # the backup ssh keys for disaster recovery
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMzYT0Fpcp681eHY5FJV2G8Mve53iX3hMOLGbVvfL+TF ryan@romantic"
   ];
 }

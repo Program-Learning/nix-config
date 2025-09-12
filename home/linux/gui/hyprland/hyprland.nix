@@ -22,38 +22,11 @@ in
 {
   xdg.configFile =
     let
-      hyprPath = "home/linux/gui/hyprland/conf";
+      confPath = "home/linux/gui/hyprland/conf";
     in
     {
-      "mako".source = mylib.mklinkRelativeToRoot config "${hyprPath}/mako";
-      "waybar".source = mylib.mklinkRelativeToRoot config "${hyprPath}/waybar";
-      "wlogout".source = mylib.mklinkRelativeToRoot config "${hyprPath}/wlogout";
-      "hypr/hypridle.conf".source = mylib.mklinkRelativeToRoot config "${hyprPath}/hypridle.conf";
-      "hypr/configs".source = mylib.mklinkRelativeToRoot config "${hyprPath}/configs";
+      "hypr/configs".source = mylib.mklinkRelativeToRoot config "${confPath}/configs";
     };
-
-  # status bar
-  programs.waybar = {
-    enable = true;
-    systemd.enable = true;
-  };
-
-  # Disable catppuccin to avoid conflict with my non-nix config.
-  catppuccin.waybar.enable = false;
-
-  # screen locker
-  programs.swaylock.enable = true;
-
-  # Logout Menu
-  programs.wlogout.enable = true;
-  catppuccin.wlogout.enable = false;
-
-  # Hyprland idle daemon
-  services.hypridle.enable = true;
-
-  # notification daemon, the same as dunst
-  services.mako.enable = true;
-  catppuccin.mako.enable = false;
 
   # NOTE:
   # We have to enable hyprland/i3's systemd user service in home-manager,
@@ -75,16 +48,6 @@ in
           "${configPath}/windowrules.conf"
         ];
       env = [
-        "NIXOS_OZONE_WL,1" # for any ozone-based browser & electron apps to run on wayland
-        "MOZ_ENABLE_WAYLAND,1" # for firefox to run on wayland
-        "MOZ_WEBRENDER,1"
-        # misc
-        "_JAVA_AWT_WM_NONREPARENTING,1"
-        "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
-        "QT_QPA_PLATFORM,wayland;xcb"
-        "SDL_VIDEODRIVER,wayland"
-        "GDK_BACKEND,wayland,x11"
-        "XDG_SESSION_TYPE,wayland"
       ];
     };
     plugins = [

@@ -8,6 +8,7 @@
   mylib,
   system,
   genSpecialArgs,
+  niri,
   ...
 }@args:
 let
@@ -15,7 +16,7 @@ let
   name = "ai";
   base-modules = {
     nixos-modules =
-      map mylib.relativeToRoot [
+      (map mylib.relativeToRoot [
         # common
         "secrets/options.nix"
         "secrets/nixos_agenix.nix"
@@ -27,6 +28,15 @@ let
         # "hardening/profiles/default.nix"
         "hardening/nixpaks"
         "hardening/bwraps"
+      ])
+      ++ [
+        inputs.niri.nixosModules.niri
+        {
+          modules.desktop.fonts.enable = true;
+          modules.desktop.wayland.enable = true;
+          modules.secrets.desktop.enable = true;
+          modules.secrets.preservation.enable = true;
+        }
       ]
       ++ [
         inputs.proxmox-nixos.nixosModules.proxmox-ve
@@ -86,6 +96,17 @@ let
     ++ base-modules.nixos-modules;
     home-modules = [
       { modules.desktop.hyprland.enable = true; }
+    ]
+    ++ base-modules.home-modules;
+  };
+  
+  modules-niri = {
+    nixos-modules = [
+      { programs.niri.enable = true; }
+    ]
+    ++ base-modules.nixos-modules;
+    home-modules = [
+      { modules.desktop.niri.enable = true; }
     ]
     ++ base-modules.home-modules;
   };
@@ -149,6 +170,7 @@ in
     "${name}-myniri" = mylib.nixosSystem (modules-myniri // args);
     # host with hyprland compositor
     "${name}-hyprland" = mylib.nixosSystem (modules-hyprland // args);
+    "${name}-niri" = mylib.nixosSystem (modules-niri // args);
   };
 
   # generate iso image for hosts with desktop environment
@@ -158,5 +180,6 @@ in
     "${name}-kde-wayland" = inputs.self.nixosConfigurations."${name}-kde-wayland".config.formats.iso;
     "${name}-hyprland" = inputs.self.nixosConfigurations."${name}-hyprland".config.formats.iso;
     "${name}-myniri" = inputs.self.nixosConfigurations."${name}-myniri".config.formats.iso;
+    "${name}-niri" = inputs.self.nixosConfigurations."${name}-niri".config.formats.iso;
   };
 }

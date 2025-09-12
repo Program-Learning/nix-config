@@ -184,6 +184,14 @@ s-hypr mode="default":
   use {{utils_nu}} *;
   nixos-switch shoukei-hyprland {{mode}}
 
+# Deploy the niri nixosConfiguration by hostname match
+[linux]
+[group('desktop')]
+niri mode="default":
+  #!/usr/bin/env nu
+  use {{utils_nu}} *;
+  nixos-switch $"(hostname)-niri" {{mode}}
+
 ############################################################################
 #
 #  Darwin related commands
