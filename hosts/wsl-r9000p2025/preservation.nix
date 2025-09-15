@@ -6,10 +6,11 @@
 }:
 let
   inherit (myvars) username;
-  makeDirRW = dir: {
-    directory = dir;
-    configureParent = true;
-  };
+  makeDirRW = dir: dir;
+  # makeDirRW = dir: {
+  #   directory = dir;
+  #   configureParent = true;
+  # };
 in
 {
   imports = [
@@ -75,6 +76,7 @@ in
       # "/var/lib/waydroid"
 
       # network
+      "/var/lib/zerotier-one"
       "/var/lib/tailscale"
       "/var/lib/bluetooth"
       "/var/lib/NetworkManager"
@@ -271,14 +273,17 @@ in
         ".config/QQ"
 
         ".local/share/TelegramDesktop"
+        ".local/share/AyuGramDesktop"
 
         # ======================================
-        # Meeting / Remote Desktop
+        # Meeting / Remote Desktop / Recording
         # ======================================
-        ".config/remmina"
-        ".config/freerdp"
         ".zoom"
+        ".config/obs-studio"
+        ".config/sunshine"
+        ".config/freerdp"
 
+        ".config/remmina"
         ".local/share/remmina"
 
         # ======================================
@@ -312,6 +317,10 @@ in
         # ======================================
         # Misc
         # ======================================
+
+        # Clash Verge Rev
+        ".local/share/io.github.clash-verge-rev.clash-verge-rev"
+        ".local/share/clash-verge"
 
         # Audio
         ".config/pulse"
