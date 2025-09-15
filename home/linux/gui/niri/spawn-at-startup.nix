@@ -17,12 +17,15 @@ niri: {
       # (leaf "spawn-at-startup" [ "alacritty" ])
       # (leaf "spawn-at-startup" [ "ghostty" ])
       # --------------- Networking ---------------
-      (leaf "spawn-at-startup" [ "clash-verge" ])
+      # (leaf "spawn-at-startup" [ "clash-verge" ])
       # --------------- Browser ---------------
       # (leaf "spawn-at-startup" [ "firefox" ])
       # (leaf "spawn-at-startup" [ "google-chrome-stable" ])
       # (leaf "spawn-at-startup" [ "chromium-browser" ])
       # --------------- Chatting ---------------
       # (leaf "spawn-at-startup" [ "Telegram" ])
+
+      # --------------- Other ---------------
+      (leaf "spawn-at-startup" [ "~/.config/scripts/startup" ])
     ];
 }

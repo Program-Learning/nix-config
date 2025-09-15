@@ -27,7 +27,7 @@ niri: {
         # Suggested binds for running programs: terminal, app launcher, screen locker.
         (plain "Mod+Return" [ (leaf "spawn" [ "foot" ]) ])
         (plain "Mod+Shift+Return" [ (leaf "spawn" [ "alacritty" ]) ])
-        (plain "Mod+D" [ (leaf "spawn" [ "anyrun" ]) ])
+        (plain "Mod+D" [ (leaf "spawn" [ "~/.config/scripts/menu" ]) ])
         (plain "CTRL+Alt+L" [ (leaf "spawn" [ "swaylock" ]) ])
 
         # You can also use a shell:
