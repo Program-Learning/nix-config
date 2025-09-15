@@ -3,7 +3,6 @@
   outputs,
 }: let
   specialExpected = {
-    "wsl-y9000k2021h" = "y9000k2021h";
     "wsl-r9000p2025" = "r9000p2025";
   };
   specialHostNames = builtins.attrNames specialExpected;
