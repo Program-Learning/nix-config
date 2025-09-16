@@ -10,6 +10,7 @@ logs/
 core*
 !core/
 !core.nix
+!coredns*
 tmp/
 secrets/
 !secrets/README.md

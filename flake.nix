@@ -130,11 +130,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-gaming = {
-      url = "github:fufexan/nix-gaming";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     disko = {
       url = "github:nix-community/disko/v1.11.0";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -177,6 +172,17 @@
     };
 
     niri.url = "github:sodiboo/niri-flake";
+
+    # -------------- Gaming ---------------------
+
+    nix-gaming = {
+      url = "github:fufexan/nix-gaming";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    aagl = {
+      url = "github:ezKEa/aagl-gtk-on-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     ########################  Some non-flake repositories  #########################################
 
@@ -501,11 +507,6 @@
       # for the "android" flake.
       #
       # inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    aagl = {
-      url = "github:ezKEa/aagl-gtk-on-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     fh.url = "https://flakehub.com/f/DeterminateSystems/fh/0.1.24";
