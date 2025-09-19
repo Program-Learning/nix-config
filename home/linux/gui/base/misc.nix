@@ -32,6 +32,7 @@
 
     # Download Manager
     motrix
+    qbittorrent-enhanced
     uget
 
     # misc
