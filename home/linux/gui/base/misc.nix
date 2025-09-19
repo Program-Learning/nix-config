@@ -26,13 +26,6 @@
     # this break building
     # cinny-desktop
 
-    # instant messaging
-    # telegram-desktop
-    ayugram-desktop
-    # discord # update too frequently, use the web version instead
-    # inter-knot
-    nur-DataEraserC.packages.${pkgs.system}.inter-knot
-
     # remote desktop(rdp connect)
     remmina
     freerdp # required by remmina
@@ -50,18 +43,36 @@
 
     # my custom hardened packages
     # pkgs.nixpaks.qq
-    # pkgs.nixpaks.qq-desktop-item
+    # pkgs.nixpaks.telegram-desktop
     # qqmusic
 
     pkgs.bwraps.wechat
-    # wechat-uos
+
+    #-- instant messaging
+
+    #-- telegram-desktop
+    ayugram-desktop
+
+    #-- discord
+    # discord # update too frequently, use the web version instead
+    # inter-knot
+    nur-DataEraserC.packages.${pkgs.system}.inter-knot
+
+    #-- wechat-uos
     # pkgs.nixpaks.wechat-uos
     # pkgs.nixpaks.wechat-uos-desktop-item
+
+    #-- qq
     # nur-linyinfeng.packages.${pkgs.system}.icalingua-plus-plus
 
+    #-- wemeet
     wemeet
 
+    #-- dingtalk
     nur-xddxdd.packages.${pkgs.system}.dingtalk
+
+    # It is broken and I do not need this now
+    # nur-DataEraserC.packages.${pkgs.system}.dingtalk
 
     # wechat-uos
     # nur-DataEraserC.packages.${pkgs.system}.wechat-uos
@@ -69,12 +80,10 @@
     # qqnt.packages.${pkgs.system}.llqqnt
     qqnt.packages.${pkgs.system}.bqqnt
 
-    # It is broken and I do not need this now
-    # nur-DataEraserC.packages.${pkgs.system}.dingtalk
-
+    #-- feishu
     feishu
 
-    # c001apk-flutter
+    #-- c001apk-flutter
     # nur-DataEraserC-not-follow.packages.${pkgs.system}.c001apk-flutter
 
     # Translate tool
@@ -83,7 +92,7 @@
     # OCR Tool
     tesseract
 
-    # piliplus
+    #-- piliplus (bilibili)
     # nur-DataEraserC.packages.${pkgs.system}.piliplus
   ];
 

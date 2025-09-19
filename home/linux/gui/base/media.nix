@@ -1,31 +1,29 @@
 {
   pkgs,
   pkgs-latest,
+  pkgs-x64,
+  pkgs-unstable,
   nur-ryan4yin,
   ...
 }:
 # media - control and enjoy audio/video
 {
-  home.packages =
-    with pkgs;
-    [
-      # audio control
-      pavucontrol
-      playerctl
-      pulsemixer
-      imv # simple image viewer
-      vlc # Cross-platform media player and streaming server
+  home.packages = with pkgs; [
+    # audio control
+    pavucontrol
+    playerctl
+    pulsemixer
+    imv # simple image viewer
+    vlc # Cross-platform media player and streaming server
 
-      # video/audio tools
-      libva-utils
-      vdpauinfo
-      vulkan-tools
-      glxinfo
-      nvitop
-    ]
-    ++ (lib.optionals pkgs.stdenv.isx86_64 [
-      (zoom-us.override { hyprlandXdgDesktopPortalSupport = true; })
-    ]);
+    # video/audio tools
+    libva-utils
+    vdpauinfo
+    vulkan-tools
+    glxinfo
+    nvitop
+    (pkgs-x64.zoom-us.override { hyprlandXdgDesktopPortalSupport = true; })
+  ];
 
   programs.mpv = {
     enable = true;
