@@ -316,7 +316,7 @@ in
         # ======================================
         ".local/share/containers"
         ".local/share/flatpak"
-        # flatpak app's data
+        # flatpak/nixpak app's data
         ".var"
 
         # ======================================

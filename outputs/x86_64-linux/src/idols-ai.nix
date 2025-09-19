@@ -36,6 +36,7 @@ let
           modules.desktop.wayland.enable = true;
           modules.secrets.desktop.enable = true;
           modules.secrets.preservation.enable = true;
+          modules.desktop.gaming.enable = true;
         }
       ]
       ++ [
@@ -68,17 +69,18 @@ let
         }
       ];
     home-modules =
-      map mylib.relativeToRoot [
+      (map mylib.relativeToRoot [
         # common
         "home/linux/gui.nix"
         # host specific
         "hosts/idols-${name}/home.nix"
-      ]
+      ])
       ++ [
         {
           modules.mkOutOfStoreSymlink.enable = true;
           modules.mkOutOfStoreSymlink.configPath = "/home/nixos/nix-config";
           modules.mkOutOfStoreSymlink.wallpaperPath = "/home/nixos/Documents/code/wallpapers";
+          modules.desktop.gaming.enable = true;
         }
       ];
   };
@@ -99,7 +101,7 @@ let
     ]
     ++ base-modules.home-modules;
   };
-  
+
   modules-niri = {
     nixos-modules = [
       { programs.niri.enable = true; }
