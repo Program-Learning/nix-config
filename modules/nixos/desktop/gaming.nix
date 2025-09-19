@@ -91,7 +91,7 @@ in
       ]
       ++
         # Mayuri Spec
-        [
+        (with pkgs; [
           nix-gaming.packages.${pkgs.system}.osu-lazer-bin
           # nix-gaming.packages.${pkgs.system}.osu-stable
           # prismlauncher # A free, open source launcher for Minecraft
@@ -101,6 +101,6 @@ in
 
           mindustry-wayland
           #mindustry-server
-        ];
+        ]);
   };
 }

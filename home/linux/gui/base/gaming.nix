@@ -45,7 +45,7 @@ in
         # Mayuri Spec
 
         # a GUI game launcher for Steam/GoG/Epic
-        lutris
+        # lutris
         bottles
 
         # Wine related
