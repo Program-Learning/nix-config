@@ -10,6 +10,9 @@ niri: {
     in
     [
       (plain "input" [
+        # (node "focus-follows-mouse" [] {
+        #   max-scroll-amount = "0%";
+        # })
         (plain "keyboard" [
           (plain "xkb" [
             # You can set rules, model, layout, variant and options.
