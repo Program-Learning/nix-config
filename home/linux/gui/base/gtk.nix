@@ -50,9 +50,9 @@ in
   gtk = {
     enable = true;
 
-    font = {
-      name = "Noto Sans";
-      package = pkgs.noto-fonts;
+    font = with pkgs; {
+      name = "Maple Mono NF CN";
+      package = maple-mono.NF-CN-unhinted;
       size = 11;
     };
 

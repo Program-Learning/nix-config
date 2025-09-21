@@ -36,6 +36,7 @@
 
     vscode = {
       enable = true;
+      userSettings = { };
       package = pkgs.overridden_vscode;
     };
   };
