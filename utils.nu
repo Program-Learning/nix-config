@@ -4,6 +4,11 @@ def repeat-str [s: string, n: int] {
 
 # ================= NixOS related =========================
 
+# Run nix command with environment variables and --impure flag
+def run-nix-impure [cmd: string] {
+  NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 ^$"($cmd) --impure"
+}
+
 export def nixos-switch [
     name: string
     mode: string
@@ -29,7 +34,7 @@ export def nixos-switch [
         mv result $new_dir_name
         let msg = "NixOS boot image built successfully. sudo password is required now"
         print $msg
-        notify-send -u critical -a NIXOS_REBUILD $msg
+        notify-send -u critical -a NIXOS_REBUILD -p 0 $msg -w
         sudo nix-env -p /nix/var/nix/profiles/system --set $"./($new_dir_name)"
         rm $new_dir_name
     } else if "switch-notify" == $mode {
@@ -39,7 +44,7 @@ export def nixos-switch [
         mv result $new_dir_name
         let msg = "NixOS system configuration built successfully. sudo password is required now"
         print $msg
-        notify-send -u critical -a NIXOS_REBUILD $msg
+        notify-send -u critical -a NIXOS_REBUILD -p 0 $msg -w
         sudo nix-env -p /nix/var/nix/profiles/system --set $"./($new_dir_name)"
         sudo systemd-run -E LOCALE_ARCHIVE -E NIXOS_INSTALL_BOOTLOADER --collect --no-ask-password --pipe --quiet --service-type=exec --unit=nixos-rebuild-switch-to-configuration $"($new_dir_name)/bin/switch-to-configuration" switch
         rm $new_dir_name
@@ -50,7 +55,7 @@ export def nixos-switch [
         mv result $new_dir_name
         let msg = "NixOS system configuration built successfully. sudo password is required now"
         print $msg
-        notify-send -u critical -a NIXOS_REBUILD $msg
+        notify-send -u critical -a NIXOS_REBUILD -p 0 $msg -w
         sudo nix-env -p /nix/var/nix/profiles/system --set $"./($new_dir_name)"
         sudo systemd-run -E LOCALE_ARCHIVE -E NIXOS_INSTALL_BOOTLOADER --collect --no-ask-password --pipe --quiet --service-type=exec --unit=nixos-rebuild-switch-to-configuration $"($new_dir_name)/bin/switch-to-configuration" switch
         rm $new_dir_name

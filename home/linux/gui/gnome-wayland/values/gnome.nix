@@ -7,6 +7,12 @@
 let
 in
 {
+  home.packages = with pkgs.gnomeExtensions; [
+    appindicator
+    blur-my-shell
+    gsconnect
+    kimpanel
+  ];
   dconf = {
     enable = true;
     settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
@@ -16,6 +22,7 @@ in
         appindicator.extensionUuid
         blur-my-shell.extensionUuid
         gsconnect.extensionUuid
+        kimpanel.extensionUuid
       ];
     };
     settings."org/gnome/mutter" = {
