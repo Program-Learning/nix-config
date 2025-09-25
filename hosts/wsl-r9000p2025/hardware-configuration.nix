@@ -41,7 +41,7 @@
     # for mount luks disk from nixos
     cryptsetup
   ];
-  programs.nix-ld.enable = true;
+  programs.nix-ld.enable = lib.mkForce true;
   # environment.variables = {
   #   NIX_LD_LIBRARY_PATH = lib.makeLibraryPath [
   #     pkgs.stdenv.cc.cc
