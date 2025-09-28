@@ -68,7 +68,8 @@
 
     # git related
     pre-commit
-    commitizen # Tool to create committing rules for projects, auto bump versions, and generate changelogs
+    # TODO: restore when fix
+    # commitizen # Tool to create committing rules for projects, auto bump versions, and generate changelogs
   ];
 
   programs = {
