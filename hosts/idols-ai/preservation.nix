@@ -73,7 +73,7 @@ in
       "/var/lib/lxc"
       "/var/lib/lxd"
       "/var/lib/qemu"
-      # "/var/lib/waydroid"
+      "/var/lib/waydroid"
 
       # network
       "/var/lib/zerotier-one"

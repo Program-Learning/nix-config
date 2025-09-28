@@ -12,6 +12,7 @@ in
     blur-my-shell
     gsconnect
     kimpanel
+    clipboard-indicator
   ];
   dconf = {
     enable = true;
@@ -23,6 +24,7 @@ in
         blur-my-shell.extensionUuid
         gsconnect.extensionUuid
         kimpanel.extensionUuid
+        clipboard-indicator.extensionUuid
       ];
     };
     settings."org/gnome/mutter" = {
