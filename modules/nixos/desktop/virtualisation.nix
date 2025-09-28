@@ -91,10 +91,10 @@
       };
     };
     spiceUSBRedirection.enable = true;
-    lxd = {
-      enable = false;
-      ui.enable = true;
-    };
+    # lxd = {
+    #   enable = false;
+    #   ui.enable = true;
+    # };
     incus = {
       enable = true;
       ui.enable = true;
