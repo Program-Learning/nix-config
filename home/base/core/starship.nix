@@ -6,20 +6,24 @@
     enableZshIntegration = true;
     enableNushellIntegration = true;
 
+    # https://starship.rs/config/
     settings = {
+      # Get editor completions based on the config schema
+      "$schema" = "https://starship.rs/config-schema.json";
       character = {
-        success_symbol = "[›](bold green)";
-        error_symbol = "[›](bold red)";
+        success_symbol = "[➜](bold green)";
+        error_symbol = "[➜](bold red)";
       };
-      aws = {
-        symbol = "🅰 ";
+      # I never rely on the defaults, so this module is useless to me—disabled.
+      # I prefer adding --project, --region to very gcloud/aws command.
+      aws.disabled = true;
+      gcloud.disabled = true;
+
+      kubernetes = {
+        symbol = "⛵";
+        disabled = false;
       };
-      gcloud = {
-        # do not show the account/project's info
-        # to avoid the leak of sensitive information when sharing the terminal
-        format = "on [$symbol$active(\($region\))]($style) ";
-        symbol = "🅶 ️";
-      };
+      os.disabled = false;
     };
   };
 }

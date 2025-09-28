@@ -1,13 +1,20 @@
 {
+  pkgs,
   config,
   myvars,
   ...
 }:
 {
+
+  imports = [
+    ./dashboards.nix
+    ./datasources.nix
+  ];
+
   services.grafana = {
     enable = true;
     dataDir = "/data/apps/grafana";
-    # DeclarativePlugins = with pkgs.grafanaPlugins; [ grafana-piechart-panel ];
+    provision.enable = true;
     settings = {
       server = {
         http_addr = "127.0.0.1";
@@ -40,13 +47,30 @@
       };
     };
 
-    # Declaratively provision Grafana's data sources, dashboards, and alerting rules.
-    # Grafana's alerting rules is not recommended to use, we use Prometheus alertmanager instead.
-    # https://grafana.com/docs/grafana/latest/administration/provisioning/#data-sources
-    provision = {
-      datasources.path = ./datasources.yml;
-      dashboards.path = ./dashboards.yml;
-    };
+    # https://github.com/NixOS/nixpkgs/tree/master/pkgs/servers/monitoring/grafana/plugins
+    declarativePlugins = with pkgs.grafanaPlugins; [
+      # https://github.com/VictoriaMetrics/victoriametrics-datasource
+      # supports victoria-metrics's MetricsQL, template, tracing, prettify, etc.
+      victoriametrics-metrics-datasource
+      # https://github.com/VictoriaMetrics/victorialogs-datasource
+      victoriametrics-logs-datasource
+
+      redis-app
+      redis-datasource
+      redis-explorer-app
+
+      grafana-googlesheets-datasource
+      grafana-github-datasource
+      grafana-clickhouse-datasource
+      grafana-mqtt-datasource
+      frser-sqlite-datasource
+
+      # https://github.com/grafana/grafana-infinity-datasource
+      # Visualize data from JSON, CSV, XML, GraphQL and HTML endpoints in Grafana
+      yesoreyeram-infinity-datasource
+
+      # plugins not included in nixpkgs: trino, grafana advisor, llm, kafka
+    ];
   };
 
   environment.etc."grafana/dashboards".source = ./dashboards;
