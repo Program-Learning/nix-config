@@ -1,6 +1,7 @@
 {
   pkgs,
   pkgs-unstable,
+  pkgs-stable,
   nur-DataEraserC,
   ...
 }:
@@ -69,7 +70,7 @@
     # git related
     pre-commit
     # TODO: restore when fix
-    # commitizen # Tool to create committing rules for projects, auto bump versions, and generate changelogs
+    pkgs-stable.commitizen # Tool to create committing rules for projects, auto bump versions, and generate changelogs
   ];
 
   programs = {
