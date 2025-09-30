@@ -69,7 +69,6 @@
 
     # git related
     pre-commit
-    # TODO: restore when fix
     pkgs-stable.commitizen # Tool to create committing rules for projects, auto bump versions, and generate changelogs
 
     mqttx
