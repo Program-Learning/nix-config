@@ -5,6 +5,7 @@
   config,
   lib,
   pkgs,
+  pkgs-latest,
   modulesPath,
   ...
 }:
@@ -42,7 +43,7 @@
   );
 
   # https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/top-level/linux-kernels.nix
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs-latest.linuxPackages_latest;
   # boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
   # boot.kernelPackages = pkgs.linuxPackages_cachyos;
   services.scx.enable = true;
@@ -313,7 +314,7 @@
   boot.kernelParams = [
     "amd_iommu=on" # or "intel_iommu=on"
     "amdgpu.dcdebugmask=0x10"
-    "amdgpu.ppfeaturemask=0xfff73fff"
+    # "amdgpu.ppfeaturemask=0xfff73fff"
     # "amdgpu.ppfeaturemask=0xffff7fff"
   ];
 }
