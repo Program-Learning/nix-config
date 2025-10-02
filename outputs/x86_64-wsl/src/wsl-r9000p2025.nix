@@ -33,6 +33,10 @@ let
       ])
       ++ [
         inputs.vscode-server.nixosModules.default
+        {
+          modules.secrets.desktop.enable = true;
+          modules.secrets.preservation.enable = true;
+        }
         (
           {
             config,
