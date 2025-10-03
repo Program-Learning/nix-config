@@ -15,7 +15,7 @@ in
 {
   options.modules.desktop = {
     gaming = {
-      enable = mkEnableOption "Install Game Suite(steam, lutris, etc)";
+      enable = mkEnableOption "Install Game Suite(steam, lutris, etc (Also some important runtimes))";
     };
   };
 

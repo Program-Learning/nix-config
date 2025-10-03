@@ -524,6 +524,8 @@
 
     fh.url = "https://flakehub.com/f/DeterminateSystems/fh/0.1.25";
 
+    linyaps-flake.url = "github:nix-community/linyaps-flake";
+
     # riscv64 SBCs
     nixos-licheepi4a.url = "github:ryan4yin/nixos-licheepi4a";
     # nixos-jh7110.url = "github:ryan4yin/nixos-jh7110";

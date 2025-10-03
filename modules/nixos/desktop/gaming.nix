@@ -7,6 +7,7 @@
   lib,
   pkgs-unstable-yuzu,
   suyu,
+  linyaps-flake,
   ...
 }:
 with lib;
@@ -20,11 +21,14 @@ in
 
     # run anime games on Linux
     aagl.nixosModules.default
+
+    # Linyaps
+    linyaps-flake.nixosModules.linyaps
   ];
 
   options.modules.desktop = {
     gaming = {
-      enable = mkEnableOption "Install Game Suite(steam, lutris, etc)";
+      enable = mkEnableOption "Install Game Suite(steam, lutris, etc (Also some important runtimes))";
     };
   };
 
@@ -102,5 +106,7 @@ in
           mindustry-wayland
           #mindustry-server
         ]);
+    # Linyaps
+    services.linyaps.enable = true;
   };
 }
