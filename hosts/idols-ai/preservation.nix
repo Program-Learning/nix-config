@@ -380,6 +380,9 @@ in
         (makeDirRW "IdeaProjects")
         (makeDirRW ".jdks")
 
+        # gnome shell extensions clipboard-indicator
+        ".cache/clipboard-indicator@tudmotu.com"
+
         # nix-index
         ".cache/nix-index"
 
