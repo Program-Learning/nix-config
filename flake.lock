@@ -307,11 +307,11 @@
         "nixpkgs-with-go_1_20": "nixpkgs-with-go_1_20_3"
       },
       "locked": {
-        "lastModified": 1758907411,
-        "narHash": "sha256-Ri7/TdlrQmFeq87wa2Mc97zvhFtjB2vSMtxIWNafOoY=",
+        "lastModified": 1759394579,
+        "narHash": "sha256-Ba2y/f5c8S8gw9UWS/WCNv506VTqHHJfFZOIEzk/HiE=",
         "owner": "FloatTech",
         "repo": "ZeroBot-Plugin",
-        "rev": "57c95178d889c0e404829f5ce0a1255965788fe7",
+        "rev": "05345e4c13fc981b0f763240560169e94f57bb45",
         "type": "github"
       },
       "original": {
@@ -2061,11 +2061,11 @@
         "nixpkgs-lib": "nixpkgs-lib_10"
       },
       "locked": {
-        "lastModified": 1756770412,
-        "narHash": "sha256-+uWLQZccFHwqpGqr2Yt5VsW/PbeJVTn9Dk6SHWhNRPw=",
+        "lastModified": 1759362264,
+        "narHash": "sha256-wfG0S7pltlYyZTM+qqlhJ7GMw2fTF4mLKCIVhLii/4M=",
         "owner": "hercules-ci",
         "repo": "flake-parts",
-        "rev": "4524271976b625a4a605beefd893f270620fd751",
+        "rev": "758cf7296bee11f1706a574c77d072b8a7baa881",
         "type": "github"
       },
       "original": {
@@ -6170,11 +6170,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1758427679,
-        "narHash": "sha256-xwjWRJTKDCjQ0iwfh7WhDhgcS0Wt3d1Yscg83mKBCn4=",
+        "lastModified": 1759032422,
+        "narHash": "sha256-WZf+FhebP2/1pK2np5xj/NuDjD6fXK2BHnq/tPUN18o=",
         "owner": "nix-community",
         "repo": "nix-index-database",
-        "rev": "fd2569ca2ef7d69f244cd9ffcb66a0540772ff85",
+        "rev": "ec7a78cb0e098832d8acac091a4df393259c4839",
         "type": "github"
       },
       "original": {
@@ -7855,16 +7855,16 @@
     },
     "nixpkgs_32": {
       "locked": {
-        "lastModified": 1758791193,
-        "narHash": "sha256-F8WmEwFoHsnix7rt290R0rFXNJiMbClMZyIC/e+HYf0=",
+        "lastModified": 1759422813,
+        "narHash": "sha256-WNkZqscW/dPLK5NMKH/jCkYMaVm/3KWgPmKMq65IXxk=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "25e53aa156d47bad5082ff7618f5feb1f5e02d01",
+        "rev": "2a7c84e1e740f004e0fe5c2577a63d1e659a496c",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
-        "ref": "nixos-25.05",
+        "ref": "nixos-unstable-small",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -8264,11 +8264,11 @@
         "treefmt-nix": "treefmt-nix_16"
       },
       "locked": {
-        "lastModified": 1758970248,
-        "narHash": "sha256-rM5c9oqxhY/7DpfU5ttkLU50D3sBM2B7KPDXo40zjsg=",
+        "lastModified": 1759500686,
+        "narHash": "sha256-7Dlg95Repozj/R6t/SDM2EDSjLWNSntkUa9LzUlk958=",
         "owner": "DataEraserC",
         "repo": "nur-packages",
-        "rev": "5ac3fee77d4bb624a776b31a53b3544df992701e",
+        "rev": "e78cde3eba421d44deb6c9b8c2a43e416858bf1d",
         "type": "github"
       },
       "original": {
