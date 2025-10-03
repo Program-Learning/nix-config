@@ -94,6 +94,7 @@
     tesseract
 
     #-- piliplus (bilibili)
+    piliplus
     # nur-DataEraserC.packages.${pkgs.system}.piliplus
   ];
 
