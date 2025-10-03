@@ -383,7 +383,16 @@
     };
 
     nixified-ai = {
-      url = "github:Program-Learning/nixified-ai-flake";
+      url = "github:nixified-ai/flake";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
+
+    nixified-ai-old = {
+      url = "github:nixified-ai/flake/2aeb76f52f72c7a242f20e9bc47cfaa2ed65915d";
+    };
+
+    nixified-ai-old-lock = {
+      url = "github:Program-Learning/nixified-ai-flake/63339e4c8727578a0fe0f2c63865f60b6e800079";
       inputs.nixpkgs.follows = "nixified-ai-nixpkgs";
     };
 
