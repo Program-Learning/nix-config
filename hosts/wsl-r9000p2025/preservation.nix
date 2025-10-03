@@ -1,5 +1,6 @@
 {
   preservation,
+  lib,
   pkgs,
   myvars,
   ...
@@ -95,6 +96,19 @@ in
 
       # for pve-nixos
       "/var/lib/pve-cluster"
+
+      {
+        directory = "/var/lib/gnome-remote-desktop";
+        user = "gnome-remote-desktop";
+        group = "gnome-remote-desktop";
+        mode = "0755";
+      }
+      {
+        directory = "/etc/gnome-remote-desktop";
+        user = "gnome-remote-desktop";
+        group = "gnome-remote-desktop";
+        mode = "0755";
+      }
     ];
     files = [
       # auto-generated machine ID
@@ -255,13 +269,18 @@ in
         # Games / Media
         # ======================================
 
+        "Games"
         ".steam"
         ".config/blender"
         ".config/LDtk"
+        ".config/heroic"
+        ".config/lutris"
+        ".local/share/umu"
 
         ".local/share/Steam"
-        ".local/share/PrismLauncher"
+        ".local/state/Heroic"
 
+        ".local/share/lutris"
         ".local/share/tiled"
         ".local/share/GOG.com"
         ".local/share/StardewValley"
@@ -311,7 +330,7 @@ in
         # ======================================
         ".local/share/containers"
         ".local/share/flatpak"
-        # flatpak app's data
+        # flatpak/nixpak app's data
         ".var"
 
         # ======================================
@@ -502,6 +521,11 @@ in
         group = "users";
         mode = "0755";
       };
+      gnome-remote-desktop-permission = {
+        user = "gnome-remote-desktop";
+        group = "gnome-remote-desktop";
+        mode = "0755";
+      };
     in
     {
       "/home/${username}/.config".d = permission;
@@ -511,6 +535,9 @@ in
       "/home/${username}/.local/state".d = permission;
       "/home/${username}/.local/state/nix".d = permission;
       "/home/${username}/.terraform.d".d = permission;
+      # Mayuri spec
+      # "/var/lib/gnome-remote-desktop".d = lib.mkForce gnome-remote-desktop-permission;
+      # "/etc/gnome-remote-desktop".d = lib.mkForce gnome-remote-desktop-permission;
     };
 
   # systemd-machine-id-commit.service would fail but it is not relevant
