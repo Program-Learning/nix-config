@@ -417,11 +417,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1747768616,
-        "narHash": "sha256-9t3FNBY30DC1aYCeVjvADABFhe1n8CKJbXiaRHuTcqg=",
+        "lastModified": 1759505196,
+        "narHash": "sha256-IK+7/5jmb9+XwKuoI9E9WJs+WCsD+9B2xZf8uUM8NvI=",
         "owner": "AndroidAppsUsedByMyself",
         "repo": "android-attestation-keybox-generator",
-        "rev": "56f49c0d5da9acf5a9b2bc34bbe7cf6ee888a882",
+        "rev": "62fda6ca440287a493de85032674cfc6ea4d8408",
         "type": "github"
       },
       "original": {
@@ -463,11 +463,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1747768616,
-        "narHash": "sha256-9t3FNBY30DC1aYCeVjvADABFhe1n8CKJbXiaRHuTcqg=",
+        "lastModified": 1759505196,
+        "narHash": "sha256-IK+7/5jmb9+XwKuoI9E9WJs+WCsD+9B2xZf8uUM8NvI=",
         "owner": "AndroidAppsUsedByMyself",
         "repo": "android-attestation-keybox-generator",
-        "rev": "56f49c0d5da9acf5a9b2bc34bbe7cf6ee888a882",
+        "rev": "62fda6ca440287a493de85032674cfc6ea4d8408",
         "type": "github"
       },
       "original": {
@@ -3818,11 +3818,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1742209644,
-        "narHash": "sha256-jMy1XqXqD0/tJprEbUmKilTkvbDY/C0ZGSsJJH4TNCE=",
+        "lastModified": 1756047880,
+        "narHash": "sha256-JeuGh9kA1SPL70fnvpLxkIkCWpTjtoPaus3jzvdna0k=",
         "owner": "nix-community",
         "repo": "gomod2nix",
-        "rev": "8f3534eb8f6c5c3fce799376dc3b91bae6b11884",
+        "rev": "47d628dc3b506bd28632e47280c6b89d3496909d",
         "type": "github"
       },
       "original": {
@@ -3926,11 +3926,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1742209644,
-        "narHash": "sha256-jMy1XqXqD0/tJprEbUmKilTkvbDY/C0ZGSsJJH4TNCE=",
+        "lastModified": 1756047880,
+        "narHash": "sha256-JeuGh9kA1SPL70fnvpLxkIkCWpTjtoPaus3jzvdna0k=",
         "owner": "nix-community",
         "repo": "gomod2nix",
-        "rev": "8f3534eb8f6c5c3fce799376dc3b91bae6b11884",
+        "rev": "47d628dc3b506bd28632e47280c6b89d3496909d",
         "type": "github"
       },
       "original": {
@@ -8198,11 +8198,11 @@
         "treefmt-nix": "treefmt-nix_8"
       },
       "locked": {
-        "lastModified": 1759500686,
-        "narHash": "sha256-7Dlg95Repozj/R6t/SDM2EDSjLWNSntkUa9LzUlk958=",
+        "lastModified": 1759509088,
+        "narHash": "sha256-S21PFznz/UBIexDejjdL6MysWmb2xw33HBjC4od5e6k=",
         "owner": "DataEraserC",
         "repo": "nur-packages",
-        "rev": "e78cde3eba421d44deb6c9b8c2a43e416858bf1d",
+        "rev": "fc41591f70c2340fc95313b76610ec9c506388e3",
         "type": "github"
       },
       "original": {
@@ -8264,11 +8264,11 @@
         "treefmt-nix": "treefmt-nix_16"
       },
       "locked": {
-        "lastModified": 1759500686,
-        "narHash": "sha256-7Dlg95Repozj/R6t/SDM2EDSjLWNSntkUa9LzUlk958=",
+        "lastModified": 1759509088,
+        "narHash": "sha256-S21PFznz/UBIexDejjdL6MysWmb2xw33HBjC4od5e6k=",
         "owner": "DataEraserC",
         "repo": "nur-packages",
-        "rev": "e78cde3eba421d44deb6c9b8c2a43e416858bf1d",
+        "rev": "fc41591f70c2340fc95313b76610ec9c506388e3",
         "type": "github"
       },
       "original": {
