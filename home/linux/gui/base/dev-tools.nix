@@ -34,6 +34,8 @@
     # fakedroid.packages.${pkgs.system}.fakedroid
 
     win2xcur
+    # flutter server box
+    server-box
     # nur-DataEraserC.packages.${pkgs.system}.flutter_server_box
   ];
 }
