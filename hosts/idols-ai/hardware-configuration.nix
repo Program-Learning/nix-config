@@ -61,6 +61,9 @@
     "usbhid"
     "usb_storage"
     "sd_mod"
+    "virtio_pci"
+    "virtio_blk"
+    "virtio_scsi"
   ];
   boot.initrd.kernelModules = [
     "uas"
@@ -69,6 +72,8 @@
     "vfat"
     "nls_cp437"
     "nls_iso8859_1"
+    "dm_crypt"
+    "btrfs"
   ];
   boot.kernelModules = [
     # kvm
