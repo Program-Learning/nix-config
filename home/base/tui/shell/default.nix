@@ -1,11 +1,7 @@
 {
-  config,
-  pkgs-unstable,
+  nu_scripts,
   ...
 }:
-let
-  inherit (pkgs-unstable) nu_scripts;
-in
 {
   programs.nushell = {
     # load the alias file for work
@@ -22,7 +18,7 @@ in
 
       # Directories in this constant are searched by the
       # `use` and `source` commands.
-      const NU_LIB_DIRS = $NU_LIB_DIRS ++ ['${nu_scripts}/share/nu_scripts']
+      const NU_LIB_DIRS = $NU_LIB_DIRS ++ ['${nu_scripts}']
 
       # completion
       use custom-completions/cargo/cargo-completions.nu *
@@ -37,12 +33,13 @@ in
       use custom-completions/tar/tar-completions.nu *
       use custom-completions/tcpdump/tcpdump-completions.nu *
       use custom-completions/zellij/zellij-completions.nu *
-      # use custom-completions/zoxide/zoxide-completions.nu *
+      use custom-completions/zoxide/zoxide-completions.nu *
 
       # alias
-      # use aliases/git/git-aliases.nu *
+      use aliases/git/git-aliases.nu *
       use aliases/eza/eza-aliases.nu *
       use aliases/bat/bat-aliases.nu *
+      use ${./aliases/gcloud.nu} *
 
       # modules
       use modules/argx *

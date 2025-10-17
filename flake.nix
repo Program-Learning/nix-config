@@ -89,8 +89,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
-
     # https://github.com/catppuccin/nix
     catppuccin = {
       url = "github:catppuccin/nix";
@@ -170,8 +168,8 @@
     };
 
     nixos-apple-silicon = {
-      # 2025-08-25 asahi-6.15.10-3
-      url = "github:nix-community/nixos-apple-silicon/b99bf9bf7445416fe55da09034fc4a6cd733805c";
+      # 2025-10-07 asahi-6.16.8-1
+      url = "github:nix-community/nixos-apple-silicon/24ab28e47b586f741910b3a2f0428f3523a0fff3";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -190,8 +188,8 @@
 
     ########################  Some non-flake repositories  #########################################
 
-    polybar-themes = {
-      url = "github:adi1090x/polybar-themes";
+    nu_scripts = {
+      url = "github:nushell/nu_scripts";
       flake = false;
     };
 
