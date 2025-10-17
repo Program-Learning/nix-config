@@ -10,6 +10,5 @@
   systemd.services.gnome-remote-desktop = {
     wantedBy = [ "graphical.target" ]; # for starting the unit automatically at boot
   };
-  networking.firewall.allowedTCPPorts = [ 3389 ];
-
+  networking.firewall.allowedTCPPorts = (lib.range 3389 3398) ++ (lib.range 23389 23398);
 }

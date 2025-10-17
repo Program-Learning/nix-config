@@ -34,5 +34,18 @@ in
         "xwayland-native-scaling" # Scales Xwayland applications to look crisp on HiDPI screens
       ];
     };
+
+    # 设置 GNOME Remote Desktop RDP 端口为 23389，并允许在占用时向后搜索 10 个端口
+    settings."org/gnome/desktop/remote-desktop/rdp" = {
+      # port = 23389; # 目前不知道为什么不起效
+      # "negotiate-port" = true; # 目前不知道为什么不起效
+      enable = true;
+    };
+
+    # settings."org/gnome/desktop/remote-desktop/rdp/headless" = {
+    #  port = 23390; # 目前不知道为什么不起效
+    #  "negotiate-port" = true; # 目前不知道为什么不起效
+    #  enable = false;
+    # };
   };
 }
