@@ -2,6 +2,7 @@
   pkgs,
   pkgs-unstable,
   nur-ataraxiasjel,
+  winboat,
   # nur-ataraxiasjel,
   ...
 }:
@@ -171,5 +172,7 @@
     virtiofsd
 
     dmg2img
+
+    winboat.winboat
   ];
 }

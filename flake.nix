@@ -491,6 +491,10 @@
       url = "github:DataEraserC/nur-packages";
     };
 
+    winboat = {
+      url = "github:TibixDev/winboat";
+    };
+
     # pve-nixos
     proxmox-nixos = {
       url = "github:SaumonNet/proxmox-nixos";
