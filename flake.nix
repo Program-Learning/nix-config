@@ -490,7 +490,7 @@
     };
 
     winboat = {
-      url = "github:TibixDev/winboat";
+      url = "github:Apps-Used-By-Myself/winboat";
     };
 
     # pve-nixos

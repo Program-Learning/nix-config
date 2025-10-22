@@ -360,6 +360,7 @@ in
         ".local/share/DBeaverData/"
 
         (makeDirRW ".wine")
+        (makeDirRW ".winboat")
         (makeDirRW ".minecraft")
         (makeDirRW "GOG Games")
 

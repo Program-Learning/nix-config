@@ -5390,10 +5390,10 @@
     "mysecrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1757095831,
-        "narHash": "sha256-c4SlvHYXtFPa39dMZALD8m6F9MJJ0nyfRDICkgfuZKM=",
+        "lastModified": 1760843427,
+        "narHash": "sha256-CHUkqdWVM2VZmf0liljX5ASSPIuAQDPDxg+LnaTLz1E=",
         "ref": "refs/heads/master",
-        "rev": "a284e882345938518fc1e9d891527fe70a75d98f",
+        "rev": "870b4a86213884786b9a73cfbba36fe25eb7960a",
         "shallow": true,
         "type": "git",
         "url": "ssh://git@github.com/DataEraserC/nix-secrets.git"
@@ -11448,15 +11448,15 @@
         "nixpkgs": "nixpkgs_36"
       },
       "locked": {
-        "lastModified": 1760625716,
-        "narHash": "sha256-Lf8kR10j/VDlNBfLJENA7jDUPOYfAd0ZUqPwyMncO2M=",
-        "owner": "TibixDev",
+        "lastModified": 1760852542,
+        "narHash": "sha256-9zPjucIF5e7G0tHQhLV3CXzayz7uaa+PTFOg1JVj1P8=",
+        "owner": "Apps-Used-By-Myself",
         "repo": "winboat",
-        "rev": "dab50fb60487f7d47d82c6857c7be9582314c481",
+        "rev": "a57c59e0601f4a1789febe9e583c0e0451932436",
         "type": "github"
       },
       "original": {
-        "owner": "TibixDev",
+        "owner": "Apps-Used-By-Myself",
         "repo": "winboat",
         "type": "github"
       }
