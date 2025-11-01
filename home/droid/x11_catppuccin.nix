@@ -1,7 +1,6 @@
 {
   catppuccin-urxvt,
   pkgs,
-  pkgs-unstable,
   ...
 }:
 with pkgs;

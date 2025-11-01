@@ -35,10 +35,7 @@
         # Use xdg-desktop-portal-gtk for every portal interface...
         default = [
           "gtk"
-        ];
-        # except for the secret portal, which is handled by gnome-keyring
-        "org.freedesktop.impl.portal.Secret" = [
-          "gnome-keyring"
+          "gnome"
         ];
       };
     };
@@ -54,6 +51,7 @@
     # ls /run/current-system/sw/share/xdg-desktop-portal/portals/
     extraPortals = with pkgs; [
       xdg-desktop-portal-gtk # for provides file picker / OpenURI
+      xdg-desktop-portal-gnome # for screensharing
     ];
   };
 }

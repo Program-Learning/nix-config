@@ -5,7 +5,6 @@
   nur-DataEraserC-not-follow,
   pkgs-latest,
   fakedroid,
-  pkgs-unstable,
   Snowpkgs,
   atl-nix,
   ...

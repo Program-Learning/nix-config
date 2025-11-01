@@ -1,6 +1,6 @@
 {
   pkgs,
-  pkgs-unstable,
+  pkgs-latest,
   nur-ataraxiasjel,
   winboat,
   # nur-ataraxiasjel,
@@ -84,7 +84,7 @@
         swtpm.enable = true;
         ovmf.enable = true;
         ovmf.packages = [
-          (pkgs-unstable.OVMFFull.override {
+          (pkgs-latest.OVMFFull.override {
             secureBoot = true;
             tpmSupport = true;
           }).fd

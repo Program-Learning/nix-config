@@ -1,7 +1,7 @@
 {
   pkgs,
   pkgs-stable,
-  pkgs-unstable,
+  pkgs-latest,
   nix-gaming,
   nur-DataEraserC,
   pkgs-unstable-yuzu,
@@ -15,7 +15,7 @@ let
   );
 in
 {
-  home.packages = with pkgs-unstable; [
+  home.packages = with pkgs-latest; [
     # Mihoyo Game Launcher
     # aagl-gtk-on-nix.anime-game-launcher
     # aagl-gtk-on-nix.anime-borb-launcher

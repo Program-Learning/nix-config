@@ -52,8 +52,6 @@
     wl-clipboard # copying and pasting
     hyprpicker # color picker
     brightnessctl
-    hyprshot # screen shot
-    wf-recorder # screen recording
     # audio
     alsa-utils # provides amixer/alsamixer/...
     kew # terminal music player
@@ -62,6 +60,10 @@
     mpc-cli # command-line mpd client
     ncmpcpp # a mpd client with a UI
     networkmanagerapplet # provide GUI app: nm-connection-editor
+    # screenshot/screencast
+    flameshot
+    hyprshot # screen shot
+    wf-recorder # screen recording
   ];
 
   xdg.configFile =

@@ -1,6 +1,5 @@
 {
   pkgs,
-  pkgs-unstable,
   pkgs-latest,
   pkgs-unstable-etcher,
   qqnt,
@@ -43,11 +42,10 @@
     wvkbd # On-screen keyboard for wlroots
 
     # my custom hardened packages
-    # pkgs.nixpaks.qq
-    # pkgs.nixpaks.telegram-desktop
+    # nixpaks.qq
+    # nixpaks.telegram-desktop
     # qqmusic
-
-    pkgs.bwraps.wechat
+    bwraps.wechat
 
     #-- instant messaging
 

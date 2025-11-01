@@ -2,7 +2,6 @@
   config,
   pkgs,
   pkgs-latest,
-  pkgs-unstable,
   pkgs-stable,
   nur-ryan4yin,
   nur-linyinfeng,
@@ -58,7 +57,7 @@
 
         # --agent
         protonvpn-cli_2
-        # pkgs-unstable.clash-nyanpasu
+        # clash-nyanpasu
         # nekoray_patched
         nekoray
         sing-box
@@ -163,9 +162,6 @@
 
         ntfy-sh
       ])
-    # nixpkgs-unstable
-    ++ (with pkgs-unstable; [
-    ])
     # nur packages here
     ++ (
       # with pkgs.nur.repos;

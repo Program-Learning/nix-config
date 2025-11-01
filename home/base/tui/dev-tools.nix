@@ -1,6 +1,5 @@
 {
   pkgs,
-  pkgs-unstable,
   pkgs-stable,
   nur-DataEraserC,
   ...

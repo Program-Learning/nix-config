@@ -492,7 +492,7 @@ in
         }
         {
           file = ".claude.json";
-          how = "symlink";
+          how = "bindmount";
         }
         {
           file = ".condarc";

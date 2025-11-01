@@ -1,6 +1,6 @@
 {
   pkgs,
-  pkgs-unstable,
+  pkgs-latest,
   nixified-ai,
   nixified-ai-old,
   ...

@@ -16,21 +16,21 @@
       # using claude-code with kimi k2
       # https://platform.moonshot.cn/docs/guide/agent-support
       # $env.ANTHROPIC_BASE_URL = "https://api.moonshot.cn/anthropic/"
-      # $env.ANTHROPIC_API_KEY = $env.MOONSHOT_API_KEY
+      # $env.ANTHROPIC_AUTH_TOKEN = $env.MOONSHOT_API_KEY
       # $env.ANTHROPIC_MODEL = "kimi-k2-0905-preview"
       # $env.ANTHROPIC_DEFAULT_HAIKU_MODEL = "kimi-k2-turbo-preview"
 
       # using claude-code with glm llm
       # https://docs.bigmodel.cn/cn/coding-plan/tool/claude
       $env.ANTHROPIC_BASE_URL = "https://open.bigmodel.cn/api/anthropic"
-      $env.ANTHROPIC_API_KEY = $env.ZAI_API_KEY
+      $env.ANTHROPIC_AUTH_TOKEN = $env.ZAI_API_KEY
       $env.ANTHROPIC_MODEL = "glm-4.6"
       $env.ANTHROPIC_DEFAULT_HAIKU_MODEL = "glm-4.5-air"
 
       # using claude-code with qwen llm
       # https://bailian.console.aliyun.com/?tab=doc#/doc/?type=model&url=2949529
       # $env.ANTHROPIC_BASE_URL = "https://dashscope.aliyuncs.com/apps/anthropic"
-      # $env.ANTHROPIC_API_KEY = $env.DASHSCOPE_API_KEY
+      # $env.ANTHROPIC_AUTH_TOKEN = $env.DASHSCOPE_API_KEY
       # $env.ANTHROPIC_MODEL = "qwen-plus" # 千万别用 qwen-max, 价格
       # $env.ANTHROPIC_DEFAULT_HAIKU_MODEL = "qwen-turbo"
 
@@ -38,7 +38,7 @@
       # `use` and `source` commands.
       const NU_LIB_DIRS = $NU_LIB_DIRS ++ ['${nu_scripts}']
 
-      # completion
+      # -*- completion -*-
       use custom-completions/cargo/cargo-completions.nu *
       use custom-completions/curl/curl-completions.nu *
       use custom-completions/git/git-completions.nu *
@@ -53,16 +53,21 @@
       use custom-completions/zellij/zellij-completions.nu *
       use custom-completions/zoxide/zoxide-completions.nu *
 
-      # alias
+      # -*- alias -*-
       use aliases/git/git-aliases.nu *
       use aliases/eza/eza-aliases.nu *
       use aliases/bat/bat-aliases.nu *
       use ${./aliases/gcloud.nu} *
 
-      # modules
+      # -*- modules -*-
+      # argx & lg is required by the kubernetes module
       use modules/argx *
       use modules/lg *
+      # k8s/helm aliases, completions, 
       use modules/kubernetes *
+      # a wrapper around the jc cli tool, convert cli outputs to nushell tables
+      # use modules/jc
+
       let REPO_URL = 'https://mirrors.tuna.tsinghua.edu.cn/git/git-repo/'
       let QT_QPA_PLATFORM = 'wayland;xcb'
       # let TLDR_AUTO_UPDATE_DISABLED = 1

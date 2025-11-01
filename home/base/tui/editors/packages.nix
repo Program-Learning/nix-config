@@ -1,6 +1,6 @@
 {
   pkgs,
-  pkgs-unstable,
+  pkgs-master,
   pkgs-stable,
   gomod2nix,
   cargo2nix,
@@ -62,7 +62,7 @@
         marksman # language server for markdown
         glow # markdown previewer
         pandoc # document converter
-        pkgs-unstable.hugo # static site generator
+        pkgs-master.hugo # static site generator
 
         #-- sql
         sqlfluff
@@ -151,11 +151,11 @@
 
           #-- rust
           # we'd better use the rust-overlays for rust development
-          pkgs-unstable.rustc
-          pkgs-unstable.rust-analyzer
-          pkgs-unstable.cargo # rust package manager
-          pkgs-unstable.rustfmt
-          pkgs-unstable.clippy # rust linter
+          pkgs-master.rustc
+          pkgs-master.rust-analyzer
+          pkgs-master.cargo # rust package manager
+          pkgs-master.rustfmt
+          pkgs-master.clippy # rust linter
           # cargo2nix.packages.${pkgs.system}.cargo2nix
 
           #-- golang
@@ -204,7 +204,7 @@
       #   fnlfmt # fennel
       #   (
       #     if pkgs.stdenv.isLinux && pkgs.stdenv.isx86
-      #     then pkgs-unstable.akkuPackages.scheme-langserver
+      #     then pkgs-master.akkuPackages.scheme-langserver
       #     else pkgs.emptyDirectory
       #   )
       # ]
