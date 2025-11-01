@@ -35,6 +35,11 @@ in
       ];
     };
 
+    # nautilus view using list-view
+    settings."org/gnome/nautilus/preferences" = {
+      default-folder-viewer = "list-view";
+    };
+
     # 设置 GNOME Remote Desktop RDP 端口为 23389，并允许在占用时向后搜索 10 个端口
     settings."org/gnome/desktop/remote-desktop/rdp" = {
       # port = 23389; # 目前不知道为什么不起效
