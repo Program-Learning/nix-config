@@ -42,6 +42,10 @@ in
         # a unified launcher for Windows games on Linux
         umu-launcher
 
+        # Sed-like editor for binary files
+        # required by some games to fix problems
+        bbe
+
         # Mayuri Spec
 
         # a GUI game launcher for Steam/GoG/Epic
@@ -79,6 +83,7 @@ in
       ]);
 
     # a GUI game launcher for Steam/GoG/Epic
+    # https://lutris.net/games?ordering=-popularity
     programs.lutris = {
       enable = true;
       defaultWinePackage = pkgs-x64.proton-ge-bin;
