@@ -98,8 +98,76 @@ rec {
             ${pkgs.ntfy-sh}/bin/ntfy publish $ntfy_topic "$MSG"
           }
 
-          anonymous(){
-            ~/.config/*/scripts/tp_link_script http://192.168.0.1 111111 "$(cat /sys/class/net/wlp0s20f3/address)" "匿名主机" 0
+          # 获取MAC地址函数
+          get_mac() {
+              local interface="wlp0s20f3"
+              local mac_file="/sys/class/net/$interface/address"
+
+              if [[ -f "$mac_file" ]]; then
+                  cat "$mac_file"
+                  return 0
+              else
+                  echo "Warning: Cannot get MAC address for network interface $interface" >&2
+                  echo "Warning: File $mac_file does not exist" >&2
+                  return 1
+              fi
+          }
+          # 查找tp_link_script函数（严格版本）
+          find_tp_link_script() {
+              local script_pattern="$HOME/.config/*/scripts/tp_link_script"
+              local script_paths=($script_pattern)
+              local script_path
+
+              if [[ ''${#script_paths[@]} -eq 0 ]]; then
+                  echo "Error: No tp_link_script found matching pattern: $script_pattern" >&2
+                  return 1
+              elif [[ ''${#script_paths[@]} -gt 1 ]]; then
+                  echo "Warning: Multiple tp_link_script files found, using the first one" >&2
+                  for path in "''${script_paths[@]}"; do
+                      echo "  Found: $path" >&2
+                  done
+              fi
+
+              script_path="''${script_paths[0]}"
+
+              if [[ ! -f "$script_path" ]]; then
+                  echo "Error: tp_link_script not found: $script_path" >&2
+                  return 1
+              fi
+
+              if [[ ! -x "$script_path" ]]; then
+                  echo "Error: tp_link_script is not executable: $script_path" >&2
+                  return 1
+              fi
+
+              echo "$script_path"
+              return 0
+          }
+
+          # 匿名函数
+          anonymous() {
+              local mac_address
+              local script_path
+
+              # 获取MAC地址
+              mac_address=$(get_mac)
+              if [[ $? -ne 0 ]] || [[ -z "$mac_address" ]]; then
+                  echo "Error: Failed to get MAC address, aborting execution" >&2
+                  return 1
+              fi
+
+              # 查找tp_link_script
+              script_path=$(find_tp_link_script)
+              if [[ $? -ne 0 ]] || [[ -z "$script_path" ]]; then
+                  echo "Error: Cannot find tp_link_script, aborting execution" >&2
+                  return 1
+              fi
+
+              echo "Info: Using script: $script_path"
+              echo "Info: MAC address: $mac_address"
+
+              # 执行命令
+              "$script_path" "http://192.168.0.1" "111111" "$mac_address" "Anonymous Host" "0"
           }
 
           case "$STATUS" in
