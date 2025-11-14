@@ -318,7 +318,6 @@
 
   boot.kernelParams = [
     "amd_iommu=on" # or "intel_iommu=on"
-    "amdgpu.dcdebugmask=0x10"
     # "amdgpu.ppfeaturemask=0xfff73fff"
     # "amdgpu.ppfeaturemask=0xffff7fff"
   ];
