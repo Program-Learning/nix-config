@@ -96,7 +96,7 @@
     };
 
     lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.4.2";
+      url = "github:nix-community/lanzaboote/v0.4.3";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -183,13 +183,13 @@
     };
     aagl = {
       url = "github:ezKEa/aagl-gtk-on-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
 
     ########################  Some non-flake repositories  #########################################
 
     nu_scripts = {
-      url = "github:nushell/nu_scripts";
+      url = "github:ryan4yin/nu_scripts";
       flake = false;
     };
 
