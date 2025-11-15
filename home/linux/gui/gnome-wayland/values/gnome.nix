@@ -34,6 +34,13 @@ in
         "xwayland-native-scaling" # Scales Xwayland applications to look crisp on HiDPI screens
       ];
     };
+    # 挂起恢复有问题
+    settings."org/gnome/settings-daemon/plugins/power" = {
+      # 禁用使用电池时的自动挂起
+      sleep-inactive-battery-type = "nothing";
+      # 禁用插入电源时的自动挂起
+      sleep-inactive-ac-type = "nothing";
+    };
 
     # nautilus view using list-view
     settings."org/gnome/nautilus/preferences" = {
