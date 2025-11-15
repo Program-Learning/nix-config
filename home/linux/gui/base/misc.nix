@@ -83,7 +83,7 @@
     feishu
 
     #-- c001apk-flutter
-    nur-DataEraserC.packages.${pkgs.system}.c001apk-flutter
+    # nur-DataEraserC.packages.${pkgs.system}.c001apk-flutter
 
     # Translate tool
     translate-shell

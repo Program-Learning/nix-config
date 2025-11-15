@@ -71,7 +71,7 @@ in
         steamcmd # steam command line
 
         # Ons related
-        onscripter-en
+        onscripter
       ])
       ++ (with pkgs-x64; [
         # a game launcher - great for epic games and gog games

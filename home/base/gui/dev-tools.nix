@@ -44,7 +44,7 @@ in
       dbeaver-bin # database manager
       # TODO: move tui network tools to a better place
       traceroute # trace route
-      gg # proxy agent in terminal
+      go-graft # proxy agent in terminal
       bettercap # mitm proxy tool
       whistle # HTTP, HTTP2, HTTPS, Websocket debugging proxy
       insomnia # REST client

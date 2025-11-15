@@ -62,7 +62,7 @@ in
 
       julia-mono
       dejavu_fonts
-      vistafonts-chs # ms yahei
+      vista-fonts-chs # ms yahei
       # Maple Mono (Ligature TTF unhinted)
       # pkgs-latest.maple-mono.truetype
       # Maple Mono NF (Ligature unhinted)

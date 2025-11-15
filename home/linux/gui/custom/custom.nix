@@ -56,7 +56,7 @@
         # vimb
 
         # --agent
-        protonvpn-cli_2
+        protonvpn-gui
         # clash-nyanpasu
         # nekoray_patched
         nekoray
@@ -65,7 +65,7 @@
         wgcf
 
         # --Office
-        onlyoffice-bin
+        onlyoffice-desktopeditors
         libreoffice
         mdp
         slides

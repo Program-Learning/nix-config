@@ -82,13 +82,6 @@
       qemu = {
         runAsRoot = true;
         swtpm.enable = true;
-        ovmf.enable = true;
-        ovmf.packages = [
-          (pkgs-latest.OVMFFull.override {
-            secureBoot = true;
-            tpmSupport = true;
-          }).fd
-        ];
       };
     };
     spiceUSBRedirection.enable = true;
@@ -162,7 +155,7 @@
     spice-protocol
     win-spice
 
-    win-virtio
+    virtio-win
 
     edk2
     edk2-uefi-shell

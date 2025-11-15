@@ -58,7 +58,7 @@
   };
   environment.systemPackages = [
     # nur-DataEraserC.packages.${pkgs.system}.cudatoolkit_dev_env_fhs
-    pkgs.vaapiVdpau
+    pkgs.libva-vdpau-driver
     # nixGL
     # nixGL.packages.${pkgs.system}.nixGL
     # nixGL.packages.${pkgs.system}.nixGLDefault

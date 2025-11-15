@@ -15,10 +15,10 @@
       # gimp      # image editing, I prefer using figma in browser instead of this one
       (gimp-with-plugins.override {
         plugins = with gimpPlugins; [
-          fourier
+          # fourier
           # resynthesizer # broken since 2023-03-20
-          gmic
-          bimp
+          # gmic
+          # bimp
         ];
       })
       # inkscape # vector graphics
@@ -31,7 +31,7 @@
       # aseprite # Animated sprite editor & pixel art tool
 
       # this app consumes a lot of storage, so do not install it currently
-      # kicad     # 3d printing, eletrical engineering
+      # kicad     # 3d printing, electrical engineering
     ]
     ++ (
       lib.optionals pkgs.stdenv.isx86_64 [
@@ -56,8 +56,8 @@
         # nur-DataEraserC.packages.${pkgs.system}.Adobe_Photoshop_CS6_appimage
         # nur-DataEraserC.packages.${pkgs.system}.Adobe_Illustrator_CS6_appimage
 
-        # kicad # 3d printing, eletrical engineering
-        # ngspice # eletrical engineering
+        # kicad # 3d printing, electrical engineering
+        # ngspice # electrical engineering
         # digital # A digital logic designer and circuit simulator.
         # logisim-evolution # Digital logic designer and simulator
       ]

@@ -23,7 +23,7 @@ in
     aagl.nixosModules.default
 
     # Linyaps
-    linyaps-flake.nixosModules.linyaps
+    # linyaps-flake.nixosModules.linyaps
   ];
 
   options.modules.desktop = {
