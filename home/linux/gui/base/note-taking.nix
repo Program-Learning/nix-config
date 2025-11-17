@@ -6,6 +6,7 @@
       # https://joplinapp.org/help/
       # joplin # joplin-cli
       # joplin-desktop
+      # anytype
       logseq
     ]);
 }

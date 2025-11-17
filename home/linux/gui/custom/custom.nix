@@ -19,7 +19,7 @@
       # nixpkgs here
       [
         # test only
-        niri
+        # niri
         mount-zip
         # AutoClick tool
         xdotool
@@ -34,7 +34,7 @@
         jansson
         nftables
         cachix
-        weston
+        # weston
         libsForQt5.qtstyleplugin-kvantum
         adwaita-icon-theme
 
@@ -72,21 +72,18 @@
         wpsoffice-cn # unfree
         stirling-pdf
 
-        # --note
-        anytype
-
         # --math software
         # geogebra6
 
         # --achieve/file managers
-        xarchiver
+        # xarchiver
         mate.engrampa
         nautilus
         nautilus-open-any-terminal
         file-roller
-        kdePackages.ark
-        kdePackages.dolphin
-        ranger
+        # kdePackages.ark
+        # kdePackages.dolphin
+        # ranger
 
         qrencode
 
@@ -110,8 +107,8 @@
         libsForQt5.qt5ct
         # kitty-themes
 
-        adwaita-qt
-        adwaita-qt6
+        # adwaita-qt
+        # adwaita-qt6
         # lxde.lxsession # lxpolkit
         polkit_gnome_exported
         swappy
@@ -123,7 +120,7 @@
         # htop
         vim # file editor
         # postman
-        artha
+        # artha
         iw
         # coreutils
         # openssl
@@ -139,7 +136,7 @@
         # vaapi
         gst_all_1.gst-vaapi
         # sshfs
-        sftpman
+        # sftpman
         # edge browser
         # microsoft-edge
         # sql
@@ -167,7 +164,7 @@
       # with pkgs.nur.repos;
       [
         # YisuiMilena.hmcl-bin
-        nur-linyinfeng.packages.${pkgs.system}.matrix-wechat
+        # nur-linyinfeng.packages.${pkgs.system}.matrix-wechat
         nur-DataEraserC.packages.${pkgs.system}.baidunetdisk
         nur-DataEraserC.packages.${pkgs.system}.baidupcs-go
         # bilibili is broken

@@ -44,13 +44,13 @@ rec {
     # };
     y9000k2021h_1_home = {
       # Laptop
-      iface = "wlp0s20f3";
+      iface = "wlp4s0";
       ipv4 = "192.168.2.150";
       ipv6 = "fe80::150"; # Link-local Address
     };
     y9000k2021h_1_school = {
       # Laptop
-      iface = "wlp0s20f3";
+      iface = "wlp4s0";
       ipv4 = "192.168.0.150";
       ipv6 = "fe80::150"; # Link-local Address
     };
