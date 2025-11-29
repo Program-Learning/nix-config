@@ -59,7 +59,9 @@
 
     # Official NixOS package source, using nixos's unstable branch by default
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
+    # revert mesa to 25.2.6
+    nixpkgs-mesa.url = "github:nixos/nixpkgs/2b1f0ea3ee3952e68b164efa0a1c5e394ef2e781";
     nixpkgs-latest.url = "github:nixos/nixpkgs?ref=master";
     nixpkgs-unstable-yuzu.url = "github:nixos/nixpkgs?rev=6a59b7def496268fc32175183e4041d92586b00b";
     nixpkgs-unstable-etcher.url = "github:nixos/nixpkgs?rev=15cf1bacec81d3905d40b8005f88bb3ad8dc5a56";
@@ -71,7 +73,7 @@
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
 
     # for macos
-    # nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-25.05-darwin";
+    # nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-25.11-darwin";
     nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nix-darwin = {
       url = "github:lnl7/nix-darwin";
@@ -81,7 +83,7 @@
     # home-manager, used for managing user configuration
     home-manager = {
       url = "github:nix-community/home-manager/master";
-      # url = "github:nix-community/home-manager/release-25.05";
+      # url = "github:nix-community/home-manager/release-25.11";
 
       # The `follows` keyword in inputs is used for inheritance.
       # Here, `inputs.nixpkgs` of home-manager is kept consistent with the `inputs.nixpkgs` of the current flake,
@@ -109,7 +111,7 @@
 
     # anyrun - a wayland launcher
     anyrun = {
-      url = "github:/anyrun-org/anyrun/v25.9.0";
+      url = "github:/anyrun-org/anyrun/v25.9.3";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -159,7 +161,7 @@
     };
 
     ghostty = {
-      url = "github:ghostty-org/ghostty";
+      url = "github:ghostty-org/ghostty/tip"; # Latest Continuous Release
     };
 
     blender-bin = {
@@ -168,12 +170,19 @@
     };
 
     nixos-apple-silicon = {
-      # 2025-10-07 asahi-6.16.8-1
-      url = "github:nix-community/nixos-apple-silicon/24ab28e47b586f741910b3a2f0428f3523a0fff3";
+      # asahi-6.17.7-2
+      url = "github:nix-community/nixos-apple-silicon/release-2025-11-18";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     niri.url = "github:sodiboo/niri-flake";
+
+    helix = {
+      # Helix with steel as plugin system
+      # https://github.com/helix-editor/helix/pull/8675
+      url = "github:mattwparas/helix/steel-event-system";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # -------------- Gaming ---------------------
 
@@ -182,7 +191,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     aagl = {
-      url = "github:ezKEa/aagl-gtk-on-nix";
+      url = "github:ezKEa/aagl-gtk-on-nix/release-25.11";
       # inputs.nixpkgs.follows = "nixpkgs";
     };
 

@@ -33,35 +33,34 @@
       # this app consumes a lot of storage, so do not install it currently
       # kicad     # 3d printing, electrical engineering
     ]
-    ++ (
-      lib.optionals pkgs.stdenv.isx86_64 [
-        # https://github.com/edolstra/nix-warez/blob/master/blender/flake.nix
-        blender-bin.packages.${pkgs.system}.blender_4_2 # 3d modeling
+    ++ (lib.optionals pkgs.stdenv.isx86_64 [
+      # https://github.com/edolstra/nix-warez/blob/master/blender/flake.nix
+      blender-bin.packages.${pkgs.stdenv.hostPlatform.system}.blender_4_2 # 3d modeling
 
-        ldtk # A modern, versatile 2D level editor
+      ldtk # A modern, versatile 2D level editor
 
-        # fpga
-        # python313Packages.apycula # gowin fpga
-        # yosys # fpga synthesis
-        # nextpnr # fpga place and route
-        # openfpgaloader # fpga programming
-        # nur-ryan4yin.packages.${pkgs.system}.gowin-eda-edu-ide # app: `gowin-env` => `gw_ide` / `gw_pack` / ...
-      ]
-      ++ [
-        # wechat dev tool
-        # nur-DataEraserC.packages.${pkgs.system}.wechat_dev_tools_appimage
-        nur-DataEraserC.packages.${pkgs.system}.wechat_dev_tools_bin
+      # fpga
+      # python313Packages.apycula # gowin fpga
+      # yosys # fpga synthesis
+      # nextpnr # fpga place and route
+      # openfpgaloader # fpga programming
+      # nur-ryan4yin.packages.${pkgs.stdenv.hostPlatform.system}.gowin-eda-edu-ide # app: `gowin-env` => `gw_ide` / `gw_pack` / ...
 
-        # Adobe software appimage
-        # nur-DataEraserC.packages.${pkgs.system}.Adobe_Photoshop_CS6_appimage
-        # nur-DataEraserC.packages.${pkgs.system}.Adobe_Illustrator_CS6_appimage
+      # Mayuri
 
-        # kicad # 3d printing, electrical engineering
-        # ngspice # electrical engineering
-        # digital # A digital logic designer and circuit simulator.
-        # logisim-evolution # Digital logic designer and simulator
-      ]
-    );
+      # wechat dev tool
+      # nur-DataEraserC.packages.${pkgs.system}.wechat_dev_tools_appimage
+      nur-DataEraserC.packages.${pkgs.system}.wechat_dev_tools_bin
+
+      # Adobe software appimage
+      # nur-DataEraserC.packages.${pkgs.system}.Adobe_Photoshop_CS6_appimage
+      # nur-DataEraserC.packages.${pkgs.system}.Adobe_Illustrator_CS6_appimage
+
+      # kicad # 3d printing, electrical engineering
+      # ngspice # electrical engineering
+      # digital # A digital logic designer and circuit simulator.
+      # logisim-evolution # Digital logic designer and simulator
+    ]);
 
   programs = {
     # live streaming

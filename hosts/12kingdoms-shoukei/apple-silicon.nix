@@ -1,13 +1,24 @@
 {
+  lib,
   pkgs,
   nixos-apple-silicon,
   my-asahi-firmware,
+  nixpkgs-mesa,
   ...
 }:
 {
   imports = [
     nixos-apple-silicon.nixosModules.default
   ];
+
+  zramSwap.memoryPercent = lib.mkForce 75;
+
+  # Workaround for Mesa 25.3.0 regression
+  # https://github.com/nix-community/nixos-apple-silicon/issues/380
+  # https://github.com/NixOS/nixpkgs/pull/461866
+  hardware.graphics.package =
+    assert pkgs.mesa.version == "25.3.0";
+    (import nixpkgs-mesa { localSystem = pkgs.stdenv.hostPlatform; }).mesa;
 
   nix.settings = {
     extra-substituters = [
