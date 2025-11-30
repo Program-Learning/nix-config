@@ -58,8 +58,7 @@
         # --agent
         protonvpn-gui
         # clash-nyanpasu
-        # nekoray_patched
-        nekoray
+        throne
         sing-box
         cloudflare-warp
         wgcf

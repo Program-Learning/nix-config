@@ -194,6 +194,7 @@ group {
     other_local_proxy {
         filter: name(clash)
         filter: name(nekoray)
+        filter: name(throne)
         policy: random
     }
     ikuuu {

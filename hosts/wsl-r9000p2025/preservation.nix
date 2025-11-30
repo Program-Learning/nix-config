@@ -196,6 +196,9 @@ in
         ".config/joplin" # tui client
         ".config/Joplin" # joplin-desktop
 
+        # Logseq
+        ".logseq"
+
         # ".local/share/jupyter"
 
         # ======================================
@@ -276,6 +279,8 @@ in
         ".config/heroic"
         ".config/lutris"
         ".local/share/umu"
+        # lutris wine game data
+        ".local/share/wine"
 
         ".local/share/Steam"
         ".local/state/Heroic"
@@ -403,6 +408,7 @@ in
         # v2ray
         ".config/qv2ray"
         ".config/nekoray"
+        ".config/throne"
         # gg
         ".config/gg"
 

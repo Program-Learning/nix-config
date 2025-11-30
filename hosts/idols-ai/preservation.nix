@@ -411,6 +411,7 @@ in
         # v2ray
         ".config/qv2ray"
         ".config/nekoray"
+        ".config/throne"
         # gg
         ".config/gg"
 

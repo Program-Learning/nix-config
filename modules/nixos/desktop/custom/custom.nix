@@ -22,7 +22,7 @@
         host = "127.0.0.1";
         port = 7890;
       };
-      localhost_nekoray_proxy = {
+      localhost_throne_proxy = {
         enable = true;
         type = "socks5";
         host = "127.0.0.1";
@@ -129,12 +129,6 @@
   # recording tool
   features.wf-recorder.enable = true;
 
-  # useless
-  features.nekoray = {
-    enable = false;
-    package = pkgs.nekoray;
-    tunMode = true;
-  };
   # firmware update tool
   services.fwupd.enable = true;
 }
