@@ -77,11 +77,15 @@
   };
 
   services.logind = {
-    killUserProcesses = true;
-    lidSwitch = "ignore";
-    lidSwitchDocked = "ignore";
-    lidSwitchExternalPower = "ignore";
-    powerKey = "ignore";
+    settings = {
+      Login = {
+        KillUserProcesses = true;
+        HandleLidSwitch = "ignore";
+        HandleLidSwitchDocked = "ignore";
+        HandleLidSwitchExternalPower = "ignore";
+        HandlePowerKey = "ignore";
+      };
+    };
     # rebootKey = "ignore";
   };
 
