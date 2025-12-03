@@ -79,6 +79,7 @@ in
       # network
       "/var/lib/zerotier-one"
       "/var/lib/tailscale"
+      "/var/lib/netbird-homelab" # netbird's homelab client
       "/var/lib/bluetooth"
       "/var/lib/NetworkManager"
       "/var/lib/iwd"
@@ -186,6 +187,9 @@ in
         ".local/share/nvim"
         ".local/state/nvim"
 
+        # helix & steel
+        ".local/share/steel"
+
         # doom-emacs
         # "org" # org files
         # ".config/emacs"
@@ -195,9 +199,6 @@ in
         # Joplin
         ".config/joplin" # tui client
         ".config/Joplin" # joplin-desktop
-
-        # Logseq
-        ".logseq"
 
         # ".local/share/jupyter"
 
@@ -279,8 +280,6 @@ in
         ".config/heroic"
         ".config/lutris"
         ".local/share/umu"
-        # lutris wine game data
-        ".local/share/wine"
 
         ".local/share/Steam"
         ".local/state/Heroic"
@@ -364,6 +363,7 @@ in
         ".local/share/DBeaverData/"
 
         (makeDirRW ".wine")
+        (makeDirRW ".winboat")
         (makeDirRW ".minecraft")
         (makeDirRW "GOG Games")
 
@@ -383,6 +383,9 @@ in
         (makeDirRW "AndroidStudioProjects")
         (makeDirRW "IdeaProjects")
         (makeDirRW ".jdks")
+
+        # gnome shell extensions clipboard-indicator
+        ".cache/clipboard-indicator@tudmotu.com"
 
         # nix-index
         ".cache/nix-index"
@@ -493,7 +496,7 @@ in
         }
         {
           file = ".claude.json";
-          how = "symlink";
+          how = "bindmount";
         }
         {
           file = ".condarc";

@@ -10,6 +10,7 @@
     libnotify
     wireguard-tools # manage wireguard vpn manually, via wg-quick
 
+    # TODO: move to other place
     ventoy # create bootable usb
     pkgs-unstable-etcher.etcher # create bootable usb
     virt-viewer # vnc connect to VM, used by kubevirt
