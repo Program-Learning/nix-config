@@ -62,6 +62,7 @@
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
     # revert mesa to 25.2.6
     nixpkgs-mesa.url = "github:nixos/nixpkgs/2b1f0ea3ee3952e68b164efa0a1c5e394ef2e781";
+    nixpkgs-2505.url = "github:nixos/nixpkgs/nixos-25.05";
     nixpkgs-latest.url = "github:nixos/nixpkgs?ref=master";
     nixpkgs-unstable-yuzu.url = "github:nixos/nixpkgs?rev=6a59b7def496268fc32175183e4041d92586b00b";
     nixpkgs-unstable-etcher.url = "github:nixos/nixpkgs?rev=15cf1bacec81d3905d40b8005f88bb3ad8dc5a56";
