@@ -43,8 +43,8 @@
   );
 
   # https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/top-level/linux-kernels.nix
-  boot.kernelPackages = pkgs-latest.linuxPackages_latest;
-  # boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
+  # boot.kernelPackages = pkgs-latest.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
   # boot.kernelPackages = pkgs.linuxPackages_cachyos;
   services.scx.enable = true;
   # boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_xanmod.override {
@@ -115,15 +115,6 @@
   ];
 
   boot.initrd = {
-    # postDeviceCommands = let
-    #   PRIMARYUSBID = "D7AB-22CE";
-    #   BACKUPUSBID = "12CE-A600";
-    # in
-    #   pkgs.lib.mkBefore ''
-    #     mkdir -m 0755 -p /key
-    #     sleep 2 # To make sure the usb key has been loaded
-    #     mount -n -t vfat -o ro `findfs UUID=${PRIMARYUSBID}` /key || mount -n -t vfat -o ro `findfs UUID=${BACKUPUSBID}` /key
-    #   '';
     # unlocked luks devices via a keyfile or prompt a passphrase.
     luks.devices."crypted-nixos" = {
       # NOTE: DO NOT use device name here(like /dev/sda, /dev/nvme0n1p2, etc), use UUID instead.
@@ -131,7 +122,7 @@
       device = "/dev/disk/by-uuid/979348b2-fcc5-4db0-85df-69819a218470";
       # the keyfile(or device partition) that should be used as the decryption key for the encrypted device.
       # if not specified, you will be prompted for a passphrase instead.
-      keyFile = "/sysroot/key/luks/root-part.key";
+      keyFile = "/key/luks/root-part.key";
       # preLVM = false; # If this is true the decryption is attempted before the postDeviceCommands can run
 
       # whether to allow TRIM requests to the underlying device.
@@ -145,6 +136,66 @@
       keyFileTimeout = 5;
       tryEmptyPassphrase = true;
     };
+
+    # Conditional mount of key device based on boot.initrd.systemd.enable
+    systemd.services.mount-key-device = lib.mkIf config.boot.initrd.systemd.enable {
+      description = "Mount USB key device for LUKS decryption";
+      wantedBy = [ "cryptsetup-pre.target" ];
+      before = [ "cryptsetup-pre.target" ];
+      unitConfig.RequiresMountsFor = [ "/boot" ];
+      serviceConfig.Type = "oneshot";
+      script = ''
+        echo "Attempting to mount key device..."
+        mkdir -p /key
+        sleep 2
+
+        # List of UUIDs for fallback USB key devices
+        key_device_uuids=(
+          "D7AB-22CE"
+          "12CE-A600"
+          # Add more UUIDs here as needed
+        )
+
+        # Try to mount each key device UUID in order
+        for uuid in "''${key_device_uuids[@]}"; do
+          if mount -n -t vfat -o ro $(findfs UUID=$uuid) /key; then
+            echo "Successfully mounted key device with UUID $uuid"
+            exit 0
+          else
+            echo "Failed to mount key device with UUID $uuid"
+          fi
+        done
+
+        echo "Failed to mount any key device"
+      '';
+    };
+
+    postDeviceCommands = lib.mkIf (!config.boot.initrd.systemd.enable) (
+      lib.mkAfter ''
+        echo "Attempting to mount key device..."
+        mkdir -p /key
+        sleep 2
+
+        # List of UUIDs for fallback USB key devices
+        key_device_uuids=(
+          "D7AB-22CE"
+          "12CE-A600"
+          # Add more UUIDs here as needed
+        )
+
+        # Try to mount each key device UUID in order
+        for uuid in "''${key_device_uuids[@]}"; do
+          if mount -n -t vfat -o ro $(findfs UUID=$uuid) /key; then
+            echo "Successfully mounted key device with UUID $uuid"
+            exit 0
+          else
+            echo "Failed to mount key device with UUID $uuid"
+          fi
+        done
+
+        echo "Failed to mount any key device"
+      ''
+    );
   };
 
   fileSystems."/btr_pool" = {
@@ -155,12 +206,12 @@
     options = [ "subvolid=5" ];
   };
 
-  modules.desktop.rootfs.fsType = "tmpfs";
-  # modules.desktop.rootfs.btrfsBlockDevice = "/dev/disk/by-uuid/17df699e-6502-4205-955f-c456eb378d48";
-  # modules.desktop.rootfs.retentionPeriod = 7;
-  # modules.desktop.rootfs.PreBackupCommand = ''
-  #   rm -rf /btrfs_tmp/root/etc/agenix
-  # '';
+  modules.desktop.rootfs.fsType = "btrfs";
+  modules.desktop.rootfs.btrfsBlockDevice = "/dev/disk/by-uuid/17df699e-6502-4205-955f-c456eb378d48";
+  modules.desktop.rootfs.retentionPeriod = 7;
+  modules.desktop.rootfs.PreBackupCommand = ''
+    [ -d /btrfs_tmp/root/etc/agenix ] && rm -rf /btrfs_tmp/root/etc/agenix || true
+  '';
 
   # disable here because it will become a cfg in my config
   # equal to `mount -t tmpfs tmpfs /`
@@ -281,11 +332,11 @@
     fsType = "vfat";
   };
 
-  fileSystems."/key" = {
-    device = "/dev/disk/by-uuid/D7AB-22CE";
-    fsType = "vfat";
-    neededForBoot = true;
-  };
+  # fileSystems."/key" = {
+  #   device = "/dev/disk/by-uuid/D7AB-22CE";
+  #   fsType = "vfat";
+  #   neededForBoot = true;
+  # };
 
   swapDevices = [
     {
