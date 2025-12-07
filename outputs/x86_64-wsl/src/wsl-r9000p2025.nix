@@ -11,8 +11,8 @@
   ...
 }@args:
 let
-  # r9000p2025
-  name = "r9000p2025";
+  # y9000p2025
+  name = "y9000p2025";
   wsl-modules = {
     nixos-modules = [ inputs.nixos-wsl.nixosModules.default ];
   };

@@ -77,17 +77,19 @@
   ];
   boot.kernelModules = [
     # kvm
-    "kvm-amd" # kvm virtualization support
-    "amdgpu"
+    "kvm-intel" # kvm virtualization support
     #"acpi_call"
     "usb_storage"
   ];
-  boot.extraModprobeConfig = ''
-    options iommu=pt
-    options kvm_amd nested=1
-    options bt_coex_active=0 swcrypto=1 11n_disable=8
-    options kvm ignore_msrs=1 report_ignored_msrs=0
-  '';
+  boot.extraModprobeConfig =
+    # for intel cpu
+    ''
+      options intel_iommu=on
+      options iommu=pt
+      options kvm_intel nested=1
+      options kvm_intel emulate_invalid_guest_state=0
+      options kvm ignore_msrs=1
+    '';
   boot.extraModulePackages = [
     # config.boot.kernelPackages.acpi_call.out
   ];
@@ -351,7 +353,7 @@
     installKernelModule = false;
   };
   features.intel-gpu-tools = {
-    enable = false;
+    enable = true;
     enhanceMode = true;
   };
 
@@ -365,11 +367,5 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
-  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-
-  boot.kernelParams = [
-    "amd_iommu=on" # or "intel_iommu=on"
-    # "amdgpu.ppfeaturemask=0xfff73fff"
-    # "amdgpu.ppfeaturemask=0xffff7fff"
-  ];
+  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

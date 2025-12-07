@@ -2,14 +2,13 @@
   myvars,
   lib,
   outputs,
-}: let
+}:
+let
   username = myvars.username;
   hosts = [
-    "wsl-r9000p2025"
+    "wsl-y9000p2025"
   ];
 in
-  lib.genAttrs
-  hosts
-  (
-    name: outputs.nixosConfigurations.${name}.config.home-manager.users.${username}.home.homeDirectory
-  )
+lib.genAttrs hosts (
+  name: outputs.nixosConfigurations.${name}.config.home-manager.users.${username}.home.homeDirectory
+)

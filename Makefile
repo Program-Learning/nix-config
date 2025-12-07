@@ -87,7 +87,7 @@ hypr:
 	NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild switch --sudo --flake .#ai-hyprland --show-trace --verbose --impure
 
 wsl:
-	NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild switch --sudo --flake .#wsl-r9000p2025 --show-trace --verbose --impure
+	NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild switch --sudo --flake .#wsl-y9000p2025 --show-trace --verbose --impure
 
 
 ############################################################################

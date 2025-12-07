@@ -13,7 +13,7 @@
 #
 #############################################################
 let
-  hostName = "r9000p2025"; # Define your hostname.
+  hostName = "y9000p2025"; # Define your hostname.
   macAddress = "random";
   inherit (myvars.networking) defaultGateway defaultGateway6 nameservers;
   inherit (myvars.networking.hostsAddr.${hostName}) iface ipv4 ipv6;
@@ -93,7 +93,7 @@ rec {
             # 获取IP信息
             IP_INFO=$(get_ip_info)
 
-            MSG="PC[r9000p2025][nixos-wsl] online(Device Interface: $DEVICE_IFACE, Connection: $CONNECTION_ID($CONNECTION_UUID), Status: $STATUS, IP: $IP_INFO, Time: $(date +%Y-%m-%dT%H:%M:%S%Z))"
+            MSG="PC[y9000p2025][nixos-wsl] online(Device Interface: $DEVICE_IFACE, Connection: $CONNECTION_ID($CONNECTION_UUID), Status: $STATUS, IP: $IP_INFO, Time: $(date +%Y-%m-%dT%H:%M:%S%Z))"
             notify-send "Network Status" "$MSG"
             ${pkgs.ntfy-sh}/bin/ntfy publish $ntfy_topic "$MSG"
           }

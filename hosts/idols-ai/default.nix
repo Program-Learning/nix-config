@@ -95,7 +95,7 @@ rec {
             # 获取IP信息
             IP_INFO=$(get_ip_info)
 
-            MSG="PC[r9000p2025][nixos] online(Device Interface: $DEVICE_IFACE, Connection: $CONNECTION_ID($CONNECTION_UUID), Status: $STATUS, IP: $IP_INFO, Time: $(date +%Y-%m-%dT%H:%M:%S%Z))"
+            MSG="PC[y9000p2025][nixos] online(Device Interface: $DEVICE_IFACE, Connection: $CONNECTION_ID($CONNECTION_UUID), Status: $STATUS, IP: $IP_INFO, Time: $(date +%Y-%m-%dT%H:%M:%S%Z))"
             notify-send "Network Status" "$MSG"
             ${pkgs.ntfy-sh}/bin/ntfy publish $ntfy_topic "$MSG"
           }

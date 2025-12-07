@@ -114,13 +114,13 @@ up-nix:
 wsl-hypr mode="default":
   #!/usr/bin/env nu
   use {{utils_nu}} *;
-  nixos-switch wsl-r9000p2025-hyprland {{mode}}
+  nixos-switch wsl-y9000p2025-hyprland {{mode}}
 
 [linux]
 wsl mode="default":
   #!/usr/bin/env nu
   use {{utils_nu}} *;
-  nixos-switch wsl-r9000p2025-hyprland {{mode}}
+  nixos-switch wsl-y9000p2025-hyprland {{mode}}
 
 ############################################################################
 #
