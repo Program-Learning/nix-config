@@ -9,6 +9,63 @@
   modulesPath,
   ...
 }:
+let
+
+  # Shared function for mounting key devices
+  mountKeyDeviceFunction = ''
+    mount_key_device() {
+      echo "Attempting to mount key device..."
+      mkdir -p /key
+
+      # List of UUIDs for fallback USB key devices
+      key_device_uuids=(
+        "D7AB-22CE"
+        "12CE-A600"
+        # Add more UUIDs here as needed
+      )
+
+      # Try to mount each key device UUID in order
+      for uuid in "''${key_device_uuids[@]}"; do
+        # Use findfs if available, otherwise fall back to /dev/disk/by-uuid path
+        if command -v findfs >/dev/null 2>&1; then
+          device_path=$(findfs "UUID=$uuid" 2>/dev/null)
+          if [ $? -ne 0 ] || [ -z "$device_path" ]; then
+            echo "Failed to find device with UUID $uuid using findfs"
+            # Try direct path as fallback
+            device_path="/dev/disk/by-uuid/$uuid"
+          fi
+        else
+          device_path="/dev/disk/by-uuid/$uuid"
+        fi
+        
+        # Check if device exists and is accessible
+        if [ -e "$device_path" ] && [ -r "$device_path" ]; then
+          echo "Found device $device_path for UUID $uuid"
+          if mount -n -t vfat -o ro "$device_path" /key; then
+            echo "Successfully mounted key device with UUID $uuid"
+            
+            # Check if the key file exists
+            if [ ! -f "/key/luks/root-part.key" ]; then
+              echo "WARNING: Key file '/key/luks/root-part.key' not found on mounted device"
+              umount /key
+              continue
+            fi
+            
+            echo "Key file found on device with UUID $uuid"
+            return 0
+          else
+            echo "Failed to mount key device with UUID $uuid at $device_path"
+          fi
+        else
+          echo "Device $device_path for UUID $uuid does not exist or is not accessible"
+        fi
+      done
+
+      echo "Failed to mount any key device with valid key file"
+      return 1
+    }
+  '';
+in
 {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
@@ -143,79 +200,26 @@
     # Conditional mount of key device based on boot.initrd.systemd.enable
     systemd.services.mount-key-device = lib.mkIf config.boot.initrd.systemd.enable {
       description = "Mount USB key device for LUKS decryption";
-      wantedBy = [ "initrd.target" ];
-      before = [ "cryptsetup-pre.target" ];
+      wantedBy = [ "cryptsetup.target" ];
+      after = [ "systemd-modules-load.service" ];
+      unitConfig.DefaultDependencies = false;
       serviceConfig.Type = "oneshot";
       script = ''
-        echo "Attempting to mount key device..."
-        mkdir -p /key
+        # Source the common mount function
+        ${mountKeyDeviceFunction}
 
-        # List of UUIDs for fallback USB key devices
-        key_device_uuids=(
-          "D7AB-22CE"
-          "12CE-A600"
-          # Add more UUIDs here as needed
-        )
-
-        # Try to mount each key device UUID in order
-        for uuid in "''${key_device_uuids[@]}"; do
-          device_path="/dev/disk/by-uuid/$uuid"
-          if [ -e "$device_path" ] && mount -n -t vfat -o ro "$device_path" /key; then
-            echo "Successfully mounted key device with UUID $uuid"
-            
-            # Check if the key file exists
-            if [ ! -f "/key/luks/root-part.key" ]; then
-              echo "WARNING: Key file '/key/luks/root-part.key' not found on mounted device"
-              umount /key
-              continue
-            fi
-            
-            echo "Key file found on device with UUID $uuid"
-            exit 0
-          else
-            echo "Failed to mount key device with UUID $uuid"
-          fi
-        done
-
-        echo "Failed to mount any key device with valid key file"
-        exit 1
+        # Call the function
+        mount_key_device
       '';
     };
 
     postDeviceCommands = lib.mkIf (!config.boot.initrd.systemd.enable) (
       lib.mkAfter ''
-        echo "Attempting to mount key device..."
-        mkdir -p /key
+        # Source the common mount function
+        ${mountKeyDeviceFunction}
 
-        # List of UUIDs for fallback USB key devices
-        key_device_uuids=(
-          "D7AB-22CE"
-          "12CE-A600"
-          # Add more UUIDs here as needed
-        )
-
-        # Try to mount each key device UUID in order
-        for uuid in "''${key_device_uuids[@]}"; do
-          device_path="/dev/disk/by-uuid/$uuid"
-          if [ -e "$device_path" ] && mount -n -t vfat -o ro "$device_path" /key; then
-            echo "Successfully mounted key device with UUID $uuid"
-            
-            # Check if the key file exists
-            if [ ! -f "/key/luks/root-part.key" ]; then
-              echo "WARNING: Key file '/key/luks/root-part.key' not found on mounted device"
-              umount /key
-              continue
-            fi
-            
-            echo "Key file found on device with UUID $uuid"
-            exit 0
-          else
-            echo "Failed to mount key device with UUID $uuid"
-          fi
-        done
-
-        echo "Failed to mount any key device with valid key file"
-        exit 1
+        # Call the function
+        mount_key_device
       ''
     );
   };
