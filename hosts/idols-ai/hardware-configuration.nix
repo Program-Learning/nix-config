@@ -26,27 +26,28 @@
   boot.loader.systemd-boot.windows = {
     "nvme1n1p1" = {
       title = "Windows 11";
-      efiDeviceHandle = "FS0";
+      efiDeviceHandle = "HD2b";
     };
   };
-  boot.loader.systemd-boot.extraEntries."windows.conf" = ''
-    title     Windows
-    sort-key  0
-    efi       /EFI/edk2-shell/shellx64.efi
-    options   -nointerrupt -nomap -noversion windows.nsh
-  '';
+  # NOTE: manual configuration example
+  # boot.loader.systemd-boot.extraEntries."windows.conf" = ''
+  #   title     Windows
+  #   sort-key  0
+  #   efi       /shellx64.efi
+  #   options   -nointerrupt -nomap -noversion windows.nsh
+  # '';
 
-  boot.loader.systemd-boot.extraFiles."windows.nsh" = (
-    pkgs.writeText "windows.nsh" ''
-      FS0:EFI\Microsoft\Boot\Bootmgfw.efi
-    ''
-  );
+  # boot.loader.systemd-boot.extraFiles."windows.nsh" = (
+  #   pkgs.writeText "windows.nsh" ''
+  #     HD2b:EFI\Microsoft\Boot\Bootmgfw.efi
+  #   ''
+  # );
 
   # https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/top-level/linux-kernels.nix
   # boot.kernelPackages = pkgs-latest.linuxPackages_latest;
   boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
   # boot.kernelPackages = pkgs.linuxPackages_cachyos;
-  services.scx.enable = true;
+  # services.scx.enable = true;
   # boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_xanmod.override {
   #   structuredExtraConfig = with lib.kernel; {
   #     DMABUF_HEAPS = yes;
@@ -142,14 +143,12 @@
     # Conditional mount of key device based on boot.initrd.systemd.enable
     systemd.services.mount-key-device = lib.mkIf config.boot.initrd.systemd.enable {
       description = "Mount USB key device for LUKS decryption";
-      wantedBy = [ "cryptsetup-pre.target" ];
+      wantedBy = [ "initrd.target" ];
       before = [ "cryptsetup-pre.target" ];
-      unitConfig.RequiresMountsFor = [ "/boot" ];
       serviceConfig.Type = "oneshot";
       script = ''
         echo "Attempting to mount key device..."
         mkdir -p /key
-        sleep 2
 
         # List of UUIDs for fallback USB key devices
         key_device_uuids=(
@@ -160,15 +159,26 @@
 
         # Try to mount each key device UUID in order
         for uuid in "''${key_device_uuids[@]}"; do
-          if mount -n -t vfat -o ro $(findfs UUID=$uuid) /key; then
+          device_path="/dev/disk/by-uuid/$uuid"
+          if [ -e "$device_path" ] && mount -n -t vfat -o ro "$device_path" /key; then
             echo "Successfully mounted key device with UUID $uuid"
+            
+            # Check if the key file exists
+            if [ ! -f "/key/luks/root-part.key" ]; then
+              echo "WARNING: Key file '/key/luks/root-part.key' not found on mounted device"
+              umount /key
+              continue
+            fi
+            
+            echo "Key file found on device with UUID $uuid"
             exit 0
           else
             echo "Failed to mount key device with UUID $uuid"
           fi
         done
 
-        echo "Failed to mount any key device"
+        echo "Failed to mount any key device with valid key file"
+        exit 1
       '';
     };
 
@@ -176,7 +186,6 @@
       lib.mkAfter ''
         echo "Attempting to mount key device..."
         mkdir -p /key
-        sleep 2
 
         # List of UUIDs for fallback USB key devices
         key_device_uuids=(
@@ -187,15 +196,26 @@
 
         # Try to mount each key device UUID in order
         for uuid in "''${key_device_uuids[@]}"; do
-          if mount -n -t vfat -o ro $(findfs UUID=$uuid) /key; then
+          device_path="/dev/disk/by-uuid/$uuid"
+          if [ -e "$device_path" ] && mount -n -t vfat -o ro "$device_path" /key; then
             echo "Successfully mounted key device with UUID $uuid"
+            
+            # Check if the key file exists
+            if [ ! -f "/key/luks/root-part.key" ]; then
+              echo "WARNING: Key file '/key/luks/root-part.key' not found on mounted device"
+              umount /key
+              continue
+            fi
+            
+            echo "Key file found on device with UUID $uuid"
             exit 0
           else
             echo "Failed to mount key device with UUID $uuid"
           fi
         done
 
-        echo "Failed to mount any key device"
+        echo "Failed to mount any key device with valid key file"
+        exit 1
       ''
     );
   };
