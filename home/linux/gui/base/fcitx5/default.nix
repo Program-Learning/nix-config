@@ -24,7 +24,7 @@
 
       # Chinese
       fcitx5-rime # for flypy chinese input method
-      fcitx5-chinese-addons # we use rime instead
+      qt6Packages.fcitx5-chinese-addons # we use rime instead
 
       # Chinese Word Dictionaries
       fcitx5-material-color
