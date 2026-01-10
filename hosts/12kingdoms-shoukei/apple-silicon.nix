@@ -13,11 +13,11 @@
 
   zramSwap.memoryPercent = lib.mkForce 75;
 
-  # Workaround for Mesa 25.3.0 regression
+  # Workaround for Mesa 25.3.1 regression
   # https://github.com/nix-community/nixos-apple-silicon/issues/380
   # https://github.com/NixOS/nixpkgs/pull/461866
   hardware.graphics.package =
-    assert pkgs.mesa.version == "25.3.0";
+    assert pkgs.mesa.version == "25.3.1";
     (import nixpkgs-mesa { localSystem = pkgs.stdenv.hostPlatform; }).mesa;
 
   nix.settings = {
@@ -200,10 +200,6 @@
           Action = "MicMute";
         }
         {
-          Icon = "search";
-          Action = "Search";
-        }
-        {
           Icon = "backlight_low";
           Action = "IllumDown";
         }
@@ -249,6 +245,18 @@
         {
           Text = "Print";
           Action = "Print";
+        }
+        {
+          Text = "F1";
+          Action = "F1";
+        }
+        {
+          Text = "F2";
+          Action = "F2";
+        }
+        {
+          Text = "F12";
+          Action = "F12";
         }
       ];
     };

@@ -30,7 +30,6 @@ let
         "hardening/bwraps"
       ])
       ++ [
-        inputs.niri.nixosModules.niri
         {
           modules.desktop.fonts.enable = true;
           modules.desktop.wayland.enable = true;

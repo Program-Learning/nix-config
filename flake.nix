@@ -58,6 +58,9 @@
     # which represents the GitHub repository URL + branch/commit-id/tag.
 
     # Official NixOS package source, using nixos's unstable branch by default
+    # Find git commit hash with build status here(3 jobs per day):
+    # https://hydra.nixos.org/jobset/nixpkgs/unstable
+    # update via nix flake update nixpkgs --override-input nixpkgs github:NixOS/nixpkgs/<commit-hash>
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
     # revert mesa to 25.2.6
@@ -175,8 +178,6 @@
       url = "github:nix-community/nixos-apple-silicon/release-2025-11-18";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    niri.url = "github:sodiboo/niri-flake";
 
     helix = {
       # Helix with steel as plugin system
