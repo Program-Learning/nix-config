@@ -281,11 +281,12 @@ binds {
     Mod+C { spawn "noctalia-shell" "ipc" "call" "launcher" "calculator"; }
 
     Mod+S { spawn "noctalia-shell" "ipc" "call" "controlCenter" "toggle"; }
-    Mod+E { spawn "noctalia-shell" "ipc" "call" "sessionMenu" "toggle"; }
+    //Mod+E { spawn "noctalia-shell" "ipc" "call" "sessionMenu" "toggle"; }
 
     // Rule for Mayuri
     // Mod+Space { toggle-window-floating; }
     Ctrl+Shift+Escape { spawn "missioncenter"; }
     Mod+P { spawn "~/.config/scripts/colorpicker"; }
     Mod+F12 { spawn "~/.config/scripts/dropdown_terminal"; }
+    Mod+E { spawn "nautilus"; }
 }

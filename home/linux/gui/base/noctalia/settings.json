@@ -153,6 +153,10 @@
           "useDistroLogo": true
         },
         {
+          "defaultSettings": {
+            "hideInactive": false,
+            "removeMargins": false
+          },
           "id": "plugin:privacy-indicator"
         }
       ]
@@ -347,7 +351,7 @@
   "location": {
     "analogClockInCalendar": false,
     "firstDayOfWeek": 1,
-    "name": "Changsha",
+    "name": "Shanghai",
     "showCalendarEvents": true,
     "showCalendarWeather": true,
     "showWeekNumberInCalendar": false,

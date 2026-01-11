@@ -86,7 +86,6 @@
         HandlePowerKey = "ignore";
       };
     };
-    # rebootKey = "ignore";
   };
 
   # services.tlp = {
