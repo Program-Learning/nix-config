@@ -72,27 +72,27 @@ in
       insomnia # REST client
     ])
     ++ [
-      jetbrains.idea-community
+      jetbrains.idea-oss
 
-      jetbrains.idea-ultimate
+      jetbrains.idea
       jetbrains.rust-rover
-      jetbrains.pycharm-professional
+      jetbrains.pycharm
       jetbrains.goland
       jetbrains.webstorm
       jetbrains.clion
 
-      # (jetbrains.idea-ultimate.overrideAttrs {vmopts = vmoptions;})
+      # (jetbrains.idea.overrideAttrs {vmopts = vmoptions;})
       # (jetbrains.rust-rover.overrideAttrs {vmopts = vmoptions;})
-      # (jetbrains.pycharm-professional.overrideAttrs {vmopts = vmoptions;})
+      # (jetbrains.pycharm.overrideAttrs {vmopts = vmoptions;})
       # (jetbrains.goland.overrideAttrs {vmopts = vmoptions;})
       # (jetbrains.webstorm.overrideAttrs {vmopts = vmoptions;})
       # (jetbrains.clion.overrideAttrs {vmopts = vmoptions;})
 
-      # (jetbrains.idea-ultimate.overrideAttrs
-      # (postFixUpPatchFunction "idea-ultimate/bin" "idea64.vmoptions"))
+      # (jetbrains.idea.overrideAttrs
+      # (postFixUpPatchFunction "idea/bin" "idea64.vmoptions"))
       # (jetbrains.rust-rover.overrideAttrs
       #   (postFixUpPatchFunction "rust-rover/bin" "rustrover64.vmoptions"))
-      # (jetbrains.pycharm-professional.overrideAttrs
+      # (jetbrains.pycharm.overrideAttrs
       #   (postFixUpPatchFunction "pycharm/bin" "pycharm64.vmoptions"))
       # (jetbrains.goland.overrideAttrs
       #   (postFixUpPatchFunction "goland/bin" "goland64.vmoptions"))
@@ -103,9 +103,9 @@ in
       # eclipses.eclipse-sdk
       eclipses.eclipse-jee
     ];
-  xdg.configFile."JetBrains/IntelliJIdea${getMajorMinorVersion pkgs.jetbrains.idea-ultimate.version}/idea64.vmoptions".text =
+  xdg.configFile."JetBrains/IntelliJIdea${getMajorMinorVersion pkgs.jetbrains.idea.version}/idea64.vmoptions".text =
     vmoptions;
-  xdg.configFile."JetBrains/PyCharm${getMajorMinorVersion pkgs.jetbrains.pycharm-professional.version}/pycharm64.vmoptions".text =
+  xdg.configFile."JetBrains/PyCharm${getMajorMinorVersion pkgs.jetbrains.pycharm.version}/pycharm64.vmoptions".text =
     vmoptions;
   xdg.configFile."JetBrains/CLion${getMajorMinorVersion pkgs.jetbrains.clion.version}/clion64.vmoptions".text =
     vmoptions;

@@ -6,6 +6,11 @@
   services.openssh = {
     enable = true;
     settings = {
+      # TODO: Remove this after upstream fixes it https://github.com/SaumonNet/proxmox-nixos/pull/213/changes
+      AcceptEnv = lib.mkForce [
+        "LANG"
+        "LC_*"
+      ];
       X11Forwarding = true;
       # root user is used for remote deployment, so we need to allow it
       PermitRootLogin = "prohibit-password";
