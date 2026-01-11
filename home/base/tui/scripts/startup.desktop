@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Startup Script
+Exec=/home/nixos/nix-config/home/base/tui/scripts/startup
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true

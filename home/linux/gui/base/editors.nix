@@ -2,6 +2,7 @@
   lib,
   pkgs,
   pkgs-master,
+  pkgs-stable,
   ...
 }:
 
@@ -46,7 +47,7 @@ let
 in
 {
   home.packages = [
-    pkgs.zed-editor
+    pkgs-stable.zed-editor
     pkgs-master.code-cursor
     pkgs-master.antigravity-fhs
   ];

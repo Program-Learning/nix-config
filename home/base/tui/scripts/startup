@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+# This script is migrated from niri's spawn-at-startup to XDG autostart
+echo "Running startup script..."
+
+# Add your startup commands here
+# Example:
+# exec your-app &
+# exec another-app &
+
+# Execute the actual startup script if it exists
+STARTUP_SCRIPT="$HOME/.config/scripts/startup"
+if [ -f "$STARTUP_SCRIPT" ]; then
+    echo "Executing $STARTUP_SCRIPT"
+    "$STARTUP_SCRIPT" &
+else
+    echo "Warning: $STARTUP_SCRIPT does not exist, please create it."
+fi
+
+exit 0

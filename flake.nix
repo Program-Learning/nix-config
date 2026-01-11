@@ -64,7 +64,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-2505.url = "github:nixos/nixpkgs/nixos-25.05";
-    nixpkgs-latest.url = "github:nixos/nixpkgs?ref=master";
+    nixpkgs-latest.url = "github:nixos/nixpkgs/master";
     nixpkgs-unstable-yuzu.url = "github:nixos/nixpkgs?rev=6a59b7def496268fc32175183e4041d92586b00b";
     nixpkgs-unstable-etcher.url = "github:nixos/nixpkgs?rev=15cf1bacec81d3905d40b8005f88bb3ad8dc5a56";
     # nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -106,15 +106,6 @@
 
     preservation = {
       url = "github:nix-community/preservation";
-    };
-
-    # community wayland nixpkgs
-    # nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
-
-    # anyrun - a wayland launcher
-    anyrun = {
-      url = "github:/anyrun-org/anyrun/v25.9.3";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # generate iso/qcow2/docker/... image from nixos configuration

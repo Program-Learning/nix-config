@@ -7,8 +7,6 @@ let
     "ai-gnome-wayland" = "ai";
     "ai-kde-wayland" = "ai";
     "ai-niri" = "ai";
-    "ai-hyprland" = "ai";
-    "ai-niri" = "ai";
   };
   specialHostNames = builtins.attrNames specialExpected;
 

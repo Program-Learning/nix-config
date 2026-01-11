@@ -22,7 +22,6 @@ home/
 ├── linux/             # Linux-specific home manager configurations
 │   ├── base/          # Linux base configurations
 │   ├── gui/           # Linux GUI applications
-│   │   ├── hyprland/  # Hyprland window manager
 │   │   ├── niri/      # Niri window manager
 │   │   └── ...
 │   ├── editors/       # Linux-specific editors
@@ -40,7 +39,7 @@ home/
    - Shared configurations for editors, shells, and essential tools
 
 2. **linux**: Linux-specific configuration
-   - Desktop environments (Hyprland, Niri)
+   - Desktop environments (Noctalia Shell, Niri compositor)
    - Linux-specific GUI applications
    - System integration tools
 

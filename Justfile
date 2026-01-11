@@ -152,21 +152,6 @@ local mode="default":
   use {{utils_nu}} *;
   nixos-switch (hostname) {{mode}}
 
-# Deploy the hyprland nixosConfiguration by hostname match
-[linux]
-[group('desktop')]
-hypr mode="default":
-  #!/usr/bin/env nu
-  use {{utils_nu}} *;
-  nixos-switch "ai-hyprland" {{mode}}
-  # nixos-switch $"(hostname)-hyprland" {{mode}}
-
-[linux]
-myniri mode="default":
-  #!/usr/bin/env nu
-  use {{utils_nu}} *;
-  nixos-switch "ai-myniri" {{mode}}
-  # nixos-switch $"(hostname)-myniri" {{mode}}
 
 [linux]
 gnome-wayland mode="default":
@@ -400,6 +385,11 @@ list-systemd:
 # https://github.com/ryan4yin/nixpkgs-review-gha
 #
 # =================================================
+
+[linux]
+[group('nixpkgs')]
+gh-login:
+  gh auth login -h github.com --skip-ssh-key --git-protocol ssh --web
 
 # Run nixpkgs-review for PR
 [linux]
