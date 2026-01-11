@@ -341,11 +341,11 @@
   },
   "hooks": {
     "darkModeChange": "",
-    "enabled": false,
+    "enabled": true,
     "performanceModeDisabled": "",
     "performanceModeEnabled": "",
-    "screenLock": "",
-    "screenUnlock": "",
+    "screenLock": "notify-send \"屏幕\" \"已锁定\"",
+    "screenUnlock": "notify-send \"屏幕\" \"已解锁\"",
     "wallpaperChange": ""
   },
   "location": {
