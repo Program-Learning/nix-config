@@ -80,7 +80,7 @@
         "/run/media/nixos/windows/"
       ];
 
-      aliases = {
+      alias = {
         # common aliases
         br = "branch";
         co = "checkout";

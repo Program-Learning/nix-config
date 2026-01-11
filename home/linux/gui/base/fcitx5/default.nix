@@ -1,6 +1,6 @@
 {
+  config,
   pkgs,
-  nur-ryan4yin,
   nur-DataEraserC,
   ...
 }:
@@ -12,6 +12,8 @@
       # so we need to force replace it in every rebuild to avoid file conflict.
       force = true;
     };
+    "mozc/config1.db".source =
+      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-config/home/linux/gui/base/fcitx5/mozc-config1.db";
   };
 
   i18n.inputMethod = {
@@ -33,7 +35,9 @@
       nur-DataEraserC.packages.${pkgs.system}.fcitx5-pinyin-CustomPinyinDictionary
 
       # Japanese
-      fcitx5-mozc-ut
+      # ctrl-i / F7 - convert to takakana
+      # ctrl-u / F6 - convert to hiragana
+      fcitx5-mozc-ut # Moze with UT dictionary
     ];
   };
 }
