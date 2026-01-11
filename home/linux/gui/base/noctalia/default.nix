@@ -9,6 +9,16 @@
 
 let
   package = pkgs-patched.noctalia-shell;
+  mklinkWallpaperPath =
+    config: FilePath:
+    if config.modules.mkOutOfStoreSymlink.enable then
+      (lib.warn "mkOutOfStoreSymlink ${config.modules.mkOutOfStoreSymlink.wallpaperPath}/${FilePath}"
+        config.lib.file.mkOutOfStoreSymlink
+        "${config.modules.mkOutOfStoreSymlink.wallpaperPath}/${FilePath}"
+      )
+    else
+      (lib.warn "direct use ${wallpapers}" "${wallpapers}");
+  wallpapers_dir = mklinkWallpaperPath config "dark";
 in
 {
 
@@ -21,7 +31,7 @@ in
     pkgs.gpu-screen-recorder # recoding screen
   ]);
 
-  home.file."Pictures/Wallpapers".source = wallpapers;
+  home.file."Pictures/Wallpapers".source = wallpapers_dir;
 
   xdg.configFile =
     let

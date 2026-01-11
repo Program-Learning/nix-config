@@ -151,6 +151,9 @@
           "icon": "noctalia",
           "id": "ControlCenter",
           "useDistroLogo": true
+        },
+        {
+          "id": "plugin:privacy-indicator"
         }
       ]
     }
@@ -300,7 +303,7 @@
     "colorizeIcons": false,
     "deadOpacity": 0.6,
     "displayMode": "auto_hide",
-    "enabled": false,
+    "enabled": true,
     "floatingRatio": 1,
     "inactiveIndicators": false,
     "monitors": [],
@@ -313,7 +316,7 @@
     "allowPanelsOnScreenWithoutBar": true,
     "animationDisabled": false,
     "animationSpeed": 1,
-    "avatarImage": "~/nix-config/_img/myself.jpg",
+    "avatarImage": "~/nix-config/_img/myself2.png",
     "boxRadiusRatio": 1,
     "compactLockScreen": false,
     "dimmerOpacity": 0.2,

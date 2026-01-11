@@ -45,7 +45,7 @@ input {
     // Omitting settings disables them, or leaves them at their default values.
     // All commented-out settings here are examples, not defaults.
     touchpad {
-        // tap  // tap-to-click
+        tap  // tap-to-click
         dwt // disable-when-typing.
         // dwtp // disable-when-trackpointing.
         natural-scroll // inverts the scrolling direction.
