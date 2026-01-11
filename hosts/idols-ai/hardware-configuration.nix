@@ -205,6 +205,7 @@ in
       unitConfig.DefaultDependencies = false;
       serviceConfig.Type = "oneshot";
       script = ''
+        echo "systemd initrd: mounting key device..."
         # Source the common mount function
         ${mountKeyDeviceFunction}
 
@@ -215,6 +216,7 @@ in
 
     postDeviceCommands = lib.mkIf (!config.boot.initrd.systemd.enable) (
       lib.mkAfter ''
+        echo "initrd: mounting key device..."
         # Source the common mount function
         ${mountKeyDeviceFunction}
 
