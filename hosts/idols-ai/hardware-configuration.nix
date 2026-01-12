@@ -15,12 +15,14 @@ let
   mountKeyDeviceFunction = ''
     mount_key_device() {
       echo "Attempting to mount key device..."
-      mkdir -p /key
+      mkdir -m 0755 -p /key
+
+      sleep 2 # To make sure the usb key has been loaded
 
       # List of UUIDs for fallback USB key devices
       key_device_uuids=(
-        "D7AB-22CE"
         "12CE-A600"
+        "D7AB-22CE"
         # Add more UUIDs here as needed
       )
 
@@ -28,6 +30,7 @@ let
       for uuid in "''${key_device_uuids[@]}"; do
         # Use findfs if available, otherwise fall back to /dev/disk/by-uuid path
         if command -v findfs >/dev/null 2>&1; then
+          echo "Using findfs to find device with UUID $uuid"
           device_path=$(findfs "UUID=$uuid" 2>/dev/null)
           if [ $? -ne 0 ] || [ -z "$device_path" ]; then
             echo "Failed to find device with UUID $uuid using findfs"
@@ -35,6 +38,7 @@ let
             device_path="/dev/disk/by-uuid/$uuid"
           fi
         else
+          echo "findfs not available, falling back to /dev/disk/by-uuid path"
           device_path="/dev/disk/by-uuid/$uuid"
         fi
         
@@ -198,30 +202,44 @@ in
     };
 
     # Conditional mount of key device based on boot.initrd.systemd.enable
-    systemd.services.mount-key-device = lib.mkIf config.boot.initrd.systemd.enable {
-      description = "Mount USB key device for LUKS decryption";
-      wantedBy = [ "cryptsetup.target" ];
-      after = [ "systemd-modules-load.service" ];
-      unitConfig.DefaultDependencies = false;
-      serviceConfig.Type = "oneshot";
-      script = ''
-        echo "systemd initrd: mounting key device..."
-        # Source the common mount function
-        ${mountKeyDeviceFunction}
+    systemd = lib.mkIf config.boot.initrd.systemd.enable {
+      initrdBin = with pkgs; [
+        util-linux
+      ];
+      services.mount-key-device = {
+        description = "Mount USB key device for LUKS decryption";
+        wantedBy = [ "initrd.target" ];
+        before = [ "systemd-cryptsetup@crypted-nixos.service" ];
+        unitConfig.DefaultDependencies = false;
+        serviceConfig = {
+          Type = "oneshot";
+          RemainAfterExit = true;
+        };
+        script = ''
+          echo "systemd initrd: mounting key device..."
 
-        # Call the function
-        mount_key_device
-      '';
+          # Source the common mount function
+          ${mountKeyDeviceFunction}
+
+          # Call the function
+          mount_key_device
+
+          echo "systemd initrd: finished mounting key device."
+        '';
+      };
     };
 
     postDeviceCommands = lib.mkIf (!config.boot.initrd.systemd.enable) (
       lib.mkAfter ''
         echo "initrd: mounting key device..."
+
         # Source the common mount function
         ${mountKeyDeviceFunction}
 
         # Call the function
         mount_key_device
+
+        echo "initrd: finished mounting key device."
       ''
     );
   };

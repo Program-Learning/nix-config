@@ -11,6 +11,6 @@
     serviceMode = true;
     tunMode = true;
     # default value is clash-verge-rev
-    package = pkgs-latest.clash-verge-rev;
+    package = pkgs.clash-verge-rev;
   };
 }
