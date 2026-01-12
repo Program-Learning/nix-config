@@ -30,7 +30,7 @@ let
       for uuid in "''${key_device_uuids[@]}"; do
         # Use findfs if available, otherwise fall back to /dev/disk/by-uuid path
         if command -v findfs >/dev/null 2>&1; then
-        echo "Using findfs to find device with UUID $uuid"
+          echo "Using findfs to find device with UUID $uuid"
           device_path=$(findfs "UUID=$uuid" 2>/dev/null)
           if [ $? -ne 0 ] || [ -z "$device_path" ]; then
             echo "Failed to find device with UUID $uuid using findfs"
@@ -41,7 +41,7 @@ let
           echo "findfs not available, falling back to /dev/disk/by-uuid path"
           device_path="/dev/disk/by-uuid/$uuid"
         fi
-
+        
         # Check if device exists and is accessible
         if [ -e "$device_path" ] && [ -r "$device_path" ]; then
           echo "Found device $device_path for UUID $uuid"
@@ -206,45 +206,25 @@ in
       initrdBin = with pkgs; [
         util-linux
       ];
-      services."systemd-cryptsetup@" = {
-        overrideStrategy = "asDropin";
+      services.mount-key-device = {
+        description = "Mount USB key device for LUKS decryption";
+        wantedBy = [ "initrd.target" ];
+        before = [ "systemd-cryptsetup@crypted-nixos.service" ];
+        unitConfig.DefaultDependencies = false;
         serviceConfig = {
-          StandardOutput = "journal+console";
-          TimeoutSec = 90;
+          Type = "oneshot";
+          RemainAfterExit = true;
         };
-        # unitConfig = {
-        #   FailureAction = "poweroff-force";
-        # };
-        preStart = ''
-          echo "initrd(systemd): mounting key device..."
+        script = ''
+          echo "systemd initrd: mounting key device..."
 
-          mkdir -m 0755 -p /key
+          # Source the common mount function
+          ${mountKeyDeviceFunction}
 
-          sleep 4 # To make sure the usb key has been loaded
+          # Call the function
+          mount_key_device
 
-          # List of UUIDs for fallback USB key devices (same as in mountKeyDeviceFunction)
-          uuids=("12CE-A600" "D7AB-22CE")
-
-          # Try to mount each key device UUID in order
-          for uuid in "''${uuids[@]}"; do
-            echo "initrd(systemd): trying UUID: $uuid"
-
-            device=$(findfs "UUID=$uuid" 2>/dev/null)
-            if [[ $? -eq 0 && -n "$device" ]]; then
-              echo "initrd(systemd): found device $device for UUID $uuid"
-              
-              if mount -n -t vfat -o ro "$device" /key 2>/dev/null; then
-                echo "initrd(systemd): successfully mounted key device with UUID $uuid"
-                break
-              else
-                echo "initrd(systemd): failed to mount device $device for UUID $uuid"
-              fi
-            else
-              echo "initrd(systemd): could not find device for UUID $uuid"
-            fi
-          done
-
-          echo "initrd(systemd): finished mounting key device."
+          echo "systemd initrd: finished mounting key device."
         '';
       };
     };
