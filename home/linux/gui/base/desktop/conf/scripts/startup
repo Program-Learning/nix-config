@@ -54,7 +54,7 @@ fi
 
 # Set wallpaper via a wallpaper.service
 # it will by start by home-manager automatically, do not need to restart it here.
-systemctl --user restart wallpaper.service &
+# systemctl --user restart wallpaper.service &
 
 # NOTE: we move this to nix
 # Launch notification daemon (mako)
@@ -72,7 +72,7 @@ exec mpd &
 # will try to replace clash by dae
 # exec clash-verge &
 # exec clash-nyanpasu &
-exec mihomo-party &
+# exec mihomo-party &
 
 # Start polkit authentication agent
 # exec lxpolkit &

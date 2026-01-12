@@ -40,6 +40,8 @@ in
       sleep-inactive-battery-type = "nothing";
       # 禁用插入电源时的自动挂起
       sleep-inactive-ac-type = "nothing";
+      # 设置电源按钮行为为nothing
+      power-button-action = "nothing";
     };
 
     # nautilus view using list-view

@@ -19,7 +19,7 @@ binds {
 
     // Launcher
     Mod+D { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
-    Mod+Space { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
+    //Mod+Space { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
     XF86Search { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
 
     // Locker
@@ -284,7 +284,7 @@ binds {
     //Mod+E { spawn "noctalia-shell" "ipc" "call" "sessionMenu" "toggle"; }
 
     // Rule for Mayuri
-    // Mod+Space { toggle-window-floating; }
+    Mod+Space { toggle-window-floating; }
     Ctrl+Shift+Escape { spawn "missioncenter"; }
     Mod+P { spawn "~/.config/scripts/colorpicker"; }
     Mod+F12 { spawn "~/.config/scripts/dropdown_terminal"; }

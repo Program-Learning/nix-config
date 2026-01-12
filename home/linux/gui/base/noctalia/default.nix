@@ -60,6 +60,8 @@ in
         "QT_QPA_PLATFORMTHEME=qt6ct"
         "QT_AUTO_SCREEN_SCALE_FACTOR=1"
       ];
+
+      # ExecStartPost = "${lib.getExe package} ipc call lockScreen lock";
     };
 
     Install.WantedBy = [ config.wayland.systemd.target ];
