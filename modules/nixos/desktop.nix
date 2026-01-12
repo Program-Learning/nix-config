@@ -9,7 +9,7 @@ with lib;
 let
   cfgWayland = config.modules.desktop.wayland;
   cfgHyprland = config.modules.desktop.hyprland;
-  cfgNiri = config.modules.desktop.myniri;
+  cfgNiri = config.modules.desktop.niri;
   cfgGnomeWayland = config.modules.desktop.gnome-wayland;
   cfgKdeWayland = config.modules.desktop.kde-wayland;
 in

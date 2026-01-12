@@ -8,6 +8,7 @@
 }:
 
 let
+  cfgNiri = config.modules.desktop.niri;
   package = pkgs-patched.noctalia-shell;
   mklinkWallpaperPath =
     config: FilePath:
@@ -20,7 +21,7 @@ let
       (lib.warn "direct use ${wallpapers}" "${wallpapers}");
   wallpapers_dir = mklinkWallpaperPath config "dark";
 in
-{
+lib.mkIf cfgNiri.enable {
 
   home.packages = [
     package
