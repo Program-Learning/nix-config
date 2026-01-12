@@ -21,8 +21,6 @@ in
       "NVD_BACKEND" = "direct";
 
       "GBM_BACKEND" = "nvidia-drm";
-      # ONLY SOME LATEST NIXPKGS REQUIRE THIS WORK AROUND
-      # "AQ_DRM_DEVICES,/dev/dri/card1"
     };
   };
 }

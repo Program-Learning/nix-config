@@ -151,13 +151,6 @@
           "icon": "noctalia",
           "id": "ControlCenter",
           "useDistroLogo": true
-        },
-        {
-          "defaultSettings": {
-            "hideInactive": false,
-            "removeMargins": false
-          },
-          "id": "plugin:privacy-indicator"
         }
       ]
     }
