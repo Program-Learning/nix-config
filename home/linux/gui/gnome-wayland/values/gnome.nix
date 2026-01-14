@@ -17,6 +17,7 @@ in
   dconf = {
     enable = true;
     settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
+    settings."org/gnome/desktop/interface".show-battery-percentage = "true";
     settings."org/gnome/shell" = {
       disable-user-extensions = false;
       enabled-extensions = with pkgs.gnomeExtensions; [
@@ -61,5 +62,31 @@ in
     #  "negotiate-port" = true; # 目前不知道为什么不起效
     #  enable = false;
     # };
+
+    # 设置自定义快捷键
+
+    settings."org/gnome/settings-daemon/plugins/media-keys".custom-keybindings = [
+      "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+      "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
+      "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/"
+    ];
+
+    settings."org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+      name = "Launch Terminal";
+      command = "ghostty";
+      binding = "<Super>Return";
+    };
+
+    settings."org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
+      name = "PowerOff Monitor";
+      command = "dbus-send --session --dest=org.gnome.ScreenSaver --type=method_call /org/gnome/ScreenSaver org.gnome.ScreenSaver.SetActive boolean:true";
+      binding = "PowerOff";
+    };
+
+    settings."org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2" = {
+      name = "PowerOff Monitor";
+      command = "dbus-send --session --dest=org.gnome.ScreenSaver --type=method_call /org/gnome/ScreenSaver org.gnome.ScreenSaver.SetActive boolean:true";
+      binding = "<Shift><Super>p";
+    };
   };
 }
