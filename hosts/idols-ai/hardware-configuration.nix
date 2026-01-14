@@ -216,15 +216,35 @@ in
           RemainAfterExit = true;
         };
         script = ''
-          echo "systemd initrd: mounting key device..."
+          echo "initrd(systemd): mounting key device..."
 
-          # Source the common mount function
-          ${mountKeyDeviceFunction}
+          mkdir -m 0755 -p /key
 
-          # Call the function
-          mount_key_device
+          sleep 4 # To make sure the usb key has been loaded
 
-          echo "systemd initrd: finished mounting key device."
+          # List of UUIDs for fallback USB key devices (same as in mountKeyDeviceFunction)
+          uuids=("12CE-A600" "D7AB-22CE")
+
+          # Try to mount each key device UUID in order
+          for uuid in "''${uuids[@]}"; do
+            echo "initrd(systemd): trying UUID: $uuid"t
+
+            device=$(findfs "UUID=$uuid" 2>/dev/null)
+            if [[ $? -eq 0 && -n "$device" ]]; then
+              echo "initrd(systemd): found device $device for UUID $uuid"
+              
+              if mount -n -t vfat -o ro "$device" /key 2>/dev/null; then
+                echo "initrd(systemd): successfully mounted key device twith UUID $uuid"
+                break
+              else
+                echo "initrd(systemd): failed to mount device $device for UUID $uuid"
+              fi
+            else
+              echo "initrd(systemd): could not find device for UUID $uuid"
+            fi
+          done
+
+          echo "initrd(systemd): finished mounting key device."
         '';
       };
     };
