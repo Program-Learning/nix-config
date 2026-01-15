@@ -72,7 +72,7 @@
   #   QT_SCALE_FACTOR = "1";
   # };
   features.cloudflare-warp = {
-    enable = true;
+    enable = false;
     certificate = "${mysecrets}/public/Cloudflare_CA.pem"; # download here https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/install-cloudflare-cert/
   };
 

@@ -50,7 +50,7 @@
         # kdePackages.konsole
         # powerdevil
 
-        calcurse
+        # calcurse
 
         # --vim-like browser
         # vimb
@@ -58,16 +58,16 @@
         # --agent
         protonvpn-gui
         # clash-nyanpasu
-        throne
+        # throne
         sing-box
-        cloudflare-warp
+        # cloudflare-warp
         wgcf
 
         # --Office
         onlyoffice-desktopeditors
         libreoffice
-        mdp
-        slides
+        # mdp
+        # slides
         wpsoffice-cn # unfree
         stirling-pdf
 
@@ -76,7 +76,7 @@
 
         # --achieve/file managers
         # xarchiver
-        mate.engrampa
+        # mate.engrampa
         nautilus
         nautilus-open-any-terminal
         file-roller
@@ -143,7 +143,7 @@
 
         # pkg required by nix-shell
         pkg-config
-        ncurses
+        # ncurses
         # ncurses6
         # ncurses5
         # pkgsCross.aarch64-multiplatform.stdenv.cc
