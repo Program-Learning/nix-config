@@ -29,7 +29,7 @@
     waybar # the status bar
     waypaper # GUI wallpaper setter for Wayland-based window managers
     mpvpaper # A video wallpaper program for wlroots based wayland compositors.
-    swayidle # the idle timeout
+    # swayidle # the idle timeout
     # hypridle # the idle timeout
     sway-audio-idle-inhibit # audio idle inhibit
     swaylock # locking the screen

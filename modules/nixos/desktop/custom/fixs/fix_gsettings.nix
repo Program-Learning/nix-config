@@ -77,7 +77,7 @@ in
       dracula-theme # gtk theme
       adwaita-icon-theme # default gnome cursors
       swaylock
-      swayidle
+      # swayidle
       grim # screenshot functionality
       slurp # screenshot functionality
       wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout

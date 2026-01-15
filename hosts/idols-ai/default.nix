@@ -31,7 +31,7 @@ rec {
 
     ./preservation.nix
     ./impermanence_addon.nix
-    # ./secureboot.nix
+    ./secureboot.nix
     ./tpm_luks.nix
     ./dae.nix
   ];

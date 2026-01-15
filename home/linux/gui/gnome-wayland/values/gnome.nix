@@ -81,6 +81,7 @@ in
       "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/"
       "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/"
       "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/"
+      "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/"
     ];
 
     settings."org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
@@ -111,6 +112,12 @@ in
       name = "Open File Manager";
       command = "nautilus";
       binding = "<Super>e";
+    };
+
+    settings."org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5" = {
+      name = "Open Mission Center";
+      command = "missioncenter";
+      binding = "<Ctrl><Shift>Escape";
     };
   };
 }

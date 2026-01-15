@@ -100,7 +100,7 @@ in
       services.warp-svc = {
         # disabled
         # users can manually exec "warp-svc" wrapper
-        enable = false;
+        enable = true;
         description = "Cloudflare Zero Trust Client Daemon";
         after = [ "pre-network.target" ];
         serviceConfig = {
