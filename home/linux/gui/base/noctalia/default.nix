@@ -41,7 +41,7 @@ lib.mkIf cfgNiri.enable {
       confPath = "home/linux/gui/base/noctalia";
     in
     {
-      "noctalia/settings.json".source = mkSymlink config "${confPath}/settings.json";
+      "noctalia".source = mkSymlink config "${confPath}/config";
       "qt6ct/qt6ct.conf".source = mkSymlink config "${confPath}/qt6ct.conf";
     };
 
