@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  mylib,
   pkgs,
   pkgs-patched,
   wallpapers,
@@ -36,12 +37,12 @@ lib.mkIf cfgNiri.enable {
 
   xdg.configFile =
     let
-      mkSymlink = config.lib.file.mkOutOfStoreSymlink;
-      confPath = "${config.home.homeDirectory}/nix-config/home/linux/gui/base/noctalia";
+      mkSymlink = mylib.mklinkRelativeToRoot;
+      confPath = "home/linux/gui/base/noctalia";
     in
     {
-      "noctalia/settings.json".source = mkSymlink "${confPath}/settings.json";
-      "qt6ct/qt6ct.conf".source = mkSymlink "${confPath}/qt6ct.conf";
+      "noctalia/settings.json".source = mkSymlink config "${confPath}/settings.json";
+      "qt6ct/qt6ct.conf".source = mkSymlink config "${confPath}/qt6ct.conf";
     };
 
   systemd.user.services.noctalia-shell = {

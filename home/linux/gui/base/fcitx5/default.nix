@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  mylib,
   nur-DataEraserC,
   ...
 }:
@@ -13,7 +14,7 @@
       force = true;
     };
     "mozc/config1.db".source =
-      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-config/home/linux/gui/base/fcitx5/mozc-config1.db";
+      mylib.mklinkRelativeToRoot config "home/linux/gui/base/fcitx5/mozc-config1.db";
   };
 
   i18n.inputMethod = {

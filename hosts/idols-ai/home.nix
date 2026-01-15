@@ -1,6 +1,6 @@
-{ config, ... }:
+{ config, mylib, ... }:
 let
-  mkSymlink = config.lib.file.mkOutOfStoreSymlink;
+  mkSymlink = mylib.mklinkRelativeToRoot;
 in
 {
   programs.ssh.matchBlocks."github.com".identityFile =
@@ -9,5 +9,5 @@ in
   modules.desktop.nvidia.enable = true;
 
   xdg.configFile."niri/niri-hardware.kdl".source =
-    mkSymlink "${config.home.homeDirectory}/nix-config/hosts/idols-ai/niri-hardware.kdl";
+    mkSymlink config "hosts/idols-ai/niri-hardware.kdl";
 }
