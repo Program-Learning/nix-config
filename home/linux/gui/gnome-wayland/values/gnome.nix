@@ -16,8 +16,11 @@ in
   ];
   dconf = {
     enable = true;
-    settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
-    settings."org/gnome/desktop/interface".show-battery-percentage = "true";
+    settings."org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
+      show-battery-percentage = true;
+      clock-show-seconds = true;
+    };
     settings."org/gnome/shell" = {
       disable-user-extensions = false;
       enabled-extensions = with pkgs.gnomeExtensions; [
@@ -65,10 +68,19 @@ in
 
     # 设置自定义快捷键
 
+    settings."org/gnome/desktop/wm/keybindings" = {
+      close = [
+        "<Super>q"
+        "<Alt>F4"
+      ];
+    };
+
     settings."org/gnome/settings-daemon/plugins/media-keys".custom-keybindings = [
       "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
       "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
       "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/"
+      "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/"
+      "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/"
     ];
 
     settings."org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
@@ -87,6 +99,18 @@ in
       name = "PowerOff Monitor";
       command = "dbus-send --session --dest=org.gnome.ScreenSaver --type=method_call /org/gnome/ScreenSaver org.gnome.ScreenSaver.SetActive boolean:true";
       binding = "<Shift><Super>p";
+    };
+
+    settings."org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3" = {
+      name = "Run Menu";
+      command = "anyrun";
+      binding = "<Super>d";
+    };
+
+    settings."org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4" = {
+      name = "Open File Manager";
+      command = "nautilus";
+      binding = "<Super>e";
     };
   };
 }
