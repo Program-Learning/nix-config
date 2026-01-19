@@ -41,5 +41,6 @@
       wan_encryption_mode = 2;
     };
   };
-  services.todesk.enable = true;
+  # services.todesk.enable = true;
+  # services.meshcentral.enable = true;
 }
