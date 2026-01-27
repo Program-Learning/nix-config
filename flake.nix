@@ -373,12 +373,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    ######################## dots_hyprland required  #########################################
+    # ######################## dots_hyprland required  #########################################
 
-    DataEraserC-dots_hyprland = {
-      url = "github:DataEraserC/dots-hyprland";
-      # url = "git+file:////home/nixos/Documents/code/dots-hyprland?shallow=1";
-    };
+    # DataEraserC-dots_hyprland = {
+    #   url = "github:DataEraserC/dots-hyprland";
+    #   # url = "git+file:////home/nixos/Documents/code/dots-hyprland?shallow=1";
+    # };
 
     nixified-ai = {
       url = "github:nixified-ai/flake";
@@ -533,5 +533,7 @@
 
     # aarch64 SBCs
     nixos-rk3588.url = "github:ryan4yin/nixos-rk3588";
+
+    nix-jetbrains-plugins.url = "github:nix-community/nix-jetbrains-plugins";
   };
 }

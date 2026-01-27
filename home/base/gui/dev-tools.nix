@@ -2,9 +2,58 @@
   pkgs,
   lib,
   nur-DataEraserC,
+  nix-jetbrains-plugins,
   ...
 }:
 let
+  jetbrainsPluginList = {
+    "common" = [
+      "com.alibabacloud.intellij.cosy"
+    ];
+    "idea-oss" = {
+      "include" = [ ];
+      "exclude" = [ ];
+    };
+    "idea" = {
+      "include" = [ ];
+      "exclude" = [ ];
+    };
+    "rust-rover" = {
+      "include" = [ ];
+      "exclude" = [ ];
+    };
+    "pycharm" = {
+      "include" = [ ];
+      "exclude" = [ ];
+    };
+    "goland" = {
+      "include" = [ ];
+      "exclude" = [ ];
+    };
+    "webstorm" = {
+      "include" = [ ];
+      "exclude" = [ ];
+    };
+    "clion" = {
+      "include" = [ ];
+      "exclude" = [ ];
+    };
+  };
+  genJetbrainsPluginList =
+    allPluginLists: packageName:
+    let
+      packageConfig =
+        allPluginLists.${packageName} or {
+          include = [ ];
+          exclude = [ ];
+        };
+      combinedInclude = allPluginLists."common" ++ (packageConfig.include or [ ]);
+      allPlugins = lib.unique combinedInclude; # 去重
+      excluded = packageConfig.exclude or [ ];
+      filteredPlugins = lib.filter (pluginId: !lib.elem pluginId excluded) allPlugins;
+    in
+    filteredPlugins;
+
   getMajorMinorVersion =
     version: builtins.concatStringsSep "." (lib.take 2 (lib.splitString "." version));
   jetbra = pkgs.fetchFromGitHub {
@@ -71,15 +120,15 @@ in
     ++ (lib.optionals pkgs.stdenv.isx86_64 [
       insomnia # REST client
     ])
-    ++ [
-      jetbrains.idea-oss
+    ++ (with nix-jetbrains-plugins.lib; [
+      (buildIdeWithPlugins pkgs "idea-oss" (genJetbrainsPluginList jetbrainsPluginList "idea-oss"))
 
-      jetbrains.idea
-      jetbrains.rust-rover
-      jetbrains.pycharm
-      jetbrains.goland
-      jetbrains.webstorm
-      jetbrains.clion
+      (buildIdeWithPlugins pkgs "idea" (genJetbrainsPluginList jetbrainsPluginList "idea"))
+      (buildIdeWithPlugins pkgs "rust-rover" (genJetbrainsPluginList jetbrainsPluginList "rust-rover"))
+      (buildIdeWithPlugins pkgs "pycharm" (genJetbrainsPluginList jetbrainsPluginList "pycharm"))
+      (buildIdeWithPlugins pkgs "goland" (genJetbrainsPluginList jetbrainsPluginList "goland"))
+      (buildIdeWithPlugins pkgs "webstorm" (genJetbrainsPluginList jetbrainsPluginList "webstorm"))
+      (buildIdeWithPlugins pkgs "clion" (genJetbrainsPluginList jetbrainsPluginList "clion"))
 
       # (jetbrains.idea.overrideAttrs {vmopts = vmoptions;})
       # (jetbrains.rust-rover.overrideAttrs {vmopts = vmoptions;})
@@ -101,8 +150,8 @@ in
       # (jetbrains.clion.overrideAttrs
       #   (postFixUpPatchFunction "clion/bin" "clion64.vmoptions"))
       # eclipses.eclipse-sdk
-      eclipses.eclipse-jee
-    ];
+      # eclipses.eclipse-jee
+    ]);
   xdg.configFile."JetBrains/IntelliJIdea${getMajorMinorVersion pkgs.jetbrains.idea.version}/idea64.vmoptions".text =
     vmoptions;
   xdg.configFile."JetBrains/PyCharm${getMajorMinorVersion pkgs.jetbrains.pycharm.version}/pycharm64.vmoptions".text =
