@@ -15,50 +15,111 @@ export def nixos-switch [
 ] {
     print $"nixos-switch '($name)' in '($mode)' mode..."
     print (repeat-str "=" 50)
+    let timestamp = (date now | format date "%Y-%m-%d %H:%M:%S")
     if "debug" == $mode {
         # show details via nix-output-monitor
         print $"NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nom build $\".#nixosConfigurations.($name).config.system.build.toplevel\" --show-trace --verbose"
         print $"NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild switch --sudo --flake $\".#($name)\" --show-trace --verbose --impure"
-        NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nom build $".#nixosConfigurations.($name).config.system.build.toplevel" --show-trace --verbose
-        NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild switch --sudo --flake $".#($name)" --show-trace --verbose --impure
+        try {
+            NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nom build $".#nixosConfigurations.($name).config.system.build.toplevel" --show-trace --verbose
+            NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild switch --sudo --flake $".#($name)" --show-trace --verbose --impure
+        } catch {|error|
+            let msg = $"NixOS switch failed for '($name)': ($error.msg)"
+            print $msg
+            notify-send -u critical -a "nixos-rebuild" -p $"NIXOS_REBUILD_($timestamp)" $msg
+            return
+        }
+        let msg = $"NixOS switch completed successfully for '($name)'"
+        print $msg
+        notify-send -u normal -a "nixos-rebuild" -p $"NIXOS_REBUILD_($timestamp)" $msg -w
     } else if "boot" == $mode {
-        print $"NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild boot --sudo --flake $\".#($name)\" --impure"
-        NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild boot --sudo --flake $".#($name)" --impure
+        try {
+            print $"NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild boot --sudo --flake $\".#($name)\" --impure"
+            NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild boot --sudo --flake $".#($name)" --impure
+        } catch {|error|
+            let msg = $"NixOS boot failed for '($name)': ($error.msg)"
+            print $msg
+            notify-send -u critical -a "nixos-rebuild" -p $"NIXOS_REBUILD_($timestamp)" $msg
+            return
+        }
+        let msg = $"NixOS boot completed successfully for '($name)'"
+        print $msg
+        notify-send -u normal -a "nixos-rebuild" -p $"NIXOS_REBUILD_($timestamp)" $msg -w
     } else if "switch" == $mode {
-        print $"NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild switch --sudo --flake $\".#($name)\" --impure"
-        NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild switch --sudo --flake $".#($name)" --impure
+        try {
+            print $"NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild switch --sudo --flake $\".#($name)\" --impure"
+            NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild switch --sudo --flake $".#($name)" --impure
+        } catch {|error|
+            let msg = $"NixOS switch failed for '($name)': ($error.msg)"
+            print $msg
+            notify-send -u critical -a "nixos-rebuild" -p $"NIXOS_REBUILD_($timestamp)" $msg
+            return
+        }
+        let msg = $"NixOS switch completed successfully for '($name)'"
+        print $msg
+        notify-send -u normal -a "nixos-rebuild" -p $"NIXOS_REBUILD_($timestamp)" $msg -w
     } else if "boot-notify" == $mode {
         let new_dir_name = $"result-(date now | format date "%Y-%m-%d_%H:%M:%S")"
-        print $"NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild build --flake $\".#($name)\" --impure"
-        NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild build --flake $".#($name)" --impure
-        mv result $new_dir_name
-        let msg = "NixOS boot image built successfully. sudo password is required now"
-        print $msg
-        notify-send -u critical -a NIXOS_REBUILD -p 0 $msg -w
-        sudo nix-env -p /nix/var/nix/profiles/system --set $"./($new_dir_name)"
-        rm $new_dir_name
+        try {
+            print $"NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild build --flake $\".#($name)\" --impure"
+            NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild build --flake $".#($name)" --impure
+            mv result $new_dir_name
+            let msg = "NixOS boot image built successfully. sudo password is required now"
+            print $msg
+            notify-send -u critical -a "nixos-rebuild" -p $"NIXOS_REBUILD_($timestamp)" $msg -w
+            sudo nix-env -p /nix/var/nix/profiles/system --set $"./($new_dir_name)"
+            rm $new_dir_name
+        } catch {|error|
+            let msg = $"NixOS boot build failed for '($name)': ($error.msg)"
+            print $msg
+            notify-send -u critical -a "nixos-rebuild" -p $"NIXOS_REBUILD_($timestamp)" $msg
+            if ($new_dir_name | path exists) {
+                rm $new_dir_name
+            }
+            return
+        }
     } else if "switch-notify" == $mode {
         let new_dir_name = $"result-(date now | format date "%Y-%m-%d_%H:%M:%S")"
-        print $"NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild build --flake $\".#($name)\" --impure"
-        NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild build --flake $".#($name)" --impure
-        mv result $new_dir_name
-        let msg = "NixOS system configuration built successfully. sudo password is required now"
-        print $msg
-        notify-send -u critical -a NIXOS_REBUILD -p 0 $msg -w
-        sudo nix-env -p /nix/var/nix/profiles/system --set $"./($new_dir_name)"
-        sudo systemd-run -E LOCALE_ARCHIVE -E NIXOS_INSTALL_BOOTLOADER --collect --no-ask-password --pipe --quiet --service-type=exec --unit=nixos-rebuild-switch-to-configuration $"($new_dir_name)/bin/switch-to-configuration" switch
-        rm $new_dir_name
+        try {
+            print $"NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild build --flake $\".#($name)\" --impure"
+            NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild build --flake $".#($name)" --impure
+            mv result $new_dir_name
+            let msg = "NixOS system configuration built successfully. sudo password is required now"
+            print $msg
+            notify-send -u critical -a "nixos-rebuild" -p $"NIXOS_REBUILD_($timestamp)" $msg -w
+            sudo nix-env -p /nix/var/nix/profiles/system --set $"./($new_dir_name)"
+            sudo systemd-run -E LOCALE_ARCHIVE -E NIXOS_INSTALL_BOOTLOADER --collect --no-ask-password --pipe --quiet --service-type=exec --unit=nixos-rebuild-switch-to-configuration $"($new_dir_name)/bin/switch-to-configuration" switch
+            rm $new_dir_name
+        } catch {|error|
+            let msg = $"NixOS switch build failed for '($name)': ($error.msg)"
+            print $msg
+            notify-send -u critical -a "nixos-rebuild" -p $"NIXOS_REBUILD_($timestamp)" $msg
+            if ($new_dir_name | path exists) {
+                rm $new_dir_name
+            }
+            return
+        }
     } else {
         let new_dir_name = $"result-(date now | format date "%Y-%m-%d_%H:%M:%S")"
-        print $"NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild build --flake $\".#($name)\" --impure"
-        NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild build --flake $".#($name)" --impure
-        mv result $new_dir_name
-        let msg = "NixOS system configuration built successfully. sudo password is required now"
-        print $msg
-        notify-send -u critical -a NIXOS_REBUILD -p 0 $msg -w
-        sudo nix-env -p /nix/var/nix/profiles/system --set $"./($new_dir_name)"
-        sudo systemd-run -E LOCALE_ARCHIVE -E NIXOS_INSTALL_BOOTLOADER --collect --no-ask-password --pipe --quiet --service-type=exec --unit=nixos-rebuild-switch-to-configuration $"($new_dir_name)/bin/switch-to-configuration" switch
-        rm $new_dir_name
+        try {
+            print $"NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild build --flake $\".#($name)\" --impure"
+            NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_INSECURE=1 NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild build --flake $".#($name)" --impure
+            mv result $new_dir_name
+            let msg = "NixOS system configuration built successfully. sudo password is required now"
+            print $msg
+            notify-send -u critical -a "nixos-rebuild" -p $"NIXOS_REBUILD_($timestamp)" $msg -w
+            sudo nix-env -p /nix/var/nix/profiles/system --set $"./($new_dir_name)"
+            sudo systemd-run -E LOCALE_ARCHIVE -E NIXOS_INSTALL_BOOTLOADER --collect --no-ask-password --pipe --quiet --service-type=exec --unit=nixos-rebuild-switch-to-configuration $"($new_dir_name)/bin/switch-to-configuration" switch
+            rm $new_dir_name
+        } catch {|error|
+            let msg = $"NixOS switch build failed for '($name)': ($error.msg)"
+            print $msg
+            notify-send -u critical -a "nixos-rebuild" -p $"NIXOS_REBUILD_($timestamp)" $msg
+            if ($new_dir_name | path exists) {
+                rm $new_dir_name
+            }
+            return
+        }
     }
 }
 
