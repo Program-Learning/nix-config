@@ -289,6 +289,7 @@ in
         ".local/state/Heroic"
 
         ".local/share/lutris"
+        ".local/share/wine/drive_c/users/${username}"
         ".local/share/tiled"
         ".local/share/GOG.com"
         ".local/share/StardewValley"
