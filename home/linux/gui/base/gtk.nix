@@ -68,6 +68,7 @@ in
         "file:///home/${myvars.username}/Apps"
         "file:///home/${myvars.username}/nix-config"
         "file:///persistent"
+        "file:///run/media/nixos/windows/Users/"
       ];
     };
 
