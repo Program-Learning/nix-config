@@ -9,6 +9,7 @@ ignore-files = true
 extend-exclude = [
   "data/",
   "rime-data/",
+  "home/linux/gui/base/noctalia/config/plugins/privacy-indicator"
 ]
 
 [default]
