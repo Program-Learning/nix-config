@@ -38,8 +38,9 @@ window-rule {
 
 // Chat applications - open in workspace 3
 window-rule {
-    match app-id="org.telegram.desktop"
-    //open-on-workspace "3chat"
+    // match app-id="org.telegram.desktop"
+    match title="^Telegram"
+    // open-on-workspace "3chat"
 }
 window-rule {
     match app-id="wechat"
@@ -94,8 +95,8 @@ window-rule {
 
 // Other applications - open in workspace 0
 window-rule {
-    match app-id="clash-verge"
-    //open-on-workspace "0other"
+    match app-id="Clash-verge"
+    // open-on-workspace "0other"
 }
 window-rule {
     match app-id="Zoom Workplace"

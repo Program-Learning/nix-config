@@ -362,6 +362,9 @@ in
 
         ".config/nushell"
 
+        # noctalia shell
+        ".cache/noctalia"
+
         # Mayuri Spec
 
         # ======================================
