@@ -9,6 +9,8 @@ let
   jetbrainsPluginList = {
     "common" = [
       "com.alibabacloud.intellij.cosy"
+      "nix-idea"
+      "co.anbora.labs.direnv"
     ];
     "idea-oss" = {
       "include" = [ ];
