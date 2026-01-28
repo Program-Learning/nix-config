@@ -371,6 +371,9 @@ in
         # Apps
         # ======================================
 
+        # persistent data for android studio
+        ".local/share/Google/"
+
         ".local/share/DBeaverData/"
 
         (makeDirRW ".wine")
