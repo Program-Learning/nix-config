@@ -1,6 +1,7 @@
 {
   config,
   mysecrets,
+  lib,
   ...
 }:
 {
@@ -53,4 +54,19 @@
       };
     };
   };
+
+  # TODO: better way to do this?
+  # https://github.com/nix-community/home-manager/issues/322#issuecomment-3655046795
+  home.activation.fixSshConfigPermissions = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    run mkdir -p "$HOME/.ssh"
+    run chmod 700 "$HOME/.ssh"
+
+    if [ -L "$HOME/.ssh/config" ]; then
+      src="$(readlink -f "$HOME/.ssh/config")"
+      if [ -f "$src" ]; then
+        run rm -f "$HOME/.ssh/config"
+        run install -m600 "$src" "$HOME/.ssh/config"
+      fi
+    fi
+  '';
 }
