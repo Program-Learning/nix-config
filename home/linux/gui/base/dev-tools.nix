@@ -25,7 +25,8 @@
     android-studio
     # disable bcs can not be built
     # Snowpkgs.packages.${pkgs.system}.android-translation-layer
-    atl-nix.packages.${pkgs.system}.default
+    # atl-nix.packages.${pkgs.system}.default
+    android-translation-layer
     # genymotion
     # edl
     # --payload-dumper
