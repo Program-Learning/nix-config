@@ -16,6 +16,7 @@
     chain.type = "dynamic";
     enable = true;
     proxies = {
+      # local
       localhost_clash_proxy = {
         enable = true;
         type = "socks5";
@@ -28,29 +29,57 @@
         host = "127.0.0.1";
         port = 2080;
       };
-      tailscale_mondrian_nekobox_proxy = {
+      # mondrian
+      mondrian_tailscale_nekobox_proxy = {
         enable = true;
         type = "socks5";
         host = "100.95.92.151";
         port = 2080;
       };
-      zerotier_mondrian_nekobox_proxy = {
+      mondrian_zerotier_nekobox_proxy = {
         enable = true;
         type = "socks5";
         host = "10.147.20.151";
         port = 2080;
       };
-      tailscale_pstar_nekobox_proxy = {
+      # pstar
+      pstar_tailscale_nekobox_proxy = {
         enable = true;
         type = "socks5";
         host = "100.95.92.153";
         port = 2080;
       };
-      zerotier_pstar_nekobox_proxy = {
+      pstar_zerotier_nekobox_proxy = {
         enable = true;
         type = "socks5";
         host = "10.147.20.153";
         port = 2080;
+      };
+      # infiniti
+      infiniti_tailscale_nekobox_proxy = {
+        enable = true;
+        type = "socks5";
+        host = "100.95.92.154";
+        port = 2080;
+      };
+      infiniti_zerotier_nekobox_proxy = {
+        enable = true;
+        type = "socks5";
+        host = "10.147.20.154";
+        port = 2080;
+      };
+      # y9000p2025
+      y9000p2025_tailscale_clash_proxy = {
+        enable = true;
+        type = "socks5";
+        host = "100.95.92.150";
+        port = 7897;
+      };
+      y9000p2025_zerotier_clash_proxy = {
+        enable = true;
+        type = "socks5";
+        host = "10.147.20.150";
+        port = 7897;
       };
     };
   };
