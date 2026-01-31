@@ -34,14 +34,14 @@
       # kicad     # 3d printing, electrical engineering
 
       # Astronomy
-      stellarium # See what you can see with your eyes, binoculars or a small telescope.
-      celestia # Real-time 3D simulation of space, travel throughout the solar system.
+      # stellarium # See what you can see with your eyes, binoculars or a small telescope.
+      # celestia # Real-time 3D simulation of space, travel throughout the solar system.
     ]
     ++ (lib.optionals pkgs.stdenv.isx86_64 [
       # https://github.com/edolstra/nix-warez/blob/master/blender/flake.nix
       blender-bin.packages.${pkgs.stdenv.hostPlatform.system}.blender_4_2 # 3d modeling
 
-      ldtk # A modern, versatile 2D level editor
+      # ldtk # A modern, versatile 2D level editor
 
       # fpga
       # python313Packages.apycula # gowin fpga

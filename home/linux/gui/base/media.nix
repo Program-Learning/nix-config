@@ -20,7 +20,7 @@
     vulkan-tools
     mesa-demos
     nvitop
-    (pkgs-x64.zoom-us)
+    # (pkgs-x64.zoom-us)
   ];
 
   programs.mpv = {

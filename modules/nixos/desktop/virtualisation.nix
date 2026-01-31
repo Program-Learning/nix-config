@@ -166,6 +166,6 @@
 
     dmg2img
 
-    winboat.winboat
+    # winboat.winboat
   ];
 }
