@@ -55,7 +55,7 @@
     #-- discord
     # discord # update too frequently, use the web version instead
     # inter-knot
-    nur-DataEraserC.packages.${pkgs.system}.inter-knot
+    # nur-DataEraserC.packages.${pkgs.system}.inter-knot
 
     #-- wechat-uos
     # pkgs.nixpaks.wechat-uos
