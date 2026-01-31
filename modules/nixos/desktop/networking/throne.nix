@@ -6,7 +6,7 @@
 }:
 {
   programs.throne = {
-    enable = true;
+    enable = false;
     tunMode.enable = true;
   };
 }
