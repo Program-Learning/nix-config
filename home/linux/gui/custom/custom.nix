@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   pkgs,
   pkgs-latest,
   pkgs-stable,
@@ -12,6 +13,9 @@
   hyprland,
   ...
 }:
+let
+  cfgGnomeWayland = config.modules.desktop.gnome-wayland;
+in
 {
   home.packages =
     (
@@ -180,8 +184,10 @@
       ]);
 
   services = {
-    kdeconnect.enable = true;
-    kdeconnect.indicator = true;
-    # kdeconnect.package = pkgs.kdePackages.kdeconnect-kde;
+    kdeconnect = lib.mkIf (!cfgGnomeWayland.enable) {
+      enable = true;
+      indicator = true;
+      # kdeconnect.package = pkgs.kdePackages.kdeconnect-kde;
+    };
   };
 }

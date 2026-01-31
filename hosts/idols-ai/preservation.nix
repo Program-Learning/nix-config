@@ -402,7 +402,8 @@ in
         ".cache/clipboard-indicator@tudmotu.com"
 
         # persist paired device data for gsconnect
-        ".cache/gsconnect"
+        # cert and key
+        ".config/gsconnect"
 
         # nix-index
         ".cache/nix-index"
