@@ -371,7 +371,7 @@ in
         # Apps
         # ======================================
 
-        # persistent data for android studio
+        # persist data for android studio
         ".local/share/Google/"
 
         ".local/share/DBeaverData/"
@@ -398,8 +398,11 @@ in
         (makeDirRW "IdeaProjects")
         (makeDirRW ".jdks")
 
-        # gnome shell extensions clipboard-indicator
+        # persist gnome shell extensions clipboard-indicator
         ".cache/clipboard-indicator@tudmotu.com"
+
+        # persist paired device data for gsconnect
+        ".cache/gsconnect"
 
         # nix-index
         ".cache/nix-index"
