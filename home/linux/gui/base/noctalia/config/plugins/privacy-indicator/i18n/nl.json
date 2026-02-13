@@ -2,7 +2,7 @@
   "settings": {
     "hideInactive": {
       "desc": "Verberg de pictogrammen voor microfoon, camera en scherm wanneer ze inactief zijn.",
-      "label": "Inactive status verbergen"
+      "label": "Inactieve status verbergen"
     },
     "iconSpacing": {
       "desc": "Stel de afstand tussen de pictogrammen in.",

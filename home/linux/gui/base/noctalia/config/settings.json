@@ -141,7 +141,7 @@
           "drawerEnabled": true,
           "hidePassive": false,
           "id": "Tray",
-          "pinned": []
+          "pinned": ["AyuGram Desktop"]
         },
         {
           "colorizeDistroLogo": false,
@@ -153,6 +153,10 @@
           "useDistroLogo": true
         },
         {
+          "defaultSettings": {
+            "hideInactive": false,
+            "removeMargins": false
+          },
           "id": "plugin:privacy-indicator"
         }
       ]
