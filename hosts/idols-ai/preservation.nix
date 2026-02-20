@@ -426,6 +426,7 @@ in
         ".config/clash-verge"
         ".config/clash-nyanpasu"
         ".config/mihomo-party"
+        ".config/flclash"
         # v2ray
         ".config/qv2ray"
         ".config/nekoray"

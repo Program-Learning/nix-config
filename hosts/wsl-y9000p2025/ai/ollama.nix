@@ -1,5 +1,6 @@
 {
   pkgs,
+  pkgs-latest,
   ...
 }:
 let
@@ -7,7 +8,7 @@ in
 {
   services.ollama = rec {
     enable = true;
-    package = pkgs.ollama;
+    package = pkgs-latest.ollama;
     user = "ollama";
     group = "ollama";
     host = "0.0.0.0";

@@ -141,7 +141,7 @@
           "drawerEnabled": true,
           "hidePassive": false,
           "id": "Tray",
-          "pinned": ["AyuGram Desktop"]
+          "pinned": ["AyuGram Desktop", "tray-icon tray app", "557oluE8T-"]
         },
         {
           "colorizeDistroLogo": false,
