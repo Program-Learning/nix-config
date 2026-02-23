@@ -598,11 +598,11 @@
         "systems": "systems_7"
       },
       "locked": {
-        "lastModified": 1771012500,
-        "narHash": "sha256-QXegm5H9dyXHaMMNz17Scqs19/fmkUwdoTEKGphJ5dI=",
+        "lastModified": 1771530732,
+        "narHash": "sha256-6hprhUNTOiwM8NFzsJJZ54Y9C41xMDrNxQMkKgu7Src=",
         "owner": "nix-community",
         "repo": "browser-previews",
-        "rev": "3ac53977138fbddcf4a78e4b45a0069337bea42a",
+        "rev": "2eaa43e70b612b2a022a970507b32d13a037364c",
         "type": "github"
       },
       "original": {
