@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   pkgs,
   nur-DataEraserC,
   nixGL,
@@ -23,14 +24,40 @@
   hardware.nvidia = {
     # Open-source kernel modules are preferred over and planned to steadily replace proprietary modules
     open = true;
+    nvidiaSettings = true;
+
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
     # https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/os-specific/linux/nvidia-x11/default.nix
-    package = config.boot.kernelPackages.nvidiaPackages.beta;
+    # package = config.boot.kernelPackages.nvidiaPackages.beta;
+    # package = config.boot.kernelPackages.nvidiaPackages.production;
+
+    # https://github.com/NixOS/nixpkgs/issues/489947
+    # Apply CachyOS kernel 6.19 patch to NVIDIA latest driver
+    package =
+      let
+        base = config.boot.kernelPackages.nvidiaPackages.latest;
+        cachyos-nvidia-patch = pkgs.fetchpatch {
+          url = "https://raw.githubusercontent.com/CachyOS/CachyOS-PKGBUILDS/master/nvidia/nvidia-utils/kernel-6.19.patch";
+          sha256 = "sha256-YuJjSUXE6jYSuZySYGnWSNG5sfVei7vvxDcHx3K+IN4=";
+        };
+
+        # Patch the appropriate driver based on config.hardware.nvidia.open
+        driverAttr = if config.hardware.nvidia.open then "open" else "bin";
+      in
+      base
+      // {
+        ${driverAttr} = base.${driverAttr}.overrideAttrs (oldAttrs: {
+          patches = (oldAttrs.patches or [ ]) ++ [ cachyos-nvidia-patch ];
+        });
+      };
 
     # required by most wayland compositors!
     modesetting.enable = true;
     # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
     powerManagement.enable = true;
+
+    dynamicBoost.enable = lib.mkForce true;
+
     # Fine-grained power management. Turns off GPU when not in use.
     # Experimental and only works on modern Nvidia GPUs (Turing or newer).
     powerManagement.finegrained = true;

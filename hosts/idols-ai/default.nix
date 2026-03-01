@@ -36,6 +36,9 @@ rec {
     ./dae.nix
   ];
 
+  # Zram consumes physical memory for compression, which can cause a deadlock and system hang if the model size approaches the physical memory limit.
+  zramSwap.enable = lib.mkForce false;
+
   services.sunshine.enable = lib.mkForce true;
   services.tuned.ppdSettings.main.default = lib.mkForce "performance";
 

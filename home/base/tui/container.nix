@@ -28,7 +28,7 @@
     kubevirt # virtctl
     pkgs-2505.kubernetes-helm
     fluxcd
-    argocd
+    # argocd
 
     ko # build go project to container image
   ];
