@@ -12,6 +12,8 @@ rec {
   genKubeVirtHostModule = import ./genKubeVirtHostModule.nix;
   genKubeVirtGuestModule = import ./genKubeVirtGuestModule.nix;
 
+  tools = import ./tools.nix;
+
   # use path relative to the root of the project
   relativeToRoot = lib.path.append ../.;
   mklinkRelativeToRoot =

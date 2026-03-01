@@ -583,7 +583,7 @@
   },
   "wallpaper": {
     "automationEnabled": true,
-    "directory": "/home/ryan/Pictures/Wallpapers",
+    "directory": "/home/nixos/Pictures/Wallpapers",
     "enableMultiMonitorDirectories": false,
     "enabled": true,
     "favorites": [],
