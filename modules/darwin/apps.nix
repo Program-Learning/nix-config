@@ -70,9 +70,6 @@ in
     nushell # my custom shell
     gnugrep # replacee macos's grep
     gnutar # replacee macos's tar
-
-    # darwin only apps
-    utm # virtual machine
   ];
   environment.variables = {
     # Fix https://github.com/LnL7/nix-darwin/wiki/Terminfo-issues
@@ -118,12 +115,6 @@ in
       Wechat = 836500024;
     };
 
-    taps = [
-      "hashicorp/tap"
-      "nikitabobko/tap" # aerospace - an i3-like tiling window manager for macOS
-      "FelixKratz/formulae" # janky borders - highlight active window borders
-    ];
-
     brews = [
       # `brew install`
       "wget" # download tool
@@ -148,8 +139,12 @@ in
 
       # misc that nix do not have cache for.
       "git-trim"
-      "terraform"
+      "hashicorp/tap/terraform"
       "terraformer"
+    ];
+
+    taps = [
+      "nikitabobko/tap" # aerospace - an i3-like tiling window manager for macOS
     ];
 
     # `brew install --cask`
@@ -160,12 +155,14 @@ in
 
       # code editor
       "visual-studio-code"
-      # "zed"
       "cursor" # cursor ai editor
 
-      "aerospace" # an i3-like tiling window manager for macOS
+      "nikitabobko/tap/aerospace" # an i3-like tiling window manager for macOS
       "ghostty" # terminal emulator
+
+      # container & vm
       "orbstack" # docker & docker compose
+      "utm" # vm
 
       # https://joplinapp.org/help/
       "joplin" # note taking app
@@ -181,21 +178,17 @@ in
       "qq"
       "qqmusic"
       # "discord" # update too frequently, use the web version instead
-      "microsoft-remote-desktop"
+      "windows-app"
       # "moonlight" # remote desktop client
       # "rustdesk" # meeting
       # "tencent-meeting"
       "zoom" # meeting
 
       # Misc
-      # "shadowsocksx-ng" # proxy tool
       "iina" # video player
-      # "raycast" # (HotKey: alt/option + space)search, calculate and run scripts(with many plugins)
       "stats" # beautiful system status monitor in menu bar
-      "jordanbaird-ice" # Powerful menu bar manager for macOS
 
       # "reaper"  # audio editor
-      # "sonic-pi" # music programming
       # "tencent-lemon" # macOS cleaner
       "neteasemusic" # music
       "blender@lts" # 3D creation suite
@@ -205,7 +198,6 @@ in
       "mitmproxy" # HTTP/HTTPS traffic inspector
       "insomnia" # REST client
       "wireshark-app" # network analyzer
-      # "jdk-mission-control" # Java Mission Control
       # "google-cloud-sdk" # Google Cloud SDK
       "miniforge" # Miniconda's community-driven distribution
 

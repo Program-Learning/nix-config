@@ -71,6 +71,11 @@ rec {
     ai = y9000p2025;
     wsl-y9000k2021h = y9000k2021h;
     wsl-y9000p2025 = y9000p2025;
+    # akane = {
+    #   # VM (running in macOS's UTM App), using DHCP instead of static ip.
+    #   iface = "enp0s1";
+    #   ipv4 = "192.168.64.2";
+    # };
     aquamarine = {
       # VM
       iface = "enp2s0";

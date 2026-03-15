@@ -77,14 +77,17 @@ in
       "/var/lib/waydroid"
 
       # network
-      "/var/lib/zerotier-one"
-      "/var/lib/tailscale"
-      "/var/lib/netbird-homelab" # netbird's homelab client
       "/var/lib/bluetooth"
       "/var/lib/NetworkManager"
       "/var/lib/iwd"
+      "/var/lib/tailscale"
+      "/var/lib/netbird-homelab" # netbird's homelab client
+      "/etc/netbird-homelab"
 
       # Mayuri spec
+
+      # zerotier
+      "/var/lib/zerotier-one"
 
       # alist
       "/var/lib/openlist"
@@ -141,6 +144,9 @@ in
         (makeDirRW "Videos")
         (makeDirRW "Templates")
 
+        # Keep .cache off tmpfs to avoid high RAM usage; many apps use it and it is storage-heavy.
+        ".cache"
+
         # ======================================
         # Codes / Work / Playground
         # ======================================
@@ -156,16 +162,13 @@ in
         ".local/state/home-manager"
         ".local/state/nix/profiles"
         ".local/share/nix"
-        ".cache/nix"
-        ".cache/nixpkgs-review"
 
         # ======================================
         # IDE / Editors
         # ======================================
 
-        # neovim plugins(wakatime & copilot)
+        # neovim plugins
         ".wakatime"
-        ".config/github-copilot"
 
         # vscode
         ".vscode"
@@ -178,18 +181,13 @@ in
         ".cursor"
         ".config/Cursor"
 
-        # zed editor
-        ".config/zed"
-        ".local/share/zed"
-
-        # google ai editor (antigravity)
-        ".config/Antigravity"
-        ".antigravity"
-
         # ai agents
-        ".claude"
         ".gemini"
-        ".openclaw"
+        ".codex"
+        ".config/opencode"
+        ".local/share/opencode"
+        ".kimi" # kimi-cli
+        ".context7" # up-to-date docs and code examples for for LLMs & agents
 
         # nvim
         ".local/share/nvim"
@@ -198,17 +196,12 @@ in
         # helix & steel
         ".local/share/steel"
 
-        # doom-emacs
-        # "org" # org files
-        # ".config/emacs"
-        # ".local/share/doom"
-        # ".local/share/emacs"
-
         # Joplin
         ".config/joplin" # tui client
         ".config/Joplin" # joplin-desktop
 
-        # ".local/share/jupyter"
+        ".local/share/jupyter"
+        ".ipython"
 
         # ======================================
         # Cloud Native
@@ -254,7 +247,6 @@ in
         ".local/bin"
         # python uv
         ".local/share/uv"
-        ".cache/uv"
 
         # ======================================
         # Security
@@ -328,9 +320,7 @@ in
         # ======================================
         ".mozilla"
         ".config/google-chrome"
-        ".cache/google-chrome"
         ".config/chromium"
-        ".cache/chromium"
         ".config/google-chrome-unstable"
         ".config/microsoft-edge"
 
@@ -341,7 +331,6 @@ in
         ".local/share/zoxide"
         ".local/share/direnv"
         ".local/share/k9s"
-        ".cache/tealdeer" # tldr
 
         # ======================================
         # Containers
@@ -373,13 +362,6 @@ in
         ".config/mozc" # used by fcitx5-mozc
 
         ".config/nushell"
-
-        # noctalia shell
-        ".cache/noctalia"
-
-        # AI
-        ".cache/modelscope"
-        ".cache/huggingface"
 
         # Mayuri Spec
 
@@ -532,10 +514,6 @@ in
           how = "symlink";
         }
         {
-          file = ".claude.json";
-          how = "bindmount";
-        }
-        {
           file = ".condarc";
           how = "symlink";
         }
@@ -575,7 +553,6 @@ in
     in
     {
       "/home/${username}/.config".d = permission;
-      "/home/${username}/.cache".d = permission;
       "/home/${username}/.local".d = permission;
       "/home/${username}/.local/share".d = permission;
       "/home/${username}/.local/state".d = permission;

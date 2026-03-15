@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, pkgs-latest, ... }:
 {
   home.packages = with pkgs; [
     # nix related
@@ -91,6 +91,7 @@
   # Additionally, it provides optional and fully encrypted
   # synchronisation of your history between machines, via an Atuin server.
   programs.atuin = {
+    # package = pkgs-latest.atuin;
     enable = true;
     enableBashIntegration = true;
     enableZshIntegration = true;
