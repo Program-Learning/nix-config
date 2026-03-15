@@ -187,7 +187,10 @@ in
     kdeconnect = lib.mkIf (!cfgGnomeWayland.enable) {
       enable = true;
       indicator = true;
-      # kdeconnect.package = pkgs.kdePackages.kdeconnect-kde;
+      # package = ;
     };
   };
+  imports = [
+    # ../gnome-wayland/values/gsconnect-conf-persistent.nix
+  ];
 }

@@ -16,9 +16,9 @@
     enable = true;
     user = "alist";
     group = "alist";
-    dataDir = "/var/lib/alist/data";
+    dataDir = "/var/lib/openlist/data";
     allowModify = true;
-    package = pkgs.alist;
+    package = pkgs.openlist;
     settings = {
       force = false;
       site_url = "";
@@ -34,7 +34,7 @@
         user = "";
         password = "";
         name = "";
-        db_file = "/var/lib/alist/data/data.db";
+        db_file = "/var/lib/openlist/data/data.db";
         table_prefix = "x_";
         ssl_mode = "";
         dsn = "";
@@ -54,12 +54,12 @@
         unix_file = "";
         unix_file_perm = "";
       };
-      temp_dir = "/var/lib/alist/data/temp";
-      bleve_dir = "/var/lib/alist/data/bleve";
+      temp_dir = "/var/lib/openlist/data/temp";
+      bleve_dir = "/var/lib/openlist/data/bleve";
       dist_dir = "";
       log = {
         enable = true;
-        name = "/var/lib/alist/data/log/log.log";
+        name = "/var/lib/openlist/data/log/log.log";
         max_size = 10;
         max_backups = 5;
         max_age = 28;
@@ -73,32 +73,32 @@
         download = {
           workers = 5;
           max_retry = 1;
-          task_persistant = false;
+          task_persistent = false;
         };
         transfer = {
           workers = 5;
           max_retry = 2;
-          task_persistant = false;
+          task_persistent = false;
         };
         upload = {
           workers = 5;
           max_retry = 0;
-          task_persistant = false;
+          task_persistent = false;
         };
         copy = {
           workers = 5;
           max_retry = 2;
-          task_persistant = false;
+          task_persistent = false;
         };
         decompress = {
           workers = 5;
           max_retry = 2;
-          task_persistant = false;
+          task_persistent = false;
         };
         decompress_upload = {
           workers = 5;
           max_retry = 2;
-          task_persistant = false;
+          task_persistent = false;
         };
         allow_retry_canceled = false;
       };

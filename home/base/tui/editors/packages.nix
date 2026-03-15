@@ -71,6 +71,12 @@
         buf # linting and formatting
       ]
       ++
+        #-*- devenv
+        [
+          devenv
+          act
+        ]
+      ++
         #-*- General Purpose Languages -*-#
         [
           #-- c/c++
@@ -189,6 +195,7 @@
         ]
       #-*- Web Development -*-#
       ++ [
+        yarn
         nodePackages.nodejs
         nodePackages.typescript
         nodePackages.typescript-language-server

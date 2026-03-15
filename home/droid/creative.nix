@@ -20,7 +20,7 @@
     sonic-pi # music programming
 
     # this app consumes a lot of storage, so do not install it currently
-    # kicad-unstable # 3d printing, eletrical engineering
+    # kicad-unstable # 3d printing, electrical engineering
     ngspice
     #digital # A digital logic designer and circuit simulator.
     logisim-evolution # Digital logic designer and simulator
@@ -31,7 +31,7 @@
   programs = {
     # live streaming
     obs-studio = {
-      enable = true;
+      enable = false;
       plugins = with pkgs; [
       ];
     };

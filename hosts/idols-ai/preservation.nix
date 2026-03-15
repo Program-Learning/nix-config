@@ -85,6 +85,9 @@ in
       "/var/lib/iwd"
 
       # Mayuri spec
+
+      # alist
+      "/var/lib/openlist"
       # daed
       "/etc/daed/"
 
@@ -388,6 +391,8 @@ in
         ".local/share/Google/"
 
         ".local/share/DBeaverData/"
+
+        ".local/share/authenticator/"
 
         (makeDirRW ".wine")
         (makeDirRW ".winboat")
