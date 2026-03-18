@@ -497,6 +497,12 @@
       url = "github:SaumonNet/proxmox-nixos";
     };
 
+    # noctalia-shell
+    noctalia-shell = {
+      url = "github:noctalia-dev/noctalia-shell/v4.6.7";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     Snowpkgs = {
       url = "github:Daru-san/Snowpkgs";
     };

@@ -4,13 +4,14 @@
   mylib,
   pkgs,
   pkgs-patched,
+  noctalia-shell,
   wallpapers,
   ...
 }:
 
 let
   cfgNiri = config.modules.desktop.niri;
-  package = pkgs-patched.noctalia-shell;
+  package = noctalia-shell.packages.${pkgs.system}.default;
   mklinkWallpaperPath =
     config: FilePath:
     if config.modules.mkOutOfStoreSymlink.enable then
