@@ -1,45 +1,39 @@
 {
   config,
-  myvars,
   ...
 }:
 {
-  # supported file systems, so we can mount any removable disks with these filesystems
-  boot.supportedFilesystems = [
-    # "cifs"
-    "davfs"
-    "ntfs"
-  ];
-
-  # mount windows disk
-  fileSystems."/run/media/${myvars.username}/windows" = {
-    device = "/dev/disk/by-uuid/7A66017F66013D7F";
-    fsType = "ntfs";
+  # enable davfs2 driver for webdav
+  services.davfs2 = {
+    enable = true;
+    # https://man.archlinux.org/man/davfs2.conf.5
+    settings = {
+      globalSection.use_locks = true;
+      sections = {
+        "/mnt/fileshare" = {
+          # try to get this information from all files in a directory with one PROPFIND request.
+          gui_optimize = true;
+        };
+      };
+    };
   };
-
-  # mount a smb/cifs share
-  # fileSystems."/home/${myvars.username}/SMB-Downloads" = {
-  #   device = "//windows-server-nas/Downloads";
-  #   fsType = "cifs";
-  #   options = [
-  #     # https://www.freedesktop.org/software/systemd/man/latest/systemd.mount.html
-  #     "nofail,_netdev"
-  #     "uid=1000,gid=100,dir_mode=0755,file_mode=0755"
-  #     "vers=3.0,credentials=${config.age.secrets.smb-credentials.path}"
-  #   ];
-  # };
 
   # mount a webdav share
   # https://wiki.archlinux.org/title/Davfs2
-  # fileSystems."/home/${myvars.username}/webdav-downloads" = {
-  #   device = "https://webdav.writefor.fun/Downloads";
-  #   fsType = "davfs";
-  #   options = [
-  #     # https://www.freedesktop.org/software/systemd/man/latest/systemd.mount.html
-  #     "nofail,_netdev"
-  #     "uid=1000,gid=100,dir_mode=0755,file_mode=0755"
-  #   ];
-  # };
+  fileSystems."/mnt/fileshare" = {
+    device = "https://webdav.writefor.fun/";
+    fsType = "davfs";
+    options = [
+      # https://www.freedesktop.org/software/systemd/man/latest/systemd.mount.html
+      "nofail"
+      "_netdev" # Wait for network
+      "rw"
+      "uid=1000,gid=100,dir_mode=0750,file_mode=0750"
+    ];
+  };
   # davfs2 reads its credentials from /etc/davfs2/secrets
-  # environment.etc."davfs2/secrets".source = config.age.secrets."davfs-secrets".path;
+  environment.etc."davfs2/secrets" = {
+    source = config.age.secrets."davfs-secrets".path;
+    mode = "0600";
+  };
 }

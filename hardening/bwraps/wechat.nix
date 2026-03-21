@@ -19,14 +19,14 @@ let
       version = "4.1.0.13";
       src = fetchurl {
         url = "https://dldir1v6.qq.com/weixin/Universal/Linux/WeChatLinux_arm64.AppImage";
-        hash = "sha256-o6a7773agYqrP4dXsjzSUT2Du77gZ4wN1F2e0uvEzVc=";
+        hash = "sha256-YlWJxT62tXDaNwYVpsPMC5elFH8fsbI1HjTQn6ePiPo=";
       };
     };
     x86_64-linux = {
       version = "4.1.0.13";
       src = fetchurl {
         url = "https://dldir1v6.qq.com/weixin/Universal/Linux/WeChatLinux_x86_64.AppImage";
-        hash = "sha256-Pfl81lNVlMJWyPqFli1Af2q8pRLujcKCjYoILCKDx8U=";
+        hash = "sha256-XxAvFnlljqurGPDgRr+DnuCKbdVvgXBPh02DLHY3Oz8=";
       };
     };
   };

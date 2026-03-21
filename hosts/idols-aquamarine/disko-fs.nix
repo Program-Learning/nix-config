@@ -1,10 +1,36 @@
-# auto disk partitioning:
-#   nix run github:nix-community/disko -- --mode disko ./disko-fs.nix
+# Auto disk partitioning (from repo root: nix-config):
+#   nix run github:nix-community/disko -- --mode destroy,format,mount hosts/idols-aquamarine/disko-fs.nix
+# Mount only (after first format):
+#   nix run github:nix-community/disko -- --mode mount hosts/idols-aquamarine/disko-fs.nix
 let
   cryptKeyFile = "/etc/agenix/hdd-luks-crypt-key";
   unlockDisk = "data-encrypted";
 in
 {
+  # Bind-mount a dedicated backing directory (/data-ro) onto /data as read-only.
+  # Using a separate source instead of a self-bind avoids the duplicate mount
+  # entries that a self-bind (device == mountpoint) would produce in lsblk.
+  # Disk subvolumes (/data/apps, /data/fileshare, …) are mounted on top by
+  # systemd automatically (path-hierarchy ordering).  If any subvolume fails
+  # (nofail), its subdirectory falls back to this read-only layer and ALL
+  # writes — including root — are rejected with EROFS.
+  fileSystems."/data" = {
+    device = "/data-ro";
+    fsType = "none";
+    options = [
+      "bind"
+      "ro"
+    ];
+  };
+
+  # Pre-create the backing directory and subvolume mountpoints on the root
+  # filesystem.  activation runs before sysinit.target (before all mount
+  # units), and writes to /data-ro (not the ro-mounted /data), so this is
+  # safe to re-run on nixos-rebuild switch.
+  system.activationScripts.data-ro-backing.text = ''
+    mkdir -p /data-ro/fileshare /data-ro/apps /data-ro/backups /data-ro/apps-snapshots
+  '';
+
   fileSystems."/data/fileshare/public".depends = [ "/data/fileshare" ];
 
   # By adding this crypttab entry, the disk will be unlocked by systemd-cryptsetup@xxx.service at boot time.

@@ -3,9 +3,8 @@
   config,
   mylib,
   pkgs,
-  pkgs-patched,
-  noctalia-shell,
   wallpapers,
+  noctalia-shell,
   ...
 }:
 

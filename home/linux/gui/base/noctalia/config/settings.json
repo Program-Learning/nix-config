@@ -50,7 +50,7 @@
     "fontScale": 1,
     "frameRadius": 12,
     "frameThickness": 8,
-    "hideOnOverview": false,
+    "hideOnOverview": true,
     "marginHorizontal": 5,
     "marginVertical": 5,
     "middleClickAction": "none",
@@ -241,10 +241,6 @@
       },
       {
         "enabled": true,
-        "id": "timer-card"
-      },
-      {
-        "enabled": true,
         "id": "weather-card"
       }
     ]
@@ -387,6 +383,7 @@
     "pinnedStatic": false,
     "position": "bottom",
     "showDockIndicator": false,
+    "showFrameIndicator": true,
     "showLauncherIcon": false,
     "sitOnFrame": false,
     "size": 1
@@ -594,6 +591,13 @@
         "countdownEnabled": true,
         "enabled": true,
         "keybind": "6"
+      },
+      {
+        "action": "rebootToUefi",
+        "command": "",
+        "countdownEnabled": true,
+        "enabled": true,
+        "keybind": ""
       }
     ],
     "showHeader": true,

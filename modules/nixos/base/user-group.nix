@@ -20,6 +20,9 @@
     plugdev = { };
     # misc
     uinput = { };
+    # shared group for services that read/write the same data directory
+    # (e.g. sftpgo + transmission on aquamarine)
+    fileshare = { };
   };
 
   users.users."${myvars.username}" = {
@@ -37,6 +40,8 @@
       "wireshark"
       "adbusers" # android debugging
       "libvirtd" # virt-viewer / qemu
+      "fileshare"
+
       "disk"
       "vboxusers"
       "kvm"

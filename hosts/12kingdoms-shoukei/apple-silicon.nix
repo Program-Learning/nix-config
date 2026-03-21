@@ -10,6 +10,10 @@
     nixos-apple-silicon.nixosModules.default
   ];
 
+  # NOTE:macbook do not have a tpm2 device for luks auto unlock
+  # we have to enter the luks passphrase on boot, so remove login manager here to reduce the pain.
+  services.greetd.settings.default_session.command = lib.mkForce "$HOME/.wayland-session";
+
   zramSwap.memoryPercent = lib.mkForce 75;
 
   nix.settings = {
@@ -59,12 +63,12 @@
     powerKeyLongPress = "poweroff";
   };
   systemd.targets.sleep.enable = true;
-  systemd.sleep.extraConfig = ''
-    AllowSuspend=yes
-    AllowHibernate=no
-    AllowSuspendThenHibernate=no
-    HibernateDelaySec=5min
-  '';
+  systemd.sleep.settings.Sleep = {
+    AllowSuspend = "yes";
+    AllowHibernate = "no";
+    AllowSuspendThenHibernate = "no";
+    HibernateDelaySec = "5min";
+  };
 
   # After adding this snippet, you need to restart the system for the touchbar to work.
   hardware.apple.touchBar = {

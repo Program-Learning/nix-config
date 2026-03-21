@@ -53,6 +53,9 @@ in
 
       "/var/log"
 
+      # preserve davfs2 driver's cache to avoid large memory usage
+      "/var/cache/davfs2"
+
       # system-core
       "/var/lib/nixos"
       "/var/lib/systemd"
@@ -135,14 +138,15 @@ in
         # XDG Directories
         # ======================================
 
-        (makeDirRW "Desktop")
-        (makeDirRW ".gnome")
-        (makeDirRW "Downloads")
-        (makeDirRW "Music")
-        (makeDirRW "Pictures")
-        (makeDirRW "Documents")
-        (makeDirRW "Videos")
-        (makeDirRW "Templates")
+        "Desktop"
+        "Downloads"
+        "Music"
+        "Pictures"
+        "Documents"
+        "Videos"
+        "Templates"
+
+        ".gnome"
 
         # Keep .cache off tmpfs to avoid high RAM usage; many apps use it and it is storage-heavy.
         ".cache"
@@ -182,6 +186,7 @@ in
         ".config/Cursor"
 
         # ai agents
+        ".agents" # skills for all agents
         ".gemini"
         ".codex"
         ".config/opencode"

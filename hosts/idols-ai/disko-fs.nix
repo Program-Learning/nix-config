@@ -1,12 +1,12 @@
 # Disko layout for idols-ai on nvme1n1 (target disk after migration).
 # Same structure as current nvme0n1: ESP + LUKS + btrfs with ephemeral root (tmpfs).
 #
-# Format & mount (from installer or live system):
-#   nix run github:nix-community/disko -- --mode disko ./disko-fs.nix
+# Destroy, format & mount (wipes disk; from nixos-installer: cd nix-config/nixos-installer):
+#   nix run github:nix-community/disko -- --mode destroy,format,mount ../hosts/idols-ai/disko-fs.nix
 # Mount only (after first format):
-#   nix run github:nix-community/disko -- --mode mount ./disko-fs.nix
+#   nix run github:nix-community/disko -- --mode mount ../hosts/idols-ai/disko-fs.nix
 #
-# Use by-id for stability; override device when installing, e.g.:
+# Override device when installing, e.g.:
 #   nixos-install --flake .#ai --option disko.devices.disk.nixos-ai.device /dev/nvme1n1
 {
   # Ephemeral root; preservation mounts /persistent for state.
@@ -17,6 +17,7 @@
     nodev."/" = {
       fsType = "tmpfs";
       mountOptions = [
+        "size=4G"
         "relatime" # Update inode access times relative to modify/change time
         "mode=755"
       ];
@@ -24,8 +25,7 @@
 
     disk.nixos-ai = {
       type = "disk";
-      # Override at install time if needed: --option disko.devices.disk.nixos-ai.device /dev/nvme1n1
-      device = "/dev/nvme0n1";
+      device = "/dev/disk/by-id/nvme-ZHITAI_TiPlus7100_2TB_ZTA42T0BA233530VAL";
       content = {
         type = "gpt";
         partitions = {

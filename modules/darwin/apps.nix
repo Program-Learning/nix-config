@@ -156,12 +156,12 @@ in
       # code editor
       "visual-studio-code"
       "cursor" # cursor ai editor
+      "claude-code"
 
       "nikitabobko/tap/aerospace" # an i3-like tiling window manager for macOS
       "ghostty" # terminal emulator
 
       # container & vm
-      "orbstack" # docker & docker compose
       "utm" # vm
 
       # https://joplinapp.org/help/

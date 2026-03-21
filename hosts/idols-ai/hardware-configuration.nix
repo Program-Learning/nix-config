@@ -75,6 +75,27 @@ in
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
+  boot.kernelParams = [
+    # === NVMe SSD Timeout / Freeze Fix for Linux ===
+    # https://community.frame.work/t/nvme-timeout-woes/54999
+
+    "nvme_core.default_ps_max_latency_us=0"
+    # Explanation: Completely disables NVMe Autonomous Power State Transition (APST)
+    # Why: Your drive enters deep sleep states during high load. Wake-up latency is too slow (>30 ms),
+    # causing the kernel to think the command timed out.
+    # Setting it to 0 = never let the drive sleep → root-cause fix for "freezes during big reads/writes"
+
+    "nvme_core.io_timeout=4294967295"
+    # Explanation: Increases the kernel's NVMe command timeout to the maximum possible value (~49 days)
+    # Why: Linux default is only 30 seconds, after which it aborts the request and resets the controller.
+    # This makes the kernel "patient" so even if the drive is momentarily slow, it won't crash/reset.
+
+    "pcie_aspm=off"
+    # Explanation: Fully disables PCIe Active State Power Management (link power saving)
+    # Why: The PCIe link dropping into L1/L1.2 low-power states is the #1 cause of NVMe timeouts on Linux.
+    # Turning it off keeps the link at full speed at all times → eliminates "Link is Down" + timeout errors.
+  ];
+
   # Use the EFI boot loader.
   boot.loader.efi.canTouchEfiVariables = true;
   # depending on how you configured your disk mounts, change this to /boot or /boot/efi.
@@ -105,7 +126,8 @@ in
   # );
 
   # https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/top-level/linux-kernels.nix
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_6_18; # 6.19 works not well with nvidia driver
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
   # boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
   # boot.kernelPackages = pkgs.linuxPackages_cachyos;
   # services.scx.enable = true;
@@ -181,6 +203,12 @@ in
   # LUKS initrd, all fileSystems (/, /boot, /btr_pool, /nix, /gnu, /persistent, /snapshots, /tmp, /swap)
   # and swap (including /swap/swapfile bind and swapDevices) are managed by disko (disko-fs.nix).
 
+  # mount windows disk
+  fileSystems."/run/media/${myvars.username}/windows" = {
+    device = "/dev/disk/by-uuid/7A66017F66013D7F";
+    fsType = "ntfs";
+  };
+
   features.lenovo-legion = {
     enable = true;
     enhanceMode = true;
@@ -200,6 +228,6 @@ in
   # networking.interfaces.wlo1.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+  powerManagement.cpuFreqGovernor = lib.mkDefault "performance"; # ondemand / powersave / performance
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

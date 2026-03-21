@@ -75,11 +75,11 @@ in
       ])
       ++ (with pkgs-x64; [
         # a game launcher - great for epic games and gog games
-        (heroic.override {
-          extraPkgs = _pkgs: [
-            pkgs.gamescope # aarch64
-          ];
-        })
+        # (heroic.override {
+        #   extraPkgs = _pkgs: [
+        #     pkgs.gamescope # aarch64
+        #   ];
+        # })
       ]);
 
     # a GUI game launcher for Steam/GoG/Epic
@@ -91,7 +91,6 @@ in
       protonPackages = [ pkgs-x64.proton-ge-bin ];
       winePackages = with pkgs-x64; [
         wineWow64Packages.full
-        wineWowPackages.stagingFull
       ];
       extraPackages = with pkgs; [
         winetricks
