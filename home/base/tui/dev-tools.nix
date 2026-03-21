@@ -70,7 +70,7 @@
 
     # git related
     pre-commit
-    pkgs-stable.commitizen # Tool to create committing rules for projects, auto bump versions, and generate changelogs
+    # commitizen # Tool to create committing rules for projects, auto bump versions, and generate changelogs
   ];
 
   programs = {

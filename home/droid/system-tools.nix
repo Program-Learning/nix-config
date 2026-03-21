@@ -36,7 +36,8 @@
     hdparm # for disk performance, command
     #dmidecode # a tool that reads information about your system's hardware from the BIOS according to the SMBIOS/DMI standard
 
-    neofetch
+    # 'neofetch' has been removed because it is unmaintained upstream.
+    # neofetch
     fastfetch
     ranger # terminal file manager(batteries included, with image preview support)
 

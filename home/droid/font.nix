@@ -39,11 +39,11 @@
     # dejavu_fonts
     # vista-fonts-chs # ms yahei
     # Maple Mono (Ligature TTF unhinted)
-    pkgs-latest.maple-mono.truetype
+    maple-mono.truetype
     # Maple Mono NF (Ligature unhinted)
-    pkgs-latest.maple-mono.NF-unhinted
+    maple-mono.NF-unhinted
     # Maple Mono NF CN (Ligature unhinted)
-    pkgs-latest.maple-mono.NF-CN-unhinted
+    maple-mono.NF-CN-unhinted
   ];
 
   fonts.fontconfig.enable = true;

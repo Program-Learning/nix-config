@@ -18,7 +18,8 @@ in
     patch
     direnv
 
-    neofetch
+    # 'neofetch' has been removed because it is unmaintained upstream.
+    # neofetch
     fastfetch
     openssh
     curl

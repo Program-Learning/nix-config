@@ -7,7 +7,8 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    neofetch
+    # 'neofetch' has been removed because it is unmaintained upstream.
+    # neofetch
     inxi
     python311Packages.gpustat
     cpu-x

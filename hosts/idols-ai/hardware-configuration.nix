@@ -6,6 +6,7 @@
   lib,
   pkgs,
   pkgs-latest,
+  myvars,
   modulesPath,
   ...
 }:

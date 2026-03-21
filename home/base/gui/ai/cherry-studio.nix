@@ -7,6 +7,6 @@
 }:
 {
   home.packages = [
-    pkgs-latest.cherry-studio
+    pkgs.cherry-studio
   ];
 }
