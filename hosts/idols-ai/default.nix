@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  disko,
   myvars,
   nur-DataEraserC,
   nixGL,
@@ -23,6 +24,8 @@ let
 in
 rec {
   imports = [
+    disko.nixosModules.default
+    ./disko-fs.nix
     ./netdev-mount.nix
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -32,7 +35,7 @@ rec {
     ./preservation.nix
     ./impermanence_addon.nix
     ./secureboot.nix
-    ./tpm_luks.nix
+    # ./tpm_luks.nix
     ./dae.nix
   ];
 

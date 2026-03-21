@@ -7,6 +7,7 @@
 with lib;
 let
   cfg = config.modules.desktop.rootfs;
+  diskoEnabled = config.disko ? devices;
 in
 {
   options.modules.desktop.rootfs = {
@@ -42,40 +43,61 @@ in
 
   config = {
     assertions = [
-      # Not strictly required but probably a good assertion to have
       {
-        assertion = cfg.fsType == "btrfs" && cfg.btrfsBlockDevice == "";
-        message = "cfg.fsType == btrfs requires cfg.btrfsBlockDevice not empty";
+        assertion = cfg.fsType == "btrfs" -> cfg.btrfsBlockDevice != "";
+        message = "fsType=btrfs requires btrfsBlockDevice to be set";
       }
     ];
   }
   // mkMerge [
-    (mkIf (cfg.fsType == "tmpfs") {
-      # equal to `mount -t tmpfs tmpfs /`
+    # TMPFS SUPPORT
+    (mkIf (cfg.fsType == "tmpfs" && !diskoEnabled) {
       fileSystems."/" = {
         device = "tmpfs";
         fsType = "tmpfs";
-        # set mode to 755, otherwise systemd will set it to 777, which cause problems.
-        # relatime: Update inode access times relative to modify or change time.
         options = [
           "relatime"
           "mode=755"
         ];
       };
     })
-    (mkIf (cfg.fsType == "btrfs" && cfg.btrfsBlockDevice != "") {
-      fileSystems."/" = {
+
+    (mkIf (cfg.fsType == "tmpfs" && diskoEnabled) {
+      disko.devices.nodev."/" = lib.mkDefault {
+        fsType = "tmpfs";
+        mountOptions = [
+          "relatime" # Update inode access times relative to modify/change time
+          "mode=755"
+        ];
+      };
+    })
+
+    # BTRFS SUPPORT
+    (mkIf (cfg.fsType == "btrfs" && !diskoEnabled) {
+      fileSystems."/" = lib.mkForce {
         device = cfg.btrfsBlockDevice;
         fsType = "btrfs";
         options = [ "subvol=root" ];
       };
+    })
 
-      # Conditional btrfs management based on boot.initrd.systemd.enable
-      boot.initrd.systemd.services.impermanence-setup = lib.mkIf config.boot.initrd.systemd.enable {
+    (mkIf (cfg.fsType == "btrfs" && diskoEnabled) {
+      # disko.devices.nodev."/" = lib.mkForce {
+      #   fsType = "btrfs";
+      #   mountOptions = [ "subvol=root" ];
+      # };
+      fileSystems."/" = lib.mkForce {
+        device = cfg.btrfsBlockDevice;
+        fsType = "btrfs";
+        options = [ "subvol=root" ];
+      };
+    })
+
+    (mkIf (cfg.fsType == "btrfs" && config.boot.initrd.systemd.enable) {
+      boot.initrd.systemd.services.impermanence-setup = lib.mkForce {
         description = "Impermanence setup for btrfs root subvolume";
         wantedBy = [ "initrd.target" ];
         before = [ "initrd.target" ];
-        unitConfig.RequiresMountsFor = [ "/" ];
         serviceConfig.Type = "oneshot";
         script = ''
           mkdir -p /btrfs_tmp
@@ -104,8 +126,9 @@ in
           umount /btrfs_tmp
         '';
       };
-
-      boot.initrd.postDeviceCommands = lib.mkIf (!config.boot.initrd.systemd.enable) (
+    })
+    (mkIf (cfg.fsType == "btrfs" && !config.boot.initrd.systemd.enable) {
+      boot.initrd.postDeviceCommands = (
         lib.mkAfter ''
           mkdir -p /btrfs_tmp
           mount ${cfg.btrfsBlockDevice} /btrfs_tmp
@@ -134,6 +157,5 @@ in
         ''
       );
     })
-    # You can add more filesystem types here as needed
   ];
 }
