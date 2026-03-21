@@ -30,6 +30,7 @@
     nmon
     sysbench
     systemctl-tui
+    pv # pipe view
 
     # system tools
     psmisc # killall/pstree/prtstat/fuser/...
@@ -41,6 +42,9 @@
     hdparm # for disk performance, command
     dmidecode # a tool that reads information about your system's hardware from the BIOS according to the SMBIOS/DMI standard
     parted
+    smartmontools # smartctl -a /dev/nvme0n1
+    nvme-cli
+
     fh.packages.${system}.default
   ];
 
