@@ -109,7 +109,7 @@ in
   boot.loader.systemd-boot.windows = {
     "nvme1n1p1" = {
       title = "Windows 11";
-      efiDeviceHandle = "HD2b";
+      efiDeviceHandle = "HD1b";
     };
   };
   # NOTE: manual configuration example
@@ -122,7 +122,7 @@ in
 
   # boot.loader.systemd-boot.extraFiles."windows.nsh" = (
   #   pkgs.writeText "windows.nsh" ''
-  #     HD2b:EFI\Microsoft\Boot\Bootmgfw.efi
+  #     HD1b:EFI\Microsoft\Boot\Bootmgfw.efi
   #   ''
   # );
 
