@@ -225,6 +225,7 @@
         nodePackages.prettier # common code formatter
         fzf
         gdu # disk usage analyzer, required by AstroNvim
+        nix-du
         bottom # graphical process/system monitor, required by AstroNvim
         (ripgrep.override { withPCRE2 = true; }) # recursively searches directories for a regex pattern
       ]
