@@ -155,8 +155,6 @@ in
 
       # code editor
       "visual-studio-code"
-      "cursor" # cursor ai editor
-      "claude-code"
 
       "nikitabobko/tap/aerospace" # an i3-like tiling window manager for macOS
       "ghostty" # terminal emulator
@@ -168,7 +166,7 @@ in
       "joplin" # note taking app
 
       "tailscale-app" # tailscale macos app (with gui)
-      "netbirdio/tap/netbird-ui" # netbird gui app
+      # "netbirdio/tap/netbird-ui" # netbird gui app
 
       # AI
       "lm-studio"

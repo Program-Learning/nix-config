@@ -181,16 +181,20 @@ in
         ".config/Code - Insiders"
         ".config/vscode-sqltools"
 
-        # cursor ai editor
+        # cursor ai editor / cli
         ".cursor"
+        ".config/cursor"
         ".config/Cursor"
 
         # ai agents
         ".agents" # skills for all agents
+        ".config/agents"
+        ".claude"
         ".gemini"
         ".codex"
         ".config/opencode"
         ".local/share/opencode"
+        ".local/state/opencode"
         ".kimi" # kimi-cli
         ".context7" # up-to-date docs and code examples for for LLMs & agents
 
@@ -517,6 +521,10 @@ in
         {
           file = ".config/zoom.conf";
           how = "symlink";
+        }
+        {
+          file = ".claude.json";
+          how = "bindmount";
         }
         {
           file = ".condarc";

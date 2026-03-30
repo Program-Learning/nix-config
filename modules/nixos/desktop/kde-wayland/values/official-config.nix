@@ -1,9 +1,18 @@
 { lib, ... }:
 {
-  services.xserver.enable = true;
-  services.displayManager.sddm.enable = true;
+  # Enable Plasma
   services.desktopManager.plasma6.enable = true;
-  services.displayManager.defaultSession = "plasma";
-  services.displayManager.sddm.wayland.enable = true;
-  programs.seahorse.enable = lib.mkForce false;
+
+  # Default display manager for Plasma
+  services.displayManager.sddm = {
+    enable = true;
+
+    # To use Wayland (Experimental for SDDM)
+    wayland.enable = true;
+  };
+
+  # Optionally enable xserver
+  services.xserver.enable = true;
+
+  programs.seahorse.enable = false;
 }

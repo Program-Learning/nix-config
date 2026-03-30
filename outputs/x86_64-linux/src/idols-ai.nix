@@ -68,12 +68,9 @@ let
         }
       ];
     home-modules =
-      (map mylib.relativeToRoot [
-        # common
-        "home/linux/gui.nix"
-        # host specific
-        "hosts/idols-${name}/home.nix"
-      ])
+      map mylib.relativeToRoot [
+        "home/hosts/linux/idols-${name}.nix"
+      ]
       ++ [
         {
           modules.mkOutOfStoreSymlink.enable = true;
@@ -92,10 +89,7 @@ let
       }
     ]
     ++ base-modules.nixos-modules;
-    home-modules = [
-      { modules.desktop.niri.enable = true; }
-    ]
-    ++ base-modules.home-modules;
+    home-modules = base-modules.home-modules;
   };
 
   modules-gnome-wayland = {

@@ -1,5 +1,6 @@
 {
   pkgs,
+  pkgs-patched,
   pkgs-stable,
   nur-DataEraserC,
   ...
@@ -36,7 +37,7 @@
 
     # ai related
     python313Packages.huggingface-hub # huggingface-cli
-    python313Packages.modelscope
+    pkgs-patched.python313Packages.modelscope
     yt-dlp # youtube/bilibili/soundcloud/... video/music downloader
 
     # misc

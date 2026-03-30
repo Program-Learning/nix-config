@@ -28,12 +28,12 @@
 #
 # =============================================================
 {
-  services.netbird.useRoutingFeatures = "client";
-  services.netbird.clients.homelab = {
-    port = 51820;
-    name = "homelab";
-    interface = "netbird-homelab";
-    hardened = true;
-    autoStart = true;
-  };
+  # services.netbird.useRoutingFeatures = "client";
+  # services.netbird.clients.homelab = {
+  #   port = 51820;
+  #   name = "homelab";
+  #   interface = "netbird-homelab";
+  #   hardened = true;
+  #   autoStart = true;
+  # };
 }

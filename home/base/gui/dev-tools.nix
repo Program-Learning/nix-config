@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  pkgs-master,
   nur-DataEraserC,
   nix-jetbrains-plugins,
   ...
@@ -108,19 +109,8 @@ in
 
       mitmproxy # http/https proxy tool
       wireshark # network analyzer
-
-      # IDEs
-      # jetbrains.idea-community
-
-      # AI cli tools
-      k8sgpt
-      kubectl-ai # an ai helper opensourced by google
-
-      mqttx
+      # mqttx # MQTT client
     ]
-    ++ (lib.optionals pkgs.stdenv.isx86_64 [
-      insomnia # REST client
-    ])
     ++ (with nix-jetbrains-plugins.lib; [
       (buildIdeWithPlugins pkgs "idea-oss" (genJetbrainsPluginList jetbrainsPluginList "idea-oss"))
 
@@ -152,7 +142,17 @@ in
       #   (postFixUpPatchFunction "clion/bin" "clion64.vmoptions"))
       # eclipses.eclipse-sdk
       # eclipses.eclipse-jee
+    ])
+    # AI Agent Tools
+    ++ (with pkgs-master; [
+      codex
+      cursor-cli
+      claude-code
+      gemini-cli
+      opencode
     ]);
+
+  # add jetbra vmoptions for jetbrains products, such as idea, pycharm, clion, etc.
   xdg.configFile."JetBrains/IntelliJIdea${getMajorMinorVersion pkgs.jetbrains.idea.version}/idea64.vmoptions".text =
     vmoptions;
   xdg.configFile."JetBrains/PyCharm${getMajorMinorVersion pkgs.jetbrains.pycharm.version}/pycharm64.vmoptions".text =

@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ lib, pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
     novnc # vnc client webui

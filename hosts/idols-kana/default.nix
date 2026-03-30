@@ -18,6 +18,7 @@ in
 {
   imports = [
     ../idols-ruby/packages.nix
+    ../idols-ruby/oci-containers
   ];
 
   # supported file systems, so we can mount any removable disks with these filesystems
@@ -50,7 +51,8 @@ in
     matchConfig.Name = [ iface ];
     networkConfig = {
       Address = [ ipv4WithMask ];
-      DNS = nameservers;
+      # DNS = nameservers;
+      DNS = [ proxyGateway ];
       DHCP = "ipv6"; # enable DHCPv6 only, so we can get a GUA.
       IPv6AcceptRA = true; # for Stateless IPv6 Autoconfiguraton (SLAAC)
       LinkLocalAddressing = "ipv6";

@@ -70,7 +70,7 @@
     # nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # nixpkgs with some custom patches
-    nixpkgs-patched.url = "github:ryan4yin/nixpkgs/nixos-unstable";
+    nixpkgs-patched.url = "github:ryan4yin/nixpkgs/nixos-unstable-patched";
     # get some latest packages from the master branch
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
 
