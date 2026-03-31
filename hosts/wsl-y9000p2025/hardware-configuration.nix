@@ -44,6 +44,7 @@
   environment.systemPackages = with pkgs; [
     # for mount luks disk from nixos
     cryptsetup
+    disko
   ];
   programs.nix-ld.enable = lib.mkForce true;
   # environment.variables = {

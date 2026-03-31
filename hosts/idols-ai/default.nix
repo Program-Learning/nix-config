@@ -36,7 +36,6 @@ rec {
     ./ai
 
     ./preservation.nix
-    ./impermanence_addon.nix
     ./secureboot.nix
     # ./tpm_luks.nix
     ./dae.nix
