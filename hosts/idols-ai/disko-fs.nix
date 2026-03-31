@@ -132,11 +132,11 @@
   imports = [
     ./impermanence_addon.nix
   ];
-  modules.desktop.rootfs.fsType = "btrfs";
-  # modules.desktop.rootfs.btrfsBlockDevice = "/dev/disk/by-uuid/17df699e-6502-4205-955f-c456eb378d48";
-  modules.desktop.rootfs.btrfsBlockDevice = "/dev/mapper/nixos-luks";
-  modules.desktop.rootfs.retentionPeriod = 7;
-  modules.desktop.rootfs.preBackupCommand = ''
+  modules.desktop.impermanence-rootfs.fsType = "btrfs";
+  # modules.desktop.impermanence-rootfs.btrfsBlockDevice = "/dev/disk/by-uuid/17df699e-6502-4205-955f-c456eb378d48";
+  modules.desktop.impermanence-rootfs.btrfsBlockDevice = "/dev/mapper/nixos-luks";
+  modules.desktop.impermanence-rootfs.retentionPeriod = 7;
+  modules.desktop.impermanence-rootfs.preBackupCommand = ''
     [ -d /btrfs_tmp/root/etc/agenix ] && rm -rf /btrfs_tmp/root/etc/agenix || true
   '';
 }

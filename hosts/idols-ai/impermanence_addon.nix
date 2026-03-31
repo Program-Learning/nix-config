@@ -6,11 +6,11 @@
 }:
 with lib;
 let
-  cfg = config.modules.desktop.rootfs;
+  cfg = config.modules.desktop.impermanence-rootfs;
   diskoEnabled = config.disko ? devices;
 in
 {
-  options.modules.desktop.rootfs = {
+  options.modules.desktop.impermanence-rootfs = {
     fsType = mkOption {
       type = types.enum [
         "tmpfs"
@@ -73,7 +73,7 @@ in
     })
 
     (mkIf (cfg.fsType == "tmpfs" && diskoEnabled) {
-      disko.devices.nodev."/" = lib.mkDefault {
+      disko.devices.nodev."/" = lib.mkForce {
         fsType = "tmpfs";
         mountOptions = [
           "relatime" # Update inode access times relative to modify/change time
