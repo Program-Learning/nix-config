@@ -8,7 +8,7 @@
   ],
   "states": {
     "ip-monitor": {
-      "enabled": false,
+      "enabled": true,
       "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"
     },
     "keybind-cheatsheet": {
