@@ -205,6 +205,7 @@ rec {
         type = "basic";
       }
     ];
+    extraHosts = myvars.networking.genericHosts;
   };
   # systemd.network.networks."10-${iface}" = {
   #   matchConfig.Name = [ iface ];
