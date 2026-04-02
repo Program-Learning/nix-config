@@ -248,18 +248,18 @@ rec {
         };
   };
   genericHosts = ''
-    155.248.179.129 oracle_ubuntu_1
+    155.248.179.129 oracle_ubuntu_1.mayuri.org
 
-    10.147.20.151 mondrian_android_cli_zerotier
-    100.95.92.151 mondrian_android_cli_tailscale
+    10.147.20.151 mondrian_android_cli_zerotier.mayuri.org
+    100.95.92.151 mondrian_android_cli_tailscale.mayuri.org
 
-    10.147.20.153 pstar_android_cli_zerotier
-    100.95.92.153 pstar_android_cli_tailscale
+    10.147.20.153 pstar_android_cli_zerotier.mayuri.org
+    100.95.92.153 pstar_android_cli_tailscale.mayuri.org
 
-    10.147.20.154 infiniti_android_cli_zerotier
-    100.95.92.154 infiniti_android_cli_tailscale
+    10.147.20.154 infiniti_android_cli_zerotier.mayuri.org
+    100.95.92.154 infiniti_android_cli_tailscale.mayuri.org
 
-    10.147.20.150 y9000p2025_nixos_zerotier
-    100.95.92.150 y9000p2025_nixos_tailscale
+    10.147.20.150 y9000p2025_nixos_zerotier.mayuri.org
+    100.95.92.150 y9000p2025_nixos_tailscale.mayuri.org
   '';
 }
