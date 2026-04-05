@@ -470,7 +470,7 @@
     "resumeScreenOffCommand": "",
     "resumeSuspendCommand": "",
     "screenOffCommand": "",
-    "screenOffTimeout": 600,
+    "screenOffTimeout": 120,
     "suspendCommand": "",
     "suspendTimeout": 1800
   },
@@ -610,6 +610,13 @@
         "command": "",
         "countdownEnabled": true,
         "enabled": true,
+        "keybind": "7"
+      },
+      {
+        "action": "userspaceReboot",
+        "command": "",
+        "countdownEnabled": true,
+        "enabled": false,
         "keybind": ""
       }
     ],
