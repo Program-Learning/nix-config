@@ -14,5 +14,5 @@ lib.mkIf cfgNiri.enable {
     mkSymlink config "home/linux/gui/base/hypridle/hypridle.conf";
 
   # Hyprland idle daemon
-  services.hypridle.enable = true;
+  services.hypridle.enable = false;
 }
