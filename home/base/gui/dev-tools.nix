@@ -4,6 +4,7 @@
   pkgs-master,
   nur-DataEraserC,
   nix-jetbrains-plugins,
+  llm-agents,
   ...
 }:
 let
@@ -144,12 +145,16 @@ in
       # eclipses.eclipse-jee
     ])
     # AI Agent Tools
-    ++ (with pkgs-master; [
+    ++ (with llm-agents.packages.${pkgs.stdenv.hostPlatform.system}; [
+      # Agents
       codex
       cursor-cli
       claude-code
       gemini-cli
       opencode
+
+      # Utilities
+      rtk # CLI proxy that reduces LLM token consumption
     ]);
 
   # add jetbra vmoptions for jetbrains products, such as idea, pycharm, clion, etc.

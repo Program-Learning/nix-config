@@ -16,11 +16,12 @@
   nixConfig = {
     # substituers will be appended to the default substituters when fetching packages
     extra-substituters = [
-      "https://anyrun.cachix.org"
-      "https://hyprland.cachix.org"
+      "https://cache.numtide.com"
       # "https://nix-gaming.cachix.org"
       "https://nixpkgs-wayland.cachix.org"
       "https://install.determinate.systems"
+
+      # Add by Mayuri
       "https://ezkea.cachix.org"
       "https://dataeraserc.cachix.org"
       "https://program-learning.cachix.org"
@@ -28,22 +29,26 @@
 
       "https://cache.garnix.io"
 
+      "https://anyrun.cachix.org"
+
       "https://snowy-cache.cachix.org"
 
       # "https://cache.saumon.network/proxmox-nixos"
     ];
     extra-trusted-public-keys = [
-      "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
-      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+      "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
       # "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
       "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
       "cache.flakehub.com-3:hJuILl5sVK4iKm86JzgdXW12Y2Hwd5G07qKtHTOcDCM="
+
       "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI="
       "dataeraserc.cachix.org-1:t0lYPod3nkn0ijiOzjwT57MmBDeJnxVurvV8ZdPpIHo="
       "program-learning.cachix.org-1:Pfl2r+J5L9wJqpDnop6iQbrR3/Ts4AUyotu89INRlSU="
       "nykma.cachix.org-1:z04hZH9YnR1B2lpLperwiazdkaT5yczgOPa1p/NHqK4="
 
       "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
+
+      "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
 
       "snowy-cache.cachix.org-1:okWl5IF/yzdZ+p/eRhDFvcanQo/y0ta80dvfdGgy28U="
 
@@ -174,6 +179,9 @@
       url = "github:mattwparas/helix/steel-event-system";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # AI coding agents
+    llm-agents.url = "github:numtide/llm-agents.nix";
 
     # -------------- Gaming ---------------------
 
