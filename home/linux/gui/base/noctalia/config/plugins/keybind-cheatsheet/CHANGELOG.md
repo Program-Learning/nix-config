@@ -1,8 +1,73 @@
 # Changelog
 
+## [3.4.0] - 2026-04-07
+
+### Bug Fixes
+
+**Settings unreachable from panel button**
+
+- Fixed critical bug where clicking the settings button (top-right of the keybind panel) blocked all
+  input in the settings window
+- The panel now closes before opening settings, preventing the open panel from intercepting mouse
+  events
+- Reported by Discord users: editing width/height was impossible when settings were opened this way
+
+**Settings not saved when opened from panel**
+
+- Fixed settings changes being silently discarded when the settings window was opened via the panel
+  button
+- `saveSettings()` was declared on an inner `ColumnLayout` instead of the root `Item`, making it
+  invisible to the Noctalia shell
+- With the previous direct-mutation approach this went unnoticed; after switching to the edit-copy
+  pattern saves now work correctly from all entry points
+
+### Code Quality
+
+**Settings: edit-copy pattern**
+
+- Replaced direct `pluginSettings` mutation in `onTextChanged` handlers with proper edit-copy
+  properties (`editWindowWidth`, `editWindowHeight`, `editAutoHeight`, `editColumnCount`,
+  `editModKeyVariable`, `editHyprlandConfigPath`, `editNiriConfigPath`)
+- Changes are committed to `pluginSettings` only when the user clicks Save, matching Noctalia plugin
+  conventions
+
+**i18n: corrected structure**
+
+- Removed `"keybind-cheatsheet"` top-level wrapper from all 20 language JSON files
+- Removed `"keybind-cheatsheet."` prefix from all 50 `tr()` calls across all QML files
+- Structure now matches the Noctalia plugin i18n specification
+
+**Removed dead code**
+
+- Deleted unused `parseNiriConfig()` function (118 lines) superseded by `parseNiriFileContent()` in
+  v3.1.0
+
+**Shell injection hardening**
+
+- Glob expansion in config path resolution now passes user-provided patterns as positional shell
+  arguments (`$1`) instead of string-concatenating them into the shell command, preventing potential
+  injection via crafted config path values
+
+**resizeTimer: semantic popup detection**
+
+- Replaced fragile `toString()` string matching (`"Popup_QMLTYPE"`, `"NPluginSettingsPopup"`) with a
+  semantic check (`typeof obj.modal === "boolean"`) that works with any QML `Popup` subclass
+
+**Named key badge colors**
+
+- Extracted hardcoded hex colors in `getKeyColor()` into named `readonly property color` constants
+  (`keyColorAlt`, `keyColorXF86`, `keyColorPrint`, `keyColorNumeric`, `keyColorMouse`)
+
+### Manifest
+
+- Added missing `repository` field
+- Added tags: `System`, `Indicator` (alongside existing `Bar`, `Panel`)
+
+---
+
 ## [3.2.2] - 2026-02-08
 
-### 🐛 Bug Fixes
+### Bug Fixes
 
 **Hyprland Parser - No Category Handling**
 
@@ -11,7 +76,7 @@
 - Default category name is fully translatable via i18n system
 - Prevents keybind loss for users who don't organize their configs with categories
 
-### 🌍 Translations
+### Translations
 
 **Complete i18n Coverage**
 
@@ -28,7 +93,7 @@
 - Turkish (tr), Ukrainian (uk-UA), Swedish (sv), Hungarian (hu)
 - Kurdish (ku), Norwegian Nynorsk (nn-NO), Hindi/Nepali (hn)
 
-### 🔧 Code Quality
+### Code Quality
 
 **Memory Leak Prevention**
 
@@ -40,13 +105,13 @@
 
 ## [3.1.2] - 2026-02-08
 
-### 🌐 Translations
+### Translations
 
 - Added german translations for the `error` keys
 
 ## [3.1.1] - 2026-02-03
 
-### 🚀 Smart Caching
+### Smart Caching
 
 **Compositor Change Detection**
 
@@ -55,7 +120,7 @@
 - Instant panel opening when using same compositor (uses cache)
 - Saves detected compositor in settings for comparison
 
-### 🐛 Bug Fixes
+### Bug Fixes
 
 **Improved Niri Parser**
 
@@ -70,7 +135,7 @@
 - Each compositor shows specific explanation why it's not supported
 - All error messages are translatable via i18n
 
-### 📝 Documentation
+### Documentation
 
 **README Updates**
 
@@ -82,7 +147,7 @@
 
 ## [3.1.0] - 2026-02-03
 
-### ✨ New Features
+### New Features
 
 **Niri Support**
 
@@ -97,7 +162,7 @@
 - Memory leak prevention with recursion limits
 - Glob pattern support for bulk file imports
 
-### 🔧 Improvements
+### Improvements
 
 **Better Error Handling**
 
@@ -109,7 +174,7 @@
 
 ## [3.0.0] - 2026-01-30
 
-### 🎉 Initial Release
+### Initial Release
 
 **Core Features**
 
