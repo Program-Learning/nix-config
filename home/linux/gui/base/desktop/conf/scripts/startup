@@ -70,7 +70,7 @@ exec mpd &
 
 # Start clash
 # will try to replace clash by dae
-exec clash-verge &
+# exec clash-verge &
 # exec clash-nyanpasu &
 # exec mihomo-party &
 
