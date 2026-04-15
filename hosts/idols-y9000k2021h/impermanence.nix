@@ -226,7 +226,7 @@
         # v2ray
         ".config/qv2ray"
         ".config/nekoray"
-        ".config/throne"
+        ".config/Throne"
         # gg
         ".config/gg"
 

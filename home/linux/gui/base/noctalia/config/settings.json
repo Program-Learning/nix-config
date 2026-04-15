@@ -206,7 +206,8 @@
             "AyuGram Desktop",
             "tray-icon tray app",
             "557oluE8T-",
-            "tray-icon tray app main"
+            "tray-icon tray app main",
+            "[Tun]\nThrone"
           ]
         },
         {
@@ -477,7 +478,7 @@
     "screenOffCommand": "",
     "screenOffTimeout": 120,
     "suspendCommand": "",
-    "suspendTimeout": 1800
+    "suspendTimeout": 0
   },
   "location": {
     "analogClockInCalendar": false,

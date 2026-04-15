@@ -83,6 +83,7 @@ in
         # mate.engrampa
         nautilus
         nautilus-open-any-terminal
+        code-nautilus
         file-roller
         # kdePackages.ark
         # kdePackages.dolphin

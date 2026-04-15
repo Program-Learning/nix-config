@@ -8,7 +8,7 @@
     #"${pkgs.alacritty}/share/applications/Alacritty.desktop"
     #"${pkgs.ghostty}/share/applications/com.mitchellh.ghostty.desktop"
 
-    "${pkgs.clash-verge-rev}/share/applications/clash-verge.desktop"
+    # "${pkgs.clash-verge-rev}/share/applications/clash-verge.desktop"
 
     # Custom startup script
     ./../../../../base/tui/scripts/startup.desktop
