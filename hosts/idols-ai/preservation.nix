@@ -378,6 +378,9 @@ in
         # Apps
         # ======================================
 
+        # piliplus
+        ".local/share/com.example.piliplus/"
+
         # persist data for android studio
         ".local/share/Google/"
 

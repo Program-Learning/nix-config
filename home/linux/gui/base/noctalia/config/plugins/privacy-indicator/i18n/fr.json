@@ -6,7 +6,7 @@
     "activeColor": {
       "desc": "Couleur des icônes lorsqu'elles sont actives.",
       "label": "Couleur d'icône active"
-    },
+    },  
     "hideInactive": {
       "desc": "Masquer les icônes du micro, de la caméra et de l’écran lorsqu’ils sont inactifs.",
       "label": "Masquer les états inactifs"
@@ -30,6 +30,10 @@
     "micFilterRegex": {
       "desc": "Motif Regex pour filtrer les applications de microphone. Les applications correspondantes sont complètement exclues de la détection.",
       "label": "Regex de filtrage du microphone"
+    },
+    "camFilterRegex": {
+      "desc": "Motif Regex pour filtrer les applications de caméra. Les applications correspondantes sont complètement exclues de la détection.",
+      "label": "Regex de filtrage de la caméra"
     }
   },
   "tooltip": {
