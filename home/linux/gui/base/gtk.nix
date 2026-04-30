@@ -60,6 +60,7 @@ in
 
     gtk3 = {
       bookmarks = [
+        "file:///home/${myvars.username}/Apps/Wine"
         "file:///home/${myvars.username}/Documents"
         "file:///home/${myvars.username}/Downloads"
         "file:///home/${myvars.username}/Videos"
