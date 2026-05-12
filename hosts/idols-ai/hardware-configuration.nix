@@ -6,6 +6,7 @@
   lib,
   pkgs,
   pkgs-latest,
+  nur-DataEraserC,
   myvars,
   modulesPath,
   ...
@@ -74,7 +75,15 @@ in
 {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
+    nur-DataEraserC.nixosModules.aw88399-legion-audio
   ];
+
+  dataEraserC.aw88399-legion-audio = {
+    enable = true;
+    patchVersion = "6.19.11"; # 可选 "6.19.11"，默认 "7.0"
+    patchPackage = nur-DataEraserC.packages.${pkgs.system}.aw88399-legion-audio-patch;
+    firmwarePackage = nur-DataEraserC.packages.${pkgs.system}.aw88399-legion-firmware;
+  };
 
   boot.kernelParams = [
     # === NVMe SSD Timeout / Freeze Fix for Linux ===
@@ -127,7 +136,7 @@ in
   # );
 
   # https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/top-level/linux-kernels.nix
-  boot.kernelPackages = pkgs.linuxPackages_6_18; # 6.19 works not well with nvidia driver
+  boot.kernelPackages = pkgs.linuxPackages_6_19; # 6.19 works not well with nvidia driver
   # boot.kernelPackages = pkgs.linuxPackages_latest;
   # boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
   # boot.kernelPackages = pkgs.linuxPackages_cachyos;
