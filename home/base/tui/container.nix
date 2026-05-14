@@ -14,6 +14,8 @@
     go-containerregistry # provides `crane` & `gcrane`, it's similar to skopeo
 
     kubectl
+    kustomize
+    kubeconform # FAST Kubernetes manifests validator, with support for Custom Resources
     kubectx # kubectx & kubens
     kubie # same as kubectl-ctx, but per-shell (won’t touch kubeconfig).
     kubectl-view-secret # kubectl view-secret

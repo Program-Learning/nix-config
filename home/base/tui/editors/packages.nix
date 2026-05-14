@@ -93,7 +93,6 @@
           # llvmPackages.clang-unwrapped
           clang-tools
           lldb
-          vscode-extensions.vadimcn.vscode-lldb.adapter # codelldb - debugger
 
           #-- python
           uv # python project package manager
@@ -169,7 +168,7 @@
           gomodifytags
           iferr # generate error handling code for go
           impl # generate function implementation for go
-          gotools # contains tools like: godoc, goimports, etc.
+          # gotools # contains tools like: godoc, goimports, etc.
           gopls # go language server
           delve # go debugger
           gomod2nix.packages.${pkgs.system}.default

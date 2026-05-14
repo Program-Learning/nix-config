@@ -32,11 +32,15 @@ rec {
 
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ./nvidia.nix
-    ./ai
+    ./hardware-intel.nix
+    ./hardware-nvidia.nix
 
     ./preservation.nix
     ./secureboot.nix
+
+    # others
+    ./ai
+
     # ./tpm_luks.nix
     ./dae.nix
   ];
@@ -244,7 +248,7 @@ rec {
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "25.11"; # Did you read the comment?
+  system.stateVersion = "26.11"; # Did you read the comment?
   features.bigdata_hadoop = {
     enable = false;
     package = pkgs.hadoop_3_3;

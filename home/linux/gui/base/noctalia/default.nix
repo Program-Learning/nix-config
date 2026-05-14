@@ -23,6 +23,13 @@ let
   wallpapers_dir = mklinkWallpaperPath config "dark";
 in
 lib.mkIf cfgNiri.enable {
+  # Qt for noctalia-shell (replaces former systemd user service Environment=)
+  home.sessionVariables = {
+    # Qt6: wayland primary, xcb fallback (QT_QPA_PLATFORM).
+    "QT_QPA_PLATFORM" = "wayland;xcb";
+    "QT_QPA_PLATFORMTHEME" = "qt6ct";
+    "QT_AUTO_SCREEN_SCALE_FACTOR" = "1";
+  };
 
   home.packages = [
     package
@@ -46,28 +53,4 @@ lib.mkIf cfgNiri.enable {
       "noctalia".source = mkSymlink config "${confPath}/config";
       "qt6ct/qt6ct.conf".source = mkSymlink config "${confPath}/qt6ct.conf";
     };
-
-  systemd.user.services.noctalia-shell = {
-    Unit = {
-      Description = "Noctalia Shell - Wayland desktop shell";
-      Documentation = "https://docs.noctalia.dev/docs";
-      PartOf = [ config.wayland.systemd.target ];
-      After = [ config.wayland.systemd.target ];
-    };
-
-    Service = {
-      ExecStart = lib.getExe package;
-      Restart = "on-failure";
-
-      Environment = [
-        "QT_QPA_PLATFORM=wayland;xcb"
-        "QT_QPA_PLATFORMTHEME=qt6ct"
-        "QT_AUTO_SCREEN_SCALE_FACTOR=1"
-      ];
-
-      # ExecStartPost = "${lib.getExe package} ipc call lockScreen lock";
-    };
-
-    Install.WantedBy = [ config.wayland.systemd.target ];
-  };
 }

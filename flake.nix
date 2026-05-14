@@ -98,6 +98,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # https://github.com/catppuccin/nix
     catppuccin = {
       url = "github:catppuccin/nix";
@@ -158,10 +163,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    ghostty = {
-      url = "github:ghostty-org/ghostty/tip"; # Latest Continuous Release
-    };
-
     blender-bin = {
       url = "github:edolstra/nix-warez?dir=blender";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -170,13 +171,6 @@
     nixos-apple-silicon = {
       # asahi-6.18.9
       url = "github:nix-community/nixos-apple-silicon";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    helix = {
-      # Helix with steel as plugin system
-      # https://github.com/helix-editor/helix/pull/8675
-      url = "github:mattwparas/helix/steel-event-system";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -190,7 +184,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     aagl = {
-      url = "github:ezKEa/aagl-gtk-on-nix/release-25.11";
+      url = "github:ezKEa/aagl-gtk-on-nix/main";
       # inputs.nixpkgs.follows = "nixpkgs";
     };
 
