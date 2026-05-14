@@ -84,5 +84,7 @@ in
     gtk4.extraConfig = {
       "gtk-application-prefer-dark-theme" = "1";
     };
+    # Some Applications (e.g. MissionCenter) only look for gtk4 settings, so we need to set the theme there as well.
+    gtk4.theme = config.gtk.theme;
   };
 }

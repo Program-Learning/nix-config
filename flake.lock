@@ -621,11 +621,11 @@
         "systems": "systems_6"
       },
       "locked": {
-        "lastModified": 1778619145,
-        "narHash": "sha256-9w1ymBHg1uKMv5wl5EVHOXDmvF0e4P0UcN+N9mPA3os=",
+        "lastModified": 1778705859,
+        "narHash": "sha256-ALKwDGvy0ITOXWmei1h+PAmPrDppYF3cTeZIPKyY5rg=",
         "owner": "nix-community",
         "repo": "browser-previews",
-        "rev": "f9f6f0cd443ad5fc86788c678c3df449bdbe2a92",
+        "rev": "432818e70d644aedebecb78d09118f1c3976c843",
         "type": "github"
       },
       "original": {
@@ -5694,10 +5694,10 @@
     "mysecrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1778666873,
-        "narHash": "sha256-MpbG1Qv70l+Ij6v+uvmqu9W4PW2PXGVoIgm/zvdOUCs=",
+        "lastModified": 1778759404,
+        "narHash": "sha256-9zTtMOsZ0RqgFzIE8S3GUWrOS52tUTaEQpYEp9bULXk=",
         "ref": "refs/heads/master",
-        "rev": "9c68af86249abe44d076504d50609cfc036be688",
+        "rev": "50477b98bdf0a5c46615ecfec1c67a4f7a6c6ac0",
         "shallow": true,
         "type": "git",
         "url": "ssh://git@github.com/DataEraserC/nix-secrets.git"
